@@ -9,10 +9,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.PathSegment;
 
+import org.jboss.pressgangccms.rest.v1.exceptions.InternalProcessingException;
+import org.jboss.pressgangccms.rest.v1.exceptions.InvalidParameterException;
 import org.jboss.resteasy.plugins.providers.atom.Feed;
-
-import com.redhat.topicindex.rest.exceptions.InternalProcessingException;
-import com.redhat.topicindex.rest.exceptions.InvalidParameterException;
 
 /**
  * This interface defines the REST endpoints that are not supported by Errai.

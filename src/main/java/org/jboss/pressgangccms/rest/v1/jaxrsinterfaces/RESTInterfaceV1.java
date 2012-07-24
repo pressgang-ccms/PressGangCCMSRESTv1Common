@@ -1,5 +1,6 @@
 package org.jboss.pressgangccms.rest.v1.jaxrsinterfaces;
 
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -12,33 +13,33 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.PathSegment;
 
-import com.redhat.topicindex.rest.collections.RESTBlobConstantCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTCategoryCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTImageCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTProjectCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTPropertyTagCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTRoleCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTStringConstantCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTagCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTopicCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTranslatedTopicCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTranslatedTopicStringCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTUserCollectionV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTBlobConstantV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTCategoryV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTImageV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTProjectV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTPropertyTagV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTTagV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTTopicV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTTranslatedTopicStringV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTTranslatedTopicV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTStringConstantV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTRoleV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTUserV1;
-import com.redhat.topicindex.rest.exceptions.InternalProcessingException;
-import com.redhat.topicindex.rest.exceptions.InvalidParameterException;
-import com.redhat.topicindex.rest.expand.ExpandDataTrunk;
+import org.jboss.pressgangccms.rest.v1.collections.RESTBlobConstantCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTCategoryCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTImageCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTProjectCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTPropertyTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTRoleCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTStringConstantCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTopicCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicStringCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTUserCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTBlobConstantV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTCategoryV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTImageV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTProjectV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTRoleV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTStringConstantV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTopicV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicStringV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTUserV1;
+import org.jboss.pressgangccms.rest.v1.exceptions.InternalProcessingException;
+import org.jboss.pressgangccms.rest.v1.exceptions.InvalidParameterException;
+import org.jboss.pressgangccms.rest.v1.expansion.ExpandDataTrunk;
 
 @Path("/1")
 public interface RESTInterfaceV1
