@@ -1,0 +1,28 @@
+package org.jboss.pressgangccms.rest.v1.sort;
+
+import java.util.Comparator;
+
+import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
+
+public class BaseTopicV1TitleComparator<T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> implements Comparator<T>
+{
+	public int compare(final T o1, final T o2)
+	{
+		if (o1 == null && o2 == null)
+			return 0;
+		if (o1 == null)
+			return -1;
+		if (o2 == null)
+			return 1;
+		
+		if (o1.getTitle() == null && o2.getTitle() == null)
+			return 0;
+		if (o1.getTitle() == null)
+			return -1;
+		if (o2.getTitle() == null)
+			return 1;
+		
+		return o1.getTitle().compareTo(o2.getTitle());
+	}
+}

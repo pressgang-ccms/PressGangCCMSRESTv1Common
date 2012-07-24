@@ -3,6 +3,7 @@ package org.jboss.pressgangccms.rest.v1.components;
 import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicV1;
+import org.jboss.pressgangccms.utils.constants.CommonConstants;
 
 /**
  * This component contains methods that can be applied against translated topics

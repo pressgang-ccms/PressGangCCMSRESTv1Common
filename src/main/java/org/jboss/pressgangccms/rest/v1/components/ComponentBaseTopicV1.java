@@ -6,7 +6,13 @@ import java.util.List;
 import java.util.TreeMap;
 
 import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTCategoryV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
+import org.jboss.pressgangccms.rest.v1.sort.TagV1NameComparator;
+import org.jboss.pressgangccms.utils.common.ExceptionUtilities;
+import org.jboss.pressgangccms.utils.common.XMLUtilities;
+import org.jboss.pressgangccms.utils.structures.NameIDSortMap;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

@@ -6,6 +6,7 @@ import java.util.Date;
 import org.jboss.pressgangccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTopicV1;
+import org.jboss.pressgangccms.utils.constants.CommonConstants;
 
 /**
  * This component contains methods that can be applied against topics
