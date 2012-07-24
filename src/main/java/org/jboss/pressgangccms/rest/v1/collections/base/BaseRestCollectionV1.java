@@ -3,8 +3,7 @@ package org.jboss.pressgangccms.rest.v1.collections.base;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.redhat.topicindex.rest.entities.interfaces.RESTBaseEntityV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 /**
  * @author Matthew Casperson

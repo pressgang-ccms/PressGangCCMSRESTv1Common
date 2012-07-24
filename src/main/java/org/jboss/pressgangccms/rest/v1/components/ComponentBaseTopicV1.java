@@ -5,20 +5,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
 
+import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
-import com.redhat.ecs.commonstructures.NameIDSortMap;
-import com.redhat.ecs.commonutils.ExceptionUtilities;
-import com.redhat.ecs.commonutils.XMLUtilities;
-import com.redhat.topicindex.rest.collections.BaseRestCollectionV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTBaseTopicV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTCategoryV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTTagV1;
-import com.redhat.topicindex.rest.sort.TagV1NameComparator;
 
 /**
  * This component contains methods that can be applied against all topic entities

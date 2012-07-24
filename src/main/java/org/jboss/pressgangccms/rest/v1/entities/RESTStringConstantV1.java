@@ -1,7 +1,7 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
-import com.redhat.topicindex.rest.collections.RESTStringConstantCollectionV1;
-
+import org.jboss.pressgangccms.rest.v1.collections.RESTStringConstantCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 /**
  * A REST representation of the StringConstants database entity

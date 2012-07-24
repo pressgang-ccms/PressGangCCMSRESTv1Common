@@ -1,7 +1,8 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
-import com.redhat.topicindex.rest.collections.RESTCategoryCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTCategoryCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 public class RESTCategoryV1 extends RESTBaseEntityV1<RESTCategoryV1, RESTCategoryCollectionV1>
 {

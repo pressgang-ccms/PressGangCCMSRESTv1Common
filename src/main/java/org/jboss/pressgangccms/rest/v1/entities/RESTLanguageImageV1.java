@@ -1,6 +1,7 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
-import com.redhat.topicindex.rest.collections.RESTLanguageImageCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTLanguageImageCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, RESTLanguageImageCollectionV1>
 {

@@ -1,8 +1,8 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
-import com.redhat.topicindex.rest.collections.RESTProjectCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTagCollectionV1;
-
+import org.jboss.pressgangccms.rest.v1.collections.RESTProjectCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 public class RESTProjectV1 extends RESTBaseEntityV1<RESTProjectV1, RESTProjectCollectionV1>
 {

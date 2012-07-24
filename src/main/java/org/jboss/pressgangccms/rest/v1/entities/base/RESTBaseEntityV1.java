@@ -3,7 +3,8 @@ package org.jboss.pressgangccms.rest.v1.entities.base;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.redhat.topicindex.rest.collections.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+
 
 public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U extends BaseRestCollectionV1<T, U>>
 {

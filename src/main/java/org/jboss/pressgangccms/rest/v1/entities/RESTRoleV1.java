@@ -1,7 +1,8 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
-import com.redhat.topicindex.rest.collections.RESTRoleCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTUserCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTRoleCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTUserCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV1>
 {

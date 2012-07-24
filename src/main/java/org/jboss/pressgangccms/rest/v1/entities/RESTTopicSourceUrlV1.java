@@ -1,6 +1,7 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
-import com.redhat.topicindex.rest.collections.RESTTopicSourceUrlCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1, RESTTopicSourceUrlCollectionV1>
 {

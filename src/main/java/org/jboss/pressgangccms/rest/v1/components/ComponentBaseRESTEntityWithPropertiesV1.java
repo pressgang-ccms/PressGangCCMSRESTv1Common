@@ -1,8 +1,8 @@
 package org.jboss.pressgangccms.rest.v1.components;
 
-import com.redhat.topicindex.rest.collections.BaseRestCollectionV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTBaseEntityWithPropertiesV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTPropertyTagV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityWithPropertiesV1;
 
 /**
  * This is the base class for all entities that have Property Tags

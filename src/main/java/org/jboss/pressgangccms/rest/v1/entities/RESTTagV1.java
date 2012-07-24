@@ -1,9 +1,10 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
-import com.redhat.topicindex.rest.collections.RESTCategoryCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTProjectCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTPropertyTagCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTCategoryCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTProjectCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTPropertyTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityWithPropertiesV1;
 
 public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTagCollectionV1>
 {

@@ -3,11 +3,9 @@ package org.jboss.pressgangccms.rest.v1.components;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.redhat.ecs.constants.CommonConstants;
-import com.redhat.ecs.services.docbookcompiling.DocbookBuilderConstants;
-import com.redhat.topicindex.rest.collections.RESTTopicCollectionV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTPropertyTagV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTTopicV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTopicCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTopicV1;
 
 /**
  * This component contains methods that can be applied against topics

@@ -1,6 +1,8 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
-import com.redhat.topicindex.rest.collections.RESTBugzillaBugCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTBugzillaBugCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
+
 
 public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTBugzillaBugCollectionV1>
 {

@@ -2,8 +2,9 @@ package org.jboss.pressgangccms.rest.v1.entities;
 
 import java.util.Date;
 
-import com.redhat.topicindex.rest.collections.RESTTranslatedTopicCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTranslatedTopicStringCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicStringCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
 
 /**
  * The RESTTranslatedTopicV1 class is a combination of the TranslatedTopic and TranslatedTopicData classes. In the database, a TranslatedTopic

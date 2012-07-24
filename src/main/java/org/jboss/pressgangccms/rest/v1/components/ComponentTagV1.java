@@ -1,8 +1,8 @@
 package org.jboss.pressgangccms.rest.v1.components;
 
-import com.redhat.topicindex.rest.collections.RESTTagCollectionV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTCategoryV1;
-import com.redhat.topicindex.rest.entities.interfaces.RESTTagV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTCategoryV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 
 /**
  * This component contains methods that can be applied against tags

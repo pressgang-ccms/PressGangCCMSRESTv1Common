@@ -2,12 +2,13 @@ package org.jboss.pressgangccms.rest.v1.entities;
 
 import java.util.Date;
 
-import com.redhat.topicindex.rest.collections.RESTBugzillaBugCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTPropertyTagCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTagCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTopicCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTopicSourceUrlCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTranslatedTopicCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTBugzillaBugCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTPropertyTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTopicCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
 
 public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectionV1>
 {

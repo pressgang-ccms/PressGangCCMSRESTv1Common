@@ -2,7 +2,8 @@ package org.jboss.pressgangccms.rest.v1.collections;
 
 import java.util.List;
 
-import com.redhat.topicindex.rest.entities.interfaces.RESTTranslatedTopicStringV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicStringV1;
 
 /**
  * This is a wrapper class to work around an Errai limitation - https://issues.jboss.org/browse/ERRAI-319

@@ -1,8 +1,9 @@
 package org.jboss.pressgangccms.rest.v1.entities.base;
 
-import com.redhat.topicindex.rest.collections.BaseRestCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTagCollectionV1;
-import com.redhat.topicindex.rest.collections.RESTTopicSourceUrlCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 
 public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> extends RESTBaseEntityWithPropertiesV1<T, U>
 {
