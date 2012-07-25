@@ -7,8 +7,6 @@ import java.util.List;
 import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
 
-import com.redhat.ecs.services.docbookcompiling.xmlprocessing.structures.InjectionTopicData;
-import com.redhat.ecs.sort.ExternalListSort;
 
 public class TopicTitleSorter<T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> implements ExternalListSort<Integer, T, InjectionTopicData>
 {

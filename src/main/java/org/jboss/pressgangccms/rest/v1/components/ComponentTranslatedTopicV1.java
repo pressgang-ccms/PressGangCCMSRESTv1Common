@@ -4,6 +4,7 @@ import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollection
 import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgangccms.utils.constants.CommonConstants;
+import org.jboss.pressgangccms.zanata.ZanataDetails;
 
 /**
  * This component contains methods that can be applied against translated topics
