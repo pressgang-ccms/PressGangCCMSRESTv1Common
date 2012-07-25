@@ -1,6 +1,7 @@
 package org.jboss.pressgangccms.rest.v1.components;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
+import org.jboss.pressgangccms.rest.v1.constants.RESTv1Constants;
 import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgangccms.utils.constants.CommonConstants;
@@ -154,10 +155,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	
 	static public String returnErrorXRefID(final RESTTranslatedTopicV1 source)
 	{
-		return DocbookBuilderConstants.ERROR_XREF_ID_PREFIX + returnZanataId(source);
+		return RESTv1Constants.ERROR_XREF_ID_PREFIX + returnZanataId(source);
 	}
-
-
 
 	public Integer returnPushedTranslationTopicId()
 	{

@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTTopicCollectionV1;
+import org.jboss.pressgangccms.rest.v1.constants.RESTv1Constants;
 import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgangccms.utils.constants.CommonConstants;
@@ -93,7 +94,7 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1<RESTTopicV1, RESTTopi
 	
 	static public  String returnErrorXRefID(final RESTTopicV1 source)
 	{
-		return DocbookBuilderConstants.ERROR_XREF_ID_PREFIX + source.getId();
+		return RESTv1Constants.ERROR_XREF_ID_PREFIX + source.getId();
 	}
 
 	@Override
