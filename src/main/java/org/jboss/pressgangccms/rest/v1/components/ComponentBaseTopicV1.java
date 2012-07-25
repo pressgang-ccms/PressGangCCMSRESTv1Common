@@ -151,11 +151,6 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 
 		return tagsList;
 	}
-
-	private TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> getCategoriesMappedToTags()
-	{
-		return getCategoriesMappedToTags(source);
-	}
 	
 	static private <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> getCategoriesMappedToTags(final T source)
 	{
