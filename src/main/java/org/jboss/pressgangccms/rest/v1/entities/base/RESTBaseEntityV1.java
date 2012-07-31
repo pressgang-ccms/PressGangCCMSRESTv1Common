@@ -75,7 +75,7 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 	{
 		this.setSelfLink(baseUrl + "/1/" + restBasePath + "/get/" + dataType + "/" + id);
 		this.setDeleteLink(baseUrl + "/1/" + restBasePath + "/delete/" + dataType + "/" + id);
-		this.setAddLink(baseUrl + "/1/" + restBasePath + "/post/" + dataType + "/" + id);
+		this.setAddLink(baseUrl + "/1/" + restBasePath + "/post/" + dataType);
 		this.setEditLink(baseUrl + "/1/" + restBasePath + "/put/" + dataType + "/" + id);
 	}
 	public String getSelfLink()
