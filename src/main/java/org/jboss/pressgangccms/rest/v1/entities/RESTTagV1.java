@@ -11,8 +11,8 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 	public static final String NAME_NAME = "name";
 	public static final String DESCRIPTION_NAME = "description";
 	public static final String CATEGORIES_NAME = "categories";
-	public static final String PARENT_TAGS_NAME = "parenttags";
-	public static final String CHILD_TAGS_NAME = "childtags";
+	public static final String PARENT_TAGS_NAME = "parentTags";
+	public static final String CHILD_TAGS_NAME = "childTags";
 	public static final String PROJECTS_NAME = "projects";
 	
 	protected String name = null;
