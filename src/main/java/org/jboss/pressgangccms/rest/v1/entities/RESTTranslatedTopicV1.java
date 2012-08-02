@@ -15,11 +15,11 @@ import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
  */
 public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>
 {
-	public static final String TOPICID_NAME = "topicid";
-	public static final String TOPICREVISION_NAME = "topicrevision";
+	public static final String TOPICID_NAME = "topicId";
+	public static final String TOPICREVISION_NAME = "topicRevision";
 	public static final String TOPIC_NAME = "topic";
-	public static final String TRANSLATEDTOPICSTRING_NAME = "translatedtopicstring_OTM";
-	public static final String TRANSLATIONPERCENTAGE_NAME = "translationpercentage";
+	public static final String TRANSLATEDTOPICSTRING_NAME = "translatedTopicstring_OTM";
+	public static final String TRANSLATIONPERCENTAGE_NAME = "translationPercentage";
 	public static final String HTML_UPDATED = "htmlUpdated";
 	public static final String OUTGOING_NAME = "outgoingTranslatedRelationships";
 	public static final String INCOMING_NAME = "incomingTranslatedRelationships";

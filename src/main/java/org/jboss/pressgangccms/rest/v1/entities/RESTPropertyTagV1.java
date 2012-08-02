@@ -9,8 +9,8 @@ public class RESTPropertyTagV1 extends RESTBaseEntityV1<RESTPropertyTagV1, RESTP
 	public static String DESCRIPTION_NAME = "description";
 	public static String VALUE_NAME = "value";
 	public static String REGEX_NAME = "regex";
-	public static String CANBENULL_NAME = "canbenull";
-	public static String ISUNIQUE_NAME = "isunique";
+	public static String CANBENULL_NAME = "canBeNull";
+	public static String ISUNIQUE_NAME = "isUnique";
 	
 	private String name = null;
 	private String description = null;

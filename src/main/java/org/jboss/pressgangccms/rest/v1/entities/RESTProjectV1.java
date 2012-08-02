@@ -71,7 +71,7 @@ public class RESTProjectV1 extends RESTBaseEntityV1<RESTProjectV1, RESTProjectCo
 		this.name = name;
 	}
 	
-	public void setNameExplicit(final String name)
+	public void explicitSetName(final String name)
 	{
 		this.name = name;
 		this.setParamaterToConfigured(NAME_NAME);
@@ -87,7 +87,7 @@ public class RESTProjectV1 extends RESTBaseEntityV1<RESTProjectV1, RESTProjectCo
 		this.description = description;
 	}
 	
-	public void setDescriptionExplicit(final String description)
+	public void explicitSetDescription(final String description)
 	{
 		this.description = description;
 		this.setParamaterToConfigured(DESCRIPTION_NAME);
@@ -103,7 +103,7 @@ public class RESTProjectV1 extends RESTBaseEntityV1<RESTProjectV1, RESTProjectCo
 		this.tags = tags;
 	}
 	
-	public void setTagsExplicit(final RESTTagCollectionV1 tags)
+	public void explicitSetTags(final RESTTagCollectionV1 tags)
 	{
 		this.tags = tags;
 		this.setParamaterToConfigured(TAGS_NAME);
