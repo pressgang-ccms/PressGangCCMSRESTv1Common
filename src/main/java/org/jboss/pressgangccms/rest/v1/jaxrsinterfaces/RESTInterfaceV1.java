@@ -1169,6 +1169,12 @@ public interface RESTInterfaceV1
 	public RESTImageV1 getJSONImage(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
 	@GET
+	@Path("/image/get/json/{id}/r/{rev}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes({ "*" })
+	public RESTImageV1 getJSONImageRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+	@GET
 	@Path("/images/get/json/all")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
