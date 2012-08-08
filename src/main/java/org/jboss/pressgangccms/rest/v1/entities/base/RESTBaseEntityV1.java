@@ -34,6 +34,32 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 	abstract public U getRevisions();
 
 	abstract public void setRevisions(U revisions);
+	
+	@Override
+	public boolean equals(final Object other)
+	{
+		if (!(other instanceof RESTBaseEntityV1))
+			return false;
+		
+		@SuppressWarnings("rawtypes")
+		final RESTBaseEntityV1 otherCasted = (RESTBaseEntityV1)other;
+		
+		if (this.id == null && otherCasted.id == null)
+			return true;
+		
+		if (this.id == null || otherCasted.id == null)
+			return false;
+		
+		return (this.id.equals(otherCasted.id));
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		if (this.id == null)
+			return 0;
+		return id.hashCode();
+	}
 		
 	public void cloneInto(final RESTBaseEntityV1<T, U> clone, final boolean deepCopy)
 	{
