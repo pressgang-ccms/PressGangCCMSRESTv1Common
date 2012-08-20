@@ -83,7 +83,8 @@ abstract public class BaseRestCollectionV1<T extends RESTBaseEntityV1<T, U>, U e
 				{
 					final T child2 = this.getItems().get(j);
 					
-					if (child1.getId().equals(child2.getId()))
+					if (child1.getId() != null && child2.getId() != null
+							&& child1.getId().equals(child2.getId()))
 					{
 						final boolean add2 = child2.getAddItem();
 						final boolean remove2 = child2.getRemoveItem();
