@@ -169,16 +169,22 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 			return source.getTranslatedTopicId();
 
 		/* Check that a translation exists that is the same locale as the base topic */
-		if (source.getTopic().getTranslatedTopics_OTM() != null && source.getTopic().getTranslatedTopics_OTM().getItems() != null)
-		{
-			for (final RESTTranslatedTopicV1 translatedTopic : source.getTopic().getTranslatedTopics_OTM().getItems())
-			{
-				if (translatedTopic.getLocale().equals(source.getTopic().getLocale()))
-					return translatedTopic.getTranslatedTopicId();
-			}
-		}
+        RESTTranslatedTopicV1 pushedTranslatedTopic = null;
+        if (source.getTopic().getTranslatedTopics_OTM() != null && source.getTopic().getTranslatedTopics_OTM().getItems() != null)
+        {
+            final Integer topicRev = source.getTopicRevision();
+            for (final RESTTranslatedTopicV1 translatedTopic : source.getTopic().getTranslatedTopics_OTM().getItems())
+            {
+                if (translatedTopic.getLocale().equals(source.getTopic().getLocale()) &&
+                        // Ensure that the topic revision is less than or equal to the source revision
+                        (topicRev == null || translatedTopic.getTopicRevision() <= topicRev) &&
+                        // Check if this translated topic is a higher revision then the current stored translation
+                        (pushedTranslatedTopic == null || pushedTranslatedTopic.getTopicRevision() < translatedTopic.getTopicRevision()))
+                    pushedTranslatedTopic = translatedTopic;
+            }
+        }
 
-		return null;
+		return pushedTranslatedTopic == null ? null : pushedTranslatedTopic.getTranslatedTopicId();
 	}
 	
 	public RESTTranslatedTopicV1 returnPushedTranslatedTopic()
@@ -192,16 +198,22 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 			return source;
 
 		/* Check that a translation exists that is the same locale as the base topic */
+		RESTTranslatedTopicV1 pushedTranslatedTopic = null;
 		if (source.getTopic().getTranslatedTopics_OTM() != null && source.getTopic().getTranslatedTopics_OTM().getItems() != null)
 		{
+		    final Integer topicRev = source.getTopicRevision();
 			for (final RESTTranslatedTopicV1 translatedTopic : source.getTopic().getTranslatedTopics_OTM().getItems())
 			{
-				if (translatedTopic.getLocale().equals(source.getTopic().getLocale()))
-					return translatedTopic;
+				if (translatedTopic.getLocale().equals(source.getTopic().getLocale()) &&
+				        // Ensure that the topic revision is less than or equal to the source revision
+				        (topicRev == null || translatedTopic.getTopicRevision() <= topicRev) &&
+				        // Check if this translated topic is a higher revision then the current stored translation
+				        (pushedTranslatedTopic == null || pushedTranslatedTopic.getTopicRevision() < translatedTopic.getTopicRevision()))
+					pushedTranslatedTopic = translatedTopic;
 			}
 		}
 
-		return null;
+		return pushedTranslatedTopic;
 	}
 	
 	public boolean hasBeenPushedForTranslation()
