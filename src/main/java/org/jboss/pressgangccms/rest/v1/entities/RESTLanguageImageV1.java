@@ -130,7 +130,7 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
 	public void explicitSetImageData(final byte[] imageData)
 	{
 		this.imageData = imageData;
-		this.setParamaterToConfigured(IMAGEDATA_NAME);
+		this.setParameterToConfigured(IMAGEDATA_NAME);
 	}
 
 	public byte[] getThumbnail()
@@ -166,7 +166,7 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
 	public void explicitSetLocale(final String locale)
 	{
 		this.locale = locale;
-		this.setParamaterToConfigured(LOCALE_NAME);
+		this.setParameterToConfigured(LOCALE_NAME);
 	}
 	
 	public String getFilename()
@@ -182,6 +182,6 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
 	public void explicitSetFilename(final String filename)
 	{
 		this.filename = filename;
-		this.setParamaterToConfigured(FILENAME_NAME);
+		this.setParameterToConfigured(FILENAME_NAME);
 	}
 }

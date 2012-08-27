@@ -128,19 +128,19 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 	public void explicitSetXml(final String xml)
 	{
 		setXml(xml);
-		setParamaterToConfigured(XML_NAME);
+		setParameterToConfigured(XML_NAME);
 	}
 	
 	public void explicitSetXmlErrors(final String xmlErrors)
 	{
 		setXmlErrors(xmlErrors);
-		setParamaterToConfigured(XML_ERRORS_NAME);
+		setParameterToConfigured(XML_ERRORS_NAME);
 	}
 
 	public void explicitSetHtml(final String html)
 	{
 		setHtml(html);
-		setParamaterToConfigured(HTML_NAME);
+		setParameterToConfigured(HTML_NAME);
 	}
 	
 	public Integer getTopicId()
@@ -156,7 +156,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 	public void explicitSetTopicId(final Integer topicId)
 	{
 		this.topicId = topicId;
-		this.setParamaterToConfigured(TOPICID_NAME);
+		this.setParameterToConfigured(TOPICID_NAME);
 	}
 
 	public Integer getTopicRevision()
@@ -182,7 +182,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 	public void explicitSetTopicRevision(final Integer topicRevision)
 	{
 		this.topicRevision = topicRevision;
-		this.setParamaterToConfigured(TOPICREVISION_NAME);
+		this.setParameterToConfigured(TOPICREVISION_NAME);
 	}
 	
 	public Integer getTranslationPercentage() {
@@ -195,7 +195,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 	
 	public void explicitSetTranslationPercentage(Integer translationPercentage) {
 		this.translationPercentage = translationPercentage;
-		this.setParamaterToConfigured(TRANSLATIONPERCENTAGE_NAME);
+		this.setParameterToConfigured(TRANSLATIONPERCENTAGE_NAME);
 	}
 
 	public RESTTranslatedTopicStringCollectionV1 getTranslatedTopicStrings_OTM()
@@ -211,7 +211,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 	public void explicitSetTranslatedTopicString_OTM(final RESTTranslatedTopicStringCollectionV1 translatedTopicStrings)
 	{
 		this.translatedTopicStrings = translatedTopicStrings;
-		this.setParamaterToConfigured(TRANSLATEDTOPICSTRING_NAME);
+		this.setParameterToConfigured(TRANSLATEDTOPICSTRING_NAME);
 	}
 	
 	public Date getHtmlUpdated()
@@ -227,13 +227,13 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 	public void explicitSetHtmlUpdated(final Date htmlUpdated)
 	{
 		this.htmlUpdated = htmlUpdated;
-		this.setParamaterToConfigured(HTML_UPDATED);
+		this.setParameterToConfigured(HTML_UPDATED);
 	}
 	
 	public void explicitSetLocale(final String locale)
 	{
 		setLocale(locale);
-		setParamaterToConfigured(LOCALE_NAME);
+		setParameterToConfigured(LOCALE_NAME);
 	}
 	
 	public RESTTranslatedTopicCollectionV1 getOutgoingTranslatedRelationships()

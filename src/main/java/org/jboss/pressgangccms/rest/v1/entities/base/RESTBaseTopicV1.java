@@ -17,6 +17,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U extends
 	public static final String LOCALE_NAME = "locale";
 	public static final String SOURCE_URLS_NAME = "sourceUrls_OTM";
 	public static final String PROPERTIES_NAME = "properties";
+	public static final String LOG_DETAILS_NAME = "logDetails";
 	
 	protected String title = null;
 	protected String xml = null;
@@ -26,6 +27,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U extends
 	protected String locale = null;
 	protected RESTTagCollectionV1 tags = null;
 	protected RESTTopicSourceUrlCollectionV1 sourceUrls_OTM = null;
+	protected RESTLogDetailsV1 logDetails = null;
 	
 	abstract public U getIncomingRelationships();
 	abstract public void setIncomingRelationships(final U incomingRelationships);
@@ -56,11 +58,17 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U extends
 				clone.sourceUrls_OTM = new RESTTopicSourceUrlCollectionV1();
 				this.sourceUrls_OTM.cloneInto(clone.sourceUrls_OTM, deepCopy);
 			}
+			
+			if (this.logDetails != null)
+            {
+                clone.setLogDetails(this.logDetails.clone());
+            }
 		}
 		else
 		{
 			clone.tags = this.tags;
 			clone.sourceUrls_OTM = this.sourceUrls_OTM;
+			clone.logDetails = this.logDetails;
 		}
 	}
 	
@@ -153,4 +161,14 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U extends
 	{
 		this.sourceUrls_OTM = sourceUrls;		
 	}
+	
+	public RESTLogDetailsV1 getLogDetails()
+    {
+        return logDetails;
+    }
+
+    public void setLogDetails(final RESTLogDetailsV1 logDetails)
+    {
+        this.logDetails = logDetails;
+    }
 }

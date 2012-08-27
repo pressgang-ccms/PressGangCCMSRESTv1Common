@@ -78,7 +78,7 @@ public class RESTPropertyTagV1 extends RESTBaseEntityV1<RESTPropertyTagV1, RESTP
 	public void explicitSetName(final String name)
 	{
 		this.name = name;
-		this.setParamaterToConfigured(NAME_NAME);
+		this.setParameterToConfigured(NAME_NAME);
 	}
 
 	public String getDescription()
@@ -94,7 +94,7 @@ public class RESTPropertyTagV1 extends RESTBaseEntityV1<RESTPropertyTagV1, RESTP
 	public void explicitSetDescription(final String description)
 	{
 		this.description = description;
-		this.setParamaterToConfigured(DESCRIPTION_NAME);
+		this.setParameterToConfigured(DESCRIPTION_NAME);
 	}
 
 	public String getValue()
@@ -110,7 +110,7 @@ public class RESTPropertyTagV1 extends RESTBaseEntityV1<RESTPropertyTagV1, RESTP
 	public void explicitSetValue(final String value)
 	{
 		this.value = value;
-		this.setParamaterToConfigured(VALUE_NAME);
+		this.setParameterToConfigured(VALUE_NAME);
 	}
 
 	public boolean getValid()
@@ -136,7 +136,7 @@ public class RESTPropertyTagV1 extends RESTBaseEntityV1<RESTPropertyTagV1, RESTP
 	public void explicitSetRegex(final String regex)
 	{
 		this.regex = regex;
-		this.setParamaterToConfigured(REGEX_NAME);
+		this.setParameterToConfigured(REGEX_NAME);
 	}
 
 	public boolean getCanBeNull()
@@ -152,7 +152,7 @@ public class RESTPropertyTagV1 extends RESTBaseEntityV1<RESTPropertyTagV1, RESTP
 	public void explicitSetCanBeNull(final boolean canBeNull)
 	{
 		this.canBeNull = canBeNull;
-		this.setParamaterToConfigured(CANBENULL_NAME);
+		this.setParameterToConfigured(CANBENULL_NAME);
 	}
 
 	public boolean getIsUnique()
@@ -168,6 +168,6 @@ public class RESTPropertyTagV1 extends RESTBaseEntityV1<RESTPropertyTagV1, RESTP
 	public void explicitSetIsUnique(boolean isUnique)
 	{
 		this.isUnique = isUnique;
-		this.setParamaterToConfigured(ISUNIQUE_NAME);
+		this.setParameterToConfigured(ISUNIQUE_NAME);
 	}
 }

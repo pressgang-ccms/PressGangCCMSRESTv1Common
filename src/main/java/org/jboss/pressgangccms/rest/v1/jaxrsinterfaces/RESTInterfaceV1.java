@@ -1380,4 +1380,10 @@ public interface RESTInterfaceV1
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public RESTTopicCollectionV1 deleteJSONTopics(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+	/*@GET
+	@Path("/contentspec/get/json/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes({ "*" })
+	public RESTContentSpecV1 getJSONContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;*/
 }

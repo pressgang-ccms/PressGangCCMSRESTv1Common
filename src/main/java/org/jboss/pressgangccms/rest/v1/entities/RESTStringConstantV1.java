@@ -69,7 +69,7 @@ public class RESTStringConstantV1 extends RESTBaseEntityV1<RESTStringConstantV1,
 	public void explicitSetName(final String name)
 	{
 		this.name = name;
-		this.setParamaterToConfigured(NAME_NAME);
+		this.setParameterToConfigured(NAME_NAME);
 	}
 
 	public String getValue()
@@ -85,6 +85,6 @@ public class RESTStringConstantV1 extends RESTBaseEntityV1<RESTStringConstantV1,
 	public void explicitSetValue(final String value)
 	{
 		this.value = value;
-		this.setParamaterToConfigured(VALUE_NAME);
+		this.setParameterToConfigured(VALUE_NAME);
 	}
 }

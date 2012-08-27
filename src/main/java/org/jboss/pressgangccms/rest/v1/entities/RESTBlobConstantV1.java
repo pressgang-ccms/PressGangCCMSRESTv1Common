@@ -76,7 +76,7 @@ public class RESTBlobConstantV1 extends RESTBaseEntityV1<RESTBlobConstantV1, RES
 	public void explicitSetName(final String name)
 	{
 		this.name = name;
-		this.setParamaterToConfigured(NAME_NAME);
+		this.setParameterToConfigured(NAME_NAME);
 	}
 
 	public byte[] getValue()
@@ -92,7 +92,7 @@ public class RESTBlobConstantV1 extends RESTBaseEntityV1<RESTBlobConstantV1, RES
 	public void explicitSetValue(final byte[] value)
 	{
 		this.value = value;
-		this.setParamaterToConfigured(VALUE_NAME);
+		this.setParameterToConfigured(VALUE_NAME);
 	}
 
 

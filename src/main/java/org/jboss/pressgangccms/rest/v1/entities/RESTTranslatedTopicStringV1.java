@@ -5,13 +5,15 @@ import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslatedTopicStringV1, RESTTranslatedTopicStringCollectionV1>
 {
-	public static final String ORIGINALSTRING_NAME = "originalstring";
-	public static final String TRANSLATEDSTRING_NAME = "translatedstring";
-	public static final String TRANSLATEDTOPIC_NAME = "translatedtopic";
+	public static final String ORIGINALSTRING_NAME = "originalString";
+	public static final String TRANSLATEDSTRING_NAME = "translatedString";
+	public static final String TRANSLATEDTOPIC_NAME = "translatedTopic";
+	public static final String FUZZY_TRANSLATION_NAME = "fuzzyTranslation";
 	
 	private RESTTranslatedTopicV1 translatedTopic = null;
 	private String originalString = null;
 	private String translatedString = null;
+	private Boolean fuzzyTranslation = null;
 	/** A list of the Envers revision numbers */
 	private RESTTranslatedTopicStringCollectionV1 revisions = null;
 	
@@ -78,7 +80,7 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslated
 	public void explicitSetOriginalString(final String originalString)
 	{
 		this.originalString = originalString;
-		this.setParamaterToConfigured(ORIGINALSTRING_NAME);
+		this.setParameterToConfigured(ORIGINALSTRING_NAME);
 	}
 
 	public String getTranslatedString()
@@ -94,6 +96,22 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslated
 	public void explicitSetTranslatedString(final String translatedString)
 	{
 		this.translatedString = translatedString;
-		this.setParamaterToConfigured(TRANSLATEDSTRING_NAME);
+		this.setParameterToConfigured(TRANSLATEDSTRING_NAME);
 	}
+
+    public Boolean getFuzzyTranslation()
+    {
+        return fuzzyTranslation;
+    }
+
+    public void setFuzzyTranslation(final Boolean fuzzyTranslation)
+    {
+        this.fuzzyTranslation = fuzzyTranslation;
+    }
+    
+    public void explicitSetFuzzyTranslation(final Boolean fuzzyTranslation)
+    {
+        this.fuzzyTranslation = fuzzyTranslation;
+        this.setParameterToConfigured(FUZZY_TRANSLATION_NAME);
+    }
 }

@@ -29,7 +29,7 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 	/** true if the database entity this REST entity represents should be added to the collection */ 
 	private boolean addItem = false;
 	/** true if the database entity this REST entity represents should be removed from the collection */
-	private boolean removeItem = false;	
+	private boolean removeItem = false;
 
 	abstract public U getRevisions();
 
@@ -82,14 +82,14 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 	
 	/**
 	 * This is a convenience method that adds a value to the configuredParameters collection
-	 * @param paramater The parameter to specify as configured
+	 * @param parameter The parameter to specify as configured
 	 */
-	protected void setParamaterToConfigured(final String paramater)
+	protected void setParameterToConfigured(final String parameter)
 	{
 		if (configuredParameters == null)
 			configuredParameters = new ArrayList<String>();
-		if (!configuredParameters.contains(paramater))
-			configuredParameters.add(paramater);
+		if (!configuredParameters.contains(parameter))
+			configuredParameters.add(parameter);
 	}
 	
 	public boolean hasParameterSet(final String parameter)

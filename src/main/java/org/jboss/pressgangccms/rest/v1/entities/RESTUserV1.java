@@ -74,7 +74,7 @@ public class RESTUserV1 extends RESTBaseEntityV1<RESTUserV1, RESTUserCollectionV
 	public void explicitSetName(final String name)
 	{
 		this.name = name;
-		this.setParamaterToConfigured(NAME_NAME);
+		this.setParameterToConfigured(NAME_NAME);
 	}
 
 	public String getDescription()
@@ -90,7 +90,7 @@ public class RESTUserV1 extends RESTBaseEntityV1<RESTUserV1, RESTUserCollectionV
 	public void explicitSetDescription(final String description)
 	{
 		this.description = description;
-		this.setParamaterToConfigured(DESCRIPTION_NAME);
+		this.setParameterToConfigured(DESCRIPTION_NAME);
 	}
 
 	public RESTRoleCollectionV1 getRoles()
@@ -106,6 +106,6 @@ public class RESTUserV1 extends RESTBaseEntityV1<RESTUserV1, RESTUserCollectionV
 	public void explicitSetRoles(final RESTRoleCollectionV1 roles)
 	{
 		this.roles = roles;
-		this.setParamaterToConfigured(ROLES_NAME);
+		this.setParameterToConfigured(ROLES_NAME);
 	}
 }

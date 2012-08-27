@@ -80,7 +80,7 @@ public class RESTCategoryV1 extends RESTBaseEntityV1<RESTCategoryV1, RESTCategor
 	public void explicitSetName(final String name)
 	{
 		this.name = name;
-		this.setParamaterToConfigured(NAME_NAME);
+		this.setParameterToConfigured(NAME_NAME);
 	}
 
 	public String getDescription()
@@ -96,7 +96,7 @@ public class RESTCategoryV1 extends RESTBaseEntityV1<RESTCategoryV1, RESTCategor
 	public void explicitSetDescription(final String description)
 	{
 		this.description = description;
-		this.setParamaterToConfigured(DESCRIPTION_NAME);
+		this.setParameterToConfigured(DESCRIPTION_NAME);
 	}
 
 	public boolean getMutuallyExclusive()
@@ -112,7 +112,7 @@ public class RESTCategoryV1 extends RESTBaseEntityV1<RESTCategoryV1, RESTCategor
 	public void explicitSetMutuallyExclusive(final boolean mutuallyExclusive)
 	{
 		this.mutuallyExclusive = mutuallyExclusive;
-		this.setParamaterToConfigured(MUTUALLYEXCLUSIVE_NAME);
+		this.setParameterToConfigured(MUTUALLYEXCLUSIVE_NAME);
 	}
 
 	public Integer getSort()
@@ -128,7 +128,7 @@ public class RESTCategoryV1 extends RESTBaseEntityV1<RESTCategoryV1, RESTCategor
 	public void setSortExplicit(final Integer sort)
 	{
 		this.sort = sort;
-		this.setParamaterToConfigured(SORT_NAME);
+		this.setParameterToConfigured(SORT_NAME);
 	}
 
 	public RESTTagCollectionV1 getTags()
@@ -144,6 +144,6 @@ public class RESTCategoryV1 extends RESTBaseEntityV1<RESTCategoryV1, RESTCategor
 	public void setTagsExplicit(final RESTTagCollectionV1 tags)
 	{
 		this.tags = tags;
-		this.setParamaterToConfigured(TAGS_NAME);
+		this.setParameterToConfigured(TAGS_NAME);
 	}
 }

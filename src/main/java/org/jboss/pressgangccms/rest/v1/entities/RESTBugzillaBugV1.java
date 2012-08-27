@@ -69,7 +69,7 @@ public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTB
 	public void setBugIdExplicit(final Integer bugId)
 	{
 		this.bugId = bugId;
-		this.setParamaterToConfigured(BUG_ID);
+		this.setParameterToConfigured(BUG_ID);
 	}
 
 	public Boolean getIsOpen()
@@ -85,7 +85,7 @@ public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTB
 	public void setIsOpenExplicit(final Boolean isOpen)
 	{
 		this.isOpen = isOpen;
-		this.setParamaterToConfigured(BUG_ISOPEN);
+		this.setParameterToConfigured(BUG_ISOPEN);
 	}
 
 	public String getSummary()
@@ -101,7 +101,7 @@ public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTB
 	public void setSummaryExplicit(final String summary)
 	{
 		this.summary = summary;
-		this.setParamaterToConfigured(BUG_SUMMARY);
+		this.setParameterToConfigured(BUG_SUMMARY);
 	}
 
 

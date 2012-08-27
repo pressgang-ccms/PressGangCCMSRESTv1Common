@@ -67,7 +67,7 @@ public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1,
 	public void setUrlExplicit(final String url)
 	{
 		this.url = url;
-		this.setParamaterToConfigured(URL_NAME);
+		this.setParameterToConfigured(URL_NAME);
 	}
 
 	public String getTitle()
@@ -83,7 +83,7 @@ public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1,
 	public void setTitleExplicit(final String title)
 	{
 		this.title = title;
-		this.setParamaterToConfigured(TITLE_NAME);
+		this.setParameterToConfigured(TITLE_NAME);
 	}
 
 	public String getDescription()
@@ -99,6 +99,6 @@ public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1,
 	public void setDescriptionExplicit(final String description)
 	{
 		this.description = description;
-		this.setParamaterToConfigured(DESCRIPTION_NAME);
+		this.setParameterToConfigured(DESCRIPTION_NAME);
 	}
 }

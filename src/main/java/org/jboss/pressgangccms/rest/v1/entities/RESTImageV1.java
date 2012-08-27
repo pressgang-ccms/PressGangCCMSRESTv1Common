@@ -72,7 +72,7 @@ public class RESTImageV1 extends RESTBaseEntityV1<RESTImageV1, RESTImageCollecti
 	public void explicitSetDescription(final String description)
 	{
 		this.description = description;
-		this.setParamaterToConfigured(DESCRIPTION_NAME);
+		this.setParameterToConfigured(DESCRIPTION_NAME);
 	}
 
 	public RESTLanguageImageCollectionV1 getLanguageImages_OTM()
@@ -88,6 +88,6 @@ public class RESTImageV1 extends RESTBaseEntityV1<RESTImageV1, RESTImageCollecti
 	public void explicitSetLanguageImages_OTM(RESTLanguageImageCollectionV1 languageImages_OTM)
 	{
 		this.languageImages_OTM = languageImages_OTM;
-		this.setParamaterToConfigured(LANGUAGEIMAGES_NAME);
+		this.setParameterToConfigured(LANGUAGEIMAGES_NAME);
 	}
 }

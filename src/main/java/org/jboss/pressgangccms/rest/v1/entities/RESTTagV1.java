@@ -93,7 +93,7 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 	public void explicitSetProperties(final RESTPropertyTagCollectionV1 properties)
 	{
 		this.properties = properties;
-		setParamaterToConfigured(PROPERTIES_NAME);
+		setParameterToConfigured(PROPERTIES_NAME);
 	}
 
 	public String getName()
@@ -109,7 +109,7 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 	public void explicitSetName(final String name)
 	{
 		this.name = name;
-		this.setParamaterToConfigured(NAME_NAME);
+		this.setParameterToConfigured(NAME_NAME);
 	}
 
 	public String getDescription()
@@ -125,7 +125,7 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 	public void explicitSetDescription(final String description)
 	{
 		this.description = description;
-		this.setParamaterToConfigured(DESCRIPTION_NAME);
+		this.setParameterToConfigured(DESCRIPTION_NAME);
 	}
 
 	public RESTCategoryCollectionV1 getCategories()
@@ -141,7 +141,7 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 	public void explicitSetCategories(final RESTCategoryCollectionV1 categories)
 	{
 		this.categories = categories;
-		this.setParamaterToConfigured(CATEGORIES_NAME);
+		this.setParameterToConfigured(CATEGORIES_NAME);
 	}
 
 	public RESTTagCollectionV1 getParentTags()
@@ -157,7 +157,7 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 	public void explicitSetParentTags(final RESTTagCollectionV1 parentTags)
 	{
 		this.parentTags = parentTags;
-		this.setParamaterToConfigured(PARENT_TAGS_NAME);
+		this.setParameterToConfigured(PARENT_TAGS_NAME);
 	}
 
 	public RESTTagCollectionV1 getChildTags()
@@ -173,7 +173,7 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 	public void explicitSetChildTags(final RESTTagCollectionV1 childTags)
 	{
 		this.childTags = childTags;
-		this.setParamaterToConfigured(CHILD_TAGS_NAME);
+		this.setParameterToConfigured(CHILD_TAGS_NAME);
 	}
 	
 	public RESTProjectCollectionV1 getProjects()
@@ -189,6 +189,6 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 	public void explicitSetProjects(final RESTProjectCollectionV1 projects)
 	{
 		this.projects = projects;
-		this.setParamaterToConfigured(PROJECTS_NAME);
+		this.setParameterToConfigured(PROJECTS_NAME);
 	}
 }

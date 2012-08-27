@@ -9,6 +9,7 @@ import org.jboss.pressgangccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTLogDetailsV1;
 
 public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectionV1>
 {
@@ -96,25 +97,25 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 	public void explicitSetTitle(final String title)
 	{
 		setTitle(title);
-		setParamaterToConfigured(TITLE_NAME);
+		setParameterToConfigured(TITLE_NAME);
 	}
 	
 	public void explicitSetTags(final RESTTagCollectionV1 tags)
 	{
 		setTags(tags);
-		setParamaterToConfigured(TAGS_NAME);
+		setParameterToConfigured(TAGS_NAME);
 	}
 	
 	public void explicitSetSourceUrls_OTM(final RESTTopicSourceUrlCollectionV1 sourceUrls)
 	{
 		setSourceUrls_OTM(sourceUrls);
-		setParamaterToConfigured(SOURCE_URLS_NAME);
+		setParameterToConfigured(SOURCE_URLS_NAME);
 	}
 	
 	public void explicitSetProperties(final RESTPropertyTagCollectionV1 properties)
 	{
 		this.properties = properties;
-		setParamaterToConfigured(PROPERTIES_NAME);
+		setParameterToConfigured(PROPERTIES_NAME);
 	}
 
 	public String getDescription()
@@ -130,7 +131,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 	public void explicitSetDescription(final String description)
 	{
 		setDescription(description);
-		setParamaterToConfigured(DESCRIPTION_NAME);
+		setParameterToConfigured(DESCRIPTION_NAME);
 	}
 	
 	public Date getCreated()
@@ -146,19 +147,19 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 	public void explicitSetXml(final String xml)
 	{
 		setXml(xml);
-		setParamaterToConfigured(XML_NAME);
+		setParameterToConfigured(XML_NAME);
 	}
 
 	public void explicitSetHtml(final String html)
 	{
 		setHtml(html);
-		setParamaterToConfigured(HTML_NAME);
+		setParameterToConfigured(HTML_NAME);
 	}
 	
 	public void explicitSetLocale(final String locale)
 	{
 		setLocale(locale);
-		setParamaterToConfigured(LOCALE_NAME);
+		setParameterToConfigured(LOCALE_NAME);
 	}
 
 	public Date getLastModified()
@@ -184,19 +185,19 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 	public void explicitSetBugzillaBugs_OTM(final RESTBugzillaBugCollectionV1 bugzillaBugs)
 	{
 		setBugzillaBugs_OTM(bugzillaBugs);
-		setParamaterToConfigured(BUGZILLABUGS_NAME);
+		setParameterToConfigured(BUGZILLABUGS_NAME);
 	}
 	
 	public void setLocaleExplicit(final String locale)
 	{
 		setLocale(locale);
-		setParamaterToConfigured(LOCALE_NAME);
+		setParameterToConfigured(LOCALE_NAME);
 	}
 	
 	public void explicitSetXmlErrors(final String xmlErrors)
 	{
 		setXmlErrors(xmlErrors);
-		setParamaterToConfigured(XML_ERRORS_NAME);
+		setParameterToConfigured(XML_ERRORS_NAME);
 	}
 	
 	public RESTTranslatedTopicCollectionV1 getTranslatedTopics_OTM()
@@ -212,7 +213,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 	public void explicitSetTranslatedTopics_OTM(final RESTTranslatedTopicCollectionV1 translatedTopics)
 	{
 		this.translatedTopics_OTM = translatedTopics;
-		setParamaterToConfigured(TRANSLATEDTOPICS_NAME);
+		setParameterToConfigured(TRANSLATEDTOPICS_NAME);
 	}
 	
 	@Override
@@ -230,7 +231,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 	public void explicitSetOutgoingRelationships(final RESTTopicCollectionV1 outgoingRelationships)
 	{
 		setOutgoingRelationships(outgoingRelationships);
-		setParamaterToConfigured(OUTGOING_NAME);
+		setParameterToConfigured(OUTGOING_NAME);
 	}
 
 	@Override
@@ -248,6 +249,12 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 	public void explicitSetIncomingRelationships(final RESTTopicCollectionV1 incomingRelationships)
 	{
 		setIncomingRelationships(incomingRelationships);
-		setParamaterToConfigured(INCOMING_NAME);
+		setParameterToConfigured(INCOMING_NAME);
 	}
+	
+	public void explicitSetLogDetails(final RESTLogDetailsV1 logDetails)
+    {
+        this.logDetails = logDetails;
+        setParameterToConfigured(LOG_DETAILS_NAME);
+    }
 }

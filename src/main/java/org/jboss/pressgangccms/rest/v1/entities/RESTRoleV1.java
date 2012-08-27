@@ -96,7 +96,7 @@ public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV
 	public void explicitSetName(final String name)
 	{
 		this.name = name;
-		this.setParamaterToConfigured(NAME_NAME);
+		this.setParameterToConfigured(NAME_NAME);
 	}
 
 	public String getDescription()
@@ -112,7 +112,7 @@ public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV
 	public void explicitSetDescription(final String description)
 	{
 		this.description = description;
-		this.setParamaterToConfigured(DESCRIPTION_NAME);
+		this.setParameterToConfigured(DESCRIPTION_NAME);
 	}
 
 	public RESTUserCollectionV1 getUsers()
@@ -128,7 +128,7 @@ public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV
 	public void explicitSetUsers(final RESTUserCollectionV1 users)
 	{
 		this.users = users;
-		this.setParamaterToConfigured(USERS_NAME);
+		this.setParameterToConfigured(USERS_NAME);
 	}
 
 	public RESTRoleCollectionV1 getChildRoles()
@@ -144,7 +144,7 @@ public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV
 	public void explicitSetChildRoles(final RESTRoleCollectionV1 childRoles)
 	{
 		this.childRoles = childRoles;
-		this.setParamaterToConfigured(CHILDROLES_NAME);
+		this.setParameterToConfigured(CHILDROLES_NAME);
 	}
 
 	public RESTRoleCollectionV1 getParentRoles()
@@ -160,7 +160,7 @@ public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV
 	public void explicitSetParentRoles(final RESTRoleCollectionV1 parentRoles)
 	{
 		this.parentRoles = parentRoles;
-		this.setParamaterToConfigured(PARENTROLES_NAME);
+		this.setParameterToConfigured(PARENTROLES_NAME);
 	}
 
 	public Integer getRelationshipId()
