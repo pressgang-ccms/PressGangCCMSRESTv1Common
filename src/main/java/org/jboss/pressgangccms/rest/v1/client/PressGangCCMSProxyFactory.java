@@ -43,12 +43,12 @@ public class PressGangCCMSProxyFactory
         return fixedUrl;
     }
     
-    public RESTInterfaceV1 getRESTInterfaceClient()
+    public RESTInterfaceV1 getRESTInterfaceV1Client()
     {
         return requestFactory.createProxy(RESTInterfaceV1.class);
     }
     
-    public RESTInterfaceAdvancedV1 getRESTInterfaceAdvancedClient()
+    public RESTInterfaceAdvancedV1 getRESTInterfaceAdvancedV1Client()
     {
         return requestFactory.createProxy(RESTInterfaceAdvancedV1.class);
     }
