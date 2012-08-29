@@ -9,6 +9,7 @@ import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
 public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U extends BaseRestCollectionV1<T, U>>
 {
 	public static final String REVISIONS_NAME = "revisions";
+	public static final String LOG_DETAILS_NAME = "logDetails";
 	
 	/** The id of the entity */
 	private Integer id = null;
@@ -30,6 +31,7 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 	private boolean addItem = false;
 	/** true if the database entity this REST entity represents should be removed from the collection */
 	private boolean removeItem = false;
+	private RESTLogDetailsV1 logDetails = null;
 
 	abstract public U getRevisions();
 
@@ -72,6 +74,18 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 		clone.setExpand(this.expand);
 		clone.setAddItem(this.addItem);
 		clone.setRemoveItem(this.removeItem);
+		
+		if (deepCopy)
+		{
+		    if (this.logDetails != null)
+		    {
+		        clone.setLogDetails(this.logDetails.clone(deepCopy));
+		    }
+		}
+		else
+		{
+		    clone.setLogDetails(this.logDetails);
+		}
 	}
 	
 	/**
@@ -203,4 +217,14 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 	{
 		this.revision = revision;
 	}
+
+    public RESTLogDetailsV1 getLogDetails()
+    {
+        return logDetails;
+    }
+
+    public void setLogDetails(final RESTLogDetailsV1 logDetails)
+    {
+        this.logDetails = logDetails;
+    }
 }

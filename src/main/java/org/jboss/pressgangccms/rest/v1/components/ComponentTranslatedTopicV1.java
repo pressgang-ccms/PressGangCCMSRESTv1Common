@@ -3,6 +3,7 @@ package org.jboss.pressgangccms.rest.v1.components;
 import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
 import org.jboss.pressgangccms.rest.v1.constants.RESTv1Constants;
 import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicStringV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgangccms.utils.constants.CommonConstants;
 import org.jboss.pressgangccms.zanata.ZanataDetails;
@@ -317,5 +318,21 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 		{
 			return null;
 		}
+	}
+	
+	public static boolean containsFuzzyTranslations(final RESTTranslatedTopicV1 source)
+	{	    
+	    if (source.getTranslatedTopicStrings_OTM() != null && source.getTranslatedTopicStrings_OTM().getItems() != null)
+	    {
+	        for (final RESTTranslatedTopicStringV1 translatedTopicString : source.getTranslatedTopicStrings_OTM().getItems())
+	        {
+	            if (translatedTopicString.getFuzzyTranslation())
+	            {
+	                return true;
+	            }
+	        }
+	    }
+	    
+	    return false;
 	}
 }
