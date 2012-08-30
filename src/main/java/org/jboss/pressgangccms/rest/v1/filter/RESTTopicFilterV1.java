@@ -8,6 +8,10 @@ import java.util.Map;
 
 import javax.ws.rs.core.PathSegment;
 
+import org.jboss.pressgangccms.rest.v1.entities.RESTFilterFieldV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTFilterTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTFilterV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgangccms.utils.common.CollectionUtilities;
 import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.utils.structures.Pair;
@@ -622,5 +626,35 @@ public class RESTTopicFilterV1
     public PathSegment buildQueryPath()
     {
         return new PathSegmentImpl(getQuery(), false);
+    }
+    
+    public void syncWithFilter(final RESTFilterV1 filter)
+    {
+        if (filter == null) return;
+        
+        /* Sync filter tags */
+        if (filter.getFilterTags_OTM() != null && filter.getFilterTags_OTM().getItems() != null)
+        {
+            for (final RESTFilterTagV1 filterTag : filter.getFilterTags_OTM().getItems())
+            {
+                final RESTTagV1 tag = filterTag.getTag();
+                
+                if (tag != null)
+                {
+                    tags.put(tag.getId(), filterTag.getState());
+                }
+            }
+        }
+        
+        /* Sync filter fields */
+        if (filter.getFilterFields_OTM() != null && filter.getFilterFields_OTM().getItems() != null)
+        {
+            for (final RESTFilterFieldV1 filterField : filter.getFilterFields_OTM().getItems())
+            {
+                filterVars.put(filterField.getName(), filterField.getValue());
+            }
+        }
+        
+        
     }
 }
