@@ -15,8 +15,8 @@ public class RESTProjectQueryBuilderV1 extends RESTBaseQueryBuilderV1
         
         {
             add(new Pair<String, String>(CommonFilterConstants.PROJECT_IDS_FILTER_VAR_DESC, CommonFilterConstants.PROJECT_IDS_FILTER_VAR_DESC));
-            add(new Pair<String, String>(CommonFilterConstants.PROJECT_TITLE_FILTER_VAR, CommonFilterConstants.PROJECT_TITLE_FILTER_VAR_DESC));
-            add(new Pair<String, String>(CommonFilterConstants.PROJECT_DESCRIPTION_FILTER_VAR, CommonFilterConstants.PROEJCT_DESCRIPTION_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.PROJECT_NAME_FILTER_VAR, CommonFilterConstants.PROJECT_NAME_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.PROJECT_DESCRIPTION_FILTER_VAR, CommonFilterConstants.PROJECT_DESCRIPTION_FILTER_VAR_DESC));
         }
     };
 
@@ -53,14 +53,14 @@ public class RESTProjectQueryBuilderV1 extends RESTBaseQueryBuilderV1
         put(CommonFilterConstants.PROJECT_IDS_FILTER_VAR, projectIds);
     }
     
-    public String getProjectTitle()
+    public String getProjectName()
     {
-        return get(CommonFilterConstants.PROJECT_TITLE_FILTER_VAR);
+        return get(CommonFilterConstants.PROJECT_NAME_FILTER_VAR);
     }
     
-    public void setProjectTitle(final String projectTitle)
+    public void setProjectName(final String projectName)
     {
-        put(CommonFilterConstants.PROJECT_TITLE_FILTER_VAR, projectTitle);
+        put(CommonFilterConstants.PROJECT_NAME_FILTER_VAR, projectName);
     }
     
     public String getProjectDescription()

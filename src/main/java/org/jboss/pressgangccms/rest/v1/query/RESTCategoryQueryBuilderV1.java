@@ -15,7 +15,7 @@ public class RESTCategoryQueryBuilderV1 extends RESTBaseQueryBuilderV1
         
         {
             add(new Pair<String, String>(CommonFilterConstants.CATEGORY_IDS_FILTER_VAR, CommonFilterConstants.CATEGORY_IDS_FILTER_VAR_DESC));
-            add(new Pair<String, String>(CommonFilterConstants.CATEGORY_TITLE_FILTER_VAR, CommonFilterConstants.CATEGORY_TITLE_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CATEGORY_NAME_FILTER_VAR, CommonFilterConstants.CATEGORY_NAME_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.CATEGORY_DESCRIPTION_FILTER_VAR, CommonFilterConstants.CATEGORY_DESCRIPTION_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.CATEGORY_IS_MUTUALLY_EXCLUSIVE_VAR, CommonFilterConstants.CATEGORY_IS_MUTUALLY_EXCLUSIVE_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.CATEGORY_IS_NOT_MUTUALLY_EXCLUSIVE_VAR, CommonFilterConstants.CATEGORY_IS_NOT_MUTUALLY_EXCLUSIVE_VAR_DESC));
@@ -55,14 +55,14 @@ public class RESTCategoryQueryBuilderV1 extends RESTBaseQueryBuilderV1
         put(CommonFilterConstants.CATEGORY_IDS_FILTER_VAR, categoryIds);
     }
     
-    public String getCategoryTitle()
+    public String getCategoryName()
     {
-        return get(CommonFilterConstants.CATEGORY_TITLE_FILTER_VAR);
+        return get(CommonFilterConstants.CATEGORY_NAME_FILTER_VAR);
     }
     
-    public void setCategoryTitle(final String categoryTitle)
+    public void setCategoryName(final String categoryName)
     {
-        put(CommonFilterConstants.CATEGORY_TITLE_FILTER_VAR, categoryTitle);
+        put(CommonFilterConstants.CATEGORY_NAME_FILTER_VAR, categoryName);
     }
     
     public String getCategoryDescription()

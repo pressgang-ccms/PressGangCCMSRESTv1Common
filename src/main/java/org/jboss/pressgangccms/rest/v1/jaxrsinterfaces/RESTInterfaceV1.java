@@ -2406,7 +2406,13 @@ public interface RESTInterfaceV1
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public RESTFilterCollectionV1 getJSONFilters(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
+    
+    @GET
+    @Path("/filters/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTFilterCollectionV1 getJSONFiltersWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    
     @PUT
     @Path("/filter/put/json")
     @Produces(MediaType.APPLICATION_JSON)

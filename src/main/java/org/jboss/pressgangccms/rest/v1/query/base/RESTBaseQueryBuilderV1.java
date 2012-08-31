@@ -134,12 +134,12 @@ public abstract class RESTBaseQueryBuilderV1
         return idsList;
     }
     
-    public String getFilterLogic()
+    public String getQueryLogic()
     {
         return get(CommonFilterConstants.LOGIC_FILTER_VAR);
     }
     
-    public void setFilterLogic(final String logic)
+    public void setQueryLogic(final String logic)
     {
         put(CommonFilterConstants.LOGIC_FILTER_VAR, logic);
     }

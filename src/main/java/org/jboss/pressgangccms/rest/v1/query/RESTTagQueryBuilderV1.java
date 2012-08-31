@@ -15,7 +15,7 @@ public class RESTTagQueryBuilderV1 extends RESTBaseQueryBuilderV1
         
         {
             add(new Pair<String, String>(CommonFilterConstants.TAG_IDS_FILTER_VAR, CommonFilterConstants.TAG_IDS_FILTER_VAR_DESC));
-            add(new Pair<String, String>(CommonFilterConstants.TAG_TITLE_FILTER_VAR, CommonFilterConstants.TAG_TITLE_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.TAG_NAME_FILTER_VAR, CommonFilterConstants.TAG_NAME_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.TAG_DESCRIPTION_FILTER_VAR, CommonFilterConstants.TAG_DESCRIPTION_FILTER_VAR_DESC));
         }
     };
@@ -53,14 +53,14 @@ public class RESTTagQueryBuilderV1 extends RESTBaseQueryBuilderV1
         put(CommonFilterConstants.TAG_IDS_FILTER_VAR, tagIds);
     }
     
-    public String getTagTitle()
+    public String getTagName()
     {
-        return get(CommonFilterConstants.TAG_TITLE_FILTER_VAR);
+        return get(CommonFilterConstants.TAG_NAME_FILTER_VAR);
     }
     
-    public void setTagTitle(final String tagTitle)
+    public void setTagName(final String tagName)
     {
-        put(CommonFilterConstants.TAG_TITLE_FILTER_VAR, tagTitle);
+        put(CommonFilterConstants.TAG_NAME_FILTER_VAR, tagName);
     }
     
     public String getTagDescription()
