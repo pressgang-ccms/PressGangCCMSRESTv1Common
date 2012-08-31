@@ -412,6 +412,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public RESTUserCollectionV1 getJSONUsers(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/users/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTUserCollectionV1 getJSONUsersWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/user/put/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -1444,6 +1450,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public RESTProjectCollectionV1 getJSONProjects(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/projects/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTProjectCollectionV1 getJSONProjectsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/project/put/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -1614,6 +1626,12 @@ public interface RESTInterfaceV1
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public RESTTagCollectionV1 getJSONTags(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+	
+	@GET
+    @Path("/tags/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTTagCollectionV1 getJSONTagsWithQuery(@PathParam("query") PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
 	@PUT
 	@Path("/tag/put/json")
@@ -1786,6 +1804,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public RESTCategoryCollectionV1 getJSONCategories(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/categories/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTCategoryCollectionV1 getJSONCategoriesWithQuery(@PathParam("query") PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/category/put/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -1962,6 +1986,12 @@ public interface RESTInterfaceV1
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public RESTImageCollectionV1 getJSONImages(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+	
+	@GET
+    @Path("/images/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTImageCollectionV1 getJSONImagesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
 	@PUT
 	@Path("/image/put/json")

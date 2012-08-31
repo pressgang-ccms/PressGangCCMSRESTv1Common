@@ -1,4 +1,4 @@
-package org.jboss.pressgangccms.rest.v1.filter;
+package org.jboss.pressgangccms.rest.v1.query;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,20 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.ws.rs.core.PathSegment;
-
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterFieldV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
-import org.jboss.pressgangccms.utils.common.CollectionUtilities;
+import org.jboss.pressgangccms.rest.v1.query.base.RESTBaseQueryBuilderV1;
 import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.utils.structures.Pair;
-import org.jboss.resteasy.specimpl.PathSegmentImpl;
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
 
-public class RESTTopicFilterV1
+public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
 {
     private static List<Pair<String, String>> filterPairs = new ArrayList<Pair<String, String>>()
     {
@@ -81,7 +78,7 @@ public class RESTTopicFilterV1
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR, CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_STARTDATE_FILTER_VAR, CommonFilterConstants.TOPIC_STARTDATE_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_ENDDATE_FILTER_VAR, CommonFilterConstants.TOPIC_ENDDATE_FILTER_VAR_DESC));
-            add(new Pair<String, String>(CommonFilterConstants.TOPIC_LOGIC_FILTER_VAR, CommonFilterConstants.TOPIC_LOGIC_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.LOGIC_FILTER_VAR, CommonFilterConstants.LOGIC_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_STARTEDITDATE_FILTER_VAR, CommonFilterConstants.TOPIC_STARTEDITDATE_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_ENDEDITDATE_FILTER_VAR, CommonFilterConstants.TOPIC_ENDEDITDATE_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_PROPERTY_TAG, CommonFilterConstants.TOPIC_PROPERTY_TAG_DESC));
@@ -89,7 +86,6 @@ public class RESTTopicFilterV1
         
     };
     
-    protected Map<String, String> filterVars = new HashMap<String, String>();
     protected Map<Integer, Integer> tags = new HashMap<Integer, Integer>();
     protected Map<Integer, String> propertyTags = new HashMap<Integer, String>();
     
@@ -113,93 +109,34 @@ public class RESTTopicFilterV1
         
         return null;
     }
-    
-    protected Map<String, String> getFilterVars()
-    {
-        return filterVars;
-    }
-
-    protected void setFilterVars(final Map<String, String> filterVars)
-    {
-        this.filterVars = filterVars;
-    }
-
-    protected void put(final String constant, final Object value)
-    {
-        if (value == null) return;
-        
-        if (value instanceof Integer)
-        {
-            filterVars.put(constant, value.toString());
-        }
-        else if (value instanceof DateTime)
-        {
-            filterVars.put(constant, ISODateTimeFormat.dateTime().print((DateTime) value));
-        }
-        else if (value instanceof Date)
-        {
-            filterVars.put(constant, ISODateTimeFormat.dateTime().print(new DateTime(value)));
-        }
-        else
-        {
-            filterVars.put(constant, value.toString());
-        }
-    }
-    
-    protected List<Integer> getIntegerList(final String list)
-    {
-        if (list == null) return null;
-        
-        final List<Integer> idsList = new ArrayList<Integer>();
-        final String[] ids = list.split("\\s*,\\s*");
-        for (final String topicId : ids)
-        {
-            idsList.add(Integer.parseInt(topicId));
-        }
-        
-        return idsList;
-    }
 
     public List<Integer> getTopicIds()
     {
-        final String topicIdsString = filterVars.get(CommonFilterConstants.TOPIC_IDS_FILTER_VAR);
+        final String topicIdsString = get(CommonFilterConstants.TOPIC_IDS_FILTER_VAR);
         
         return getIntegerList(topicIdsString);
     }
 
     public void setTopicIds(final List<Integer> topicIds)
     {
-        if (topicIds == null) return;
-        
-        put(CommonFilterConstants.TOPIC_IDS_FILTER_VAR, CollectionUtilities.toSeperatedString(topicIds));
+        put(CommonFilterConstants.TOPIC_IDS_FILTER_VAR, topicIds);
     }
 
     public List<Integer> getNotTopicIds()
     {
-        final String topicIdsString = filterVars.get(CommonFilterConstants.TOPIC_IDS_NOT_FILTER_VAR);
-        
-        if (topicIdsString == null) return null;
-        
-        final List<Integer> topicIdsList = new ArrayList<Integer>();
-        final String[] topicIds =topicIdsString.split("\\s*,\\s*");
-        for (final String topicId : topicIds)
-        {
-            topicIdsList.add(Integer.parseInt(topicId));
-        }
-        
-        return topicIdsList;
+        final String topicIdsString = get(CommonFilterConstants.TOPIC_IDS_NOT_FILTER_VAR);
+                
+        return getIntegerList(topicIdsString);
     }
 
-    public void setNotTopicIds(List<Integer> notTopicIds)
+    public void setNotTopicIds(final List<Integer> notTopicIds)
     {
-        if (notTopicIds == null) return;
-        
-        put(CommonFilterConstants.TOPIC_IDS_NOT_FILTER_VAR, CollectionUtilities.toSeperatedString(notTopicIds));
+        put(CommonFilterConstants.TOPIC_IDS_NOT_FILTER_VAR, notTopicIds);
     }
 
     public Integer getTopicRelatedTo()
     {
-        final String topicRelatedTo = filterVars.get(CommonFilterConstants.TOPIC_RELATED_TO);
+        final String topicRelatedTo = get(CommonFilterConstants.TOPIC_RELATED_TO);
         return topicRelatedTo == null ? null : Integer.parseInt(topicRelatedTo);
     }
 
@@ -210,7 +147,7 @@ public class RESTTopicFilterV1
 
     public Integer getNotTopicRelatedTo()
     {
-        final String notTopicRelatedTo = filterVars.get(CommonFilterConstants.TOPIC_NOT_RELATED_TO);
+        final String notTopicRelatedTo = get(CommonFilterConstants.TOPIC_NOT_RELATED_TO);
         return notTopicRelatedTo == null ? null : Integer.parseInt(notTopicRelatedTo);
     }
 
@@ -221,7 +158,7 @@ public class RESTTopicFilterV1
 
     public Integer getTopicRelatedFrom()
     {
-        final String topicRelatedFrom = filterVars.get(CommonFilterConstants.TOPIC_RELATED_FROM);
+        final String topicRelatedFrom = get(CommonFilterConstants.TOPIC_RELATED_FROM);
         return topicRelatedFrom == null ? null : Integer.parseInt(topicRelatedFrom);
     }
 
@@ -232,7 +169,7 @@ public class RESTTopicFilterV1
 
     public Integer getNotTopicRelatedFrom()
     {
-        final String notTopicRelatedFrom = filterVars.get(CommonFilterConstants.TOPIC_NOT_RELATED_FROM);
+        final String notTopicRelatedFrom = get(CommonFilterConstants.TOPIC_NOT_RELATED_FROM);
         return notTopicRelatedFrom == null ? null : Integer.parseInt(notTopicRelatedFrom);
     }
 
@@ -243,7 +180,7 @@ public class RESTTopicFilterV1
 
     public String getTopicTitle()
     {
-        return filterVars.get(CommonFilterConstants.TOPIC_TITLE_FILTER_VAR);
+        return get(CommonFilterConstants.TOPIC_TITLE_FILTER_VAR);
     }
 
     public void setTopicTitle(final String topicTitle)
@@ -253,7 +190,7 @@ public class RESTTopicFilterV1
 
     public String getNotTopicTitle()
     {
-        return filterVars.get(CommonFilterConstants.TOPIC_TITLE_NOT_FILTER_VAR);
+        return get(CommonFilterConstants.TOPIC_TITLE_NOT_FILTER_VAR);
     }
 
     public void setNotTopicTitle(String notTopicTitle)
@@ -263,7 +200,7 @@ public class RESTTopicFilterV1
 
     public String getTopicDescription()
     {
-        return filterVars.get(CommonFilterConstants.TOPIC_DESCRIPTION_FILTER_VAR);
+        return get(CommonFilterConstants.TOPIC_DESCRIPTION_FILTER_VAR);
     }
 
     public void setTopicDescription(final String topicDescription)
@@ -273,7 +210,7 @@ public class RESTTopicFilterV1
 
     public String getNotTopicDescription()
     {
-        return filterVars.get(CommonFilterConstants.TOPIC_DESCRIPTION_NOT_FILTER_VAR);
+        return get(CommonFilterConstants.TOPIC_DESCRIPTION_NOT_FILTER_VAR);
     }
 
     public void setNotTopicDescription(final String notTopicDescription)
@@ -283,7 +220,7 @@ public class RESTTopicFilterV1
 
     public DateTime getStartCreateDate()
     {
-        final String startCreateDate = filterVars.get(CommonFilterConstants.TOPIC_STARTDATE_FILTER_VAR);
+        final String startCreateDate = get(CommonFilterConstants.TOPIC_STARTDATE_FILTER_VAR);
         return startCreateDate == null ? null : new DateTime(ISODateTimeFormat.dateTime().parseDateTime(startCreateDate));
     }
 
@@ -299,7 +236,7 @@ public class RESTTopicFilterV1
 
     public DateTime getEndCreateDate()
     {
-        final String startCreateDate = filterVars.get(CommonFilterConstants.TOPIC_ENDDATE_FILTER_VAR);
+        final String startCreateDate = get(CommonFilterConstants.TOPIC_ENDDATE_FILTER_VAR);
         return startCreateDate == null ? null : new DateTime(ISODateTimeFormat.dateTime().parseDateTime(startCreateDate));
     }
 
@@ -315,7 +252,7 @@ public class RESTTopicFilterV1
 
     public String getTopicXML()
     {
-        return filterVars.get(CommonFilterConstants.TOPIC_XML_FILTER_VAR);
+        return get(CommonFilterConstants.TOPIC_XML_FILTER_VAR);
     }
 
     public void setTopicXML(final String topicXML)
@@ -325,7 +262,7 @@ public class RESTTopicFilterV1
 
     public String getNotTopicXML()
     {
-        return filterVars.get(CommonFilterConstants.TOPIC_XML_NOT_FILTER_VAR);
+        return get(CommonFilterConstants.TOPIC_XML_NOT_FILTER_VAR);
     }
 
     public void setNotTopicXML(String notTopicXML)
@@ -335,17 +272,17 @@ public class RESTTopicFilterV1
 
     public String getLogic()
     {
-        return filterVars.get(CommonFilterConstants.TOPIC_LOGIC_FILTER_VAR);
+        return get(CommonFilterConstants.LOGIC_FILTER_VAR);
     }
 
     public void setLogic(final String logic)
     {
-        put(CommonFilterConstants.TOPIC_LOGIC_FILTER_VAR, logic);
+        put(CommonFilterConstants.LOGIC_FILTER_VAR, logic);
     }
 
     public Boolean getHasRelationships()
     {
-        final String hasRelationships = filterVars.get(CommonFilterConstants.TOPIC_HAS_RELATIONSHIPS);
+        final String hasRelationships = get(CommonFilterConstants.TOPIC_HAS_RELATIONSHIPS);
         return hasRelationships == null ? null : Boolean.parseBoolean(hasRelationships);
     }
 
@@ -356,7 +293,7 @@ public class RESTTopicFilterV1
 
     public Boolean getHasIncomingRelationships()
     {
-        final String hasIncomingRelationships = filterVars.get(CommonFilterConstants.TOPIC_HAS_INCOMING_RELATIONSHIPS);
+        final String hasIncomingRelationships = get(CommonFilterConstants.TOPIC_HAS_INCOMING_RELATIONSHIPS);
         return hasIncomingRelationships == null ? null : Boolean.parseBoolean(hasIncomingRelationships);
     }
 
@@ -367,7 +304,7 @@ public class RESTTopicFilterV1
 
     public String getTopicTextSearch()
     {
-        return filterVars.get(CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR);
+        return get(CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR);
     }
 
     public void setTopicTextSearch(final String topicTextSearch)
@@ -377,7 +314,7 @@ public class RESTTopicFilterV1
 
     public Boolean getHasXMLErrors()
     {
-        final String hasXMLErrors = filterVars.get(CommonFilterConstants.TOPIC_HAS_XML_ERRORS);
+        final String hasXMLErrors = get(CommonFilterConstants.TOPIC_HAS_XML_ERRORS);
         return hasXMLErrors == null ? null : Boolean.parseBoolean(hasXMLErrors);
     }
 
@@ -388,7 +325,7 @@ public class RESTTopicFilterV1
 
     public DateTime getStartEditDate()
     {
-        final String startEditDate = filterVars.get(CommonFilterConstants.TOPIC_STARTEDITDATE_FILTER_VAR);
+        final String startEditDate = get(CommonFilterConstants.TOPIC_STARTEDITDATE_FILTER_VAR);
         return startEditDate == null ? null : new DateTime(ISODateTimeFormat.dateTime().parseDateTime(startEditDate));
     }
 
@@ -404,7 +341,7 @@ public class RESTTopicFilterV1
 
     public DateTime getEndEditDate()
     {
-        final String endEditDate = filterVars.get(CommonFilterConstants.TOPIC_ENDEDITDATE_FILTER_VAR);
+        final String endEditDate = get(CommonFilterConstants.TOPIC_ENDEDITDATE_FILTER_VAR);
         return endEditDate == null ? null : new DateTime(ISODateTimeFormat.dateTime().parseDateTime(endEditDate));
     }
 
@@ -420,7 +357,7 @@ public class RESTTopicFilterV1
 
     public Integer getEditedInLastDays()
     {
-        final String editedInLastDays = filterVars.get(CommonFilterConstants.TOPIC_EDITED_IN_LAST_DAYS);
+        final String editedInLastDays = get(CommonFilterConstants.TOPIC_EDITED_IN_LAST_DAYS);
         return editedInLastDays == null ? null : Integer.parseInt(editedInLastDays);
     }
 
@@ -431,7 +368,7 @@ public class RESTTopicFilterV1
 
     public Integer getNotEditedInLastDays()
     {
-        final String notEditedInLastDays = filterVars.get(CommonFilterConstants.TOPIC_NOT_EDITED_IN_LAST_DAYS);
+        final String notEditedInLastDays = get(CommonFilterConstants.TOPIC_NOT_EDITED_IN_LAST_DAYS);
         return notEditedInLastDays == null ? null : Integer.parseInt(notEditedInLastDays);
     }
 
@@ -442,7 +379,7 @@ public class RESTTopicFilterV1
 
     public Boolean getHasOpenBugzillaBugs()
     {
-        final String hasOpenBugzillaBugs = filterVars.get(CommonFilterConstants.TOPIC_HAS_OPEN_BUGZILLA_BUGS);
+        final String hasOpenBugzillaBugs = get(CommonFilterConstants.TOPIC_HAS_OPEN_BUGZILLA_BUGS);
         return hasOpenBugzillaBugs == null ? null : Boolean.parseBoolean(hasOpenBugzillaBugs);
     }
 
@@ -453,7 +390,7 @@ public class RESTTopicFilterV1
 
     public Boolean getHasBugzillaBugs()
     {
-        final String hasBugzillaBugs = filterVars.get(CommonFilterConstants.TOPIC_HAS_BUGZILLA_BUGS);
+        final String hasBugzillaBugs = get(CommonFilterConstants.TOPIC_HAS_BUGZILLA_BUGS);
         return hasBugzillaBugs == null ? null : Boolean.parseBoolean(hasBugzillaBugs);
     }
 
@@ -483,35 +420,31 @@ public class RESTTopicFilterV1
 
     public List<Integer> getTopicIncludedInSpec()
     {
-        final String topicIdsString = filterVars.get(CommonFilterConstants.TOPIC_IS_INCLUDED_IN_SPEC);
+        final String topicIdsString = get(CommonFilterConstants.TOPIC_IS_INCLUDED_IN_SPEC);
         
         return getIntegerList(topicIdsString);
     }
 
     public void setTopicIncludedInSpec(final List<Integer> topicIncludedInSpec)
     {
-        if (topicIncludedInSpec == null) return;
-        
-        put(CommonFilterConstants.TOPIC_IS_NOT_INCLUDED_IN_SPEC, CollectionUtilities.toSeperatedString(topicIncludedInSpec));
+        put(CommonFilterConstants.TOPIC_IS_NOT_INCLUDED_IN_SPEC, topicIncludedInSpec);
     }
 
     public List<Integer> getNotTopicIncludedInSpec()
     {
-        final String topicIdsString = filterVars.get(CommonFilterConstants.TOPIC_IS_NOT_INCLUDED_IN_SPEC);
+        final String topicIdsString = get(CommonFilterConstants.TOPIC_IS_NOT_INCLUDED_IN_SPEC);
         
         return getIntegerList(topicIdsString);
     }
 
     public void setNotTopicIncludedInSpec(final List<Integer> notTopicIncludedInSpec)
     {
-        if (notTopicIncludedInSpec == null) return;
-        
-        put(CommonFilterConstants.TOPIC_IS_NOT_INCLUDED_IN_SPEC, CollectionUtilities.toSeperatedString(notTopicIncludedInSpec));
+        put(CommonFilterConstants.TOPIC_IS_NOT_INCLUDED_IN_SPEC, notTopicIncludedInSpec);
     }
 
     public Boolean getHasNotXMLErrors()
     {
-        final String hasNotXMLErrors = filterVars.get(CommonFilterConstants.TOPIC_XML_NOT_FILTER_VAR);
+        final String hasNotXMLErrors = get(CommonFilterConstants.TOPIC_XML_NOT_FILTER_VAR);
         return hasNotXMLErrors == null ? null : Boolean.parseBoolean(hasNotXMLErrors);
     }
 
@@ -522,7 +455,7 @@ public class RESTTopicFilterV1
 
     public Boolean getHasNotRelationships()
     {
-        final String hasNotRelationships = filterVars.get(CommonFilterConstants.TOPIC_HAS_NOT_RELATIONSHIPS);
+        final String hasNotRelationships = get(CommonFilterConstants.TOPIC_HAS_NOT_RELATIONSHIPS);
         return hasNotRelationships == null ? null : Boolean.parseBoolean(hasNotRelationships);
     }
 
@@ -533,7 +466,7 @@ public class RESTTopicFilterV1
 
     public Boolean getHasNotIncomingRelationships()
     {
-        final String hasNotIncomingRelationships = filterVars.get(CommonFilterConstants.TOPIC_HAS_NOT_INCOMING_RELATIONSHIPS);
+        final String hasNotIncomingRelationships = get(CommonFilterConstants.TOPIC_HAS_NOT_INCOMING_RELATIONSHIPS);
         return hasNotIncomingRelationships == null ? null : Boolean.parseBoolean(hasNotIncomingRelationships);
     }
 
@@ -544,7 +477,7 @@ public class RESTTopicFilterV1
 
     public Boolean getHasNotOpenBugzillaBugs()
     {
-        final String hasNotOpenBugzillaBugs = filterVars.get(CommonFilterConstants.TOPIC_HAS_NOT_OPEN_BUGZILLA_BUGS);
+        final String hasNotOpenBugzillaBugs = get(CommonFilterConstants.TOPIC_HAS_NOT_OPEN_BUGZILLA_BUGS);
         return hasNotOpenBugzillaBugs == null ? null : Boolean.parseBoolean(hasNotOpenBugzillaBugs);
     }
 
@@ -555,7 +488,7 @@ public class RESTTopicFilterV1
 
     public Boolean getHasNotBugzillaBugs()
     {
-        final String hasNotBugzillaBugs = filterVars.get(CommonFilterConstants.TOPIC_HAS_NOT_BUGZILLA_BUGS);
+        final String hasNotBugzillaBugs = get(CommonFilterConstants.TOPIC_HAS_NOT_BUGZILLA_BUGS);
         return hasNotBugzillaBugs == null ? null : Boolean.parseBoolean(hasNotBugzillaBugs);
     }
 
@@ -583,20 +516,10 @@ public class RESTTopicFilterV1
         return tags;
     }
     
+    @Override
     public String getQuery()
     {
-        final StringBuilder query = new StringBuilder("query;");
-        
-        final Map<String, String> filterVars = getFilterVars();
-        for (final String key : filterVars.keySet())
-        {
-            final String value = filterVars.get(key);
-            
-            if (value != null)
-            {
-                query.append(key + "=" + value + ";");
-            }
-        }
+        final StringBuilder query = new StringBuilder(super.getQuery());
         
         final Map<Integer, Integer> tags = getTags();
         for (final Integer key : tags.keySet())
@@ -623,11 +546,6 @@ public class RESTTopicFilterV1
         return query.toString();
     }
     
-    public PathSegment buildQueryPath()
-    {
-        return new PathSegmentImpl(getQuery(), false);
-    }
-    
     public void syncWithFilter(final RESTFilterV1 filter)
     {
         if (filter == null) return;
@@ -641,7 +559,7 @@ public class RESTTopicFilterV1
                 
                 if (tag != null)
                 {
-                    tags.put(tag.getId(), filterTag.getState());
+                    setTag(tag.getId(), filterTag.getState());
                 }
             }
         }
@@ -651,10 +569,8 @@ public class RESTTopicFilterV1
         {
             for (final RESTFilterFieldV1 filterField : filter.getFilterFields_OTM().getItems())
             {
-                filterVars.put(filterField.getName(), filterField.getValue());
+                put(filterField.getName(), filterField.getValue());
             }
         }
-        
-        
     }
 }

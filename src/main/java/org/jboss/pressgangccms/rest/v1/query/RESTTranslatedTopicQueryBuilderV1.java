@@ -1,21 +1,23 @@
-package org.jboss.pressgangccms.rest.v1.filter;
+package org.jboss.pressgangccms.rest.v1.query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jboss.pressgangccms.rest.v1.entities.RESTFilterLocaleV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.utils.structures.Pair;
 
-public class RESTTranslatedTopicFilterV1 extends RESTTopicFilterV1
+public class RESTTranslatedTopicQueryBuilderV1 extends RESTTopicQueryBuilderV1
 {
     private static List<Pair<String, String>> filterPairs = new ArrayList<Pair<String, String>>()
     {
         private static final long serialVersionUID = -7460325877532975728L;
         
         {
-            addAll(RESTTopicFilterV1.getFilterInfo());
+            addAll(RESTTopicQueryBuilderV1.getFilterInfo());
             
             /* Zanata ID's */
             add(new Pair<String, String>(CommonFilterConstants.ZANATA_IDS_FILTER_VAR, CommonFilterConstants.ZANATA_IDS_FILTER_VAR_DESC));
@@ -56,7 +58,7 @@ public class RESTTranslatedTopicFilterV1 extends RESTTopicFilterV1
     
     public Boolean getLatestTranslations()
     {
-        final String latestTranslations = filterVars.get(CommonFilterConstants.TOPIC_LATEST_TRANSLATIONS_FILTER_VAR);
+        final String latestTranslations = get(CommonFilterConstants.TOPIC_LATEST_TRANSLATIONS_FILTER_VAR);
         return latestTranslations == null ? null : Boolean.parseBoolean(latestTranslations);
     }
 
@@ -67,7 +69,7 @@ public class RESTTranslatedTopicFilterV1 extends RESTTopicFilterV1
 
     public Boolean getLatestCompletedTranslations()
     {
-        final String latestCompletedTranslations = filterVars.get(CommonFilterConstants.TOPIC_LATEST_COMPLETED_TRANSLATIONS_FILTER_VAR);
+        final String latestCompletedTranslations = get(CommonFilterConstants.TOPIC_LATEST_COMPLETED_TRANSLATIONS_FILTER_VAR);
         return latestCompletedTranslations == null ? null : Boolean.parseBoolean(latestCompletedTranslations);
     }
 
@@ -78,19 +80,19 @@ public class RESTTranslatedTopicFilterV1 extends RESTTopicFilterV1
 
     public List<Integer> getZanataIds()
     {
-        final String topicIdsString = filterVars.get(CommonFilterConstants.ZANATA_IDS_FILTER_VAR);
+        final String topicIdsString = get(CommonFilterConstants.ZANATA_IDS_FILTER_VAR);
         
         return getIntegerList(topicIdsString);
     }
 
-    public void setZanataIds(List<Integer> zanataIds)
+    public void setZanataIds(final List<Integer> zanataIds)
     {
         put(CommonFilterConstants.ZANATA_IDS_FILTER_VAR, zanataIds);
     }
 
     public List<Integer> getNotZanataIds()
     {
-        final String topicIdsString = filterVars.get(CommonFilterConstants.ZANATA_IDS_NOT_FILTER_VAR);
+        final String topicIdsString = get(CommonFilterConstants.ZANATA_IDS_NOT_FILTER_VAR);
         
         return getIntegerList(topicIdsString);
     }
@@ -102,7 +104,7 @@ public class RESTTranslatedTopicFilterV1 extends RESTTopicFilterV1
 
     public Boolean getNotLatestTranslations()
     {
-        final String notLatestTranslations = filterVars.get(CommonFilterConstants.TOPIC_NOT_LATEST_TRANSLATIONS_FILTER_VAR);
+        final String notLatestTranslations = get(CommonFilterConstants.TOPIC_NOT_LATEST_TRANSLATIONS_FILTER_VAR);
         return notLatestTranslations == null ? null : Boolean.parseBoolean(notLatestTranslations);
     }
 
@@ -113,7 +115,7 @@ public class RESTTranslatedTopicFilterV1 extends RESTTopicFilterV1
 
     public Boolean getNotLatestCompletedTranslations()
     {
-        final String notLatestCompletedTranslations = filterVars.get(CommonFilterConstants.TOPIC_NOT_LATEST_COMPLETED_TRANSLATIONS_FILTER_VAR);
+        final String notLatestCompletedTranslations = get(CommonFilterConstants.TOPIC_NOT_LATEST_COMPLETED_TRANSLATIONS_FILTER_VAR);
         return notLatestCompletedTranslations == null ? null : Boolean.parseBoolean(notLatestCompletedTranslations);
     }
 
@@ -160,6 +162,23 @@ public class RESTTranslatedTopicFilterV1 extends RESTTopicFilterV1
         }
         
         return query.toString();
+    }
+    
+    @Override
+    public void syncWithFilter(final RESTFilterV1 filter)
+    {
+        if (filter == null) return;
+        
+        super.syncWithFilter(filter);
+        
+        /* Sync filter locales */
+        if (filter.getFilterLocales_OTM() != null && filter.getFilterLocales_OTM().getItems() != null)
+        {
+            for (final RESTFilterLocaleV1 filterLocale : filter.getFilterLocales_OTM().getItems())
+            {
+                setLocale(filterLocale.getLocale(), filterLocale.getState());
+            }
+        }
     }
     
 }
