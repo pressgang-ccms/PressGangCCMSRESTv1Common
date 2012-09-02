@@ -3,12 +3,17 @@ package org.jboss.pressgangccms.rest.v1.query;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.jboss.pressgangccms.rest.v1.entities.RESTCategoryV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTFilterCategoryV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterFieldV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgangccms.rest.v1.query.base.RESTBaseQueryBuilderV1;
 import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
@@ -88,6 +93,8 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
     
     protected Map<Integer, Integer> tags = new HashMap<Integer, Integer>();
     protected Map<Integer, String> propertyTags = new HashMap<Integer, String>();
+    protected Map<Integer, Set<CategoryState>> categoryInternalStates = new HashMap<Integer, Set<CategoryState>>();
+    protected Map<Integer, Set<CategoryState>> categoryExternalStates = new HashMap<Integer, Set<CategoryState>>();
     
     public static List<Pair<String, String>> getFilterInfo()
     {
@@ -516,6 +523,156 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
         return tags;
     }
     
+    public void setCategoryInternalState(final Integer catId, final Integer projectId, final Integer state)
+    {
+        if (catId == null) return;
+        
+        if (!categoryInternalStates.containsKey(catId))
+        {
+            categoryInternalStates.put(catId, new HashSet<CategoryState>());
+        }
+        
+        boolean found = false;
+        final Set<CategoryState> catStates = categoryInternalStates.get(catId);
+        final Set<CategoryState> tempCatStates = new HashSet<CategoryState>(catStates);
+        for (final CategoryState catState : tempCatStates)
+        {
+            /* Common Project */
+            if (catState.getProjectId() == null && projectId == null
+                    /* Normal Project */
+                    || projectId != null && catState.getProjectId() != null && catState.getProjectId().equals(projectId))
+            {
+                found = true;
+                
+                if (state == null)
+                {
+                    catStates.remove(catState);
+                }
+                else
+                {
+                    catState.setState(state);
+                }
+            }
+        }
+        
+        if (!found && state != null)
+        {
+            catStates.add(new CategoryState(projectId, state));
+        }
+    }
+    
+    public void setCommonCategoryInternalState(final Integer catId, final Integer state)
+    {
+        setCategoryInternalState(catId, null, state);
+    }
+    
+    public Integer getCategoryInternalState(final Integer catId, final Integer projectId)
+    {
+        if (catId == null) return null;
+        
+        final Set<CategoryState> catStates = categoryInternalStates.get(catId);
+        
+        if (catStates == null || catStates.isEmpty()) return null;
+        
+        for (final CategoryState catState : catStates)
+        {
+            /* Common Project */
+            if (catState.getProjectId() == null && projectId == null
+                    /* Normal Project */
+                    || projectId != null && catState.getProjectId().equals(projectId))
+            {
+                return catState.getState();
+            }
+        }
+        
+        return null;
+    }
+    
+    public Integer getCommonCategoryInternalState(final Integer catId)
+    {
+        return getCategoryInternalState(catId, null);
+    }
+    
+    protected Map<Integer, Set<CategoryState>> getCategoryInternalStates()
+    {
+        return categoryInternalStates;
+    }
+    
+    public void setCategoryExternalState(final Integer catId, final Integer projectId, final Integer state)
+    {
+        if (catId == null) return;
+        
+        if (!categoryExternalStates.containsKey(catId))
+        {
+            categoryExternalStates.put(catId, new HashSet<CategoryState>());
+        }
+        
+        boolean found = false;
+        final Set<CategoryState> catStates = categoryExternalStates.get(catId);
+        final Set<CategoryState> tempCatStates = new HashSet<CategoryState>(catStates);
+        for (final CategoryState catState : tempCatStates)
+        {
+            /* Common Project */
+            if (catState.getProjectId() == null && projectId == null
+                    /* Normal Project */
+                    || projectId != null && catState.getProjectId() != null && catState.getProjectId().equals(projectId))
+            {
+                found = true;
+                
+                if (state == null)
+                {
+                    catStates.remove(catState);
+                }
+                else
+                {
+                    catState.setState(state);
+                }
+            }
+        }
+        
+        if (!found && state != null)
+        {
+            catStates.add(new CategoryState(projectId, state));
+        }
+    }
+    
+    public void setCommonCategoryExternalState(final Integer catId, final Integer state)
+    {
+        setCategoryExternalState(catId, null, state);
+    }
+    
+    public Integer getCategoryExternalState(final Integer catId, final Integer projectId)
+    {
+        if (catId == null) return null;
+        
+        final Set<CategoryState> catStates = categoryExternalStates.get(catId);
+        
+        if (catStates == null || catStates.isEmpty()) return null;
+        
+        for (final CategoryState catState : catStates)
+        {
+            /* Common Project */
+            if (catState.getProjectId() == null && projectId == null
+                    /* Normal Project */
+                    || projectId != null && catState.getProjectId().equals(projectId))
+            {
+                return catState.getState();
+            }
+        }
+        
+        return null;
+    }
+    
+    public Integer getCommonCategoryExternalState(final Integer catId)
+    {
+        return getCategoryExternalState(catId, null);
+    }
+    
+    protected Map<Integer, Set<CategoryState>> getCategoryExternalStates()
+    {
+        return categoryExternalStates;
+    }
+    
     @Override
     public String getQuery()
     {
@@ -540,6 +697,80 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
             if (value != null)
             {
                 query.append(CommonFilterConstants.TOPIC_PROPERTY_TAG + key + "=" + value + ";");
+            }
+        }
+        
+        final Map<Integer, Set<CategoryState>> categoryInternalStates = getCategoryInternalStates();
+        for (final Integer key : categoryInternalStates.keySet())
+        {
+            final Set<CategoryState> catStates = categoryInternalStates.get(key);
+            
+            if (catStates != null && !catStates.isEmpty())
+            {
+                for (final CategoryState catState : catStates)
+                {
+                    final Integer state = catState.getState();
+                    final String stateString;
+                    if (state == CommonFilterConstants.CATEGORY_INTERNAL_AND_STATE)
+                    {
+                        stateString = CommonFilterConstants.AND_LOGIC;
+                    }
+                    else if (state == CommonFilterConstants.CATEGORY_INTERNAL_OR_STATE)
+                    {
+                        stateString = CommonFilterConstants.OR_LOGIC;
+                    }
+                    /* Invalid state so don't add it to the query */
+                    else
+                    {
+                        continue;
+                    }
+                    
+                    if (catState.getProjectId() == null)
+                    {
+                        query.append(CommonFilterConstants.CATEORY_INTERNAL_LOGIC + key + "=" + stateString + ";");
+                    }
+                    else
+                    {
+                        query.append(CommonFilterConstants.CATEORY_INTERNAL_LOGIC + key + "-" + catState.getProjectId() + "=" + stateString + ";");
+                    }
+                }
+            }
+        }
+        
+        final Map<Integer, Set<CategoryState>> categoryExternalStates = getCategoryExternalStates();
+        for (final Integer key : categoryExternalStates.keySet())
+        {
+            final Set<CategoryState> catStates = categoryExternalStates.get(key);
+            
+            if (catStates != null && !catStates.isEmpty())
+            {
+                for (final CategoryState catState : catStates)
+                {
+                    final Integer state = catState.getState();
+                    final String stateString;
+                    if (state == CommonFilterConstants.CATEGORY_EXTERNAL_AND_STATE)
+                    {
+                        stateString = CommonFilterConstants.AND_LOGIC;
+                    }
+                    else if (state == CommonFilterConstants.CATEGORY_EXTERNAL_OR_STATE)
+                    {
+                        stateString = CommonFilterConstants.OR_LOGIC;
+                    }
+                    /* Invalid state so don't add it to the query */
+                    else
+                    {
+                        continue;
+                    }
+                    
+                    if (catState.getProjectId() == null)
+                    {
+                        query.append(CommonFilterConstants.CATEORY_EXTERNAL_LOGIC + key + "=" + stateString + ";");
+                    }
+                    else
+                    {
+                        query.append(CommonFilterConstants.CATEORY_EXTERNAL_LOGIC + key + "-" + catState.getProjectId() + "=" + stateString + ";");
+                    }
+                }
             }
         }
         
@@ -572,5 +803,61 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
                 put(filterField.getName(), filterField.getValue());
             }
         }
+        
+        /* Sync Category Fields */
+        if (filter.getFilterCategories_OTM() != null && filter.getFilterCategories_OTM().getItems() != null)
+        {
+            for (final RESTFilterCategoryV1 filterCategory : filter.getFilterCategories_OTM().getItems())
+            {
+                final RESTCategoryV1 cat = filterCategory.getCategory();
+                final RESTProjectV1 project = filterCategory.getProject();
+                
+                /* Continue as we need at least the category */
+                if (cat == null) continue;
+                
+                /* External Category */
+                if (filterCategory.getState() > 1)
+                {
+                    setCategoryExternalState(cat.getId(), project == null ? null : project.getId(), filterCategory.getState());
+                }
+                /* Internal Category */
+                else
+                {
+                    setCategoryInternalState(cat.getId(), project == null ? null : project.getId(), filterCategory.getState());
+                }
+            }
+        }
+    }
+}
+
+class CategoryState
+{
+    private final Integer projectId;
+    private Integer state;
+    
+    public CategoryState(final Integer projectId)
+    {
+        this.projectId = projectId;
+    }
+    
+    public CategoryState(final Integer projectId, final Integer state)
+    {
+        this.projectId = projectId;
+        this.setState(state);
+    }
+
+    public Integer getProjectId()
+    {
+        return projectId;
+    }
+
+    public Integer getState()
+    {
+        return state;
+    }
+
+    public void setState(final Integer state)
+    {
+        this.state = state;
     }
 }
