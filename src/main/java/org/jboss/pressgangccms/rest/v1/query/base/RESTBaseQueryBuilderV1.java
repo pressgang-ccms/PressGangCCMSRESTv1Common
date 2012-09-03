@@ -1,5 +1,7 @@
 package org.jboss.pressgangccms.rest.v1.query.base;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -118,6 +120,34 @@ public abstract class RESTBaseQueryBuilderV1
         }
         
         return query.toString();
+    }
+    
+    public String getQuery(final boolean encode)
+    {
+        if (encode)
+        {
+            final String unencodedQuery = getQuery();
+            
+            String query = "query;";
+            
+            if (unencodedQuery != null && !unencodedQuery.isEmpty())
+            {
+                try
+                {
+                    query = URLEncoder.encode(unencodedQuery, "UTF-8");
+                }
+                catch (UnsupportedEncodingException e)
+                {
+                    // THis shouldn't ever happen
+                }
+            }
+            
+            return query;
+        }
+        else
+        {
+            return getQuery();
+        }
     }
     
     protected List<Integer> getIntegerList(final String list)

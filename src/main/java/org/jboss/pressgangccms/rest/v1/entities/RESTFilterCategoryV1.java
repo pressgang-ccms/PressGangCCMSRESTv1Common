@@ -8,10 +8,12 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
     public static final String CATEGORY_NAME = "category";
     public static final String PROJECT_NAME = "project";
     public static final String STATE_NAME = "state";
+    public static final String FILTER_NAME = "filter";
     
     private RESTCategoryV1 category = null;
     private RESTProjectV1 project = null;
     private Integer state = null;
+    private RESTFilterV1 filter = null;
     
     private RESTFilterCategoryCollectionV1 revisions = null;
     
@@ -53,12 +55,18 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
             {
                 retValue.category = this.category.clone(deepCopy);
             }
+            
+            if (this.filter != null)
+            {
+                retValue.filter = this.filter.clone(deepCopy);
+            }
         }
         else
         {
             retValue.revisions = this.revisions;
             retValue.category = this.category;
             retValue.project = this.project;
+            retValue.filter = this.filter;
         }
         
         return retValue;
@@ -110,5 +118,21 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
     {
         this.state = state;
         this.setParameterToConfigured(STATE_NAME);
+    }
+
+    public RESTFilterV1 getFilter()
+    {
+        return filter;
+    }
+
+    public void setFilter(final RESTFilterV1 filter)
+    {
+        this.filter = filter;
+    }
+    
+    public void explicitSetFilter(final RESTFilterV1 filter)
+    {
+        this.filter = filter;
+        this.setParameterToConfigured(FILTER_NAME);
     }
 }

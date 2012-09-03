@@ -6,9 +6,9 @@ import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTBugzillaBugCollectionV1>
 {
-	public static final String BUG_ID = "bugzillabugid";
-	public static final String BUG_ISOPEN = "bugisopen";
-	public static final String BUG_SUMMARY = "bugsummary";
+	public static final String BUG_ID = "bugzillaBugId";
+	public static final String BUG_ISOPEN = "bugIsOpen";
+	public static final String BUG_SUMMARY = "bugSummary";
 	
 	private Integer bugId = null;
 	private Boolean isOpen = null;

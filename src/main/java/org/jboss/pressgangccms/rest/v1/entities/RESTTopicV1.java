@@ -13,8 +13,8 @@ import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
 public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectionV1>
 {
 	public static final String DESCRIPTION_NAME = "description";
-	public static final String BUGZILLABUGS_NAME = "bugzillabugs_OTM";
-	public static final String TRANSLATEDTOPICS_NAME = "translatedtopics_OTM";
+	public static final String BUGZILLABUGS_NAME = "bugzillaBugs_OTM";
+	public static final String TRANSLATEDTOPICS_NAME = "translatedTopics_OTM";
 	
 	protected String description = null;
 	protected Date created = null;

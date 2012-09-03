@@ -15,13 +15,13 @@ import org.jboss.pressgangccms.rest.v1.entities.RESTFilterTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
-import org.jboss.pressgangccms.rest.v1.query.base.RESTBaseQueryBuilderV1;
+import org.jboss.pressgangccms.rest.v1.query.base.RESTBaseQueryBuilderWithPropertiesV1;
 import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.utils.structures.Pair;
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
 
-public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
+public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV1
 {
     private static List<Pair<String, String>> filterPairs = new ArrayList<Pair<String, String>>()
     {
@@ -92,7 +92,6 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
     };
     
     protected Map<Integer, Integer> tags = new HashMap<Integer, Integer>();
-    protected Map<Integer, String> propertyTags = new HashMap<Integer, String>();
     protected Map<Integer, Set<CategoryState>> categoryInternalStates = new HashMap<Integer, Set<CategoryState>>();
     protected Map<Integer, Set<CategoryState>> categoryExternalStates = new HashMap<Integer, Set<CategoryState>>();
     
@@ -406,25 +405,6 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
         put(CommonFilterConstants.TOPIC_HAS_BUGZILLA_BUGS, hasBugzillaBugs);
     }
 
-    protected Map<Integer, String> getPropertyTagIds()
-    {
-        return propertyTags;
-    }
-
-    public void setPropertyTagIds(final Map<Integer, String> propertyTagIds)
-    {
-        this.propertyTags = propertyTagIds;
-    }
-    
-    public void setPropertyTag(final Integer propertyTagId, final String value)
-    {
-        if (propertyTags == null)
-        {
-            propertyTags = new HashMap<Integer, String>();
-        }
-        propertyTags.put(propertyTagId, value);
-    }
-
     public List<Integer> getTopicIncludedInSpec()
     {
         final String topicIdsString = get(CommonFilterConstants.TOPIC_IS_INCLUDED_IN_SPEC);
@@ -506,11 +486,20 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
     
     public void setTag(final Integer tagId, final Integer state)
     {
+        if (tagId == null) return;
+        
         if (tags == null)
         {
             tags = new HashMap<Integer, Integer>();
         }
         tags.put(tagId, state);
+    }
+    
+    public void setTag(final RESTTagV1 tag, final Integer state)
+    {
+        if (tag == null) return;
+        
+        setTag(tag.getId(), state);
     }
     
     public void setTags(final Map<Integer, Integer> tags)
@@ -561,9 +550,23 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
         }
     }
     
+    public void setCategoryInternalState(final RESTCategoryV1 cat, final RESTProjectV1 project, final Integer state)
+    {
+        if (cat == null) return;
+        
+        setCategoryInternalState(cat.getId(), project == null ? null : project.getId(), state);
+    }
+    
     public void setCommonCategoryInternalState(final Integer catId, final Integer state)
     {
         setCategoryInternalState(catId, null, state);
+    }
+    
+    public void setCommonCategoryInternalState(final RESTCategoryV1 cat, final Integer state)
+    {
+        if (cat == null) return;
+        
+        setCommonCategoryInternalState(cat.getId(), state);
     }
     
     public Integer getCategoryInternalState(final Integer catId, final Integer projectId)
@@ -636,9 +639,23 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
         }
     }
     
+    public void setCategoryExternalState(final RESTCategoryV1 cat, final RESTProjectV1 project, final Integer state)
+    {
+        if (cat == null) return;
+        
+        setCategoryExternalState(cat.getId(), project == null ? null : project.getId(), state);
+    }
+    
     public void setCommonCategoryExternalState(final Integer catId, final Integer state)
     {
         setCategoryExternalState(catId, null, state);
+    }
+    
+    public void setCommonCategoryExternalState(final RESTCategoryV1 cat, final Integer state)
+    {
+        if (cat == null) return;
+        
+        setCommonCategoryExternalState(cat.getId(), state);
     }
     
     public Integer getCategoryExternalState(final Integer catId, final Integer projectId)
@@ -686,17 +703,6 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderV1
             if (value != null)
             {
                 query.append(CommonFilterConstants.MATCH_TAG + key + "=" + value + ";");
-            }
-        }
-        
-        final Map<Integer, String> propTags = getPropertyTagIds();
-        for (final Integer key : propTags.keySet())
-        {
-            final String value = propTags.get(key);
-            
-            if (value != null)
-            {
-                query.append(CommonFilterConstants.TOPIC_PROPERTY_TAG + key + "=" + value + ";");
             }
         }
         

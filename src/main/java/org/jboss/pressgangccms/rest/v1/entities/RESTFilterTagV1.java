@@ -7,9 +7,11 @@ public class RESTFilterTagV1 extends RESTBaseEntityV1<RESTFilterTagV1, RESTFilte
 {
     public static final String TAG_NAME = "tag";
     public static final String STATE_NAME = "state";
+    public static final String FILTER_NAME = "filter";
     
     private RESTTagV1 tag = null;
     private Integer state = null;
+    private RESTFilterV1 filter = null;
     
     private RESTFilterTagCollectionV1 revisions = null;
     
@@ -46,11 +48,17 @@ public class RESTFilterTagV1 extends RESTBaseEntityV1<RESTFilterTagV1, RESTFilte
             {
                 retValue.tag = tag.clone(deepCopy);
             }
+            
+            if (this.filter != null)
+            {
+                retValue.filter = this.filter.clone(deepCopy);
+            }
         }
         else
         {
             retValue.revisions = this.revisions;
             retValue.tag = this.tag;
+            retValue.filter = this.filter;
         }
         
         return retValue;
@@ -86,5 +94,21 @@ public class RESTFilterTagV1 extends RESTBaseEntityV1<RESTFilterTagV1, RESTFilte
     {
         this.state = state;
         this.setParameterToConfigured(STATE_NAME);
+    }
+    
+    public RESTFilterV1 getFilter()
+    {
+        return filter;
+    }
+
+    public void setFilter(final RESTFilterV1 filter)
+    {
+        this.filter = filter;
+    }
+    
+    public void explicitSetFilter(final RESTFilterV1 filter)
+    {
+        this.filter = filter;
+        this.setParameterToConfigured(FILTER_NAME);
     }
 }

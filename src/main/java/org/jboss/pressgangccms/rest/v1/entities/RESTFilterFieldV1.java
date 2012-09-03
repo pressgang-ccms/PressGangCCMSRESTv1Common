@@ -8,10 +8,12 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
     public static final String NAME_NAME = "name";
     public static final String VALUE_NAME = "value";
     public static final String DESCRIPTION_NAME = "description";
+    public static final String FILTER_NAME = "filter";
     
     private String name = null;
     private String value = null;
     private String description = null;
+    private RESTFilterV1 filter = null;
     
     private RESTFilterFieldCollectionV1 revisions = null;
     
@@ -45,10 +47,16 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
                 retValue.revisions = new RESTFilterFieldCollectionV1();
                 revisions.cloneInto(retValue.revisions, deepCopy);
             }
+            
+            if (this.filter != null)
+            {
+                retValue.filter = this.filter.clone(deepCopy);
+            }
         }
         else
         {
             retValue.revisions = this.revisions;
+            retValue.filter = this.filter;
         }
         
         return retValue;
@@ -100,5 +108,21 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
     {
         this.value = value;
         this.setParameterToConfigured(VALUE_NAME);
+    }
+    
+    public RESTFilterV1 getFilter()
+    {
+        return filter;
+    }
+
+    public void setFilter(final RESTFilterV1 filter)
+    {
+        this.filter = filter;
+    }
+    
+    public void explicitSetFilter(final RESTFilterV1 filter)
+    {
+        this.filter = filter;
+        this.setParameterToConfigured(FILTER_NAME);
     }
 }

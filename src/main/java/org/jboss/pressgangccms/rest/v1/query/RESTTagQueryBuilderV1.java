@@ -3,11 +3,11 @@ package org.jboss.pressgangccms.rest.v1.query;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgangccms.rest.v1.query.base.RESTBaseQueryBuilderV1;
+import org.jboss.pressgangccms.rest.v1.query.base.RESTBaseQueryBuilderWithPropertiesV1;
 import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.utils.structures.Pair;
 
-public class RESTTagQueryBuilderV1 extends RESTBaseQueryBuilderV1
+public class RESTTagQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV1
 {
     private static List<Pair<String, String>> filterPairs = new ArrayList<Pair<String, String>>()
     {

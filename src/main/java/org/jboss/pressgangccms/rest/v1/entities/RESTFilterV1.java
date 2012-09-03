@@ -11,10 +11,10 @@ public class RESTFilterV1 extends RESTBaseEntityV1<RESTFilterV1, RESTFilterColle
 {
     public static final String NAME_NAME = "name";
     public static final String DESCRIPTION_NAME = "description";
-    public static final String FILTER_TAGS_NAME = "filterTags";
-    public static final String FILTER_LOCALES_NAME = "filterLocales";
-    public static final String FILTER_CATEGORIES_NAME = "filterCategories";
-    public static final String FILTER_FIELDS_NAME = "filterFields";
+    public static final String FILTER_TAGS_NAME = "filterTags_OTM";
+    public static final String FILTER_LOCALES_NAME = "filterLocales_OTM";
+    public static final String FILTER_CATEGORIES_NAME = "filterCategories_OTM";
+    public static final String FILTER_FIELDS_NAME = "filterFields_OTM";
     
     private String name = null;
     private String description = null;

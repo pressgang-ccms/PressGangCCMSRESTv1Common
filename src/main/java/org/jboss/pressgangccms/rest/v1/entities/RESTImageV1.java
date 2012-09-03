@@ -7,7 +7,7 @@ import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 public class RESTImageV1 extends RESTBaseEntityV1<RESTImageV1, RESTImageCollectionV1>
 {
 	public static final String DESCRIPTION_NAME = "description";
-	public static final String LANGUAGEIMAGES_NAME = "languageimages";
+	public static final String LANGUAGEIMAGES_NAME = "languageImages";
 
 	private String description = null;
 	private RESTLanguageImageCollectionV1 languageImages_OTM = null;

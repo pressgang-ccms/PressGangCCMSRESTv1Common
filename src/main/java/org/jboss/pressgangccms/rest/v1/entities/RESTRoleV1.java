@@ -8,8 +8,8 @@ public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV
 {
 	public static final String NAME_NAME = "name";
 	public static final String DESCRIPTION_NAME = "description";
-	public static final String CHILDROLES_NAME = "childroles";
-	public static final String PARENTROLES_NAME = "parentroles";
+	public static final String CHILDROLES_NAME = "childRoles";
+	public static final String PARENTROLES_NAME = "parentRoles";
 	public static final String USERS_NAME = "users";
 	
 	private Integer relationshipId = null;
