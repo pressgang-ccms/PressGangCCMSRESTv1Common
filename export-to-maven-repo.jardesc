@@ -11,8 +11,8 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
-        <file path="/pressgang-ccms-rest/.classpath"/>
         <file path="/pressgang-ccms-rest/.gitignore"/>
+        <file path="/pressgang-ccms-rest/.classpath"/>
         <file path="/pressgang-ccms-rest/.project"/>
         <file path="/pressgang-ccms-rest/README.md"/>
         <javaElement handleIdentifier="=pressgang-ccms-rest/src\/main\/java"/>
