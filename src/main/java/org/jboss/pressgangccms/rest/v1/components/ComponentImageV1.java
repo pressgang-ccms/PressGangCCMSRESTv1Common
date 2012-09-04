@@ -12,6 +12,28 @@ public class ComponentImageV1
 		this.source = source;
 	}
 
+	public static String getXMLTemplate(final RESTImageV1 source)
+	{
+		final String retValue = "<figure>\n" +
+			"\t<title>Title</title>\n" +
+			"\t<mediaobject>\n" +
+			"\t\t<imageobject>\n" +
+			"\t\t\t<imagedata align=\"center\" fileref=\"images/" + getDocbookFileName(source) +"/>\n" +
+			"\t\t</imageobject>\n" +
+			"\t\t<textobject>\n" +
+			"\t\t\t<phrase>Description</phrase>\n" +
+			"\t\t</textobject>\n" +
+			"\t</mediaobject>\n" +
+		"</figure>";
+		
+		return retValue;
+	}
+	
+	public String getXMLTemplate()
+	{
+		return getXMLTemplate(source);
+	}
+	
 	/**
 	 * The docbook file name for an image is the ID of the image and the
 	 * extension of the first language image. This does imply that you can not
