@@ -335,6 +335,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getJSONPUsers(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/users/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPUsersWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/user/put/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -512,6 +518,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getJSONPStringConstants(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/stringconstants/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPStringConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/stringconstant/put/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -596,6 +608,12 @@ public interface RESTInterfaceV1
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public RESTStringConstantCollectionV1 getJSONStringConstants(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+	@GET
+    @Path("/stringconstants/get/json/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTStringConstantCollectionV1 getJSONStringConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
 	@PUT
 	@Path("/stringconstant/put/json")
@@ -683,6 +701,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getJSONPTranslatedTopics(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/translatedtopics/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPTranslatedTopicsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/translatedtopic/put/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -860,6 +884,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getJSONPRoles(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/roles/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPRolesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/role/put/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -945,6 +975,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public RESTRoleCollectionV1 getJSONRoles(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/roles/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTRoleCollectionV1 getJSONRolesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/role/put/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -1031,6 +1067,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getJSONPPropertyTags(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/propertytags/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPPropertyTagsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/propertytag/put/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -1203,11 +1245,17 @@ public interface RESTInterfaceV1
 	public String getJSONPBlobConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
 	@GET
-	@Path("/blobconstants/get/jsonp/all")
+	@Path("/blobconstants/get/jsonp/{query}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
-	public String getJSONPBlobConstants(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String getJSONPBlobConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/blobconstants/get/jsonp/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPBlobConstants(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/blobconstant/put/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -1293,6 +1341,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public RESTBlobConstantCollectionV1 getJSONBlobConstants(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/blobconstants/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTBlobConstantCollectionV1 getJSONBlobConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/blobconstant/put/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -1379,6 +1433,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getJSONPProjects(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/projects/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPProjectsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/project/put/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -1556,6 +1616,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getJSONPTags(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/tags/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPTagsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/tag/put/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -1733,6 +1799,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getJSONPCategories(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+	@GET
+    @Path("/categories/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPCategoriesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/category/put/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
@@ -1910,6 +1982,12 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getJSONPImages(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+    @GET
+    @Path("/images/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPImagesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	
 	@PUT
 	@Path("/image/put/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -2330,6 +2408,12 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPFilters(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
+    @GET
+    @Path("/filters/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPFiltersWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException; 
+    
     @PUT
     @Path("/filter/put/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
