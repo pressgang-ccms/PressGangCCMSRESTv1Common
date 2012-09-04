@@ -66,6 +66,12 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslated
 	{
 		this.translatedTopic = translatedTopic;
 	}
+	
+	public void explicitSetTranslatedTopic(final RESTTranslatedTopicV1 translatedTopic)
+    {
+        this.translatedTopic = translatedTopic;
+        this.setParameterToConfigured(TRANSLATEDTOPIC_NAME);
+    }
 
 	public String getOriginalString()
 	{

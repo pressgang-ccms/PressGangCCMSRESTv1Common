@@ -610,7 +610,7 @@ public interface RESTInterfaceV1
 	public RESTStringConstantCollectionV1 getJSONStringConstants(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
 	@GET
-    @Path("/stringconstants/get/json/all")
+    @Path("/stringconstants/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public RESTStringConstantCollectionV1 getJSONStringConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
