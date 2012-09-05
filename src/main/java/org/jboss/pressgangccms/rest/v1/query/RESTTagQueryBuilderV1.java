@@ -3,8 +3,8 @@ package org.jboss.pressgangccms.rest.v1.query;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jboss.pressgangccms.rest.v1.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.rest.v1.query.base.RESTBaseQueryBuilderWithPropertiesV1;
-import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.utils.structures.Pair;
 
 public class RESTTagQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV1

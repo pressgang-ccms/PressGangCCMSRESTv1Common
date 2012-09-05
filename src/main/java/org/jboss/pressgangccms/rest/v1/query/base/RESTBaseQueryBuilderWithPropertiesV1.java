@@ -3,8 +3,8 @@ package org.jboss.pressgangccms.rest.v1.query.base;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.jboss.pressgangccms.rest.v1.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
-import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
 
 public abstract class RESTBaseQueryBuilderWithPropertiesV1 extends RESTBaseQueryBuilderV1
 {
