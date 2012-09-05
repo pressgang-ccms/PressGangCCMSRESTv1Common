@@ -18,7 +18,7 @@ public class ComponentImageV1
 			"\t<title>Title</title>\n" +
 			"\t<mediaobject>\n" +
 			"\t\t<imageobject>\n" +
-			"\t\t\t<imagedata align=\"center\" fileref=\"images/" + getDocbookFileName(source) +"/>\n" +
+			"\t\t\t<imagedata align=\"center\" fileref=\"images/" + getDocbookFileName(source) +"\"/>\n" +
 			"\t\t</imageobject>\n" +
 			"\t\t<textobject>\n" +
 			"\t\t\t<phrase>Description</phrase>\n" +
