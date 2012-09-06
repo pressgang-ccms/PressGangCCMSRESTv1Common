@@ -29,7 +29,7 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1<REST
 		if (source.getCategories() != null && source.getCategories().getItems() != null)
 		{
 			for (final RESTCategoryV1 category : source.getCategories().getItems())
-				if (categoryId.equals(category.getId()))
+				if (categoryId.equals(category.getId()) && !category.getRemoveItem())
 					return true;
 		}
 
@@ -46,7 +46,7 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1<REST
 		if (source.getProjects() != null && source.getProjects().getItems() != null)
 		{
 			for (final RESTProjectV1 project : source.getProjects().getItems())
-				if (id.equals(project.getId()))
+				if (id.equals(project.getId()) && !project.getRemoveItem())
 					return true;
 		}
 
