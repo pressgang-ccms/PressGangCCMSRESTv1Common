@@ -2,6 +2,7 @@ package org.jboss.pressgangccms.rest.v1.components;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTCategoryV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 
 /**
@@ -29,6 +30,23 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1<REST
 		{
 			for (final RESTCategoryV1 category : source.getCategories().getItems())
 				if (categoryId.equals(category.getId()))
+					return true;
+		}
+
+		return false;
+	}
+	
+	public boolean containedInProject(final Integer id)
+	{
+		return containedInCategory(source, id);
+	}
+	
+	static public boolean containedInProject(final RESTTagV1 source, final Integer id)
+	{
+		if (source.getProjects() != null && source.getProjects().getItems() != null)
+		{
+			for (final RESTProjectV1 project : source.getProjects().getItems())
+				if (id.equals(project.getId()))
 					return true;
 		}
 
