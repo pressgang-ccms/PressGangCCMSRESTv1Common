@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jboss.pressgangccms.rest.v1.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterLocaleV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterV1;
-import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.utils.structures.Pair;
 
 public class RESTTranslatedTopicQueryBuilderV1 extends RESTTopicQueryBuilderV1

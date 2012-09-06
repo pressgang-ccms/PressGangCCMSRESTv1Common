@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.jboss.pressgangccms.rest.v1.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.rest.v1.query.base.RESTBaseQueryBuilderV1;
-import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.utils.structures.Pair;
 
 public class RESTImageQueryBuilderV1 extends RESTBaseQueryBuilderV1

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.jboss.pressgangccms.rest.v1.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.rest.v1.entities.RESTCategoryV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterCategoryV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterFieldV1;
@@ -16,7 +17,6 @@ import org.jboss.pressgangccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgangccms.rest.v1.query.base.RESTBaseQueryBuilderWithPropertiesV1;
-import org.jboss.pressgangccms.utils.constants.CommonFilterConstants;
 import org.jboss.pressgangccms.utils.structures.Pair;
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
