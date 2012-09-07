@@ -13,11 +13,11 @@ public class ComponentRESTBaseEntityV1
 		this.source = source;
 	}
 	
-	static public boolean isDirty(final List<? extends RESTBaseEntityV1> list)
+	static public boolean returnDirtyState(final List<? extends RESTBaseEntityV1> list)
 	{
 		for (final RESTBaseEntityV1 entity : list)
 		{
-			if (entity.isDirty()) return true;
+			if (entity.returnDirtyState()) return true;
 		}
 		
 		return false;

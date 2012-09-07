@@ -141,7 +141,7 @@ public class RESTCategoryV1 extends RESTBaseEntityV1<RESTCategoryV1, RESTCategor
 		this.tags = tags;
 	}
 	
-	public void setTagsExplicit(final RESTTagCollectionV1 tags)
+	public void explicitSetTags(final RESTTagCollectionV1 tags)
 	{
 		this.tags = tags;
 		this.setParameterToConfigured(TAGS_NAME);

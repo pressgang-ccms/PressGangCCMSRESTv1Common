@@ -40,7 +40,7 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 	/**
 	 * @return true if this entity's state would trigger a change in the database, and false otherwise
 	 */
-	public boolean isDirty()
+	public boolean returnDirtyState()
 	{
 		if (this.addItem) return true;
 		if (this.removeItem) return true;
