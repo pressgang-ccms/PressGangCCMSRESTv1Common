@@ -37,6 +37,17 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 
 	abstract public void setRevisions(U revisions);
 	
+	/**
+	 * @return true if this entity's state would trigger a change in the database, and false otherwise
+	 */
+	public boolean isDirty()
+	{
+		if (this.addItem) return true;
+		if (this.removeItem) return true;
+		if (this.configuredParameters != null && !this.configuredParameters.isEmpty()) return true;
+		return false;
+	}
+	
 	@Override
 	public boolean equals(final Object other)
 	{
