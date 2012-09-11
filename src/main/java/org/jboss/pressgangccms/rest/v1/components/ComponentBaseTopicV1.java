@@ -38,7 +38,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 	 */
 	public String returnXMLWithNewContainer(final String containerName)
 	{
-		return returnXMLWithNewContainer(source, containerName);
+		return ComponentBaseTopicV1.<T, U>returnXMLWithNewContainer(source, containerName);
 	}
 	
 	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> String returnXMLWithNewContainer(final T source, final String containerName)
@@ -70,7 +70,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 
 	public String returnXMLWithNoContainer(final Boolean includeTitle)
 	{
-		return returnXMLWithNoContainer(source, includeTitle);
+		return ComponentBaseTopicV1.<T, U>returnXMLWithNoContainer(source, includeTitle);
 
 	}
 
@@ -118,12 +118,12 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 
 	public String getCommaSeparatedTagList()
 	{
-		return getCommaSeparatedTagList(source);
+		return ComponentBaseTopicV1.<T, U>getCommaSeparatedTagList(source);
 	}
 	
 	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> String getCommaSeparatedTagList(final T source)
 	{
-		final TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> tags = getCategoriesMappedToTags(source);
+		final TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> tags = ComponentBaseTopicV1.<T, U>getCategoriesMappedToTags(source);
 
 		String tagsList = "";
 		for (final NameIDSortMap key : tags.keySet())
@@ -194,7 +194,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 
 	public List<RESTTagV1> returnTagsInCategoriesByID(final List<Integer> categories)
 	{
-		return returnTagsInCategoriesByID(source, categories);
+		return ComponentBaseTopicV1.<T, U>returnTagsInCategoriesByID(source, categories);
 	}
 	
 	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> List<RESTTagV1> returnTagsInCategoriesByID(final T source, final List<Integer> categories)
@@ -237,7 +237,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 
 	public boolean hasTag(final Integer tagID)
 	{
-		return hasTag(source, tagID);
+		return ComponentBaseTopicV1.<T, U>hasTag(source, tagID);
 	}
 	
 	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> boolean hasTag(final RESTBaseTopicV1<T, U> source, final Integer tagID)
@@ -256,7 +256,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 
 	public boolean returnIsDummyTopic()
 	{
-		return returnIsDummyTopic(source);
+		return ComponentBaseTopicV1.<T, U>returnIsDummyTopic(source);
 	}
 	
 	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> boolean returnIsDummyTopic(final T source)

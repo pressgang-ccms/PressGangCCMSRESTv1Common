@@ -117,7 +117,7 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1<RESTTopicV1, RESTTopi
 	
 	static public String returnXrefPropertyOrId(final RESTTopicV1 source, final Integer propertyTagId)
 	{
-		final RESTPropertyTagV1 propTag = returnProperty(source, propertyTagId);
+		final RESTPropertyTagV1 propTag = ComponentBaseRESTEntityWithPropertiesV1.<RESTTopicV1, RESTTopicCollectionV1>returnProperty(source, propertyTagId);
 		if (propTag != null)
 		{
 			return propTag.getValue();

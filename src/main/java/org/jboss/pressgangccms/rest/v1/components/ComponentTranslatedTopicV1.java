@@ -40,7 +40,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	
 	static public String returnBugzillaBuildId(final RESTTranslatedTopicV1 source)
 	{
-		if (!ComponentBaseTopicV1.returnIsDummyTopic(source))
+		if (!ComponentBaseTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnIsDummyTopic(source))
 		{
 			return "Translation " + returnZanataId(source) + " " + source.getLocale();
 		}
@@ -63,7 +63,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 		 * locale then it means that the topic has been pushed to zanata so link to the original pushed translation. If neither of these rules apply then link
 		 * to the standard topic.
 		 */
-		if (!ComponentBaseTopicV1.returnIsDummyTopic(source))
+		if (!ComponentBaseTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnIsDummyTopic(source))
 		{
 			return CommonConstants.SERVER_URL + "/TopicIndex/TranslatedTopic.seam?translatedTopicId=" + source.getTranslatedTopicId() + "&amp;locale=" + source.getLocale();
 		}
@@ -73,7 +73,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 		}
 		else
 		{
-			return ComponentTopicV1.returnSkynetURL(source.getTopic());
+			return ComponentTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnSkynetURL(source.getTopic());
 		}
 	}
 
@@ -90,7 +90,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 		 * locale then it means that the topic has been pushed to zanata so link to the original pushed translation. If neither of these rules apply then link
 		 * to the standard topic.
 		 */
-		if (!ComponentBaseTopicV1.returnIsDummyTopic(source))
+		if (!ComponentBaseTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnIsDummyTopic(source))
 		{
 			return "TranslatedTopic.seam?translatedTopicId=" + source.getTranslatedTopicId() + "&locale=" + source.getLocale() + "&selectedTab=Rendered+View";
 		}
@@ -100,7 +100,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 		}
 		else
 		{
-			return ComponentTopicV1.returnInternalURL(source.getTopic());
+			return ComponentTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnInternalURL(source.getTopic());
 		}
 	}
 
@@ -140,12 +140,12 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	
 	static public String returnXRefID(final RESTTranslatedTopicV1 source)
 	{
-		if (!ComponentBaseTopicV1.returnIsDummyTopic(source))
+		if (!ComponentBaseTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnIsDummyTopic(source))
 			return "TranslatedTopicID" + source.getId();
 		else if (hasBeenPushedForTranslation(source))
 			return "TranslatedTopicID" + returnPushedTranslationTopicId(source);
 		else
-			return ComponentTopicV1.returnErrorXRefID(source.getTopic());
+			return ComponentTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnErrorXRefID(source.getTopic());
 	}
 
 	@Override
@@ -166,7 +166,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	
 	static public Integer returnPushedTranslationTopicId(final RESTTranslatedTopicV1 source)
 	{
-		if (!ComponentBaseTopicV1.returnIsDummyTopic(source))
+		if (!ComponentBaseTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnIsDummyTopic(source))
 			return source.getTranslatedTopicId();
 
 		/* Check that a translation exists that is the same locale as the base topic */
@@ -195,7 +195,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	
 	static public RESTTranslatedTopicV1 returnPushedTranslatedTopic(final RESTTranslatedTopicV1 source)
 	{
-		if (!ComponentBaseTopicV1.returnIsDummyTopic(source))
+		if (!ComponentBaseTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnIsDummyTopic(source))
 			return source;
 
 		/* Check that a translation exists that is the same locale as the base topic */
@@ -224,7 +224,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	
 	static public boolean hasBeenPushedForTranslation(final RESTTranslatedTopicV1 source)
 	{
-		if (!ComponentBaseTopicV1.returnIsDummyTopic(source))
+		if (!ComponentBaseTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnIsDummyTopic(source))
 			return true;
 
 		/* Check that a translation exists that is the same locale as the base topic */
@@ -261,7 +261,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	
 	static public String returnXrefPropertyOrId(final RESTTranslatedTopicV1 source, final Integer propertyTagId)
 	{
-		final RESTPropertyTagV1 propTag = returnProperty(source, propertyTagId);
+		final RESTPropertyTagV1 propTag = ComponentBaseRESTEntityWithPropertiesV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnProperty(source, propertyTagId);
 		if (propTag != null)
 		{
 			return propTag.getValue();
@@ -298,7 +298,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 			 * locale then it means that the topic has been pushed to zanata so link to the original pushed translation. If neither of these rules apply then link
 			 * to the standard topic.
 			 */
-			if (!ComponentBaseTopicV1.returnIsDummyTopic(source))
+			if (!ComponentBaseTopicV1.<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>returnIsDummyTopic(source))
 			{
 				final String zanataId = returnZanataId(source);
 				return zanataServerUrl + "webtrans/Application.html?project=" + zanataProject + "&amp;iteration=" + zanataVersion + "&amp;doc=" + zanataId + "&amp;localeId=" + source.getLocale() + "#view:doc;doc:" + zanataId;

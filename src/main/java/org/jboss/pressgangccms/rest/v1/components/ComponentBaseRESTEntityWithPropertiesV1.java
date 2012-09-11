@@ -18,7 +18,7 @@ public abstract class ComponentBaseRESTEntityWithPropertiesV1<T extends RESTBase
 	
 	public RESTPropertyTagV1 returnProperty(final Integer propertyTagId)
 	{
-		return returnProperty(source, propertyTagId);
+		return ComponentBaseRESTEntityWithPropertiesV1.<T, U>returnProperty(source, propertyTagId);
 	}
 	
 	static public <T extends RESTBaseEntityWithPropertiesV1<T, U>, U extends BaseRestCollectionV1<T, U>> RESTPropertyTagV1 returnProperty(final T source, final Integer propertyTagId)
