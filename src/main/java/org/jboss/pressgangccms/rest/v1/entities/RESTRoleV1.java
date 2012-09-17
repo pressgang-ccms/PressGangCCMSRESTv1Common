@@ -40,44 +40,49 @@ public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleColl
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.name = this.name;
-		retValue.description = description;
-		
-		if (deepCopy)
-		{
-			if (this.users != null)
-			{
-				retValue.users = new RESTUserCollectionV1();
-				this.users.cloneInto(retValue.users, deepCopy);
-			}
-			
-			if (this.childRoles != null)
-			{
-				retValue.childRoles = new RESTRoleCollectionV1();
-				this.childRoles.cloneInto(retValue.childRoles, deepCopy);
-			}
-			
-			if (this.parentRoles != null)
-			{
-				retValue.parentRoles = new RESTRoleCollectionV1();
-				this.parentRoles.cloneInto(retValue.parentRoles, deepCopy);
-			}
-			
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTRoleCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.users = this.users;
-			retValue.childRoles = this.childRoles;
-			retValue.parentRoles = this.parentRoles;
-			retValue.revisions = this.revisions;
-		}
-		
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTRoleV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+
+	    clone.name = this.name;
+	    clone.description = description;
+        
+        if (deepCopy)
+        {
+            if (this.users != null)
+            {
+                clone.users = new RESTUserCollectionV1();
+                this.users.cloneInto(clone.users, deepCopy);
+            }
+            
+            if (this.childRoles != null)
+            {
+                clone.childRoles = new RESTRoleCollectionV1();
+                this.childRoles.cloneInto(clone.childRoles, deepCopy);
+            }
+            
+            if (this.parentRoles != null)
+            {
+                clone.parentRoles = new RESTRoleCollectionV1();
+                this.parentRoles.cloneInto(clone.parentRoles, deepCopy);
+            }
+            
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTRoleCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.users = this.users;
+            clone.childRoles = this.childRoles;
+            clone.parentRoles = this.parentRoles;
+            clone.revisions = this.revisions;
+        }
 	}
 
 	public String getName()

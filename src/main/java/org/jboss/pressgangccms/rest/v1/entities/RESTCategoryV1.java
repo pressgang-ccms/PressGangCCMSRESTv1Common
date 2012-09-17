@@ -40,20 +40,26 @@ public class RESTCategoryV1 extends RESTBaseCategoryV1<RESTCategoryV1, RESTCateg
 
 		this.cloneInto(retValue, deepCopy);
 
-		if (deepCopy)
-		{
-			if (this.getRevisions() != null)
-			{
-				retValue.revisions = new RESTCategoryCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}			
-		}
-		else
-		{
-			retValue.revisions = this.revisions;
-		}
-		
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTCategoryV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+
+        if (deepCopy)
+        {
+            if (this.getRevisions() != null)
+            {
+                clone.revisions = new RESTCategoryCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }           
+        }
+        else
+        {
+            clone.revisions = this.revisions;
+        }
+        
 	}
 	
 	public void explicitSetName(final String name)

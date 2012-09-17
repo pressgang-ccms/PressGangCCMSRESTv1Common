@@ -61,63 +61,69 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.setTopicId(this.topicId);
-		retValue.setTopicRevision(this.topicRevision);
-		retValue.setTranslatedTopicId(this.translatedTopicId);
-		retValue.setTranslationPercentage(this.translationPercentage);
-		retValue.setContainsFuzzyTranslation(this.containsFuzzyTranslation);
-		
-		if (deepCopy)
-		{
-			if (this.translatedTopicStrings != null)
-			{
-				retValue.translatedTopicStrings = new RESTTranslatedTopicStringCollectionV1();
-				this.translatedTopicStrings.cloneInto(retValue.translatedTopicStrings, deepCopy);
-			}
-			
-			if (this.outgoingTranslatedRelationships != null)
-			{
-				retValue.outgoingTranslatedRelationships = new RESTTranslatedTopicCollectionV1();
-				this.outgoingTranslatedRelationships.cloneInto(retValue.outgoingTranslatedRelationships, deepCopy);
-			}
-			
-			if (this.incomingTranslatedRelationships != null)
-			{
-				retValue.incomingTranslatedRelationships = new RESTTranslatedTopicCollectionV1();
-				this.incomingTranslatedRelationships.cloneInto(retValue.incomingTranslatedRelationships, deepCopy);
-			}
-			
-			if (this.incomingRelationships != null)
-			{
-				retValue.incomingRelationships = new RESTTranslatedTopicCollectionV1();
-				this.incomingRelationships.cloneInto(retValue.incomingRelationships, deepCopy);
-			}
-			
-			if (this.outgoingRelationships != null)
-			{
-				retValue.outgoingRelationships = new RESTTranslatedTopicCollectionV1();
-				this.outgoingRelationships.cloneInto(retValue.outgoingRelationships, deepCopy);
-			}
-			
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTTranslatedTopicCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-
-			retValue.setTopic(this.topic != null ? this.topic.clone(deepCopy) : null);
-		}
-		else
-		{
-			retValue.setTranslatedTopicStrings_OTM(this.getTranslatedTopicStrings_OTM());
-			retValue.topic = this.topic;
-			retValue.outgoingTranslatedRelationships = this.outgoingTranslatedRelationships;
-			retValue.incomingTranslatedRelationships = this.incomingTranslatedRelationships;
-			retValue.outgoingRelationships = this.outgoingRelationships;
-			retValue.incomingRelationships = this.incomingRelationships;
-			retValue.revisions = this.revisions;
-		}
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTTranslatedTopicV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+	    
+	    clone.topicId = this.topicId;
+	    clone.topicRevision = this.topicRevision;
+	    clone.translatedTopicId = this.translatedTopicId;
+        clone.translationPercentage = this.translationPercentage;
+        clone.containsFuzzyTranslation = this.containsFuzzyTranslation;
+        
+        if (deepCopy)
+        {
+            if (this.translatedTopicStrings != null)
+            {
+                clone.translatedTopicStrings = new RESTTranslatedTopicStringCollectionV1();
+                this.translatedTopicStrings.cloneInto(clone.translatedTopicStrings, deepCopy);
+            }
+            
+            if (this.outgoingTranslatedRelationships != null)
+            {
+                clone.outgoingTranslatedRelationships = new RESTTranslatedTopicCollectionV1();
+                this.outgoingTranslatedRelationships.cloneInto(clone.outgoingTranslatedRelationships, deepCopy);
+            }
+            
+            if (this.incomingTranslatedRelationships != null)
+            {
+                clone.incomingTranslatedRelationships = new RESTTranslatedTopicCollectionV1();
+                this.incomingTranslatedRelationships.cloneInto(clone.incomingTranslatedRelationships, deepCopy);
+            }
+            
+            if (this.incomingRelationships != null)
+            {
+                clone.incomingRelationships = new RESTTranslatedTopicCollectionV1();
+                this.incomingRelationships.cloneInto(clone.incomingRelationships, deepCopy);
+            }
+            
+            if (this.outgoingRelationships != null)
+            {
+                clone.outgoingRelationships = new RESTTranslatedTopicCollectionV1();
+                this.outgoingRelationships.cloneInto(clone.outgoingRelationships, deepCopy);
+            }
+            
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTTranslatedTopicCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+
+            clone.setTopic(this.topic != null ? this.topic.clone(deepCopy) : null);
+        }
+        else
+        {
+            clone.translatedTopicStrings = this.translatedTopicStrings;
+            clone.topic = this.topic;
+            clone.outgoingTranslatedRelationships = this.outgoingTranslatedRelationships;
+            clone.incomingTranslatedRelationships = this.incomingTranslatedRelationships;
+            clone.outgoingRelationships = this.outgoingRelationships;
+            clone.incomingRelationships = this.incomingRelationships;
+            clone.revisions = this.revisions;
+        }
 	}
 	
 	public Integer getTranslatedTopicId() {

@@ -35,34 +35,39 @@ public class RESTFilterTagV1 extends RESTBaseEntityV1<RESTFilterTagV1, RESTFilte
         
         this.cloneInto(retValue, deepCopy);
         
-        retValue.state = this.state;
+        return retValue;
+    }
+    
+    public void cloneInto(final RESTFilterTagV1 clone, final boolean deepCopy)
+    {
+        super.cloneInto(clone, deepCopy);
+
+        clone.state = this.state;
         
         if (deepCopy)
         {
             if (this.revisions != null)
             {
-                retValue.revisions = new RESTFilterTagCollectionV1();
-                revisions.cloneInto(retValue.revisions, deepCopy);
+                clone.revisions = new RESTFilterTagCollectionV1();
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
             
             if (tag != null)
             {
-                retValue.tag = tag.clone(deepCopy);
+                clone.tag = tag.clone(deepCopy);
             }
             
             if (this.filter != null)
             {
-                retValue.filter = this.filter.clone(deepCopy);
+                clone.filter = this.filter.clone(deepCopy);
             }
         }
         else
         {
-            retValue.revisions = this.revisions;
-            retValue.tag = this.tag;
-            retValue.filter = this.filter;
+            clone.revisions = this.revisions;
+            clone.tag = this.tag;
+            clone.filter = this.filter;
         }
-        
-        return retValue;
     }
     
     public RESTTagV1 getTag()

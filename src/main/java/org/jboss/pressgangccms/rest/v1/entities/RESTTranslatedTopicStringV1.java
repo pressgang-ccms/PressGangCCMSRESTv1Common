@@ -36,26 +36,32 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslated
 		final RESTTranslatedTopicStringV1 retValue = new RESTTranslatedTopicStringV1();
 		
 		this.cloneInto(retValue, deepCopy);
-		
-		retValue.setOriginalString(this.originalString);
-		retValue.setTranslatedString(this.translatedString);
-		
-		if (deepCopy)
-		{
-			retValue.setTranslatedTopic(translatedTopic != null ? this.translatedTopic.clone(deepCopy) : null);
-			
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTTranslatedTopicStringCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.setTranslatedTopic(this.translatedTopic);
-			retValue.setRevisions(this.revisions);
-		}
+
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTTranslatedTopicStringV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+	    
+	    clone.originalString = this.originalString;
+	    clone.translatedString = this.translatedString;
+        
+        if (deepCopy)
+        {
+            clone.translatedTopic = this.translatedTopic != null ? this.translatedTopic.clone(deepCopy) : null;
+            
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTTranslatedTopicStringCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.translatedTopic = this.translatedTopic;
+            clone.revisions = this.revisions;
+        }
 	}
 
 	public RESTTranslatedTopicV1 getTranslatedTopic()

@@ -35,29 +35,34 @@ public class RESTFilterLocaleV1 extends RESTBaseEntityV1<RESTFilterLocaleV1, RES
         
         this.cloneInto(retValue, deepCopy);
         
-        retValue.locale = this.locale;
-        retValue.state = this.state;
+        return retValue;
+    }
+    
+    public void cloneInto(final RESTFilterLocaleV1 clone, final boolean deepCopy)
+    {
+        super.cloneInto(clone, deepCopy);
+
+        clone.locale = this.locale;
+        clone.state = this.state;
         
         if (deepCopy)
         {
             if (this.revisions != null)
             {
-                retValue.revisions = new RESTFilterLocaleCollectionV1();
-                revisions.cloneInto(retValue.revisions, deepCopy);
+                clone.revisions = new RESTFilterLocaleCollectionV1();
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
             
             if (this.filter != null)
             {
-                retValue.filter = this.filter.clone(deepCopy);
+                clone.filter = this.filter.clone(deepCopy);
             }
         }
         else
         {
-            retValue.revisions = this.revisions;
-            retValue.filter = this.filter;
+            clone.revisions = this.revisions;
+            clone.filter = this.filter;
         }
-        
-        return retValue;
     }
 
     public String getLocale()

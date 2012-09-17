@@ -45,52 +45,57 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.description = this.description;
-		retValue.created = this.created == null ? null : (Date)this.created.clone();
-		retValue.lastModified = this.lastModified == null ? null : (Date)lastModified.clone();
-		
-		if (deepCopy)
-		{
-			if (this.bugzillaBugs_OTM != null)
-			{
-				retValue.bugzillaBugs_OTM = new RESTBugzillaBugCollectionV1();
-				this.bugzillaBugs_OTM.cloneInto(retValue.bugzillaBugs_OTM, deepCopy);
-			}
-			
-			if (this.translatedTopics_OTM != null)
-			{
-				retValue.translatedTopics_OTM = new RESTTranslatedTopicCollectionV1();
-				this.translatedTopics_OTM.cloneInto(retValue.translatedTopics_OTM, deepCopy);
-			}
-			
-			if (this.outgoingRelationships != null)
-			{
-				retValue.outgoingRelationships = new RESTTopicCollectionV1();
-				this.outgoingRelationships.cloneInto(retValue.outgoingRelationships, deepCopy);
-			}
-			
-			if (this.incomingRelationships != null)
-			{
-				retValue.incomingRelationships = new RESTTopicCollectionV1();
-				this.incomingRelationships.cloneInto(retValue.incomingRelationships, deepCopy);
-			}
-			
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTTopicCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.bugzillaBugs_OTM = this.bugzillaBugs_OTM;
-			retValue.translatedTopics_OTM = this.translatedTopics_OTM;
-			retValue.outgoingRelationships = this.outgoingRelationships;
-			retValue.incomingRelationships = this.incomingRelationships;
-			retValue.revisions = this.revisions;
-		}
 		return retValue;
-		
+	}
+	
+	public void cloneInto(final RESTTopicV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+
+	    clone.description = this.description;
+	    clone.created = this.created == null ? null : (Date)this.created.clone();
+	    clone.lastModified = this.lastModified == null ? null : (Date)lastModified.clone();
+        
+        if (deepCopy)
+        {
+            if (this.bugzillaBugs_OTM != null)
+            {
+                clone.bugzillaBugs_OTM = new RESTBugzillaBugCollectionV1();
+                this.bugzillaBugs_OTM.cloneInto(clone.bugzillaBugs_OTM, deepCopy);
+            }
+            
+            if (this.translatedTopics_OTM != null)
+            {
+                clone.translatedTopics_OTM = new RESTTranslatedTopicCollectionV1();
+                this.translatedTopics_OTM.cloneInto(clone.translatedTopics_OTM, deepCopy);
+            }
+            
+            if (this.outgoingRelationships != null)
+            {
+                clone.outgoingRelationships = new RESTTopicCollectionV1();
+                this.outgoingRelationships.cloneInto(clone.outgoingRelationships, deepCopy);
+            }
+            
+            if (this.incomingRelationships != null)
+            {
+                clone.incomingRelationships = new RESTTopicCollectionV1();
+                this.incomingRelationships.cloneInto(clone.incomingRelationships, deepCopy);
+            }
+            
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTTopicCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.bugzillaBugs_OTM = this.bugzillaBugs_OTM;
+            clone.translatedTopics_OTM = this.translatedTopics_OTM;
+            clone.outgoingRelationships = this.outgoingRelationships;
+            clone.incomingRelationships = this.incomingRelationships;
+            clone.revisions = this.revisions;
+        }
 	}
 	
 	public void explicitSetTitle(final String title)

@@ -37,42 +37,47 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
         
         this.cloneInto(retValue, deepCopy);
         
-        retValue.state = this.state;
+        return retValue;
+    }
+
+    public void cloneInto(final RESTFilterCategoryV1 clone, final boolean deepCopy)
+    {
+        super.cloneInto(clone, deepCopy);
+        
+        clone.state = this.state;
         
         if (deepCopy)
         {
             if (this.revisions != null)
             {
-                retValue.revisions = new RESTFilterCategoryCollectionV1();
-                revisions.cloneInto(retValue.revisions, deepCopy);
+                clone.revisions = new RESTFilterCategoryCollectionV1();
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
             
             if (this.project != null)
             {
-                retValue.project = this.project.clone(deepCopy);
+                clone.project = this.project.clone(deepCopy);
             }
             
             if (this.category != null)
             {
-                retValue.category = this.category.clone(deepCopy);
+                clone.category = this.category.clone(deepCopy);
             }
             
             if (this.filter != null)
             {
-                retValue.filter = this.filter.clone(deepCopy);
+                clone.filter = this.filter.clone(deepCopy);
             }
         }
         else
         {
-            retValue.revisions = this.revisions;
-            retValue.category = this.category;
-            retValue.project = this.project;
-            retValue.filter = this.filter;
+            clone.revisions = this.revisions;
+            clone.category = this.category;
+            clone.project = this.project;
+            clone.filter = this.filter;
         }
-        
-        return retValue;
     }
-
+    
     public RESTCategoryV1 getCategory()
     {
         return category;

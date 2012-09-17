@@ -36,30 +36,35 @@ public class RESTProjectV1 extends RESTBasePrimaryEntityV1<RESTProjectV1, RESTPr
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.name = this.name;
-		retValue.description = description;
-
-		if (deepCopy)
-		{
-			if (this.tags != null)
-			{
-				retValue.tags = new RESTTagCollectionV1();
-				this.tags.cloneInto(retValue.tags, deepCopy);
-			}
-			
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTProjectCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.tags = this.tags;
-			retValue.revisions = this.revisions;
-		}
-		
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTProjectV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+
+	    clone.name = this.name;
+	    clone.description = description;
+
+        if (deepCopy)
+        {
+            if (this.tags != null)
+            {
+                clone.tags = new RESTTagCollectionV1();
+                this.tags.cloneInto(clone.tags, deepCopy);
+            }
+            
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTProjectCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.tags = this.tags;
+            clone.revisions = this.revisions;
+        }
 	}
 
 	public String getName()

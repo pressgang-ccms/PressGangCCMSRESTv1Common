@@ -82,23 +82,28 @@ public class RESTCategoryTagV1 extends RESTBaseCategoryV1<RESTCategoryTagV1, RES
         
         this.cloneInto(retValue, deepCopy);
         
-        retValue.relationshipId = this.relationshipId;
-        retValue.relationshipSort = this.relationshipSort;
+        return retValue;
+    }
+    
+    public void cloneInto(final RESTCategoryTagV1 clone, final boolean deepCopy)
+    {
+        super.cloneInto(clone, deepCopy);
+
+        clone.relationshipId = this.relationshipId;
+        clone.relationshipSort = this.relationshipSort;
         
         if (deepCopy)
         {
             if (this.getRevisions() != null)
             {
-                retValue.revisions = new RESTCategoryTagCollectionV1();
-                this.revisions.cloneInto(retValue.revisions, deepCopy);
+                clone.revisions = new RESTCategoryTagCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
             }           
         }
         else
         {
-            retValue.revisions = this.revisions;
+            clone.revisions = this.revisions;
         }
-        
-        return retValue;
     }
 
 }

@@ -90,13 +90,17 @@ public class RESTLogDetailsV1
     {
         final RESTLogDetailsV1 retValue = new RESTLogDetailsV1();
         
-        retValue.setFlag(new Integer(flag));
-        retValue.setMessage(new String(message));
-        retValue.setUser(user.clone(deepCopy));
-        retValue.setDate((Date) (date == null ? null : date.clone()));
+        this.cloneInto(retValue, deepCopy);
         
         return retValue;
-        
+    }
+    
+    public void cloneInto(final RESTLogDetailsV1 clone, final boolean deepCopy)
+    {
+        clone.setFlag(flag);
+        clone.setMessage(message);
+        clone.setUser(user.clone(deepCopy));
+        clone.setDate((Date) (date == null ? null : date.clone()));
     }
 
     public List<String> getConfiguredParameters()

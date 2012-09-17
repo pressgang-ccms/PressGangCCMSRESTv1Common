@@ -95,24 +95,29 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
 
         this.cloneInto(retValue, deepCopy);
         
-        retValue.relationshipId = this.relationshipId;
-        retValue.value = this.value;
-        retValue.valid = this.valid;
+        return retValue;
+    }
+    
+    public void cloneInto(final RESTAssignedPropertyTagV1 clone, final boolean deepCopy)
+    {
+        super.cloneInto(clone, deepCopy);
+        
+        clone.relationshipId = this.relationshipId;
+        clone.value = this.value;
+        clone.valid = this.valid;
         
         if (deepCopy)
         {
             if (this.getRevisions() != null)
             {
-                retValue.revisions = new RESTAssignedPropertyTagCollectionV1();
-                this.revisions.cloneInto(retValue.revisions, deepCopy);
+                clone.revisions = new RESTAssignedPropertyTagCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
             }           
         }
         else
         {
-            retValue.revisions = this.revisions;
+            clone.revisions = this.revisions;
         }
-        
-        return retValue;
     }
 
 }

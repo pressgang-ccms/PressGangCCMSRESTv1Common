@@ -36,30 +36,35 @@ public class RESTUserV1 extends RESTBasePrimaryEntityV1<RESTUserV1, RESTUserColl
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.name = this.name;
-		retValue.description = description;
-		
-		if (deepCopy)
-		{
-			if (this.roles != null)
-			{
-				retValue.roles = new RESTRoleCollectionV1();
-				this.roles.cloneInto(retValue.roles, deepCopy);
-			}
-			
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTUserCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.roles = this.roles;
-			retValue.revisions = this.revisions;
-		}
-		
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTUserV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+
+	    clone.name = this.name;
+	    clone.description = description;
+        
+        if (deepCopy)
+        {
+            if (this.roles != null)
+            {
+                clone.roles = new RESTRoleCollectionV1();
+                this.roles.cloneInto(clone.roles, deepCopy);
+            }
+            
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTUserCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.roles = this.roles;
+            clone.revisions = this.revisions;
+        }
 	}
 
 	public String getName()

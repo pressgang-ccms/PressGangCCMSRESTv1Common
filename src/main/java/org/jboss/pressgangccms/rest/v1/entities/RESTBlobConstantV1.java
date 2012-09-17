@@ -36,32 +36,38 @@ public class RESTBlobConstantV1 extends RESTBasePrimaryEntityV1<RESTBlobConstant
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.name = this.name;
-		
-		if (deepCopy)
-		{
-			if (value != null)
-			{
-				retValue.value = new byte[value.length];
-				System.arraycopy(value, 0, retValue.value, 0, value.length);
-			}
-			else
-			{
-				retValue.value = null;
-			}
-			
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTBlobConstantCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.value = value;
-			retValue.revisions = this.revisions;
-		}
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTBlobConstantV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+
+	    clone.name = this.name;
+        
+        if (deepCopy)
+        {
+            if (value != null)
+            {
+                clone.value = new byte[value.length];
+                System.arraycopy(value, 0, clone.value, 0, value.length);
+            }
+            else
+            {
+                clone.value = null;
+            }
+            
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTBlobConstantCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.value = value;
+            clone.revisions = this.revisions;
+        }
 	}
 
 	public String getName()

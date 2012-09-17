@@ -82,23 +82,28 @@ public class RESTTagCategoryV1 extends RESTBaseTagV1<RESTTagCategoryV1, RESTTagC
         
         this.cloneInto(retValue, deepCopy);
         
-        retValue.relationshipId = this.relationshipId;
-        retValue.relationshipSort = this.relationshipSort;
+        return retValue;
+    }
+    
+    public void cloneInto(final RESTTagCategoryV1 clone, final boolean deepCopy)
+    {
+        super.cloneInto(clone, deepCopy);
+        
+        clone.relationshipId = this.relationshipId;
+        clone.relationshipSort = this.relationshipSort;
         
         if (deepCopy)
         {
             if (this.getRevisions() != null)
             {
-                retValue.revisions = new RESTTagCategoryCollectionV1();
-                this.revisions.cloneInto(retValue.revisions, deepCopy);
+                clone.revisions = new RESTTagCategoryCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
             }           
         }
         else
         {
-            retValue.revisions = this.revisions;
+            clone.revisions = this.revisions;
         }
-        
-        return retValue;
     }
 
 }

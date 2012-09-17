@@ -42,58 +42,63 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
 
 		this.cloneInto(retValue, deepCopy);
 
-		retValue.image = this.image;
-		retValue.filename = this.filename;
-
-		if (deepCopy)
-		{
-			/* use arraycopy as a GWT compatible alternative to clone() */
-
-			if (imageData != null)
-			{
-				retValue.imageData = new byte[this.imageData.length];
-				System.arraycopy(this.imageData, 0, retValue.imageData, 0, this.imageData.length);
-			}
-			else
-			{
-				retValue.imageData = null;
-			}
-
-			if (thumbnail != null)
-			{
-				retValue.thumbnail = new byte[this.thumbnail.length];
-				System.arraycopy(this.thumbnail, 0, retValue.thumbnail, 0, this.thumbnail.length);
-			}
-			else
-			{
-				retValue.thumbnail = null;
-			}
-
-			if (imageDataBase64 != null)
-			{
-				retValue.imageDataBase64 = new byte[this.imageDataBase64.length];
-				System.arraycopy(this.imageDataBase64, 0, retValue.imageDataBase64, 0, this.imageDataBase64.length);
-			}
-			else
-			{
-				retValue.imageDataBase64 = null;
-			}
-
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTLanguageImageCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}		
-		}
-		else
-		{
-			retValue.imageData = this.imageData;
-			retValue.thumbnail = this.thumbnail;
-			retValue.imageDataBase64 = this.imageDataBase64;
-			retValue.revisions = this.revisions;
-		}
-
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTLanguageImageV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+
+	    clone.image = this.image;
+	    clone.filename = this.filename;
+
+        if (deepCopy)
+        {
+            /* use arraycopy as a GWT compatible alternative to clone() */
+
+            if (imageData != null)
+            {
+                clone.imageData = new byte[this.imageData.length];
+                System.arraycopy(this.imageData, 0, clone.imageData, 0, this.imageData.length);
+            }
+            else
+            {
+                clone.imageData = null;
+            }
+
+            if (thumbnail != null)
+            {
+                clone.thumbnail = new byte[this.thumbnail.length];
+                System.arraycopy(this.thumbnail, 0, clone.thumbnail, 0, this.thumbnail.length);
+            }
+            else
+            {
+                clone.thumbnail = null;
+            }
+
+            if (imageDataBase64 != null)
+            {
+                clone.imageDataBase64 = new byte[this.imageDataBase64.length];
+                System.arraycopy(this.imageDataBase64, 0, clone.imageDataBase64, 0, this.imageDataBase64.length);
+            }
+            else
+            {
+                clone.imageDataBase64 = null;
+            }
+
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTLanguageImageCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }       
+        }
+        else
+        {
+            clone.imageData = this.imageData;
+            clone.thumbnail = this.thumbnail;
+            clone.imageDataBase64 = this.imageDataBase64;
+            clone.revisions = this.revisions;
+        }
 	}
 
 	@Override

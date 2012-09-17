@@ -45,44 +45,49 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
         
         this.cloneInto(retValue, deepCopy);
         
-        retValue.name = this.name;
-        retValue.description = this.description;
+        return retValue;
+    }
+    
+    public void cloneInto(final RESTFilterV1 clone, final boolean deepCopy)
+    {
+        super.cloneInto(clone, deepCopy);
+
+        clone.name = this.name;
+        clone.description = this.description;
         
         if (deepCopy)
         {
             if (this.revisions != null)
             {
-                retValue.revisions = new RESTFilterCollectionV1();
-                revisions.cloneInto(retValue.revisions, deepCopy);
+                clone.revisions = new RESTFilterCollectionV1();
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
             
             if (this.filterCategories_OTM != null)
             {
-                retValue.filterCategories_OTM = new RESTFilterCategoryCollectionV1();
-                filterCategories_OTM.cloneInto(retValue.filterCategories_OTM, deepCopy);
+                clone.filterCategories_OTM = new RESTFilterCategoryCollectionV1();
+                filterCategories_OTM.cloneInto(clone.filterCategories_OTM, deepCopy);
             }
             
             if (this.filterLocales_OTM != null)
             {
-                retValue.filterLocales_OTM = new RESTFilterLocaleCollectionV1();
-                filterLocales_OTM.cloneInto(retValue.filterLocales_OTM, deepCopy);
+                clone.filterLocales_OTM = new RESTFilterLocaleCollectionV1();
+                filterLocales_OTM.cloneInto(clone.filterLocales_OTM, deepCopy);
             }
             
             if (this.filterTags_OTM != null)
             {
-                retValue.filterTags_OTM = new RESTFilterTagCollectionV1();
-                filterTags_OTM.cloneInto(retValue.filterTags_OTM, deepCopy);
+                clone.filterTags_OTM = new RESTFilterTagCollectionV1();
+                filterTags_OTM.cloneInto(clone.filterTags_OTM, deepCopy);
             }
         }
         else
         {
-            retValue.revisions = this.revisions;
-            retValue.filterCategories_OTM = this.filterCategories_OTM;
-            retValue.filterLocales_OTM = this.filterLocales_OTM;
-            retValue.filterTags_OTM = this.filterTags_OTM;
+            clone.revisions = this.revisions;
+            clone.filterCategories_OTM = this.filterCategories_OTM;
+            clone.filterLocales_OTM = this.filterLocales_OTM;
+            clone.filterTags_OTM = this.filterTags_OTM;
         }
-        
-        return retValue;
     }
 
     public String getName()

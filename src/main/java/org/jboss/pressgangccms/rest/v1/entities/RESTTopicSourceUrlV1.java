@@ -35,24 +35,29 @@ public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1,
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.url = this.url;
-		retValue.description = description;
-		retValue.title = this.title;
-		
-		if (deepCopy)
-		{		
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTTopicSourceUrlCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.revisions = this.revisions;
-		}
-		
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTTopicSourceUrlV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+	    
+	    clone.url = this.url;
+	    clone.description = description;
+	    clone.title = this.title;
+        
+        if (deepCopy)
+        {       
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTTopicSourceUrlCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.revisions = this.revisions;
+        }
 	}
 
 	public String getUrl()

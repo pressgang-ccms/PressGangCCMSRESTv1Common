@@ -37,25 +37,29 @@ public class RESTStringConstantV1 extends RESTBasePrimaryEntityV1<RESTStringCons
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.name = this.name;
-		retValue.value = value;
-		
-		if (deepCopy)
-		{		
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTStringConstantCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.revisions = this.revisions;
-		}
-		
 		return retValue;
 	}
 
+	public void cloneInto(final RESTStringConstantV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+
+	    clone.name = this.name;
+	    clone.value = value;
+        
+        if (deepCopy)
+        {       
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTStringConstantCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.revisions = this.revisions;
+        }
+	}
 
 	public String getName()
 	{

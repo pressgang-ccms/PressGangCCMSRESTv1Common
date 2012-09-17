@@ -36,25 +36,31 @@ public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTB
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.bugId = this.bugId == null ? null : new Integer(this.bugId);
-		retValue.isOpen = this.isOpen == null ? null : new Boolean(this.isOpen);
-		retValue.summary = summary;
-		
-		
-		if (deepCopy)
-		{
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTBugzillaBugCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}			
-		}
-		else
-		{
-			retValue.revisions = this.revisions;
-		}
-		
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTBugzillaBugV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+	    
+	    clone.bugId = this.bugId == null ? null : new Integer(this.bugId);
+	    clone.isOpen = this.isOpen == null ? null : new Boolean(this.isOpen);
+	    clone.summary = summary;
+        
+        
+        if (deepCopy)
+        {
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTBugzillaBugCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }           
+        }
+        else
+        {
+            clone.revisions = this.revisions;
+        }
+        
 	}
 
 	public Integer getBugId()

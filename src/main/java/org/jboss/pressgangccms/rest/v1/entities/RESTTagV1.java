@@ -41,20 +41,25 @@ public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RES
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		if (deepCopy)
-		{
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTTagCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.revisions = this.revisions;
-		}
-		
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTTagV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+	    
+	    if (deepCopy)
+        {
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTTagCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.revisions = this.revisions;
+        }
 	}
 	
 	public void explicitSetName(final String name)

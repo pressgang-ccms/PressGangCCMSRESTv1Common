@@ -35,29 +35,34 @@ public class RESTImageV1 extends RESTBasePrimaryEntityV1<RESTImageV1, RESTImageC
 		
 		this.cloneInto(retValue, deepCopy);
 				
-		retValue.description = this.description;
-		
-		if (deepCopy)
-		{
-			if (this.languageImages_OTM != null)
-			{
-				retValue.languageImages_OTM = new RESTLanguageImageCollectionV1();
-				this.languageImages_OTM.cloneInto(retValue.languageImages_OTM, deepCopy);
-			}
-			
-			if (this.getRevisions() != null)
-			{
-				retValue.revisions = new RESTImageCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}			
-		}
-		else
-		{
-			retValue.languageImages_OTM = this.languageImages_OTM;
-			retValue.revisions = this.revisions;
-		}
-				
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTImageV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+	       
+        clone.description = this.description;
+        
+        if (deepCopy)
+        {
+            if (this.languageImages_OTM != null)
+            {
+                clone.languageImages_OTM = new RESTLanguageImageCollectionV1();
+                this.languageImages_OTM.cloneInto(clone.languageImages_OTM, deepCopy);
+            }
+            
+            if (this.getRevisions() != null)
+            {
+                clone.revisions = new RESTImageCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }           
+        }
+        else
+        {
+            clone.languageImages_OTM = this.languageImages_OTM;
+            clone.revisions = this.revisions;
+        }
 	}
 
 	public String getDescription()

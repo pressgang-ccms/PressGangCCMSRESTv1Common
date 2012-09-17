@@ -37,30 +37,35 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
         
         this.cloneInto(retValue, deepCopy);
         
-        retValue.description = this.description;
-        retValue.name = this.name;
-        retValue.value = this.value;
+        return retValue;
+    }
+    
+    public void cloneInto(final RESTFilterFieldV1 clone, final boolean deepCopy)
+    {
+        super.cloneInto(clone, deepCopy);
+
+        clone.description = this.description;
+        clone.name = this.name;
+        clone.value = this.value;
         
         if (deepCopy)
         {
             if (this.revisions != null)
             {
-                retValue.revisions = new RESTFilterFieldCollectionV1();
-                revisions.cloneInto(retValue.revisions, deepCopy);
+                clone.revisions = new RESTFilterFieldCollectionV1();
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
             
             if (this.filter != null)
             {
-                retValue.filter = this.filter.clone(deepCopy);
+                clone.filter = this.filter.clone(deepCopy);
             }
         }
         else
         {
-            retValue.revisions = this.revisions;
-            retValue.filter = this.filter;
+            clone.revisions = this.revisions;
+            clone.filter = this.filter;
         }
-        
-        return retValue;
     }
 
     public String getName()

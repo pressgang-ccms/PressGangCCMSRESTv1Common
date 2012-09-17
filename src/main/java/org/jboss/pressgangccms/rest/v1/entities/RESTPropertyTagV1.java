@@ -39,20 +39,25 @@ public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, 
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		if (deepCopy)
-		{		
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTPropertyTagCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.revisions = this.revisions;
-		}
-		
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTPropertyTagV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+
+        if (deepCopy)
+        {       
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTPropertyTagCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.revisions = this.revisions;
+        }
 	}
 	
 	public void explicitSetDescription(final String description)
