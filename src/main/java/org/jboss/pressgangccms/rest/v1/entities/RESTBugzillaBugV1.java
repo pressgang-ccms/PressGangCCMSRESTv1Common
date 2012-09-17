@@ -1,10 +1,11 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTBugzillaBugCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTBugzillaBugCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 
-public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTBugzillaBugCollectionV1>
+public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTBugzillaBugCollectionV1, RESTBugzillaBugCollectionItemV1>
 {
 	public static final String BUG_ID = "bugzillaBugId";
 	public static final String BUG_ISOPEN = "bugIsOpen";

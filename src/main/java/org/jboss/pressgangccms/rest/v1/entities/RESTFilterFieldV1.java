@@ -1,9 +1,10 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTFilterFieldCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTFilterFieldCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
-public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTFilterFieldCollectionV1>
+public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTFilterFieldCollectionV1, RESTFilterFieldCollectionItemV1>
 {
     public static final String NAME_NAME = "name";
     public static final String VALUE_NAME = "value";
@@ -118,11 +119,5 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
     public void setFilter(final RESTFilterV1 filter)
     {
         this.filter = filter;
-    }
-    
-    public void explicitSetFilter(final RESTFilterV1 filter)
-    {
-        this.filter = filter;
-        this.setParameterToConfigured(FILTER_NAME);
     }
 }

@@ -174,7 +174,8 @@ public class RESTTranslatedTopicQueryBuilderV1 extends RESTTopicQueryBuilderV1
         /* Sync filter locales */
         if (filter.getFilterLocales_OTM() != null && filter.getFilterLocales_OTM().getItems() != null)
         {
-            for (final RESTFilterLocaleV1 filterLocale : filter.getFilterLocales_OTM().getItems())
+            final List<RESTFilterLocaleV1> filterLocales = filter.getFilterLocales_OTM().returnItems();
+            for (final RESTFilterLocaleV1 filterLocale : filterLocales)
             {
                 setLocale(filterLocale.getLocale(), filterLocale.getState());
             }

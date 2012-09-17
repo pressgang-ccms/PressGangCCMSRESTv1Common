@@ -1,13 +1,14 @@
 package org.jboss.pressgangccms.rest.v1.components;
 
-import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
-import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
+import java.util.List;
+
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityWithPropertiesV1;
+import org.jboss.pressgangccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 
 /**
  * This is the base class for all entities that have Property Tags
  */
-public abstract class ComponentBaseRESTEntityWithPropertiesV1<T extends RESTBaseEntityWithPropertiesV1<T, U>, U extends BaseRestCollectionV1<T, U>> 
+public abstract class ComponentBaseRESTEntityWithPropertiesV1<T extends RESTBaseEntityWithPropertiesV1<T, ?, ?>> 
 {
 	final T source;
 	
@@ -16,16 +17,17 @@ public abstract class ComponentBaseRESTEntityWithPropertiesV1<T extends RESTBase
 		this.source = source;
 	}
 	
-	public RESTPropertyTagV1 returnProperty(final Integer propertyTagId)
+	public RESTAssignedPropertyTagV1 returnProperty(final Integer propertyTagId)
 	{
 		return returnProperty(source, propertyTagId);
 	}
 	
-	static public <T extends RESTBaseEntityWithPropertiesV1<T, U>, U extends BaseRestCollectionV1<T, U>> RESTPropertyTagV1 returnProperty(final T source, final Integer propertyTagId)
+	static public <T extends RESTBaseEntityWithPropertiesV1<T, ?, ?>> RESTAssignedPropertyTagV1 returnProperty(final T source, final Integer propertyTagId)
 	{
 		if (source.getProperties() != null && source.getProperties().getItems() != null)
 		{
-			for (final RESTPropertyTagV1 property : source.getProperties().getItems())
+		    final List<RESTAssignedPropertyTagV1> properties = source.getProperties().returnItems();
+			for (final RESTAssignedPropertyTagV1 property : properties)
 			{
 				if (property.getId().equals(propertyTagId))
 					return property;

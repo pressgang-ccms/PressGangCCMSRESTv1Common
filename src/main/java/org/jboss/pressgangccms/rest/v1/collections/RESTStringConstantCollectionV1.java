@@ -1,8 +1,10 @@
 package org.jboss.pressgangccms.rest.v1.collections;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTStringConstantCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTStringConstantV1;
 
 /**
@@ -10,19 +12,30 @@ import org.jboss.pressgangccms.rest.v1.entities.RESTStringConstantV1;
  * @author Matthew Casperson
  *
  */
-public class RESTStringConstantCollectionV1 extends BaseRestCollectionV1<RESTStringConstantV1, RESTStringConstantCollectionV1>
+public class RESTStringConstantCollectionV1 extends RESTBaseCollectionV1<RESTStringConstantV1, RESTStringConstantCollectionV1, RESTStringConstantCollectionItemV1>
 {
-	private List<RESTStringConstantV1> items;
+	private Set<RESTStringConstantCollectionItemV1> items;
 	
 	@Override
-	public List<RESTStringConstantV1> getItems()
+	public Set<RESTStringConstantCollectionItemV1> getItems()
 	{
 		return this.items;
 	}
 	
 	@Override
-	public void setItems(final List<RESTStringConstantV1> items)
+	public void setItems(final Set<RESTStringConstantCollectionItemV1> items)
 	{
 		this.items = items;
 	}
+
+    @Override
+    protected void addItem(final RESTStringConstantV1 item, final Integer state)
+    {
+        if (items == null)
+        {
+            this.items = new HashSet<RESTStringConstantCollectionItemV1>();
+        }
+        
+        items.add(new RESTStringConstantCollectionItemV1(item, state));
+    }
 }

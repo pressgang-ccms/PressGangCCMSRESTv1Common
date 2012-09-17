@@ -1,10 +1,11 @@
 package org.jboss.pressgangccms.rest.v1.components;
 
-import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
+import java.util.List;
+
 import org.jboss.pressgangccms.rest.v1.constants.RESTv1Constants;
-import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicStringV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicV1;
+import org.jboss.pressgangccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 import org.jboss.pressgangccms.utils.constants.CommonConstants;
 import org.jboss.pressgangccms.zanata.ZanataDetails;
 
@@ -12,7 +13,7 @@ import org.jboss.pressgangccms.zanata.ZanataDetails;
  * This component contains methods that can be applied against translated topics
  * @author Matthew Casperson
  */
-public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>
+public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTranslatedTopicV1>
 {
 	final RESTTranslatedTopicV1 source;
 	
@@ -115,15 +116,16 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 		RESTTranslatedTopicV1 relatedTopic = null;
 		if (source.getOutgoingRelationships() != null && source.getOutgoingRelationships().getItems() != null)
 		{
-			for (final RESTTranslatedTopicV1 topic : source.getOutgoingRelationships().getItems())
+		    final List<RESTTranslatedTopicV1> topics = source.getOutgoingRelationships().returnItems();
+			for (final RESTTranslatedTopicV1 topic : topics)
 			{
 				if (topic.getTopicId().equals(id)
-				/* Check that the translation is complete */
-				&& topic.getTranslationPercentage() >= 100
-				/*
-				 * Check that a related topic hasn't been set or the topics revision is higher then the current topic revision
-				 */
-				&& (relatedTopic == null || topic.getTopicRevision() > relatedTopic.getTopicRevision()))
+				        /* Check that the translation is complete */
+				        //&& topic.getTranslationPercentage() >= 100
+				        /*
+				         * Check that a related topic hasn't been set or the topics revision is higher then the current topic revision
+				         */
+				        && (relatedTopic == null || topic.getTopicRevision() > relatedTopic.getTopicRevision()))
 				{
 					relatedTopic = topic;
 				}
@@ -174,7 +176,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
         if (source.getTopic().getTranslatedTopics_OTM() != null && source.getTopic().getTranslatedTopics_OTM().getItems() != null)
         {
             final Integer topicRev = source.getTopicRevision();
-            for (final RESTTranslatedTopicV1 translatedTopic : source.getTopic().getTranslatedTopics_OTM().getItems())
+            final List<RESTTranslatedTopicV1> topics = source.getTopic().getTranslatedTopics_OTM().returnItems();
+            for (final RESTTranslatedTopicV1 translatedTopic : topics)
             {
                 if (translatedTopic.getLocale().equals(source.getTopic().getLocale()) &&
                         // Ensure that the topic revision is less than or equal to the source revision
@@ -203,7 +206,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 		if (source.getTopic().getTranslatedTopics_OTM() != null && source.getTopic().getTranslatedTopics_OTM().getItems() != null)
 		{
 		    final Integer topicRev = source.getTopicRevision();
-			for (final RESTTranslatedTopicV1 translatedTopic : source.getTopic().getTranslatedTopics_OTM().getItems())
+		    final List<RESTTranslatedTopicV1> topics = source.getTopic().getTranslatedTopics_OTM().returnItems();
+			for (final RESTTranslatedTopicV1 translatedTopic : topics)
 			{
 				if (translatedTopic.getLocale().equals(source.getTopic().getLocale()) &&
 				        // Ensure that the topic revision is less than or equal to the source revision
@@ -231,7 +235,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 		boolean baseTranslationExists = false;
 		if (source.getTopic().getTranslatedTopics_OTM() != null && source.getTopic().getTranslatedTopics_OTM().getItems() != null)
 		{
-			for (final RESTTranslatedTopicV1 translatedTopic : source.getTopic().getTranslatedTopics_OTM().getItems())
+		    final List<RESTTranslatedTopicV1> topics = source.getTopic().getTranslatedTopics_OTM().returnItems();
+			for (final RESTTranslatedTopicV1 translatedTopic : topics)
 			{
 				if (translatedTopic.getLocale().equals(source.getTopic().getLocale()))
 					baseTranslationExists = true;
@@ -251,7 +256,6 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	{
 		return returnRelatedTopicByID(source, id) != null;
 	}
-	
 
 	@Override
 	public String returnXrefPropertyOrId(final Integer propertyTagId)
@@ -261,7 +265,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	
 	static public String returnXrefPropertyOrId(final RESTTranslatedTopicV1 source, final Integer propertyTagId)
 	{
-		final RESTPropertyTagV1 propTag = returnProperty(source, propertyTagId);
+		final RESTAssignedPropertyTagV1 propTag = returnProperty(source, propertyTagId);
 		if (propTag != null)
 		{
 			return propTag.getValue();
@@ -324,7 +328,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	{	    
 	    if (source.getTranslatedTopicStrings_OTM() != null && source.getTranslatedTopicStrings_OTM().getItems() != null)
 	    {
-	        for (final RESTTranslatedTopicStringV1 translatedTopicString : source.getTranslatedTopicStrings_OTM().getItems())
+	        final List<RESTTranslatedTopicStringV1> translatedTopicStrings = source.getTranslatedTopicStrings_OTM().returnItems();
+	        for (final RESTTranslatedTopicStringV1 translatedTopicString : translatedTopicStrings)
 	        {
 	            if (translatedTopicString.getFuzzyTranslation())
 	            {

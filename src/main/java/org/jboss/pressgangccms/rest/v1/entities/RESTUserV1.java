@@ -2,9 +2,10 @@ package org.jboss.pressgangccms.rest.v1.entities;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTRoleCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTUserCollectionV1;
-import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTUserCollectionItemV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
 
-public class RESTUserV1 extends RESTBaseEntityV1<RESTUserV1, RESTUserCollectionV1>
+public class RESTUserV1 extends RESTBasePrimaryEntityV1<RESTUserV1, RESTUserCollectionV1, RESTUserCollectionItemV1>
 {
 	public static final String NAME_NAME = "name";
 	public static final String DESCRIPTION_NAME = "description";

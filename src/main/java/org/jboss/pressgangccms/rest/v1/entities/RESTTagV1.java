@@ -1,28 +1,26 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
-import org.jboss.pressgangccms.rest.v1.collections.RESTCategoryCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTProjectCollectionV1;
-import org.jboss.pressgangccms.rest.v1.collections.RESTPropertyTagCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
-import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityWithPropertiesV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTTagCollectionItemV1;
+import org.jboss.pressgangccms.rest.v1.collections.join.RESTCategoryTagCollectionV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.join.RESTTagCategoryV1;
 
-public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTagCollectionV1>
+public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RESTTagCollectionItemV1>
 {
-	public static final String NAME_NAME = "name";
-	public static final String DESCRIPTION_NAME = "description";
-	public static final String CATEGORIES_NAME = "categories";
-	public static final String PARENT_TAGS_NAME = "parentTags";
-	public static final String CHILD_TAGS_NAME = "childTags";
-	public static final String PROJECTS_NAME = "projects";
-	
-	protected String name = null;
-	protected String description = null;
-	protected RESTCategoryCollectionV1 categories = null;
-	protected RESTTagCollectionV1 parentTags = null;
-	protected RESTTagCollectionV1 childTags = null;
-	protected RESTProjectCollectionV1 projects = null;
 	/** A list of the Envers revision numbers */
 	private RESTTagCollectionV1 revisions = null;
+	
+	public RESTTagV1()
+	{
+	    
+	}
+	
+	public RESTTagV1(final RESTTagCategoryV1 tagCategory)
+    {
+        tagCategory.cloneInto(this, false);
+    }
 	
 	@Override
 	public RESTTagCollectionV1 getRevisions()
@@ -43,35 +41,8 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.name = this.name;
-		retValue.description = description;
-		
 		if (deepCopy)
 		{
-			if (this.categories != null)
-			{
-				retValue.categories = new RESTCategoryCollectionV1();
-				this.categories.cloneInto(retValue.categories, deepCopy);
-			}
-			
-			if (this.parentTags != null)
-			{
-				retValue.parentTags = new RESTTagCollectionV1();
-				this.parentTags.cloneInto(retValue.parentTags, deepCopy);
-			}
-			
-			if (this.childTags != null)
-			{
-				retValue.childTags = new RESTTagCollectionV1();
-				this.childTags.cloneInto(retValue.childTags, deepCopy);
-			}
-			
-			if (this.projects != null)
-			{
-				retValue.projects = new RESTProjectCollectionV1();
-				this.projects.cloneInto(retValue.projects, deepCopy);
-			}
-			
 			if (this.revisions != null)
 			{
 				retValue.revisions = new RESTTagCollectionV1();
@@ -80,115 +51,45 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 		}
 		else
 		{
-			retValue.categories = this.categories;
-			retValue.parentTags = this.parentTags;
-			retValue.childTags = this.childTags;
-			retValue.projects = this.projects;
 			retValue.revisions = this.revisions;
 		}
 		
 		return retValue;
 	}
 	
-	public void explicitSetProperties(final RESTPropertyTagCollectionV1 properties)
-	{
-		this.properties = properties;
-		setParameterToConfigured(PROPERTIES_NAME);
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(final String name)
-	{
-		this.name = name;
-	}
-	
 	public void explicitSetName(final String name)
-	{
-		this.name = name;
-		this.setParameterToConfigured(NAME_NAME);
-	}
-
-	public String getDescription()
-	{
-		return description;
-	}
-
-	public void setDescription(final String description)
-	{
-		this.description = description;
-	}
+    {
+        this.name = name;
+        this.setParameterToConfigured(NAME_NAME);
+    }
 	
 	public void explicitSetDescription(final String description)
-	{
-		this.description = description;
-		this.setParameterToConfigured(DESCRIPTION_NAME);
-	}
-
-	public RESTCategoryCollectionV1 getCategories()
-	{
-		return categories;
-	}
-
-	public void setCategories(final RESTCategoryCollectionV1 categories)
-	{
-		this.categories = categories;
-	}
+    {
+        this.description = description;
+        this.setParameterToConfigured(DESCRIPTION_NAME);
+    }
 	
-	public void explicitSetCategories(final RESTCategoryCollectionV1 categories)
-	{
-		this.categories = categories;
-		this.setParameterToConfigured(CATEGORIES_NAME);
-	}
-
-	public RESTTagCollectionV1 getParentTags()
-	{
-		return parentTags;
-	}
-
-	public void setParentTags(final RESTTagCollectionV1 parentTags)
-	{
-		this.parentTags = parentTags;
-	}
+	public void explicitSetCategories(final RESTCategoryTagCollectionV1 categories)
+    {
+        this.categories = categories;
+        this.setParameterToConfigured(CATEGORIES_NAME);
+    }
 	
 	public void explicitSetParentTags(final RESTTagCollectionV1 parentTags)
-	{
-		this.parentTags = parentTags;
-		this.setParameterToConfigured(PARENT_TAGS_NAME);
-	}
-
-	public RESTTagCollectionV1 getChildTags()
-	{
-		return childTags;
-	}
-
-	public void setChildTags(final RESTTagCollectionV1 childTags)
-	{
-		this.childTags = childTags;
-	}
+    {
+        this.parentTags = parentTags;
+        this.setParameterToConfigured(PARENT_TAGS_NAME);
+    }
 	
 	public void explicitSetChildTags(final RESTTagCollectionV1 childTags)
-	{
-		this.childTags = childTags;
-		this.setParameterToConfigured(CHILD_TAGS_NAME);
-	}
-	
-	public RESTProjectCollectionV1 getProjects()
-	{
-		return projects;
-	}
-
-	public void setProjects(final RESTProjectCollectionV1 projects)
-	{
-		this.projects = projects;
-	}
+    {
+        this.childTags = childTags;
+        this.setParameterToConfigured(CHILD_TAGS_NAME);
+    }
 	
 	public void explicitSetProjects(final RESTProjectCollectionV1 projects)
-	{
-		this.projects = projects;
-		this.setParameterToConfigured(PROJECTS_NAME);
-	}
+    {
+        this.projects = projects;
+        this.setParameterToConfigured(PROJECTS_NAME);
+    }
 }

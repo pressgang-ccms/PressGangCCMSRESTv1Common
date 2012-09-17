@@ -1,39 +1,46 @@
 package org.jboss.pressgangccms.rest.v1.entities.base;
 
-import org.jboss.pressgangccms.rest.v1.collections.RESTPropertyTagCollectionV1;
-import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
+import org.jboss.pressgangccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
 
-public abstract class RESTBaseEntityWithPropertiesV1<T extends RESTBaseEntityV1<T, U>, U extends BaseRestCollectionV1<T, U>> extends RESTBaseEntityV1<T, U>
+public abstract class RESTBaseEntityWithPropertiesV1<T extends RESTBaseEntityWithPropertiesV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>> extends RESTBasePrimaryEntityV1<T, U, V>
 {
-	public static final String PROPERTIES_NAME = "properties";
-	
-	protected RESTPropertyTagCollectionV1 properties = null;
-	
-	public void cloneInto(final RESTBaseEntityWithPropertiesV1<T, U> clone, final boolean deepCopy)
-	{
-		super.cloneInto(clone, deepCopy);
-		
-		if (deepCopy)
-		{
-			if (this.properties != null)
-			{
-				clone.properties = new RESTPropertyTagCollectionV1();
-				this.properties.cloneInto(clone.properties, deepCopy);
-			}
-		}
-		else
-		{
-			clone.properties = this.properties;
-		}
-	}
-	
-	public RESTPropertyTagCollectionV1 getProperties()
-	{
-		return properties;
-	}
-
-	public void setProperties(final RESTPropertyTagCollectionV1 properties)
-	{
-		this.properties = properties;
-	}
+    public static String PROPERTIES_NAME = "properties";
+    
+    private RESTAssignedPropertyTagCollectionV1 properties = null;
+    
+    public void cloneInto(final RESTBaseEntityWithPropertiesV1<?, ?, ?> clone, final boolean deepCopy)
+    {
+        super.cloneInto(clone, deepCopy);
+        
+        if (deepCopy)
+        {
+            if (this.properties != null)
+            {
+                clone.properties = new RESTAssignedPropertyTagCollectionV1();
+                this.properties.cloneInto(clone.properties, deepCopy);
+            }
+        }
+        else
+        {
+            clone.properties = this.properties;
+        }
+    }
+    
+    public RESTAssignedPropertyTagCollectionV1 getProperties()
+    {
+        return properties;
+    }
+    
+    public void setProperties(final RESTAssignedPropertyTagCollectionV1 properties)
+    {
+        this.properties = properties;
+    }
+    
+    public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties)
+    {
+        this.properties = properties;
+        this.setParameterToConfigured(PROPERTIES_NAME);
+    }
 }

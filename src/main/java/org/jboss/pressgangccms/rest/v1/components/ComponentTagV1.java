@@ -1,15 +1,18 @@
 package org.jboss.pressgangccms.rest.v1.components;
 
-import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
-import org.jboss.pressgangccms.rest.v1.entities.RESTCategoryV1;
+import java.util.List;
+
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTCategoryTagCollectionItemV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTProjectCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.join.RESTCategoryTagV1;
 
 /**
  * This component contains methods that can be applied against tags
  * @author Matthew Casperson
  */
-public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1<RESTTagV1, RESTTagCollectionV1>
+public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1<RESTTagV1>
 {
 	final RESTTagV1 source;
 	
@@ -28,13 +31,36 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1<REST
 	{
 		if (source.getCategories() != null && source.getCategories().getItems() != null)
 		{
-			for (final RESTCategoryV1 category : source.getCategories().getItems())
-				if (categoryId.equals(category.getId()) && !category.getRemoveItem())
+			for (final RESTCategoryTagCollectionItemV1 categoryItem : source.getCategories().getItems())
+			{
+			    final RESTCategoryTagV1 category = categoryItem.getItem();
+				if (category != null && categoryId.equals(category.getId()) && !categoryItem.returnIsRemoveItem())
 					return true;
+			}
 		}
 
 		return false;
 	}
+	
+	public boolean containedInCategory(final List<Integer> categoryIds)
+    {
+        return containedInCategory(source, categoryIds);
+    }
+
+	static public boolean containedInCategory(final RESTTagV1 source, final List<Integer> categoryIds)
+    {
+	    if (categoryIds == null) return false;
+	    
+	    for (final Integer categoryId : categoryIds)
+	    {
+	        if (containedInCategory(source, categoryId))
+	        {
+	            return true;
+	        }
+	    }
+	    
+	    return false;
+    }
 	
 	public boolean containedInProject(final Integer id)
 	{
@@ -45,33 +71,14 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1<REST
 	{
 		if (source.getProjects() != null && source.getProjects().getItems() != null)
 		{
-			for (final RESTProjectV1 project : source.getProjects().getItems())
-				if (id.equals(project.getId()) && !project.getRemoveItem())
+			for (final RESTProjectCollectionItemV1 projectItem : source.getProjects().getItems())
+			{
+			    final RESTProjectV1 project = projectItem.getItem();
+				if (id.equals(project.getId()) && !projectItem.returnIsRemoveItem())
 					return true;
+			}
 		}
 
 		return false;
 	}
-	
-	public Integer getSortForCategory(final Integer id)
-	{
-		return getSortForCategory(source, id);
-	}
-	
-	static public Integer getSortForCategory(final RESTTagV1 source, final Integer id)
-	{
-		if (source.getCategories() != null && source.getCategories().getItems() != null)
-		{
-			for (final RESTCategoryV1 category : source.getCategories().getItems())
-			{
-				if (category.getId().equals(id))
-					return category.getSort();
-			}
-		}
-		
-		return null;
-	}
-
-
-	
 }

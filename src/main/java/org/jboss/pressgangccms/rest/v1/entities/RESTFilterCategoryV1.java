@@ -1,9 +1,10 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTFilterCategoryCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTFilterCategoryCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
-public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1, RESTFilterCategoryCollectionV1>
+public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1, RESTFilterCategoryCollectionV1, RESTFilterCategoryCollectionItemV1>
 {
     public static final String CATEGORY_NAME = "category";
     public static final String PROJECT_NAME = "project";
@@ -128,11 +129,5 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
     public void setFilter(final RESTFilterV1 filter)
     {
         this.filter = filter;
-    }
-    
-    public void explicitSetFilter(final RESTFilterV1 filter)
-    {
-        this.filter = filter;
-        this.setParameterToConfigured(FILTER_NAME);
     }
 }

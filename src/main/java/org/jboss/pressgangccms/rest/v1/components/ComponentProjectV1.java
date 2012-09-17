@@ -1,5 +1,6 @@
 package org.jboss.pressgangccms.rest.v1.components;
 
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTTagCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 
@@ -23,9 +24,12 @@ public class ComponentProjectV1
 		
 		if (source.getTags() != null && source.getTags().getItems() != null)
 		{
-			for (final RESTTagV1 tag : source.getTags().getItems())
-				if (tagId == tag.getId() && !tag.getRemoveItem())
+			for (final RESTTagCollectionItemV1 tagItem : source.getTags().getItems())
+			{
+			    final RESTTagV1 tag = tagItem.getItem();
+				if (tag != null && tagId == tag.getId() && !tagItem.returnIsRemoveItem())
 					return true;
+			}
 		}
 
 		return false;

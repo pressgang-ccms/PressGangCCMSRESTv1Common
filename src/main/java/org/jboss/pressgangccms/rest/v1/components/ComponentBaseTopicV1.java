@@ -5,10 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
 
-import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
-import org.jboss.pressgangccms.rest.v1.entities.RESTCategoryV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
+import org.jboss.pressgangccms.rest.v1.entities.join.RESTCategoryTagV1;
 import org.jboss.pressgangccms.rest.v1.sort.TagV1NameComparator;
 import org.jboss.pressgangccms.utils.common.ExceptionUtilities;
 import org.jboss.pressgangccms.utils.common.XMLUtilities;
@@ -23,7 +22,8 @@ import org.xml.sax.SAXException;
  * This component contains methods that can be applied against all topic entities
  * @author Matthew Casperson
  */
-public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> extends ComponentBaseRESTEntityWithPropertiesV1<T, U>
+public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, ?, ?>>
+    extends ComponentBaseRESTEntityWithPropertiesV1<T>
 {
 	final T source;
 	
@@ -40,8 +40,8 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 	{
 		return returnXMLWithNewContainer(source, containerName);
 	}
-	
-	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> String returnXMLWithNewContainer(final T source, final String containerName)
+
+	static public <T extends RESTBaseTopicV1<T, ?, ?>> String returnXMLWithNewContainer(final T source, final String containerName)
 	{
 		assert containerName != null : "The containerName parameter can not be null";
 
@@ -74,7 +74,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 
 	}
 
-	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> String returnXMLWithNoContainer(final T source, final Boolean includeTitle)
+	static public <T extends RESTBaseTopicV1<T, ?, ?>> String returnXMLWithNoContainer(final T source, final Boolean includeTitle)
 	{
 		Document document = null;
 		try
@@ -120,8 +120,8 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 	{
 		return getCommaSeparatedTagList(source);
 	}
-	
-	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> String getCommaSeparatedTagList(final T source)
+
+	static public <T extends RESTBaseTopicV1<T, ?, ?>> String getCommaSeparatedTagList(final T source)
 	{
 		final TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> tags = getCategoriesMappedToTags(source);
 
@@ -152,17 +152,18 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 		return tagsList;
 	}
 	
-	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> getCategoriesMappedToTags(final T source)
+	static public <T extends RESTBaseTopicV1<T, ?, ?>> TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> getCategoriesMappedToTags(final T source)
 	{
 		final TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> tags = new TreeMap<NameIDSortMap, ArrayList<RESTTagV1>>();
 
 		if (source.getTags() != null && source.getTags().getItems() != null)
 		{
-			for (final RESTTagV1 tag : source.getTags().getItems())
+		    final List<RESTTagV1> tagItems = source.getTags().returnItems();
+			for (final RESTTagV1 tag : tagItems)
 			{
 				if (tag.getCategories() != null && tag.getCategories().getItems() != null)
 				{
-					final List<RESTCategoryV1> categories = tag.getCategories().getItems();
+					final List<RESTCategoryTagV1> categories = tag.getCategories().returnItems();
 
 					if (categories.size() == 0)
 					{
@@ -175,9 +176,9 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 					}
 					else
 					{
-						for (final RESTCategoryV1 category : categories)
+						for (final RESTCategoryTagV1 category : categories)
 						{
-							final NameIDSortMap categoryDetails = new NameIDSortMap(category.getName(), category.getId(), category.getSort() == null ? 0 : category.getSort());
+							final NameIDSortMap categoryDetails = new NameIDSortMap(category.getName(), category.getId(), category.getRelationshipSort() == null ? 0 : category.getRelationshipSort());
 
 							if (!tags.containsKey(categoryDetails))
 								tags.put(categoryDetails, new ArrayList<RESTTagV1>());
@@ -197,7 +198,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 		return returnTagsInCategoriesByID(source, categories);
 	}
 	
-	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> List<RESTTagV1> returnTagsInCategoriesByID(final T source, final List<Integer> categories)
+	static public <T extends RESTBaseTopicV1<T, ?, ?>> List<RESTTagV1> returnTagsInCategoriesByID(final T source, final List<Integer> categories)
 	{
 		final List<RESTTagV1> retValue = new ArrayList<RESTTagV1>();
 
@@ -205,7 +206,8 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 		{
 			for (final Integer categoryId : categories)
 			{
-				for (final RESTTagV1 tag : source.getTags().getItems())
+			    final List<RESTTagV1> tags = source.getTags().returnItems();
+				for (final RESTTagV1 tag : tags)
 				{
 					if (ComponentTagV1.containedInCategory(tag, categoryId))
 					{
@@ -223,9 +225,9 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 	{
 		int retValue = 0;
 
-		if (source.getTags() != null && source.getTags().getItems() != null)
+		if (source.getTags() != null && source.getTags().returnItems() != null)
 		{
-			for (final RESTTagV1 tag : source.getTags().getItems())
+			for (final RESTTagV1 tag : source.getTags().returnItems())
 			{
 				if (ComponentTagV1.containedInCategory(tag, categoryId))
 					++retValue;
@@ -240,11 +242,12 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 		return hasTag(source, tagID);
 	}
 	
-	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> boolean hasTag(final RESTBaseTopicV1<T, U> source, final Integer tagID)
+	static public <T extends RESTBaseTopicV1<T, ?, ?>> boolean hasTag(final T source, final Integer tagID)
 	{
 		if (source.getTags() != null && source.getTags().getItems() != null)
 		{
-			for (final RESTTagV1 tag : source.getTags().getItems())
+		    final List<RESTTagV1> tags = source.getTags().returnItems();
+			for (final RESTTagV1 tag : tags)
 			{
 				if (tag.getId().equals(tagID))
 					return true;
@@ -259,7 +262,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 		return returnIsDummyTopic(source);
 	}
 	
-	static public <T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> boolean returnIsDummyTopic(final T source)
+	static public <T extends RESTBaseTopicV1<T, ?, ?>> boolean returnIsDummyTopic(final T source)
 	{
 		return source.getId() == null || source.getId() < 0;
 	}
@@ -268,7 +271,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U ex
 	public abstract String returnBugzillaBuildId();
 	public abstract String returnSkynetURL();
 	public abstract String returnInternalURL();
-	public abstract RESTBaseTopicV1<T, U> returnRelatedTopicByID(final Integer id);
+	public abstract T returnRelatedTopicByID(final Integer id);
 	public abstract String returnErrorXRefID();
 	public abstract String returnXrefPropertyOrId(final Integer propertyTagId);
 	public abstract String returnXRefID();

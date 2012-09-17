@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicStringCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTTranslatedTopicCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
 
 /**
@@ -13,7 +14,7 @@ import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
  * 
  * @author Matthew Casperson
  */
-public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1>
+public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1, RESTTranslatedTopicCollectionItemV1>
 {
 	public static final String TOPICID_NAME = "topicId";
 	public static final String TOPICREVISION_NAME = "topicRevision";

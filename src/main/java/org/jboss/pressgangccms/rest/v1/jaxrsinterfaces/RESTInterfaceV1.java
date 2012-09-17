@@ -1,11 +1,9 @@
 package org.jboss.pressgangccms.rest.v1.jaxrsinterfaces;
 
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -15,12 +13,9 @@ import javax.ws.rs.core.PathSegment;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTBlobConstantCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTCategoryCollectionV1;
-import org.jboss.pressgangccms.rest.v1.collections.RESTFilterCategoryCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTFilterCollectionV1;
-import org.jboss.pressgangccms.rest.v1.collections.RESTFilterFieldCollectionV1;
-import org.jboss.pressgangccms.rest.v1.collections.RESTFilterLocaleCollectionV1;
-import org.jboss.pressgangccms.rest.v1.collections.RESTFilterTagCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTImageCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.RESTIntegerConstantCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTProjectCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTPropertyTagCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTRoleCollectionV1;
@@ -28,23 +23,18 @@ import org.jboss.pressgangccms.rest.v1.collections.RESTStringConstantCollectionV
 import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
-import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicStringCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTUserCollectionV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTBlobConstantV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTCategoryV1;
-import org.jboss.pressgangccms.rest.v1.entities.RESTFilterCategoryV1;
-import org.jboss.pressgangccms.rest.v1.entities.RESTFilterFieldV1;
-import org.jboss.pressgangccms.rest.v1.entities.RESTFilterLocaleV1;
-import org.jboss.pressgangccms.rest.v1.entities.RESTFilterTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTImageV1;
+import org.jboss.pressgangccms.rest.v1.entities.RESTIntegerConstantV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTRoleV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTStringConstantV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTopicV1;
-import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicStringV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTUserV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTLogDetailsV1;
@@ -70,7 +60,7 @@ public interface RESTInterfaceV1
 	 * @param enalbed
 	 *            true if rendering to to be enabled, false otherwise
 	 */
-	@PUT
+	@POST
 	@Path("/settings/rerenderTopic")
 	@Consumes({ "*" })
 	public void setRerenderTopic(@QueryParam("enabled") final Boolean enalbed);
@@ -86,241 +76,6 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public ExpandDataTrunk getJSONExpandTrunkExample() throws InvalidParameterException, InternalProcessingException;
 
-	/* TRANSLATEDTOPICSTING FUNCTIONS */
-	/**
-	 * @param id
-	 *            The RESTTranslatedTopicStringV1 ID
-	 * @param expand
-	 *            The expansion options
-	 * @return A JSON representation of the requested
-	 *         RESTTranslatedTopicStringV1 object
-	 * @HTTP 400 if the id is not valid
-	 * @HTTP 500 if there was an unexpected internal error
-	 */
-	@GET
-	@Path("/translatedtopicstring/get/json/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes({ "*" })
-	public RESTTranslatedTopicStringV1 getJSONTranslatedTopicString(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-	
-	@GET
-	@Path("/translatedtopicstring/get/jsonp/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes({ "*" })
-	public String getJSONPTranslatedTopicString(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-	/**
-	 * @param expand
-	 * @return JSON representations of all the RESTTranslatedTopicStringV1
-	 *         entities that could be found in the database
-	 * @HTTP 500 if there was an unexpected internal error
-	 */
-	@GET
-	@Path("/translatedtopicstrings/get/json/all")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes({ "*" })
-	public RESTTranslatedTopicStringCollectionV1 getJSONTranslatedTopicStrings(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-	
-	@GET
-	@Path("/translatedtopicstrings/get/jsonp/all")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes({ "*" })
-	public String getJSONPTranslatedTopicStrings(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-	/**
-	 * Updates a single RESTTranslatedTopicStringV1 entity.
-	 * 
-	 * @param expand
-	 *            The expansion options
-	 * @param dataObject
-	 *            The new details of the RESTTranslatedTopicStringV1
-	 *            entity. The id property of the entity needs to be set. In
-	 *            addition to setting the properties of the
-	 *            RESTTranslatedTopicStringV1 entity, the
-	 *            configuredParameters variable needs to also needs to reflect
-	 *            those properties that are to be updated. This is to
-	 *            distinguish between an unset property (which is ignored), and
-	 *            a property that might specifically be set to null.
-	 * @return A JSON representation of the RESTTranslatedTopicStringV1
-	 *         after is updated
-	 * @HTTP 400 if the id is not valid
-	 * @HTTP 500 if there was an unexpected internal error
-	 */
-	@PUT
-	@Path("/translatedtopicstring/put/json")
-	@Consumes({ MediaType.APPLICATION_JSON })
-	@Produces(MediaType.APPLICATION_JSON)
-	public RESTTranslatedTopicStringV1 updateJSONTranslatedTopicString(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringV1 dataObject) throws InvalidParameterException, InternalProcessingException;
-	
-	@PUT
-    @Path("/translatedtopicstring/put/json")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedTopicStringV1 updateJSONTranslatedTopicString(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-	
-	@PUT
-	@Path("/translatedtopicstring/put/jsonp")
-	@Consumes({ MediaType.APPLICATION_JSON })
-	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPTranslatedTopicString(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-	@PUT
-    @Path("/translatedtopicstring/put/jsonp")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTranslatedTopicString(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-	
-	@POST
-    @Path("/translatedtopicstring/post/json")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedTopicStringV1 createJSONTranslatedTopicString(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringV1 dataObject) throws InvalidParameterException, InternalProcessingException;
-    
-    @POST
-    @Path("/translatedtopicstring/post/json")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedTopicStringV1 createJSONTranslatedTopicString(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-    
-    @POST
-    @Path("/translatedtopicstring/post/jsonp")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public String createJSONPTranslatedTopicString(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/translatedtopicstring/post/jsonp")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public String createJSONPTranslatedTopicString(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-	/**
-	 * Updates a collection of RESTTranslatedTopicStringV1 entities.
-	 * 
-	 * @param expand
-	 *            The expansion options
-	 * @param dataObjects
-	 *            A collection of RESTTranslatedTopicStringV1 entities,
-	 *            each with their id property set, each with the new properties
-	 *            to be saved, and each with their configuredParameters property
-	 *            set.
-	 * @return The details of the RESTTranslatedTopicStringV1 entities after they have been updated.
-	 * @HTTP 400 if the id is not valid
-	 * @HTTP 500 if there was an unexpected internal error
-	 */
-	@PUT
-	@Path("/translatedtopicstrings/put/json")
-	@Consumes({ MediaType.APPLICATION_JSON })
-	@Produces(MediaType.APPLICATION_JSON)
-	public RESTTranslatedTopicStringCollectionV1 updateJSONTranslatedTopicStrings(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
-	
-	@PUT
-    @Path("/translatedtopicstrings/put/json")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedTopicStringCollectionV1 updateJSONTranslatedTopicStrings(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-    
-    @PUT
-    @Path("/translatedtopicstrings/put/jsonp")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTranslatedTopicStrings(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-	
-	@PUT
-	@Path("/translatedtopicstrings/put/jsonp")
-	@Consumes({ MediaType.APPLICATION_JSON })
-	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPTranslatedTopicStrings(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-	@POST
-    @Path("/translatedtopicstrings/post/json")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedTopicStringCollectionV1 createJSONTranslatedTopicStrings(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
-    
-    @POST
-    @Path("/translatedtopicstrings/post/json")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedTopicStringCollectionV1 createJSONTranslatedTopicStrings(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-    
-    @POST
-    @Path("/translatedtopicstrings/post/jsonp")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public String createJSONPTranslatedTopicStrings(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-    
-    @POST
-    @Path("/translatedtopicstrings/post/jsonp")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    @Produces(MediaType.APPLICATION_JSON)
-    public String createJSONPTranslatedTopicStrings(@QueryParam("expand") final String expand, final RESTTranslatedTopicStringCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-	
-	/**
-	 * Deletes a single RESTTranslatedTopicStringV1 entity. 
-	 * @param id The id of the entity to be deleted.
-	 * @param expand The expansion options.
-	 * @return The details of the deleted RESTTranslatedTopicStringV1 entity.
-	 * @HTTP 400 if the id is not valid
-	 * @HTTP 500 if there was an unexpected internal error
-	 */
-	@DELETE
-	@Path("/translatedtopicstring/delete/json/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes({ "*" })
-	public RESTTranslatedTopicStringV1 deleteJSONTranslatedTopicString(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-	
-	@DELETE
-    @Path("/translatedtopicstring/delete/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTTranslatedTopicStringV1 deleteJSONTranslatedTopicString(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-    
-    @DELETE
-    @Path("/translatedtopicstring/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPTranslatedTopicString(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-	
-	@DELETE
-	@Path("/translatedtopicstring/delete/jsonp/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes({ "*" })
-	public String deleteJSONPTranslatedTopicString(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-	/**
-	 * Deletes a collection of RESTTranslatedTopicStringV1 entities. 
-	 * @param ids A semicolon separated list of ids to be deleted, starting with the prefix "ids;" e.g. ids;1;13;652
-	 * @param expand The expansion options
-	 * @return The details of the deleted RESTTranslatedTopicStringV1 entities. 
-	 * @HTTP 400 if any of the ids are not valid
-	 * @HTTP 500 if there was an unexpected internal error
-	 */
-	@DELETE
-	@Path("/translatedtopicstrings/delete/json/{ids}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes({ "*" })
-	public RESTTranslatedTopicStringCollectionV1 deleteJSONTranslatedTopicStrings(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-	
-	@DELETE
-    @Path("/translatedtopicstrings/delete/json/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTTranslatedTopicStringCollectionV1 deleteJSONTranslatedTopicStrings(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-    
-    @DELETE
-    @Path("/translatedtopicstrings/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPTranslatedTopicStrings(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-	
-	@DELETE
-	@Path("/translatedtopicstrings/delete/jsonp/{ids}")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes({ "*" })
-	public String deleteJSONPTranslatedTopicStrings(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-	
 	/* USER FUNCTIONS */
 	/*		JSONP FUNCTIONS */
 	@GET
@@ -341,73 +96,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPUsersWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/user/put/jsonp")
+	@GET
+	@Path("/user/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPUser(@QueryParam("expand") final String expand, final RESTUserV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPUser(@QueryParam("expand") final String expand, @QueryParam("data") final RESTUserV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/user/put/jsonp")
+	@GET
+    @Path("/user/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPUser(@QueryParam("expand") final String expand, final RESTUserV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPUser(@QueryParam("expand") final String expand, @QueryParam("data") final RESTUserV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/users/put/jsonp")
+    @GET
+    @Path("/users/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPUsers(@QueryParam("expand") final String expand, final RESTUserCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPUsers(@QueryParam("expand") final String expand, @QueryParam("data") final RESTUserCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/users/put/jsonp")
+	@GET
+	@Path("/users/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPUsers(@QueryParam("expand") final String expand, final RESTUserCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPUsers(@QueryParam("expand") final String expand, @QueryParam("data") final RESTUserCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/user/post/jsonp")
+	@GET
+	@Path("/user/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPUser(@QueryParam("expand") final String expand, final RESTUserV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPUser(@QueryParam("expand") final String expand, @QueryParam("data") final RESTUserV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/user/post/jsonp")
+	@GET
+    @Path("/user/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPUser(@QueryParam("expand") final String expand, final RESTUserV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPUser(@QueryParam("expand") final String expand, @QueryParam("data") final RESTUserV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/users/post/jsonp")
+    @GET
+    @Path("/users/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPUsers(@QueryParam("expand") final String expand, final RESTUserCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPUsers(@QueryParam("expand") final String expand, @QueryParam("data") final RESTUserCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@POST
-	@Path("/users/post/jsonp")
+	@GET
+	@Path("/users/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPUsers(@QueryParam("expand") final String expand, final RESTUserCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPUsers(@QueryParam("expand") final String expand, @QueryParam("data") final RESTUserCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/user/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPUser(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+    @GET
     @Path("/user/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPUser(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
     
-    @DELETE
+    @GET
     @Path("/users/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPUsers(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@DELETE
+	@GET
 	@Path("/users/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -432,50 +187,50 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTUserCollectionV1 getJSONUsersWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/user/put/json")
+	@POST
+	@Path("/user/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTUserV1 updateJSONUser(@QueryParam("expand") final String expand, final RESTUserV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/user/put/json")
+	@POST
+    @Path("/user/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTUserV1 updateJSONUser(@QueryParam("expand") final String expand, final RESTUserV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/users/put/json")
+    @POST
+    @Path("/users/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTUserCollectionV1 updateJSONUsers(@QueryParam("expand") final String expand, final RESTUserCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/users/put/json")
+	@POST
+	@Path("/users/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTUserCollectionV1 updateJSONUsers(@QueryParam("expand") final String expand, final RESTUserCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/user/post/json")
+	@Path("/user/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTUserV1 createJSONUser(@QueryParam("expand") final String expand, final RESTUserV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/user/post/json")
+    @Path("/user/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTUserV1 createJSONUser(@QueryParam("expand") final String expand, final RESTUserV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/users/post/json")
+    @Path("/users/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTUserCollectionV1 createJSONUsers(@QueryParam("expand") final String expand, final RESTUserCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
 	@POST
-	@Path("/users/post/json")
+	@Path("/users/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTUserCollectionV1 createJSONUsers(@QueryParam("expand") final String expand, final RESTUserCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -524,73 +279,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPStringConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/stringconstant/put/jsonp")
+	@GET
+	@Path("/stringconstant/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPStringConstant(@QueryParam("expand") final String expand, final RESTStringConstantV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPStringConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTStringConstantV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/stringconstant/put/jsonp")
+	@GET
+    @Path("/stringconstant/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPStringConstant(@QueryParam("expand") final String expand, final RESTStringConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPStringConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTStringConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/stringconstants/put/jsonp")
+	@GET
+    @Path("/stringconstants/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPStringConstants(@QueryParam("expand") final String expand, final RESTStringConstantCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPStringConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTStringConstantCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/stringconstants/put/jsonp")
+    @GET
+	@Path("/stringconstants/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPStringConstants(@QueryParam("expand") final String expand, final RESTStringConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPStringConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTStringConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/stringconstant/post/jsonp")
+	@GET
+	@Path("/stringconstant/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPStringConstant(@QueryParam("expand") final String expand, final RESTStringConstantV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPStringConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTStringConstantV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/stringconstant/post/jsonp")
+	@GET
+    @Path("/stringconstant/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPStringConstant(@QueryParam("expand") final String expand, final RESTStringConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPStringConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTStringConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/stringconstants/post/jsonp")
+	@GET
+    @Path("/stringconstants/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPStringConstants(@QueryParam("expand") final String expand, final RESTStringConstantCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPStringConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTStringConstantCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/stringconstants/post/jsonp")
+    @GET
+	@Path("/stringconstants/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPStringConstants(@QueryParam("expand") final String expand, final RESTStringConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPStringConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTStringConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/stringconstant/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPStringConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
     @Path("/stringconstant/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPStringConstant(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
     @Path("/stringconstants/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPStringConstants(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/stringconstants/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -615,50 +370,50 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTStringConstantCollectionV1 getJSONStringConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/stringconstant/put/json")
+	@POST
+	@Path("/stringconstant/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTStringConstantV1 updateJSONStringConstant(@QueryParam("expand") final String expand, final RESTStringConstantV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/stringconstant/put/json")
+	@POST
+    @Path("/stringconstant/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTStringConstantV1 updateJSONStringConstant(@QueryParam("expand") final String expand, final RESTStringConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/stringconstants/put/json")
+    @POST
+    @Path("/stringconstants/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTStringConstantCollectionV1 updateJSONStringConstants(@QueryParam("expand") final String expand, final RESTStringConstantCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/stringconstants/put/json")
+	@POST
+	@Path("/stringconstants/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTStringConstantCollectionV1 updateJSONStringConstants(@QueryParam("expand") final String expand, final RESTStringConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/stringconstant/post/json")
+	@Path("/stringconstant/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTStringConstantV1 createJSONStringConstant(@QueryParam("expand") final String expand, final RESTStringConstantV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/stringconstant/post/json")
+    @Path("/stringconstant/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTStringConstantV1 createJSONStringConstant(@QueryParam("expand") final String expand, final RESTStringConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/stringconstants/post/json")
+    @Path("/stringconstants/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTStringConstantCollectionV1 createJSONStringConstants(@QueryParam("expand") final String expand, final RESTStringConstantCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/stringconstants/post/json")
+	@Path("/stringconstants/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTStringConstantCollectionV1 createJSONStringConstants(@QueryParam("expand") final String expand, final RESTStringConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -707,73 +462,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPTranslatedTopicsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/translatedtopic/put/jsonp")
+	@GET
+	@Path("/translatedtopic/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPTranslatedTopic(@QueryParam("expand") final String expand, final RESTTranslatedTopicV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPTranslatedTopic(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTranslatedTopicV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/translatedtopic/put/jsonp")
+	@GET
+    @Path("/translatedtopic/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTranslatedTopic(@QueryParam("expand") final String expand, final RESTTranslatedTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPTranslatedTopic(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTranslatedTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/translatedtopics/put/jsonp")
+	@GET
+    @Path("/translatedtopics/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTranslatedTopics(@QueryParam("expand") final String expand, final RESTTranslatedTopicCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPTranslatedTopics(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTranslatedTopicCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/translatedtopics/put/jsonp")
+	@GET
+	@Path("/translatedtopics/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPTranslatedTopics(@QueryParam("expand") final String expand, final RESTTranslatedTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPTranslatedTopics(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTranslatedTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/translatedtopic/post/jsonp")
+	@GET
+	@Path("/translatedtopic/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPTranslatedTopic(@QueryParam("expand") final String expand, final RESTTranslatedTopicV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPTranslatedTopic(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTranslatedTopicV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/translatedtopic/post/jsonp")
+	@GET
+    @Path("/translatedtopic/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPTranslatedTopic(@QueryParam("expand") final String expand, final RESTTranslatedTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPTranslatedTopic(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTranslatedTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/translatedtopics/post/jsonp")
+	@GET
+    @Path("/translatedtopics/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPTranslatedTopics(@QueryParam("expand") final String expand, final RESTTranslatedTopicCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPTranslatedTopics(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTranslatedTopicCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@POST
-	@Path("/translatedtopics/post/jsonp")
+	@GET
+	@Path("/translatedtopics/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPTranslatedTopics(@QueryParam("expand") final String expand, final RESTTranslatedTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPTranslatedTopics(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTranslatedTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/translatedtopic/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPTranslatedTopic(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
     @Path("/translatedtopic/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPTranslatedTopic(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
     @Path("/translatedtopics/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPTranslatedTopics(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@DELETE
+	@GET
 	@Path("/translatedtopics/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -798,50 +553,50 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public RESTTranslatedTopicCollectionV1 getJSONTranslatedTopics(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/translatedtopic/put/json")
+	@POST
+	@Path("/translatedtopic/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTTranslatedTopicV1 updateJSONTranslatedTopic(@QueryParam("expand") final String expand, final RESTTranslatedTopicV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/translatedtopic/put/json")
+	@POST
+    @Path("/translatedtopic/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTTranslatedTopicV1 updateJSONTranslatedTopic(@QueryParam("expand") final String expand, final RESTTranslatedTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/translatedtopics/put/json")
+    @POST
+    @Path("/translatedtopics/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTTranslatedTopicCollectionV1 updateJSONTranslatedTopics(@QueryParam("expand") final String expand, final RESTTranslatedTopicCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/translatedtopics/put/json")
+	@POST
+	@Path("/translatedtopics/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTTranslatedTopicCollectionV1 updateJSONTranslatedTopics(@QueryParam("expand") final String expand, final RESTTranslatedTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/translatedtopic/post/json")
+	@Path("/translatedtopic/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTTranslatedTopicV1 createJSONTranslatedTopic(@QueryParam("expand") final String expand, final RESTTranslatedTopicV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/translatedtopic/post/json")
+    @Path("/translatedtopic/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTTranslatedTopicV1 createJSONTranslatedTopic(@QueryParam("expand") final String expand, final RESTTranslatedTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/translatedtopics/post/json")
+    @Path("/translatedtopics/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTTranslatedTopicCollectionV1 createJSONTranslatedTopics(@QueryParam("expand") final String expand, final RESTTranslatedTopicCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
 	@POST
-	@Path("/translatedtopics/post/json")
+	@Path("/translatedtopics/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTTranslatedTopicCollectionV1 createJSONTranslatedTopics(@QueryParam("expand") final String expand, final RESTTranslatedTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -890,73 +645,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPRolesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/role/put/jsonp")
+	@GET
+	@Path("/role/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPRole(@QueryParam("expand") final String expand, final RESTRoleV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPRole(@QueryParam("expand") final String expand, @QueryParam("data") final RESTRoleV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/role/put/jsonp")
+	@GET
+    @Path("/role/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPRole(@QueryParam("expand") final String expand, final RESTRoleV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPRole(@QueryParam("expand") final String expand, @QueryParam("data") final RESTRoleV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/roles/put/jsonp")
+	@GET
+    @Path("/roles/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPRoles(@QueryParam("expand") final String expand, final RESTRoleCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPRoles(@QueryParam("expand") final String expand, @QueryParam("data") final RESTRoleCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/roles/put/jsonp")
+    @GET
+	@Path("/roles/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPRoles(@QueryParam("expand") final String expand, final RESTRoleCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPRoles(@QueryParam("expand") final String expand, @QueryParam("data") final RESTRoleCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/role/post/jsonp")
+	@GET
+	@Path("/role/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPRole(@QueryParam("expand") final String expand, final RESTRoleV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPRole(@QueryParam("expand") final String expand, @QueryParam("data") final RESTRoleV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/role/post/jsonp")
+	@GET
+    @Path("/role/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPRole(@QueryParam("expand") final String expand, final RESTRoleV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPRole(@QueryParam("expand") final String expand, @QueryParam("data") final RESTRoleV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/roles/post/jsonp")
+	@GET
+    @Path("/roles/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPRoles(@QueryParam("expand") final String expand, final RESTRoleCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPRoles(@QueryParam("expand") final String expand, @QueryParam("data") final RESTRoleCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@POST
-	@Path("/roles/post/jsonp")
+    @GET
+	@Path("/roles/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPRoles(@QueryParam("expand") final String expand, final RESTRoleCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPRoles(@QueryParam("expand") final String expand, @QueryParam("data") final RESTRoleCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/role/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPRole(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
     @Path("/role/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPRole(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
     @Path("/roles/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPRoles(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/roles/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -981,50 +736,50 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTRoleCollectionV1 getJSONRolesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/role/put/json")
+	@POST
+	@Path("/role/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTRoleV1 updateJSONRole(@QueryParam("expand") final String expand, final RESTRoleV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/role/put/json")
+	@POST
+    @Path("/role/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTRoleV1 updateJSONRole(@QueryParam("expand") final String expand, final RESTRoleV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/roles/put/json")
+    @POST
+    @Path("/roles/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTRoleCollectionV1 updateJSONRoles(@QueryParam("expand") final String expand, final RESTRoleCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/roles/put/json")
+	@POST
+	@Path("/roles/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTRoleCollectionV1 updateJSONRoles(@QueryParam("expand") final String expand, final RESTRoleCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/role/post/json")
+	@Path("/role/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTRoleV1 createJSONRole(@QueryParam("expand") final String expand, final RESTRoleV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/role/post/json")
+    @Path("/role/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTRoleV1 createJSONRole(@QueryParam("expand") final String expand, final RESTRoleV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/roles/post/json")
+    @Path("/roles/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTRoleCollectionV1 createJSONRoles(@QueryParam("expand") final String expand, final RESTRoleCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
 	@POST
-	@Path("/roles/post/json")
+	@Path("/roles/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTRoleCollectionV1 createJSONRoles(@QueryParam("expand") final String expand, final RESTRoleCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -1073,73 +828,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPPropertyTagsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/propertytag/put/jsonp")
+	@GET
+	@Path("/propertytag/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPPropertyTag(@QueryParam("expand") final String expand, final RESTPropertyTagV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPPropertyTag(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyTagV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/propertytag/put/jsonp")
+	@GET
+    @Path("/propertytag/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPPropertyTag(@QueryParam("expand") final String expand, final RESTPropertyTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPPropertyTag(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/propertytags/put/jsonp")
+	@GET
+    @Path("/propertytags/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPPropertyTags(@QueryParam("expand") final String expand, final RESTPropertyTagCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPPropertyTags(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyTagCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/propertytags/put/jsonp")
+    @GET
+	@Path("/propertytags/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPPropertyTags(@QueryParam("expand") final String expand, final RESTPropertyTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPPropertyTags(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/propertytag/post/jsonp")
+    @GET
+	@Path("/propertytag/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPPropertyTag(@QueryParam("expand") final String expand, final RESTPropertyTagV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPPropertyTag(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyTagV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/propertytag/post/jsonp")
+    @GET
+    @Path("/propertytag/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPPropertyTag(@QueryParam("expand") final String expand, final RESTPropertyTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPPropertyTag(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/propertytags/post/jsonp")
+    @GET
+    @Path("/propertytags/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPPropertyTags(@QueryParam("expand") final String expand, final RESTPropertyTagCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPPropertyTags(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyTagCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@POST
-	@Path("/propertytags/post/jsonp")
+    @GET
+	@Path("/propertytags/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPPropertyTags(@QueryParam("expand") final String expand, final RESTPropertyTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPPropertyTags(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+    @GET
 	@Path("/propertytag/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPPropertyTag(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+    @GET
     @Path("/propertytag/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPPropertyTag(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+    @GET
     @Path("/propertytags/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPPropertyTags(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@DELETE
+    @GET
 	@Path("/propertytags/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -1164,50 +919,50 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTPropertyTagCollectionV1 getJSONPropertyTagsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/propertytag/put/json")
+	@POST
+	@Path("/propertytag/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTPropertyTagV1 updateJSONPropertyTag(@QueryParam("expand") final String expand, final RESTPropertyTagV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/propertytag/put/json")
+	@POST
+    @Path("/propertytag/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTPropertyTagV1 updateJSONPropertyTag(@QueryParam("expand") final String expand, final RESTPropertyTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/propertytags/put/json")
+    @POST
+    @Path("/propertytags/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTPropertyTagCollectionV1 updateJSONPropertyTags(@QueryParam("expand") final String expand, final RESTPropertyTagCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/propertytags/put/json")
+	@POST
+	@Path("/propertytags/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTPropertyTagCollectionV1 updateJSONPropertyTags(@QueryParam("expand") final String expand, final RESTPropertyTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/propertytag/post/json")
+	@Path("/propertytag/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTPropertyTagV1 createJSONPropertyTag(@QueryParam("expand") final String expand, final RESTPropertyTagV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/propertytag/post/json")
+    @Path("/propertytag/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTPropertyTagV1 createJSONPropertyTag(@QueryParam("expand") final String expand, final RESTPropertyTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/propertytags/post/json")
+    @Path("/propertytags/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTPropertyTagCollectionV1 createJSONPropertyTags(@QueryParam("expand") final String expand, final RESTPropertyTagCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
 	@POST
-	@Path("/propertytags/post/json")
+	@Path("/propertytags/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTPropertyTagCollectionV1 createJSONPropertyTags(@QueryParam("expand") final String expand, final RESTPropertyTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -1256,73 +1011,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPBlobConstants(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/blobconstant/put/jsonp")
+	@GET
+	@Path("/blobconstant/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPBlobConstant(@QueryParam("expand") final String expand, final RESTBlobConstantV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPBlobConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTBlobConstantV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/blobconstant/put/jsonp")
+	@GET
+    @Path("/blobconstant/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPBlobConstant(@QueryParam("expand") final String expand, final RESTBlobConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPBlobConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTBlobConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/blobconstants/put/jsonp")
+	@GET
+    @Path("/blobconstants/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPBlobConstants(@QueryParam("expand") final String expand, final RESTBlobConstantCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPBlobConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTBlobConstantCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/blobconstants/put/jsonp")
+    @GET
+	@Path("/blobconstants/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPBlobConstants(@QueryParam("expand") final String expand, final RESTBlobConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPBlobConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTBlobConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/blobconstant/post/jsonp")
+	@GET
+	@Path("/blobconstant/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPBlobConstant(@QueryParam("expand") final String expand, final RESTBlobConstantV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPBlobConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTBlobConstantV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/blobconstant/post/jsonp")
+	@GET
+    @Path("/blobconstant/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPBlobConstant(@QueryParam("expand") final String expand, final RESTBlobConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPBlobConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTBlobConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/blobconstants/post/jsonp")
+	@GET
+    @Path("/blobconstants/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPBlobConstants(@QueryParam("expand") final String expand, final RESTBlobConstantCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPBlobConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTBlobConstantCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@POST
-	@Path("/blobconstants/post/jsonp")
+    @GET
+	@Path("/blobconstants/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPBlobConstants(@QueryParam("expand") final String expand, final RESTBlobConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPBlobConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTBlobConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/blobconstant/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPBlobConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
     @Path("/blobconstant/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPBlobConstant(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
     @Path("/blobconstants/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPBlobConstants(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/blobconstants/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -1347,50 +1102,50 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTBlobConstantCollectionV1 getJSONBlobConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/blobconstant/put/json")
+	@POST
+	@Path("/blobconstant/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTBlobConstantV1 updateJSONBlobConstant(@QueryParam("expand") final String expand, final RESTBlobConstantV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/blobconstant/put/json")
+	@POST
+    @Path("/blobconstant/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTBlobConstantV1 updateJSONBlobConstant(@QueryParam("expand") final String expand, final RESTBlobConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/blobconstants/put/json")
+    @POST
+    @Path("/blobconstants/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTBlobConstantCollectionV1 updateJSONBlobConstants(@QueryParam("expand") final String expand, final RESTBlobConstantCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/blobconstants/put/json")
+	@POST
+	@Path("/blobconstants/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTBlobConstantCollectionV1 updateJSONBlobConstants(@QueryParam("expand") final String expand, final RESTBlobConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/blobconstant/post/json")
+	@Path("/blobconstant/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTBlobConstantV1 createJSONBlobConstant(@QueryParam("expand") final String expand, final RESTBlobConstantV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/blobconstant/post/json")
+    @Path("/blobconstant/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTBlobConstantV1 createJSONBlobConstant(@QueryParam("expand") final String expand, final RESTBlobConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/blobconstants/post/json")
+    @Path("/blobconstants/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTBlobConstantCollectionV1 createJSONBlobConstants(@QueryParam("expand") final String expand, final RESTBlobConstantCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/blobconstants/post/json")
+	@Path("/blobconstants/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTBlobConstantCollectionV1 createJSONBlobConstants(@QueryParam("expand") final String expand, final RESTBlobConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -1439,73 +1194,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPProjectsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/project/put/jsonp")
+	@GET
+	@Path("/project/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPProject(@QueryParam("expand") final String expand, final RESTProjectV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPProject(@QueryParam("expand") final String expand, @QueryParam("data") final RESTProjectV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/project/put/jsonp")
+	@GET
+    @Path("/project/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPProject(@QueryParam("expand") final String expand, final RESTProjectV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPProject(@QueryParam("expand") final String expand, @QueryParam("data") final RESTProjectV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/projects/put/jsonp")
+	@GET
+    @Path("/projects/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPProjects(@QueryParam("expand") final String expand, final RESTProjectCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPProjects(@QueryParam("expand") final String expand, @QueryParam("data") final RESTProjectCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/projects/put/jsonp")
+	@GET
+	@Path("/projects/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPProjects(@QueryParam("expand") final String expand, final RESTProjectCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPProjects(@QueryParam("expand") final String expand, @QueryParam("data") final RESTProjectCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/project/post/jsonp")
+	@GET
+	@Path("/project/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPProject(@QueryParam("expand") final String expand, final RESTProjectV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPProject(@QueryParam("expand") final String expand, @QueryParam("data") final RESTProjectV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/project/post/jsonp")
+	@GET
+    @Path("/project/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPProject(@QueryParam("expand") final String expand, final RESTProjectV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPProject(@QueryParam("expand") final String expand, @QueryParam("data") final RESTProjectV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/projects/post/jsonp")
+	@GET
+    @Path("/projects/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPProjects(@QueryParam("expand") final String expand, final RESTProjectCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPProjects(@QueryParam("expand") final String expand, @QueryParam("data") final RESTProjectCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/projects/post/jsonp")
+	@GET
+	@Path("/projects/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPProjects(@QueryParam("expand") final String expand, final RESTProjectCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPProjects(@QueryParam("expand") final String expand, @QueryParam("data") final RESTProjectCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
 	@Path("/project/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPProject(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
     @Path("/project/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPProject(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
     @Path("/projects/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPProjects(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/projects/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -1530,50 +1285,50 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTProjectCollectionV1 getJSONProjectsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/project/put/json")
+	@POST
+	@Path("/project/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTProjectV1 updateJSONProject(@QueryParam("expand") final String expand, final RESTProjectV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/project/put/json")
+	@POST
+    @Path("/project/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTProjectV1 updateJSONProject(@QueryParam("expand") final String expand, final RESTProjectV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/projects/put/json")
+    @POST
+    @Path("/projects/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTProjectCollectionV1 updateJSONProjects(@QueryParam("expand") final String expand, final RESTProjectCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/projects/put/json")
+	@POST
+	@Path("/projects/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTProjectCollectionV1 updateJSONProjects(@QueryParam("expand") final String expand, final RESTProjectCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/project/post/json")
+	@Path("/project/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTProjectV1 createJSONProject(@QueryParam("expand") final String expand, final RESTProjectV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/project/post/json")
+    @Path("/project/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTProjectV1 createJSONProject(@QueryParam("expand") final String expand, final RESTProjectV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/projects/post/json")
+    @Path("/projects/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTProjectCollectionV1 createJSONProjects(@QueryParam("expand") final String expand, final RESTProjectCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/projects/post/json")
+	@Path("/projects/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTProjectCollectionV1 createJSONProjects(@QueryParam("expand") final String expand, final RESTProjectCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -1622,73 +1377,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPTagsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/tag/put/jsonp")
+	@GET
+	@Path("/tag/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPTag(@QueryParam("expand") final String expand, final RESTTagV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPTag(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTagV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/tag/put/jsonp")
+	@GET
+    @Path("/tag/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTag(@QueryParam("expand") final String expand, final RESTTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPTag(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/tags/put/jsonp")
+	@GET
+    @Path("/tags/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTags(@QueryParam("expand") final String expand, final RESTTagCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPTags(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTagCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/tags/put/jsonp")
+    @GET
+	@Path("/tags/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPTags(@QueryParam("expand") final String expand, final RESTTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPTags(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/tag/post/jsonp")
+	@GET
+	@Path("/tag/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPTag(@QueryParam("expand") final String expand, final RESTTagV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPTag(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTagV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/tag/post/jsonp")
+	@GET
+    @Path("/tag/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPTag(@QueryParam("expand") final String expand, final RESTTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPTag(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/tags/post/jsonp")
+	@GET
+    @Path("/tags/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPTags(@QueryParam("expand") final String expand, final RESTTagCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPTags(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTagCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/tags/post/jsonp")
+    @GET
+	@Path("/tags/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPTags(@QueryParam("expand") final String expand, final RESTTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPTags(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/tag/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPTag(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
     @Path("/tag/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPTag(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
     @Path("/tags/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPTags(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/tags/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -1713,50 +1468,50 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTTagCollectionV1 getJSONTagsWithQuery(@PathParam("query") PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/tag/put/json")
+	@POST
+	@Path("/tag/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTTagV1 updateJSONTag(@QueryParam("expand") final String expand, final RESTTagV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/tag/put/json")
+	@POST
+    @Path("/tag/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTTagV1 updateJSONTag(@QueryParam("expand") final String expand, final RESTTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/tags/put/json")
+    @POST
+    @Path("/tags/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTTagCollectionV1 updateJSONTags(@QueryParam("expand") final String expand, final RESTTagCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/tags/put/json")
+	@POST
+	@Path("/tags/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTTagCollectionV1 updateJSONTags(@QueryParam("expand") final String expand, final RESTTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/tag/post/json")
+	@Path("/tag/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTTagV1 createJSONTag(@QueryParam("expand") final String expand, final RESTTagV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/tag/post/json")
+    @Path("/tag/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTTagV1 createJSONTag(@QueryParam("expand") final String expand, final RESTTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/tags/post/json")
+    @Path("/tags/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTTagCollectionV1 createJSONTags(@QueryParam("expand") final String expand, final RESTTagCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
 	@POST
-	@Path("/tags/post/json")
+	@Path("/tags/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTTagCollectionV1 createJSONTags(@QueryParam("expand") final String expand, final RESTTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -1805,73 +1560,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPCategoriesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/category/put/jsonp")
+	@GET
+	@Path("/category/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPCategory(@QueryParam("expand") final String expand, final RESTCategoryV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPCategory(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCategoryV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/category/put/jsonp")
+	@GET
+    @Path("/category/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPCategory(@QueryParam("expand") final String expand, final RESTCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPCategory(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/categories/put/jsonp")
+	@GET
+    @Path("/categories/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPCategories(@QueryParam("expand") final String expand, final RESTCategoryCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPCategories(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCategoryCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/categories/put/jsonp")
+	@GET
+	@Path("/categories/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPCategories(@QueryParam("expand") final String expand, final RESTCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPCategories(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/category/post/jsonp")
+	@GET
+	@Path("/category/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPCategory(@QueryParam("expand") final String expand, final RESTCategoryV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPCategory(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCategoryV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/category/post/jsonp")
+	@GET
+    @Path("/category/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPCategory(@QueryParam("expand") final String expand, final RESTCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPCategory(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/categories/post/jsonp")
+	@GET
+    @Path("/categories/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPCategories(@QueryParam("expand") final String expand, final RESTCategoryCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPCategories(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCategoryCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@POST
-	@Path("/categories/post/jsonp")
+	@GET
+	@Path("/categories/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPCategories(@QueryParam("expand") final String expand, final RESTCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPCategories(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/category/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
     @Path("/category/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPCategory(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
     @Path("/categories/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPCategories(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/categories/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -1896,50 +1651,50 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTCategoryCollectionV1 getJSONCategoriesWithQuery(@PathParam("query") PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/category/put/json")
+	@POST
+	@Path("/category/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTCategoryV1 updateJSONCategory(@QueryParam("expand") final String expand, final RESTCategoryV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/category/put/json")
+	@POST
+    @Path("/category/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTCategoryV1 updateJSONCategory(@QueryParam("expand") final String expand, final RESTCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/categories/put/json")
+    @POST
+    @Path("/categories/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTCategoryCollectionV1 updateJSONCategories(@QueryParam("expand") final String expand, final RESTCategoryCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/categories/put/json")
+	@POST
+	@Path("/categories/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTCategoryCollectionV1 updateJSONCategories(@QueryParam("expand") final String expand, final RESTCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/category/post/json")
+	@Path("/category/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTCategoryV1 createJSONCategory(@QueryParam("expand") final String expand, final RESTCategoryV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/category/post/json")
+    @Path("/category/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTCategoryV1 createJSONCategory(@QueryParam("expand") final String expand, final RESTCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/categories/post/json")
+    @Path("/categories/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTCategoryCollectionV1 createJSONCategories(@QueryParam("expand") final String expand, final RESTCategoryCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/categories/post/json")
+	@Path("/categories/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTCategoryCollectionV1 createJSONCategories(@QueryParam("expand") final String expand, final RESTCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -1988,73 +1743,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPImagesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/image/put/jsonp")
+    @GET
+	@Path("/image/update/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String updateJSONPImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPImage(@QueryParam("expand") final String expand, @QueryParam("data") final RESTImageV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/image/put/jsonp")
+	@GET
+    @Path("/image/update/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPImage(@QueryParam("expand") final String expand, @QueryParam("data") final RESTImageV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/images/put/jsonp")
+	@GET
+    @Path("/images/update/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPImages(@QueryParam("expand") final String expand, final RESTImageCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPImages(@QueryParam("expand") final String expand, @QueryParam("data") final RESTImageCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/images/put/jsonp")
+    @GET
+	@Path("/images/update/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String updateJSONPImages(@QueryParam("expand") final String expand, final RESTImageCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPImages(@QueryParam("expand") final String expand, @QueryParam("data") final RESTImageCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/image/post/jsonp")
+	@GET
+	@Path("/image/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPImage(@QueryParam("expand") final String expand, @QueryParam("data") final RESTImageV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/image/post/jsonp")
+	@GET
+    @Path("/image/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPImage(@QueryParam("expand") final String expand, @QueryParam("data") final RESTImageV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/images/post/jsonp")
+	@GET
+    @Path("/images/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPImages(@QueryParam("expand") final String expand, final RESTImageCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPImages(@QueryParam("expand") final String expand, @QueryParam("data") final RESTImageCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/images/post/jsonp")
+    @GET
+	@Path("/images/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPImages(@QueryParam("expand") final String expand, final RESTImageCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPImages(@QueryParam("expand") final String expand, @QueryParam("data") final RESTImageCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/image/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPImage(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
     @Path("/image/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPImage(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
     @Path("/images/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPImages(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/images/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -2085,50 +1840,50 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTImageCollectionV1 getJSONImagesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/image/put/json")
+	@POST
+	@Path("/image/update/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTImageV1 updateJSONImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/image/put/json")
+	@POST
+    @Path("/image/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTImageV1 updateJSONImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/images/put/json")
+    @POST
+    @Path("/images/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTImageCollectionV1 updateJSONImages(@QueryParam("expand") final String expand, final RESTImageCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/images/put/json")
+	@POST
+	@Path("/images/update/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTImageCollectionV1 updateJSONImages(@QueryParam("expand") final String expand, final RESTImageCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/image/post/json")
+	@Path("/image/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTImageV1 createJSONImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/image/post/json")
+    @Path("/image/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTImageV1 createJSONImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/images/post/json")
+    @Path("/images/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTImageCollectionV1 createJSONImages(@QueryParam("expand") final String expand, final RESTImageCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/images/post/json")
+	@Path("/images/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTImageCollectionV1 createJSONImages(@QueryParam("expand") final String expand, final RESTImageCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -2177,73 +1932,73 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getJSONPTopic(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/topic/put/jsonp")
+	@GET
+	@Path("/topic/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPTopic(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTopicV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/topic/put/jsonp")
+	@GET
+    @Path("/topic/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPTopic(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/topics/put/jsonp")
+	@GET
+    @Path("/topics/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTopics(@QueryParam("expand") final String expand, final RESTTopicCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPTopics(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTopicCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/topics/put/jsonp")
+	@GET
+	@Path("/topics/update/jsonp")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
-	public String updateJSONPTopics(@QueryParam("expand") final String expand, final RESTTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String updateJSONPTopics(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/topic/post/jsonp")
+	@GET
+	@Path("/topic/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPTopic(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTopicV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-    @Path("/topic/post/jsonp")
+	@GET
+    @Path("/topic/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPTopic(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/topics/post/jsonp")
+	@GET
+    @Path("/topics/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPTopics(@QueryParam("expand") final String expand, final RESTTopicCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPTopics(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTopicCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@POST
-	@Path("/topics/post/jsonp")
+	@GET
+	@Path("/topics/create/jsonp")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public String createJSONPTopics(@QueryParam("expand") final String expand, final RESTTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+	public String createJSONPTopics(@QueryParam("expand") final String expand, @QueryParam("data") final RESTTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/topic/delete/jsonp/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
 	public String deleteJSONPTopic(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
     @Path("/topic/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPTopic(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+	@GET
     @Path("/topics/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPTopics(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-	@DELETE
+	@GET
 	@Path("/topics/delete/jsonp/{ids}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ "*" })
@@ -2322,50 +2077,50 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public String getHTMLTopicRevisionHTML(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision) throws InvalidParameterException, InternalProcessingException;
 	
-	@PUT
-	@Path("/topic/put/json")
+	@POST
+	@Path("/topic/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTTopicV1 updateJSONTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-    @Path("/topic/put/json")
+	@POST
+    @Path("/topic/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTTopicV1 updateJSONTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/topics/put/json")
+    @POST
+    @Path("/topics/update/json")
     @Consumes({ MediaType.APPLICATION_JSON })
     @Produces(MediaType.APPLICATION_JSON)
     public RESTTopicCollectionV1 updateJSONTopics(@QueryParam("expand") final String expand, final RESTTopicCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
-	@PUT
-	@Path("/topics/put/json")
+	@POST
+	@Path("/topics/update/json")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	@Produces(MediaType.APPLICATION_JSON)
 	public RESTTopicCollectionV1 updateJSONTopics(@QueryParam("expand") final String expand, final RESTTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-	@Path("/topic/post/json")
+	@Path("/topic/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTTopicV1 createJSONTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
 	@POST
-    @Path("/topic/post/json")
+    @Path("/topic/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTTopicV1 createJSONTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/topics/post/json")
+    @Path("/topics/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTTopicCollectionV1 createJSONTopics(@QueryParam("expand") final String expand, final RESTTopicCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 	
 	@POST
-	@Path("/topics/post/json")
+	@Path("/topics/create/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public RESTTopicCollectionV1 createJSONTopics(@QueryParam("expand") final String expand, final RESTTopicCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -2414,73 +2169,73 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public String getJSONPFiltersWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException; 
     
-    @PUT
-    @Path("/filter/put/jsonp")
+    @GET
+    @Path("/filter/update/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilter(@QueryParam("expand") final String expand, final RESTFilterV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPFilter(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFilterV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/filter/put/jsonp")
+    @GET
+    @Path("/filter/update/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilter(@QueryParam("expand") final String expand, final RESTFilterV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPFilter(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFilterV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/filters/put/jsonp")
+    @GET
+    @Path("/filters/update/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilters(@QueryParam("expand") final String expand, final RESTFilterCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPFilters(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFilterCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/filters/put/jsonp")
+    @GET
+    @Path("/filters/update/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilters(@QueryParam("expand") final String expand, final RESTFilterCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPFilters(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFilterCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/filter/post/jsonp")
+    @GET
+    @Path("/filter/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilter(@QueryParam("expand") final String expand, final RESTFilterV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPFilter(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFilterV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/filter/post/jsonp")
+    @GET
+    @Path("/filter/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilter(@QueryParam("expand") final String expand, final RESTFilterV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPFilter(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFilterV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/filters/post/jsonp")
+    @GET
+    @Path("/filters/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilters(@QueryParam("expand") final String expand, final RESTFilterCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPFilters(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFilterCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @POST
-    @Path("/filters/post/jsonp")
+    @GET
+    @Path("/filters/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilters(@QueryParam("expand") final String expand, final RESTFilterCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String createJSONPFilters(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFilterCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+    @GET
     @Path("/filter/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPFilter(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+    @GET
     @Path("/filter/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPFilter(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+    @GET
     @Path("/filters/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public String deleteJSONPFilters(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
+    @GET
     @Path("/filters/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
@@ -2511,50 +2266,50 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTFilterCollectionV1 getJSONFiltersWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
     
-    @PUT
-    @Path("/filter/put/json")
+    @POST
+    @Path("/filter/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTFilterV1 updateJSONFilter(@QueryParam("expand") final String expand, final RESTFilterV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/filter/put/json")
+    @POST
+    @Path("/filter/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTFilterV1 updateJSONFilter(@QueryParam("expand") final String expand, final RESTFilterV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/filters/put/json")
+    @POST
+    @Path("/filters/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTFilterCollectionV1 updateJSONFilters(@QueryParam("expand") final String expand, final RESTFilterCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
-    @PUT
-    @Path("/filters/put/json")
+    @POST
+    @Path("/filters/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTFilterCollectionV1 updateJSONFilters(@QueryParam("expand") final String expand, final RESTFilterCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/filter/post/json")
+    @Path("/filter/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTFilterV1 createJSONFilter(@QueryParam("expand") final String expand, final RESTFilterV1 dataObject) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/filter/post/json")
+    @Path("/filter/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTFilterV1 createJSONFilter(@QueryParam("expand") final String expand, final RESTFilterV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/filters/post/json")
+    @Path("/filters/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTFilterCollectionV1 createJSONFilters(@QueryParam("expand") final String expand, final RESTFilterCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/filters/post/json")
+    @Path("/filters/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ MediaType.APPLICATION_JSON })
     public RESTFilterCollectionV1 createJSONFilters(@QueryParam("expand") final String expand, final RESTFilterCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
@@ -2583,689 +2338,188 @@ public interface RESTInterfaceV1
     @Consumes({ "*" })
     public RESTFilterCollectionV1 deleteJSONFilters(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
     
-    /*     FILTER CATEGORY FUNCTIONS */
-    /*     JSONP FUNCTIONS */  
+    /* INTEGERCONSTANT FUNCTIONS */
+    /*      JSONP FUNCTIONS */
     @GET
-    @Path("/filtercategory/get/jsonp/{id}")
+    @Path("/integerconstant/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
-    public String getJSONPFilterCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @GET
-    @Path("/filtercategories/get/jsonp/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String getJSONPFilterCategories(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtercategory/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterCategory(@QueryParam("expand") final String expand, final RESTFilterCategoryV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtercategory/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterCategory(@QueryParam("expand") final String expand, final RESTFilterCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtercategories/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterCategories(@QueryParam("expand") final String expand, final RESTFilterCategoryCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtercategories/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterCategories(@QueryParam("expand") final String expand, final RESTFilterCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtercategory/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterCategory(@QueryParam("expand") final String expand, final RESTFilterCategoryV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtercategory/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterCategory(@QueryParam("expand") final String expand, final RESTFilterCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtercategories/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterCategories(@QueryParam("expand") final String expand, final RESTFilterCategoryCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtercategories/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterCategories(@QueryParam("expand") final String expand, final RESTFilterCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtercategory/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtercategory/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterCategory(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtercategories/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterCategories(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtercategories/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterCategories(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-    
-    /*      JSON FUNCTIONS */   
-    @GET
-    @Path("/filtercategory/get/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterCategoryV1 getJSONFilterCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    public String getJSONPIntegerConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/filtercategories/get/json/all")
+    @Path("/integerconstants/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
-    public RESTFilterCategoryCollectionV1 getJSONFilterCategories(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtercategory/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterCategoryV1 updateJSONFilterCategory(@QueryParam("expand") final String expand, final RESTFilterCategoryV1 dataObject) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtercategory/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterCategoryV1 updateJSONFilterCategory(@QueryParam("expand") final String expand, final RESTFilterCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtercategories/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterCategoryCollectionV1 updateJSONFilterCategories(@QueryParam("expand") final String expand, final RESTFilterCategoryCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtercategories/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterCategoryCollectionV1 updateJSONFilterCategories(@QueryParam("expand") final String expand, final RESTFilterCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtercategory/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterCategoryV1 createJSONFilterCategory(@QueryParam("expand") final String expand, final RESTFilterCategoryV1 dataObject) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtercategory/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterCategoryV1 createJSONFilterCategory(@QueryParam("expand") final String expand, final RESTFilterCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtercategories/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterCategoryCollectionV1 createJSONFilterCategories(@QueryParam("expand") final String expand, final RESTFilterCategoryCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtercategories/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterCategoryCollectionV1 createJSONFilterCategories(@QueryParam("expand") final String expand, final RESTFilterCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtercategory/delete/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterCategoryV1 deleteJSONFilterCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtercategory/delete/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterCategoryV1 deleteJSONFilterCategory(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filters/delete/json/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterCategoryCollectionV1 deleteJSONFilterCategories(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-    
-    @DELETE
-    @Path("/filters/delete/json/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterCategoryCollectionV1 deleteJSONFilterCategories(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-	
-    /*     FILTER TAG FUNCTIONS */
-    /*     JSONP FUNCTIONS */  
-    @GET
-    @Path("/filtertag/get/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String getJSONPFilterTag(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String getJSONPIntegerConstants(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/filtertags/get/jsonp/all")
+    @Path("/integerconstants/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
-    public String getJSONPFilterTags(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtertag/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterTag(@QueryParam("expand") final String expand, final RESTFilterTagV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtertag/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterTag(@QueryParam("expand") final String expand, final RESTFilterTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtertags/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterTags(@QueryParam("expand") final String expand, final RESTFilterTagCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtertags/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterTags(@QueryParam("expand") final String expand, final RESTFilterTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtertag/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterTag(@QueryParam("expand") final String expand, final RESTFilterTagV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtertag/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterTag(@QueryParam("expand") final String expand, final RESTFilterTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtertags/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterTags(@QueryParam("expand") final String expand, final RESTFilterTagCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtertags/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterTags(@QueryParam("expand") final String expand, final RESTFilterTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtertag/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterTag(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtertag/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterTag(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtertags/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterTags(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtertags/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterTags(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-    
-    /*      JSON FUNCTIONS */   
-    @GET
-    @Path("/filtertag/get/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterTagV1 getJSONFilterTag(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    public String getJSONPIntegerConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
     
     @GET
-    @Path("/filtertags/get/json/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterTagCollectionV1 getJSONFilterTags(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtertag/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/integerconstant/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterTagV1 updateJSONFilterTag(@QueryParam("expand") final String expand, final RESTFilterTagV1 dataObject) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtertag/put/json")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterTagV1 updateJSONFilterTag(@QueryParam("expand") final String expand, final RESTFilterTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtertags/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterTagCollectionV1 updateJSONFilterTags(@QueryParam("expand") final String expand, final RESTFilterTagCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filtertags/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterTagCollectionV1 updateJSONFilterTags(@QueryParam("expand") final String expand, final RESTFilterTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtertag/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterTagV1 createJSONFilterTag(@QueryParam("expand") final String expand, final RESTFilterTagV1 dataObject) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtertag/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterTagV1 createJSONFilterTag(@QueryParam("expand") final String expand, final RESTFilterTagV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtertags/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterTagCollectionV1 createJSONFilterTags(@QueryParam("expand") final String expand, final RESTFilterTagCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filtertags/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterTagCollectionV1 createJSONFilterTags(@QueryParam("expand") final String expand, final RESTFilterTagCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtertag/delete/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterTagV1 deleteJSONFilterTag(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtertag/delete/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterTagV1 deleteJSONFilterTag(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filtertags/delete/json/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterTagCollectionV1 deleteJSONFilterTags(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-    
-    @DELETE
-    @Path("/filtertags/delete/json/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterTagCollectionV1 deleteJSONFilterTags(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-    
-    /*     FILTER FIELD FUNCTIONS */
-    /*     JSONP FUNCTIONS */
-    @GET
-    @Path("/filterfield/get/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String getJSONPFilterField(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPIntegerConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTIntegerConstantV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/filterfields/get/jsonp/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String getJSONPFilterFields(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterfield/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/integerconstant/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterField(@QueryParam("expand") final String expand, final RESTFilterFieldV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterfield/put/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterField(@QueryParam("expand") final String expand, final RESTFilterFieldV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterfields/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterFields(@QueryParam("expand") final String expand, final RESTFilterFieldCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterfields/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterFields(@QueryParam("expand") final String expand, final RESTFilterFieldCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterfield/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterField(@QueryParam("expand") final String expand, final RESTFilterFieldV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterfield/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterField(@QueryParam("expand") final String expand, final RESTFilterFieldV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterfields/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterFields(@QueryParam("expand") final String expand, final RESTFilterFieldCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterfields/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterFields(@QueryParam("expand") final String expand, final RESTFilterFieldCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterfield/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterField(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterfield/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterField(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterfields/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterFields(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterfields/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterFields(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-    
-    /*      JSON FUNCTIONS */   
-    @GET
-    @Path("/filterfield/get/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterFieldV1 getJSONFilterField(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPIntegerConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTIntegerConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/filterfields/get/json/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterFieldCollectionV1 getJSONFilterFields(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-    @PUT
-    @Path("/filterfield/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/integerconstants/update/jsonp")
     @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterFieldV1 updateJSONFilterField(@QueryParam("expand") final String expand, final RESTFilterFieldV1 dataObject) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterfield/put/json")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterFieldV1 updateJSONFilterField(@QueryParam("expand") final String expand, final RESTFilterFieldV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterfields/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterFieldCollectionV1 updateJSONFilterFields(@QueryParam("expand") final String expand, final RESTFilterFieldCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterfields/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterFieldCollectionV1 updateJSONFilterFields(@QueryParam("expand") final String expand, final RESTFilterFieldCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterfield/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterFieldV1 createJSONFilterField(@QueryParam("expand") final String expand, final RESTFilterFieldV1 dataObject) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterfield/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterFieldV1 createJSONFilterField(@QueryParam("expand") final String expand, final RESTFilterFieldV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterfields/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterFieldCollectionV1 createJSONFilterFields(@QueryParam("expand") final String expand, final RESTFilterFieldCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterfields/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterFieldCollectionV1 createJSONFilterFields(@QueryParam("expand") final String expand, final RESTFilterFieldCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterfield/delete/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterFieldV1 deleteJSONFilterField(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterfield/delete/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterFieldV1 deleteJSONFilterField(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterfields/delete/json/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterFieldCollectionV1 deleteJSONFilterFields(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-    
-    @DELETE
-    @Path("/filterfields/delete/json/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterFieldCollectionV1 deleteJSONFilterFields(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-    
-    /*     FILTER LOCALE FUNCTIONS */
-    /*     JSONP FUNCTIONS */  
-    @GET
-    @Path("/filterlocale/get/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String getJSONPFilterLocale(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @GET
-    @Path("/filterlocales/get/jsonp/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String getJSONPFilterLocales(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterlocale/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterLocale(@QueryParam("expand") final String expand, final RESTFilterLocaleV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterlocale/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterLocale(@QueryParam("expand") final String expand, final RESTFilterLocaleV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterlocales/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterLocales(@QueryParam("expand") final String expand, final RESTFilterLocaleCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterlocales/put/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String updateJSONPFilterLocales(@QueryParam("expand") final String expand, final RESTFilterLocaleCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterlocale/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterLocale(@QueryParam("expand") final String expand, final RESTFilterLocaleV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterlocale/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterLocale(@QueryParam("expand") final String expand, final RESTFilterLocaleV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterlocales/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterLocales(@QueryParam("expand") final String expand, final RESTFilterLocaleCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterlocales/post/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public String createJSONPFilterLocales(@QueryParam("expand") final String expand, final RESTFilterLocaleCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterlocale/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterLocale(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterlocale/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterLocale(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterlocales/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterLocales(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterlocales/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public String deleteJSONPFilterLocales(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
-    
-    /*      JSON FUNCTIONS */   
-    @GET
-    @Path("/filterlocale/get/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ "*" })
-    public RESTFilterLocaleV1 getJSONFilterLocale(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    public String updateJSONPIntegerConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTIntegerConstantCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
     
     @GET
-    @Path("/filterlocales/get/json/all")
+    @Path("/integerconstants/update/jsonp")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateJSONPIntegerConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTIntegerConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/integerconstant/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public String createJSONPIntegerConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTIntegerConstantV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/integerconstant/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public String createJSONPIntegerConstant(@QueryParam("expand") final String expand, @QueryParam("data") final RESTIntegerConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/integerconstants/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public String createJSONPIntegerConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTIntegerConstantCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/integerconstants/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public String createJSONPIntegerConstants(@QueryParam("expand") final String expand, @QueryParam("data") final RESTIntegerConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/integerconstant/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
-    public RESTFilterLocaleCollectionV1 getJSONFilterLocales(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    public String deleteJSONPIntegerConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/integerconstant/delete/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String deleteJSONPIntegerConstant(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/integerconstants/delete/jsonp/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String deleteJSONPIntegerConstants(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/integerconstants/delete/jsonp/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String deleteJSONPIntegerConstants(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
     
-    @PUT
-    @Path("/filterlocale/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterLocaleV1 updateJSONFilterLocale(@QueryParam("expand") final String expand, final RESTFilterLocaleV1 dataObject) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterlocale/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterLocaleV1 updateJSONFilterLocale(@QueryParam("expand") final String expand, final RESTFilterLocaleV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterlocales/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterLocaleCollectionV1 updateJSONFilterLocales(@QueryParam("expand") final String expand, final RESTFilterLocaleCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
-
-    @PUT
-    @Path("/filterlocales/put/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterLocaleCollectionV1 updateJSONFilterLocales(@QueryParam("expand") final String expand, final RESTFilterLocaleCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterlocale/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterLocaleV1 createJSONFilterLocale(@QueryParam("expand") final String expand, final RESTFilterLocaleV1 dataObject) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterlocale/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterLocaleV1 createJSONFilterLocale(@QueryParam("expand") final String expand, final RESTFilterLocaleV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterlocales/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterLocaleCollectionV1 createJSONFilterLocales(@QueryParam("expand") final String expand, final RESTFilterLocaleCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
-
-    @POST
-    @Path("/filterlocales/post/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public RESTFilterLocaleCollectionV1 createJSONFilterLocales(@QueryParam("expand") final String expand, final RESTFilterLocaleCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
-
-    @DELETE
-    @Path("/filterlocale/delete/json/{id}")
+    /*      JSON FUNCTIONS */
+    @GET
+    @Path("/integerconstant/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
-    public RESTFilterLocaleV1 deleteJSONFilterLocale(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    public RESTIntegerConstantV1 getJSONIntegerConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
-    @Path("/filterlocale/delete/json/{id}")
+    @GET
+    @Path("/integerconstants/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
-    public RESTFilterLocaleV1 deleteJSONFilterLocale(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    public RESTIntegerConstantCollectionV1 getJSONIntegerConstants(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
-    @DELETE
-    @Path("/filterlocales/delete/json/{ids}")
+    @GET
+    @Path("/integerconstants/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
-    public RESTFilterLocaleCollectionV1 deleteJSONFilterLocales(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    public RESTIntegerConstantCollectionV1 getJSONIntegerConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/integerconstant/update/json")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTIntegerConstantV1 updateJSONIntegerConstant(@QueryParam("expand") final String expand, final RESTIntegerConstantV1 dataObject) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/integerconstant/update/json")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTIntegerConstantV1 updateJSONIntegerConstant(@QueryParam("expand") final String expand, final RESTIntegerConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/integerconstants/update/json")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTIntegerConstantCollectionV1 updateJSONIntegerConstants(@QueryParam("expand") final String expand, final RESTIntegerConstantCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
+    
+    @POST
+    @Path("/integerconstants/update/json")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTIntegerConstantCollectionV1 updateJSONIntegerConstants(@QueryParam("expand") final String expand, final RESTIntegerConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/integerconstant/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public RESTIntegerConstantV1 createJSONIntegerConstant(@QueryParam("expand") final String expand, final RESTIntegerConstantV1 dataObject) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/integerconstant/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public RESTIntegerConstantV1 createJSONIntegerConstant(@QueryParam("expand") final String expand, final RESTIntegerConstantV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/integerconstants/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public RESTIntegerConstantCollectionV1 createJSONIntegerConstants(@QueryParam("expand") final String expand, final RESTIntegerConstantCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/integerconstants/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public RESTIntegerConstantCollectionV1 createJSONIntegerConstants(@QueryParam("expand") final String expand, final RESTIntegerConstantCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
+
+    @DELETE
+    @Path("/integerconstant/delete/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTIntegerConstantV1 deleteJSONIntegerConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @DELETE
+    @Path("/integerconstant/delete/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTIntegerConstantV1 deleteJSONIntegerConstant(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @DELETE
+    @Path("/integerconstants/delete/json/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTIntegerConstantCollectionV1 deleteJSONIntegerConstants(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
     
     @DELETE
-    @Path("/filterlocales/delete/json/{ids}")
+    @Path("/integerconstants/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
-    public RESTFilterLocaleCollectionV1 deleteJSONFilterLocales(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-    
+    public RESTIntegerConstantCollectionV1 deleteJSONIntegerConstants(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
     
 	/*@GET
 	@Path("/contentspec/get/json/{id}")

@@ -1,5 +1,7 @@
 package org.jboss.pressgangccms.rest.v1.components;
 
+import java.util.List;
+
 import org.jboss.pressgangccms.rest.v1.entities.RESTImageV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTLanguageImageV1;
 
@@ -48,22 +50,23 @@ public class ComponentImageV1
 		if (source == null)
 			throw new IllegalArgumentException("source cannot be null");
 
-		if (source.getLanguageImages_OTM() == null || source.getLanguageImages_OTM().getItems() == null || source.getLanguageImages_OTM().getItems().isEmpty())
-			return "";
-
-		for (final RESTLanguageImageV1 langImage : source.getLanguageImages_OTM().getItems())
+		if (source.getLanguageImages_OTM() != null && source.getLanguageImages_OTM().getItems() != null)
 		{
-			final String filename = langImage.getFilename();
-			if (filename != null)
-			{
-				final int indexOfExtension = filename.lastIndexOf('.');
-
-				if (indexOfExtension != -1 && indexOfExtension < filename.length() - 1)
-				{
-					final String extension = filename.substring(indexOfExtension, filename.length());
-					return source.getId() + extension;
-				}
-			}
+		    final List<RESTLanguageImageV1> langImages = source.getLanguageImages_OTM().returnItems();
+    		for (final RESTLanguageImageV1 langImage : langImages)
+    		{
+    			final String filename = langImage.getFilename();
+    			if (filename != null)
+    			{
+    				final int indexOfExtension = filename.lastIndexOf('.');
+    
+    				if (indexOfExtension != -1 && indexOfExtension < filename.length() - 1)
+    				{
+    					final String extension = filename.substring(indexOfExtension, filename.length());
+    					return source.getId() + extension;
+    				}
+    			}
+    		}
 		}
 
 		return "";

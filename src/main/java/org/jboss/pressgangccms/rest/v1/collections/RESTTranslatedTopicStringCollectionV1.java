@@ -1,8 +1,10 @@
 package org.jboss.pressgangccms.rest.v1.collections;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTTranslatedTopicStringCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicStringV1;
 
 /**
@@ -10,19 +12,30 @@ import org.jboss.pressgangccms.rest.v1.entities.RESTTranslatedTopicStringV1;
  * @author Matthew Casperson
  *
  */
-public class RESTTranslatedTopicStringCollectionV1 extends BaseRestCollectionV1<RESTTranslatedTopicStringV1, RESTTranslatedTopicStringCollectionV1>
+public class RESTTranslatedTopicStringCollectionV1 extends RESTBaseUpdateCollectionV1<RESTTranslatedTopicStringV1, RESTTranslatedTopicStringCollectionV1, RESTTranslatedTopicStringCollectionItemV1>
 {
-	private List<RESTTranslatedTopicStringV1> items;
+	private Set<RESTTranslatedTopicStringCollectionItemV1> items;
 	
 	@Override
-	public List<RESTTranslatedTopicStringV1> getItems()
+	public Set<RESTTranslatedTopicStringCollectionItemV1> getItems()
 	{
 		return this.items;
 	}
 	
 	@Override
-	public void setItems(final List<RESTTranslatedTopicStringV1> items)
+	public void setItems(final Set<RESTTranslatedTopicStringCollectionItemV1> items)
 	{
 		this.items = items;
 	}
+
+    @Override
+    protected void addItem(final RESTTranslatedTopicStringV1 item, final Integer state)
+    {
+        if (items == null)
+        {
+            this.items = new HashSet<RESTTranslatedTopicStringCollectionItemV1>();
+        }
+        
+        items.add(new RESTTranslatedTopicStringCollectionItemV1(item, state));
+    }
 }

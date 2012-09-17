@@ -3,10 +3,11 @@ package org.jboss.pressgangccms.rest.v1.entities.base;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 
 
-public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U extends BaseRestCollectionV1<T, U>>
+public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
 {
 	public static final String REVISIONS_NAME = "revisions";
 	public static final String LOG_DETAILS_NAME = "logDetails";
@@ -21,16 +22,8 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 	 * just null by default
 	 */
 	private List<String> configuredParameters = null;
-	private String selfLink = null;
-	private String editLink = null;
-	private String deleteLink = null;
-	private String addLink = null;
 	/** The names of collections that can be expanded */
 	private List<String> expand = null;
-	/** true if the database entity this REST entity represents should be added to the collection */ 
-	private boolean addItem = false;
-	/** true if the database entity this REST entity represents should be removed from the collection */
-	private boolean removeItem = false;
 	private RESTLogDetailsV1 logDetails = null;
 
 	abstract public U getRevisions();
@@ -42,8 +35,6 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 	 */
 	public boolean returnDirtyState()
 	{
-		if (this.addItem) return true;
-		if (this.removeItem) return true;
 		if (this.configuredParameters != null && !this.configuredParameters.isEmpty()) return true;
 		return false;
 	}
@@ -74,17 +65,11 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 		return id.hashCode();
 	}
 		
-	public void cloneInto(final RESTBaseEntityV1<T, U> clone, final boolean deepCopy)
+	public void cloneInto(final RESTBaseEntityV1<?, ?, ?> clone, final boolean deepCopy)
 	{
 		clone.setId(this.id == null ? null : new Integer(this.id));
 		clone.setRevision(this.revision);
-		clone.setSelfLink(this.selfLink);
-		clone.setEditLink(this.editLink);
-		clone.setDeleteLink(this.deleteLink);
-		clone.setAddItem(this.addItem);
 		clone.setExpand(this.expand);
-		clone.setAddItem(this.addItem);
-		clone.setRemoveItem(this.removeItem);
 		
 		if (deepCopy)
 		{
@@ -122,53 +107,6 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 		return getConfiguredParameters() != null && getConfiguredParameters().contains(parameter);
 	}
 
-	public void setLinks(final String baseUrl, final String restBasePath, final String dataType, final Object id)
-	{
-		this.setSelfLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/get/" + dataType + "/" + id);
-		this.setDeleteLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/delete/" + dataType + "/" + id);
-		this.setAddLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/post/" + dataType);
-		this.setEditLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/put/" + dataType + "/" + id);
-	}
-	public String getSelfLink()
-	{
-		return selfLink;
-	}
-
-	public void setSelfLink(final String selfLink)
-	{
-		this.selfLink = selfLink;
-	}
-	
-	public String getEditLink()
-	{
-		return editLink;
-	}
-
-	public void setEditLink(final String editLink)
-	{
-		this.editLink = editLink;
-	}
-
-	public String getDeleteLink()
-	{
-		return deleteLink;
-	}
-
-	public void setDeleteLink(final String deleteLink)
-	{
-		this.deleteLink = deleteLink;
-	}
-
-	public String getAddLink()
-	{
-		return addLink;
-	}
-
-	public void setAddLink(final String addLink)
-	{
-		this.addLink = addLink;
-	}
-
 	public List<String> getExpand()
 	{
 		return expand;
@@ -177,26 +115,6 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U>, U exten
 	public void setExpand(final List<String> expand)
 	{
 		this.expand = expand;
-	}
-
-	public boolean getAddItem()
-	{
-		return addItem;
-	}
-
-	public void setAddItem(final boolean addItem)
-	{
-		this.addItem = addItem;
-	}
-
-	public boolean getRemoveItem()
-	{
-		return removeItem;
-	}
-
-	public void setRemoveItem(final boolean removeItem)
-	{
-		this.removeItem = removeItem;
 	}
 
 	public List<String> getConfiguredParameters()

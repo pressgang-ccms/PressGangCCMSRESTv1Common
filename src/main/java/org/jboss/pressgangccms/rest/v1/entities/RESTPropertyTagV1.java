@@ -1,26 +1,24 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTPropertyTagCollectionV1;
-import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTPropertyTagCollectionItemV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBasePropertyTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 
-public class RESTPropertyTagV1 extends RESTBaseEntityV1<RESTPropertyTagV1, RESTPropertyTagCollectionV1>
+public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, RESTPropertyTagCollectionV1, RESTPropertyTagCollectionItemV1>
 {
-	public static String NAME_NAME = "name";
-	public static String DESCRIPTION_NAME = "description";
-	public static String VALUE_NAME = "value";
-	public static String REGEX_NAME = "regex";
-	public static String CANBENULL_NAME = "canBeNull";
-	public static String ISUNIQUE_NAME = "isUnique";
-	
-	private String name = null;
-	private String description = null;
-	private String value = null;
-	private boolean valid;
-	private String regex = null;
-	private boolean canBeNull;
-	private boolean isUnique;
 	/** A list of the Envers revision numbers */
 	private RESTPropertyTagCollectionV1 revisions = null;
+	
+	public RESTPropertyTagV1()
+	{
+	    
+	}
+	
+    public RESTPropertyTagV1(final RESTAssignedPropertyTagV1 assignedPropertyTag)
+    {
+        assignedPropertyTag.cloneInto(this, false);
+    }
 	
 	@Override
 	public RESTPropertyTagCollectionV1 getRevisions()
@@ -41,14 +39,6 @@ public class RESTPropertyTagV1 extends RESTBaseEntityV1<RESTPropertyTagV1, RESTP
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.name = this.name;
-		retValue.description = description;
-		retValue.value = this.value;
-		retValue.valid = this.valid;
-		retValue.regex = this.regex;
-		retValue.canBeNull = this.canBeNull;
-		retValue.isUnique = this.isUnique;
-		
 		if (deepCopy)
 		{		
 			if (this.revisions != null)
@@ -64,110 +54,34 @@ public class RESTPropertyTagV1 extends RESTBaseEntityV1<RESTPropertyTagV1, RESTP
 		
 		return retValue;
 	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(final String name)
-	{
-		this.name = name;
-	}
-	
-	public void explicitSetName(final String name)
-	{
-		this.name = name;
-		this.setParameterToConfigured(NAME_NAME);
-	}
-
-	public String getDescription()
-	{
-		return description;
-	}
-
-	public void setDescription(final String description)
-	{
-		this.description = description;
-	}
 	
 	public void explicitSetDescription(final String description)
-	{
-		this.description = description;
-		this.setParameterToConfigured(DESCRIPTION_NAME);
-	}
-
-	public String getValue()
-	{
-		return value;
-	}
-
-	public void setValue(final String value)
-	{
-		this.value = value;
-	}
-	
-	public void explicitSetValue(final String value)
-	{
-		this.value = value;
-		this.setParameterToConfigured(VALUE_NAME);
-	}
-
-	public boolean getValid()
-	{
-		return valid;
-	}
-
-	public void setValid(final boolean valid)
-	{
-		this.valid = valid;
-	}
-
-	public String getRegex()
-	{
-		return regex;
-	}
-
-	public void setRegex(final String regex)
-	{
-		this.regex = regex;
-	}
-	
-	public void explicitSetRegex(final String regex)
-	{
-		this.regex = regex;
-		this.setParameterToConfigured(REGEX_NAME);
-	}
-
-	public boolean getCanBeNull()
-	{
-		return canBeNull;
-	}
-
-	public void setCanBeNull(final boolean canBeNull)
-	{
-		this.canBeNull = canBeNull;
-	}
-	
-	public void explicitSetCanBeNull(final boolean canBeNull)
-	{
-		this.canBeNull = canBeNull;
-		this.setParameterToConfigured(CANBENULL_NAME);
-	}
-
-	public boolean getIsUnique()
-	{
-		return isUnique;
-	}
-
-	public void setIsUnique(boolean isUnique)
-	{
-		this.isUnique = isUnique;
-	}
+    {
+        this.description = description;
+        this.setParameterToConfigured(DESCRIPTION_NAME);
+    }
 	
 	public void explicitSetIsUnique(boolean isUnique)
-	{
-		this.isUnique = isUnique;
-		this.setParameterToConfigured(ISUNIQUE_NAME);
-	}
+    {
+        this.isUnique = isUnique;
+        this.setParameterToConfigured(ISUNIQUE_NAME);
+    }
+	
+	public void explicitSetCanBeNull(final boolean canBeNull)
+    {
+        this.canBeNull = canBeNull;
+        this.setParameterToConfigured(CANBENULL_NAME);
+    }
+	
+	public void explicitSetRegex(final String regex)
+    {
+        this.regex = regex;
+        this.setParameterToConfigured(REGEX_NAME);
+    }
+	
+	public void explicitSetName(final String name)
+    {
+        this.name = name;
+        this.setParameterToConfigured(NAME_NAME);
+    }
 }

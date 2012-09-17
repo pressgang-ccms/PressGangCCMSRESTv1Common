@@ -1,12 +1,13 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTBlobConstantCollectionV1;
-import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTBlobConstantCollectionItemV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
 
 /**
  * A REST representation of the BlobConstants database entity
  */
-public class RESTBlobConstantV1 extends RESTBaseEntityV1<RESTBlobConstantV1, RESTBlobConstantCollectionV1>
+public class RESTBlobConstantV1 extends RESTBasePrimaryEntityV1<RESTBlobConstantV1, RESTBlobConstantCollectionV1, RESTBlobConstantCollectionItemV1>
 {
 	public static final String NAME_NAME = "name";
 	public static final String VALUE_NAME = "value";

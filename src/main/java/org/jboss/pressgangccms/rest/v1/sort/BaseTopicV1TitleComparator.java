@@ -2,10 +2,19 @@ package org.jboss.pressgangccms.rest.v1.sort;
 
 import java.util.Comparator;
 
-import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseTopicV1;
 
-public class BaseTopicV1TitleComparator<T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> implements Comparator<T>
+/**
+ * A comparator that compares the titles between two topics. It can be used to sort a Collection into alphabetical
+ * order.
+ * 
+ * @author mcasperson
+ *
+ * @param <T> The Topic Entity Class
+ * @param <U> The Topic Collection Class
+ * @param <V> The Topic Collection Item Class
+ */
+public class BaseTopicV1TitleComparator<T extends RESTBaseTopicV1<T, ?, ?>> implements Comparator<T>
 {
 	public int compare(final T o1, final T o2)
 	{

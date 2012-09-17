@@ -2,10 +2,12 @@ package org.jboss.pressgangccms.rest.v1.entities.base;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
-import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
 
-public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U extends BaseRestCollectionV1<T, U>> extends RESTBaseEntityWithPropertiesV1<T, U>
+public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
+    extends RESTBaseEntityWithPropertiesV1<T, U, V>
 {
 	public static final String TITLE_NAME = "title";
 	public static final String XML_NAME = "xml";
@@ -16,7 +18,6 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U extends
 	public static final String INCOMING_NAME = "incomingRelationships";
 	public static final String LOCALE_NAME = "locale";
 	public static final String SOURCE_URLS_NAME = "sourceUrls_OTM";
-	public static final String PROPERTIES_NAME = "properties";
 	
 	protected String title = null;
 	protected String xml = null;
@@ -32,7 +33,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U>, U extends
 	abstract public U getOutgoingRelationships();
 	abstract public void setOutgoingRelationships(final U outgoingRelationships);
 
-	public void cloneInto(final RESTBaseTopicV1<T, U> clone, final boolean deepCopy)
+	public void cloneInto(final RESTBaseTopicV1<?, ?, ?> clone, final boolean deepCopy)
 	{
 		super.cloneInto(clone, deepCopy);
 		

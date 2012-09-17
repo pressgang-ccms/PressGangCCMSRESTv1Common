@@ -1,12 +1,13 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTStringConstantCollectionV1;
-import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTStringConstantCollectionItemV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
 
 /**
  * A REST representation of the StringConstants database entity
  */
-public class RESTStringConstantV1 extends RESTBaseEntityV1<RESTStringConstantV1, RESTStringConstantCollectionV1>
+public class RESTStringConstantV1 extends RESTBasePrimaryEntityV1<RESTStringConstantV1, RESTStringConstantCollectionV1, RESTStringConstantCollectionItemV1>
 {
 	public static final String ID_NAME = "id";
 	public static final String NAME_NAME = "name";

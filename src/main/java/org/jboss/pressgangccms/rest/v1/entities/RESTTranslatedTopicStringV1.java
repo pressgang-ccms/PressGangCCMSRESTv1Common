@@ -1,9 +1,10 @@
 package org.jboss.pressgangccms.rest.v1.entities;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTTranslatedTopicStringCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTTranslatedTopicStringCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
-public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslatedTopicStringV1, RESTTranslatedTopicStringCollectionV1>
+public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslatedTopicStringV1, RESTTranslatedTopicStringCollectionV1, RESTTranslatedTopicStringCollectionItemV1>
 {
 	public static final String ORIGINALSTRING_NAME = "originalString";
 	public static final String TRANSLATEDSTRING_NAME = "translatedString";
@@ -66,12 +67,6 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslated
 	{
 		this.translatedTopic = translatedTopic;
 	}
-	
-	public void explicitSetTranslatedTopic(final RESTTranslatedTopicV1 translatedTopic)
-    {
-        this.translatedTopic = translatedTopic;
-        this.setParameterToConfigured(TRANSLATEDTOPIC_NAME);
-    }
 
 	public String getOriginalString()
 	{

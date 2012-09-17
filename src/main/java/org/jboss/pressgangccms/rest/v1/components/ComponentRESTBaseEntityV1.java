@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
 
+@SuppressWarnings({"rawtypes", "unused"})
 public class ComponentRESTBaseEntityV1
 {
 	private final RESTBaseEntityV1 source;

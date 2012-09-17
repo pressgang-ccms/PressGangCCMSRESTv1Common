@@ -1,8 +1,10 @@
 package org.jboss.pressgangccms.rest.v1.collections;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import org.jboss.pressgangccms.rest.v1.collections.base.BaseRestCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTTopicCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTTopicV1;
 
 /**
@@ -10,19 +12,30 @@ import org.jboss.pressgangccms.rest.v1.entities.RESTTopicV1;
  * @author Matthew Casperson
  *
  */
-public class RESTTopicCollectionV1 extends BaseRestCollectionV1<RESTTopicV1, RESTTopicCollectionV1>
+public class RESTTopicCollectionV1 extends RESTBaseCollectionV1<RESTTopicV1, RESTTopicCollectionV1, RESTTopicCollectionItemV1>
 {
-	private List<RESTTopicV1> items;
+	private Set<RESTTopicCollectionItemV1> items;
 	
 	@Override
-	public List<RESTTopicV1> getItems()
+	public Set<RESTTopicCollectionItemV1> getItems()
 	{
 		return this.items;
 	}
 	
 	@Override
-	public void setItems(final List<RESTTopicV1> items)
+	public void setItems(final Set<RESTTopicCollectionItemV1> items)
 	{
 		this.items = items;
 	}
+
+    @Override
+    protected void addItem(final RESTTopicV1 item, final Integer state)
+    {
+        if (items == null)
+        {
+            this.items = new HashSet<RESTTopicCollectionItemV1>();
+        }
+        
+        items.add(new RESTTopicCollectionItemV1(item, state));
+    }
 }

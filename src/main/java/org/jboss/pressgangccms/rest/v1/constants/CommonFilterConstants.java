@@ -366,4 +366,14 @@ public class CommonFilterConstants {
     
     public static final String ROLE_DESCRIPTION_FILTER_VAR = "roleDesc";
     public static final String ROLE_DESCRIPTION_FILTER_VAR_DESC = "Role Description";
+    
+    /* IntegerConstant Constants */
+    public static final String INTEGER_CONSTANT_IDS_FILTER_VAR = "integerConstantIds";
+    public static final String INTEGER_CONSTANT_IDS_FILTER_VAR_DESC = "Integer Constant IDs";
+    
+    public static final String INTEGER_CONSTANT_NAME_FILTER_VAR = "integerConstantName";
+    public static final String INTEGER_CONSTANT_NAME_FILTER_VAR_DESC = "Integer Constant Name";
+    
+    public static final String INTEGER_CONSTANT_VALUE_FILTER_VAR = "integerConstantValue";
+    public static final String INTEGER_CONSTANT_VALUE_FILTER_VAR_DESC = "Integer Constant Value";
 }

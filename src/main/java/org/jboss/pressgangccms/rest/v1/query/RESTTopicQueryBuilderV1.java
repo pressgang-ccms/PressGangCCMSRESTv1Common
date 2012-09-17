@@ -790,7 +790,8 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
         /* Sync filter tags */
         if (filter.getFilterTags_OTM() != null && filter.getFilterTags_OTM().getItems() != null)
         {
-            for (final RESTFilterTagV1 filterTag : filter.getFilterTags_OTM().getItems())
+            final List<RESTFilterTagV1> filterTags = filter.getFilterTags_OTM().returnItems();
+            for (final RESTFilterTagV1 filterTag : filterTags)
             {
                 final RESTTagV1 tag = filterTag.getTag();
                 
@@ -804,7 +805,8 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
         /* Sync filter fields */
         if (filter.getFilterFields_OTM() != null && filter.getFilterFields_OTM().getItems() != null)
         {
-            for (final RESTFilterFieldV1 filterField : filter.getFilterFields_OTM().getItems())
+            final List<RESTFilterFieldV1> filterFields = filter.getFilterFields_OTM().returnItems();
+            for (final RESTFilterFieldV1 filterField : filterFields)
             {
                 put(filterField.getName(), filterField.getValue());
             }
@@ -813,7 +815,8 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
         /* Sync Category Fields */
         if (filter.getFilterCategories_OTM() != null && filter.getFilterCategories_OTM().getItems() != null)
         {
-            for (final RESTFilterCategoryV1 filterCategory : filter.getFilterCategories_OTM().getItems())
+            final List<RESTFilterCategoryV1> filterCategories = filter.getFilterCategories_OTM().returnItems();
+            for (final RESTFilterCategoryV1 filterCategory : filterCategories)
             {
                 final RESTCategoryV1 cat = filterCategory.getCategory();
                 final RESTProjectV1 project = filterCategory.getProject();

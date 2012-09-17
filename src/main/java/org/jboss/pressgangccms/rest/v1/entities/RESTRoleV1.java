@@ -2,9 +2,10 @@ package org.jboss.pressgangccms.rest.v1.entities;
 
 import org.jboss.pressgangccms.rest.v1.collections.RESTRoleCollectionV1;
 import org.jboss.pressgangccms.rest.v1.collections.RESTUserCollectionV1;
-import org.jboss.pressgangccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTRoleCollectionItemV1;
+import org.jboss.pressgangccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
 
-public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV1>
+public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleCollectionV1, RESTRoleCollectionItemV1>
 {
 	public static final String NAME_NAME = "name";
 	public static final String DESCRIPTION_NAME = "description";
@@ -12,8 +13,6 @@ public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV
 	public static final String PARENTROLES_NAME = "parentRoles";
 	public static final String USERS_NAME = "users";
 	
-	private Integer relationshipId = null;
-	private String relationshipDescription = null;
 	private String name = null;
 	private String description = null;
 	private RESTUserCollectionV1 users = null;
@@ -43,8 +42,6 @@ public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV
 		
 		retValue.name = this.name;
 		retValue.description = description;
-		retValue.relationshipId = this.relationshipId == null ? null : new Integer(this.relationshipId);
-		retValue.relationshipDescription = this.relationshipDescription;
 		
 		if (deepCopy)
 		{
@@ -161,25 +158,5 @@ public class RESTRoleV1 extends RESTBaseEntityV1<RESTRoleV1, RESTRoleCollectionV
 	{
 		this.parentRoles = parentRoles;
 		this.setParameterToConfigured(PARENTROLES_NAME);
-	}
-
-	public Integer getRelationshipId()
-	{
-		return relationshipId;
-	}
-
-	public void setRelationshipId(final Integer relationshipId)
-	{
-		this.relationshipId = relationshipId;
-	}
-
-	public String getRelationshipDescription()
-	{
-		return relationshipDescription;
-	}
-
-	public void setRelationshipDescription(final String relationshipDescription)
-	{
-		this.relationshipDescription = relationshipDescription;
 	}
 }

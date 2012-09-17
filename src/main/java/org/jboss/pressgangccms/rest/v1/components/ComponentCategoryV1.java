@@ -1,7 +1,8 @@
 package org.jboss.pressgangccms.rest.v1.components;
 
+import org.jboss.pressgangccms.rest.v1.collections.items.RESTTagCategoryCollectionItemV1;
 import org.jboss.pressgangccms.rest.v1.entities.RESTCategoryV1;
-import org.jboss.pressgangccms.rest.v1.entities.RESTTagV1;
+import org.jboss.pressgangccms.rest.v1.entities.join.RESTTagCategoryV1;
 
 public class ComponentCategoryV1
 {
@@ -23,9 +24,12 @@ public class ComponentCategoryV1
 		
 		if (source.getTags() != null && source.getTags().getItems() != null)
 		{
-			for (final RESTTagV1 tag : source.getTags().getItems())
-				if (tagId == tag.getId() && !tag.getRemoveItem())
+			for (final RESTTagCategoryCollectionItemV1 tagItem : source.getTags().getItems())
+			{
+			    final RESTTagCategoryV1 tag = tagItem.getItem();
+				if (tag != null && tagId == tag.getId() && !tagItem.returnIsRemoveItem())
 					return true;
+			}
 		}
 
 		return false;
