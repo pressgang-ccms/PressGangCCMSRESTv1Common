@@ -43,51 +43,56 @@ public class RESTTagV1 extends RESTBaseEntityWithPropertiesV1<RESTTagV1, RESTTag
 		
 		this.cloneInto(retValue, deepCopy);
 		
-		retValue.name = this.name;
-		retValue.description = description;
-		
-		if (deepCopy)
-		{
-			if (this.categories != null)
-			{
-				retValue.categories = new RESTCategoryCollectionV1();
-				this.categories.cloneInto(retValue.categories, deepCopy);
-			}
-			
-			if (this.parentTags != null)
-			{
-				retValue.parentTags = new RESTTagCollectionV1();
-				this.parentTags.cloneInto(retValue.parentTags, deepCopy);
-			}
-			
-			if (this.childTags != null)
-			{
-				retValue.childTags = new RESTTagCollectionV1();
-				this.childTags.cloneInto(retValue.childTags, deepCopy);
-			}
-			
-			if (this.projects != null)
-			{
-				retValue.projects = new RESTProjectCollectionV1();
-				this.projects.cloneInto(retValue.projects, deepCopy);
-			}
-			
-			if (this.revisions != null)
-			{
-				retValue.revisions = new RESTTagCollectionV1();
-				this.revisions.cloneInto(retValue.revisions, deepCopy);
-			}
-		}
-		else
-		{
-			retValue.categories = this.categories;
-			retValue.parentTags = this.parentTags;
-			retValue.childTags = this.childTags;
-			retValue.projects = this.projects;
-			retValue.revisions = this.revisions;
-		}
-		
 		return retValue;
+	}
+	
+	public void cloneInto(final RESTTagV1 clone, final boolean deepCopy)
+	{
+	    super.cloneInto(clone, deepCopy);
+	    
+	    clone.name = this.name;
+	    clone.description = description;
+        
+        if (deepCopy)
+        {
+            if (this.categories != null)
+            {
+                clone.categories = new RESTCategoryCollectionV1();
+                this.categories.cloneInto(clone.categories, deepCopy);
+            }
+            
+            if (this.parentTags != null)
+            {
+                clone.parentTags = new RESTTagCollectionV1();
+                this.parentTags.cloneInto(clone.parentTags, deepCopy);
+            }
+            
+            if (this.childTags != null)
+            {
+                clone.childTags = new RESTTagCollectionV1();
+                this.childTags.cloneInto(clone.childTags, deepCopy);
+            }
+            
+            if (this.projects != null)
+            {
+                clone.projects = new RESTProjectCollectionV1();
+                this.projects.cloneInto(clone.projects, deepCopy);
+            }
+            
+            if (this.revisions != null)
+            {
+                clone.revisions = new RESTTagCollectionV1();
+                this.revisions.cloneInto(clone.revisions, deepCopy);
+            }
+        }
+        else
+        {
+            clone.categories = this.categories;
+            clone.parentTags = this.parentTags;
+            clone.childTags = this.childTags;
+            clone.projects = this.projects;
+            clone.revisions = this.revisions;
+        }
 	}
 	
 	public void explicitSetProperties(final RESTPropertyTagCollectionV1 properties)
