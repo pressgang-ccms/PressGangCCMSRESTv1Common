@@ -41,7 +41,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	
 	static public String returnBugzillaBuildId(final RESTTranslatedTopicV1 source)
 	{
-		if (!ComponentBaseTopicV1.returnIsDummyTopic(source))
+		if (!ComponentBaseTopicV1.<RESTTranslatedTopicV1>returnIsDummyTopic(source))
 		{
 			return "Translation " + returnZanataId(source) + " " + source.getLocale();
 		}
