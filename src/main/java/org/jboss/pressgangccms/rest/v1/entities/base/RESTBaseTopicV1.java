@@ -23,7 +23,6 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
 	protected String xml = null;
 	protected String xmlErrors = null;
 	protected String html = null;
-	protected Integer revision = null;
 	protected String locale = null;
 	protected RESTTagCollectionV1 tags = null;
 	protected RESTTopicSourceUrlCollectionV1 sourceUrls_OTM = null;
@@ -41,7 +40,6 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
 		clone.xml = this.xml;
 		clone.xmlErrors = this.xmlErrors;
 		clone.html = this.html;
-		clone.revision = this.revision;
 		clone.locale = this.locale;
 		
 		if (deepCopy)
@@ -63,18 +61,6 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
 			clone.tags = this.tags;
 			clone.sourceUrls_OTM = this.sourceUrls_OTM;
 		}
-	}
-	
-	@Override
-	public Integer getRevision()
-	{
-		return revision;
-	}
-
-	@Override
-	public void setRevision(final Integer revision)
-	{
-		this.revision = revision;
 	}
 
 	public String getTitle()
