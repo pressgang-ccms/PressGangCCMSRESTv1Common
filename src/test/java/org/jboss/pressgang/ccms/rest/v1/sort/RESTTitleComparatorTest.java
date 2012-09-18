@@ -1,6 +1,6 @@
 package org.jboss.pressgang.ccms.rest.v1.sort;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertSame;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -119,12 +119,12 @@ abstract class RESTBaseTitleComparatorTest<T extends RESTBaseEntityV1<T, ?, ?>>
         
         Collections.sort(topics, comparator);
         
-        assertTrue(topics.get(0) == entity6);
-        assertTrue(topics.get(1) == entity1);
-        assertTrue(topics.get(2) == entity2);
-        assertTrue(topics.get(3) == entity3);
-        assertTrue(topics.get(4) == entity4);
-        assertTrue(topics.get(5) == entity5);
+        assertSame(topics.get(0), entity6);
+        assertSame(topics.get(1), entity1);
+        assertSame(topics.get(2), entity2);
+        assertSame(topics.get(3), entity3);
+        assertSame(topics.get(4), entity4);
+        assertSame(topics.get(5), entity5);
     }
     
     protected abstract T createEntity(final String title);
