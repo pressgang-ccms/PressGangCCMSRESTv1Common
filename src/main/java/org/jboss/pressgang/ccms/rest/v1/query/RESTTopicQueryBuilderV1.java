@@ -17,7 +17,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.query.base.RESTBaseQueryBuilderWithPropertiesV1;
-import org.jboss.pressgangccms.utils.structures.Pair;
+import org.jboss.pressgang.ccms.utils.structures.Pair;
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
 

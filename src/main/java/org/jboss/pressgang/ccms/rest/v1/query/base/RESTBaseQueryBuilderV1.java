@@ -12,7 +12,7 @@ import java.util.Map;
 import javax.ws.rs.core.PathSegment;
 
 import org.jboss.pressgang.ccms.rest.v1.constants.CommonFilterConstants;
-import org.jboss.pressgangccms.utils.common.CollectionUtilities;
+import org.jboss.pressgang.ccms.utils.common.CollectionUtilities;
 import org.jboss.resteasy.specimpl.PathSegmentImpl;
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;

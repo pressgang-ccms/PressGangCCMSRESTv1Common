@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.jboss.pressgang.ccms.rest.v1.constants.CommonFilterConstants;
 import org.jboss.pressgang.ccms.rest.v1.query.base.RESTBaseQueryBuilderV1;
-import org.jboss.pressgangccms.utils.structures.Pair;
+import org.jboss.pressgang.ccms.utils.structures.Pair;
 
 public class RESTImageQueryBuilderV1 extends RESTBaseQueryBuilderV1
 {

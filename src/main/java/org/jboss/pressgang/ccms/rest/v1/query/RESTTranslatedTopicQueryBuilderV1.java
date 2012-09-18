@@ -8,7 +8,7 @@ import java.util.Map;
 import org.jboss.pressgang.ccms.rest.v1.constants.CommonFilterConstants;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterLocaleV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
-import org.jboss.pressgangccms.utils.structures.Pair;
+import org.jboss.pressgang.ccms.utils.structures.Pair;
 
 public class RESTTranslatedTopicQueryBuilderV1 extends RESTTopicQueryBuilderV1
 {

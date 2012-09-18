@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.constants.CommonFilterConstants;
 import org.jboss.pressgang.ccms.rest.v1.query.base.RESTBaseQueryBuilderV1;
-import org.jboss.pressgangccms.utils.structures.Pair;
+import org.jboss.pressgang.ccms.utils.structures.Pair;
 
 public class RESTPropertyTagQueryBuilderV1 extends RESTBaseQueryBuilderV1
 {
