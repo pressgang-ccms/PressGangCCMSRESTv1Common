@@ -1,0 +1,131 @@
+package org.jboss.pressgang.ccms.rest.v1.sort;
+
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.junit.Test;
+
+public class RESTTitleComparatorTest
+{
+    @Test
+    public void testTopicTitleComparator()
+    {
+        final RESTTopicTitleComparatorTest test = new RESTTopicTitleComparatorTest();
+        
+        test.testSort(new BaseTopicV1TitleComparator<RESTTopicV1>());
+    }
+    
+    @Test
+    public void testProjectNameComparator()
+    {
+        final RESTProjectNameComparatorTest test = new RESTProjectNameComparatorTest();
+        
+        test.testSort(new ProjectV1NameComparator());
+    }
+    
+    @Test
+    public void testTagNameComparator()
+    {
+        final RESTTagNameComparatorTest test = new RESTTagNameComparatorTest();
+        
+        test.testSort(new TagV1NameComparator());
+    }
+}
+
+class RESTTopicTitleComparatorTest extends RESTBaseTitleComparatorTest<RESTTopicV1>
+{
+    @Override
+    protected RESTTopicV1 createEntity(final String title)
+    {
+        final RESTTopicV1 entity = new RESTTopicV1();
+        
+        entity.setTitle(title);
+        
+        return entity;
+    }
+}
+
+class RESTProjectNameComparatorTest extends RESTBaseTitleComparatorTest<RESTProjectV1>
+{
+    @Override
+    protected RESTProjectV1 createEntity(final String title)
+    {
+        final RESTProjectV1 entity = new RESTProjectV1();
+        
+        entity.setName(title);
+        
+        return entity;
+    }
+}
+
+class RESTTagNameComparatorTest extends RESTBaseTitleComparatorTest<RESTTagV1>
+{
+    @Override
+    protected RESTTagV1 createEntity(final String title)
+    {
+        final RESTTagV1 entity = new RESTTagV1();
+        
+        entity.setName(title);
+        
+        return entity;
+    }
+}
+
+/**
+ * Base class to handle populating a List of REST Entities with some names and then a method to
+ * validate that a comparator sorts the titles/names into alphabetical order.
+ * 
+ * @author lnewson
+ *
+ * @param <T> The REST Entity to be sorted into alphabetical order by title.
+ */
+abstract class RESTBaseTitleComparatorTest<T extends RESTBaseEntityV1<T, ?, ?>>
+{
+    private T entity1;
+    private T entity2;
+    private T entity3;
+    private T entity4;
+    private T entity5;
+    private T entity6;
+
+    public RESTBaseTitleComparatorTest()
+    {
+        entity1 = createEntity("Cat");
+        entity2 = createEntity("Dog");
+        entity3 = createEntity("Donkey");
+        entity4 = createEntity("Horse");
+        entity5 = createEntity("Pig");
+        entity6 = createEntity(null);
+    }
+    
+    public void testSort(final Comparator<T> comparator)
+    {
+        final List<T> topics = new ArrayList<T>();
+        
+        topics.add(entity5);
+        topics.add(entity6);
+        topics.add(entity2);
+        topics.add(entity4);
+        topics.add(entity1);
+        topics.add(entity3);
+        
+        Collections.sort(topics, comparator);
+        
+        assertTrue(topics.get(0) == entity6);
+        assertTrue(topics.get(1) == entity1);
+        assertTrue(topics.get(2) == entity2);
+        assertTrue(topics.get(3) == entity3);
+        assertTrue(topics.get(4) == entity4);
+        assertTrue(topics.get(5) == entity5);
+    }
+    
+    protected abstract T createEntity(final String title);
+}
