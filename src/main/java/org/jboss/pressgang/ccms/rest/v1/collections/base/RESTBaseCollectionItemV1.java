@@ -65,8 +65,8 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
         
         return true;
     }
-    
-    public void cloneInto(final V clone, boolean deepCopy)
+
+    public void cloneInto(final RESTBaseCollectionItemV1<T, U, V> clone, boolean deepCopy)
     {
         clone.state = this.state;
         
