@@ -189,6 +189,10 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
     @Override
     public boolean equals(final Object other)
     {
+        if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTFilterV1))
             return false;
         

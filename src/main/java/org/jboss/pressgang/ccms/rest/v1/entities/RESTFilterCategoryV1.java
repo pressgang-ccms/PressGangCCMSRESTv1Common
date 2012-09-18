@@ -139,6 +139,10 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
     @Override
     public boolean equals(final Object other)
     {
+        if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTFilterCategoryV1))
             return false;
         

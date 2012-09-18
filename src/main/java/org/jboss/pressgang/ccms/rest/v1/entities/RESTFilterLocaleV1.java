@@ -110,6 +110,10 @@ public class RESTFilterLocaleV1 extends RESTBaseEntityV1<RESTFilterLocaleV1, RES
     @Override
     public boolean equals(final Object other)
     {
+        if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTFilterLocaleV1))
             return false;
         

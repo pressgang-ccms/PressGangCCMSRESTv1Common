@@ -109,6 +109,10 @@ public class RESTTagCategoryV1 extends RESTBaseTagV1<RESTTagCategoryV1, RESTTagC
     @Override
     public boolean equals(final Object other)
     {
+        if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTTagCategoryV1))
             return false;
         
@@ -117,12 +121,12 @@ public class RESTTagCategoryV1 extends RESTBaseTagV1<RESTTagCategoryV1, RESTTagC
         
         final RESTTagCategoryV1 otherCasted = (RESTTagCategoryV1)other;
         
-        if (this.relationshipSort == null && otherCasted.relationshipSort == null)
+        if (this.relationshipId == null && otherCasted.relationshipId == null)
             return true;
         
-        if (this.relationshipSort == null || otherCasted.relationshipSort == null)
+        if ((this.relationshipId == null || otherCasted.relationshipId == null))
             return false;
         
-        return this.relationshipSort.equals(otherCasted.relationshipSort);
+        return this.relationshipId.equals(otherCasted.relationshipId);
     }
 }

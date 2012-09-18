@@ -47,6 +47,10 @@ public abstract class RESTBaseEntityWithPropertiesV1<T extends RESTBaseEntityWit
     @Override
     public boolean equals(final Object other)
     {
+        if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTBaseEntityWithPropertiesV1))
             return false;
         

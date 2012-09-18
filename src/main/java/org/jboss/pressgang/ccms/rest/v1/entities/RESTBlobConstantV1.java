@@ -105,6 +105,10 @@ public class RESTBlobConstantV1 extends RESTBasePrimaryEntityV1<RESTBlobConstant
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTBlobConstantV1))
             return false;
         

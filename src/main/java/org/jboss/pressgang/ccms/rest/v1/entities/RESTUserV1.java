@@ -118,6 +118,10 @@ public class RESTUserV1 extends RESTBasePrimaryEntityV1<RESTUserV1, RESTUserColl
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTUserV1))
             return false;
         

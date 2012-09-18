@@ -41,14 +41,6 @@ public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectio
         
         items.add(new RESTAssignedPropertyTagCollectionItemV1(item, state));
     }
-    
-    @Override
-    public void removeInvalidChangeItemRequests()
-    {
-        super.removeInvalidChangeItemRequests();
-        
-        ignoreDuplicatedChangeItemRequests();
-    }
 	
     /**
      * This method will clear out any child items that are marked for both add and remove, or duplicated add and remove requests.
@@ -61,7 +53,6 @@ public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectio
 	{
 		if (this.getItems() != null)
 		{
-			final List<RESTAssignedPropertyTagCollectionItemV1> removeChildren = new ArrayList<RESTAssignedPropertyTagCollectionItemV1>();
 			final List<RESTAssignedPropertyTagCollectionItemV1> items = new ArrayList<RESTAssignedPropertyTagCollectionItemV1>(this.getItems());
 		
 			/* on the second loop, remove any items that are marked for both add and remove is separate items */
@@ -88,10 +79,9 @@ public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectio
                             || childItem1.getRelationshipId() != null && childItem1.getRelationshipId().equals(childItem2.getRelationshipId());
 					
 					/* Check the PropertyTags for uniqueness and their value as well as their IDs */
-					if ((childItem1.getIsUnique()
-					        && childItem2.getIsUnique())
-					        && childItem1.getId().equals(childItem2.getId())
-					        && valueEqual && relationshipIdEqual)
+					if (childItem1.getId().equals(childItem2.getId()) && relationshipIdEqual && valueEqual
+					    && (((childItem1.getIsUnique() && childItem2.getIsUnique()))
+					        || ((!childItem1.getIsUnique() || !childItem2.getIsUnique()))))
 					{
 						final boolean add2 = child2.getState() == ADD_STATE;
 						final boolean remove2 = child2.getState() == REMOVE_STATE;
@@ -99,23 +89,19 @@ public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectio
 						
 						/* check for double add, double remove, double update, and remove one instance */
                         if ((add1 && add2) || (remove1 && remove2) || (update1 && update2))                     
-                            if (!removeChildren.contains(child1) && !removeChildren.contains(child2))
-                                removeChildren.add(child1);
+                            this.getItems().remove(child1);
 						
 						/* check for double add, double remove, add and remove, remove and add */
 						if ((add1 && remove2) || (remove1 && add2)
-						        || (update1 && remove2) || (update2 && remove2)
+						        || (update1 && remove2) || (update2 && remove1)
 						        || (update1 && add2) || (update2 && add1))
-							if (!removeChildren.contains(child1))
-								removeChildren.add(child1);
+						{
+                            this.getItems().remove(child1);
+                            this.getItems().remove(child2);
+                        }
 					}
 				}
 			}
-			
-			for (final RESTAssignedPropertyTagCollectionItemV1 removeChild : removeChildren)
-            {
-                this.getItems().remove(removeChild);
-            }
 		}
 	}
 }

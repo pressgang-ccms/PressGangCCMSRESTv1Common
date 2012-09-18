@@ -196,6 +196,7 @@
 			<version>1.9.0</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jaxrs</artifactId>

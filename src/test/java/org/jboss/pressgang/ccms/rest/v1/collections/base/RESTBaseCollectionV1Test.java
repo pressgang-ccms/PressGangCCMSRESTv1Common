@@ -1,6 +1,9 @@
-package org.jboss.pressgang.ccms.rest.v1.collection.base;
+package org.jboss.pressgang.ccms.rest.v1.collections.base;
 
 import static org.junit.Assert.*;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1.ADD_STATE;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1.REMOVE_STATE;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,18 +12,15 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
 
 public class RESTBaseCollectionV1Test
 {
-    @Spy
     private RESTBaseTestCollectionV1 collection;
     
     @Before
-    public void initMocks()
+    public void init()
     {
-        MockitoAnnotations.initMocks(this);
+        collection = new RESTBaseTestCollectionV1();
     }
 
     @Test
@@ -30,8 +30,8 @@ public class RESTBaseCollectionV1Test
         
         items.add(createCollectionItem(1, 4));
         items.add(createCollectionItem(2, 4));
-        items.add(createNullCollectionItem(2));
-        items.add(createCollectionItem(3, 2));
+        items.add(createNullCollectionItem(REMOVE_STATE));
+        items.add(createCollectionItem(3, REMOVE_STATE));
         
         collection.setItems(items);
 
@@ -45,13 +45,13 @@ public class RESTBaseCollectionV1Test
     {
         final List<RESTBaseTestCollectionItemV1> items = new ArrayList<RESTBaseTestCollectionItemV1>();
         
-        items.add(createCollectionItem(1, 2));
-        items.add(createCollectionItem(1, 1));
+        items.add(createCollectionItem(1, REMOVE_STATE));
+        items.add(createCollectionItem(1, ADD_STATE));
         
-        items.add(createCollectionItem(2, 2));
-        items.add(createCollectionItem(2, 2));
+        items.add(createCollectionItem(2, REMOVE_STATE));
+        items.add(createCollectionItem(2, REMOVE_STATE));
         
-        items.add(createCollectionItem(3, 2));
+        items.add(createCollectionItem(3, ADD_STATE));
 
         collection.setItems(items);
 

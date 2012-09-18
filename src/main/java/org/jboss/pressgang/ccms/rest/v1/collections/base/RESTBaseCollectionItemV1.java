@@ -48,6 +48,7 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
     public boolean equals(final Object o)
     {
         if (o == null) return false;
+        if (this == o) return true;
         if (!(o instanceof RESTBaseCollectionItemV1<?, ?, ?>)) return false;
         
         final RESTBaseCollectionItemV1<?, ?, ?> item = (RESTBaseCollectionItemV1<?, ?, ?>) o;

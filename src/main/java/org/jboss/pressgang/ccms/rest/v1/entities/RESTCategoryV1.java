@@ -95,6 +95,10 @@ public class RESTCategoryV1 extends RESTBaseCategoryV1<RESTCategoryV1, RESTCateg
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTCategoryV1))
             return false;
         

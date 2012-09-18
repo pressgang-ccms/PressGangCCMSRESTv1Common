@@ -60,28 +60,23 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
 		/* ignore attempts to add/remove/update null items and items with invalid states */
 		if (this.getItems() != null)
 		{
-		    final List<V> removeChildren = new ArrayList<V>();
+		    final List<V> items = new ArrayList<V>(this.getItems());
 		    
-		    for (final V item : this.getItems())
+		    for (final V item : items)
 		    {
 		        if (item.getItem() == null)
 		        {
-		            removeChildren.add(item);
+		            this.getItems().remove(item);
 		        }
 		        else if (item.getState() != null && item.getState() == UNCHANGED_STATE)
                 {
-                    removeChildren.add(item);
+		            this.getItems().remove(item);
                 }
 		        else if (item.getState() != null && !item.validState(item.getState()))
 		        {
-		            removeChildren.add(item);
+		            this.getItems().remove(item);
 		        }
 		    }
-		    
-		    for (final V removeChild : removeChildren)
-            {
-                this.getItems().remove(removeChild);
-            }
 		    
 		    ignoreDuplicatedChangeItemRequests();
 		}
@@ -97,8 +92,7 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
     {
         if (this.getItems() != null)
         {
-            final List<V> removeChildren = new ArrayList<V>();
-            final List<V> items = this.getItems();
+            final List<V> items = new ArrayList<V>(this.getItems());
         
             /* on the second loop, remove any items that are marked for both add and remove is separate items */
             for (int i = 0; i < items.size(); ++i)
@@ -126,24 +120,18 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
                         
                         /* check for double add, double remove, double update, and remove one instance */
                         if ((add1 && add2) || (remove1 && remove2) || (update1 && update2))                     
-                            if (!removeChildren.contains(child1) && !removeChildren.contains(child2))
-                                removeChildren.add(child1);
+                            this.getItems().remove(child1);
                         
                         /* check for double add, double remove, add and remove, remove and add */
                         if ((add1 && remove2) || (remove1 && add2)
-                                || (update1 && remove2) || (update2 && remove2)
+                                || (update1 && remove2) || (update2 && remove1)
                                 || (update1 && add2) || (update2 && add1))
-                            if (!removeChildren.contains(child1))
-                                removeChildren.add(child1);
-                            if (!removeChildren.contains(child2))
-                                removeChildren.add(child2);
+                        {
+                            this.getItems().remove(child1);
+                            this.getItems().remove(child2);
+                        }
                     }
                 }
-            }
-            
-            for (final V removeChild : removeChildren)
-            {               
-                this.getItems().remove(removeChild);
             }
         }
     }

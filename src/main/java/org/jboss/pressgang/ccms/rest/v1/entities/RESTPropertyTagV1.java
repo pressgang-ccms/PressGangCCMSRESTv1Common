@@ -93,6 +93,10 @@ public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, 
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTPropertyTagV1))
             return false;
         

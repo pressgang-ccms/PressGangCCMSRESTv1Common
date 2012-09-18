@@ -95,6 +95,10 @@ public abstract class RESTBaseCategoryV1<T extends RESTBaseCategoryV1<T, U, V>, 
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTBaseCategoryV1))
             return false;
         

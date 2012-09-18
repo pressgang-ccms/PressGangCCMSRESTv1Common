@@ -144,6 +144,10 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTBaseTopicV1))
             return false;
         

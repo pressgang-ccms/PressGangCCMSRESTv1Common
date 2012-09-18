@@ -118,6 +118,10 @@ public class RESTProjectV1 extends RESTBasePrimaryEntityV1<RESTProjectV1, RESTPr
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTProjectV1))
             return false;
         

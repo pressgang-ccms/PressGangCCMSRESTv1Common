@@ -70,6 +70,10 @@ public abstract class RESTBasePrimaryEntityV1<T extends RESTBasePrimaryEntityV1<
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTBasePrimaryEntityV1))
             return false;
         

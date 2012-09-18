@@ -168,6 +168,10 @@ public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleColl
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTRoleV1))
             return false;
         

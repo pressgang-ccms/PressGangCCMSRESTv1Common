@@ -128,6 +128,10 @@ public abstract class RESTBaseTagV1<T extends RESTBaseTagV1<T, U, V>, U extends 
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTBaseTagV1))
             return false;
         

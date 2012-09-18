@@ -51,7 +51,6 @@ public class RESTTagCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<REST
     {
         if (this.getItems() != null)
         {
-            final List<RESTTagCategoryCollectionItemV1> removeChildren = new ArrayList<RESTTagCategoryCollectionItemV1>();
             final List<RESTTagCategoryCollectionItemV1> items = new ArrayList<RESTTagCategoryCollectionItemV1>(this.getItems());
             
             /* on the second loop, remove any items that are marked for both add and remove is separate items */
@@ -71,31 +70,48 @@ public class RESTTagCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<REST
                     final RESTTagCategoryCollectionItemV1 child2 = items.get(j);
                     final RESTTagCategoryV1 childItem2 = child2.getItem();
                     
+                    /* Do some checks on values that could be null */
+                    final boolean relationshipIdEqual = childItem1.getRelationshipId() == null && childItem2.getRelationshipId() == null 
+                            || childItem1.getRelationshipId() != null && childItem1.getRelationshipId().equals(childItem2.getRelationshipId());
+                    
                     /* Check the PropertyTags for uniqueness and their value as well as their IDs */
-                    if (childItem1.getId().equals(childItem2.getId()) && childItem1.getRelationshipSort().equals(childItem2.getRelationshipSort()))
+                    if (childItem1.getId().equals(childItem2.getId()) && relationshipIdEqual)
                     {
                         final boolean add2 = child2.getState() == ADD_STATE;
                         final boolean remove2 = child2.getState() == REMOVE_STATE;
                         final boolean update2 = child2.getState() == UPDATE_STATE;
                         
+                        final boolean relationshipSortEqual = childItem1.getRelationshipSort() == null && childItem2.getRelationshipSort() == null 
+                                || childItem1.getRelationshipSort() != null && childItem1.getRelationshipSort().equals(childItem2.getRelationshipSort());
+                        
                         /* check for double add, double remove, double update, and remove one instance */
-                        if ((add1 && add2) || (remove1 && remove2) || (update1 && update2))                     
-                            if (!removeChildren.contains(child1) && !removeChildren.contains(child2))
-                                removeChildren.add(child1);
+                        if ((add1 && add2) || (remove1 && remove2) || (update1 && update2))
+                        {
+                            /* 
+                             * If the relationship sort values are equal then we only need to remove one item. If
+                             * the are different then both should be removed. 
+                             */
+                            if (relationshipSortEqual)
+                            {
+                                this.getItems().remove(child1);
+                            }
+                            else
+                            {
+                                this.getItems().remove(child1);
+                                this.getItems().remove(child2);
+                            }
+                        }
                         
                         /* check for double add, double remove, add and remove, remove and add */
                         if ((add1 && remove2) || (remove1 && add2)
-                                || (update1 && remove2) || (update2 && remove2)
+                                || (update1 && remove2) || (update2 && remove1)
                                 || (update1 && add2) || (update2 && add1))
-                            if (!removeChildren.contains(child1))
-                                removeChildren.add(child1);
+                        {
+                            this.getItems().remove(child1);
+                            this.getItems().remove(child2);
+                        }
                     }
                 }
-            }
-            
-            for (final RESTTagCategoryCollectionItemV1 removeChild : removeChildren)
-            {
-                this.getItems().remove(removeChild);
             }
         }
     }

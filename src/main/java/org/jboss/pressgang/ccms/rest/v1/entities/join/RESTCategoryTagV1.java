@@ -109,6 +109,10 @@ public class RESTCategoryTagV1 extends RESTBaseCategoryV1<RESTCategoryTagV1, RES
     @Override
     public boolean equals(final Object other)
     {
+        if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTCategoryTagV1))
             return false;
         
@@ -117,19 +121,13 @@ public class RESTCategoryTagV1 extends RESTBaseCategoryV1<RESTCategoryTagV1, RES
         
         final RESTCategoryTagV1 otherCasted = (RESTCategoryTagV1)other;
         
-        if ((this.relationshipSort == null || otherCasted.relationshipSort == null)
-                && !(this.relationshipSort == null && otherCasted.relationshipSort == null))
-            return false;
-        else if (!this.relationshipSort.equals(otherCasted.relationshipSort))
+        if (this.relationshipId == null && otherCasted.relationshipId == null)
+            return true;
+        
+        if ((this.relationshipId == null || otherCasted.relationshipId == null))
             return false;
         
-        if (this.relationshipId == null || otherCasted.relationshipId == null
-                && !(this.relationshipId == null && otherCasted.relationshipId == null))
-            return false;
-        else if (!this.relationshipId.equals(otherCasted.relationshipId))
-            return false;
-        
-        return true;
+        return this.relationshipId.equals(otherCasted.relationshipId);
     }
 
 }

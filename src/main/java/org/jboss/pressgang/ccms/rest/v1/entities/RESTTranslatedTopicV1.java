@@ -302,6 +302,10 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     @Override
     public boolean equals(final Object other)
     {
+        if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTTranslatedTopicV1))
             return false;
         

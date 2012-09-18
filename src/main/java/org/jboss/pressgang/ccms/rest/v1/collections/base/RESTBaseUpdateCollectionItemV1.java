@@ -12,7 +12,7 @@ public abstract class RESTBaseUpdateCollectionItemV1<T extends RESTBaseEntityV1<
     @Override
     protected boolean validState(final Integer state)
     {
-        return !(state == null || state < MIN_STATE || state > MAX_UPDATE_STATE);
+        return state != null && state >= MIN_STATE && state <= MAX_UPDATE_STATE;
     }
     
     public boolean returnIsUpdateItem()

@@ -194,6 +194,10 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTLanguageImageV1))
             return false;
         

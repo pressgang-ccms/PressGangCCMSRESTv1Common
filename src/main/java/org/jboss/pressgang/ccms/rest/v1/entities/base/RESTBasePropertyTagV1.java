@@ -78,4 +78,17 @@ public abstract class RESTBasePropertyTagV1<T extends RESTBasePropertyTagV1<T, U
 	{
 		this.isUnique = isUnique;
 	}
+	
+	@Override
+    public boolean equals(final Object other)
+    {
+        if (other == null)
+            return false;
+        if (this == other)
+            return true;
+        if (!(other instanceof RESTBasePropertyTagV1))
+            return false;
+        
+        return super.equals(other);
+    }
 }

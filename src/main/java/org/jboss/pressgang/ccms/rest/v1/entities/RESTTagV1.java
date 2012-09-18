@@ -101,6 +101,10 @@ public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RES
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTTagV1))
             return false;
         

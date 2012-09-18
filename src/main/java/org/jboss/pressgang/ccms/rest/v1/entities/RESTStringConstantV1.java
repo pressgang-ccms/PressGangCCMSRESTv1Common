@@ -96,6 +96,10 @@ public class RESTStringConstantV1 extends RESTBasePrimaryEntityV1<RESTStringCons
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTStringConstantV1))
             return false;
         

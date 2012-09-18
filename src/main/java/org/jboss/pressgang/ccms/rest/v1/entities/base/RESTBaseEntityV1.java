@@ -43,7 +43,9 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U ex
 	public boolean equals(final Object other)
 	{
 	    if (other == null)
-	        return false;
+            return false;
+        if (this == other)
+            return true;
 		if (!(other instanceof RESTBaseEntityV1))
 			return false;
 		

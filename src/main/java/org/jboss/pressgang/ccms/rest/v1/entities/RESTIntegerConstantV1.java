@@ -96,6 +96,10 @@ public class RESTIntegerConstantV1 extends RESTBasePrimaryEntityV1<RESTIntegerCo
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTIntegerConstantV1))
             return false;
         

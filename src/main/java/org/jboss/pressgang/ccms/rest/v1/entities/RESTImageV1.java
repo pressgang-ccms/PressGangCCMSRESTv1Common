@@ -100,6 +100,10 @@ public class RESTImageV1 extends RESTBasePrimaryEntityV1<RESTImageV1, RESTImageC
 	@Override
     public boolean equals(final Object other)
     {
+	    if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTImageV1))
             return false;
         

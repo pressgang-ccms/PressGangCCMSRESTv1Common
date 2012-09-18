@@ -10,11 +10,11 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
 {
     public static final String RELATIONSHIP_ID_NAME = "relationshipId";
     public static String VALUE_NAME = "value";
-    
+
     private Integer relationshipId = null;
     private String value = null;
     private boolean valid;
-    
+
     /** A list of the Envers revision numbers */
     private RESTAssignedPropertyTagCollectionV1 revisions = null;
     
@@ -123,26 +123,24 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
     @Override
     public boolean equals(final Object other)
     {
+        if (other == null)
+            return false;
+        if (this == other)
+            return true;
         if (!(other instanceof RESTAssignedPropertyTagV1))
             return false;
-        
+
         if (!super.equals(other))
             return false;
         
         final RESTAssignedPropertyTagV1 otherCasted = (RESTAssignedPropertyTagV1)other;
         
-        if ((this.value == null || otherCasted.value == null)
-                && !(this.value == null && otherCasted.value == null))
-            return false;
-        else if (!this.value.equals(otherCasted.value))
+        if (this.relationshipId == null && otherCasted.relationshipId == null)
+            return true;
+        
+        if ((this.relationshipId == null || otherCasted.relationshipId == null))
             return false;
         
-        if (this.relationshipId == null || otherCasted.relationshipId == null
-                && !(this.relationshipId == null && otherCasted.relationshipId == null))
-            return false;
-        else if (!this.relationshipId.equals(otherCasted.relationshipId))
-            return false;
-        
-        return true;
+        return this.relationshipId.equals(otherCasted.relationshipId);
     }
 }
