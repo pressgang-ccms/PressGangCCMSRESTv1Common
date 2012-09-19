@@ -24,8 +24,8 @@ public abstract class RESTBasePrimaryEntityV1<T extends RESTBasePrimaryEntityV1<
 	{
 		this.setSelfLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/get/" + dataType + "/" + id);
 		this.setDeleteLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/delete/" + dataType + "/" + id);
-		this.setAddLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/post/" + dataType);
-		this.setEditLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/put/" + dataType + "/" + id);
+		this.setAddLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/create/" + dataType);
+		this.setEditLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/update/" + dataType + "/" + id);
 	}
 	public String getSelfLink()
 	{
