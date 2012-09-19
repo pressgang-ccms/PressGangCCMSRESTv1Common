@@ -13,6 +13,11 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * A class to test the functionality provided by the RESTBaseCollectionV1 class.
+ * 
+ * @author lnewson
+ */
 public class RESTBaseCollectionV1Test
 {
     private RESTBaseTestCollectionV1 collection;
