@@ -25,6 +25,88 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
     public List<V> getItems() {
         return items;
     }
+    
+    /**
+     * Get a collection of REST entities wrapped as collection items that have a particular state
+     * 
+     * @param states Defines the list of states that an entity can be in to be returned
+     * @return A collection that holds all the REST entities included in the states collection
+     */
+    public List<V> getCollectionItemsWithState(final List<Integer> states) {
+        if (states == null)
+            throw new IllegalArgumentException("states cannot be null");
+
+        final List<V> retValue = new ArrayList<V>();
+
+        for (final V item : items) {
+            if (states.contains(item.getState()))
+                retValue.add(item);
+        }
+
+        return retValue;
+    }
+    
+    /**
+     * 
+     * @return A collection of deleted items
+     */
+    public List<V> getDeletedCollectionItems() {
+        return getCollectionItemsWithState(new ArrayList<Integer>() {
+            {
+                add(REMOVE_STATE);
+            }
+        });
+    }
+    
+    /**
+     * 
+     * @return A collection of added items
+     */
+    public List<V> getAddedCollectionItems() {
+        return getCollectionItemsWithState(new ArrayList<Integer>() {
+            {
+                add(ADD_STATE);
+            }
+        });
+    }
+    
+    /**
+     * 
+     * @return A collection of existing items
+     */
+    public List<V> getExistingCollectionItems() {
+        return getCollectionItemsWithState(new ArrayList<Integer>() {
+            {
+                add(UNCHANGED_STATE);
+            }
+        });
+    }
+    
+    /**
+     * 
+     * @return A collection of existing and added items
+     */
+    public List<V> getExistingAndAddedCollectionItems() {
+        return getCollectionItemsWithState(new ArrayList<Integer>() {
+            {
+                add(UNCHANGED_STATE);
+                add(ADD_STATE);
+            }
+        });
+    }
+    
+    /**
+     * 
+     * @return A collection of added and deleted items
+     */
+    public List<V> getDeletedAndAddedCollectionItems() {
+        return getCollectionItemsWithState(new ArrayList<Integer>() {
+            {
+                add(REMOVE_STATE);
+                add(ADD_STATE);
+            }
+        });
+    }
 
     /**
      * Get a collection of REST entities that have a particular state
@@ -83,13 +165,28 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
     }
     
     /**
-     * 
+     * Get any items that were added or unchanged. This is commonly used when
+     * getting items that should be displayed to the end user.
      * @return A collection of added and existing items
      */
     public List<T> getExistingAndAddedItems() {
         return getItemsWithState(new ArrayList<Integer>() {
             {
                 add(UNCHANGED_STATE);
+                add(ADD_STATE);
+            }
+        });
+    }
+    
+    /**
+     * Get any items that were added or deleted. This is commonly used when
+     * getting items that will change the database.
+     * @return A collection of added and existing items
+     */
+    public List<T> getDeletedAndAddedItems() {
+        return getItemsWithState(new ArrayList<Integer>() {
+            {
+                add(REMOVE_STATE);
                 add(ADD_STATE);
             }
         });
