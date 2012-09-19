@@ -130,7 +130,7 @@ class RESTBaseTestCollectionV1 extends RESTBaseCollectionV1<RESTBaseTestEntityV1
 
     @Override
     protected void addItem(RESTBaseTestEntityV1 item, Integer state) {
-        if (items == null)
+        if (getItems() == null)
             items = new ArrayList<RESTBaseTestCollectionItemV1>();
         
         items.add(new RESTBaseTestCollectionItemV1(item, state));

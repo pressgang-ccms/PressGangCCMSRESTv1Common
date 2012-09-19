@@ -19,14 +19,21 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
  */
 abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
 {
+    private List<V> items = new ArrayList<V>();
 	private Integer size = 0;
 	private String expand = null;
 	private Integer startExpandIndex = null;
 	private Integer endExpandIndex = null;
 
-	abstract public List<V> getItems();
+	public List<V> getItems()
+	{
+	    return items;
+	}
 	
-	abstract public void setItems(final List<V> items);
+	public void setItems(final List<V> items)
+	{
+	    this.items = items;
+	}
 	
 	abstract protected void addItem(final T item, final Integer state);
 

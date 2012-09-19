@@ -17,29 +17,15 @@ import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
  */
 public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTAssignedPropertyTagV1, RESTAssignedPropertyTagCollectionV1, RESTAssignedPropertyTagCollectionItemV1>
 {
-	private List<RESTAssignedPropertyTagCollectionItemV1> items;
-	
-	@Override
-	public List<RESTAssignedPropertyTagCollectionItemV1> getItems()
-	{
-		return this.items;
-	}
-	
-	@Override
-	public void setItems(final List<RESTAssignedPropertyTagCollectionItemV1> items)
-	{
-		this.items = items;
-	}
-
     @Override
     protected void addItem(final RESTAssignedPropertyTagV1 item, final Integer state)
     {
-        if (items == null)
+        if (getItems() == null)
         {
-            this.items = new ArrayList<RESTAssignedPropertyTagCollectionItemV1>();
+            setItems(new ArrayList<RESTAssignedPropertyTagCollectionItemV1>());
         }
         
-        items.add(new RESTAssignedPropertyTagCollectionItemV1(item, state));
+        getItems().add(new RESTAssignedPropertyTagCollectionItemV1(item, state));
     }
 	
     /**
