@@ -1,6 +1,7 @@
 package org.jboss.pressgang.ccms.rest.v1.collections;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTFilterLocaleCollectionItemV1;
@@ -13,14 +14,28 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterLocaleV1;
  */
 public class RESTFilterLocaleCollectionV1 extends RESTBaseUpdateCollectionV1<RESTFilterLocaleV1, RESTFilterLocaleCollectionV1, RESTFilterLocaleCollectionItemV1>
 {
+	private List<RESTFilterLocaleCollectionItemV1> items;
+	
+	@Override
+	public List<RESTFilterLocaleCollectionItemV1> getItems()
+	{
+		return this.items;
+	}
+	
+	@Override
+	public void setItems(final List<RESTFilterLocaleCollectionItemV1> items)
+	{
+		this.items = items;
+	}
+
     @Override
     protected void addItem(final RESTFilterLocaleV1 item, final Integer state)
     {
-        if (getItems() == null)
+        if (items == null)
         {
-            setItems(new ArrayList<RESTFilterLocaleCollectionItemV1>());
+            this.items = new ArrayList<RESTFilterLocaleCollectionItemV1>();
         }
         
-        getItems().add(new RESTFilterLocaleCollectionItemV1(item, state));
+        items.add(new RESTFilterLocaleCollectionItemV1(item, state));
     }
 }

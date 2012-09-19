@@ -1,6 +1,7 @@
 package org.jboss.pressgang.ccms.rest.v1.collections;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTPropertyTagCollectionItemV1;
@@ -13,14 +14,28 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
  */
 public class RESTPropertyTagCollectionV1 extends RESTBaseCollectionV1<RESTPropertyTagV1, RESTPropertyTagCollectionV1, RESTPropertyTagCollectionItemV1>
 {
+	private List<RESTPropertyTagCollectionItemV1> items;
+	
+	@Override
+	public List<RESTPropertyTagCollectionItemV1> getItems()
+	{
+		return this.items;
+	}
+	
+	@Override
+	public void setItems(final List<RESTPropertyTagCollectionItemV1> items)
+	{
+		this.items = items;
+	}
+
     @Override
     protected void addItem(final RESTPropertyTagV1 item, final Integer state)
     {
-        if (getItems() == null)
+        if (items == null)
         {
-            setItems(new ArrayList<RESTPropertyTagCollectionItemV1>());
+            this.items = new ArrayList<RESTPropertyTagCollectionItemV1>();
         }
         
-        getItems().add(new RESTPropertyTagCollectionItemV1(item, state));
+        items.add(new RESTPropertyTagCollectionItemV1(item, state));
     }
 }

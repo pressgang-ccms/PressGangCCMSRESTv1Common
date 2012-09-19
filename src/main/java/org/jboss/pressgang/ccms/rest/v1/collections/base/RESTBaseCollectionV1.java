@@ -16,15 +16,16 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
  * @param <U> The REST Collection type
  */
 abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>> {
-    private List<V> items = new ArrayList<V>();
     private Integer size = 0;
     private String expand = null;
     private Integer startExpandIndex = null;
     private Integer endExpandIndex = null;
 
-    public List<V> getItems() {
-        return items;
-    }
+    public abstract List<V> getItems();
+
+    public abstract void setItems(final List<V> items);
+
+    protected abstract void addItem(final T item, final Integer state);
     
     /**
      * Get a collection of REST entities wrapped as collection items that have a particular state
@@ -38,7 +39,7 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
 
         final List<V> retValue = new ArrayList<V>();
 
-        for (final V item : items) {
+        for (final V item : getItems()) {
             if (states.contains(item.getState()))
                 retValue.add(item);
         }
@@ -52,6 +53,9 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      */
     public List<V> getDeletedCollectionItems() {
         return getCollectionItemsWithState(new ArrayList<Integer>() {
+
+            private static final long serialVersionUID = 283376573900995792L;
+
             {
                 add(REMOVE_STATE);
             }
@@ -64,6 +68,9 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      */
     public List<V> getAddedCollectionItems() {
         return getCollectionItemsWithState(new ArrayList<Integer>() {
+
+            private static final long serialVersionUID = -8643100482383972905L;
+
             {
                 add(ADD_STATE);
             }
@@ -76,6 +83,9 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      */
     public List<V> getExistingCollectionItems() {
         return getCollectionItemsWithState(new ArrayList<Integer>() {
+
+            private static final long serialVersionUID = -1372598148027338391L;
+
             {
                 add(UNCHANGED_STATE);
             }
@@ -88,6 +98,9 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      */
     public List<V> getExistingAndAddedCollectionItems() {
         return getCollectionItemsWithState(new ArrayList<Integer>() {
+
+            private static final long serialVersionUID = 8053767863115354695L;
+
             {
                 add(UNCHANGED_STATE);
                 add(ADD_STATE);
@@ -101,6 +114,9 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      */
     public List<V> getDeletedAndAddedCollectionItems() {
         return getCollectionItemsWithState(new ArrayList<Integer>() {
+
+            private static final long serialVersionUID = -5462456718264210440L;
+
             {
                 add(REMOVE_STATE);
                 add(ADD_STATE);
@@ -120,7 +136,7 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
 
         final List<T> retValue = new ArrayList<T>();
 
-        for (final V item : items) {
+        for (final V item : getItems()) {
             if (states.contains(item.getState()))
                 retValue.add(item.getItem());
         }
@@ -134,6 +150,9 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      */
     public List<T> getDeletedItems() {
         return getItemsWithState(new ArrayList<Integer>() {
+
+            private static final long serialVersionUID = -694402624500755547L;
+
             {
                 add(REMOVE_STATE);
             }
@@ -146,6 +165,11 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      */
     public List<T> getAddedItems() {
         return getItemsWithState(new ArrayList<Integer>() {
+            /**
+             * 
+             */
+            private static final long serialVersionUID = -5014096947640229231L;
+
             {
                 add(ADD_STATE);
             }
@@ -158,6 +182,9 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      */
     public List<T> getExistingItems() {
         return getItemsWithState(new ArrayList<Integer>() {
+            
+            private static final long serialVersionUID = -2687995576333370399L;
+
             {
                 add(UNCHANGED_STATE);
             }
@@ -171,6 +198,9 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      */
     public List<T> getExistingAndAddedItems() {
         return getItemsWithState(new ArrayList<Integer>() {
+  
+            private static final long serialVersionUID = -2308474813016631091L;
+
             {
                 add(UNCHANGED_STATE);
                 add(ADD_STATE);
@@ -185,18 +215,15 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      */
     public List<T> getDeletedAndAddedItems() {
         return getItemsWithState(new ArrayList<Integer>() {
+            
+            private static final long serialVersionUID = -1500714154896976178L;
+
             {
                 add(REMOVE_STATE);
                 add(ADD_STATE);
             }
         });
     }
-
-    public void setItems(final List<V> items) {
-        this.items = items;
-    }
-
-    abstract protected void addItem(final T item, final Integer state);
 
     public List<T> returnItems() {
         final List<T> items = new ArrayList<T>();
