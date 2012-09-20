@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTCategoryV1;
  */
 public class RESTCategoryCollectionV1 extends RESTBaseCollectionV1<RESTCategoryV1, RESTCategoryCollectionV1, RESTCategoryCollectionItemV1>
 {
-	private List<RESTCategoryCollectionItemV1> items;
+	private List<RESTCategoryCollectionItemV1> items = new ArrayList<RESTCategoryCollectionItemV1>();
 	
 	@Override
 	public List<RESTCategoryCollectionItemV1> getItems()

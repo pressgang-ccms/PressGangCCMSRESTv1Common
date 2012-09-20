@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTBugzillaBugV1;
  */
 public class RESTBugzillaBugCollectionV1 extends RESTBaseUpdateCollectionV1<RESTBugzillaBugV1, RESTBugzillaBugCollectionV1, RESTBugzillaBugCollectionItemV1>
 {
-	private List<RESTBugzillaBugCollectionItemV1> items;
+	private List<RESTBugzillaBugCollectionItemV1> items = new ArrayList<RESTBugzillaBugCollectionItemV1>();
 	
 	@Override
 	public List<RESTBugzillaBugCollectionItemV1> getItems()

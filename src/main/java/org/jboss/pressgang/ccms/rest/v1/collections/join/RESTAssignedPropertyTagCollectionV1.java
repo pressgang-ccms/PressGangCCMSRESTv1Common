@@ -17,7 +17,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
  */
 public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTAssignedPropertyTagV1, RESTAssignedPropertyTagCollectionV1, RESTAssignedPropertyTagCollectionItemV1>
 {
-    private List<RESTAssignedPropertyTagCollectionItemV1> items;
+    private List<RESTAssignedPropertyTagCollectionItemV1> items = new ArrayList<RESTAssignedPropertyTagCollectionItemV1>();
     
     @Override
     public List<RESTAssignedPropertyTagCollectionItemV1> getItems()

@@ -18,7 +18,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTTagCategoryV1;
  */
 public class RESTTagCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RESTTagCategoryV1, RESTTagCategoryCollectionV1, RESTTagCategoryCollectionItemV1>
 {
-    private List<RESTTagCategoryCollectionItemV1> items;
+    private List<RESTTagCategoryCollectionItemV1> items = new ArrayList<RESTTagCategoryCollectionItemV1>();
     
     @Override
     public List<RESTTagCategoryCollectionItemV1> getItems()

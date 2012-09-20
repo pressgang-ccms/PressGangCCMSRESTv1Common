@@ -13,7 +13,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
  */
 public class RESTUserCollectionV1 extends RESTBaseCollectionV1<RESTUserV1, RESTUserCollectionV1, RESTUserCollectionItemV1>
 {
-	private List<RESTUserCollectionItemV1> items;
+	private List<RESTUserCollectionItemV1> items = new ArrayList<RESTUserCollectionItemV1>();
 	
 	@Override
 	public List<RESTUserCollectionItemV1> getItems()

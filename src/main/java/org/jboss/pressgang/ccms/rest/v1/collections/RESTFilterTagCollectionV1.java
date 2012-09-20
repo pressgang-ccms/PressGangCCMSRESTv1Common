@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterTagV1;
  */
 public class RESTFilterTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTFilterTagV1, RESTFilterTagCollectionV1, RESTFilterTagCollectionItemV1>
 {
-	private List<RESTFilterTagCollectionItemV1> items;
+	private List<RESTFilterTagCollectionItemV1> items = new ArrayList<RESTFilterTagCollectionItemV1>();
 	
 	@Override
 	public List<RESTFilterTagCollectionItemV1> getItems()

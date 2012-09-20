@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTLanguageImageV1;
  */
 public class RESTLanguageImageCollectionV1 extends RESTBaseUpdateCollectionV1<RESTLanguageImageV1, RESTLanguageImageCollectionV1, RESTLanguageImageCollectionItemV1>
 {
-	private List<RESTLanguageImageCollectionItemV1> items;
+	private List<RESTLanguageImageCollectionItemV1> items = new ArrayList<RESTLanguageImageCollectionItemV1>();
 	
 	@Override
 	public List<RESTLanguageImageCollectionItemV1> getItems()

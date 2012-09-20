@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterLocaleV1;
  */
 public class RESTFilterLocaleCollectionV1 extends RESTBaseUpdateCollectionV1<RESTFilterLocaleV1, RESTFilterLocaleCollectionV1, RESTFilterLocaleCollectionItemV1>
 {
-	private List<RESTFilterLocaleCollectionItemV1> items;
+	private List<RESTFilterLocaleCollectionItemV1> items = new ArrayList<RESTFilterLocaleCollectionItemV1>();
 	
 	@Override
 	public List<RESTFilterLocaleCollectionItemV1> getItems()

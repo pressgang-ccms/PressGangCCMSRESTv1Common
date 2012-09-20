@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicStringV1;
  */
 public class RESTTranslatedTopicStringCollectionV1 extends RESTBaseUpdateCollectionV1<RESTTranslatedTopicStringV1, RESTTranslatedTopicStringCollectionV1, RESTTranslatedTopicStringCollectionItemV1>
 {
-	private List<RESTTranslatedTopicStringCollectionItemV1> items;
+	private List<RESTTranslatedTopicStringCollectionItemV1> items = new ArrayList<RESTTranslatedTopicStringCollectionItemV1>();
 	
 	@Override
 	public List<RESTTranslatedTopicStringCollectionItemV1> getItems()

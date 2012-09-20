@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicSourceUrlV1;
  */
 public class RESTTopicSourceUrlCollectionV1 extends RESTBaseUpdateCollectionV1<RESTTopicSourceUrlV1, RESTTopicSourceUrlCollectionV1, RESTTopicSourceUrlCollectionItemV1>
 {
-	private List<RESTTopicSourceUrlCollectionItemV1> items;
+	private List<RESTTopicSourceUrlCollectionItemV1> items = new ArrayList<RESTTopicSourceUrlCollectionItemV1>();
 	
 	@Override
 	public List<RESTTopicSourceUrlCollectionItemV1> getItems()

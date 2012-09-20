@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
  */
 public class RESTTopicCollectionV1 extends RESTBaseCollectionV1<RESTTopicV1, RESTTopicCollectionV1, RESTTopicCollectionItemV1>
 {
-	private List<RESTTopicCollectionItemV1> items;
+	private List<RESTTopicCollectionItemV1> items = new ArrayList<RESTTopicCollectionItemV1>();
 	
 	@Override
 	public List<RESTTopicCollectionItemV1> getItems()

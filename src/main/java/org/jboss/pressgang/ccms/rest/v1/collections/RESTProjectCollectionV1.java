@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
  */
 public class RESTProjectCollectionV1 extends RESTBaseCollectionV1<RESTProjectV1, RESTProjectCollectionV1, RESTProjectCollectionItemV1>
 {
-	private List<RESTProjectCollectionItemV1> items;
+	private List<RESTProjectCollectionItemV1> items = new ArrayList<RESTProjectCollectionItemV1>();
 	
 	@Override
 	public List<RESTProjectCollectionItemV1> getItems()

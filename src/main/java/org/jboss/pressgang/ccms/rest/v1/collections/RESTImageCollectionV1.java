@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
  */
 public class RESTImageCollectionV1 extends RESTBaseCollectionV1<RESTImageV1, RESTImageCollectionV1, RESTImageCollectionItemV1>
 {
-	private List<RESTImageCollectionItemV1> items;
+	private List<RESTImageCollectionItemV1> items = new ArrayList<RESTImageCollectionItemV1>();
 	
 	@Override
 	public List<RESTImageCollectionItemV1> getItems()

@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTRoleV1;
  */
 public class RESTRoleCollectionV1 extends RESTBaseCollectionV1<RESTRoleV1, RESTRoleCollectionV1, RESTRoleCollectionItemV1>
 {
-	private List<RESTRoleCollectionItemV1> items;
+	private List<RESTRoleCollectionItemV1> items = new ArrayList<RESTRoleCollectionItemV1>();
 	
 	@Override
 	public List<RESTRoleCollectionItemV1> getItems()

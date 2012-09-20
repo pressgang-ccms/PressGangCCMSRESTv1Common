@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
  */
 public class RESTPropertyTagCollectionV1 extends RESTBaseCollectionV1<RESTPropertyTagV1, RESTPropertyTagCollectionV1, RESTPropertyTagCollectionItemV1>
 {
-	private List<RESTPropertyTagCollectionItemV1> items;
+	private List<RESTPropertyTagCollectionItemV1> items = new ArrayList<RESTPropertyTagCollectionItemV1>();
 	
 	@Override
 	public List<RESTPropertyTagCollectionItemV1> getItems()

@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTStringConstantV1;
  */
 public class RESTStringConstantCollectionV1 extends RESTBaseCollectionV1<RESTStringConstantV1, RESTStringConstantCollectionV1, RESTStringConstantCollectionItemV1>
 {
-	private List<RESTStringConstantCollectionItemV1> items;
+	private List<RESTStringConstantCollectionItemV1> items = new ArrayList<RESTStringConstantCollectionItemV1>();
 	
 	@Override
 	public List<RESTStringConstantCollectionItemV1> getItems()
