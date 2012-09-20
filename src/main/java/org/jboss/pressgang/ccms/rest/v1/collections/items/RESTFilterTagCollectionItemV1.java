@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterTagV1;
 
 public class RESTFilterTagCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTFilterTagV1, RESTFilterTagCollectionV1, RESTFilterTagCollectionItemV1>
 {
+    private RESTFilterTagV1 item;
+    
     public RESTFilterTagCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTFilterTagCollectionItemV1 extends RESTBaseUpdateCollectionItemV
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTFilterTagV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTFilterTagV1 item)
+    {
+        this.item = item;
     }
 }

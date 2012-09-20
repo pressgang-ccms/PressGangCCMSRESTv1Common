@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryTagV1;
 
 public class RESTCategoryTagCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTCategoryTagV1, RESTCategoryTagCollectionV1, RESTCategoryTagCollectionItemV1>
 {
+    private RESTCategoryTagV1 item;
+    
     public RESTCategoryTagCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTCategoryTagCollectionItemV1 extends RESTBaseUpdateCollectionIte
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+    
+    @Override
+    public RESTCategoryTagV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTCategoryTagV1 item)
+    {
+        this.item = item;
     }
 }

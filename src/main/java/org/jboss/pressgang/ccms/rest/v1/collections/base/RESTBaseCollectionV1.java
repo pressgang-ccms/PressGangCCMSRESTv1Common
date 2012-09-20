@@ -15,8 +15,9 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
  * @param <T> The REST entity type
  * @param <U> The REST Collection type
  */
+@SuppressWarnings("serial")
 abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>> {
-    private Integer size = 0;
+    private Integer size = null;
     private String expand = null;
     private Integer startExpandIndex = null;
     private Integer endExpandIndex = null;

@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterLocaleV1;
 
 public class RESTFilterLocaleCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTFilterLocaleV1, RESTFilterLocaleCollectionV1, RESTFilterLocaleCollectionItemV1>
 {
+    private RESTFilterLocaleV1 item;
+    
     public RESTFilterLocaleCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTFilterLocaleCollectionItemV1 extends RESTBaseUpdateCollectionIt
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTFilterLocaleV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTFilterLocaleV1 item)
+    {
+        this.item = item;
     }
 }

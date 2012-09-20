@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicStringV1;
 
 public class RESTTranslatedTopicStringCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTTranslatedTopicStringV1, RESTTranslatedTopicStringCollectionV1, RESTTranslatedTopicStringCollectionItemV1>
 {
+    private RESTTranslatedTopicStringV1 item;
+    
     public RESTTranslatedTopicStringCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTTranslatedTopicStringCollectionItemV1 extends RESTBaseUpdateCol
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTTranslatedTopicStringV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTTranslatedTopicStringV1 item)
+    {
+        this.item = item;
     }
 }

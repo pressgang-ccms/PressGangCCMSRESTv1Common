@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
 
 public class RESTImageCollectionItemV1 extends RESTBaseCollectionItemV1<RESTImageV1, RESTImageCollectionV1, RESTImageCollectionItemV1>
 {
+    private RESTImageV1 item;
+    
     public RESTImageCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTImageCollectionItemV1 extends RESTBaseCollectionItemV1<RESTImag
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTImageV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTImageV1 item)
+    {
+        this.item = item;
     }
 }

@@ -5,7 +5,9 @@ import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTTagCategoryCollecti
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTTagCategoryV1;
 
 public class RESTTagCategoryCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTTagCategoryV1, RESTTagCategoryCollectionV1, RESTTagCategoryCollectionItemV1>
-{ 
+{
+    private RESTTagCategoryV1 item;
+    
     public RESTTagCategoryCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTTagCategoryCollectionItemV1 extends RESTBaseUpdateCollectionIte
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTTagCategoryV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTTagCategoryV1 item)
+    {
+        this.item = item;
     }
 }

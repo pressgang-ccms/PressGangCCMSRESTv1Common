@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicSourceUrlV1;
 
 public class RESTTopicSourceUrlCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTTopicSourceUrlV1, RESTTopicSourceUrlCollectionV1, RESTTopicSourceUrlCollectionItemV1>
 {
+    private RESTTopicSourceUrlV1 item;
+    
     public RESTTopicSourceUrlCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTTopicSourceUrlCollectionItemV1 extends RESTBaseUpdateCollection
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTTopicSourceUrlV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTTopicSourceUrlV1 item)
+    {
+        this.item = item;
     }
 }

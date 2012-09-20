@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTStringConstantV1;
 
 public class RESTStringConstantCollectionItemV1 extends RESTBaseCollectionItemV1<RESTStringConstantV1, RESTStringConstantCollectionV1, RESTStringConstantCollectionItemV1>
 {
+    private RESTStringConstantV1 item;
+    
     public RESTStringConstantCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTStringConstantCollectionItemV1 extends RESTBaseCollectionItemV1
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTStringConstantV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTStringConstantV1 item)
+    {
+        this.item = item;
     }
 }

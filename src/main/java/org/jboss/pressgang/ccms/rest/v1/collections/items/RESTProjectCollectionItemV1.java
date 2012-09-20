@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 
 public class RESTProjectCollectionItemV1 extends RESTBaseCollectionItemV1<RESTProjectV1, RESTProjectCollectionV1, RESTProjectCollectionItemV1>
 {
+    private RESTProjectV1 item;
+    
     public RESTProjectCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTProjectCollectionItemV1 extends RESTBaseCollectionItemV1<RESTPr
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTProjectV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTProjectV1 item)
+    {
+        this.item = item;
     }
 }

@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTBugzillaBugV1;
 
 public class RESTBugzillaBugCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTBugzillaBugV1, RESTBugzillaBugCollectionV1, RESTBugzillaBugCollectionItemV1>
 {
+    private RESTBugzillaBugV1 item;
+    
     public RESTBugzillaBugCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTBugzillaBugCollectionItemV1 extends RESTBaseUpdateCollectionIte
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+    
+    @Override
+    public RESTBugzillaBugV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTBugzillaBugV1 item)
+    {
+        this.item = item;
     }
 }

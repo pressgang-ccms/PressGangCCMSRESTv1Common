@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTLanguageImageV1;
 
 public class RESTLanguageImageCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTLanguageImageV1, RESTLanguageImageCollectionV1, RESTLanguageImageCollectionItemV1>
 {
+    private RESTLanguageImageV1 item;
+    
     public RESTLanguageImageCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTLanguageImageCollectionItemV1 extends RESTBaseUpdateCollectionI
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTLanguageImageV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTLanguageImageV1 item)
+    {
+        this.item = item;
     }
 }

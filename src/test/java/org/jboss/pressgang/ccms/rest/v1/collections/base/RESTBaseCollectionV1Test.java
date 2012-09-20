@@ -145,7 +145,8 @@ class RESTBaseTestCollectionV1 extends RESTBaseCollectionV1<RESTBaseTestEntityV1
 
 class RESTBaseTestCollectionItemV1 extends RESTBaseCollectionItemV1<RESTBaseTestEntityV1, RESTBaseTestCollectionV1, RESTBaseTestCollectionItemV1>
 {
-
+    private RESTBaseTestEntityV1 item;
+    
     public RESTBaseTestCollectionItemV1()
     {
     }
@@ -170,6 +171,16 @@ class RESTBaseTestCollectionItemV1 extends RESTBaseCollectionItemV1<RESTBaseTest
         this.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTBaseTestEntityV1 getItem() {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTBaseTestEntityV1 item) {
+        this.item = item;
     }
     
 }

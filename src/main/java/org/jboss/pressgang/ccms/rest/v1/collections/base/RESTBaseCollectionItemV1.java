@@ -11,9 +11,10 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
     protected static final Integer MIN_STATE = 0;
     private static final Integer MAX_STATE = 2;
     
-    private T item = null;
     private Integer state = 0;
     
+    public abstract T getItem();
+    public abstract void setItem(final T item);
     public abstract V clone(boolean deepCopy);
     
     protected boolean validState(final Integer state)
@@ -33,16 +34,6 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
         else
             this.state = state;
     }
-
-    public T getItem()
-    {
-        return item;
-    }
-
-    public void setItem(final T item)
-    {
-        this.item = item;
-    }
     
     @Override
     public boolean equals(final Object o)
@@ -53,10 +44,10 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
         
         final RESTBaseCollectionItemV1<?, ?, ?> item = (RESTBaseCollectionItemV1<?, ?, ?>) o;
         
-        if (this.item == null && item.getItem() != null) return false;
-        if (this.item != null && item.getItem() == null) return false;
-        if (this.item != null && item.getItem() != null
-                && !this.item.equals(item.getItem())) return false;
+        if (this.getItem() == null && item.getItem() != null) return false;
+        if (this.getItem() != null && item.getItem() == null) return false;
+        if (this.getItem() != null && item.getItem() != null
+                && !this.getItem().equals(item.getItem())) return false;
 
         if (this.state == null && item.getState() != null) return false;
         if (this.state != null && item.getState() == null) return false;
@@ -72,11 +63,11 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
         
         if (deepCopy)
         {
-            clone.item = this.item == null ? null : this.item.clone(deepCopy);
+            clone.setItem(this.getItem() == null ? null : this.getItem().clone(deepCopy));
         }
         else
         {
-            clone.item = this.item;
+            clone.setItem(this.getItem());
         }
     }
     

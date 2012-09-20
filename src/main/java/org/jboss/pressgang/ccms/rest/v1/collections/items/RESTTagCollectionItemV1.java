@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 
 public class RESTTagCollectionItemV1 extends RESTBaseCollectionItemV1<RESTTagV1, RESTTagCollectionV1, RESTTagCollectionItemV1>
 {
+    private RESTTagV1 item;
+    
     public RESTTagCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTTagCollectionItemV1 extends RESTBaseCollectionItemV1<RESTTagV1,
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTTagV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTTagV1 item)
+    {
+        this.item = item;
     }
 }

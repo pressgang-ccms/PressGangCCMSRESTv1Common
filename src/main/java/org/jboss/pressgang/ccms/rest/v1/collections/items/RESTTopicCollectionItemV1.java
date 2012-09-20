@@ -6,6 +6,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 
 public class RESTTopicCollectionItemV1 extends RESTBaseCollectionItemV1<RESTTopicV1, RESTTopicCollectionV1, RESTTopicCollectionItemV1>
 {
+    private RESTTopicV1 item;
+    
     public RESTTopicCollectionItemV1()
     {
         
@@ -31,5 +33,17 @@ public class RESTTopicCollectionItemV1 extends RESTBaseCollectionItemV1<RESTTopi
         super.cloneInto(retValue, deepCopy);
         
         return retValue;
+    }
+
+    @Override
+    public RESTTopicV1 getItem()
+    {
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTTopicV1 item)
+    {
+        this.item = item;
     }
 }

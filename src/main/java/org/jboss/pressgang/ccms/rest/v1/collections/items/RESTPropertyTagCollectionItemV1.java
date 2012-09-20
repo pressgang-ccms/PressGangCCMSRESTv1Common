@@ -6,7 +6,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
 
 public class RESTPropertyTagCollectionItemV1 extends RESTBaseCollectionItemV1<RESTPropertyTagV1, RESTPropertyTagCollectionV1, RESTPropertyTagCollectionItemV1>
 {   
-    private static final Integer MAX_STATE = 2;
+    private RESTPropertyTagV1 item;
 
     public RESTPropertyTagCollectionItemV1()
     {
@@ -34,10 +34,16 @@ public class RESTPropertyTagCollectionItemV1 extends RESTBaseCollectionItemV1<RE
         
         return retValue;
     }
-    
+
     @Override
-    protected boolean validState(final Integer state)
+    public RESTPropertyTagV1 getItem()
     {
-        return !(state == null || state < MIN_STATE || state > MAX_STATE);
+        return item;
+    }
+
+    @Override
+    public void setItem(final RESTPropertyTagV1 item)
+    {
+        this.item = item;
     }
 }
