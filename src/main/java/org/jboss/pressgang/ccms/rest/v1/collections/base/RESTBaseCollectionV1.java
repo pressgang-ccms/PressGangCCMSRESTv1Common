@@ -33,7 +33,7 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * @param states Defines the list of states that an entity can be in to be returned
      * @return A collection that holds all the REST entities included in the states collection
      */
-    public List<V> getCollectionItemsWithState(final List<Integer> states) {
+    public List<V> returnCollectionItemsWithState(final List<Integer> states) {
         if (states == null)
             throw new IllegalArgumentException("states cannot be null");
 
@@ -51,11 +51,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * 
      * @return A collection of deleted items
      */
-    public List<V> getDeletedCollectionItems() {
-        return getCollectionItemsWithState(new ArrayList<Integer>() {
-
-            private static final long serialVersionUID = 283376573900995792L;
-
+    public List<V> returnDeletedCollectionItems() {
+        return returnCollectionItemsWithState(new ArrayList<Integer>() {
             {
                 add(REMOVE_STATE);
             }
@@ -66,11 +63,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * 
      * @return A collection of added items
      */
-    public List<V> getAddedCollectionItems() {
-        return getCollectionItemsWithState(new ArrayList<Integer>() {
-
-            private static final long serialVersionUID = -8643100482383972905L;
-
+    public List<V> returnAddedCollectionItems() {
+        return returnCollectionItemsWithState(new ArrayList<Integer>() {
             {
                 add(ADD_STATE);
             }
@@ -81,11 +75,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * 
      * @return A collection of existing items
      */
-    public List<V> getExistingCollectionItems() {
-        return getCollectionItemsWithState(new ArrayList<Integer>() {
-
-            private static final long serialVersionUID = -1372598148027338391L;
-
+    public List<V> returnExistingCollectionItems() {
+        return returnCollectionItemsWithState(new ArrayList<Integer>() {
             {
                 add(UNCHANGED_STATE);
             }
@@ -96,11 +87,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * 
      * @return A collection of existing and added items
      */
-    public List<V> getExistingAndAddedCollectionItems() {
-        return getCollectionItemsWithState(new ArrayList<Integer>() {
-
-            private static final long serialVersionUID = 8053767863115354695L;
-
+    public List<V> returnExistingAndAddedCollectionItems() {
+        return returnCollectionItemsWithState(new ArrayList<Integer>() {
             {
                 add(UNCHANGED_STATE);
                 add(ADD_STATE);
@@ -112,11 +100,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * 
      * @return A collection of added and deleted items
      */
-    public List<V> getDeletedAndAddedCollectionItems() {
-        return getCollectionItemsWithState(new ArrayList<Integer>() {
-
-            private static final long serialVersionUID = -5462456718264210440L;
-
+    public List<V> returnDeletedAndAddedCollectionItems() {
+        return returnCollectionItemsWithState(new ArrayList<Integer>() {
             {
                 add(REMOVE_STATE);
                 add(ADD_STATE);
@@ -130,7 +115,7 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * @param states Defines the list of states that an entity can be in to be returned
      * @return A collection that holds all the REST entities included in the states collection
      */
-    public List<T> getItemsWithState(final List<Integer> states) {
+    public List<T> returnItemsWithState(final List<Integer> states) {
         if (states == null)
             throw new IllegalArgumentException("states cannot be null");
 
@@ -148,11 +133,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * 
      * @return A collection of deleted items
      */
-    public List<T> getDeletedItems() {
-        return getItemsWithState(new ArrayList<Integer>() {
-
-            private static final long serialVersionUID = -694402624500755547L;
-
+    public List<T> returnDeletedItems() {
+        return returnItemsWithState(new ArrayList<Integer>() {
             {
                 add(REMOVE_STATE);
             }
@@ -163,13 +145,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * 
      * @return A collection of added items
      */
-    public List<T> getAddedItems() {
-        return getItemsWithState(new ArrayList<Integer>() {
-            /**
-             * 
-             */
-            private static final long serialVersionUID = -5014096947640229231L;
-
+    public List<T> returnAddedItems() {
+        return returnItemsWithState(new ArrayList<Integer>() {
             {
                 add(ADD_STATE);
             }
@@ -180,11 +157,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * 
      * @return A collection of existing items
      */
-    public List<T> getExistingItems() {
-        return getItemsWithState(new ArrayList<Integer>() {
-            
-            private static final long serialVersionUID = -2687995576333370399L;
-
+    public List<T> returnExistingItems() {
+        return returnItemsWithState(new ArrayList<Integer>() {
             {
                 add(UNCHANGED_STATE);
             }
@@ -196,11 +170,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * getting items that should be displayed to the end user.
      * @return A collection of added and existing items
      */
-    public List<T> getExistingAndAddedItems() {
-        return getItemsWithState(new ArrayList<Integer>() {
-  
-            private static final long serialVersionUID = -2308474813016631091L;
-
+    public List<T> returnExistingAndAddedItems() {
+        return returnItemsWithState(new ArrayList<Integer>() {
             {
                 add(UNCHANGED_STATE);
                 add(ADD_STATE);
@@ -213,11 +184,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
      * getting items that will change the database.
      * @return A collection of added and existing items
      */
-    public List<T> getDeletedAndAddedItems() {
-        return getItemsWithState(new ArrayList<Integer>() {
-            
-            private static final long serialVersionUID = -1500714154896976178L;
-
+    public List<T> returnDeletedAndAddedItems() {
+        return returnItemsWithState(new ArrayList<Integer>() {
             {
                 add(REMOVE_STATE);
                 add(ADD_STATE);
