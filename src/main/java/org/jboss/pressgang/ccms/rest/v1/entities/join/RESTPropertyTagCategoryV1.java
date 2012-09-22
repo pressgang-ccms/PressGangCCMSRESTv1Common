@@ -1,45 +1,44 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.join;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTAssignedPropertyTagCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyTagCategoryCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyTagCategoryCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePropertyTagV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.base.IJoinPropertyTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.join.base.IPropertyTagToPropertyCategoryV1;
 
-public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssignedPropertyTagV1, RESTAssignedPropertyTagCollectionV1, RESTAssignedPropertyTagCollectionItemV1> implements IJoinPropertyTagV1
+public class RESTPropertyTagCategoryV1 extends RESTBasePropertyTagV1<RESTPropertyTagCategoryV1, RESTPropertyTagCategoryCollectionV1, RESTPropertyTagCategoryCollectionItemV1> implements IPropertyTagToPropertyCategoryV1
 {
     public static final String RELATIONSHIP_ID_NAME = "relationshipId";
-    public static String VALUE_NAME = "value";
-
-    private Integer relationshipId = null;
-    private String value = null;
-    private boolean valid;
-
-    /** A list of the Envers revision numbers */
-    private RESTAssignedPropertyTagCollectionV1 revisions = null;
+    public static final String RELATIONSHIP_SORT_NAME = "propertyTagSort";
     
-    public RESTAssignedPropertyTagV1()
+    private Integer relationshipId = null;
+    private Integer relationshipSort = null;
+    
+    /** A list of the Envers revision numbers */
+    private RESTPropertyTagCategoryCollectionV1 revisions = null;
+
+    public RESTPropertyTagCategoryV1()
     {
         
     }
     
-    public RESTAssignedPropertyTagV1(final RESTPropertyTagV1 propertyTag)
+    public RESTPropertyTagCategoryV1(final RESTPropertyTagV1 propertyTag)
     {
         propertyTag.cloneInto(this, false);
     }
     
     @Override
-    public RESTAssignedPropertyTagCollectionV1 getRevisions()
+    public RESTPropertyTagCategoryCollectionV1 getRevisions()
     {
         return revisions;
     }
 
     @Override
-    public void setRevisions(final RESTAssignedPropertyTagCollectionV1 revisions)
+    public void setRevisions(final RESTPropertyTagCategoryCollectionV1 revisions)
     {
         this.revisions = revisions;
     }
-
+    
     @Override
     public Integer getRelationshipId()
     {
@@ -59,58 +58,45 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
     }
 
     @Override
-    public String getValue()
+    public Integer getRelationshipSort()
     {
-        return value;
+        return relationshipSort;
     }
 
     @Override
-    public void setValue(final String value)
+    public void setRelationshipSort(final Integer relationshipSort)
     {
-        this.value = value;
+        this.relationshipSort = relationshipSort;
     }
     
-    public void explicitSetValue(final String value)
+    public void explicitSetRelationshipSort(final Integer relationshipSort)
     {
-        this.value = value;
-        this.setParameterToConfigured(VALUE_NAME);
-    }
-
-    @Override
-    public boolean getValid()
-    {
-        return valid;
-    }
-
-    @Override
-    public void setValid(final boolean valid)
-    {
-        this.valid = valid;
+        this.relationshipSort = relationshipSort;
+        this.setParameterToConfigured(RELATIONSHIP_SORT_NAME);
     }
     
     @Override
-    public RESTAssignedPropertyTagV1 clone(final boolean deepCopy)
+    public RESTPropertyTagCategoryV1 clone(final boolean deepCopy)
     {
-        final RESTAssignedPropertyTagV1 retValue = new RESTAssignedPropertyTagV1();
-
+        final RESTPropertyTagCategoryV1 retValue = new RESTPropertyTagCategoryV1();
+        
         this.cloneInto(retValue, deepCopy);
         
         return retValue;
     }
     
-    public void cloneInto(final RESTAssignedPropertyTagV1 clone, final boolean deepCopy)
+    public void cloneInto(final RESTPropertyTagCategoryV1 clone, final boolean deepCopy)
     {
         super.cloneInto(clone, deepCopy);
-        
+
         clone.relationshipId = this.relationshipId;
-        clone.value = this.value;
-        clone.valid = this.valid;
+        clone.relationshipSort = this.relationshipSort;
         
         if (deepCopy)
         {
             if (this.getRevisions() != null)
             {
-                clone.revisions = new RESTAssignedPropertyTagCollectionV1();
+                clone.revisions = new RESTPropertyTagCategoryCollectionV1();
                 this.revisions.cloneInto(clone.revisions, deepCopy);
             }           
         }
@@ -119,7 +105,7 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
             clone.revisions = this.revisions;
         }
     }
-
+    
     @Override
     public boolean equals(final Object other)
     {
@@ -127,13 +113,13 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
             return false;
         if (this == other)
             return true;
-        if (!(other instanceof RESTAssignedPropertyTagV1))
+        if (!(other instanceof RESTPropertyTagCategoryV1))
             return false;
-
+        
         if (!super.equals(other))
             return false;
         
-        final RESTAssignedPropertyTagV1 otherCasted = (RESTAssignedPropertyTagV1)other;
+        final RESTPropertyTagCategoryV1 otherCasted = (RESTPropertyTagCategoryV1)other;
         
         if (this.relationshipId == null && otherCasted.relationshipId == null)
             return true;
@@ -143,4 +129,5 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
         
         return this.relationshipId.equals(otherCasted.relationshipId);
     }
+
 }

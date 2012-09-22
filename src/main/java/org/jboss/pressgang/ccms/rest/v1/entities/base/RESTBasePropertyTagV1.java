@@ -2,21 +2,25 @@ package org.jboss.pressgang.ccms.rest.v1.entities.base;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyCategoryTagCollectionV1;
 
 public abstract class RESTBasePropertyTagV1<T extends RESTBasePropertyTagV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
     extends RESTBasePrimaryEntityV1<T, U, V>
 {
-	public static String NAME_NAME = "name";
-	public static String DESCRIPTION_NAME = "description";
-	public static String REGEX_NAME = "regex";
-	public static String CANBENULL_NAME = "canBeNull";
-	public static String ISUNIQUE_NAME = "isUnique";
+	public static final String NAME_NAME = "name";
+	public static final String DESCRIPTION_NAME = "description";
+	public static final String REGEX_NAME = "regex";
+	public static final String CANBENULL_NAME = "canBeNull";
+	public static final String ISUNIQUE_NAME = "isUnique";
+	public static final String PROPERTY_CATEGORIES_NAME = "propertyCategories";
 	
 	protected String name = null;
 	protected String description = null;
 	protected String regex = null;
 	protected boolean canBeNull;
 	protected boolean isUnique;
+	
+	protected RESTPropertyCategoryTagCollectionV1 propertyCategories = null;
 	
 	public void cloneInto(final RESTBasePropertyTagV1<?, ?, ?> clone, final boolean deepCopy)
 	{
@@ -27,6 +31,19 @@ public abstract class RESTBasePropertyTagV1<T extends RESTBasePropertyTagV1<T, U
 		clone.regex = this.regex;
 		clone.canBeNull = this.canBeNull;
 		clone.isUnique = this.isUnique;
+		
+		if (deepCopy)
+		{
+		    if (this.propertyCategories != null)
+            {
+                clone.propertyCategories = new RESTPropertyCategoryTagCollectionV1();
+                this.propertyCategories.cloneInto(clone.propertyCategories, deepCopy);
+            }
+		}
+		else
+		{
+		    clone.propertyCategories = this.propertyCategories;
+		}
 	}
 
 	public String getName()
@@ -78,6 +95,16 @@ public abstract class RESTBasePropertyTagV1<T extends RESTBasePropertyTagV1<T, U
 	{
 		this.isUnique = isUnique;
 	}
+	
+    public RESTPropertyCategoryTagCollectionV1 getPropertyCategories()
+    {
+        return propertyCategories;
+    }
+
+    public void setPropertyCategories(final RESTPropertyCategoryTagCollectionV1 propertyTagCategories)
+    {
+        this.propertyCategories = propertyTagCategories;
+    }
 	
 	@Override
     public boolean equals(final Object other)

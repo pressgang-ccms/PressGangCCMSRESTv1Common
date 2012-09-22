@@ -1,4 +1,4 @@
-package org.jboss.pressgang.ccms.rest.v1.collections.items;
+package org.jboss.pressgang.ccms.rest.v1.collections.items.join;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTCategoryTagCollectionV1;

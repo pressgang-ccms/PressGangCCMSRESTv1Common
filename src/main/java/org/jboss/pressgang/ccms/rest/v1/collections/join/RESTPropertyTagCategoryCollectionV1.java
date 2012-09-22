@@ -7,39 +7,39 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCo
 import java.util.ArrayList;
 import java.util.List;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTAssignedPropertyTagCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyTagCategoryCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyTagCategoryV1;
 
 /**
  * This is a wrapper class to work around an Errai limitation - https://issues.jboss.org/browse/ERRAI-319
  * @author Matthew Casperson
  *
  */
-public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTAssignedPropertyTagV1, RESTAssignedPropertyTagCollectionV1, RESTAssignedPropertyTagCollectionItemV1>
+public class RESTPropertyTagCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RESTPropertyTagCategoryV1, RESTPropertyTagCategoryCollectionV1, RESTPropertyTagCategoryCollectionItemV1>
 {
-    private List<RESTAssignedPropertyTagCollectionItemV1> items = new ArrayList<RESTAssignedPropertyTagCollectionItemV1>();
+    private List<RESTPropertyTagCategoryCollectionItemV1> items = new ArrayList<RESTPropertyTagCategoryCollectionItemV1>();
     
     @Override
-    public List<RESTAssignedPropertyTagCollectionItemV1> getItems()
+    public List<RESTPropertyTagCategoryCollectionItemV1> getItems()
     {
         return this.items;
     }
     
     @Override
-    public void setItems(final List<RESTAssignedPropertyTagCollectionItemV1> items)
+    public void setItems(final List<RESTPropertyTagCategoryCollectionItemV1> items)
     {
         this.items = items;
     }
 
     @Override
-    protected void addItem(final RESTAssignedPropertyTagV1 item, final Integer state)
+    protected void addItem(final RESTPropertyTagCategoryV1 item, final Integer state)
     {
         if (getItems() == null)
         {
-            setItems(new ArrayList<RESTAssignedPropertyTagCollectionItemV1>());
+            setItems(new ArrayList<RESTPropertyTagCategoryCollectionItemV1>());
         }
         
-        getItems().add(new RESTAssignedPropertyTagCollectionItemV1(item, state));
+        getItems().add(new RESTPropertyTagCategoryCollectionItemV1(item, state));
     }
 	
     /**
@@ -53,13 +53,13 @@ public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectio
 	{
 		if (this.getItems() != null)
 		{
-			final List<RESTAssignedPropertyTagCollectionItemV1> items = new ArrayList<RESTAssignedPropertyTagCollectionItemV1>(this.getItems());
+			final List<RESTPropertyTagCategoryCollectionItemV1> items = new ArrayList<RESTPropertyTagCategoryCollectionItemV1>(this.getItems());
 		
 			/* on the second loop, remove any items that are marked for both add and remove is separate items */
 			for (int i = 0; i < items.size(); ++i)
 			{
-				final RESTAssignedPropertyTagCollectionItemV1 child1 = items.get(i);
-				final RESTAssignedPropertyTagV1 childItem1 = child1.getItem();
+				final RESTPropertyTagCategoryCollectionItemV1 child1 = items.get(i);
+				final RESTPropertyTagCategoryV1 childItem1 = child1.getItem();
 				
 				/* at this point we know that either add1 or remove1 will be true, but not both */
 				final boolean add1 = child1.getState() == ADD_STATE;
@@ -69,27 +69,36 @@ public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectio
 				/* Loop a second time, looking for duplicates */
 				for (int j = i + 1; j < items.size(); ++j)
 				{
-					final RESTAssignedPropertyTagCollectionItemV1 child2 = items.get(j);
-					final RESTAssignedPropertyTagV1 childItem2 = child2.getItem();
+					final RESTPropertyTagCategoryCollectionItemV1 child2 = items.get(j);
+					final RESTPropertyTagCategoryV1 childItem2 = child2.getItem();
 					
 					/* Do some checks on values that could be null */
-					final boolean valueEqual = childItem1.getValue() == null && childItem2.getValue() == null 
-					        || childItem1.getValue() != null && childItem1.getValue().equals(childItem2.getValue());
 					final boolean relationshipIdEqual = childItem1.getRelationshipId() == null && childItem2.getRelationshipId() == null 
                             || childItem1.getRelationshipId() != null && childItem1.getRelationshipId().equals(childItem2.getRelationshipId());
 					
 					/* Check the PropertyTags for uniqueness and their value as well as their IDs */
-					if (childItem1.getId().equals(childItem2.getId()) && relationshipIdEqual && valueEqual
-					    && (((childItem1.getIsUnique() && childItem2.getIsUnique()))
-					        || ((!childItem1.getIsUnique() || !childItem2.getIsUnique()))))
+					if (childItem1.getId().equals(childItem2.getId()) && relationshipIdEqual)
 					{
 						final boolean add2 = child2.getState() == ADD_STATE;
 						final boolean remove2 = child2.getState() == REMOVE_STATE;
 						final boolean update2 = child2.getState() == UPDATE_STATE;
 						
+						final boolean relationshipSortEqual = childItem1.getRelationshipSort() == null && childItem2.getRelationshipSort() == null 
+                                || childItem1.getRelationshipSort() != null && childItem1.getRelationshipSort().equals(childItem2.getRelationshipSort());
+						
 						/* check for double add, double remove, double update, and remove one instance */
-                        if ((add1 && add2) || (remove1 && remove2) || (update1 && update2))                     
-                            this.getItems().remove(child1);
+                        if ((add1 && add2) || (remove1 && remove2) || (update1 && update2))
+                        {
+                            if (relationshipSortEqual)
+                            {
+                                this.getItems().remove(child1);
+                            }
+                            else
+                            {
+                                this.getItems().remove(child1);
+                                this.getItems().remove(child2);
+                            }
+                        }
 						
 						/* check for double add, double remove, add and remove, remove and add */
 						if ((add1 && remove2) || (remove1 && add2)

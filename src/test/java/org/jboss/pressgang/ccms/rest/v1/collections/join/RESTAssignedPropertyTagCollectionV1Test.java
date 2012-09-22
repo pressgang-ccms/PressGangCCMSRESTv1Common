@@ -9,7 +9,7 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTAssignedPropertyTagCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTAssignedPropertyTagCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 import org.junit.Before;
 import org.junit.Test;

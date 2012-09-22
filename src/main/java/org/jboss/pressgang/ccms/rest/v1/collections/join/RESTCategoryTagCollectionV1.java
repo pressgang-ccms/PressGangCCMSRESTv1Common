@@ -7,7 +7,7 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCo
 import java.util.ArrayList;
 import java.util.List;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTCategoryTagCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTCategoryTagCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryTagV1;
 
 /**

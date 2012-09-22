@@ -17,6 +17,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTImageCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTIntegerConstantCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTProjectCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTPropertyCategoryCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTPropertyTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTRoleCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTStringConstantCollectionV1;
@@ -30,6 +31,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTIntegerConstantV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyCategoryV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTRoleV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTStringConstantV1;
@@ -991,6 +993,190 @@ public interface RESTInterfaceV1
 	@Consumes({ "*" })
 	public RESTPropertyTagCollectionV1 deleteJSONPropertyTags(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
+	   /* PROPERYCATEGORY FUNCTIONS */
+    /*      JSONP FUNCTIONS */  
+    @GET
+    @Path("/propertycategory/get/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPPropertyCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategories/get/jsonp/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPPropertyCategories(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategories/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String getJSONPPropertyCategoriesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    
+    @GET
+    @Path("/propertycategory/update/jsonp")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateJSONPPropertyCategory(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyCategoryV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategory/update/jsonp")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateJSONPPropertyCategory(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategories/update/jsonp")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateJSONPPropertyCategories(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyCategoryCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    
+    @GET
+    @Path("/propertycategories/update/jsonp")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateJSONPPropertyCategories(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategory/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public String createJSONPPropertyCategory(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyCategoryV1 dataObject, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategory/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public String createJSONPPropertyCategory(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategories/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public String createJSONPPropertyCategories(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyCategoryCollectionV1 dataObjects, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    
+    @GET
+    @Path("/propertycategories/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public String createJSONPPropertyCategories(@QueryParam("expand") final String expand, @QueryParam("data") final RESTPropertyCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategory/delete/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String deleteJSONPPropertyCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategory/delete/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String deleteJSONPPropertyCategory(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategories/delete/jsonp/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String deleteJSONPPropertyCategories(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    
+    @GET
+    @Path("/propertycategories/delete/jsonp/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public String deleteJSONPPropertyCategories(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand, @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+    
+    /*      JSON FUNCTIONS */   
+    @GET
+    @Path("/propertycategory/get/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTPropertyCategoryV1 getJSONPropertyCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/propertycategories/get/json/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTPropertyCategoryCollectionV1 getJSONPropertyCategories(@QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    
+    @GET
+    @Path("/propertycategories/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTPropertyCategoryCollectionV1 getJSONPropertyCategoriesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/propertycategory/update/json")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTPropertyCategoryV1 updateJSONPropertyCategory(@QueryParam("expand") final String expand, final RESTPropertyCategoryV1 dataObject) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/propertycategory/update/json")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTPropertyCategoryV1 updateJSONPropertyCategory(@QueryParam("expand") final String expand, final RESTPropertyCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/propertycategories/update/json")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTPropertyCategoryCollectionV1 updateJSONPropertyCategories(@QueryParam("expand") final String expand, final RESTPropertyCategoryCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
+    
+    @POST
+    @Path("/propertycategories/update/json")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTPropertyCategoryCollectionV1 updateJSONPropertyCategories(@QueryParam("expand") final String expand, final RESTPropertyCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/propertycategory/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public RESTPropertyCategoryV1 createJSONPropertyCategory(@QueryParam("expand") final String expand, final RESTPropertyCategoryV1 dataObject) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/propertycategory/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public RESTPropertyCategoryV1 createJSONPropertyCategory(@QueryParam("expand") final String expand, final RESTPropertyCategoryV1 dataObject, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/propertycategories/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public RESTPropertyCategoryCollectionV1 createJSONPropertyCategories(@QueryParam("expand") final String expand, final RESTPropertyCategoryCollectionV1 dataObjects) throws InvalidParameterException, InternalProcessingException;
+    
+    @POST
+    @Path("/propertycategories/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public RESTPropertyCategoryCollectionV1 createJSONPropertyCategories(@QueryParam("expand") final String expand, final RESTPropertyCategoryCollectionV1 dataObjects, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails) throws InvalidParameterException, InternalProcessingException;
+
+    @DELETE
+    @Path("/propertycategory/delete/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTPropertyCategoryV1 deleteJSONPropertyCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @DELETE
+    @Path("/propertycategory/delete/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTPropertyCategoryV1 deleteJSONPropertyCategory(@PathParam("id") final Integer id, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @DELETE
+    @Path("/propertycategories/delete/json/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTPropertyCategoryCollectionV1 deleteJSONPropertyCategories(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    
+    @DELETE
+    @Path("/propertycategories/delete/json/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({ "*" })
+    public RESTPropertyCategoryCollectionV1 deleteJSONPropertyCategories(@PathParam("ids") final PathSegment ids, @QueryParam("logDetails") final RESTLogDetailsV1 logDetails, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+	
 	/* BLOBCONSTANTS FUNCTIONS */
 	/*		JSONP FUNCTIONS */	
 	@GET
