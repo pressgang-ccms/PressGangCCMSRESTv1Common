@@ -376,4 +376,14 @@ public class CommonFilterConstants {
     
     public static final String INTEGER_CONSTANT_VALUE_FILTER_VAR = "integerConstantValue";
     public static final String INTEGER_CONSTANT_VALUE_FILTER_VAR_DESC = "Integer Constant Value";
+    
+    /* PropertyTagCategory Constants */
+    public static final String PROP_CATEGORY_IDS_FILTER_VAR = "propCategoryIds";
+    public static final String PROP_CATEGORY_IDS_FILTER_VAR_DESC = "Property Tag Category IDs";
+    
+    public static final String PROP_CATEGORY_NAME_FILTER_VAR = "propCategoryName";
+    public static final String PROP_CATEGORY_NAME_FILTER_VAR_DESC = "Property Tag Category Name";
+    
+    public static final String PROP_CATEGORY_DESCRIPTION_FILTER_VAR = "propCategoryDesc";
+    public static final String PROP_CATEGORY_DESCRIPTION_FILTER_VAR_DESC = "Property Tag Category Description";
 }
