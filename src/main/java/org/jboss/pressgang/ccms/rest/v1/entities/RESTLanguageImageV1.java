@@ -51,6 +51,7 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
 
 	    clone.image = this.image;
 	    clone.filename = this.filename;
+	    clone.locale = this.locale;
 
         if (deepCopy)
         {
