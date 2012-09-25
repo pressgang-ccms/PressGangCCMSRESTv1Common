@@ -7,7 +7,7 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCo
 import java.util.ArrayList;
 import java.util.List;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyCategoryInPropetyTagCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyCategoryInPropertyTagCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyCategoryInPropertyTagV1;
 
 /**
@@ -15,18 +15,18 @@ import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyCategoryInProp
  * @author Matthew Casperson
  *
  */
-public class RESTPropertyCategoryInPropertyTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTPropertyCategoryInPropertyTagV1, RESTPropertyCategoryInPropertyTagCollectionV1, RESTPropertyCategoryInPropetyTagCollectionItemV1>
+public class RESTPropertyCategoryInPropertyTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTPropertyCategoryInPropertyTagV1, RESTPropertyCategoryInPropertyTagCollectionV1, RESTPropertyCategoryInPropertyTagCollectionItemV1>
 {
-    private List<RESTPropertyCategoryInPropetyTagCollectionItemV1> items = new ArrayList<RESTPropertyCategoryInPropetyTagCollectionItemV1>();
+    private List<RESTPropertyCategoryInPropertyTagCollectionItemV1> items = new ArrayList<RESTPropertyCategoryInPropertyTagCollectionItemV1>();
     
     @Override
-    public List<RESTPropertyCategoryInPropetyTagCollectionItemV1> getItems()
+    public List<RESTPropertyCategoryInPropertyTagCollectionItemV1> getItems()
     {
         return this.items;
     }
     
     @Override
-    public void setItems(final List<RESTPropertyCategoryInPropetyTagCollectionItemV1> items)
+    public void setItems(final List<RESTPropertyCategoryInPropertyTagCollectionItemV1> items)
     {
         this.items = items;
     }
@@ -36,10 +36,10 @@ public class RESTPropertyCategoryInPropertyTagCollectionV1 extends RESTBaseUpdat
     {
         if (getItems() == null)
         {
-            setItems(new ArrayList<RESTPropertyCategoryInPropetyTagCollectionItemV1>());
+            setItems(new ArrayList<RESTPropertyCategoryInPropertyTagCollectionItemV1>());
         }
         
-        getItems().add(new RESTPropertyCategoryInPropetyTagCollectionItemV1(item, state));
+        getItems().add(new RESTPropertyCategoryInPropertyTagCollectionItemV1(item, state));
     }
 	
     /**
@@ -53,12 +53,12 @@ public class RESTPropertyCategoryInPropertyTagCollectionV1 extends RESTBaseUpdat
 	{
 		if (this.getItems() != null)
 		{
-			final List<RESTPropertyCategoryInPropetyTagCollectionItemV1> items = new ArrayList<RESTPropertyCategoryInPropetyTagCollectionItemV1>(this.getItems());
+			final List<RESTPropertyCategoryInPropertyTagCollectionItemV1> items = new ArrayList<RESTPropertyCategoryInPropertyTagCollectionItemV1>(this.getItems());
 		
 			/* on the second loop, remove any items that are marked for both add and remove is separate items */
 			for (int i = 0; i < items.size(); ++i)
 			{
-				final RESTPropertyCategoryInPropetyTagCollectionItemV1 child1 = items.get(i);
+				final RESTPropertyCategoryInPropertyTagCollectionItemV1 child1 = items.get(i);
 				final RESTPropertyCategoryInPropertyTagV1 childItem1 = child1.getItem();
 				
 				/* at this point we know that either add1 or remove1 will be true, but not both */
@@ -69,7 +69,7 @@ public class RESTPropertyCategoryInPropertyTagCollectionV1 extends RESTBaseUpdat
 				/* Loop a second time, looking for duplicates */
 				for (int j = i + 1; j < items.size(); ++j)
 				{
-					final RESTPropertyCategoryInPropetyTagCollectionItemV1 child2 = items.get(j);
+					final RESTPropertyCategoryInPropertyTagCollectionItemV1 child2 = items.get(j);
 					final RESTPropertyCategoryInPropertyTagV1 childItem2 = child2.getItem();
 					
 					/* Do some checks on values that could be null */

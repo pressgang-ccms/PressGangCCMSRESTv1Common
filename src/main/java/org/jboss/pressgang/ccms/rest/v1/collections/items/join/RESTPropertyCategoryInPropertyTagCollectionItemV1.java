@@ -4,31 +4,31 @@ import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyCategoryInP
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyCategoryInPropertyTagV1;
 
-public class RESTPropertyCategoryInPropetyTagCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTPropertyCategoryInPropertyTagV1, RESTPropertyCategoryInPropertyTagCollectionV1, RESTPropertyCategoryInPropetyTagCollectionItemV1>
+public class RESTPropertyCategoryInPropertyTagCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTPropertyCategoryInPropertyTagV1, RESTPropertyCategoryInPropertyTagCollectionV1, RESTPropertyCategoryInPropertyTagCollectionItemV1>
 {   
     private RESTPropertyCategoryInPropertyTagV1 item;
 
-    public RESTPropertyCategoryInPropetyTagCollectionItemV1()
+    public RESTPropertyCategoryInPropertyTagCollectionItemV1()
     {
         
     }
     
-    public RESTPropertyCategoryInPropetyTagCollectionItemV1(final RESTPropertyCategoryInPropertyTagV1 item)
+    public RESTPropertyCategoryInPropertyTagCollectionItemV1(final RESTPropertyCategoryInPropertyTagV1 item)
     {
         setItem(item);
         setState(UNCHANGED_STATE);
     }
     
-    public RESTPropertyCategoryInPropetyTagCollectionItemV1(final RESTPropertyCategoryInPropertyTagV1 item, final Integer state)
+    public RESTPropertyCategoryInPropertyTagCollectionItemV1(final RESTPropertyCategoryInPropertyTagV1 item, final Integer state)
     {
         setItem(item);
         setState(state);
     }
 
     @Override
-    public RESTPropertyCategoryInPropetyTagCollectionItemV1 clone(boolean deepCopy)
+    public RESTPropertyCategoryInPropertyTagCollectionItemV1 clone(boolean deepCopy)
     {
-        final RESTPropertyCategoryInPropetyTagCollectionItemV1 retValue = new RESTPropertyCategoryInPropetyTagCollectionItemV1();
+        final RESTPropertyCategoryInPropertyTagCollectionItemV1 retValue = new RESTPropertyCategoryInPropertyTagCollectionItemV1();
         
         super.cloneInto(retValue, deepCopy);
         

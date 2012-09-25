@@ -1,12 +1,12 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.join;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyCategoryInPropetyTagCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyCategoryInPropertyTagCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyCategoryInPropertyTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyCategoryV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePropertyCategoryV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.base.IPropertyTagToPropertyCategoryV1;
 
-public class RESTPropertyCategoryInPropertyTagV1 extends RESTBasePropertyCategoryV1<RESTPropertyCategoryInPropertyTagV1, RESTPropertyCategoryInPropertyTagCollectionV1, RESTPropertyCategoryInPropetyTagCollectionItemV1> implements IPropertyTagToPropertyCategoryV1
+public class RESTPropertyCategoryInPropertyTagV1 extends RESTBasePropertyCategoryV1<RESTPropertyCategoryInPropertyTagV1, RESTPropertyCategoryInPropertyTagCollectionV1, RESTPropertyCategoryInPropertyTagCollectionItemV1> implements IPropertyTagToPropertyCategoryV1
 {
     public static final String RELATIONSHIP_ID_NAME = "relationshipId";
     public static final String RELATIONSHIP_SORT_NAME = "propertyTagSort";
