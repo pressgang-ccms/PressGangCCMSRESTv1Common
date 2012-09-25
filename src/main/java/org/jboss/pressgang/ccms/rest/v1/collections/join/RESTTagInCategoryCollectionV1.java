@@ -8,39 +8,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTTagCategoryCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTTagCategoryV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTTagInCategoryCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTTagInCategoryV1;
 
 /**
  * This is a wrapper class to work around an Errai limitation - https://issues.jboss.org/browse/ERRAI-319
  * @author Matthew Casperson
  *
  */
-public class RESTTagCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RESTTagCategoryV1, RESTTagCategoryCollectionV1, RESTTagCategoryCollectionItemV1>
+public class RESTTagInCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RESTTagInCategoryV1, RESTTagInCategoryCollectionV1, RESTTagInCategoryCollectionItemV1>
 {
-    private List<RESTTagCategoryCollectionItemV1> items = new ArrayList<RESTTagCategoryCollectionItemV1>();
+    private List<RESTTagInCategoryCollectionItemV1> items = new ArrayList<RESTTagInCategoryCollectionItemV1>();
     
     @Override
-    public List<RESTTagCategoryCollectionItemV1> getItems()
+    public List<RESTTagInCategoryCollectionItemV1> getItems()
     {
         return this.items;
     }
     
     @Override
-    public void setItems(final List<RESTTagCategoryCollectionItemV1> items)
+    public void setItems(final List<RESTTagInCategoryCollectionItemV1> items)
     {
         this.items = items;
     }
 
     @Override
-    protected void addItem(final RESTTagCategoryV1 item, final Integer state)
+    protected void addItem(final RESTTagInCategoryV1 item, final Integer state)
     {
         if (getItems() == null)
         {
-            setItems(new ArrayList<RESTTagCategoryCollectionItemV1>());
+            setItems(new ArrayList<RESTTagInCategoryCollectionItemV1>());
         }
         
-        getItems().add(new RESTTagCategoryCollectionItemV1(item, state));
+        getItems().add(new RESTTagInCategoryCollectionItemV1(item, state));
     }
 	
 	/**
@@ -51,13 +51,13 @@ public class RESTTagCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<REST
     {
         if (this.getItems() != null)
         {
-            final List<RESTTagCategoryCollectionItemV1> items = new ArrayList<RESTTagCategoryCollectionItemV1>(this.getItems());
+            final List<RESTTagInCategoryCollectionItemV1> items = new ArrayList<RESTTagInCategoryCollectionItemV1>(this.getItems());
             
             /* on the second loop, remove any items that are marked for both add and remove is separate items */
             for (int i = 0; i < items.size(); ++i)
             {
-                final RESTTagCategoryCollectionItemV1 child1 = items.get(i);
-                final RESTTagCategoryV1 childItem1 = child1.getItem();
+                final RESTTagInCategoryCollectionItemV1 child1 = items.get(i);
+                final RESTTagInCategoryV1 childItem1 = child1.getItem();
                 
                 /* at this point we know that either add1 or remove1 will be true, but not both */
                 final boolean add1 = child1.getState() == ADD_STATE;
@@ -67,8 +67,8 @@ public class RESTTagCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<REST
                 /* Loop a second time, looking for duplicates */
                 for (int j = i + 1; j < items.size(); ++j)
                 {
-                    final RESTTagCategoryCollectionItemV1 child2 = items.get(j);
-                    final RESTTagCategoryV1 childItem2 = child2.getItem();
+                    final RESTTagInCategoryCollectionItemV1 child2 = items.get(j);
+                    final RESTTagInCategoryV1 childItem2 = child2.getItem();
                     
                     /* Do some checks on values that could be null */
                     final boolean relationshipIdEqual = childItem1.getRelationshipId() == null && childItem2.getRelationshipId() == null 

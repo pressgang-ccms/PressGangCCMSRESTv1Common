@@ -1,12 +1,12 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.join;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyCategoryTagCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyCategoryTagCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyCategoryV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePropertyCategoryV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyTagInPropertyCategoryCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyTagInPropertyCategoryCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePropertyTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.base.IPropertyTagToPropertyCategoryV1;
 
-public class RESTPropertyCategoryTagV1 extends RESTBasePropertyCategoryV1<RESTPropertyCategoryTagV1, RESTPropertyCategoryTagCollectionV1, RESTPropertyCategoryTagCollectionItemV1> implements IPropertyTagToPropertyCategoryV1
+public class RESTPropertyTagInPropertyCategoryV1 extends RESTBasePropertyTagV1<RESTPropertyTagInPropertyCategoryV1, RESTPropertyTagInPropertyCategoryCollectionV1, RESTPropertyTagInPropertyCategoryCollectionItemV1> implements IPropertyTagToPropertyCategoryV1
 {
     public static final String RELATIONSHIP_ID_NAME = "relationshipId";
     public static final String RELATIONSHIP_SORT_NAME = "propertyTagSort";
@@ -15,26 +15,26 @@ public class RESTPropertyCategoryTagV1 extends RESTBasePropertyCategoryV1<RESTPr
     private Integer relationshipSort = null;
     
     /** A list of the Envers revision numbers */
-    private RESTPropertyCategoryTagCollectionV1 revisions = null;
+    private RESTPropertyTagInPropertyCategoryCollectionV1 revisions = null;
 
-    public RESTPropertyCategoryTagV1()
+    public RESTPropertyTagInPropertyCategoryV1()
     {
         
     }
     
-    public RESTPropertyCategoryTagV1(final RESTPropertyCategoryV1 category)
+    public RESTPropertyTagInPropertyCategoryV1(final RESTPropertyTagV1 propertyTag)
     {
-        category.cloneInto(this, false);
+        propertyTag.cloneInto(this, false);
     }
     
     @Override
-    public RESTPropertyCategoryTagCollectionV1 getRevisions()
+    public RESTPropertyTagInPropertyCategoryCollectionV1 getRevisions()
     {
         return revisions;
     }
 
     @Override
-    public void setRevisions(final RESTPropertyCategoryTagCollectionV1 revisions)
+    public void setRevisions(final RESTPropertyTagInPropertyCategoryCollectionV1 revisions)
     {
         this.revisions = revisions;
     }
@@ -76,16 +76,16 @@ public class RESTPropertyCategoryTagV1 extends RESTBasePropertyCategoryV1<RESTPr
     }
     
     @Override
-    public RESTPropertyCategoryTagV1 clone(final boolean deepCopy)
+    public RESTPropertyTagInPropertyCategoryV1 clone(final boolean deepCopy)
     {
-        final RESTPropertyCategoryTagV1 retValue = new RESTPropertyCategoryTagV1();
+        final RESTPropertyTagInPropertyCategoryV1 retValue = new RESTPropertyTagInPropertyCategoryV1();
         
         this.cloneInto(retValue, deepCopy);
         
         return retValue;
     }
     
-    public void cloneInto(final RESTPropertyCategoryTagV1 clone, final boolean deepCopy)
+    public void cloneInto(final RESTPropertyTagInPropertyCategoryV1 clone, final boolean deepCopy)
     {
         super.cloneInto(clone, deepCopy);
 
@@ -96,7 +96,7 @@ public class RESTPropertyCategoryTagV1 extends RESTBasePropertyCategoryV1<RESTPr
         {
             if (this.getRevisions() != null)
             {
-                clone.revisions = new RESTPropertyCategoryTagCollectionV1();
+                clone.revisions = new RESTPropertyTagInPropertyCategoryCollectionV1();
                 this.revisions.cloneInto(clone.revisions, deepCopy);
             }           
         }
@@ -113,13 +113,13 @@ public class RESTPropertyCategoryTagV1 extends RESTBasePropertyCategoryV1<RESTPr
             return false;
         if (this == other)
             return true;
-        if (!(other instanceof RESTPropertyCategoryTagV1))
+        if (!(other instanceof RESTPropertyTagInPropertyCategoryV1))
             return false;
         
         if (!super.equals(other))
             return false;
         
-        final RESTPropertyCategoryTagV1 otherCasted = (RESTPropertyCategoryTagV1)other;
+        final RESTPropertyTagInPropertyCategoryV1 otherCasted = (RESTPropertyTagInPropertyCategoryV1)other;
         
         if (this.relationshipId == null && otherCasted.relationshipId == null)
             return true;

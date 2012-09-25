@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryInTagV1;
 import org.jboss.pressgang.ccms.rest.v1.sort.TagV1NameComparator;
 import org.jboss.pressgang.ccms.utils.common.ExceptionUtilities;
 import org.jboss.pressgang.ccms.utils.common.XMLUtilities;
@@ -163,7 +163,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, ?, ?>>
 			{
 				if (tag.getCategories() != null && tag.getCategories().getItems() != null)
 				{
-					final List<RESTCategoryTagV1> categories = tag.getCategories().returnItems();
+					final List<RESTCategoryInTagV1> categories = tag.getCategories().returnItems();
 
 					if (categories.size() == 0)
 					{
@@ -176,7 +176,7 @@ public abstract class ComponentBaseTopicV1<T extends RESTBaseTopicV1<T, ?, ?>>
 					}
 					else
 					{
-						for (final RESTCategoryTagV1 category : categories)
+						for (final RESTCategoryInTagV1 category : categories)
 						{
 							final NameIDSortMap categoryDetails = new NameIDSortMap(category.getName(), category.getId(), category.getRelationshipSort() == null ? 0 : category.getRelationshipSort());
 

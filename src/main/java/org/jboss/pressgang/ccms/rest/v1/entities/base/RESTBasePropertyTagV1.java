@@ -2,7 +2,7 @@ package org.jboss.pressgang.ccms.rest.v1.entities.base;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyCategoryTagCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyCategoryInPropertyTagCollectionV1;
 
 public abstract class RESTBasePropertyTagV1<T extends RESTBasePropertyTagV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
     extends RESTBasePrimaryEntityV1<T, U, V>
@@ -20,7 +20,7 @@ public abstract class RESTBasePropertyTagV1<T extends RESTBasePropertyTagV1<T, U
 	protected boolean canBeNull;
 	protected boolean isUnique;
 	
-	protected RESTPropertyCategoryTagCollectionV1 propertyCategories = null;
+	protected RESTPropertyCategoryInPropertyTagCollectionV1 propertyCategories = null;
 	
 	public void cloneInto(final RESTBasePropertyTagV1<?, ?, ?> clone, final boolean deepCopy)
 	{
@@ -36,7 +36,7 @@ public abstract class RESTBasePropertyTagV1<T extends RESTBasePropertyTagV1<T, U
 		{
 		    if (this.propertyCategories != null)
             {
-                clone.propertyCategories = new RESTPropertyCategoryTagCollectionV1();
+                clone.propertyCategories = new RESTPropertyCategoryInPropertyTagCollectionV1();
                 this.propertyCategories.cloneInto(clone.propertyCategories, deepCopy);
             }
 		}
@@ -96,12 +96,12 @@ public abstract class RESTBasePropertyTagV1<T extends RESTBasePropertyTagV1<T, U
 		this.isUnique = isUnique;
 	}
 	
-    public RESTPropertyCategoryTagCollectionV1 getPropertyCategories()
+    public RESTPropertyCategoryInPropertyTagCollectionV1 getPropertyCategories()
     {
         return propertyCategories;
     }
 
-    public void setPropertyCategories(final RESTPropertyCategoryTagCollectionV1 propertyTagCategories)
+    public void setPropertyCategories(final RESTPropertyCategoryInPropertyTagCollectionV1 propertyTagCategories)
     {
         this.propertyCategories = propertyTagCategories;
     }

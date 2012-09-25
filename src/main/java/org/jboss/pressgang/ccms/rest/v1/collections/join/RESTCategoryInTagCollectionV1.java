@@ -7,39 +7,39 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCo
 import java.util.ArrayList;
 import java.util.List;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTCategoryTagCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryTagV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTCategoryInTagCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryInTagV1;
 
 /**
  * This is a wrapper class to work around an Errai limitation - https://issues.jboss.org/browse/ERRAI-319
  * @author Matthew Casperson
  *
  */
-public class RESTCategoryTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTCategoryTagV1, RESTCategoryTagCollectionV1, RESTCategoryTagCollectionItemV1>
+public class RESTCategoryInTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTCategoryInTagV1, RESTCategoryInTagCollectionV1, RESTCategoryInTagCollectionItemV1>
 {
-    private List<RESTCategoryTagCollectionItemV1> items = new ArrayList<RESTCategoryTagCollectionItemV1>();
+    private List<RESTCategoryInTagCollectionItemV1> items = new ArrayList<RESTCategoryInTagCollectionItemV1>();
     
     @Override
-    public List<RESTCategoryTagCollectionItemV1> getItems()
+    public List<RESTCategoryInTagCollectionItemV1> getItems()
     {
         return this.items;
     }
     
     @Override
-    public void setItems(final List<RESTCategoryTagCollectionItemV1> items)
+    public void setItems(final List<RESTCategoryInTagCollectionItemV1> items)
     {
         this.items = items;
     }
 
     @Override
-    protected void addItem(final RESTCategoryTagV1 item, final Integer state)
+    protected void addItem(final RESTCategoryInTagV1 item, final Integer state)
     {
         if (getItems() == null)
         {
-            setItems(new ArrayList<RESTCategoryTagCollectionItemV1>());
+            setItems(new ArrayList<RESTCategoryInTagCollectionItemV1>());
         }
         
-        getItems().add(new RESTCategoryTagCollectionItemV1(item, state));
+        getItems().add(new RESTCategoryInTagCollectionItemV1(item, state));
     }
 	
 	/**
@@ -50,13 +50,13 @@ public class RESTCategoryTagCollectionV1 extends RESTBaseUpdateCollectionV1<REST
     {
         if (this.getItems() != null)
         {
-            final List<RESTCategoryTagCollectionItemV1> items = new ArrayList<RESTCategoryTagCollectionItemV1>(this.getItems());
+            final List<RESTCategoryInTagCollectionItemV1> items = new ArrayList<RESTCategoryInTagCollectionItemV1>(this.getItems());
         
             /* on the second loop, remove any items that are marked for both add and remove is separate items */
             for (int i = 0; i < items.size(); ++i)
             {
-                final RESTCategoryTagCollectionItemV1 child1 = items.get(i);
-                final RESTCategoryTagV1 childItem1 = child1.getItem();
+                final RESTCategoryInTagCollectionItemV1 child1 = items.get(i);
+                final RESTCategoryInTagV1 childItem1 = child1.getItem();
                 
                 /* at this point we know that either add1 or remove1 will be true, but not both */
                 final boolean add1 = child1.getState() == ADD_STATE;
@@ -66,8 +66,8 @@ public class RESTCategoryTagCollectionV1 extends RESTBaseUpdateCollectionV1<REST
                 /* Loop a second time, looking for duplicates */
                 for (int j = i + 1; j < items.size(); ++j)
                 {
-                    final RESTCategoryTagCollectionItemV1 child2 = items.get(j);
-                    final RESTCategoryTagV1 childItem2 = child2.getItem();
+                    final RESTCategoryInTagCollectionItemV1 child2 = items.get(j);
+                    final RESTCategoryInTagV1 childItem2 = child2.getItem();
                     
                     /* Do some checks on values that could be null */
                     final boolean relationshipIdEqual = childItem1.getRelationshipId() == null && childItem2.getRelationshipId() == null 

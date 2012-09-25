@@ -2,7 +2,7 @@ package org.jboss.pressgang.ccms.rest.v1.entities.base;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyTagCategoryCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyTagInPropertyCategoryCollectionV1;
 
 public abstract class RESTBasePropertyCategoryV1<T extends RESTBasePropertyCategoryV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
     extends RESTBasePrimaryEntityV1<T, U, V>
@@ -13,7 +13,7 @@ public abstract class RESTBasePropertyCategoryV1<T extends RESTBasePropertyCateg
 	
 	protected String name = null;
 	protected String description = null;
-	protected RESTPropertyTagCategoryCollectionV1 propertyTags = null;
+	protected RESTPropertyTagInPropertyCategoryCollectionV1 propertyTags = null;
 	
 	public void cloneInto(final RESTBasePropertyCategoryV1<?, ?, ?> clone, final boolean deepCopy)
 	{
@@ -26,7 +26,7 @@ public abstract class RESTBasePropertyCategoryV1<T extends RESTBasePropertyCateg
 		{
 		    if (this.propertyTags != null)
             {
-                clone.propertyTags = new RESTPropertyTagCategoryCollectionV1();
+                clone.propertyTags = new RESTPropertyTagInPropertyCategoryCollectionV1();
                 this.propertyTags.cloneInto(clone.propertyTags, deepCopy);
             }
 		}
@@ -56,12 +56,12 @@ public abstract class RESTBasePropertyCategoryV1<T extends RESTBasePropertyCateg
 		this.description = description;
 	}
 	
-	public RESTPropertyTagCategoryCollectionV1 getPropertyTags()
+	public RESTPropertyTagInPropertyCategoryCollectionV1 getPropertyTags()
     {
         return propertyTags;
     }
 
-    public void setPropertyTags(final RESTPropertyTagCategoryCollectionV1 propertyTags)
+    public void setPropertyTags(final RESTPropertyTagInPropertyCategoryCollectionV1 propertyTags)
     {
         this.propertyTags = propertyTags;
     }

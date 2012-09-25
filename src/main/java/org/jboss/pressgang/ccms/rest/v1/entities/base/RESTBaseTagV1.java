@@ -4,7 +4,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTProjectCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTCategoryTagCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTCategoryInTagCollectionV1;
 
 public abstract class RESTBaseTagV1<T extends RESTBaseTagV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
     extends RESTBaseEntityWithPropertiesV1<T, U, V>
@@ -18,7 +18,7 @@ public abstract class RESTBaseTagV1<T extends RESTBaseTagV1<T, U, V>, U extends 
 	
 	protected String name = null;
 	protected String description = null;
-	protected RESTCategoryTagCollectionV1 categories = null;
+	protected RESTCategoryInTagCollectionV1 categories = null;
 	protected RESTTagCollectionV1 parentTags = null;
 	protected RESTTagCollectionV1 childTags = null;
 	protected RESTProjectCollectionV1 projects = null;
@@ -34,7 +34,7 @@ public abstract class RESTBaseTagV1<T extends RESTBaseTagV1<T, U, V>, U extends 
 		{
 			if (this.categories != null)
 			{
-			    clone.categories = new RESTCategoryTagCollectionV1();
+			    clone.categories = new RESTCategoryInTagCollectionV1();
 				this.categories.cloneInto(clone.categories, deepCopy);
 			}
 			
@@ -85,12 +85,12 @@ public abstract class RESTBaseTagV1<T extends RESTBaseTagV1<T, U, V>, U extends 
 		this.description = description;
 	}
 
-	public RESTCategoryTagCollectionV1 getCategories()
+	public RESTCategoryInTagCollectionV1 getCategories()
 	{
 		return categories;
 	}
 
-	public void setCategories(final RESTCategoryTagCollectionV1 categories)
+	public void setCategories(final RESTCategoryInTagCollectionV1 categories)
 	{
 		this.categories = categories;
 	}

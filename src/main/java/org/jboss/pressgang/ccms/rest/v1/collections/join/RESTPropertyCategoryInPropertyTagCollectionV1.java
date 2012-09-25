@@ -7,39 +7,39 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCo
 import java.util.ArrayList;
 import java.util.List;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyCategoryTagCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyCategoryTagV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyCategoryInPropetyTagCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyCategoryInPropertyTagV1;
 
 /**
  * This is a wrapper class to work around an Errai limitation - https://issues.jboss.org/browse/ERRAI-319
  * @author Matthew Casperson
  *
  */
-public class RESTPropertyCategoryTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTPropertyCategoryTagV1, RESTPropertyCategoryTagCollectionV1, RESTPropertyCategoryTagCollectionItemV1>
+public class RESTPropertyCategoryInPropertyTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTPropertyCategoryInPropertyTagV1, RESTPropertyCategoryInPropertyTagCollectionV1, RESTPropertyCategoryInPropetyTagCollectionItemV1>
 {
-    private List<RESTPropertyCategoryTagCollectionItemV1> items = new ArrayList<RESTPropertyCategoryTagCollectionItemV1>();
+    private List<RESTPropertyCategoryInPropetyTagCollectionItemV1> items = new ArrayList<RESTPropertyCategoryInPropetyTagCollectionItemV1>();
     
     @Override
-    public List<RESTPropertyCategoryTagCollectionItemV1> getItems()
+    public List<RESTPropertyCategoryInPropetyTagCollectionItemV1> getItems()
     {
         return this.items;
     }
     
     @Override
-    public void setItems(final List<RESTPropertyCategoryTagCollectionItemV1> items)
+    public void setItems(final List<RESTPropertyCategoryInPropetyTagCollectionItemV1> items)
     {
         this.items = items;
     }
 
     @Override
-    protected void addItem(final RESTPropertyCategoryTagV1 item, final Integer state)
+    protected void addItem(final RESTPropertyCategoryInPropertyTagV1 item, final Integer state)
     {
         if (getItems() == null)
         {
-            setItems(new ArrayList<RESTPropertyCategoryTagCollectionItemV1>());
+            setItems(new ArrayList<RESTPropertyCategoryInPropetyTagCollectionItemV1>());
         }
         
-        getItems().add(new RESTPropertyCategoryTagCollectionItemV1(item, state));
+        getItems().add(new RESTPropertyCategoryInPropetyTagCollectionItemV1(item, state));
     }
 	
     /**
@@ -53,13 +53,13 @@ public class RESTPropertyCategoryTagCollectionV1 extends RESTBaseUpdateCollectio
 	{
 		if (this.getItems() != null)
 		{
-			final List<RESTPropertyCategoryTagCollectionItemV1> items = new ArrayList<RESTPropertyCategoryTagCollectionItemV1>(this.getItems());
+			final List<RESTPropertyCategoryInPropetyTagCollectionItemV1> items = new ArrayList<RESTPropertyCategoryInPropetyTagCollectionItemV1>(this.getItems());
 		
 			/* on the second loop, remove any items that are marked for both add and remove is separate items */
 			for (int i = 0; i < items.size(); ++i)
 			{
-				final RESTPropertyCategoryTagCollectionItemV1 child1 = items.get(i);
-				final RESTPropertyCategoryTagV1 childItem1 = child1.getItem();
+				final RESTPropertyCategoryInPropetyTagCollectionItemV1 child1 = items.get(i);
+				final RESTPropertyCategoryInPropertyTagV1 childItem1 = child1.getItem();
 				
 				/* at this point we know that either add1 or remove1 will be true, but not both */
 				final boolean add1 = child1.getState() == ADD_STATE;
@@ -69,8 +69,8 @@ public class RESTPropertyCategoryTagCollectionV1 extends RESTBaseUpdateCollectio
 				/* Loop a second time, looking for duplicates */
 				for (int j = i + 1; j < items.size(); ++j)
 				{
-					final RESTPropertyCategoryTagCollectionItemV1 child2 = items.get(j);
-					final RESTPropertyCategoryTagV1 childItem2 = child2.getItem();
+					final RESTPropertyCategoryInPropetyTagCollectionItemV1 child2 = items.get(j);
+					final RESTPropertyCategoryInPropertyTagV1 childItem2 = child2.getItem();
 					
 					/* Do some checks on values that could be null */
 					final boolean relationshipIdEqual = childItem1.getRelationshipId() == null && childItem2.getRelationshipId() == null 

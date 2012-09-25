@@ -9,28 +9,28 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTCategoryTagCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryTagV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyCategoryInPropetyTagCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyCategoryInPropertyTagV1;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RESTCategoryTagCollectionV1Test
+public class RESTPropertyCategoryInPropertyTagCollectionV1Test
 {
     private static final Integer SORT = 10;
     private static final Integer DIFFERENT_SORT = 20;
     
-    private RESTCategoryTagCollectionV1 collection;
+    private RESTPropertyCategoryInPropertyTagCollectionV1 collection;
     
     @Before
     public void init()
     {
-        collection = new RESTCategoryTagCollectionV1();
+        collection = new RESTPropertyCategoryInPropertyTagCollectionV1();
     }
     
     @Test
     public void testRemoveInvalidRequests()
     {
-        final List<RESTCategoryTagCollectionItemV1> items = new ArrayList<RESTCategoryTagCollectionItemV1>();
+        final List<RESTPropertyCategoryInPropetyTagCollectionItemV1> items = new ArrayList<RESTPropertyCategoryInPropetyTagCollectionItemV1>();
         
         /* Invalid Entities */
         items.add(createCollectionItem(1, null, SORT, 4));
@@ -50,7 +50,7 @@ public class RESTCategoryTagCollectionV1Test
     @Test
     public void testRemoveDuplicatedItemRequests()
     {
-        final List<RESTCategoryTagCollectionItemV1> items = spy(new ArrayList<RESTCategoryTagCollectionItemV1>());
+        final List<RESTPropertyCategoryInPropetyTagCollectionItemV1> items = spy(new ArrayList<RESTPropertyCategoryInPropetyTagCollectionItemV1>());
         
         // Different states (All should be removed)
         items.add(createCollectionItem(1, null, SORT, REMOVE_STATE));
@@ -73,7 +73,7 @@ public class RESTCategoryTagCollectionV1Test
     @Test
     public void testRemoveDuplicatedItemRequestsWithRelationshipId()
     {
-        final List<RESTCategoryTagCollectionItemV1> items = spy(new ArrayList<RESTCategoryTagCollectionItemV1>());
+        final List<RESTPropertyCategoryInPropetyTagCollectionItemV1> items = spy(new ArrayList<RESTPropertyCategoryInPropetyTagCollectionItemV1>());
         
         // Different states, Same Id (All should be removed)
         items.add(createCollectionItem(1, 1, SORT, REMOVE_STATE));
@@ -104,7 +104,7 @@ public class RESTCategoryTagCollectionV1Test
     @Test
     public void testRemoveDuplicatedItemRequestsWithValues()
     {
-        final List<RESTCategoryTagCollectionItemV1> items = new ArrayList<RESTCategoryTagCollectionItemV1>();
+        final List<RESTPropertyCategoryInPropetyTagCollectionItemV1> items = new ArrayList<RESTPropertyCategoryInPropetyTagCollectionItemV1>();
         
         // Different State, Different Values (Both should be removed)
         items.add(createCollectionItem(1, null, SORT, REMOVE_STATE));
@@ -132,9 +132,9 @@ public class RESTCategoryTagCollectionV1Test
         assertEquals("Failed to remove duplicated items", 2, collection.getItems().size());
     }
     
-    private RESTCategoryTagCollectionItemV1 createCollectionItem(final Integer id, final Integer relationshipId, final Integer sort, final Integer state)
+    private RESTPropertyCategoryInPropetyTagCollectionItemV1 createCollectionItem(final Integer id, final Integer relationshipId, final Integer sort, final Integer state)
     {
-        final RESTCategoryTagCollectionItemV1 entity = new RESTCategoryTagCollectionItemV1();
+        final RESTPropertyCategoryInPropetyTagCollectionItemV1 entity = new RESTPropertyCategoryInPropetyTagCollectionItemV1();
         
         entity.setItem(createEntity(id, relationshipId, sort));
         entity.setState(state);
@@ -142,9 +142,9 @@ public class RESTCategoryTagCollectionV1Test
         return entity;
     }
     
-    private RESTCategoryTagCollectionItemV1 createNullCollectionItem(final Integer state)
+    private RESTPropertyCategoryInPropetyTagCollectionItemV1 createNullCollectionItem(final Integer state)
     {
-        final RESTCategoryTagCollectionItemV1 entity = new RESTCategoryTagCollectionItemV1();
+        final RESTPropertyCategoryInPropetyTagCollectionItemV1 entity = new RESTPropertyCategoryInPropetyTagCollectionItemV1();
         
         entity.setItem(null);
         entity.setState(state);
@@ -152,9 +152,9 @@ public class RESTCategoryTagCollectionV1Test
         return entity;
     }
     
-    private RESTCategoryTagV1 createEntity(final Integer id, final Integer relationshipId, final Integer sort)
+    private RESTPropertyCategoryInPropertyTagV1 createEntity(final Integer id, final Integer relationshipId, final Integer sort)
     {
-        final RESTCategoryTagV1 entity = new RESTCategoryTagV1();
+        final RESTPropertyCategoryInPropertyTagV1 entity = new RESTPropertyCategoryInPropertyTagV1();
         entity.setId(id);
         entity.setRelationshipSort(sort);
         entity.setRelationshipId(relationshipId);

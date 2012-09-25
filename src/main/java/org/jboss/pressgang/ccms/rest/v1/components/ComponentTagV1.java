@@ -3,10 +3,10 @@ package org.jboss.pressgang.ccms.rest.v1.components;
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTProjectCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTCategoryTagCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTCategoryInTagCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryInTagV1;
 
 /**
  * This component contains methods that can be applied against tags
@@ -31,9 +31,9 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1<REST
 	{
 		if (source.getCategories() != null && source.getCategories().getItems() != null)
 		{
-			for (final RESTCategoryTagCollectionItemV1 categoryItem : source.getCategories().getItems())
+			for (final RESTCategoryInTagCollectionItemV1 categoryItem : source.getCategories().getItems())
 			{
-			    final RESTCategoryTagV1 category = categoryItem.getItem();
+			    final RESTCategoryInTagV1 category = categoryItem.getItem();
 				if (category != null && categoryId.equals(category.getId()) && !categoryItem.returnIsRemoveItem())
 					return true;
 			}

@@ -3,9 +3,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTProjectCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTagCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTCategoryTagCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTCategoryInTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTagV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTTagCategoryV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTTagInCategoryV1;
 
 public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RESTTagCollectionItemV1>
 {
@@ -17,7 +17,7 @@ public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RES
 	    
 	}
 	
-	public RESTTagV1(final RESTTagCategoryV1 tagCategory)
+	public RESTTagV1(final RESTTagInCategoryV1 tagCategory)
     {
         tagCategory.cloneInto(this, false);
     }
@@ -74,7 +74,7 @@ public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RES
         this.setParameterToConfigured(DESCRIPTION_NAME);
     }
 	
-	public void explicitSetCategories(final RESTCategoryTagCollectionV1 categories)
+	public void explicitSetCategories(final RESTCategoryInTagCollectionV1 categories)
     {
         this.categories = categories;
         this.setParameterToConfigured(CATEGORIES_NAME);

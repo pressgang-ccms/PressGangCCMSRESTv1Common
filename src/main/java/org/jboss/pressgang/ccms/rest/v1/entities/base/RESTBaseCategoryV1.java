@@ -2,7 +2,7 @@ package org.jboss.pressgang.ccms.rest.v1.entities.base;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTTagCategoryCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTTagInCategoryCollectionV1;
 
 public abstract class RESTBaseCategoryV1<T extends RESTBaseCategoryV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
     extends RESTBasePrimaryEntityV1<T, U, V>
@@ -17,7 +17,7 @@ public abstract class RESTBaseCategoryV1<T extends RESTBaseCategoryV1<T, U, V>, 
 	protected String description = null;
 	protected boolean mutuallyExclusive = false;
 	protected Integer sort = null;
-	protected RESTTagCategoryCollectionV1 tags = null;
+	protected RESTTagInCategoryCollectionV1 tags = null;
 	
 	public void cloneInto(final RESTBaseCategoryV1<?, ?, ?> clone, final boolean deepCopy)
     {
@@ -32,7 +32,7 @@ public abstract class RESTBaseCategoryV1<T extends RESTBaseCategoryV1<T, U, V>, 
         {
             if (this.tags != null)
             {
-                clone.tags = new RESTTagCategoryCollectionV1();
+                clone.tags = new RESTTagInCategoryCollectionV1();
                 this.tags.cloneInto(clone.tags, deepCopy);
             }         
         }
@@ -82,12 +82,12 @@ public abstract class RESTBaseCategoryV1<T extends RESTBaseCategoryV1<T, U, V>, 
 		this.sort = sort;
 	}
 
-	public RESTTagCategoryCollectionV1 getTags()
+	public RESTTagInCategoryCollectionV1 getTags()
 	{
 		return tags;
 	}
 
-	public void setTags(final RESTTagCategoryCollectionV1 tags)
+	public void setTags(final RESTTagInCategoryCollectionV1 tags)
 	{
 		this.tags = tags;
 	}

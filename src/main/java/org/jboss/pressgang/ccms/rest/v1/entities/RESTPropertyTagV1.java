@@ -2,10 +2,10 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTPropertyTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTPropertyTagCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyCategoryTagCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyCategoryInPropertyTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePropertyTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyTagCategoryV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyTagInPropertyCategoryV1;
 
 public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, RESTPropertyTagCollectionV1, RESTPropertyTagCollectionItemV1>
 {   
@@ -22,7 +22,7 @@ public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, 
         assignedPropertyTag.cloneInto(this, false);
     }
     
-    public RESTPropertyTagV1(final RESTPropertyTagCategoryV1 propertyTagWithSort)
+    public RESTPropertyTagV1(final RESTPropertyTagInPropertyCategoryV1 propertyTagWithSort)
     {
         propertyTagWithSort.cloneInto(this, false);
     }
@@ -110,7 +110,7 @@ public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, 
         return super.equals(other);
     }
     
-    public void explicitSetPropertyCategories(final RESTPropertyCategoryTagCollectionV1 propertyTagCategories)
+    public void explicitSetPropertyCategories(final RESTPropertyCategoryInPropertyTagCollectionV1 propertyTagCategories)
     {
         this.propertyCategories = propertyTagCategories;
         this.setParameterToConfigured(PROPERTY_CATEGORIES_NAME);
