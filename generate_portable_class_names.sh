@@ -6,12 +6,14 @@ JAVA_EXTENSION=".java"
 BASE_PATH=/home/matthew/git/PressGangCCMSRESTv1Common/src/main/java/
 COLLECTIONS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/*
 COLLECTIONS_ITEMS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/items/*
+COLLECTIONS_ITEMS_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/items/join/*
 COLLECTIONS_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/join/*
 ENTITIES=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/*
 ENTITIES_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/join/*
+
 PORTABLE_CLASSES=""
 
-for package in ${COLLECTIONS} ${COLLECTIONS_ITEMS} ${COLLECTIONS_JOIN} ${ENTITIES} ${ENTITIES_JOIN}
+for package in ${COLLECTIONS} ${COLLECTIONS_ITEMS} ${COLLECTIONS_JOIN} ${ENTITIES} ${ENTITIES_JOIN} ${COLLECTIONS_ITEMS_JOIN}
 do
 	for file in $package
 	do		
