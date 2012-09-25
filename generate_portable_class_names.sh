@@ -15,10 +15,13 @@ for package in ${COLLECTIONS} ${COLLECTIONS_ITEMS} ${COLLECTIONS_JOIN} ${ENTITIE
 do
 	for file in $package
 	do		
-		RELATIVE=${file#$BASE_PATH}		
-		CLASS=${RELATIVE%$JAVA_EXTENSION}		
-		JAVA_PACKAGE=${CLASS//\//.}		
-		PORTABLE_CLASSES="${PORTABLE_CLASSES} ${JAVA_PACKAGE}"
+		if [ -f $file ]
+		then				
+			RELATIVE=${file#$BASE_PATH}		
+			CLASS=${RELATIVE%$JAVA_EXTENSION}		
+			JAVA_PACKAGE=${CLASS//\//.}		
+			PORTABLE_CLASSES="${PORTABLE_CLASSES} ${JAVA_PACKAGE}"
+		fi
 	done
 done
 
