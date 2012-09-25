@@ -25,4 +25,4 @@ do
 	done
 done
 
-echo ${PORTABLE_CLASSES}
+echo "${PORTABLE_CLASSES} org.jboss.pressgang.ccms.rest.v1.entities.base.RESTLogDetailsV1"
