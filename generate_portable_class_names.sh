@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# A script to output the classes that need to be listed in ErraiApp.properties
+
+JAVA_EXTENSION=".java"
+BASE_PATH=/home/matthew/git/PressGangCCMSRESTv1Common/src/main/java/
+COLLECTIONS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/*
+COLLECTIONS_ITEMS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/items/*
+COLLECTIONS_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/join/*
+ENTITIES=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/*
+ENTITIES_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/join/*
+PORTABLE_CLASSES=""
+
+for package in ${COLLECTIONS} ${COLLECTIONS_ITEMS} ${COLLECTIONS_JOIN} ${ENTITIES} ${ENTITIES_JOIN}
+do
+	for file in $package
+	do		
+		RELATIVE=${file#$BASE_PATH}		
+		CLASS=${RELATIVE%$JAVA_EXTENSION}		
+		JAVA_PACKAGE=${CLASS//\//.}		
+		PORTABLE_CLASSES="${PORTABLE_CLASSES} ${JAVA_PACKAGE}"
+	done
+done
+
+echo ${PORTABLE_CLASSES}
