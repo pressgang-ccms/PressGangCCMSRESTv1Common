@@ -224,6 +224,8 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
                     this.getItems().remove(item);
                 } else if (item.getState() != null && item.getState() == UNCHANGED_STATE) {
                     this.getItems().remove(item);
+                } else if (item.getItem().getId() == null && item.getState() != ADD_STATE) {
+                    this.getItems().remove(item);
                 } else if (item.getState() != null && !item.validState(item.getState())) {
                     this.getItems().remove(item);
                 }
