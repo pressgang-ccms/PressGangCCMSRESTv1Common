@@ -13,7 +13,6 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
 	public static final String IMAGE_NAME = "image";
 	public static final String FILENAME_NAME = "filename";
 	
-	private Integer id = null;
 	private RESTImageV1 image = null;
 	private byte[] imageData = null;
 	private byte[] thumbnail = null;
@@ -100,18 +99,6 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
             clone.imageDataBase64 = this.imageDataBase64;
             clone.revisions = this.revisions;
         }
-	}
-
-	@Override
-	public Integer getId()
-	{
-		return id;
-	}
-
-	@Override
-	public void setId(Integer id)
-	{
-		this.id = id;
 	}
 
 	public RESTImageV1 getImage()
