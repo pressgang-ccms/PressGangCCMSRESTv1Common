@@ -8,9 +8,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
 
 public class RESTLogDetailsV1
 {
-    public static final byte INTERNAL_FLAG_BIT = 0x01;
-    public static final byte TRANSLATOR_FLAG_BIT = 0x02;
-    public static final byte REV_HISTORY_FLAG_BIT = 0x04;
+    public static final byte MINOR_CHANGE_FLAG_BIT = 0x01;
+    public static final byte MAJOR_CHANGE_FLAG_BIT = 0x02;
     
     public static final String MESSAGE_NAME = "message";
     public static final String FLAG_NAME = "flag";

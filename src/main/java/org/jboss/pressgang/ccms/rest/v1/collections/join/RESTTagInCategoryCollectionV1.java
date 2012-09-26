@@ -59,6 +59,10 @@ public class RESTTagInCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RE
                 final RESTTagInCategoryCollectionItemV1 child1 = items.get(i);
                 final RESTTagInCategoryV1 childItem1 = child1.getItem();
                 
+                // New Entity so ignore it
+                if (childItem1.getId() == null)
+                    continue;
+                
                 /* at this point we know that either add1 or remove1 will be true, but not both */
                 final boolean add1 = child1.getState() == ADD_STATE;
                 final boolean remove1 = child1.getState() == REMOVE_STATE;
@@ -69,6 +73,10 @@ public class RESTTagInCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RE
                 {
                     final RESTTagInCategoryCollectionItemV1 child2 = items.get(j);
                     final RESTTagInCategoryV1 childItem2 = child2.getItem();
+                    
+                    // New Entity so ignore it
+                    if (childItem2.getId() == null)
+                        continue;
                     
                     /* Do some checks on values that could be null */
                     final boolean relationshipIdEqual = childItem1.getRelationshipId() == null && childItem2.getRelationshipId() == null 

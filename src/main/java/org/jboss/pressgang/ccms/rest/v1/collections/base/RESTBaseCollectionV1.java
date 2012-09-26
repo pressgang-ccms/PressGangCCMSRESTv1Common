@@ -247,6 +247,10 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
             for (int i = 0; i < items.size(); ++i) {
                 final V child1 = items.get(i);
                 final T childItem1 = child1.getItem();
+                
+                // New Entity so ignore it
+                if (childItem1.getId() == null)
+                    continue;
 
                 /* at this point we know that either add1 or remove1 will be true, but not both */
                 final boolean add1 = child1.getState() == ADD_STATE;
@@ -258,6 +262,10 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
                     final V child2 = items.get(j);
                     final T childItem2 = child2.getItem();
 
+                    // New Entity so ignore it
+                    if (childItem2.getId() == null)
+                        continue;
+                    
                     /* Check the PropertyTags for uniqueness and their value as well as their IDs */
                     if (childItem1.getId().equals(childItem2.getId())) {
                         final boolean add2 = child2.getState() == ADD_STATE;

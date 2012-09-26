@@ -61,6 +61,10 @@ public class RESTPropertyTagInPropertyCategoryCollectionV1 extends RESTBaseUpdat
 				final RESTPropertyTagInPropertyCategoryCollectionItemV1 child1 = items.get(i);
 				final RESTPropertyTagInPropertyCategoryV1 childItem1 = child1.getItem();
 				
+				// New Entity so ignore it
+                if (childItem1.getId() == null)
+                    continue;
+				
 				/* at this point we know that either add1 or remove1 will be true, but not both */
 				final boolean add1 = child1.getState() == ADD_STATE;
 				final boolean remove1 = child1.getState() == REMOVE_STATE;
@@ -82,6 +86,10 @@ public class RESTPropertyTagInPropertyCategoryCollectionV1 extends RESTBaseUpdat
 						final boolean add2 = child2.getState() == ADD_STATE;
 						final boolean remove2 = child2.getState() == REMOVE_STATE;
 						final boolean update2 = child2.getState() == UPDATE_STATE;
+						
+						// New Entity so ignore it
+		                if (childItem2.getId() == null)
+		                    continue;
 						
 						final boolean relationshipSortEqual = childItem1.getRelationshipSort() == null && childItem2.getRelationshipSort() == null 
                                 || childItem1.getRelationshipSort() != null && childItem1.getRelationshipSort().equals(childItem2.getRelationshipSort());
