@@ -73,13 +73,23 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
     }
     
     /**
-     * 
      * @return A collection of existing items
      */
     public List<V> returnExistingCollectionItems() {
         return returnCollectionItemsWithState(new ArrayList<Integer>() {
             {
                 add(UNCHANGED_STATE);
+            }
+        });
+    }
+    
+    /**
+     * @return A collection of updated items
+     */
+    public List<V> returnUpdatedCollectionItems() {
+        return returnCollectionItemsWithState(new ArrayList<Integer>() {
+            {
+                add(UPDATE_STATE);
             }
         });
     }
@@ -99,6 +109,20 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
     
     /**
      * 
+     * @return A collection of existing, added and updated items
+     */
+    public List<V> returnExistingAddedAndUpdatedCollectionItems() {
+        return returnCollectionItemsWithState(new ArrayList<Integer>() {
+            {
+                add(UNCHANGED_STATE);
+                add(ADD_STATE);
+                add(UPDATE_STATE);
+            }
+        });
+    }
+    
+    /**
+     * 
      * @return A collection of added and deleted items
      */
     public List<V> returnDeletedAndAddedCollectionItems() {
@@ -106,6 +130,19 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
             {
                 add(REMOVE_STATE);
                 add(ADD_STATE);
+            }
+        });
+    }
+    
+    /**
+     * @return A collection of added, deleted and updated items (i.e. all those that would trigger a change in the db)
+     */   
+    public List<V> returnDeletedAddedAndUpdatedCollectionItems() {
+        return returnCollectionItemsWithState(new ArrayList<Integer>() {
+            {
+                add(REMOVE_STATE);
+                add(ADD_STATE);
+                add(UPDATE_STATE);
             }
         });
     }
