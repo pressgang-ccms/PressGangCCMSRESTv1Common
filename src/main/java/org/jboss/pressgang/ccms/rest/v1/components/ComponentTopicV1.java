@@ -4,8 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTopicCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
@@ -15,7 +13,7 @@ import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
  * This component contains methods that can be applied against topics
  * @author Matthew Casperson
  */
-public class ComponentTopicV1 extends ComponentBaseTopicV1<RESTTopicV1, RESTTopicCollectionV1, RESTTopicCollectionItemV1>
+public class ComponentTopicV1 extends ComponentBaseTopicV1<RESTTopicV1>
 {
 	final RESTTopicV1 source;
 	
