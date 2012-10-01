@@ -11,6 +11,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
 import org.junit.Test;
 
 public class RESTTitleComparatorTest
@@ -20,7 +21,7 @@ public class RESTTitleComparatorTest
     {
         final RESTTopicTitleComparatorTest test = new RESTTopicTitleComparatorTest();
         
-        test.testSort(new BaseTopicV1TitleComparator<RESTTopicV1>());
+        test.testSort(new BaseTopicV1TitleComparator());
     }
     
     @Test
@@ -40,12 +41,12 @@ public class RESTTitleComparatorTest
     }
 }
 
-class RESTTopicTitleComparatorTest extends RESTBaseTitleComparatorTest<RESTTopicV1>
+class RESTTopicTitleComparatorTest extends RESTBaseTitleComparatorTest<RESTBaseTopicV1>
 {
     @Override
-    protected RESTTopicV1 createEntity(final String title)
+    protected RESTBaseTopicV1 createEntity(final String title)
     {
-        final RESTTopicV1 entity = new RESTTopicV1();
+        final RESTBaseTopicV1 entity = new RESTTopicV1();
         
         entity.setTitle(title);
         
@@ -85,9 +86,9 @@ class RESTTagNameComparatorTest extends RESTBaseTitleComparatorTest<RESTTagV1>
  * 
  * @author lnewson
  *
- * @param <T> The REST Entity to be sorted into alphabetical order by title.
+ * @param <RESTBaseEntityV1> The REST Entity to be sorted into alphabetical order by title.
  */
-abstract class RESTBaseTitleComparatorTest<T extends RESTBaseEntityV1<T, ?, ?>>
+abstract class RESTBaseTitleComparatorTest<T extends RESTBaseEntityV1>
 {
     private T entity1;
     private T entity2;

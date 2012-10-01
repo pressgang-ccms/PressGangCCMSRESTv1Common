@@ -14,9 +14,9 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
  * @param <U> The Topic Collection Class
  * @param <V> The Topic Collection Item Class
  */
-public class BaseTopicV1TitleComparator<T extends RESTBaseTopicV1<T, ?, ?>> implements Comparator<T>
+public class BaseTopicV1TitleComparator implements Comparator<RESTBaseTopicV1>
 {
-	public int compare(final T o1, final T o2)
+	public int compare(final RESTBaseTopicV1 o1, final RESTBaseTopicV1 o2)
 	{
 		if (o1 == null && o2 == null)
 			return 0;

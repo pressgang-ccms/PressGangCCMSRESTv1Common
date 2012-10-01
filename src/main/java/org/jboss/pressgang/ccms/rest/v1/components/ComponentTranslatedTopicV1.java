@@ -13,7 +13,7 @@ import org.jboss.pressgang.ccms.zanata.ZanataDetails;
  * This component contains methods that can be applied against translated topics
  * @author Matthew Casperson
  */
-public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTranslatedTopicV1>
+public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1
 {
 	final RESTTranslatedTopicV1 source;
 	
@@ -41,7 +41,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1<RESTTransla
 	
 	static public String returnBugzillaBuildId(final RESTTranslatedTopicV1 source)
 	{
-		if (!ComponentBaseTopicV1.<RESTTranslatedTopicV1>returnIsDummyTopic(source))
+		if (!ComponentBaseTopicV1.returnIsDummyTopic(source))
 		{
 			return "Translation " + returnZanataId(source) + " " + source.getLocale();
 		}

@@ -8,11 +8,11 @@ import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 /**
  * This is the base class for all entities that have Property Tags
  */
-public abstract class ComponentBaseRESTEntityWithPropertiesV1<T extends RESTBaseEntityWithPropertiesV1<T, ?, ?>> 
+public abstract class ComponentBaseRESTEntityWithPropertiesV1
 {
-	final T source;
+	final RESTBaseEntityWithPropertiesV1 source;
 	
-	public ComponentBaseRESTEntityWithPropertiesV1(final T source)
+	public ComponentBaseRESTEntityWithPropertiesV1(final RESTBaseEntityWithPropertiesV1 source)
 	{
 		this.source = source;
 	}
@@ -22,7 +22,7 @@ public abstract class ComponentBaseRESTEntityWithPropertiesV1<T extends RESTBase
 		return returnProperty(source, propertyTagId);
 	}
 	
-	static public <T extends RESTBaseEntityWithPropertiesV1<T, ?, ?>> RESTAssignedPropertyTagV1 returnProperty(final T source, final Integer propertyTagId)
+	static public RESTAssignedPropertyTagV1 returnProperty(final RESTBaseEntityWithPropertiesV1 source, final Integer propertyTagId)
 	{
 		if (source.getProperties() != null && source.getProperties().getItems() != null)
 		{

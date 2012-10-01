@@ -13,7 +13,7 @@ import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
  * This component contains methods that can be applied against topics
  * @author Matthew Casperson
  */
-public class ComponentTopicV1 extends ComponentBaseTopicV1<RESTTopicV1>
+public class ComponentTopicV1 extends ComponentBaseTopicV1
 {
 	final RESTTopicV1 source;
 	

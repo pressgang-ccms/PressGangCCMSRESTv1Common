@@ -12,7 +12,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryInTagV1;
  * This component contains methods that can be applied against tags
  * @author Matthew Casperson
  */
-public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1<RESTTagV1>
+public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1
 {
 	final RESTTagV1 source;
 	
