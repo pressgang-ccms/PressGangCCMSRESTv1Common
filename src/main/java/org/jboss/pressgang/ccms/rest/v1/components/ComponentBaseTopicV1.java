@@ -238,9 +238,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
             return false;
 
         if (source.getLocale() != null)
-            return false;
-        if (source.getRevision() != null)
-            return false;
+            return false;        
         if (source.getTitle() != null)
             return false;
         if (source.getXml() != null)
@@ -250,6 +248,8 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
             if (source.getHtml() != null)
                 return false;
             if (source.getXmlErrors() != null)
+                return false;
+            if (source.getRevision() != null)
                 return false;
         }
         
