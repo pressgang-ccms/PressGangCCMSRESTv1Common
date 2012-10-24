@@ -143,4 +143,7 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1
 	{
 		return CommonConstants.SERVER_URL + "/TopicIndex/TopicEdit.seam?topicTopicId=" + source.getId();
 	}
+	
+
+
 }
