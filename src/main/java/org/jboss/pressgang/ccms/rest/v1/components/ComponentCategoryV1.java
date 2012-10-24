@@ -13,14 +13,18 @@ public class ComponentCategoryV1
 		this.source = source;
 	}
 	
-	public boolean containsTag(final int tagId)
+	public boolean containsTag(final Integer tagId)
 	{
 		return containsTag(source, tagId);
 	}
 	
-	static public boolean containsTag(final RESTCategoryV1 source, final int tagId)
+	static public boolean containsTag(final RESTCategoryV1 source, final Integer tagId)
 	{
 		if (source == null) throw new IllegalArgumentException("source cannot be null");
+		
+		/* Strictly speaking a category can not be a parent to a tag with no id */
+		if (tagId == null)
+		    return false;
 		
 		if (source.getTags() != null && source.getTags().getItems() != null)
 		{
