@@ -30,7 +30,7 @@ public class ComponentProjectV1
 			for (final RESTTagCollectionItemV1 tagItem : source.getTags().getItems())
 			{
 			    final RESTTagV1 tag = tagItem.getItem();
-				if (tag != null && tagId == tag.getId() && !tagItem.returnIsRemoveItem())
+				if (tag != null && tagId.equals(tag.getId()) && !tagItem.returnIsRemoveItem())
 					return true;
 			}
 		}
