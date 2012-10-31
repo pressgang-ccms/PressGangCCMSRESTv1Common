@@ -2,16 +2,16 @@ package org.jboss.pressgang.ccms.rest.v1.sort;
 
 import java.util.Comparator;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTTagInCategoryCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTagCollectionItemV1;
 
 /**
  * A comparator to sort RESTTagCategoryCollectionItemV1 objects by their sort field.
  * @author Matthew Casperson
  */
-public class RESTTagCollectionItemV1NameComparator implements Comparator<RESTTagInCategoryCollectionItemV1> {
+public class RESTTagCollectionItemV1NameComparator implements Comparator<RESTTagCollectionItemV1> {
 
     @Override
-    public int compare(final RESTTagInCategoryCollectionItemV1 arg0, final RESTTagInCategoryCollectionItemV1 arg1) {
+    public int compare(final RESTTagCollectionItemV1 arg0, final RESTTagCollectionItemV1 arg1) {
         if (arg0 == null && arg1 == null) {
             return 0;
         }
