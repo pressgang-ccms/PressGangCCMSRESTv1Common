@@ -4,11 +4,12 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
 
-public abstract class RESTBaseEntityWithPropertiesV1<T extends RESTBaseEntityWithPropertiesV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>> extends RESTBasePrimaryEntityV1<T, U, V>
+public abstract class RESTBaseEntityWithPropertiesV1<T extends RESTBaseEntityWithPropertiesV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
+        extends RESTBasePrimaryEntityV1<T, U, V>
 {
     public static String PROPERTIES_NAME = "properties";
     
-    private RESTAssignedPropertyTagCollectionV1 properties = null;
+    protected RESTAssignedPropertyTagCollectionV1 properties = null;
     
     public void cloneInto(final RESTBaseEntityWithPropertiesV1<?, ?, ?> clone, final boolean deepCopy)
     {
@@ -36,12 +37,6 @@ public abstract class RESTBaseEntityWithPropertiesV1<T extends RESTBaseEntityWit
     public void setProperties(final RESTAssignedPropertyTagCollectionV1 properties)
     {
         this.properties = properties;
-    }
-    
-    public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties)
-    {
-        this.properties = properties;
-        this.setParameterToConfigured(PROPERTIES_NAME);
     }
     
     @Override

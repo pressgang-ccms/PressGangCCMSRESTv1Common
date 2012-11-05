@@ -12,6 +12,8 @@ public class ExpandDataDetails
 	private Integer start;
 	/** The ending index - can be negative to indicate a starting point from the end of the collection */
 	private Integer end;
+	/** If these details should be recursively applied to all branches */
+	//private Boolean recursive;
 
 	public String getName()
 	{
@@ -43,7 +45,15 @@ public class ExpandDataDetails
 		this.end = end;
 	}
 
-	public ExpandDataDetails()
+	/*public Boolean getRecursive() {
+        return recursive;
+    }
+
+    public void setRecursive(final Boolean recursive) {
+        this.recursive = recursive;
+    }*/
+
+    public ExpandDataDetails()
 	{
 
 	}
@@ -52,6 +62,12 @@ public class ExpandDataDetails
 	{
 		this.name = name;
 	}
+	
+	/*public ExpandDataDetails(final String name, final boolean recursive)
+    {
+        this.name = name;
+        this.recursive = recursive;
+    }*/
 
 	public ExpandDataDetails(final String name, final Integer start, final Integer end)
 	{
@@ -59,4 +75,10 @@ public class ExpandDataDetails
 		this.start = start;
 		this.end = end;
 	}
+	
+	/*public ExpandDataDetails(final String name, final Integer start, final Integer end, final boolean recursive)
+    {
+        this(name, start, end);
+        this.recursive = recursive;
+    }*/
 }

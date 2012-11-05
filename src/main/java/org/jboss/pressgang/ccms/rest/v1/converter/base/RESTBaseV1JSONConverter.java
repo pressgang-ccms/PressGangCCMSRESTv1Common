@@ -1,11 +1,15 @@
 package org.jboss.pressgang.ccms.rest.v1.converter.base;
 
+import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.jboss.resteasy.spi.StringConverter;
 
 public abstract class RESTBaseV1JSONConverter<T> implements StringConverter<T>
 {
     private static final ObjectMapper mapper = new ObjectMapper();
+    {
+        mapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
     
     private final Class<T> clazz;
     

@@ -8,6 +8,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTopicCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
 
 public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectionV1, RESTTopicCollectionItemV1>
@@ -249,6 +250,12 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 		setIncomingRelationships(incomingRelationships);
 		setParameterToConfigured(INCOMING_NAME);
 	}
+	
+	public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties)
+    {
+        this.properties = properties;
+        this.setParameterToConfigured(PROPERTIES_NAME);
+    }
 	
 	@Override
     public boolean equals(final Object other)

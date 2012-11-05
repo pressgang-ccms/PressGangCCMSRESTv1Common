@@ -129,7 +129,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
 			this.tags = new RESTTagCollectionV1();
 
 		this.tags.addItem(tag);
-	}	
+	}
 
 	public RESTTopicSourceUrlCollectionV1 getSourceUrls_OTM()
 	{

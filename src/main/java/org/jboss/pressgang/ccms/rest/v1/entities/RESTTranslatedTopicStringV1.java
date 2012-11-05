@@ -2,19 +2,13 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicStringCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTranslatedTopicStringCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTranslatedStringV1;
 
-public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslatedTopicStringV1, RESTTranslatedTopicStringCollectionV1, RESTTranslatedTopicStringCollectionItemV1>
+public class RESTTranslatedTopicStringV1 extends RESTBaseTranslatedStringV1<RESTTranslatedTopicStringV1, RESTTranslatedTopicStringCollectionV1, RESTTranslatedTopicStringCollectionItemV1>
 {
-	public static final String ORIGINALSTRING_NAME = "originalString";
-	public static final String TRANSLATEDSTRING_NAME = "translatedString";
 	public static final String TRANSLATEDTOPIC_NAME = "translatedTopic";
-	public static final String FUZZY_TRANSLATION_NAME = "fuzzyTranslation";
 	
 	private RESTTranslatedTopicV1 translatedTopic = null;
-	private String originalString = null;
-	private String translatedString = null;
-	private Boolean fuzzyTranslation = null;
 	/** A list of the Envers revision numbers */
 	private RESTTranslatedTopicStringCollectionV1 revisions = null;
 	
@@ -44,9 +38,6 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslated
 	{
 	    super.cloneInto(clone, deepCopy);
 	    
-	    clone.originalString = this.originalString;
-	    clone.translatedString = this.translatedString;
-        
         if (deepCopy)
         {
             clone.translatedTopic = this.translatedTopic != null ? this.translatedTopic.clone(deepCopy) : null;
@@ -73,31 +64,11 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslated
 	{
 		this.translatedTopic = translatedTopic;
 	}
-
-	public String getOriginalString()
-	{
-		return originalString;
-	}
-
-	public void setOriginalString(final String originalString)
-	{
-		this.originalString = originalString;
-	}
 	
 	public void explicitSetOriginalString(final String originalString)
 	{
 		this.originalString = originalString;
 		this.setParameterToConfigured(ORIGINALSTRING_NAME);
-	}
-
-	public String getTranslatedString()
-	{
-		return translatedString;
-	}
-
-	public void setTranslatedString(final String translatedString)
-	{
-		this.translatedString = translatedString;
 	}
 	
 	public void explicitSetTranslatedString(final String translatedString)
@@ -105,16 +76,6 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseEntityV1<RESTTranslated
 		this.translatedString = translatedString;
 		this.setParameterToConfigured(TRANSLATEDSTRING_NAME);
 	}
-
-    public Boolean getFuzzyTranslation()
-    {
-        return fuzzyTranslation;
-    }
-
-    public void setFuzzyTranslation(final Boolean fuzzyTranslation)
-    {
-        this.fuzzyTranslation = fuzzyTranslation;
-    }
     
     public void explicitSetFuzzyTranslation(final Boolean fuzzyTranslation)
     {

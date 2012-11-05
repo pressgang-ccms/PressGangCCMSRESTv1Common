@@ -386,4 +386,29 @@ public class CommonFilterConstants {
     
     public static final String PROP_CATEGORY_DESCRIPTION_FILTER_VAR = "propCategoryDesc";
     public static final String PROP_CATEGORY_DESCRIPTION_FILTER_VAR_DESC = "Property Tag Category Description";
+    
+    /* ContentSpec Constants */
+    public static final String CONTENT_SPEC_IDS_FILTER_VAR = "contentSpecIds";
+    public static final String CONTENT_SPEC_IDS_FILTER_VAR_DESC = "Content Specification IDs";
+    
+    public static final String CONTENT_SPEC_TITLE_FILTER_VAR = "contentSpecTitle";
+    public static final String CONTENT_SPEC_TITLE_FILTER_VAR_DESC = "Content Specification Title";
+    
+    public static final String CONTENT_SPEC_PRODUCT_FILTER_VAR = "contentSpecProduct";
+    public static final String CONTENT_SPEC_PRODUCT_FILTER_VAR_DESC = "Content Specification Product";
+    
+    /* CSNode Constants */
+    public static final String CONTENT_SPEC_NODE_IDS_FILTER_VAR = "csNodeIds";
+    public static final String CONTENT_SPEC_NODE_IDS_FILTER_VAR_DESC = "Content Specification Node IDs";
+    
+    public static final String CONTENT_SPEC_NODE_TITLE_FILTER_VAR = "csNodeTitle";
+    public static final String CONTENT_SPEC_NODE_TITLE_FILTER_VAR_DESC = "Content Specification Node Title";
+    
+    /* CSNode Constants */
+    public static final String CONTENT_SPEC_META_DATA_IDS_FILTER_VAR = "csMetaDataIds";
+    public static final String CONTENT_SPEC_META_DATA_IDS_FILTER_VAR_DESC = "Content Specification IDs";
+    
+    public static final String CONTENT_SPEC_META_DATA_TITLE_FILTER_VAR = "csMetaDataTitle";
+    public static final String CONTENT_SPEC_META_DATA_TITLE_FILTER_VAR_DESC = "Content Specification Meta Data Title";
+    
 }

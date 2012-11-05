@@ -2,8 +2,12 @@ package org.jboss.pressgang.ccms.rest.v1.client;
 
 import java.net.URI;
 
+import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTBlobConstantV1JSONConverter;
+import org.jboss.pressgang.ccms.rest.v1.converter.RESTCSMetaDataV1JSONConverter;
+import org.jboss.pressgang.ccms.rest.v1.converter.RESTCSNodeV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTCategoryV1JSONConverter;
+import org.jboss.pressgang.ccms.rest.v1.converter.RESTContentSpecV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTFilterV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTImageV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTLogDetailsV1JSONConverter;
@@ -32,6 +36,7 @@ import org.jboss.pressgang.ccms.rest.v1.jaxrsinterfaces.RESTInterfaceV1;
 import org.jboss.resteasy.client.ClientRequestFactory;
 import org.jboss.resteasy.client.ProxyFactory;
 import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
+import org.jboss.resteasy.plugins.providers.jackson.ResteasyJacksonProvider;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
 
 public class PressGangCCMSProxyFactoryV1
@@ -39,6 +44,12 @@ public class PressGangCCMSProxyFactoryV1
     static
     {
        final ResteasyProviderFactory providerFactory = ResteasyProviderFactory.getInstance();
+       
+       // Configure the Jackson Provider to ignore Unknown Fields
+       final ResteasyJacksonProvider jacksonProvider = new ResteasyJacksonProvider();
+       jacksonProvider.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+       providerFactory.registerProviderInstance(jacksonProvider);
+       
        providerFactory.addStringConverter(RESTLogDetailsV1JSONConverter.class);
        providerFactory.addStringConverter(RESTBlobConstantV1JSONConverter.class);
        providerFactory.addStringConverter(RESTCategoryV1JSONConverter.class);
@@ -64,7 +75,11 @@ public class PressGangCCMSProxyFactoryV1
        providerFactory.addStringConverter(RESTTopicCollectionV1JSONConverter.class);
        providerFactory.addStringConverter(RESTTranslatedTopicCollectionV1JSONConverter.class);
        providerFactory.addStringConverter(RESTUserCollectionV1JSONConverter.class);
+       providerFactory.addStringConverter(RESTContentSpecV1JSONConverter.class);
+       providerFactory.addStringConverter(RESTCSMetaDataV1JSONConverter.class);
+       providerFactory.addStringConverter(RESTCSNodeV1JSONConverter.class);
        RegisterBuiltin.register(providerFactory);
+       
     }
     
     private final ClientRequestFactory requestFactory;
