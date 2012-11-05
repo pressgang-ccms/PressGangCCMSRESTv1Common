@@ -2242,13 +2242,13 @@ public interface RESTInterfaceV1
 	@Path("/topic/get/xml/{id}/xml")
 	@Produces(MediaType.APPLICATION_XML)
 	@Consumes({ "*" })
-	public String getXMLTopicXML(@PathParam("id") final Integer id) throws InvalidParameterException, InternalProcessingException;
+	public String getXMLTopicXML(@PathParam("id") final Integer id, @QueryParam("doctype") final String doctype) throws InvalidParameterException, InternalProcessingException;
 	
 	@GET
     @Path("/topic/get/xml/{id}/r/{rev}/xml")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes({ "*" })
-    public String getXMLTopicRevisionXML(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision) throws InvalidParameterException, InternalProcessingException;
+    public String getXMLTopicRevisionXML(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision, @QueryParam("doctype") final String doctype) throws InvalidParameterException, InternalProcessingException;
 
 	@GET
 	@Path("/topic/get/xml/{id}/xmlContainedIn")
@@ -2717,8 +2717,6 @@ public interface RESTInterfaceV1
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({ "*" })
     public RESTIntegerConstantCollectionV1 deleteJSONIntegerConstants(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final Integer userId, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
-	    public RESTIntegerConstantCollectionV1 deleteJSONIntegerConstants(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
     
     /* CONTENT SPEC FUNCTIONS */
     /*      JSONP FUNCTIONS */
