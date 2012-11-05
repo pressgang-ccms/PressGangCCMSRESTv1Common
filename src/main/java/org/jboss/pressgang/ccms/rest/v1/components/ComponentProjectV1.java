@@ -13,21 +13,24 @@ public class ComponentProjectV1
 		this.source = source;
 	}
 	
-	public boolean containsTag(final int tagId)
+	public boolean containsTag(final Integer tagId)
 	{
 		return containsTag(source, tagId);
 	}
 	
-	static public boolean containsTag(final RESTProjectV1 source, final int tagId)
+	static public boolean containsTag(final RESTProjectV1 source, final Integer tagId)
 	{
 		if (source == null) throw new IllegalArgumentException("source cannot be null");
+		
+		if (tagId == null)
+		    return false;
 		
 		if (source.getTags() != null && source.getTags().getItems() != null)
 		{
 			for (final RESTTagCollectionItemV1 tagItem : source.getTags().getItems())
 			{
 			    final RESTTagV1 tag = tagItem.getItem();
-				if (tag != null && tagId == tag.getId() && !tagItem.returnIsRemoveItem())
+				if (tag != null && tagId.equals(tag.getId()) && !tagItem.returnIsRemoveItem())
 					return true;
 			}
 		}
