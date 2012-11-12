@@ -98,7 +98,7 @@ public class RESTLogDetailsV1
     {
         clone.setFlag(flag);
         clone.setMessage(message);
-        clone.setUser(user.clone(deepCopy));
+        clone.setUser(user == null ? null : user.clone(deepCopy));
         clone.setDate((Date) (date == null ? null : date.clone()));
     }
 
