@@ -31,8 +31,8 @@ import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTTagCollectionV1
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTTopicCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTTranslatedTopicCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTUserCollectionV1JSONConverter;
-import org.jboss.pressgang.ccms.rest.v1.jaxrsinterfaces.RESTInterfaceAdvancedV1;
 import org.jboss.pressgang.ccms.rest.v1.jaxrsinterfaces.RESTInterfaceV1;
+import org.jboss.pressgang.ccms.rest.v1.jaxrsinterfaces.RESTInterfaceAdvancedV1;
 import org.jboss.resteasy.client.ClientRequestFactory;
 import org.jboss.resteasy.client.ProxyFactory;
 import org.jboss.resteasy.plugins.providers.RegisterBuiltin;

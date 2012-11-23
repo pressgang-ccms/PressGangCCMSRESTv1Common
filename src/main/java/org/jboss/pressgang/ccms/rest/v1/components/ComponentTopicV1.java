@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
@@ -99,7 +98,7 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1
 	
 	static public  String returnErrorXRefID(final RESTTopicV1 source)
 	{
-		return RESTv1Constants.ERROR_XREF_ID_PREFIX + source.getId();
+		return CommonConstants.ERROR_XREF_ID_PREFIX + source.getId();
 	}
 
 	@Override
