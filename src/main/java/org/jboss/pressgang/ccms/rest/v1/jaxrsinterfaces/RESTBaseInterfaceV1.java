@@ -1766,13 +1766,13 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/image/get/raw/{id}")
     @Consumes({ "*" })
-    @Produces({"image/gif", "image/png", "image/png", MediaType.APPLICATION_SVG_XML})
+    @Produces({"image/gif", "image/png", "image/jpeg", MediaType.APPLICATION_SVG_XML})
     public byte[] getRAWImage(@PathParam("id") final Integer id, @QueryParam("lang") final String locale) throws InvalidParameterException, InternalProcessingException;
     
     @GET
     @Path("/image/get/raw/{id}/thumbnail")
     @Consumes({ "*" })
-    @Produces({"image/gif", "image/png", "image/png", MediaType.APPLICATION_SVG_XML})
+    @Produces({"image/gif", "image/png", "image/jpeg", MediaType.APPLICATION_SVG_XML})
     public byte[] getRAWImageThumbnail(@PathParam("id") final Integer id, @QueryParam("lang") final String locale) throws InvalidParameterException, InternalProcessingException;
 
     /* TOPIC FUNCTIONS */
