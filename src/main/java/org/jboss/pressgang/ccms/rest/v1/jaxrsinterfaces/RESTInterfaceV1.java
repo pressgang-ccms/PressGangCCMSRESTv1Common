@@ -1135,21 +1135,6 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Consumes({ "*" })
     public RESTTopicCollectionV1 deleteJSONTopics(@PathParam("ids") final PathSegment ids,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
-
-    /* XML FUNCTIONS */
-    @GET
-    @Path("/topic/get/xml/{id}/xml")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes({ "*" })
-    public String getXMLTopicXML(@PathParam("id") final Integer id) throws InvalidParameterException,
-            InternalProcessingException;
-
-    @GET
-    @Path("/topic/get/xml/{id}/r/{rev}/xml")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes({ "*" })
-    public String getXMLTopicRevisionXML(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision)
-            throws InvalidParameterException, InternalProcessingException;
     
     /* FILTERS FUNCTIONS */
     /* JSONP FUNCTIONS */

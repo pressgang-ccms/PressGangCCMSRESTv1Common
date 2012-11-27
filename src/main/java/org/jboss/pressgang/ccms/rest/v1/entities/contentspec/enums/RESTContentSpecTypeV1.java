@@ -5,8 +5,8 @@ public enum RESTContentSpecTypeV1 {
     
     public static RESTContentSpecTypeV1 getContentSpecType(final int id) {
         switch (id) {
-            case 1: return BOOK;
-            case 2: return ARTICLE;
+            case 0: return BOOK;
+            case 1: return ARTICLE;
             default: return null;
         }
     }
@@ -15,8 +15,8 @@ public enum RESTContentSpecTypeV1 {
         if (csType == null) return null;
         
         switch (csType) {
-            case BOOK: return 1;
-            case ARTICLE: return 2;
+            case BOOK: return 0;
+            case ARTICLE: return 1;
             default: return null;
         }
     }

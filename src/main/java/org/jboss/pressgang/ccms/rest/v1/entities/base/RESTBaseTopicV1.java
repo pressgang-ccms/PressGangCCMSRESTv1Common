@@ -5,6 +5,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicSourceUrlCollection
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTXMLDoctype;
 
 public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
     extends RESTBaseEntityWithPropertiesV1<T, U, V>
@@ -18,12 +19,14 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
 	public static final String INCOMING_NAME = "incomingRelationships";
 	public static final String LOCALE_NAME = "locale";
 	public static final String SOURCE_URLS_NAME = "sourceUrls_OTM";
+	public static final String DOCTYPE_NAME = "doctype";
 	
 	protected String title = null;
 	protected String xml = null;
 	protected String xmlErrors = null;
 	protected String html = null;
 	protected String locale = null;
+	protected RESTXMLDoctype xmlDoctype = null;
 	protected RESTTagCollectionV1 tags = null;
 	protected RESTTopicSourceUrlCollectionV1 sourceUrls_OTM = null;
 	
@@ -41,6 +44,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
 		clone.xmlErrors = this.xmlErrors;
 		clone.html = this.html;
 		clone.locale = this.locale;
+		clone.xmlDoctype = this.xmlDoctype;
 		
 		if (deepCopy)
 		{
@@ -141,7 +145,17 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
 		this.sourceUrls_OTM = sourceUrls;		
 	}
 	
-	@Override
+	public RESTXMLDoctype getXmlDoctype()
+	{
+        return xmlDoctype;
+    }
+	
+    public void setXmlDoctype(final RESTXMLDoctype doctype)
+    {
+        this.xmlDoctype = doctype;
+    }
+    
+    @Override
     public boolean equals(final Object other)
     {
 	    if (other == null)

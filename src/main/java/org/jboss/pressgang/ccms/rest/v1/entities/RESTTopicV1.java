@@ -10,6 +10,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTopicCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTXMLDoctype;
 
 public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectionV1, RESTTopicCollectionItemV1>
 {
@@ -255,6 +256,12 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     {
         this.properties = properties;
         this.setParameterToConfigured(PROPERTIES_NAME);
+    }
+	
+	public void explicitSetXmlDoctype(final RESTXMLDoctype doctype)
+    {
+        this.xmlDoctype = doctype;
+        this.setParameterToConfigured(DOCTYPE_NAME);
     }
 	
 	@Override

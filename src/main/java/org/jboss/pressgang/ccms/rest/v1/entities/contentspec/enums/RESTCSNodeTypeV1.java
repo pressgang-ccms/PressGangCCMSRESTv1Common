@@ -5,13 +5,13 @@ public enum RESTCSNodeTypeV1 {
     
     public static RESTCSNodeTypeV1 getNodeType(final int id) {
         switch (id) {
-            case 1: return TOPIC;
-            case 2: return SECTION;
-            case 3: return CHAPTER;
-            case 4: return APPENDIX;
-            case 5: return PART;
-            case 6: return PROCESS;
-            case 7: return COMMENT;
+            case 0: return TOPIC;
+            case 1: return SECTION;
+            case 2: return CHAPTER;
+            case 3: return APPENDIX;
+            case 4: return PART;
+            case 5: return PROCESS;
+            case 6: return COMMENT;
             default: return null;
         }
     }
@@ -20,13 +20,13 @@ public enum RESTCSNodeTypeV1 {
         if (nodeType == null) return null;
         
         switch (nodeType) {
-            case TOPIC: return 1;
-            case SECTION: return 2;
-            case CHAPTER: return 3;
-            case APPENDIX: return 4;
-            case PART: return 5;
-            case PROCESS: return 6;
-            case COMMENT: return 7;
+            case TOPIC: return 0;
+            case SECTION: return 1;
+            case CHAPTER: return 2;
+            case APPENDIX: return 3;
+            case PART: return 4;
+            case PROCESS: return 5;
+            case COMMENT: return 6;
             default: return null;
         }
     }
