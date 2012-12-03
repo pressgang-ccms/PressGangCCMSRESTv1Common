@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.PathSegment;
+import javax.ws.rs.core.Response;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBlobConstantCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTCategoryCollectionV1;
@@ -1929,22 +1930,22 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/image/get/raw/{id}")
     @Consumes({ "*" })
-    @Produces({ "image/gif", "image/png", "image/jpeg", MediaType.APPLICATION_SVG_XML })
-    public byte[] getRAWImage(@PathParam("id") final Integer id, @QueryParam("lang") final String locale)
+    @Produces({ "image/gif", "image/png", "image/jpeg", "image/svg+xml" })
+    public Response getRAWImage(@PathParam("id") final Integer id, @QueryParam("lang") final String locale)
             throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/image/get/raw/{id}/r/{rev}")
     @Consumes({ "*" })
-    @Produces({ "image/gif", "image/png", "image/jpeg", MediaType.APPLICATION_SVG_XML })
-    public byte[] getRAWImageRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+    @Produces({ "image/gif", "image/png", "image/jpeg", "image/svg+xml" })
+    public Response getRAWImageRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("lang") final String locale) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/image/get/raw/{id}/thumbnail")
     @Consumes({ "*" })
-    @Produces({ "image/gif", "image/png", "image/jpeg", MediaType.APPLICATION_SVG_XML })
-    public byte[] getRAWImageThumbnail(@PathParam("id") final Integer id, @QueryParam("lang") final String locale)
+    @Produces({ "image/gif", "image/png", "image/jpeg", "image/svg+xml" })
+    public Response getRAWImageThumbnail(@PathParam("id") final Integer id, @QueryParam("lang") final String locale)
             throws InvalidParameterException, InternalProcessingException;
 
     /* TOPIC FUNCTIONS */
