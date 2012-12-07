@@ -6,6 +6,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTProjectCollectionI
 import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTCategoryInTagCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryInTagV1;
 
 /**
@@ -27,7 +28,7 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1
 		return containedInCategory(source, categoryId);
 	}
 	
-	static public boolean containedInCategory(final RESTTagV1 source, final Integer categoryId)
+	static public boolean containedInCategory(final RESTBaseTagV1<?, ?, ?> source, final Integer categoryId)
 	{
 		if (source.getCategories() != null && source.getCategories().getItems() != null)
 		{
