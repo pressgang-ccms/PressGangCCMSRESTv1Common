@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.ws.rs.core.PathSegment;
 
@@ -109,13 +110,11 @@ public abstract class RESTBaseQueryBuilderV1
         final StringBuilder query = new StringBuilder("query;");
         
         final Map<String, String> filterVars = getFilterVars();
-        for (final String key : filterVars.keySet())
+        for (final Entry<String, String> entry : filterVars.entrySet())
         {
-            final String value = filterVars.get(key);
-            
-            if (value != null)
+            if (entry.getValue() != null)
             {
-                query.append(key + "=" + value + ";");
+                query.append(entry.getKey() + "=" + entry.getValue().replace(";", "%3B") + ";");
             }
         }
         
