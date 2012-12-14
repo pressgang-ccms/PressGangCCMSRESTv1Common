@@ -20,7 +20,7 @@ import org.xml.sax.SAXException;
 
 /**
  * This component contains methods that can be applied against all topic entities
- * 
+ *
  * @author Matthew Casperson
  */
 public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPropertiesV1 {
@@ -48,8 +48,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
             ExceptionUtilities.handleException(ex);
         }
 
-        if (document == null)
-            return null;
+        if (document == null) return null;
 
         final Element newElement = document.createElement(containerName);
         final Element documentElement = document.getDocumentElement();
@@ -74,8 +73,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
             ExceptionUtilities.handleException(ex);
         }
 
-        if (document == null)
-            return null;
+        if (document == null) return null;
 
         String retValue = "";
 
@@ -112,16 +110,14 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
             // sort alphabetically
             Collections.sort(tags.get(key), new TagV1NameComparator());
 
-            if (tagsList.length() != 0)
-                tagsList += " ";
+            if (tagsList.length() != 0) tagsList += " ";
 
             tagsList += key.getName() + ": ";
 
             String thisTagList = "";
 
             for (final RESTTagV1 tag : tags.get(key)) {
-                if (thisTagList.length() != 0)
-                    thisTagList += ", ";
+                if (thisTagList.length() != 0) thisTagList += ", ";
 
                 thisTagList += tag.getName();
             }
@@ -142,10 +138,9 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
                     final List<RESTCategoryInTagV1> categories = tag.getCategories().returnItems();
 
                     if (categories.size() == 0) {
-                        final NameIDSortMap categoryDetails = new NameIDSortMap("Uncatagorised", -1, 0);
+                        final NameIDSortMap categoryDetails = new NameIDSortMap("Uncategorised", -1, 0);
 
-                        if (!tags.containsKey(categoryDetails))
-                            tags.put(categoryDetails, new ArrayList<RESTTagV1>());
+                        if (!tags.containsKey(categoryDetails)) tags.put(categoryDetails, new ArrayList<RESTTagV1>());
 
                         tags.get(categoryDetails).add(tag);
                     } else {
@@ -153,8 +148,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
                             final NameIDSortMap categoryDetails = new NameIDSortMap(category.getName(), category.getId(),
                                     category.getRelationshipSort() == null ? 0 : category.getRelationshipSort());
 
-                            if (!tags.containsKey(categoryDetails))
-                                tags.put(categoryDetails, new ArrayList<RESTTagV1>());
+                            if (!tags.containsKey(categoryDetails)) tags.put(categoryDetails, new ArrayList<RESTTagV1>());
 
                             tags.get(categoryDetails).add(tag);
                         }
@@ -170,8 +164,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         return returnTagsInCategoriesByID(source, categories);
     }
 
-    static public List<RESTTagV1> returnTagsInCategoriesByID(final RESTBaseTopicV1<?, ?, ?> source,
-            final List<Integer> categories) {
+    static public List<RESTTagV1> returnTagsInCategoriesByID(final RESTBaseTopicV1<?, ?, ?> source, final List<Integer> categories) {
         final List<RESTTagV1> retValue = new ArrayList<RESTTagV1>();
 
         if (source.getTags() != null && source.getTags().getItems() != null) {
@@ -179,8 +172,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
                 final List<RESTTagV1> tags = source.getTags().returnItems();
                 for (final RESTTagV1 tag : tags) {
                     if (ComponentTagV1.containedInCategory(tag, categoryId)) {
-                        if (!retValue.contains(tag))
-                            retValue.add(tag);
+                        if (!retValue.contains(tag)) retValue.add(tag);
                     }
                 }
             }
@@ -194,8 +186,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
 
         if (source.getTags() != null && source.getTags().returnItems() != null) {
             for (final RESTTagV1 tag : source.getTags().returnItems()) {
-                if (ComponentTagV1.containedInCategory(tag, categoryId))
-                    ++retValue;
+                if (ComponentTagV1.containedInCategory(tag, categoryId)) ++retValue;
             }
         }
 
@@ -210,8 +201,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         if (source.getTags() != null && source.getTags().getItems() != null) {
             final List<RESTTagV1> tags = source.getTags().returnItems();
             for (final RESTTagV1 tag : tags) {
-                if (tag.getId().equals(tagID))
-                    return true;
+                if (tag.getId().equals(tagID)) return true;
             }
         }
 
@@ -232,45 +222,29 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
 
     static public boolean returnIsEmpty(final RESTBaseTopicV1<?, ?, ?> source, final boolean checkCollections,
             final boolean checkReadonlyValues) {
-        if (source.getId() != null)
-            return false;
+        if (source.getId() != null) return false;
 
-        if (source.getLocale() != null)
-            return false;        
-        if (source.getTitle() != null)
-            return false;
-        if (source.getXml() != null)
-            return false;
+        if (source.getLocale() != null) return false;
+        if (source.getTitle() != null) return false;
+        if (source.getXml() != null) return false;
 
         if (checkReadonlyValues) {
-            if (source.getHtml() != null)
-                return false;
-            if (source.getXmlErrors() != null)
-                return false;
-            if (source.getRevision() != null)
-                return false;
+            if (source.getHtml() != null) return false;
+            if (source.getXmlErrors() != null) return false;
+            if (source.getRevision() != null) return false;
         }
-        
-        if (checkCollections)
-        {
-            if (source.getLogDetails() != null)
-                return false;
-            if (!(source.getOutgoingRelationships() == null || source.getOutgoingRelationships().getItems().isEmpty()))
-                return false;
-            if (!(source.getIncomingRelationships() == null || source.getIncomingRelationships().getItems().isEmpty()))
-                return false;
-            if (!(source.getProperties() == null || source.getProperties().getItems().isEmpty()))
-                return false;
-            if (!(source.getSourceUrls_OTM() == null || source.getSourceUrls_OTM().getItems().isEmpty()))
-                return false;
-            if (!(source.getTags() == null || source.getTags().getItems().isEmpty()))
-                return false;
+
+        if (checkCollections) {
+            if (source.getLogDetails() != null) return false;
+            if (!(source.getOutgoingRelationships() == null || source.getOutgoingRelationships().getItems().isEmpty())) return false;
+            if (!(source.getIncomingRelationships() == null || source.getIncomingRelationships().getItems().isEmpty())) return false;
+            if (!(source.getProperties() == null || source.getProperties().getItems().isEmpty())) return false;
+            if (!(source.getSourceUrls_OTM() == null || source.getSourceUrls_OTM().getItems().isEmpty())) return false;
+            if (!(source.getTags() == null || source.getTags().getItems().isEmpty())) return false;
         }
-        
-        if (checkReadonlyValues && checkCollections)
-        {
-            if (!(source.getRevisions() == null || source.getRevisions().getItems().isEmpty()))
-                return false;
+
+        if (checkReadonlyValues && checkCollections) {
+            if (!(source.getRevisions() == null || source.getRevisions().getItems().isEmpty())) return false;
         }
 
         return true;
