@@ -1,5 +1,6 @@
 package org.jboss.pressgang.ccms.rest.v1.query.base;
 
+import javax.ws.rs.core.PathSegment;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -10,166 +11,127 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.ws.rs.core.PathSegment;
-
 import org.jboss.pressgang.ccms.rest.v1.constants.CommonFilterConstants;
 import org.jboss.pressgang.ccms.utils.common.CollectionUtilities;
 import org.jboss.resteasy.specimpl.PathSegmentImpl;
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
 
-public abstract class RESTBaseQueryBuilderV1
-{
+public abstract class RESTBaseQueryBuilderV1 {
     private Map<String, String> filterVars = new HashMap<String, String>();
-    
-    protected Map<String, String> getFilterVars()
-    {
+
+    protected Map<String, String> getFilterVars() {
         return Collections.unmodifiableMap(filterVars);
     }
-    
-    protected void setFilterVars(final Map<String, String> filterVars)
-    {
+
+    protected void setFilterVars(final Map<String, String> filterVars) {
         this.filterVars = filterVars;
     }
-    
-    protected String get(final String constant)
-    {
+
+    protected String get(final String constant) {
         return filterVars.get(constant);
     }
-    
-    protected void put(final String constant, final Object value)
-    {
+
+    protected void put(final String constant, final Object value) {
         /* If the constant and value is null do nothing */
-        if (value == null && constant == null)
-        {
+        if (value == null && constant == null) {
             return;
         }
         /* If the constant is set and value is null then remove the constant */
-        else if (value == null)
-        {
+        else if (value == null) {
             filterVars.remove(constant);
         }
         
         /* Convert the value to a string */
-        if (value instanceof String)
-        {
-            if (!((String) value).isEmpty())
-            {
+        if (value instanceof String) {
+            if (!((String) value).isEmpty()) {
                 filterVars.put(constant, value.toString());
             }
-        }
-        else if (value instanceof DateTime)
-        {
+        } else if (value instanceof DateTime) {
             filterVars.put(constant, ISODateTimeFormat.dateTime().print((DateTime) value));
-        }
-        else if (value instanceof Date)
-        {
+        } else if (value instanceof Date) {
             filterVars.put(constant, ISODateTimeFormat.dateTime().print(new DateTime(value)));
-        }
-        else if (value instanceof Boolean)
-        {
-            if (((Boolean) value) == false)
-            {
+        } else if (value instanceof Boolean) {
+            if (((Boolean) value) == false) {
                 filterVars.remove(constant);
-            }
-            else
-            {
+            } else {
                 filterVars.put(constant, value.toString());
             }
-        }
-        else
-        {
+        } else {
             filterVars.put(constant, value.toString());
         }
     }
-    
-    protected void put(final String constant, final List<Integer> list)
-    {
-        if (list == null || list.isEmpty())
-        {
+
+    protected void put(final String constant, final List<Integer> list) {
+        if (list == null || list.isEmpty()) {
             put(constant, null);
-        }
-        else
-        {
+        } else {
             put(constant, CollectionUtilities.toSeperatedString(list, ","));
         }
     }
-    
-    public PathSegment buildQueryPath()
-    {
+
+    public PathSegment buildQueryPath() {
         return buildQueryPath(false);
     }
 
-    public PathSegment buildQueryPath(boolean decode)
-    {
+    public PathSegment buildQueryPath(boolean decode) {
         return new PathSegmentImpl(getQuery(), decode);
     }
-    
-    public String getQuery()
-    {
+
+    public String getQuery() {
         final StringBuilder query = new StringBuilder("query;");
-        
+
         final Map<String, String> filterVars = getFilterVars();
-        for (final Entry<String, String> entry : filterVars.entrySet())
-        {
-            if (entry.getValue() != null)
-            {
-                query.append(entry.getKey() + "=" + entry.getValue().replace(";", "%3B") + ";");
+        for (final Entry<String, String> entry : filterVars.entrySet()) {
+            if (entry.getValue() != null) {
+                query.append(entry.getKey() + "=" + encodeSpecialChars(entry.getValue()) + ";");
             }
         }
-        
+
         return query.toString();
     }
-    
-    public String getQuery(final boolean encode)
-    {
-        if (encode)
-        {
+
+    private String encodeSpecialChars(final String input) {
+        return input.replace("/", "%2F").replace(";", "%3B").replace("=", "%3D");
+    }
+
+    public String getQuery(final boolean encode) {
+        if (encode) {
             final String unencodedQuery = getQuery();
-            
+
             String query = "query;";
-            
-            if (unencodedQuery != null && !unencodedQuery.isEmpty())
-            {
-                try
-                {
+
+            if (unencodedQuery != null && !unencodedQuery.isEmpty()) {
+                try {
                     query = URLEncoder.encode(unencodedQuery, "UTF-8");
-                }
-                catch (UnsupportedEncodingException e)
-                {
+                } catch (UnsupportedEncodingException e) {
                     // THis shouldn't ever happen
                 }
             }
-            
+
             return query;
-        }
-        else
-        {
+        } else {
             return getQuery();
         }
     }
-    
-    protected List<Integer> getIntegerList(final String list)
-    {
+
+    protected List<Integer> getIntegerList(final String list) {
         if (list == null) return null;
-        
+
         final List<Integer> idsList = new ArrayList<Integer>();
         final String[] ids = list.split("\\s*,\\s*");
-        for (final String topicId : ids)
-        {
+        for (final String topicId : ids) {
             idsList.add(Integer.parseInt(topicId));
         }
-        
+
         return idsList;
     }
-    
-    public String getQueryLogic()
-    {
+
+    public String getQueryLogic() {
         return get(CommonFilterConstants.LOGIC_FILTER_VAR);
     }
-    
-    public void setQueryLogic(final String logic)
-    {
+
+    public void setQueryLogic(final String logic) {
         put(CommonFilterConstants.LOGIC_FILTER_VAR, logic);
     }
 }
