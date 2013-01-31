@@ -7,10 +7,11 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTCSMetaDataCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSMetaDataV1;
 
-public class RESTCSMetaDataCollectionV1 extends RESTBaseCollectionV1<RESTCSMetaDataV1, RESTCSMetaDataCollectionV1, RESTCSMetaDataCollectionItemV1> {
+public class RESTCSMetaDataCollectionV1 extends RESTBaseCollectionV1<RESTCSMetaDataV1, RESTCSMetaDataCollectionV1,
+        RESTCSMetaDataCollectionItemV1> {
 
     private List<RESTCSMetaDataCollectionItemV1> items;
-    
+
     @Override
     public List<RESTCSMetaDataCollectionItemV1> getItems() {
         return items;
@@ -22,13 +23,11 @@ public class RESTCSMetaDataCollectionV1 extends RESTBaseCollectionV1<RESTCSMetaD
     }
 
     @Override
-    protected void addItem(final RESTCSMetaDataV1 item, final Integer state)
-    {
-        if (items == null)
-        {
+    protected void addItem(final RESTCSMetaDataV1 item, final Integer state) {
+        if (items == null) {
             this.items = new ArrayList<RESTCSMetaDataCollectionItemV1>();
         }
-        
+
         items.add(new RESTCSMetaDataCollectionItemV1(item, state));
     }
 }

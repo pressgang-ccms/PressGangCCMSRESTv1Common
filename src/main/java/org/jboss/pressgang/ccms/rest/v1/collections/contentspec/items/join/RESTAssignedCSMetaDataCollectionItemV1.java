@@ -1,12 +1,11 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.join;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.join.RESTAssignedCSMetaDataCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.join.RESTAssignedCSMetaDataCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.join.RESTAssignedCSMetaDataV1;
 
-public class RESTAssignedCSMetaDataCollectionItemV1
-        extends
-        RESTBaseUpdateCollectionItemV1<RESTAssignedCSMetaDataV1, RESTAssignedCSMetaDataCollectionV1, RESTAssignedCSMetaDataCollectionItemV1> {
+public class RESTAssignedCSMetaDataCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTAssignedCSMetaDataV1,
+        RESTAssignedCSMetaDataCollectionV1, RESTAssignedCSMetaDataCollectionItemV1> {
     private RESTAssignedCSMetaDataV1 item;
 
     public RESTAssignedCSMetaDataCollectionItemV1() {

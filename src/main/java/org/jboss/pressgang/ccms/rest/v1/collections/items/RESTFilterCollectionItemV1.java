@@ -4,46 +4,39 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 
-public class RESTFilterCollectionItemV1 extends RESTBaseCollectionItemV1<RESTFilterV1, RESTFilterCollectionV1, RESTFilterCollectionItemV1>
-{
+public class RESTFilterCollectionItemV1 extends RESTBaseCollectionItemV1<RESTFilterV1, RESTFilterCollectionV1, RESTFilterCollectionItemV1> {
     private RESTFilterV1 item;
-    
-    public RESTFilterCollectionItemV1()
-    {
-        
+
+    public RESTFilterCollectionItemV1() {
+
     }
-    
-    public RESTFilterCollectionItemV1(final RESTFilterV1 item)
-    {
+
+    public RESTFilterCollectionItemV1(final RESTFilterV1 item) {
         setItem(item);
         setState(UNCHANGED_STATE);
     }
-    
-    public RESTFilterCollectionItemV1(final RESTFilterV1 item, final Integer state)
-    {
+
+    public RESTFilterCollectionItemV1(final RESTFilterV1 item, final Integer state) {
         setItem(item);
         setState(state);
     }
 
     @Override
-    public RESTFilterCollectionItemV1 clone(boolean deepCopy)
-    {
+    public RESTFilterCollectionItemV1 clone(boolean deepCopy) {
         final RESTFilterCollectionItemV1 retValue = new RESTFilterCollectionItemV1();
-        
+
         super.cloneInto(retValue, deepCopy);
-        
+
         return retValue;
     }
-    
+
     @Override
-    public RESTFilterV1 getItem()
-    {
+    public RESTFilterV1 getItem() {
         return item;
     }
 
     @Override
-    public void setItem(final RESTFilterV1 item)
-    {
+    public void setItem(final RESTFilterV1 item) {
         this.item = item;
     }
 }

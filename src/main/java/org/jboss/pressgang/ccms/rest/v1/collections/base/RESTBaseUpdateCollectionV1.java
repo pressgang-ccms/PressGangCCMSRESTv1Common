@@ -5,18 +5,13 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCo
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 /**
+ * @param <T> The REST entity type
+ * @param <U> The REST Collection type
  * @author Matthew Casperson
- * 
- * @param <T>
- *            The REST entity type
- * @param <U>
- *            The REST Collection type
  */
-abstract public class RESTBaseUpdateCollectionV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseUpdateCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
-        extends RESTBaseCollectionV1<T, U, V>
-{
-    public void addUpdateItem(final T item)
-    {
+abstract public class RESTBaseUpdateCollectionV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseUpdateCollectionV1<T, U, V>,
+        V extends RESTBaseCollectionItemV1<T, U, V>> extends RESTBaseCollectionV1<T, U, V> {
+    public void addUpdateItem(final T item) {
         addItem(item, UPDATE_STATE);
     }
 }

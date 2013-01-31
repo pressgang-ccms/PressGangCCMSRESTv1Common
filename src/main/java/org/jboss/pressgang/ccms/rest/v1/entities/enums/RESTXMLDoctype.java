@@ -15,8 +15,7 @@ public enum RESTXMLDoctype {
     }
 
     public static Integer getXMLDoctypeId(final RESTXMLDoctype doctype) {
-        if (doctype == null)
-            return null;
+        if (doctype == null) return null;
 
         switch (doctype) {
             case DOCBOOK_45:

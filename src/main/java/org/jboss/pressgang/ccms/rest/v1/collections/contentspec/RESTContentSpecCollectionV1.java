@@ -7,7 +7,8 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTContentSpecCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
 
-public class RESTContentSpecCollectionV1 extends RESTBaseCollectionV1<RESTContentSpecV1, RESTContentSpecCollectionV1, RESTContentSpecCollectionItemV1> {
+public class RESTContentSpecCollectionV1 extends RESTBaseCollectionV1<RESTContentSpecV1, RESTContentSpecCollectionV1,
+        RESTContentSpecCollectionItemV1> {
 
     private List<RESTContentSpecCollectionItemV1> items;
 
@@ -22,13 +23,11 @@ public class RESTContentSpecCollectionV1 extends RESTBaseCollectionV1<RESTConten
     }
 
     @Override
-    protected void addItem(final RESTContentSpecV1 item, final Integer state)
-    {
-        if (items == null)
-        {
+    protected void addItem(final RESTContentSpecV1 item, final Integer state) {
+        if (items == null) {
             this.items = new ArrayList<RESTContentSpecCollectionItemV1>();
         }
-        
+
         items.add(new RESTContentSpecCollectionItemV1(item, state));
     }
 }

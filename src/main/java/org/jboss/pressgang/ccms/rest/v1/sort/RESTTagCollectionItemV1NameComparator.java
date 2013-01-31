@@ -6,6 +6,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTagCollectionItemV
 
 /**
  * A comparator to sort RESTTagCategoryCollectionItemV1 objects by their sort field.
+ *
  * @author Matthew Casperson
  */
 public class RESTTagCollectionItemV1NameComparator implements Comparator<RESTTagCollectionItemV1> {
@@ -36,12 +37,11 @@ public class RESTTagCollectionItemV1NameComparator implements Comparator<RESTTag
             return -1;
         }
 
-        if (arg1.getItem() == null)
-        {
+        if (arg1.getItem() == null) {
             return 1;
         }
         
-        /* Second order sort is by name */            
+        /* Second order sort is by name */
         if (arg0.getItem().getName() == null && arg1.getItem().getName() == null) {
             return 0;
         }
@@ -50,11 +50,10 @@ public class RESTTagCollectionItemV1NameComparator implements Comparator<RESTTag
             return -1;
         }
 
-        if (arg1.getItem().getName() == null)
-        {
+        if (arg1.getItem().getName() == null) {
             return 1;
         }
-        
+
         return arg0.getItem().getName().compareTo(arg1.getItem().getName());
     }
 

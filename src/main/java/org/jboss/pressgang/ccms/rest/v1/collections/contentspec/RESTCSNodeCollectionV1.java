@@ -10,7 +10,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 public class RESTCSNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RESTCSNodeV1, RESTCSNodeCollectionV1, RESTCSNodeCollectionItemV1> {
 
     private List<RESTCSNodeCollectionItemV1> items;
-    
+
     @Override
     public List<RESTCSNodeCollectionItemV1> getItems() {
         return items;
@@ -20,15 +20,13 @@ public class RESTCSNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RESTCSNod
     public void setItems(List<RESTCSNodeCollectionItemV1> items) {
         this.items = items;
     }
-    
+
     @Override
-    protected void addItem(final RESTCSNodeV1 item, final Integer state)
-    {
-        if (items == null)
-        {
+    protected void addItem(final RESTCSNodeV1 item, final Integer state) {
+        if (items == null) {
             this.items = new ArrayList<RESTCSNodeCollectionItemV1>();
         }
-        
+
         items.add(new RESTCSNodeCollectionItemV1(item, state));
     }
 }

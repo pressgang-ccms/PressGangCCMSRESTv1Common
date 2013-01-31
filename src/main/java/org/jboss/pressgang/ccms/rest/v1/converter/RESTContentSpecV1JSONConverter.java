@@ -12,10 +12,9 @@ import org.jboss.resteasy.spi.StringConverter;
 @Provider
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class RESTContentSpecV1JSONConverter extends RESTBaseV1JSONConverter<RESTContentSpecV1> implements StringConverter<RESTContentSpecV1>
-{
-    public RESTContentSpecV1JSONConverter()
-    {
+public class RESTContentSpecV1JSONConverter extends RESTBaseV1JSONConverter<RESTContentSpecV1> implements
+        StringConverter<RESTContentSpecV1> {
+    public RESTContentSpecV1JSONConverter() {
         super(RESTContentSpecV1.class);
     }
 }

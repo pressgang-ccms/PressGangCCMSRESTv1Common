@@ -4,46 +4,39 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 
-public class RESTTagCollectionItemV1 extends RESTBaseCollectionItemV1<RESTTagV1, RESTTagCollectionV1, RESTTagCollectionItemV1>
-{
+public class RESTTagCollectionItemV1 extends RESTBaseCollectionItemV1<RESTTagV1, RESTTagCollectionV1, RESTTagCollectionItemV1> {
     private RESTTagV1 item;
-    
-    public RESTTagCollectionItemV1()
-    {
-        
+
+    public RESTTagCollectionItemV1() {
+
     }
-    
-    public RESTTagCollectionItemV1(final RESTTagV1 item)
-    {
+
+    public RESTTagCollectionItemV1(final RESTTagV1 item) {
         setItem(item);
         setState(UNCHANGED_STATE);
     }
-    
-    public RESTTagCollectionItemV1(final RESTTagV1 item, final Integer state)
-    {
+
+    public RESTTagCollectionItemV1(final RESTTagV1 item, final Integer state) {
         setItem(item);
         setState(state);
     }
 
     @Override
-    public RESTTagCollectionItemV1 clone(boolean deepCopy)
-    {
+    public RESTTagCollectionItemV1 clone(boolean deepCopy) {
         final RESTTagCollectionItemV1 retValue = new RESTTagCollectionItemV1();
-        
+
         super.cloneInto(retValue, deepCopy);
-        
+
         return retValue;
     }
 
     @Override
-    public RESTTagV1 getItem()
-    {
+    public RESTTagV1 getItem() {
         return item;
     }
 
     @Override
-    public void setItem(final RESTTagV1 item)
-    {
+    public void setItem(final RESTTagV1 item) {
         this.item = item;
     }
 }
