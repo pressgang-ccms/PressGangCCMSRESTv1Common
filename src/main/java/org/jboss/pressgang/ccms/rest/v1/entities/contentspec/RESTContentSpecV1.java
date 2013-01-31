@@ -11,10 +11,12 @@ import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTag
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityWithPropertiesV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums.RESTContentSpecTypeV1;
 
-public class RESTContentSpecV1 extends
-        RESTBaseEntityWithPropertiesV1<RESTContentSpecV1, RESTContentSpecCollectionV1, RESTContentSpecCollectionItemV1> {
+public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTContentSpecV1, RESTContentSpecCollectionV1,
+        RESTContentSpecCollectionItemV1> {
 
     public static final String TITLE_NAME = "title";
+    public static final String PRODUCT_NAME = "product";
+    public static final String VERSION_NAME = "version";
     public static final String LAST_PUBLISHED_NAME = "lastPublished";
     public static final String META_DATA_NAME = "metaData";
     public static final String LOCALE_NAME = "locale";
@@ -23,8 +25,11 @@ public class RESTContentSpecV1 extends
     public static final String TAGS_NAME = "tags";
 
     private String title = null;
+    private String product = null;
+    private String version = null;
     private String locale = null;
     private Date lastPublished = null;
+    private Date lastModified = null;
     private RESTContentSpecTypeV1 type = null;
     private RESTContentSpecCollectionV1 revisions = null;
     private RESTAssignedCSMetaDataCollectionV1 metaData = null;
@@ -55,7 +60,10 @@ public class RESTContentSpecV1 extends
 
         clone.locale = this.locale;
         clone.title = this.title;
+        clone.product = this.product;
+        clone.version = this.version;
         clone.lastPublished = this.lastPublished == null ? null : (Date) lastPublished.clone();
+        clone.lastModified = this.lastModified == null ? null : (Date) lastModified.clone();
 
         if (deepCopy) {
             if (this.revisions != null) {
@@ -72,7 +80,7 @@ public class RESTContentSpecV1 extends
                 clone.nodes = new RESTCSNodeCollectionV1();
                 this.nodes.cloneInto(clone.nodes, deepCopy);
             }
-            
+
             if (this.tags != null) {
                 clone.tags = new RESTTagCollectionV1();
                 this.tags.cloneInto(clone.tags, deepCopy);
@@ -98,6 +106,32 @@ public class RESTContentSpecV1 extends
         this.setParameterToConfigured(TITLE_NAME);
     }
 
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(final String product) {
+        this.product = product;
+    }
+
+    public void explicitSetProduct(final String product) {
+        this.product = product;
+        this.setParameterToConfigured(PRODUCT_NAME);
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(final String version) {
+        this.version = version;
+    }
+
+    public void explicitSetVersion(final String version) {
+        this.version = version;
+        this.setParameterToConfigured(VERSION_NAME);
+    }
+
     public String getLocale() {
         return locale;
     }
@@ -119,6 +153,11 @@ public class RESTContentSpecV1 extends
         this.metaData = metaData;
     }
 
+    public void explicitSetMetaData(final RESTAssignedCSMetaDataCollectionV1 metaData) {
+        this.metaData = metaData;
+        this.setParameterToConfigured(META_DATA_NAME);
+    }
+
     public Date getLastPublished() {
         return lastPublished;
     }
@@ -130,6 +169,14 @@ public class RESTContentSpecV1 extends
     public void explicitSetLastPublished(final Date lastPublished) {
         this.lastPublished = lastPublished;
         this.setParameterToConfigured(LAST_PUBLISHED_NAME);
+    }
+
+    public Date getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(final Date lastModified) {
+        this.lastModified = lastModified;
     }
 
     public RESTContentSpecTypeV1 getType() {
@@ -170,7 +217,7 @@ public class RESTContentSpecV1 extends
     public void setTags(final RESTTagCollectionV1 tags) {
         this.tags = tags;
     }
-    
+
     public void explicitSetTags(final RESTTagCollectionV1 tags) {
         this.tags = tags;
         this.setParameterToConfigured(TAGS_NAME);

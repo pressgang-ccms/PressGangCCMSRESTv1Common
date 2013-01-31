@@ -1,33 +1,51 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums;
 
+import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
+
 public enum RESTCSNodeTypeV1 {
     TOPIC, SECTION, CHAPTER, APPENDIX, PART, PROCESS, COMMENT;
-    
+
     public static RESTCSNodeTypeV1 getNodeType(final int id) {
         switch (id) {
-            case 0: return TOPIC;
-            case 1: return SECTION;
-            case 2: return CHAPTER;
-            case 3: return APPENDIX;
-            case 4: return PART;
-            case 5: return PROCESS;
-            case 6: return COMMENT;
-            default: return null;
+            case CommonConstants.CS_NODE_TOPIC:
+                return TOPIC;
+            case CommonConstants.CS_NODE_SECTION:
+                return SECTION;
+            case CommonConstants.CS_NODE_CHAPTER:
+                return CHAPTER;
+            case CommonConstants.CS_NODE_APPENDIX:
+                return APPENDIX;
+            case CommonConstants.CS_NODE_PART:
+                return PART;
+            case CommonConstants.CS_NODE_PROCESS:
+                return PROCESS;
+            case CommonConstants.CS_NODE_COMMENT:
+                return COMMENT;
+            default:
+                return null;
         }
     }
-    
+
     public static Integer getNodeTypeId(final RESTCSNodeTypeV1 nodeType) {
         if (nodeType == null) return null;
-        
+
         switch (nodeType) {
-            case TOPIC: return 0;
-            case SECTION: return 1;
-            case CHAPTER: return 2;
-            case APPENDIX: return 3;
-            case PART: return 4;
-            case PROCESS: return 5;
-            case COMMENT: return 6;
-            default: return null;
+            case TOPIC:
+                return CommonConstants.CS_NODE_TOPIC;
+            case SECTION:
+                return CommonConstants.CS_NODE_SECTION;
+            case CHAPTER:
+                return CommonConstants.CS_NODE_CHAPTER;
+            case APPENDIX:
+                return CommonConstants.CS_NODE_APPENDIX;
+            case PART:
+                return CommonConstants.CS_NODE_PART;
+            case PROCESS:
+                return CommonConstants.CS_NODE_PROCESS;
+            case COMMENT:
+                return CommonConstants.CS_NODE_COMMENT;
+            default:
+                return null;
         }
     }
 }

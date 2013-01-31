@@ -10,8 +10,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums.RESTCSNodeTypeV1;
 
-public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>, V extends RESTBaseCollectionItemV1<T, U, V>>
-        extends RESTBaseEntityWithPropertiesV1<T, U, V> {
+public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>,
+        V extends RESTBaseCollectionItemV1<T, U, V>> extends RESTBaseEntityWithPropertiesV1<T, U, V> {
     public static final String TITLE_NAME = "title";
     public static final String NEXT_NODE_NAME = "nextNode";
     public static final String PREVIOUS_NODE_NAME = "previousNode";
@@ -26,6 +26,7 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
     public static final String NODE_TYPE_NAME = "nodeType";
     public static final String TRANSLATED_STRINGS_NAME = "translatedStrings";
     public static final String CONTENT_SPEC_NAME = "contentSpec";
+    public static final String ALTERNATE_TITLE_NAME = "alternateTitle";
 
     protected Integer nextNodeId = null;
     protected Integer previousNodeId = null;
@@ -34,6 +35,7 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
     protected Integer topicRevision = null;
     protected Integer flag = null;
     protected String condition = null;
+    protected String alternateTitle = null;
     protected RESTContentSpecV1 contentSpec = null;
     protected RESTCSNodeV1 parent = null;
     protected RESTCSNodeTypeV1 nodeType = null;
@@ -52,6 +54,7 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
         clone.condition = this.condition;
         clone.nextNodeId = this.nextNodeId;
         clone.previousNodeId = this.previousNodeId;
+        clone.alternateTitle = this.alternateTitle;
 
         if (deepCopy) {
             if (this.parent != null) {
@@ -79,6 +82,14 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
 
     public void setTitle(final String title) {
         this.title = title;
+    }
+
+    public String getAlternateTitle() {
+        return alternateTitle;
+    }
+
+    public void setAlternateTitle(final String alternateTitle) {
+        this.alternateTitle = alternateTitle;
     }
 
     public RESTContentSpecV1 getContentSpec() {

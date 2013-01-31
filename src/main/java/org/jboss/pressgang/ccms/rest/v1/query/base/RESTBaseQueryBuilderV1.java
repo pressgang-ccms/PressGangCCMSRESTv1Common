@@ -92,7 +92,7 @@ public abstract class RESTBaseQueryBuilderV1 {
     }
 
     private String encodeSpecialChars(final String input) {
-        return input.replace("/", "%2F").replace(";", "%3B").replace("=", "%3D");
+        return input.replace("/", "%2F").replace(";", "%3B").replace("=", "%3D").replace("?", "%3F").replace("#", "%23");
     }
 
     public String getQuery(final boolean encode) {

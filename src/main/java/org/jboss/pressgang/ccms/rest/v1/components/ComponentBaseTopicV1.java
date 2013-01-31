@@ -38,7 +38,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         return returnXMLWithNewContainer(source, containerName);
     }
 
-    static public String returnXMLWithNewContainer(final RESTBaseTopicV1<?, ?, ?> source, final String containerName) {
+    public static String returnXMLWithNewContainer(final RESTBaseTopicV1<?, ?, ?> source, final String containerName) {
         assert containerName != null : "The containerName parameter can not be null";
 
         Document document = null;
@@ -65,7 +65,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
 
     }
 
-    static public String returnXMLWithNoContainer(final RESTBaseTopicV1<?, ?, ?> source, final Boolean includeTitle) {
+    public static String returnXMLWithNoContainer(final RESTBaseTopicV1<?, ?, ?> source, final Boolean includeTitle) {
         Document document = null;
         try {
             document = XMLUtilities.convertStringToDocument(source.getXml());
@@ -102,7 +102,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         return getCommaSeparatedTagList(source);
     }
 
-    static public String getCommaSeparatedTagList(final RESTBaseTopicV1<?, ?, ?> source) {
+    public static String getCommaSeparatedTagList(final RESTBaseTopicV1<?, ?, ?> source) {
         final TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> tags = getCategoriesMappedToTags(source);
 
         String tagsList = "";
@@ -128,7 +128,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         return tagsList;
     }
 
-    static public TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> getCategoriesMappedToTags(final RESTBaseTopicV1<?, ?, ?> source) {
+    public static TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> getCategoriesMappedToTags(final RESTBaseTopicV1<?, ?, ?> source) {
         final TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> tags = new TreeMap<NameIDSortMap, ArrayList<RESTTagV1>>();
 
         if (source.getTags() != null && source.getTags().getItems() != null) {
@@ -164,7 +164,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         return returnTagsInCategoriesByID(source, categories);
     }
 
-    static public List<RESTTagV1> returnTagsInCategoriesByID(final RESTBaseTopicV1<?, ?, ?> source, final List<Integer> categories) {
+    public static List<RESTTagV1> returnTagsInCategoriesByID(final RESTBaseTopicV1<?, ?, ?> source, final List<Integer> categories) {
         final List<RESTTagV1> retValue = new ArrayList<RESTTagV1>();
 
         if (source.getTags() != null && source.getTags().getItems() != null) {
@@ -197,7 +197,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         return hasTag(source, tagID);
     }
 
-    static public boolean hasTag(final RESTBaseTopicV1<?, ?, ?> source, final Integer tagID) {
+    public static boolean hasTag(final RESTBaseTopicV1<?, ?, ?> source, final Integer tagID) {
         if (source.getTags() != null && source.getTags().getItems() != null) {
             final List<RESTTagV1> tags = source.getTags().returnItems();
             for (final RESTTagV1 tag : tags) {
@@ -212,7 +212,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         return returnIsDummyTopic(source);
     }
 
-    static public boolean returnIsDummyTopic(final RESTBaseTopicV1<?, ?, ?> source) {
+    public static boolean returnIsDummyTopic(final RESTBaseTopicV1<?, ?, ?> source) {
         return source.getId() == null || source.getId() < 0;
     }
 
@@ -220,7 +220,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         return returnIsEmpty(source, checkCollections, checkReadonlyValues);
     }
 
-    static public boolean returnIsEmpty(final RESTBaseTopicV1<?, ?, ?> source, final boolean checkCollections,
+    public static boolean returnIsEmpty(final RESTBaseTopicV1<?, ?, ?> source, final boolean checkCollections,
             final boolean checkReadonlyValues) {
         if (source.getId() != null) return false;
 

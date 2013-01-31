@@ -25,7 +25,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnZanataId(source);
     }
 
-    static public String returnZanataId(final RESTTranslatedTopicV1 source) {
+    public static String returnZanataId(final RESTTranslatedTopicV1 source) {
         return source.getTopicId() + "-" + source.getTopicRevision();
     }
 
@@ -34,7 +34,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnBugzillaBuildId(source);
     }
 
-    static public String returnBugzillaBuildId(final RESTTranslatedTopicV1 source) {
+    public static String returnBugzillaBuildId(final RESTTranslatedTopicV1 source) {
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) {
             return "Translation " + returnZanataId(source) + " " + source.getLocale();
         } else {
@@ -47,7 +47,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnSkynetURL(source);
     }
 
-    static public String returnSkynetURL(final RESTTranslatedTopicV1 source) {        /*
+    public static String returnSkynetURL(final RESTTranslatedTopicV1 source) {
+        /*
          * If the topic isn't a dummy then link to the translated counterpart. If the topic is a dummy URL and the locale doesn't match
          * the historical topic's
          * locale then it means that the topic has been pushed to zanata so link to the original pushed translation. If neither of these
@@ -70,7 +71,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnInternalURL(source);
     }
 
-    static public String returnInternalURL(final RESTTranslatedTopicV1 source) {
+    public static String returnInternalURL(final RESTTranslatedTopicV1 source) {
         /*
          * If the topic isn't a dummy then link to the translated counterpart. If the topic is a dummy URL and the locale doesn't match
          * the historical topic's
@@ -94,7 +95,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnRelatedTopicByID(source, id);
     }
 
-    static public RESTTranslatedTopicV1 returnRelatedTopicByID(final RESTTranslatedTopicV1 source, final Integer id) {
+    public static RESTTranslatedTopicV1 returnRelatedTopicByID(final RESTTranslatedTopicV1 source, final Integer id) {
         RESTTranslatedTopicV1 relatedTopic = null;
         if (source.getOutgoingRelationships() != null && source.getOutgoingRelationships().getItems() != null) {
             final List<RESTTranslatedTopicV1> topics = source.getOutgoingRelationships().returnItems();
@@ -116,7 +117,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnXRefID(source);
     }
 
-    static public String returnXRefID(final RESTTranslatedTopicV1 source) {
+    public static String returnXRefID(final RESTTranslatedTopicV1 source) {
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return "TranslatedTopicID" + source.getId();
         else if (hasBeenPushedForTranslation(source)) return "TranslatedTopicID" + returnPushedTranslationTopicId(source);
         else return ComponentTopicV1.returnErrorXRefID(source.getTopic());
@@ -127,7 +128,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnErrorXRefID(source);
     }
 
-    static public String returnErrorXRefID(final RESTTranslatedTopicV1 source) {
+    public static String returnErrorXRefID(final RESTTranslatedTopicV1 source) {
         return CommonConstants.ERROR_XREF_ID_PREFIX + returnZanataId(source);
     }
 
@@ -135,7 +136,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnPushedTranslationTopicId(source);
     }
 
-    static public Integer returnPushedTranslationTopicId(final RESTTranslatedTopicV1 source) {
+    public static Integer returnPushedTranslationTopicId(final RESTTranslatedTopicV1 source) {
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return source.getTranslatedTopicId();
 
         /* Check that a translation exists that is the same locale as the base topic */
@@ -160,7 +161,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnPushedTranslatedTopic(source);
     }
 
-    static public RESTTranslatedTopicV1 returnPushedTranslatedTopic(final RESTTranslatedTopicV1 source) {
+    public static RESTTranslatedTopicV1 returnPushedTranslatedTopic(final RESTTranslatedTopicV1 source) {
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return source;
 
         /* Check that a translation exists that is the same locale as the base topic */
@@ -185,7 +186,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return hasBeenPushedForTranslation(source);
     }
 
-    static public boolean hasBeenPushedForTranslation(final RESTTranslatedTopicV1 source) {
+    public static boolean hasBeenPushedForTranslation(final RESTTranslatedTopicV1 source) {
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return true;
 
         /* Check that a translation exists that is the same locale as the base topic */
@@ -205,7 +206,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return hasRelationshipTo(source, id);
     }
 
-    static public boolean hasRelationshipTo(final RESTTranslatedTopicV1 source, final Integer id) {
+    public static boolean hasRelationshipTo(final RESTTranslatedTopicV1 source, final Integer id) {
         return returnRelatedTopicByID(source, id) != null;
     }
 
@@ -214,7 +215,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnXrefPropertyOrId(source, propertyTagId);
     }
 
-    static public String returnXrefPropertyOrId(final RESTTranslatedTopicV1 source, final Integer propertyTagId) {
+    public static String returnXrefPropertyOrId(final RESTTranslatedTopicV1 source, final Integer propertyTagId) {
         final RESTAssignedPropertyTagV1 propTag = returnProperty(source, propertyTagId);
         if (propTag != null) {
             return propTag.getValue();
@@ -232,7 +233,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         return returnEditorURL(source, zanataDetails);
     }
 
-    static public String returnEditorURL(final RESTTranslatedTopicV1 source, final ZanataDetails zanataDetails) {
+    public static String returnEditorURL(final RESTTranslatedTopicV1 source, final ZanataDetails zanataDetails) {
         final String zanataServerUrl = zanataDetails == null ? null : zanataDetails.getServer();
         final String zanataProject = zanataDetails == null ? null : zanataDetails.getProject();
         final String zanataVersion = zanataDetails == null ? null : zanataDetails.getVersion();

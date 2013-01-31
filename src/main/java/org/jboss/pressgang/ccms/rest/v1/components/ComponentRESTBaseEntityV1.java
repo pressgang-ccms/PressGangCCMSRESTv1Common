@@ -6,32 +6,26 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 @SuppressWarnings({"rawtypes", "unused"})
-public class ComponentRESTBaseEntityV1
-{
-	private final RESTBaseEntityV1 source;
+public class ComponentRESTBaseEntityV1 {
+    private final RESTBaseEntityV1 source;
 
-	public ComponentRESTBaseEntityV1(final RESTBaseEntityV1 source)
-	{
-		this.source = source;
-	}
-	
-	static public boolean returnDirtyState(final List<? extends RESTBaseEntityV1> list)
-	{
-		for (final RESTBaseEntityV1 entity : list)
-		{
-			if (entity.returnDirtyState()) return true;
-		}
-		
-		return false;
-	}
-	
-	static public boolean returnDirtyStateForCollectionItems(final List<? extends RESTBaseCollectionItemV1> list)
-	{
-	       for (final RESTBaseCollectionItemV1 entity : list)
-	        {
-	            if (entity.getItem().returnDirtyState()) return true;
-	        }
-	        
-	        return false;
-	}
+    public ComponentRESTBaseEntityV1(final RESTBaseEntityV1 source) {
+        this.source = source;
+    }
+
+    public static boolean returnDirtyState(final List<? extends RESTBaseEntityV1> list) {
+        for (final RESTBaseEntityV1 entity : list) {
+            if (entity.returnDirtyState()) return true;
+        }
+
+        return false;
+    }
+
+    public static boolean returnDirtyStateForCollectionItems(final List<? extends RESTBaseCollectionItemV1> list) {
+        for (final RESTBaseCollectionItemV1 entity : list) {
+            if (entity.getItem().returnDirtyState()) return true;
+        }
+
+        return false;
+    }
 }

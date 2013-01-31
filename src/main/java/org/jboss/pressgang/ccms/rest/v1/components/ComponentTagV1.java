@@ -26,7 +26,7 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1 {
         return containedInCategory(source, categoryId);
     }
 
-    static public boolean containedInCategory(final RESTBaseTagV1<?, ?, ?> source, final Integer categoryId) {
+    public static boolean containedInCategory(final RESTBaseTagV1<?, ?, ?> source, final Integer categoryId) {
         if (source.getCategories() != null && source.getCategories().getItems() != null) {
             for (final RESTCategoryInTagCollectionItemV1 categoryItem : source.getCategories().getItems()) {
                 final RESTCategoryInTagV1 category = categoryItem.getItem();
@@ -41,7 +41,7 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1 {
         return containedInCategory(source, categoryIds);
     }
 
-    static public boolean containedInCategory(final RESTBaseTagV1<?, ?, ?> source, final List<Integer> categoryIds) {
+    public static boolean containedInCategory(final RESTBaseTagV1<?, ?, ?> source, final List<Integer> categoryIds) {
         if (categoryIds == null) return false;
 
         for (final Integer categoryId : categoryIds) {
@@ -57,7 +57,7 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1 {
         return containedInCategory(source, id);
     }
 
-    static public boolean containedInProject(final RESTBaseTagV1<?, ?, ?> source, final Integer id) {
+    public static boolean containedInProject(final RESTBaseTagV1<?, ?, ?> source, final Integer id) {
         if (source.getProjects() != null && source.getProjects().getItems() != null) {
             for (final RESTProjectCollectionItemV1 projectItem : source.getProjects().getItems()) {
                 final RESTProjectV1 project = projectItem.getItem();
