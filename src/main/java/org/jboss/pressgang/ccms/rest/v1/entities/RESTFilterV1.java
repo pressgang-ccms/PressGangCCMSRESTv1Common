@@ -70,11 +70,17 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
                 clone.filterTags_OTM = new RESTFilterTagCollectionV1();
                 filterTags_OTM.cloneInto(clone.filterTags_OTM, deepCopy);
             }
+
+            if (this.filterFields_OTM != null) {
+                clone.filterFields_OTM = new RESTFilterFieldCollectionV1();
+                filterFields_OTM.cloneInto(clone.filterFields_OTM, deepCopy);
+            }
         } else {
             clone.revisions = this.revisions;
             clone.filterCategories_OTM = this.filterCategories_OTM;
             clone.filterLocales_OTM = this.filterLocales_OTM;
             clone.filterTags_OTM = this.filterTags_OTM;
+            clone.filterFields_OTM = this.filterFields_OTM;
         }
     }
 
