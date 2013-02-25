@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jboss.pressgang.ccms:gozirra-extended:0.5-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/pressgang/ccms/gozirra-extended/0.5-SNAPSHOT/gozirra-extended-0.5-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/pressgang/ccms/gozirra-extended/0.5-SNAPSHOT/gozirra-extended-0.5-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/pressgang/ccms/gozirra-extended/0.5-SNAPSHOT/gozirra-extended-0.5-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
