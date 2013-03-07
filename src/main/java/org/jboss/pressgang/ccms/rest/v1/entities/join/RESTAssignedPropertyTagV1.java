@@ -25,7 +25,9 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
     }
 
     public RESTAssignedPropertyTagV1(final RESTPropertyTagV1 propertyTag) {
-        propertyTag.cloneInto(this, false);
+        if (propertyTag != null) {
+            propertyTag.cloneInto(this, false);
+        }
     }
 
     @Override

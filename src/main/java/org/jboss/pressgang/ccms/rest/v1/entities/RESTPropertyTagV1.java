@@ -19,11 +19,15 @@ public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, 
     }
 
     public RESTPropertyTagV1(final RESTAssignedPropertyTagV1 assignedPropertyTag) {
-        assignedPropertyTag.cloneInto(this, false);
+        if (assignedPropertyTag != null) {
+            assignedPropertyTag.cloneInto(this, false);
+        }
     }
 
     public RESTPropertyTagV1(final RESTPropertyTagInPropertyCategoryV1 propertyTagWithSort) {
-        propertyTagWithSort.cloneInto(this, false);
+        if (propertyTagWithSort != null) {
+            propertyTagWithSort.cloneInto(this, false);
+        }
     }
 
     @Override

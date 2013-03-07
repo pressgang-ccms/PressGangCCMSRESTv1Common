@@ -26,8 +26,8 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTUserCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSMetaDataCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSNodeCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSTranslatedNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTBlobConstantV1;
@@ -44,8 +44,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSMetaDataV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSTranslatedNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.exceptions.InternalProcessingException;
 import org.jboss.pressgang.ccms.rest.v1.exceptions.InvalidParameterException;
@@ -65,12 +65,20 @@ public interface RESTBaseInterfaceV1 {
      * Sets the value of the topicindex.rerenderTopic system property, which in turn defines if topics are rerendered when they
      * are updated.
      *
-     * @param enalbed true if rendering to to be enabled, false otherwise
+     * @param enabled true if rendering to to be enabled, false otherwise
      */
     @POST
     @Path("/settings/rerenderTopic")
-    @Consumes({"*"})
-    public void setRerenderTopic(@QueryParam("enabled") final Boolean enalbed);
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public void setRerenderTopic(@QueryParam("enabled") final Boolean enabled);
+
+    /**
+     * Initiates a ReIndex of the lucene database.
+     */
+    @POST
+    @Path("/database/reindex")
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public void reIndexLuceneDatabase();
 
     /**
      * @return An example of a ExpandDataTrunk object serialized to JSON. This is for convenience, and has no impact on the
@@ -79,7 +87,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/expanddatatrunk/get/json")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public ExpandDataTrunk getJSONExpandTrunkExample() throws InvalidParameterException, InternalProcessingException;
 
     /* USER FUNCTIONS */
@@ -87,14 +95,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/" + RESTv1Constants.USER_URL_NAME + "/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPUser(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/user/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPUserRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -102,14 +110,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/users/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPUsers(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/users/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPUsersWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -148,7 +156,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/user/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPUser(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -156,7 +164,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/users/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPUsers(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -165,28 +173,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/user/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTUserV1 getJSONUser(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/user/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTUserV1 getJSONUserRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/users/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTUserCollectionV1 getJSONUsers(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/users/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTUserCollectionV1 getJSONUsersWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -225,7 +233,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/user/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTUserV1 deleteJSONUser(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -233,7 +241,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/users/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTUserCollectionV1 deleteJSONUsers(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -243,14 +251,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/stringconstant/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPStringConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/stringconstant/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPStringConstantRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -258,14 +266,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/stringconstants/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPStringConstants(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/stringconstants/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPStringConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -308,7 +316,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/stringconstant/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPStringConstant(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -316,7 +324,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/stringconstants/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPStringConstants(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -325,28 +333,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/stringconstant/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTStringConstantV1 getJSONStringConstant(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/stringconstant/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTStringConstantV1 getJSONStringConstantRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/stringconstants/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTStringConstantCollectionV1 getJSONStringConstants(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/stringconstants/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTStringConstantCollectionV1 getJSONStringConstantsWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -387,7 +395,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/stringconstant/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTStringConstantV1 deleteJSONStringConstant(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -395,7 +403,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/stringconstants/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTStringConstantCollectionV1 deleteJSONStringConstants(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -405,14 +413,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/translatedtopic/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTranslatedTopic(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/translatedtopic/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTranslatedTopicRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -420,14 +428,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/translatedtopics/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTranslatedTopics(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/translatedtopics/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTranslatedTopicsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -470,7 +478,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/translatedtopic/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPTranslatedTopic(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -478,7 +486,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/translatedtopics/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPTranslatedTopics(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -487,28 +495,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/translatedtopic/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTranslatedTopicV1 getJSONTranslatedTopic(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/translatedtopic/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTranslatedTopicV1 getJSONTranslatedTopicRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/translatedtopics/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTranslatedTopicCollectionV1 getJSONTranslatedTopicsWithQuery(@PathParam("query") PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/translatedtopics/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTranslatedTopicCollectionV1 getJSONTranslatedTopics(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -549,7 +557,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/translatedtopic/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTranslatedTopicV1 deleteJSONTranslatedTopic(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -557,7 +565,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/translatedtopics/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTranslatedTopicCollectionV1 deleteJSONTranslatedTopics(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -567,14 +575,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/role/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPRole(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/role/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPRoleRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -582,14 +590,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/roles/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPRoles(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/roles/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPRolesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -628,7 +636,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/role/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPRole(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -636,7 +644,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/roles/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPRoles(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -645,28 +653,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/role/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTRoleV1 getJSONRole(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/role/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTRoleV1 getJSONRoleRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/roles/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTRoleCollectionV1 getJSONRoles(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/roles/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTRoleCollectionV1 getJSONRolesWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -705,7 +713,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/role/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTRoleV1 deleteJSONRole(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -713,7 +721,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/roles/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTRoleCollectionV1 deleteJSONRoles(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -723,14 +731,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertytag/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPPropertyTag(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/propertytag/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPPropertyTagRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -738,14 +746,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertytags/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPPropertyTags(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/propertytags/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPPropertyTagsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -786,7 +794,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertytag/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPPropertyTag(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -794,7 +802,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertytags/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPPropertyTags(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -803,28 +811,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertytag/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyTagV1 getJSONPropertyTag(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/propertytag/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyTagV1 getJSONPropertyTagRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/propertytags/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyTagCollectionV1 getJSONPropertyTags(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/propertytags/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyTagCollectionV1 getJSONPropertyTagsWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -865,7 +873,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/propertytag/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyTagV1 deleteJSONPropertyTag(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -873,7 +881,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/propertytags/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyTagCollectionV1 deleteJSONPropertyTags(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -883,14 +891,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertycategory/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPPropertyCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/propertycategory/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPPropertyCategoryRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -898,14 +906,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertycategories/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPPropertyCategories(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/propertycategories/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPPropertyCategoriesWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -949,7 +957,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertycategory/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPPropertyCategory(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -957,7 +965,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertycategories/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPPropertyCategories(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -966,14 +974,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertycategory/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyCategoryV1 getJSONPropertyCategory(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/propertycategory/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyCategoryV1 getJSONPropertyCategoryRevision(@PathParam("id") final Integer id,
             @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -981,14 +989,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/propertycategories/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyCategoryCollectionV1 getJSONPropertyCategories(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/propertycategories/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyCategoryCollectionV1 getJSONPropertyCategoriesWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -1029,7 +1037,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/propertycategory/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyCategoryV1 deleteJSONPropertyCategory(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1037,7 +1045,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/propertycategories/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTPropertyCategoryCollectionV1 deleteJSONPropertyCategories(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1047,14 +1055,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/blobconstant/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPBlobConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/blobconstant/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPBlobConstantRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1062,14 +1070,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/blobconstants/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPBlobConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/blobconstants/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPBlobConstants(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -1112,7 +1120,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/blobconstant/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPBlobConstant(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1120,7 +1128,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/blobconstants/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPBlobConstants(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1129,28 +1137,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/blobconstant/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTBlobConstantV1 getJSONBlobConstant(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/blobconstant/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTBlobConstantV1 getJSONBlobConstantRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/blobconstants/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTBlobConstantCollectionV1 getJSONBlobConstants(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/blobconstants/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTBlobConstantCollectionV1 getJSONBlobConstantsWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -1191,7 +1199,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/blobconstant/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTBlobConstantV1 deleteJSONBlobConstant(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1199,7 +1207,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/blobconstants/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTBlobConstantCollectionV1 deleteJSONBlobConstants(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1209,14 +1217,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/project/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPProject(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/project/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPProjectRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1224,14 +1232,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/projects/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPProjects(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/projects/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPProjectsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -1272,7 +1280,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/project/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPProject(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1280,7 +1288,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/projects/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPProjects(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1289,28 +1297,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/project/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTProjectV1 getJSONProject(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/project/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTProjectV1 getJSONProjectRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/projects/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTProjectCollectionV1 getJSONProjects(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/projects/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTProjectCollectionV1 getJSONProjectsWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -1349,7 +1357,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/project/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTProjectV1 deleteJSONProject(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1357,7 +1365,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/projects/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTProjectCollectionV1 deleteJSONProjects(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1367,14 +1375,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/tag/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTag(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/tag/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTagRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1382,14 +1390,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/tags/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTags(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/tags/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTagsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -1428,7 +1436,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/tag/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPTag(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1436,7 +1444,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/tags/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPTags(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1445,28 +1453,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/tag/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTagV1 getJSONTag(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/tag/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTagV1 getJSONTagRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/tags/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTagCollectionV1 getJSONTags(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/tags/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTagCollectionV1 getJSONTagsWithQuery(@PathParam("query") PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -1505,7 +1513,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/tag/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTagV1 deleteJSONTag(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1513,7 +1521,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/tags/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTagCollectionV1 deleteJSONTags(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1523,14 +1531,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/category/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/category/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPCategoryRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1538,14 +1546,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/categories/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPCategories(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/categories/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPCategoriesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -1586,7 +1594,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/category/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPCategory(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1594,7 +1602,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/categories/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPCategories(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1603,28 +1611,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/category/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCategoryV1 getJSONCategory(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/category/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCategoryV1 getJSONCategoryRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/categories/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCategoryCollectionV1 getJSONCategories(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/categories/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCategoryCollectionV1 getJSONCategoriesWithQuery(@PathParam("query") PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -1663,7 +1671,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/category/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCategoryV1 deleteJSONCategory(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1671,7 +1679,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/categories/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCategoryCollectionV1 deleteJSONCategories(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1681,14 +1689,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/image/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPImage(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/image/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPImageRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1696,14 +1704,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/images/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPImages(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/images/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPImagesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -1742,7 +1750,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/image/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPImage(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1750,7 +1758,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/images/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPImages(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1759,28 +1767,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/image/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTImageV1 getJSONImage(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/image/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTImageV1 getJSONImageRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/images/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTImageCollectionV1 getJSONImages(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/images/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTImageCollectionV1 getJSONImagesWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -1819,7 +1827,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/image/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTImageV1 deleteJSONImage(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1827,7 +1835,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/images/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTImageCollectionV1 deleteJSONImages(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -1835,21 +1843,21 @@ public interface RESTBaseInterfaceV1 {
     /* IMAGE */
     @GET
     @Path("/image/get/raw/{id}")
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     @Produces({"image/gif", "image/png", "image/jpeg", "image/svg+xml"})
     public Response getRAWImage(@PathParam("id") final Integer id,
             @QueryParam("lang") final String locale) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/image/get/raw/{id}/r/{rev}")
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     @Produces({"image/gif", "image/png", "image/jpeg", "image/svg+xml"})
     public Response getRAWImageRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("lang") final String locale) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/image/get/raw/{id}/thumbnail")
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     @Produces({"image/gif", "image/png", "image/jpeg", "image/svg+xml"})
     public Response getRAWImageThumbnail(@PathParam("id") final Integer id,
             @QueryParam("lang") final String locale) throws InvalidParameterException, InternalProcessingException;
@@ -1859,28 +1867,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/topics/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTopicsWithQuery(@PathParam("query") PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topics/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTopics(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTopic(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTopicRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1920,7 +1928,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/topic/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPTopic(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1928,7 +1936,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/topics/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPTopics(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -1937,28 +1945,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/topics/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTopicCollectionV1 getJSONTopics(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topics/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTopicCollectionV1 getJSONTopicsWithQuery(@PathParam("query") PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTopicV1 getJSONTopic(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTopicV1 getJSONTopicRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -1997,7 +2005,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/topic/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTopicV1 deleteJSONTopic(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -2005,7 +2013,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/topics/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTopicCollectionV1 deleteJSONTopics(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -2014,47 +2022,47 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/topics/get/xml/all")
     @Produces(MediaType.APPLICATION_XML)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTopicCollectionV1 getXMLTopics(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/xml/{id}")
     @Produces(MediaType.APPLICATION_XML)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTopicV1 getXMLTopic(@PathParam("id") final Integer id) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/xml/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_XML)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTopicV1 getXMLTopicRevision(@PathParam("id") final Integer id,
             @PathParam("rev") final Integer revision) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/xml/{id}/xml")
     @Produces(MediaType.APPLICATION_XML)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getXMLTopicXML(@PathParam("id") final Integer id) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/xml/{id}/r/{rev}/xml")
     @Produces(MediaType.APPLICATION_XML)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getXMLTopicRevisionXML(@PathParam("id") final Integer id,
             @PathParam("rev") final Integer revision) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/xml/{id}/xmlContainedIn")
     @Produces(MediaType.APPLICATION_XML)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getXMLTopicXMLContained(@PathParam("id") final Integer id,
             @QueryParam("container") final String containerName) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/xml/{id}/xmlNoContainer")
     @Produces(MediaType.TEXT_PLAIN)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getXMLTopicXMLNoContainer(@PathParam("id") final Integer id,
             @QueryParam("includeTitle") final Boolean includeTitle) throws InvalidParameterException, InternalProcessingException;
 
@@ -2062,29 +2070,57 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/topic/get/html/{id}/html")
     @Produces(MediaType.APPLICATION_XHTML_XML)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getHTMLTopicHTML(@PathParam("id") final Integer id) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/topic/get/html/{id}/r/{rev}/html")
     @Produces(MediaType.APPLICATION_XHTML_XML)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getHTMLTopicRevisionHTML(@PathParam("id") final Integer id,
             @PathParam("rev") final Integer revision) throws InvalidParameterException, InternalProcessingException;
+
+    /* CSV FUNCTIONS */
+    @GET
+    @Path("/topics/get/csv/all")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getCSVTopics() throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/topics/get/csv/{query}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getCSVTopicsWithQuery(
+            @PathParam("query") PathSegment query) throws InvalidParameterException, InternalProcessingException;
+
+    /* ZIP FUNCTIONS */
+    @GET
+    @Path("/topics/get/zip/all")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public byte[] getZIPTopics() throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/topics/get/zip/{query}")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public byte[] getZIPTopicsWithQuery(
+            @PathParam("query") PathSegment query) throws InvalidParameterException, InternalProcessingException;
 
     /* FILTERS FUNCTIONS */
     /* JSONP FUNCTIONS */
     @GET
     @Path("/filter/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPFilter(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/filter/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPFilterRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2092,14 +2128,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/filters/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPFiltersWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/filters/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPFilters(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -2140,7 +2176,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/filter/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPFilter(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2148,7 +2184,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/filters/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPFilters(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2157,28 +2193,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/filter/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTFilterV1 getJSONFilter(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/filter/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTFilterV1 getJSONFilterRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/filters/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTFilterCollectionV1 getJSONFilters(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/filters/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTFilterCollectionV1 getJSONFiltersWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -2217,7 +2253,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/filter/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTFilterV1 deleteJSONFilter(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -2225,7 +2261,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/filters/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTFilterCollectionV1 deleteJSONFilters(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -2235,14 +2271,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/integerconstant/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPIntegerConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/integerconstant/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPIntegerConstantRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2250,14 +2286,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/integerconstants/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPIntegerConstants(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/integerconstants/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPIntegerConstantsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -2300,7 +2336,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/integerconstant/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPIntegerConstant(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2308,7 +2344,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/integerconstants/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPIntegerConstants(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2317,28 +2353,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/integerconstant/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTIntegerConstantV1 getJSONIntegerConstant(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/integerconstant/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTIntegerConstantV1 getJSONIntegerConstantRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/integerconstants/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTIntegerConstantCollectionV1 getJSONIntegerConstants(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/integerconstants/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTIntegerConstantCollectionV1 getJSONIntegerConstantsWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -2379,7 +2415,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/integerconstant/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTIntegerConstantV1 deleteJSONIntegerConstant(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -2387,7 +2423,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/integerconstants/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTIntegerConstantCollectionV1 deleteJSONIntegerConstants(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -2397,14 +2433,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspec/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspec/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPContentSpecRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2412,14 +2448,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspecs/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPContentSpecs(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspecs/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPContentSpecsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -2460,7 +2496,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspec/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPContentSpec(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2468,7 +2504,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspecs/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPContentSpecs(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2477,28 +2513,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspec/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTContentSpecV1 getJSONContentSpec(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspec/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTContentSpecV1 getJSONContentSpecRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspecs/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTContentSpecCollectionV1 getJSONContentSpecs(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspecs/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTContentSpecCollectionV1 getJSONContentSpecsWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -2539,7 +2575,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/contentspec/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTContentSpecV1 deleteJSONContentSpec(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -2547,7 +2583,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/contentspecs/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTContentSpecCollectionV1 deleteJSONContentSpecs(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -2556,13 +2592,13 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspec/get/text/{id}")
     @Produces(MediaType.TEXT_PLAIN)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getTEXTContentSpec(@PathParam("id") final Integer id) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspec/get/text/{id}/r/{rev}")
     @Produces(MediaType.TEXT_PLAIN)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getTEXTContentSpecRevision(@PathParam("id") final Integer id,
             @PathParam("rev") final Integer revision) throws InvalidParameterException, InternalProcessingException;
 
@@ -2587,14 +2623,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspecnode/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPContentSpecNode(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspecnode/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPContentSpecNodeRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2602,14 +2638,14 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspecnodes/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPContentSpecNodes(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspecnodes/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPContentSpecNodesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
@@ -2650,7 +2686,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspecnode/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPContentSpecNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2658,7 +2694,7 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspecnodes/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String deleteJSONPContentSpecNodes(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
@@ -2667,28 +2703,28 @@ public interface RESTBaseInterfaceV1 {
     @GET
     @Path("/contentspecnode/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCSNodeV1 getJSONContentSpecNode(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspecnode/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCSNodeV1 getJSONContentSpecNodeRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspecnodes/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCSNodeCollectionV1 getJSONContentSpecNodes(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
     @Path("/contentspecnodes/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCSNodeCollectionV1 getJSONContentSpecNodesWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
@@ -2727,7 +2763,7 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/contentspecnode/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCSNodeV1 deleteJSONContentSpecNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
@@ -2735,171 +2771,173 @@ public interface RESTBaseInterfaceV1 {
     @DELETE
     @Path("/contentspecnodes/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTCSNodeCollectionV1 deleteJSONContentSpecNodes(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
-    /* CONTENT SPEC META DATA FUNCTIONS */
+    /* CONTENT SPEC TRANSLATED NODE FUNCTIONS */
     /* JSONP FUNCTIONS */
     @GET
-    @Path("/contentspecmetadata/get/jsonp/{id}")
+    @Path("/contentspectranslatednode/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public String getJSONPContentSpecMetaData(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPContentSpecTranslatedNode(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadata/get/jsonp/{id}/r/{rev}")
+    @Path("/contentspectranslatednode/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public String getJSONPContentSpecMetaDataRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPContentSpecTranslatedNodeRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadatas/get/jsonp/all")
+    @Path("/contentspectranslatednodes/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public String getJSONPContentSpecMetaDatas(@QueryParam("expand") final String expand,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPContentSpecTranslatedNodes(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadatas/get/jsonp/{query}")
+    @Path("/contentspectranslatednodes/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public String getJSONPContentSpecMetaDatasWithQuery(@PathParam("query") final PathSegment query,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPContentSpecTranslatedNodesWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadata/update/jsonp")
+    @Path("/contentspectranslatednode/update/jsonp")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPContentSpecMetaData(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTCSMetaDataV1 dataObject, @QueryParam("message") final String message,
+    public String updateJSONPContentSpecTranslatedNode(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTCSTranslatedNodeV1 dataObject, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadatas/update/jsonp")
+    @Path("/contentspectranslatednodes/update/jsonp")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPContentSpecMetaDatas(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTCSMetaDataCollectionV1 dataObjects, @QueryParam("message") final String message,
+    public String updateJSONPContentSpecTranslatedNodes(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTCSTranslatedNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadata/create/jsonp")
+    @Path("/contentspectranslatednode/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPContentSpecMetaData(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTCSMetaDataV1 dataObject, @QueryParam("message") final String message,
+    public String createJSONPContentSpecTranslatedNode(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTCSTranslatedNodeV1 dataObject, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadatas/create/jsonp")
+    @Path("/contentspectranslatednodes/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPContentSpecMetaDatas(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTCSMetaDataCollectionV1 dataObjects, @QueryParam("message") final String message,
+    public String createJSONPContentSpecTranslatedNodes(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTCSTranslatedNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadata/delete/jsonp/{id}")
+    @Path("/contentspectranslatednode/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public String deleteJSONPContentSpecMetaData(@PathParam("id") final Integer id, @QueryParam("message") final String message,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String deleteJSONPContentSpecTranslatedNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadatas/delete/jsonp/{ids}")
+    @Path("/contentspectranslatednodes/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public String deleteJSONPContentSpecMetaDatas(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String deleteJSONPContentSpecTranslatedNodes(@PathParam("ids") final PathSegment ids,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     /* JSON FUNCTIONS */
     @GET
-    @Path("/contentspecmetadata/get/json/{id}")
+    @Path("/contentspectranslatednode/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public RESTCSMetaDataV1 getJSONContentSpecMetaData(@PathParam("id") final Integer id,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTCSTranslatedNodeV1 getJSONContentSpecTranslatedNode(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadata/get/json/{id}/r/{rev}")
+    @Path("/contentspectranslatednode/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public RESTCSMetaDataV1 getJSONContentSpecMetaDataRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTCSTranslatedNodeV1 getJSONContentSpecTranslatedNodeRevision(@PathParam("id") final Integer id,
+            @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadatas/get/json/all")
+    @Path("/contentspectranslatednodes/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public RESTCSMetaDataCollectionV1 getJSONContentSpecMetaDatas(
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTCSTranslatedNodeCollectionV1 getJSONContentSpecTranslatedNodes(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspecmetadatas/get/json/{query}")
+    @Path("/contentspectranslatednodes/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public RESTCSMetaDataCollectionV1 getJSONContentSpecMetaDatasWithQuery(@PathParam("query") final PathSegment query,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTCSTranslatedNodeCollectionV1 getJSONContentSpecTranslatedNodesWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/contentspecmetadata/update/json")
+    @Path("/contentspectranslatednode/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTCSMetaDataV1 updateJSONContentSpecMetaData(@QueryParam("expand") final String expand, final RESTCSMetaDataV1 dataObject,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+    public RESTCSTranslatedNodeV1 updateJSONContentSpecTranslatedNode(@QueryParam("expand") final String expand,
+            final RESTCSTranslatedNodeV1 dataObject, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
             @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/contentspecmetadatas/update/json")
+    @Path("/contentspectranslatednodes/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTCSMetaDataCollectionV1 updateJSONContentSpecMetaDatas(@QueryParam("expand") final String expand,
-            final RESTCSMetaDataCollectionV1 dataObjects, @QueryParam("message") final String message,
+    public RESTCSTranslatedNodeCollectionV1 updateJSONContentSpecTranslatedNodes(@QueryParam("expand") final String expand,
+            final RESTCSTranslatedNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag,
             @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/contentspecmetadata/create/json")
+    @Path("/contentspectranslatednode/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTCSMetaDataV1 createJSONContentSpecMetaData(@QueryParam("expand") final String expand, final RESTCSMetaDataV1 dataObject,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+    public RESTCSTranslatedNodeV1 createJSONContentSpecTranslatedNode(@QueryParam("expand") final String expand,
+            final RESTCSTranslatedNodeV1 dataObject, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
             @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/contentspecmetadatas/create/json")
+    @Path("/contentspectranslatednodes/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTCSMetaDataCollectionV1 createJSONContentSpecMetaDatas(@QueryParam("expand") final String expand,
-            final RESTCSMetaDataCollectionV1 dataObjects, @QueryParam("message") final String message,
+    public RESTCSTranslatedNodeCollectionV1 createJSONContentSpecTranslatedNodes(@QueryParam("expand") final String expand,
+            final RESTCSTranslatedNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag,
             @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
 
     @DELETE
-    @Path("/contentspecmetadata/delete/json/{id}")
+    @Path("/contentspectranslatednode/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public RESTCSMetaDataV1 deleteJSONContentSpecMetaData(@PathParam("id") final Integer id, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTCSTranslatedNodeV1 deleteJSONContentSpecTranslatedNode(@PathParam("id") final Integer id,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @DELETE
-    @Path("/contentspecmetadata/delete/json/{ids}")
+    @Path("/contentspectranslatednodes/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({"*"})
-    public RESTCSMetaDataCollectionV1 deleteJSONContentSpecMetaDatas(@PathParam("ids") final PathSegment ids,
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTCSTranslatedNodeCollectionV1 deleteJSONContentSpecTranslatedNodes(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 }

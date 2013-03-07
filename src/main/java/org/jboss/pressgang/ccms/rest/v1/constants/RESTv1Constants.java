@@ -34,7 +34,7 @@ public class RESTv1Constants {
 
     public static final String CONTENT_SPEC_EXPANSION_NAME = "contentSpecs";
     public static final String CONTENT_SPEC_NODE_EXPANSION_NAME = "nodes";
-    public static final String CONTENT_SPEC_META_DATA_EXPANSION_NAME = "metaData";
+    public static final String CONTENT_SPEC_TRANSLATED_NODE_EXPANSION_NAME = "translatedNodes";
 
     public static final String TOPIC_URL_NAME = "topic";
     public static final String TOPICSOURCEURL_URL_NAME = "topicsourceurl";
@@ -64,7 +64,7 @@ public class RESTv1Constants {
 
     public static final String CONTENT_SPEC_URL_NAME = "contentspec";
     public static final String CONTENT_SPEC_NODE_URL_NAME = "contentspecnode";
-    public static final String CONTENT_SPEC_META_DATA_URL_NAME = "contentspecmetadata";
+    public static final String CONTENT_SPEC_TRANSLATED_NODE_URL_NAME = "contentspectranslatednode";
 
     public static final String JSON_URL = "json";
     public static final String XML_URL = "xml";

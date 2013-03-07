@@ -4,8 +4,8 @@ import java.net.URI;
 
 import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTBlobConstantV1JSONConverter;
-import org.jboss.pressgang.ccms.rest.v1.converter.RESTCSMetaDataV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTCSNodeV1JSONConverter;
+import org.jboss.pressgang.ccms.rest.v1.converter.RESTCSTranslatedNodeV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTCategoryV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTContentSpecV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTFilterV1JSONConverter;
@@ -20,7 +20,10 @@ import org.jboss.pressgang.ccms.rest.v1.converter.RESTTopicV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTTranslatedTopicV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTUserV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTBlobConstantCollectionV1JSONConverter;
+import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTCSNodeCollectionV1JSONConverter;
+import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTCSTranslatedNodeCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTCategoryCollectionV1JSONConverter;
+import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTContentSpecCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTFilterCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTImageCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTProjectCollectionV1JSONConverter;
@@ -61,6 +64,9 @@ public class PressGangCCMSProxyFactoryV1 {
         providerFactory.addStringConverter(RESTTopicV1JSONConverter.class);
         providerFactory.addStringConverter(RESTTranslatedTopicV1JSONConverter.class);
         providerFactory.addStringConverter(RESTUserV1JSONConverter.class);
+        providerFactory.addStringConverter(RESTContentSpecV1JSONConverter.class);
+        providerFactory.addStringConverter(RESTCSNodeV1JSONConverter.class);
+        providerFactory.addStringConverter(RESTCSTranslatedNodeV1JSONConverter.class);
         providerFactory.addStringConverter(RESTBlobConstantCollectionV1JSONConverter.class);
         providerFactory.addStringConverter(RESTCategoryCollectionV1JSONConverter.class);
         providerFactory.addStringConverter(RESTFilterCollectionV1JSONConverter.class);
@@ -74,8 +80,14 @@ public class PressGangCCMSProxyFactoryV1 {
         providerFactory.addStringConverter(RESTTranslatedTopicCollectionV1JSONConverter.class);
         providerFactory.addStringConverter(RESTUserCollectionV1JSONConverter.class);
         providerFactory.addStringConverter(RESTContentSpecV1JSONConverter.class);
-        providerFactory.addStringConverter(RESTCSMetaDataV1JSONConverter.class);
         providerFactory.addStringConverter(RESTCSNodeV1JSONConverter.class);
+        providerFactory.addStringConverter(RESTCSTranslatedNodeV1JSONConverter.class);
+        providerFactory.addStringConverter(RESTContentSpecCollectionV1JSONConverter.class);
+        providerFactory.addStringConverter(RESTCSNodeCollectionV1JSONConverter.class);
+        providerFactory.addStringConverter(RESTCSTranslatedNodeCollectionV1JSONConverter.class);
+        providerFactory.addStringConverter(RESTContentSpecCollectionV1JSONConverter.class);
+        providerFactory.addStringConverter(RESTCSNodeCollectionV1JSONConverter.class);
+        providerFactory.addStringConverter(RESTCSTranslatedNodeCollectionV1JSONConverter.class);
         RegisterBuiltin.register(providerFactory);
     }
 

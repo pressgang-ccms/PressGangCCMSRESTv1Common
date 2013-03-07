@@ -9,11 +9,9 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
 
 /**
  * The RESTTranslatedTopicV1 class is a combination of the TranslatedTopic and TranslatedTopicData classes. In the database,
- * a TranslatedTopic
- * is a reference to a particular revision of a topic, and it has multiple TranslatedTopicData children for each locale. From the REST
- * point of view
- * each RESTTranslatedTopicV1 combines the topic information from the TranslatedTopic, and the translation information from the
- * TranslatedTopicData class.
+ * a TranslatedTopic is a reference to a particular revision of a topic, and it has multiple TranslatedTopicData children for each locale
+ * . From the REST point of view each RESTTranslatedTopicV1 combines the topic information from the TranslatedTopic,
+ * and the translation information from the TranslatedTopicData class.
  *
  * @author Matthew Casperson
  */

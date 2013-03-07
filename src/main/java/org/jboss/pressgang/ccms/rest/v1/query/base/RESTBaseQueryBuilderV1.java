@@ -64,7 +64,7 @@ public abstract class RESTBaseQueryBuilderV1 {
 
     protected void put(final String constant, final List<Integer> list) {
         if (list == null || list.isEmpty()) {
-            put(constant, null);
+            put(constant, (Object) null);
         } else {
             put(constant, CollectionUtilities.toSeperatedString(list, ","));
         }
