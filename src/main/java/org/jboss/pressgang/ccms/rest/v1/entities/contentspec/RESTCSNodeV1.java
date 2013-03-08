@@ -114,7 +114,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
         this.setParameterToConfigured(NODE_TYPE_NAME);
     }
 
-    public void explicitSetEnitityId(final Integer entityId) {
+    public void explicitSetEntityId(final Integer entityId) {
         this.entityId = entityId;
         this.setParameterToConfigured(ENTITY_ID_NAME);
     }
