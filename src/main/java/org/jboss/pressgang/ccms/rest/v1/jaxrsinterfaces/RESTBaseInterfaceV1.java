@@ -27,8 +27,9 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTUserCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSNodeCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSTranslatedNodeCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTBlobConstantV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTCategoryV1;
@@ -45,8 +46,9 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSTranslatedNodeV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.exceptions.InternalProcessingException;
 import org.jboss.pressgang.ccms.rest.v1.exceptions.InvalidParameterException;
 import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
@@ -2776,168 +2778,333 @@ public interface RESTBaseInterfaceV1 {
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
-    /* CONTENT SPEC TRANSLATED NODE FUNCTIONS */
+    /* TRANSLATED CONTENT SPEC FUNCTIONS */
     /* JSONP FUNCTIONS */
     @GET
-    @Path("/contentspectranslatednode/get/jsonp/{id}")
+    @Path("/translatedcontentspec/get/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String getJSONPContentSpecTranslatedNode(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+    public String getJSONPTranslatedContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednode/get/jsonp/{id}/r/{rev}")
+    @Path("/translatedcontentspec/get/jsonp/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String getJSONPContentSpecTranslatedNodeRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+    public String getJSONPTranslatedContentSpecRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednodes/get/jsonp/all")
+    @Path("/translatedcontentspecs/get/jsonp/all")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String getJSONPContentSpecTranslatedNodes(@QueryParam("expand") final String expand,
+    public String getJSONPTranslatedContentSpecs(@QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednodes/get/jsonp/{query}")
+    @Path("/translatedcontentspecs/get/jsonp/{query}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String getJSONPContentSpecTranslatedNodesWithQuery(@PathParam("query") final PathSegment query,
+    public String getJSONPTranslatedContentSpecsWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednode/update/jsonp")
+    @Path("/translatedcontentspec/update/jsonp")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPContentSpecTranslatedNode(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTCSTranslatedNodeV1 dataObject, @QueryParam("message") final String message,
+    public String updateJSONPTranslatedContentSpec(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTTranslatedContentSpecV1 dataObject, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednodes/update/jsonp")
+    @Path("/translatedcontentspecs/update/jsonp")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPContentSpecTranslatedNodes(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTCSTranslatedNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
+    public String updateJSONPTranslatedContentSpecs(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTTranslatedContentSpecCollectionV1 dataObjects, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednode/create/jsonp")
+    @Path("/translatedcontentspec/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPContentSpecTranslatedNode(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTCSTranslatedNodeV1 dataObject, @QueryParam("message") final String message,
+    public String createJSONPTranslatedContentSpec(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTTranslatedContentSpecV1 dataObject, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednodes/create/jsonp")
+    @Path("/translatedcontentspecs/create/jsonp")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPContentSpecTranslatedNodes(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTCSTranslatedNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
+    public String createJSONPTranslatedContentSpecs(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTTranslatedContentSpecCollectionV1 dataObjects, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednode/delete/jsonp/{id}")
+    @Path("/translatedcontentspec/delete/jsonp/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPContentSpecTranslatedNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
+    public String deleteJSONPTranslatedContentSpec(@PathParam("id") final Integer id, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednodes/delete/jsonp/{ids}")
+    @Path("/translatedcontentspecs/delete/jsonp/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPContentSpecTranslatedNodes(@PathParam("ids") final PathSegment ids,
+    public String deleteJSONPTranslatedContentSpecs(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
 
     /* JSON FUNCTIONS */
     @GET
-    @Path("/contentspectranslatednode/get/json/{id}")
+    @Path("/translatedcontentspec/get/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTCSTranslatedNodeV1 getJSONContentSpecTranslatedNode(@PathParam("id") final Integer id,
+    public RESTTranslatedContentSpecV1 getJSONTranslatedContentSpec(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednode/get/json/{id}/r/{rev}")
+    @Path("/translatedcontentspec/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTCSTranslatedNodeV1 getJSONContentSpecTranslatedNodeRevision(@PathParam("id") final Integer id,
+    public RESTTranslatedContentSpecV1 getJSONTranslatedContentSpecRevision(@PathParam("id") final Integer id,
             @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednodes/get/json/all")
+    @Path("/translatedcontentspecs/get/json/all")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTCSTranslatedNodeCollectionV1 getJSONContentSpecTranslatedNodes(
+    public RESTTranslatedContentSpecCollectionV1 getJSONTranslatedContentSpecs(
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @GET
-    @Path("/contentspectranslatednodes/get/json/{query}")
+    @Path("/translatedcontentspecs/get/json/{query}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTCSTranslatedNodeCollectionV1 getJSONContentSpecTranslatedNodesWithQuery(@PathParam("query") final PathSegment query,
+    public RESTTranslatedContentSpecCollectionV1 getJSONTranslatedContentSpecsWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/contentspectranslatednode/update/json")
+    @Path("/translatedcontentspec/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTCSTranslatedNodeV1 updateJSONContentSpecTranslatedNode(@QueryParam("expand") final String expand,
-            final RESTCSTranslatedNodeV1 dataObject, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+    public RESTTranslatedContentSpecV1 updateJSONTranslatedContentSpec(@QueryParam("expand") final String expand,
+            final RESTTranslatedContentSpecV1 dataObject, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
             @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/contentspectranslatednodes/update/json")
+    @Path("/translatedcontentspecs/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTCSTranslatedNodeCollectionV1 updateJSONContentSpecTranslatedNodes(@QueryParam("expand") final String expand,
-            final RESTCSTranslatedNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
+    public RESTTranslatedContentSpecCollectionV1 updateJSONTranslatedContentSpecs(@QueryParam("expand") final String expand,
+            final RESTTranslatedContentSpecCollectionV1 dataObjects, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag,
             @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/contentspectranslatednode/create/json")
+    @Path("/translatedcontentspec/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTCSTranslatedNodeV1 createJSONContentSpecTranslatedNode(@QueryParam("expand") final String expand,
-            final RESTCSTranslatedNodeV1 dataObject, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+    public RESTTranslatedContentSpecV1 createJSONTranslatedContentSpec(@QueryParam("expand") final String expand,
+            final RESTTranslatedContentSpecV1 dataObject, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
             @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
 
     @POST
-    @Path("/contentspectranslatednodes/create/json")
+    @Path("/translatedcontentspecs/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTCSTranslatedNodeCollectionV1 createJSONContentSpecTranslatedNodes(@QueryParam("expand") final String expand,
-            final RESTCSTranslatedNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
+    public RESTTranslatedContentSpecCollectionV1 createJSONTranslatedContentSpecs(@QueryParam("expand") final String expand,
+            final RESTTranslatedContentSpecCollectionV1 dataObjects, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag,
             @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
 
     @DELETE
-    @Path("/contentspectranslatednode/delete/json/{id}")
+    @Path("/translatedcontentspec/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTCSTranslatedNodeV1 deleteJSONContentSpecTranslatedNode(@PathParam("id") final Integer id,
+    public RESTTranslatedContentSpecV1 deleteJSONTranslatedContentSpec(@PathParam("id") final Integer id,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 
     @DELETE
-    @Path("/contentspectranslatednodes/delete/json/{ids}")
+    @Path("/translatedcontentspecs/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTCSTranslatedNodeCollectionV1 deleteJSONContentSpecTranslatedNodes(@PathParam("ids") final PathSegment ids,
+    public RESTTranslatedContentSpecCollectionV1 deleteJSONTranslatedContentSpecs(@PathParam("ids") final PathSegment ids,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+    
+    /* TRANSLATED CONTENT SPEC NODE FUNCTIONS */
+    /* JSONP FUNCTIONS */
+    @GET
+    @Path("/translatedcontentspecnode/get/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPTranslatedContentSpecNode(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnode/get/jsonp/{id}/r/{rev}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPTranslatedContentSpecNodeRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+            @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnodes/get/jsonp/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnodes/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPTranslatedContentSpecNodesWithQuery(@PathParam("query") final PathSegment query,
+            @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnode/update/jsonp")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateJSONPTranslatedContentSpecNode(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTTranslatedCSNodeV1 dataObject, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnodes/update/jsonp")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    public String updateJSONPTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTTranslatedCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnode/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String createJSONPTranslatedContentSpecNode(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTTranslatedCSNodeV1 dataObject, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnodes/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String createJSONPTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
+            @QueryParam("data") final RESTTranslatedCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnode/delete/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String deleteJSONPTranslatedContentSpecNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnodes/delete/jsonp/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String deleteJSONPTranslatedContentSpecNodes(@PathParam("ids") final PathSegment ids,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback) throws InvalidParameterException, InternalProcessingException;
+
+    /* JSON FUNCTIONS */
+    @GET
+    @Path("/translatedcontentspecnode/get/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTTranslatedCSNodeV1 getJSONTranslatedContentSpecNode(@PathParam("id") final Integer id,
+            @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnode/get/json/{id}/r/{rev}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTTranslatedCSNodeV1 getJSONTranslatedContentSpecNodeRevision(@PathParam("id") final Integer id,
+            @PathParam("rev") final Integer revision,
+            @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnodes/get/json/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTTranslatedCSNodeCollectionV1 getJSONTranslatedContentSpecNodes(
+            @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @GET
+    @Path("/translatedcontentspecnodes/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTTranslatedCSNodeCollectionV1 getJSONTranslatedContentSpecNodesWithQuery(@PathParam("query") final PathSegment query,
+            @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/translatedcontentspecnode/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTTranslatedCSNodeV1 updateJSONTranslatedContentSpecNode(@QueryParam("expand") final String expand,
+            final RESTTranslatedCSNodeV1 dataObject, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+            @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/translatedcontentspecnodes/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTTranslatedCSNodeCollectionV1 updateJSONTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
+            final RESTTranslatedCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag,
+            @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/translatedcontentspecnode/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTTranslatedCSNodeV1 createJSONTranslatedContentSpecNode(@QueryParam("expand") final String expand,
+            final RESTTranslatedCSNodeV1 dataObject, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+            @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
+
+    @POST
+    @Path("/translatedcontentspecnodes/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTTranslatedCSNodeCollectionV1 createJSONTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
+            final RESTTranslatedCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag,
+            @QueryParam("userId") final String userId) throws InvalidParameterException, InternalProcessingException;
+
+    @DELETE
+    @Path("/translatedcontentspecnode/delete/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTTranslatedCSNodeV1 deleteJSONTranslatedContentSpecNode(@PathParam("id") final Integer id,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+
+    @DELETE
+    @Path("/translatedcontentspecnodes/delete/json/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTTranslatedCSNodeCollectionV1 deleteJSONTranslatedContentSpecNodes(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
 }

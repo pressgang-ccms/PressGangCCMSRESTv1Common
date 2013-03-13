@@ -1,47 +1,48 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.contentspec;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSTranslatedNodeCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSTranslatedNodeStringCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTCSTranslatedNodeCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeStringCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTTranslatedCSNodeCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
 
-public class RESTCSTranslatedNodeV1 extends RESTBasePrimaryEntityV1<RESTCSTranslatedNodeV1, RESTCSTranslatedNodeCollectionV1,
-        RESTCSTranslatedNodeCollectionItemV1> {
+public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslatedCSNodeV1, RESTTranslatedCSNodeCollectionV1, RESTTranslatedCSNodeCollectionItemV1> {
     public static final String NODE_ID_NAME = "nodeId";
     public static final String NODE_REVISION_NAME = "nodeRevision";
     public static final String NODE_NAME = "node";
     public static final String TRANSLATED_STRING_NAME = "translatedNodeStrings_OTM";
+    public static final String TRANSLATED_CONTENT_SPEC_NAME = "translatedContentSpec";
 
     private Integer nodeId = null;
     private Integer nodeRevision = null;
     private RESTCSNodeV1 node = null;
-    private RESTCSTranslatedNodeCollectionV1 children = null;
-    private RESTCSTranslatedNodeStringCollectionV1 translatedNodeStrings_OTM;
+    private RESTTranslatedContentSpecV1 translatedContentSpec = null;
+    private RESTTranslatedCSNodeCollectionV1 children = null;
+    private RESTTranslatedCSNodeStringCollectionV1 translatedNodeStrings_OTM;
     /**
      * A list of the Envers revision numbers
      */
-    private RESTCSTranslatedNodeCollectionV1 revisions = null;
+    private RESTTranslatedCSNodeCollectionV1 revisions = null;
 
     @Override
-    public RESTCSTranslatedNodeCollectionV1 getRevisions() {
+    public RESTTranslatedCSNodeCollectionV1 getRevisions() {
         return revisions;
     }
 
     @Override
-    public void setRevisions(final RESTCSTranslatedNodeCollectionV1 revisions) {
+    public void setRevisions(final RESTTranslatedCSNodeCollectionV1 revisions) {
         this.revisions = revisions;
     }
 
     @Override
-    public RESTCSTranslatedNodeV1 clone(final boolean deepCopy) {
-        final RESTCSTranslatedNodeV1 retValue = new RESTCSTranslatedNodeV1();
+    public RESTTranslatedCSNodeV1 clone(final boolean deepCopy) {
+        final RESTTranslatedCSNodeV1 retValue = new RESTTranslatedCSNodeV1();
 
         this.cloneInto(retValue, deepCopy);
 
         return retValue;
     }
 
-    public void cloneInto(final RESTCSTranslatedNodeV1 clone, final boolean deepCopy) {
+    public void cloneInto(final RESTTranslatedCSNodeV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
         clone.nodeId = nodeId;
@@ -49,12 +50,12 @@ public class RESTCSTranslatedNodeV1 extends RESTBasePrimaryEntityV1<RESTCSTransl
 
         if (deepCopy) {
             if (children != null) {
-                clone.children = new RESTCSTranslatedNodeCollectionV1();
+                clone.children = new RESTTranslatedCSNodeCollectionV1();
                 children.cloneInto(clone.children, deepCopy);
             }
 
             if (translatedNodeStrings_OTM != null) {
-                clone.translatedNodeStrings_OTM = new RESTCSTranslatedNodeStringCollectionV1();
+                clone.translatedNodeStrings_OTM = new RESTTranslatedCSNodeStringCollectionV1();
                 translatedNodeStrings_OTM.cloneInto(clone.translatedNodeStrings_OTM, deepCopy);
             }
 
@@ -62,36 +63,41 @@ public class RESTCSTranslatedNodeV1 extends RESTBasePrimaryEntityV1<RESTCSTransl
                 clone.node = node.clone(deepCopy);
             }
 
+            if (translatedContentSpec != null) {
+                clone.translatedContentSpec = translatedContentSpec.clone(deepCopy);
+            }
+
             if (revisions != null) {
-                clone.revisions = new RESTCSTranslatedNodeCollectionV1();
+                clone.revisions = new RESTTranslatedCSNodeCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
             clone.children = children;
             clone.translatedNodeStrings_OTM = translatedNodeStrings_OTM;
+            clone.translatedContentSpec = translatedContentSpec;
             clone.node = node;
             clone.revisions = revisions;
         }
     }
 
-    public RESTCSTranslatedNodeStringCollectionV1 getTranslatedNodeStrings_OTM() {
+    public RESTTranslatedCSNodeStringCollectionV1 getTranslatedNodeStrings_OTM() {
         return translatedNodeStrings_OTM;
     }
 
-    public void setTranslatedNodeStrings_OTM(final RESTCSTranslatedNodeStringCollectionV1 translatedNodeStrings) {
+    public void setTranslatedNodeStrings_OTM(final RESTTranslatedCSNodeStringCollectionV1 translatedNodeStrings) {
         this.translatedNodeStrings_OTM = translatedNodeStrings;
     }
 
-    public void explicitSetTranslatedNodeString_OTM(final RESTCSTranslatedNodeStringCollectionV1 translatedNodeStrings) {
+    public void explicitSetTranslatedNodeString_OTM(final RESTTranslatedCSNodeStringCollectionV1 translatedNodeStrings) {
         this.translatedNodeStrings_OTM = translatedNodeStrings;
         this.setParameterToConfigured(TRANSLATED_STRING_NAME);
     }
 
-    public RESTCSTranslatedNodeCollectionV1 getChildren_OTM() {
+    public RESTTranslatedCSNodeCollectionV1 getChildren_OTM() {
         return children;
     }
 
-    public void setChildren_OTM(final RESTCSTranslatedNodeCollectionV1 children) {
+    public void setChildren_OTM(final RESTTranslatedCSNodeCollectionV1 children) {
         this.children = children;
     }
 
@@ -129,11 +135,24 @@ public class RESTCSTranslatedNodeV1 extends RESTBasePrimaryEntityV1<RESTCSTransl
         this.node = node;
     }
 
+    public RESTTranslatedContentSpecV1 getTranslatedContentSpec() {
+        return translatedContentSpec;
+    }
+
+    public void setTranslatedContentSpec(final RESTTranslatedContentSpecV1 translatedContentSpec) {
+        this.translatedContentSpec = translatedContentSpec;
+    }
+
+    public void explicitSetTranslatedContentSpec(final RESTTranslatedContentSpecV1 translatedContentSpec) {
+        this.translatedContentSpec = translatedContentSpec;
+        setParameterToConfigured(TRANSLATED_CONTENT_SPEC_NAME);
+    }
+
     @Override
     public boolean equals(final Object other) {
         if (other == null) return false;
         if (this == other) return true;
-        if (!(other instanceof RESTCSTranslatedNodeV1)) return false;
+        if (!(other instanceof RESTTranslatedCSNodeV1)) return false;
 
         return super.equals(other);
     }

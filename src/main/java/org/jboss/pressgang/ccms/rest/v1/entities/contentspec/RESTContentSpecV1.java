@@ -5,6 +5,7 @@ import java.util.Date;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTContentSpecCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityWithPropertiesV1;
@@ -19,6 +20,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     public static final String TYPE_NAME = "type";
     public static final String TAGS_NAME = "tags";
     public static final String CONDITION_NAME = "condition";
+    public static final String TRANSLATED_CONTENT_SPECS_NAME = "translatedContentSpecs";
 
     private String locale = null;
     private String condition = null;
@@ -28,6 +30,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     private RESTContentSpecCollectionV1 revisions = null;
     private RESTCSNodeCollectionV1 nodes = null;
     private RESTTagCollectionV1 tags = null;
+    private RESTTranslatedContentSpecCollectionV1 translatedContentSpecs = null;
 
     @Override
     public RESTContentSpecCollectionV1 getRevisions() {
@@ -71,10 +74,16 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
                 clone.tags = new RESTTagCollectionV1();
                 this.tags.cloneInto(clone.tags, deepCopy);
             }
+
+            if (this.translatedContentSpecs != null) {
+                clone.translatedContentSpecs = new RESTTranslatedContentSpecCollectionV1();
+                this.translatedContentSpecs.cloneInto(clone.translatedContentSpecs, deepCopy);
+            }
         } else {
             clone.revisions = this.revisions;
             clone.nodes = this.nodes;
             clone.tags = this.tags;
+            clone.translatedContentSpecs = this.translatedContentSpecs;
         }
     }
 
@@ -167,5 +176,13 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     public void explicitSetTags(final RESTTagCollectionV1 tags) {
         this.tags = tags;
         this.setParameterToConfigured(TAGS_NAME);
+    }
+
+    public RESTTranslatedContentSpecCollectionV1 getTranslatedContentSpecs() {
+        return translatedContentSpecs;
+    }
+
+    public void setTranslatedContentSpecs(RESTTranslatedContentSpecCollectionV1 translatedContentSpecs) {
+        this.translatedContentSpecs = translatedContentSpecs;
     }
 }
