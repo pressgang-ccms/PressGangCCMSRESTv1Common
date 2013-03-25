@@ -4,7 +4,8 @@ import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCS
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTTranslatedCSNodeStringCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTranslatedStringV1;
 
-public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RESTTranslatedCSNodeStringV1, RESTTranslatedCSNodeStringCollectionV1, RESTTranslatedCSNodeStringCollectionItemV1> {
+public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RESTTranslatedCSNodeStringV1, RESTTranslatedCSNodeStringCollectionV1,
+        RESTTranslatedCSNodeStringCollectionItemV1> {
     public static final String TRANSLATEDNODE_NAME = "translatedNode";
     public static final String LOCALE_NAME = "locale";
 
@@ -73,11 +74,6 @@ public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RES
     public void explicitSetLocale(final String locale) {
         this.locale = locale;
         this.setParameterToConfigured(LOCALE_NAME);
-    }
-
-    public void explicitSetOriginalString(final String originalString) {
-        this.originalString = originalString;
-        this.setParameterToConfigured(ORIGINALSTRING_NAME);
     }
 
     public void explicitSetTranslatedString(final String translatedString) {

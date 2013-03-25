@@ -9,8 +9,6 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.PathSegment;
 
-import org.jboss.pressgang.ccms.rest.v1.exceptions.InternalProcessingException;
-import org.jboss.pressgang.ccms.rest.v1.exceptions.InvalidParameterException;
 import org.jboss.resteasy.plugins.providers.atom.Feed;
 
 /**
@@ -22,7 +20,7 @@ public interface RESTInterfaceAdvancedV1 {
     @GET
     @Path("/topics/get/atom/{query}")
     @Produces(MediaType.APPLICATION_ATOM_XML)
-    @Consumes({"*"})
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public Feed getATOMTopicsWithQuery(@PathParam("query") PathSegment query,
-            @QueryParam("expand") final String expand) throws InvalidParameterException, InternalProcessingException;
+            @QueryParam("expand") final String expand);
 }

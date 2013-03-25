@@ -5,28 +5,17 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
 
 public abstract class RESTBaseTranslatedStringV1<T extends RESTBaseTranslatedStringV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>,
         V extends RESTBaseCollectionItemV1<T, U, V>> extends RESTBaseEntityV1<T, U, V> {
-    public static final String ORIGINALSTRING_NAME = "originalString";
     public static final String TRANSLATEDSTRING_NAME = "translatedString";
     public static final String FUZZY_TRANSLATION_NAME = "fuzzyTranslation";
 
-    protected String originalString = null;
     protected String translatedString = null;
     protected Boolean fuzzyTranslation = null;
 
     public void cloneInto(final RESTBaseTranslatedStringV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.originalString = this.originalString;
         clone.translatedString = this.translatedString;
         clone.fuzzyTranslation = this.fuzzyTranslation;
-    }
-
-    public String getOriginalString() {
-        return originalString;
-    }
-
-    public void setOriginalString(final String originalString) {
-        this.originalString = originalString;
     }
 
     public String getTranslatedString() {

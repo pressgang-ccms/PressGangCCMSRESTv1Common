@@ -11,9 +11,11 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
     public static final String NODE_NAME = "node";
     public static final String TRANSLATED_STRING_NAME = "translatedNodeStrings_OTM";
     public static final String TRANSLATED_CONTENT_SPEC_NAME = "translatedContentSpec";
+    public static final String ORIGINALSTRING_NAME = "originalString";
 
     private Integer nodeId = null;
     private Integer nodeRevision = null;
+    private String originalString = null;
     private RESTCSNodeV1 node = null;
     private RESTTranslatedContentSpecV1 translatedContentSpec = null;
     private RESTTranslatedCSNodeCollectionV1 children = null;
@@ -47,6 +49,7 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
 
         clone.nodeId = nodeId;
         clone.nodeRevision = nodeRevision;
+        clone.originalString = originalString;
 
         if (deepCopy) {
             if (children != null) {
@@ -125,6 +128,19 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
     public void explicitSetNodeRevision(final Integer nodeRevision) {
         this.nodeRevision = nodeRevision;
         this.setParameterToConfigured(NODE_REVISION_NAME);
+    }
+
+    public String getOriginalString() {
+        return originalString;
+    }
+
+    public void setOriginalString(final String originalString) {
+        this.originalString = originalString;
+    }
+
+    public void explicitSetOriginalString(final String originalString) {
+        this.originalString = originalString;
+        this.setParameterToConfigured(ORIGINALSTRING_NAME);
     }
 
     public RESTCSNodeV1 getNode() {
