@@ -34,7 +34,7 @@ public class RESTv1Constants {
 
     public static final String CONTENT_SPEC_EXPANSION_NAME = "contentSpecs";
     public static final String CONTENT_SPEC_NODE_EXPANSION_NAME = "nodes";
-    public static final String TRANSLATED_CONTENT_SPEC_EXPANSION_NAME = "translatedContentSpec";
+    public static final String TRANSLATED_CONTENT_SPEC_EXPANSION_NAME = "translatedContentSpecs";
     public static final String CONTENT_SPEC_TRANSLATED_NODE_EXPANSION_NAME = "translatedNodes";
 
     public static final String TOPIC_URL_NAME = "topic";
