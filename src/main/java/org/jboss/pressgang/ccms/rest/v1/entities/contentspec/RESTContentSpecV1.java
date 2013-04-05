@@ -52,7 +52,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     }
 
     public void cloneInto(final RESTContentSpecV1 clone, boolean deepCopy) {
-        this.cloneInto(clone, deepCopy);
+        super.cloneInto(clone, deepCopy);
 
         clone.locale = this.locale;
         clone.condition = this.condition;

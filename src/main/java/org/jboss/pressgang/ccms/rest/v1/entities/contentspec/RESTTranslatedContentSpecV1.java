@@ -36,6 +36,8 @@ public class RESTTranslatedContentSpecV1 extends RESTBasePrimaryEntityV1<RESTTra
     }
 
     public void cloneInto(RESTTranslatedContentSpecV1 clone, boolean deepCopy) {
+        super.cloneInto(clone, deepCopy);
+
         clone.contentSpecId = contentSpecId;
         clone.contentSpecRevision = contentSpecRevision;
 
