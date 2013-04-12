@@ -4,9 +4,7 @@ import java.net.URI;
 
 import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTBlobConstantV1JSONConverter;
-import org.jboss.pressgang.ccms.rest.v1.converter.RESTCSNodeV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTCategoryV1JSONConverter;
-import org.jboss.pressgang.ccms.rest.v1.converter.RESTContentSpecV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTFilterV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTImageV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTLogDetailsV1JSONConverter;
@@ -16,14 +14,10 @@ import org.jboss.pressgang.ccms.rest.v1.converter.RESTRoleV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTStringConstantV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTTagV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTTopicV1JSONConverter;
-import org.jboss.pressgang.ccms.rest.v1.converter.RESTTranslatedCSNodeV1JSONConverter;
-import org.jboss.pressgang.ccms.rest.v1.converter.RESTTranslatedContentSpecV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTTranslatedTopicV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTUserV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTBlobConstantCollectionV1JSONConverter;
-import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTCSNodeCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTCategoryCollectionV1JSONConverter;
-import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTContentSpecCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTFilterCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTImageCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTProjectCollectionV1JSONConverter;
@@ -32,8 +26,6 @@ import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTRoleCollectionV
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTStringConstantCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTTagCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTTopicCollectionV1JSONConverter;
-import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTTranslatedCSNodeCollectionV1JSONConverter;
-import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTTranslatedContentSpecCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTTranslatedTopicCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.converter.collection.RESTUserCollectionV1JSONConverter;
 import org.jboss.pressgang.ccms.rest.v1.jaxrsinterfaces.RESTInterfaceAdvancedV1;
@@ -45,9 +37,8 @@ import org.jboss.resteasy.plugins.providers.jackson.ResteasyJacksonProvider;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
 
 public class PressGangCCMSProxyFactoryV1 {
+    private static final ResteasyProviderFactory providerFactory = ResteasyProviderFactory.getInstance();
     static {
-        final ResteasyProviderFactory providerFactory = ResteasyProviderFactory.getInstance();
-
         // Configure the Jackson Provider to ignore Unknown Fields
         final ResteasyJacksonProvider jacksonProvider = new ResteasyJacksonProvider();
         jacksonProvider.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -66,10 +57,6 @@ public class PressGangCCMSProxyFactoryV1 {
         providerFactory.addStringConverter(RESTTopicV1JSONConverter.class);
         providerFactory.addStringConverter(RESTTranslatedTopicV1JSONConverter.class);
         providerFactory.addStringConverter(RESTUserV1JSONConverter.class);
-        providerFactory.addStringConverter(RESTContentSpecV1JSONConverter.class);
-        providerFactory.addStringConverter(RESTCSNodeV1JSONConverter.class);
-        providerFactory.addStringConverter(RESTTranslatedCSNodeV1JSONConverter.class);
-        providerFactory.addStringConverter(RESTTranslatedContentSpecV1JSONConverter.class);
         providerFactory.addStringConverter(RESTBlobConstantCollectionV1JSONConverter.class);
         providerFactory.addStringConverter(RESTCategoryCollectionV1JSONConverter.class);
         providerFactory.addStringConverter(RESTFilterCollectionV1JSONConverter.class);
@@ -82,10 +69,8 @@ public class PressGangCCMSProxyFactoryV1 {
         providerFactory.addStringConverter(RESTTopicCollectionV1JSONConverter.class);
         providerFactory.addStringConverter(RESTTranslatedTopicCollectionV1JSONConverter.class);
         providerFactory.addStringConverter(RESTUserCollectionV1JSONConverter.class);
-        providerFactory.addStringConverter(RESTContentSpecCollectionV1JSONConverter.class);
-        providerFactory.addStringConverter(RESTCSNodeCollectionV1JSONConverter.class);
-        providerFactory.addStringConverter(RESTTranslatedCSNodeCollectionV1JSONConverter.class);
-        providerFactory.addStringConverter(RESTTranslatedContentSpecCollectionV1JSONConverter.class);
+        providerFactory.registerProvider(APIVersionDecorator.class);
+
         RegisterBuiltin.register(providerFactory);
     }
 
@@ -116,4 +101,9 @@ public class PressGangCCMSProxyFactoryV1 {
     public RESTInterfaceAdvancedV1 getRESTAdvancedClient() {
         return requestFactory.createProxy(RESTInterfaceAdvancedV1.class);
     }
+
+    public void registerProvider(final Class<?> clazz) {
+        providerFactory.registerProvider(clazz);
+    }
 }
+

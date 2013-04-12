@@ -6,7 +6,6 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicStringCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTranslatedTopicCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedCSNodeV1;
 
 /**
  * The RESTTranslatedTopicV1 class is a combination of the TranslatedTopic and TranslatedTopicData classes. In the database,
@@ -28,8 +27,6 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     public static final String INCOMING_NAME = "incomingTranslatedRelationships";
     public static final String ALL_LATEST_OUTGOING_NAME = "allLatestOutgoingRelationships";
     public static final String ALL_LATEST_INCOMING_NAME = "allLatestIncomingRelationships";
-    public static final String TRANSLATED_CSNODE_NAME = "translatedCSNode";
-    public static final String TRANSLATED_XML_CONDITION = "translatedXMLCondition";
 
     protected RESTTopicV1 topic = null;
     protected Integer translatedTopicId = null;
@@ -38,13 +35,11 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     protected Integer translationPercentage = null;
     protected Date htmlUpdated = null;
     protected Boolean containsFuzzyTranslation = false;
-    protected String translatedXMLCondition = null;
     protected RESTTranslatedTopicStringCollectionV1 translatedTopicStrings = null;
     protected RESTTranslatedTopicCollectionV1 outgoingTranslatedRelationships = null;
     protected RESTTranslatedTopicCollectionV1 incomingTranslatedRelationships = null;
     protected RESTTranslatedTopicCollectionV1 outgoingRelationships = null;
     protected RESTTranslatedTopicCollectionV1 incomingRelationships = null;
-    protected RESTTranslatedCSNodeV1 translatedCSNode = null;
 
     /**
      * A list of the Envers revision numbers
@@ -78,7 +73,6 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
         clone.translatedTopicId = this.translatedTopicId;
         clone.translationPercentage = this.translationPercentage;
         clone.containsFuzzyTranslation = this.containsFuzzyTranslation;
-        clone.translatedXMLCondition = this.translatedXMLCondition;
 
         if (deepCopy) {
             if (this.translatedTopicStrings != null) {
@@ -112,7 +106,6 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
             }
 
             clone.setTopic(this.topic != null ? this.topic.clone(deepCopy) : null);
-            clone.translatedCSNode = this.translatedCSNode != null ? translatedCSNode.clone(deepCopy) : null;
         } else {
             clone.translatedTopicStrings = this.translatedTopicStrings;
             clone.topic = this.topic;
@@ -121,7 +114,6 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
             clone.outgoingRelationships = this.outgoingRelationships;
             clone.incomingRelationships = this.incomingRelationships;
             clone.revisions = this.revisions;
-            clone.translatedCSNode = translatedCSNode;
         }
     }
 
@@ -268,32 +260,6 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 
     public void setContainsFuzzyTranslation(final boolean containsFuzzyTranslation) {
         this.containsFuzzyTranslation = containsFuzzyTranslation;
-    }
-
-    public RESTTranslatedCSNodeV1 getTranslatedCSNode() {
-        return translatedCSNode;
-    }
-
-    public void setTranslatedCSNode(final RESTTranslatedCSNodeV1 translatedCSNode) {
-        this.translatedCSNode = translatedCSNode;
-    }
-
-    public void explicitSetTranslatedCSNode(final RESTTranslatedCSNodeV1 translatedCSNode) {
-        this.translatedCSNode = translatedCSNode;
-        setParameterToConfigured(TRANSLATED_CSNODE_NAME);
-    }
-
-    public String getTranslatedXMLCondition() {
-        return translatedXMLCondition;
-    }
-
-    public void setTranslatedXMLCondition(final String translatedXMLCondition) {
-        this.translatedXMLCondition = translatedXMLCondition;
-    }
-
-    public void explicitSetTranslationCondition(final String translationCondition) {
-        this.translatedXMLCondition = translationCondition;
-        setParameterToConfigured(TRANSLATED_XML_CONDITION);
     }
 
     @Override

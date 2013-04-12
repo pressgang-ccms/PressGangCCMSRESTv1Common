@@ -1,6 +1,8 @@
 package org.jboss.pressgang.ccms.rest.v1.constants;
 
 public class RESTv1Constants {
+    public static final String X_VERSION_HEADER = "X-Version";
+    public static final String X_CSP_VERSION_HEADER = "X-CSP-Version";
     /**
      * The generic name of the Docbook 4.5 Doctype
      */

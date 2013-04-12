@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyTagInPropertyC
 import org.junit.Before;
 import org.junit.Test;
 
-public class RESTPropertyTaginPropertyCategoryCollectionV1Test
+public class RESTPropertyTagInPropertyCategoryCollectionV1Test
 {
     private static final Integer SORT = 10;
     private static final Integer DIFFERENT_SORT = 20;

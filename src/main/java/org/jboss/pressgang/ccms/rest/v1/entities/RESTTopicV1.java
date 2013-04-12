@@ -7,7 +7,6 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTopicCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
@@ -17,7 +16,6 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     public static final String DESCRIPTION_NAME = "description";
     public static final String BUGZILLABUGS_NAME = "bugzillaBugs_OTM";
     public static final String TRANSLATEDTOPICS_NAME = "translatedTopics_OTM";
-    public static final String CONTENTSPECS_NAME = "contentSpecs_OTM";
 
     protected String description = null;
     protected Date created = null;
@@ -26,7 +24,6 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     protected RESTTranslatedTopicCollectionV1 translatedTopics_OTM = null;
     protected RESTTopicCollectionV1 outgoingRelationships = null;
     protected RESTTopicCollectionV1 incomingRelationships = null;
-    protected RESTContentSpecCollectionV1 contentSpecs_OTM = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -83,18 +80,12 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
                 clone.revisions = new RESTTopicCollectionV1();
                 this.revisions.cloneInto(clone.revisions, deepCopy);
             }
-
-            if (this.contentSpecs_OTM != null) {
-                clone.contentSpecs_OTM = new RESTContentSpecCollectionV1();
-                this.contentSpecs_OTM.cloneInto(clone.contentSpecs_OTM, deepCopy);
-            }
         } else {
             clone.bugzillaBugs_OTM = this.bugzillaBugs_OTM;
             clone.translatedTopics_OTM = this.translatedTopics_OTM;
             clone.outgoingRelationships = this.outgoingRelationships;
             clone.incomingRelationships = this.incomingRelationships;
             clone.revisions = this.revisions;
-            clone.contentSpecs_OTM = this.contentSpecs_OTM;
         }
     }
 
@@ -231,19 +222,6 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     public void explicitSetXmlDoctype(final RESTXMLDoctype doctype) {
         this.xmlDoctype = doctype;
         this.setParameterToConfigured(DOCTYPE_NAME);
-    }
-
-    public RESTContentSpecCollectionV1 getContentSpecs_OTM() {
-        return contentSpecs_OTM;
-    }
-
-    public void setContentSpecs_OTM(final RESTContentSpecCollectionV1 contentSpecs_OTM) {
-        this.contentSpecs_OTM = contentSpecs_OTM;
-    }
-
-    public void explicitSetContentSpecs_OTM(final RESTContentSpecCollectionV1 contentSpecs_OTM) {
-        this.contentSpecs_OTM = contentSpecs_OTM;
-        this.setParameterToConfigured(CONTENTSPECS_NAME);
     }
 
     @Override
