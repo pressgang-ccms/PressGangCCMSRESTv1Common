@@ -3,7 +3,6 @@ package org.jboss.pressgang.ccms.rest.v1.client;
 import javax.ws.rs.ext.Provider;
 
 import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
-import org.jboss.pressgang.ccms.utils.common.VersionUtilities;
 import org.jboss.resteasy.annotations.interception.ClientInterceptor;
 import org.jboss.resteasy.client.ClientResponse;
 import org.jboss.resteasy.spi.interception.ClientExecutionContext;
@@ -12,7 +11,11 @@ import org.jboss.resteasy.spi.interception.ClientExecutionInterceptor;
 @Provider
 @ClientInterceptor
 public class APIVersionDecorator implements ClientExecutionInterceptor {
-    private static final String version = VersionUtilities.getAPIVersion(PressGangCCMSProxyFactoryV1.class);
+    private final String version;
+
+    public APIVersionDecorator(String version) {
+        this.version = version;
+    }
 
     @Override
     public ClientResponse execute(ClientExecutionContext clientExecutionContext) throws Exception {
