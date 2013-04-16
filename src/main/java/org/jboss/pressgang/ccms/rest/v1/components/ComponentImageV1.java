@@ -28,6 +28,18 @@ public class ComponentImageV1 {
         return retValue;
     }
 
+    public static String getInlineXMLTemplate(final RESTImageV1 source) {
+        final String retValue = "<figure>\n" +
+                "\t<title>Title</title>\n" +
+                "\t<inlinemediaobject>\n" +
+                "\t\t<imageobject>\n" +
+                "\t\t\t<imagedata align=\"center\" fileref=\"images/" + getDocbookFileName(source) + "\"/>\n" +
+                "\t\t</imageobject>\n" +
+                "\t</inlinemediaobject>";
+
+        return retValue;
+    }
+
     public String getXMLTemplate() {
         return getXMLTemplate(source);
     }
