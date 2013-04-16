@@ -10,19 +10,20 @@
 
     <groupId>org.jboss.pressgang.ccms</groupId>
     <artifactId>pressgang-ccms-restv1</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>PressGang CCMS REST v1 Common</name>
     <url>https://community.jboss.org/en/pressgang</url>
 
     <scm>
-        <url>https://github.com/mcasperson/PressGangCCMSRESTv1Common</url>
-        <connection>scm:git@github.com:mcasperson/PressGangCCMSRESTv1Common.git</connection>
-        <developerConnection>scm:git@github.com:mcasperson/PressGangCCMSRESTv1Common.git</developerConnection>
+        <url>https://github.com/pressgang-ccms/PressGangCCMSRESTv1Common</url>
+        <connection>scm:git@github.com:pressgang-ccms/PressGangCCMSRESTv1Common.git</connection>
+        <developerConnection>scm:git@github.com:pressgang-ccms/PressGangCCMSRESTv1Common.git</developerConnection>
     </scm>
 
     <properties>
+        <pressgang.ccms.version>1.1-SNAPSHOT</pressgang.ccms.version>
         <jackson.version>1.9.8</jackson.version>
         <resteasy.version>2.3.4.Final</resteasy.version>
         <jodatime.version>2.1</jodatime.version>
@@ -53,6 +54,9 @@
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                         </manifest>
+                        <manifestEntries>
+                            <Implementation-Build>${maven.build.timestamp}</Implementation-Build>
+                        </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>
@@ -113,33 +117,17 @@
         </pluginManagement>
     </build>
 
-
     <dependencies>
-
         <!-- PressGang CCMS libraries -->
         <dependency>
             <groupId>org.jboss.pressgang.ccms</groupId>
             <artifactId>pressgang-ccms-utils</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${pressgang.ccms.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss.pressgang.ccms</groupId>
             <artifactId>pressgang-ccms-zanata</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <!-- Testing Libraries -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
+            <version>${pressgang.ccms.version}</version>
         </dependency>
 
         <!-- RESTEasy Libraries -->
@@ -176,6 +164,20 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>${jodatime.version}</version>
+        </dependency>
+
+        <!-- Testing Libraries -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

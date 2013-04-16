@@ -1,7 +1,7 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.contentspec;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSNodeCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSTranslatedNodeCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTCSNodeCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.join.RESTCSRelatedNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
@@ -15,7 +15,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
     protected RESTCSRelatedNodeCollectionV1 relatedToNodes = null;
     protected RESTCSRelatedNodeCollectionV1 relatedFromNodes = null;
     protected RESTCSNodeCollectionV1 children = null;
-    private RESTCSTranslatedNodeCollectionV1 translatedNodes_OTM = null;
+    private RESTTranslatedCSNodeCollectionV1 translatedNodes_OTM = null;
     private RESTCSNodeCollectionV1 revisions = null;
 
     public RESTCSNodeV1() {
@@ -67,7 +67,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
             }
 
             if (translatedNodes_OTM != null) {
-                clone.translatedNodes_OTM = new RESTCSTranslatedNodeCollectionV1();
+                clone.translatedNodes_OTM = new RESTTranslatedCSNodeCollectionV1();
                 this.translatedNodes_OTM.cloneInto(clone.translatedNodes_OTM, deepCopy);
             }
 
@@ -114,7 +114,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
         this.setParameterToConfigured(NODE_TYPE_NAME);
     }
 
-    public void explicitSetEnitityId(final Integer entityId) {
+    public void explicitSetEntityId(final Integer entityId) {
         this.entityId = entityId;
         this.setParameterToConfigured(ENTITY_ID_NAME);
     }
@@ -144,15 +144,15 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
         this.setParameterToConfigured(PROPERTIES_NAME);
     }
 
-    public RESTCSTranslatedNodeCollectionV1 getTranslatedNodes_OTM() {
+    public RESTTranslatedCSNodeCollectionV1 getTranslatedNodes_OTM() {
         return translatedNodes_OTM;
     }
 
-    public void setTranslatedNodes_OTM(final RESTCSTranslatedNodeCollectionV1 translatedNodes) {
+    public void setTranslatedNodes_OTM(final RESTTranslatedCSNodeCollectionV1 translatedNodes) {
         this.translatedNodes_OTM = translatedNodes;
     }
 
-    public void explicitSetTranslatedNodes_OTM(final RESTCSTranslatedNodeCollectionV1 translatedNodes) {
+    public void explicitSetTranslatedNodes_OTM(final RESTTranslatedCSNodeCollectionV1 translatedNodes) {
         this.translatedNodes_OTM = translatedNodes;
         this.setParameterToConfigured(TRANSLATED_NODES_NAME);
     }

@@ -255,7 +255,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
 
     public abstract String returnBugzillaBuildId();
 
-    public abstract String returnSkynetURL();
+    public abstract String returnPressGangCCMSURL();
 
     public abstract String returnInternalURL();
 

@@ -7,8 +7,10 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTranslatedStringV1
 public class RESTTranslatedTopicStringV1 extends RESTBaseTranslatedStringV1<RESTTranslatedTopicStringV1,
         RESTTranslatedTopicStringCollectionV1, RESTTranslatedTopicStringCollectionItemV1> {
     public static final String TRANSLATEDTOPIC_NAME = "translatedTopic";
+    public static final String ORIGINALSTRING_NAME = "originalString";
 
     private RESTTranslatedTopicV1 translatedTopic = null;
+    private String originalString = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -36,6 +38,8 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseTranslatedStringV1<REST
     public void cloneInto(final RESTTranslatedTopicStringV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
+        clone.originalString = this.originalString;
+
         if (deepCopy) {
             clone.translatedTopic = this.translatedTopic != null ? this.translatedTopic.clone(deepCopy) : null;
 
@@ -55,6 +59,14 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseTranslatedStringV1<REST
 
     public void setTranslatedTopic(final RESTTranslatedTopicV1 translatedTopic) {
         this.translatedTopic = translatedTopic;
+    }
+
+    public String getOriginalString() {
+        return originalString;
+    }
+
+    public void setOriginalString(final String originalString) {
+        this.originalString = originalString;
     }
 
     public void explicitSetOriginalString(final String originalString) {

@@ -22,13 +22,13 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
     }
 
     @Override
-    public String returnSkynetURL() {
-        return returnSkynetURL(source);
+    public String returnPressGangCCMSURL() {
+        return returnPressGangCCMSURL(source);
     }
 
-    public static String returnSkynetURL(final RESTTopicV1 source) {
-        return CommonConstants.SERVER_URL + "/TopicIndex/Topic.seam?topicTopicId=" + source.getId() + (source.getRevision() != null ?
-                ("&amp;topicRevision=" + source.getRevision()) : "");
+    public static String returnPressGangCCMSURL(final RESTTopicV1 source) {
+        final String serverUrl = System.getProperty(CommonConstants.PRESS_GANG_UI_SYSTEM_PROPERTY);
+        return (serverUrl.endsWith("/") ? serverUrl : (serverUrl + "/")) + "#SearchResultsAndTopicView;query;topicIds=" + source.getId();
     }
 
     /**
@@ -117,8 +117,6 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnEditorURL(final RESTTopicV1 source) {
-        return CommonConstants.SERVER_URL + "/TopicIndex/TopicEdit.seam?topicTopicId=" + source.getId();
+        return returnPressGangCCMSURL(source);
     }
-
-
 }

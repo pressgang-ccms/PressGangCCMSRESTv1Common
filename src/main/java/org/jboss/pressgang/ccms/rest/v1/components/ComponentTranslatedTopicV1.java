@@ -43,26 +43,23 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     @Override
-    public String returnSkynetURL() {
-        return returnSkynetURL(source);
+    public String returnPressGangCCMSURL() {
+        return returnPressGangCCMSURL(source);
     }
 
-    public static String returnSkynetURL(final RESTTranslatedTopicV1 source) {
+    public static String returnPressGangCCMSURL(final RESTTranslatedTopicV1 source) {
         /*
          * If the topic isn't a dummy then link to the translated counterpart. If the topic is a dummy URL and the locale doesn't match
-         * the historical topic's
-         * locale then it means that the topic has been pushed to zanata so link to the original pushed translation. If neither of these
-         * rules apply then link
-         * to the standard topic.
+         * the historical topic's locale then it means that the topic has been pushed to zanata so link to the original pushed
+         * translation. If neither of these rules apply then link to the standard topic.
          */
-        if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) {
-            return CommonConstants.SERVER_URL + "/TopicIndex/TranslatedTopic.seam?translatedTopicId=" + source.getTranslatedTopicId() +
-                    "&amp;locale=" + source.getLocale();
-        } else if (hasBeenPushedForTranslation(source)) {
-            return CommonConstants.SERVER_URL + "/TopicIndex/TranslatedTopic.seam?translatedTopicId=" + returnPushedTranslationTopicId(
-                    source) + "&amp;locale=" + source.getTopic().getLocale();
+        if (!ComponentBaseTopicV1.returnIsDummyTopic(source) || hasBeenPushedForTranslation(source)) {
+            final String serverUrl = System.getProperty(CommonConstants.PRESS_GANG_UI_SYSTEM_PROPERTY);
+            return (serverUrl.endsWith(
+                    "/") ? serverUrl : (serverUrl + "/")) + "#TranslatedTopicResultsAndTranslatedTopicView;query;zanataIds=" +
+                    returnZanataId(source);
         } else {
-            return ComponentTopicV1.returnSkynetURL(source.getTopic());
+            return ComponentTopicV1.returnPressGangCCMSURL(source.getTopic());
         }
     }
 
