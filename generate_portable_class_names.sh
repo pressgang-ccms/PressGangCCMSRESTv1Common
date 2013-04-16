@@ -10,7 +10,7 @@ COLLECTIONS_ITEMS_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/
 COLLECTIONS_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/join/*
 COLLECTIONS_CONTENTSPEC=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/contentspec/*
 ENTITIES=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/*
-ENTITIES_CONTENTSPEC=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/contentspec*
+ENTITIES_CONTENTSPEC=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/contentspec/*
 ENTITIES_ENUMS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/enums/*
 ENTITIES_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/join/*
 
