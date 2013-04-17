@@ -10,6 +10,7 @@ COLLECTIONS_ITEMS_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/
 COLLECTIONS_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/join/*
 COLLECTIONS_CONTENTSPEC=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/contentspec/*
 COLLECTIONS_CONTENTSPEC_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/contentspec/join/*
+COLLECTIONS_CONTENTSPEC_ITEMS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/contentspec/items/*
 ENTITIES=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/*
 ENTITIES_CONTENTSPEC=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/contentspec/*
 ENTITIES_CONTENTSPEC_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/contentspec/join/*
@@ -18,7 +19,7 @@ ENTITIES_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/join/*
 
 PORTABLE_CLASSES=""
 
-for package in ${COLLECTIONS} ${COLLECTIONS_ITEMS} ${COLLECTIONS_JOIN} ${ENTITIES} ${ENTITIES_ENUMS} ${ENTITIES_JOIN} ${COLLECTIONS_ITEMS_JOIN} ${COLLECTIONS_CONTENTSPEC} ${ENTITIES_CONTENTSPEC} ${ENTITIES_CONTENTSPEC_JOIN} ${COLLECTIONS_CONTENTSPEC_JOIN}
+for package in ${COLLECTIONS} ${COLLECTIONS_ITEMS} ${COLLECTIONS_JOIN} ${ENTITIES} ${ENTITIES_ENUMS} ${ENTITIES_JOIN} ${COLLECTIONS_ITEMS_JOIN} ${COLLECTIONS_CONTENTSPEC} ${ENTITIES_CONTENTSPEC} ${ENTITIES_CONTENTSPEC_JOIN} ${COLLECTIONS_CONTENTSPEC_JOIN} ${COLLECTIONS_CONTENTSPEC_ITEMS}
 do
 	for file in $package
 	do		
