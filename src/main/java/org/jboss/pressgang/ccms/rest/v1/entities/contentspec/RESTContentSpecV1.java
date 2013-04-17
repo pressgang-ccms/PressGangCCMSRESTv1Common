@@ -28,7 +28,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     private Date lastModified = null;
     private RESTContentSpecTypeV1 type = null;
     private RESTContentSpecCollectionV1 revisions = null;
-    private RESTCSNodeCollectionV1 children = null;
+    private RESTCSNodeCollectionV1 children_OTM = null;
     private RESTTagCollectionV1 tags = null;
     private RESTTranslatedContentSpecCollectionV1 translatedContentSpecs = null;
 
@@ -38,12 +38,12 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     }
 
     @Override
-    public void setRevisions(RESTContentSpecCollectionV1 revisions) {
+    public void setRevisions(final RESTContentSpecCollectionV1 revisions) {
         this.revisions = revisions;
     }
 
     @Override
-    public RESTContentSpecV1 clone(boolean deepCopy) {
+    public RESTContentSpecV1 clone(final boolean deepCopy) {
         final RESTContentSpecV1 retValue = new RESTContentSpecV1();
 
         this.cloneInto(retValue, deepCopy);
@@ -51,7 +51,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
         return retValue;
     }
 
-    public void cloneInto(final RESTContentSpecV1 clone, boolean deepCopy) {
+    public void cloneInto(final RESTContentSpecV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
         clone.locale = this.locale;
@@ -65,9 +65,9 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
                 this.revisions.cloneInto(clone.revisions, deepCopy);
             }
 
-            if (this.children != null) {
-                clone.children = new RESTCSNodeCollectionV1();
-                this.children.cloneInto(clone.children, deepCopy);
+            if (this.children_OTM != null) {
+                clone.children_OTM = new RESTCSNodeCollectionV1();
+                this.children_OTM.cloneInto(clone.children_OTM, deepCopy);
             }
 
             if (this.tags != null) {
@@ -81,7 +81,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
             }
         } else {
             clone.revisions = this.revisions;
-            clone.children = this.children;
+            clone.children_OTM = this.children_OTM;
             clone.tags = this.tags;
             clone.translatedContentSpecs = this.translatedContentSpecs;
         }
@@ -148,15 +148,15 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     }
 
     public RESTCSNodeCollectionV1 getChildren_OTM() {
-        return children;
+        return children_OTM;
     }
 
     public void setChildren_OTM(final RESTCSNodeCollectionV1 children) {
-        this.children = children;
+        this.children_OTM = children;
     }
 
     public void explicitSetChildren_OTM(final RESTCSNodeCollectionV1 children) {
-        this.children = children;
+        this.children_OTM = children;
         this.setParameterToConfigured(CHILDREN_NAME);
     }
 
@@ -182,7 +182,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
         return translatedContentSpecs;
     }
 
-    public void setTranslatedContentSpecs(RESTTranslatedContentSpecCollectionV1 translatedContentSpecs) {
+    public void setTranslatedContentSpecs(final RESTTranslatedContentSpecCollectionV1 translatedContentSpecs) {
         this.translatedContentSpecs = translatedContentSpecs;
     }
 }
