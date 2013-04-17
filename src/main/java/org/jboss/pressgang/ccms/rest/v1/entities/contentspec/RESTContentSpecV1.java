@@ -16,7 +16,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
 
     public static final String LAST_PUBLISHED_NAME = "lastPublished";
     public static final String LOCALE_NAME = "locale";
-    public static final String NODES_NAME = "nodes_OTM";
+    public static final String CHILDREN_NAME = "children_OTM";
     public static final String TYPE_NAME = "type";
     public static final String TAGS_NAME = "tags";
     public static final String CONDITION_NAME = "condition";
@@ -28,7 +28,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     private Date lastModified = null;
     private RESTContentSpecTypeV1 type = null;
     private RESTContentSpecCollectionV1 revisions = null;
-    private RESTCSNodeCollectionV1 nodes = null;
+    private RESTCSNodeCollectionV1 children = null;
     private RESTTagCollectionV1 tags = null;
     private RESTTranslatedContentSpecCollectionV1 translatedContentSpecs = null;
 
@@ -65,9 +65,9 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
                 this.revisions.cloneInto(clone.revisions, deepCopy);
             }
 
-            if (this.nodes != null) {
-                clone.nodes = new RESTCSNodeCollectionV1();
-                this.nodes.cloneInto(clone.nodes, deepCopy);
+            if (this.children != null) {
+                clone.children = new RESTCSNodeCollectionV1();
+                this.children.cloneInto(clone.children, deepCopy);
             }
 
             if (this.tags != null) {
@@ -81,7 +81,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
             }
         } else {
             clone.revisions = this.revisions;
-            clone.nodes = this.nodes;
+            clone.children = this.children;
             clone.tags = this.tags;
             clone.translatedContentSpecs = this.translatedContentSpecs;
         }
@@ -148,16 +148,16 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     }
 
     public RESTCSNodeCollectionV1 getChildren_OTM() {
-        return nodes;
+        return children;
     }
 
     public void setChildren_OTM(final RESTCSNodeCollectionV1 children) {
-        this.nodes = children;
+        this.children = children;
     }
 
     public void explicitSetChildren_OTM(final RESTCSNodeCollectionV1 children) {
-        this.nodes = children;
-        this.setParameterToConfigured(NODES_NAME);
+        this.children = children;
+        this.setParameterToConfigured(CHILDREN_NAME);
     }
 
     public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties) {
