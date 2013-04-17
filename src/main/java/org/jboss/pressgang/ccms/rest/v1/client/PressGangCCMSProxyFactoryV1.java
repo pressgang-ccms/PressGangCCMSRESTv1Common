@@ -70,7 +70,7 @@ public class PressGangCCMSProxyFactoryV1 {
         providerFactory.addStringConverter(RESTTranslatedTopicCollectionV1JSONConverter.class);
         providerFactory.addStringConverter(RESTUserCollectionV1JSONConverter.class);
 
-        final APIVersionDecorator versionDecorator = new APIVersionDecorator("1.0-SNAPSHOT");
+        final APIVersionDecorator versionDecorator = new APIVersionDecorator("1.1-SNAPSHOT");
         providerFactory.registerProviderInstance(versionDecorator);
 
         RegisterBuiltin.register(providerFactory);
