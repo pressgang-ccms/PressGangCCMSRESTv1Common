@@ -29,13 +29,23 @@ public class ComponentImageV1 {
     }
 
     public static String getInlineXMLTemplate(final RESTImageV1 source) {
-        final String retValue = "<figure>\n" +
-                "\t<title>Title</title>\n" +
-                "\t<inlinemediaobject>\n" +
-                "\t\t<imageobject>\n" +
-                "\t\t\t<imagedata align=\"center\" fileref=\"images/" + getDocbookFileName(source) + "\"/>\n" +
-                "\t\t</imageobject>\n" +
-                "\t</inlinemediaobject>";
+        final String retValue = "<inlinemediaobject>\n" +
+                "\t<imageobject>\n" +
+                "\t\t<imagedata align=\"center\" fileref=\"images/" + getDocbookFileName(source) + "\"/>\n" +
+                "\t</imageobject>\n" +
+                "</inlinemediaobject>";
+
+        return retValue;
+    }
+
+    public static String getBareXMLTemplate(final RESTImageV1 source) {
+        final String retValue = "<mediaobject>\n" +
+                "\t<imageobject>\n" +
+                "\t\t<imagedata align=\"center\" fileref=\"images/" + getDocbookFileName(source) + "\"/>\n" +
+                "\t</imageobject>\n" +
+                "</mediaobject>";
+
+        return retValue;
 
         return retValue;
     }
