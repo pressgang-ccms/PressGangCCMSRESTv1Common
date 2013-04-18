@@ -46,8 +46,6 @@ public class ComponentImageV1 {
                 "</mediaobject>";
 
         return retValue;
-
-        return retValue;
     }
 
     public String getXMLTemplate() {
