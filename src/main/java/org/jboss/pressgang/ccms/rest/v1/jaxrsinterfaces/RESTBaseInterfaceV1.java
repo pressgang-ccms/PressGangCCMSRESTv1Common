@@ -2450,11 +2450,11 @@ public interface RESTBaseInterfaceV1 {
     public String getTEXTContentSpecRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision);
 
     @POST
-    @Path("/contentspec/update/text")
+    @Path("/contentspec/update/text/{id}")
     @Consumes({MediaType.TEXT_PLAIN})
     @Produces(MediaType.TEXT_PLAIN)
-    public String updateTEXTContentSpec(final String contentSpec, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+    public String updateTEXTContentSpec(@PathParam("id") final Integer id, final String contentSpec,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     @POST
     @Path("/contentspec/create/text")
