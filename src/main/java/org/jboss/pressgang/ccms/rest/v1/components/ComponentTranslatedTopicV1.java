@@ -161,22 +161,11 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     public static RESTTranslatedTopicV1 returnPushedTranslatedTopic(final RESTTranslatedTopicV1 source) {
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return source;
 
-        /* Check that a translation exists that is the same locale as the base topic */
-        RESTTranslatedTopicV1 pushedTranslatedTopic = null;
-        if (source.getTopic().getTranslatedTopics_OTM() != null && source.getTopic().getTranslatedTopics_OTM().getItems() != null) {
-            final Integer topicRev = source.getTopicRevision();
-            final List<RESTTranslatedTopicV1> topics = source.getTopic().getTranslatedTopics_OTM().returnItems();
-            for (final RESTTranslatedTopicV1 translatedTopic : topics) {
-                if (translatedTopic.getLocale().equals(source.getTopic().getLocale()) &&
-                        // Ensure that the topic revision is less than or equal to the source revision
-                        (topicRev == null || translatedTopic.getTopicRevision() <= topicRev) &&
-                        // Check if this translated topic is a higher revision then the current stored translation
-                        (pushedTranslatedTopic == null || pushedTranslatedTopic.getTopicRevision() < translatedTopic.getTopicRevision()))
-                    pushedTranslatedTopic = translatedTopic;
-            }
+        if (source.getTopic() != null) {
+            return ComponentTopicV1.returnPushedTranslatedTopic(source.getTopic());
+        } else  {
+            return null;
         }
-
-        return pushedTranslatedTopic;
     }
 
     public boolean hasBeenPushedForTranslation() {
