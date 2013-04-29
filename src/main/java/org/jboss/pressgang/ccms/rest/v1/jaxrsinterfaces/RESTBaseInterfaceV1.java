@@ -2463,6 +2463,19 @@ public interface RESTBaseInterfaceV1 {
     public String createTEXTContentSpec(final String contentSpec, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
+    /* ZIP FUNCTIONS */
+    @GET
+    @Path("/contentspecs/get/zip/all")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public byte[] getZIPContentSpecs();
+
+    @GET
+    @Path("/contentspecs/get/zip/{query}")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public byte[] getZIPContentSpecsWithQuery(@PathParam("query") PathSegment query);
+
     /* CONTENT SPEC NODE FUNCTIONS */
     /* JSONP FUNCTIONS */
     @GET
@@ -2492,55 +2505,55 @@ public interface RESTBaseInterfaceV1 {
     public String getJSONPContentSpecNodesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback);
 
-    @GET
-    @Path("/contentspecnode/update/jsonp")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPContentSpecNode(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCSNodeV1 dataObject,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/contentspecnodes/update/jsonp")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPContentSpecNodes(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/contentspecnode/create/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPContentSpecNode(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCSNodeV1 dataObject,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/contentspecnodes/create/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPContentSpecNodes(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/contentspecnode/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPContentSpecNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/contentspecnodes/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPContentSpecNodes(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
-            @QueryParam("callback") final String callback);
+//    @GET
+//    @Path("/contentspecnode/update/jsonp")
+//    @Consumes({MediaType.APPLICATION_JSON})
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String updateJSONPContentSpecNode(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCSNodeV1 dataObject,
+//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+//            @QueryParam("callback") final String callback);
+//
+//    @GET
+//    @Path("/contentspecnodes/update/jsonp")
+//    @Consumes({MediaType.APPLICATION_JSON})
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String updateJSONPContentSpecNodes(@QueryParam("expand") final String expand,
+//            @QueryParam("data") final RESTCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
+//            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+//            @QueryParam("callback") final String callback);
+//
+//    @GET
+//    @Path("/contentspecnode/create/jsonp")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes({MediaType.APPLICATION_JSON})
+//    public String createJSONPContentSpecNode(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCSNodeV1 dataObject,
+//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+//            @QueryParam("callback") final String callback);
+//
+//    @GET
+//    @Path("/contentspecnodes/create/jsonp")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes({MediaType.APPLICATION_JSON})
+//    public String createJSONPContentSpecNodes(@QueryParam("expand") final String expand,
+//            @QueryParam("data") final RESTCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
+//            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+//            @QueryParam("callback") final String callback);
+//
+//    @GET
+//    @Path("/contentspecnode/delete/jsonp/{id}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+//    public String deleteJSONPContentSpecNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
+//            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
+//            @QueryParam("callback") final String callback);
+//
+//    @GET
+//    @Path("/contentspecnodes/delete/jsonp/{ids}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+//    public String deleteJSONPContentSpecNodes(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
+//            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
+//            @QueryParam("callback") final String callback);
 
     /* JSON FUNCTIONS */
     @GET
@@ -2569,50 +2582,50 @@ public interface RESTBaseInterfaceV1 {
     public RESTCSNodeCollectionV1 getJSONContentSpecNodesWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand);
 
-    @POST
-    @Path("/contentspecnode/update/json")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public RESTCSNodeV1 updateJSONContentSpecNode(@QueryParam("expand") final String expand, final RESTCSNodeV1 dataObject,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
-
-    @POST
-    @Path("/contentspecnodes/update/json")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public RESTCSNodeCollectionV1 updateJSONContentSpecNodes(@QueryParam("expand") final String expand,
-            final RESTCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
-            @QueryParam("userId") final String userId);
-
-    @POST
-    @Path("/contentspecnode/create/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public RESTCSNodeV1 createJSONContentSpecNode(@QueryParam("expand") final String expand, final RESTCSNodeV1 dataObject,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
-
-    @POST
-    @Path("/contentspecnodes/create/json")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public RESTCSNodeCollectionV1 createJSONContentSpecNodes(@QueryParam("expand") final String expand,
-            final RESTCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
-            @QueryParam("userId") final String userId);
-
-    @DELETE
-    @Path("/contentspecnode/delete/json/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTCSNodeV1 deleteJSONContentSpecNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand);
-
-    @DELETE
-    @Path("/contentspecnodes/delete/json/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTCSNodeCollectionV1 deleteJSONContentSpecNodes(@PathParam("ids") final PathSegment ids,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("expand") final String expand);
+//    @POST
+//    @Path("/contentspecnode/update/json")
+//    @Consumes({MediaType.APPLICATION_JSON})
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public RESTCSNodeV1 updateJSONContentSpecNode(@QueryParam("expand") final String expand, final RESTCSNodeV1 dataObject,
+//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+//
+//    @POST
+//    @Path("/contentspecnodes/update/json")
+//    @Consumes({MediaType.APPLICATION_JSON})
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public RESTCSNodeCollectionV1 updateJSONContentSpecNodes(@QueryParam("expand") final String expand,
+//            final RESTCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+//            @QueryParam("userId") final String userId);
+//
+//    @POST
+//    @Path("/contentspecnode/create/json")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes({MediaType.APPLICATION_JSON})
+//    public RESTCSNodeV1 createJSONContentSpecNode(@QueryParam("expand") final String expand, final RESTCSNodeV1 dataObject,
+//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+//
+//    @POST
+//    @Path("/contentspecnodes/create/json")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes({MediaType.APPLICATION_JSON})
+//    public RESTCSNodeCollectionV1 createJSONContentSpecNodes(@QueryParam("expand") final String expand,
+//            final RESTCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+//            @QueryParam("userId") final String userId);
+//
+//    @DELETE
+//    @Path("/contentspecnode/delete/json/{id}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+//    public RESTCSNodeV1 deleteJSONContentSpecNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
+//            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand);
+//
+//    @DELETE
+//    @Path("/contentspecnodes/delete/json/{ids}")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+//    public RESTCSNodeCollectionV1 deleteJSONContentSpecNodes(@PathParam("ids") final PathSegment ids,
+//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+//            @QueryParam("expand") final String expand);
 
     /* TRANSLATED CONTENT SPEC FUNCTIONS */
     /* JSONP FUNCTIONS */

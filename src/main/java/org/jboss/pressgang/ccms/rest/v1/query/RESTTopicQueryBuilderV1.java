@@ -349,6 +349,24 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
         put(CommonFilterConstants.TOPIC_NOT_EDITED_IN_LAST_DAYS, notEditedInLastDays);
     }
 
+    public Integer getEditedInLastMinutes() {
+        final String editedInLastMinutes = get(CommonFilterConstants.TOPIC_EDITED_IN_LAST_MINUTES);
+        return editedInLastMinutes == null ? null : Integer.parseInt(editedInLastMinutes);
+    }
+
+    public void setEditedInLastMinutes(final Integer editedInLastMinutes) {
+        put(CommonFilterConstants.TOPIC_EDITED_IN_LAST_MINUTES, editedInLastMinutes);
+    }
+
+    public Integer getNotEditedInLastMinutes() {
+        final String notEditedInLastMinutes = get(CommonFilterConstants.TOPIC_NOT_EDITED_IN_LAST_MINUTES);
+        return notEditedInLastMinutes == null ? null : Integer.parseInt(notEditedInLastMinutes);
+    }
+
+    public void setNotEditedInLastMinutes(final Integer notEditedInLastMinutes) {
+        put(CommonFilterConstants.TOPIC_NOT_EDITED_IN_LAST_MINUTES, notEditedInLastMinutes);
+    }
+
     public Boolean getHasOpenBugzillaBugs() {
         final String hasOpenBugzillaBugs = get(CommonFilterConstants.TOPIC_HAS_OPEN_BUGZILLA_BUGS);
         return hasOpenBugzillaBugs == null ? null : Boolean.parseBoolean(hasOpenBugzillaBugs);

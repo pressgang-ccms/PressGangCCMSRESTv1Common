@@ -26,6 +26,8 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     private String condition = null;
     private Date lastPublished = null;
     private Date lastModified = null;
+    private String errors = null;
+    private String failedContentSpec = null;
     private RESTContentSpecTypeV1 type = null;
     private RESTContentSpecCollectionV1 revisions = null;
     private RESTCSNodeCollectionV1 children_OTM = null;
@@ -58,6 +60,8 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
         clone.condition = this.condition;
         clone.lastPublished = this.lastPublished == null ? null : (Date) lastPublished.clone();
         clone.lastModified = this.lastModified == null ? null : (Date) lastModified.clone();
+        clone.errors = this.errors;
+        clone.failedContentSpec = this.failedContentSpec;
 
         if (deepCopy) {
             if (this.revisions != null) {
@@ -184,5 +188,21 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
 
     public void setTranslatedContentSpecs(final RESTTranslatedContentSpecCollectionV1 translatedContentSpecs) {
         this.translatedContentSpecs = translatedContentSpecs;
+    }
+
+    public String getErrors() {
+        return errors;
+    }
+
+    public void setErrors(final String errors) {
+        this.errors = errors;
+    }
+
+    public String getFailedContentSpec() {
+        return failedContentSpec;
+    }
+
+    public void setFailedContentSpec(final String failedContentSpec) {
+        this.failedContentSpec = failedContentSpec;
     }
 }

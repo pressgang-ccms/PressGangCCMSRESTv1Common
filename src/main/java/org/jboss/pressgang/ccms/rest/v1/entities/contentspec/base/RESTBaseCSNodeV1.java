@@ -11,8 +11,6 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
         V extends RESTBaseCollectionItemV1<T, U, V>> extends RESTBaseEntityWithPropertiesV1<T, U, V> {
     public static final String TITLE_NAME = "title";
     public static final String TARGET_ID_NAME = "targetId";
-    public static final String NEXT_NODE_NAME = "nextNode";
-    public static final String PREVIOUS_NODE_NAME = "previousNode";
     public static final String ENTITY_ID_NAME = "entityId";
     public static final String ENTITY_REVISION_NAME = "entityRevision";
     public static final String CONDITION_NAME = "condition";
@@ -24,8 +22,6 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
     public static final String CONTENT_SPEC_NAME = "contentSpec";
     public static final String ADDITIONAL_TEXT_NAME = "additionalText";
 
-    protected Integer nextNodeId = null;
-    protected Integer previousNodeId = null;
     protected String title = null;
     protected String targetId = null;
     protected Integer entityId = null;
@@ -44,8 +40,6 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
         clone.entityId = this.entityId;
         clone.entityRevision = this.entityRevision;
         clone.condition = this.condition;
-        clone.nextNodeId = this.nextNodeId;
-        clone.previousNodeId = this.previousNodeId;
         clone.additionalText = this.additionalText;
         clone.nodeType = this.nodeType;
 
@@ -133,21 +127,5 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
 
     public void setCondition(final String condition) {
         this.condition = condition;
-    }
-
-    public Integer getNextNodeId() {
-        return nextNodeId;
-    }
-
-    public void setNextNodeId(final Integer nextNodeId) {
-        this.nextNodeId = nextNodeId;
-    }
-
-    public Integer getPreviousNodeId() {
-        return previousNodeId;
-    }
-
-    public void setPreviousNodeId(final Integer previousNodeId) {
-        this.previousNodeId = previousNodeId;
     }
 }

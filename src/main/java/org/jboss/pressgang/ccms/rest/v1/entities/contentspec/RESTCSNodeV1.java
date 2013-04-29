@@ -11,7 +11,9 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.join.RESTCSRelatedN
 
 public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeCollectionV1, RESTCSNodeCollectionItemV1> {
     public static final String TRANSLATED_NODES_NAME = "translatedNodes_OTM";
+    public static final String NEXT_NODE_NAME = "nextNode";
 
+    protected RESTCSNodeV1 nextNode = null;
     protected RESTCSRelatedNodeCollectionV1 relatedToNodes = null;
     protected RESTCSRelatedNodeCollectionV1 relatedFromNodes = null;
     protected RESTCSNodeCollectionV1 children = null;
@@ -75,12 +77,17 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
                 clone.revisions = new RESTCSNodeCollectionV1();
                 this.revisions.cloneInto(clone.revisions, deepCopy);
             }
+
+            if (this.nextNode != null) {
+                clone.nextNode = this.nextNode.clone(deepCopy);
+            }
         } else {
             clone.relatedFromNodes = this.relatedFromNodes;
             clone.relatedToNodes = this.relatedToNodes;
             clone.children = this.children;
             clone.translatedNodes_OTM = this.translatedNodes_OTM;
             clone.revisions = this.revisions;
+            clone.nextNode = this.nextNode;
         }
     }
 
@@ -104,11 +111,6 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
         this.setParameterToConfigured(CONTENT_SPEC_NAME);
     }
 
-    public void explicitSetParent(final RESTCSNodeV1 parent) {
-        this.parent = parent;
-        this.setParameterToConfigured(PARENT_NAME);
-    }
-
     public void explicitSetNodeType(final RESTCSNodeTypeV1 nodeType) {
         this.nodeType = nodeType;
         this.setParameterToConfigured(NODE_TYPE_NAME);
@@ -129,14 +131,17 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
         this.setParameterToConfigured(CONDITION_NAME);
     }
 
-    public void explicitSetNextNodeId(final Integer nextNodeId) {
-        this.nextNodeId = nextNodeId;
-        this.setParameterToConfigured(NEXT_NODE_NAME);
+    public RESTCSNodeV1 getNextNode() {
+        return nextNode;
     }
 
-    public void explicitSetPreviousNodeId(final Integer previousNodeId) {
-        this.previousNodeId = previousNodeId;
-        this.setParameterToConfigured(PREVIOUS_NODE_NAME);
+    public void setNextNode(final RESTCSNodeV1 nextNode) {
+        this.nextNode = nextNode;
+    }
+
+    public void explicitSetNextNode(final RESTCSNodeV1 nextNode) {
+        this.nextNode = nextNode;
+        this.setParameterToConfigured(NEXT_NODE_NAME);
     }
 
     public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties) {
