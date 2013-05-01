@@ -21,6 +21,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     public static final String TAGS_NAME = "tags";
     public static final String CONDITION_NAME = "condition";
     public static final String TRANSLATED_CONTENT_SPECS_NAME = "translatedContentSpecs";
+    public static final String TEXT_NAME = "text";
 
     private String locale = null;
     private String condition = null;
@@ -28,6 +29,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
     private Date lastModified = null;
     private String errors = null;
     private String failedContentSpec = null;
+    private String text = null;
     private RESTContentSpecTypeV1 type = null;
     private RESTContentSpecCollectionV1 revisions = null;
     private RESTCSNodeCollectionV1 children_OTM = null;
@@ -62,6 +64,7 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
         clone.lastModified = this.lastModified == null ? null : (Date) lastModified.clone();
         clone.errors = this.errors;
         clone.failedContentSpec = this.failedContentSpec;
+        clone.text = this.text;
 
         if (deepCopy) {
             if (this.revisions != null) {
@@ -204,5 +207,17 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
 
     public void setFailedContentSpec(final String failedContentSpec) {
         this.failedContentSpec = failedContentSpec;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+    public void explicitSetText(String text) {
+        this.text = text;
+        setParameterToConfigured(TEXT_NAME);
     }
 }
