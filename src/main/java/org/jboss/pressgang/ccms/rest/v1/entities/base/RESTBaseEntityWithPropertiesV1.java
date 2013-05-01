@@ -31,6 +31,11 @@ public abstract class RESTBaseEntityWithPropertiesV1<T extends RESTBaseEntityWit
         this.properties = properties;
     }
 
+    public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties) {
+        this.properties = properties;
+        this.setParameterToConfigured(PROPERTIES_NAME);
+    }
+
     @Override
     public boolean equals(final Object other) {
         if (other == null) return false;
