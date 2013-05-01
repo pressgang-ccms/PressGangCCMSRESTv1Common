@@ -223,11 +223,6 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
         setParameterToConfigured(INCOMING_NAME);
     }
 
-    public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties) {
-        this.properties = properties;
-        this.setParameterToConfigured(PROPERTIES_NAME);
-    }
-
     public void explicitSetXmlDoctype(final RESTXMLDoctype doctype) {
         this.xmlDoctype = doctype;
         this.setParameterToConfigured(DOCTYPE_NAME);
