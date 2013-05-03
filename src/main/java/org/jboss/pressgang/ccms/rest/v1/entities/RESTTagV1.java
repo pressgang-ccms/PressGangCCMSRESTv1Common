@@ -3,6 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTProjectCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTagCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTCategoryInTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTTagInCategoryV1;
@@ -81,6 +82,11 @@ public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RES
     public void explicitSetProjects(final RESTProjectCollectionV1 projects) {
         this.projects = projects;
         this.setParameterToConfigured(PROJECTS_NAME);
+    }
+
+    public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties) {
+        this.properties = properties;
+        this.setParameterToConfigured(PROPERTIES_NAME);
     }
 
     @Override
