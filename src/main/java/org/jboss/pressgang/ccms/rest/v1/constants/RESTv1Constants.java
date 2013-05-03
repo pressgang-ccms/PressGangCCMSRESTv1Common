@@ -72,4 +72,5 @@ public class RESTv1Constants {
 
     public static final String JSON_URL = "json";
     public static final String XML_URL = "xml";
+    public static final String TEXT_URL = "text";
 }
