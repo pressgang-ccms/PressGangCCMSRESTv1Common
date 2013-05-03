@@ -29,4 +29,22 @@ public class ComponentContentSpecV1 {
 
         return null;
     }
+
+    /**
+     If the last save of the content spec was not valid, the text field will display the
+     last valid state, the errors field will be populated, and the failedContentSpec will
+     have the invalid spec text.
+
+     In this situation, the UI will display the invalid spec text. So we copy the invalid text
+     into the text field, and edit as usual. This provides a workflow much like topics where
+     the user can save invalid data, and will receive a warning about it when the save is completed.
+
+     @param source The spec to fix
+     */
+    public static void fixDisplayedText(final RESTContentSpecV1 source)
+    {
+        if (source.getErrors() != null) {
+            source.setText(source.getFailedContentSpec());
+        }
+    }
 }
