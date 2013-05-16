@@ -103,9 +103,4 @@ public class PressGangCCMSProxyFactoryV1 {
     public RESTInterfaceAdvancedV1 getRESTAdvancedClient() {
         return requestFactory.createProxy(RESTInterfaceAdvancedV1.class);
     }
-
-    public void registerProvider(final Class<?> clazz) {
-        providerFactory.registerProvider(clazz);
-    }
 }
-
