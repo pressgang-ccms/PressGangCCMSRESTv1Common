@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
 
@@ -118,5 +119,28 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
 
     public static String returnEditorURL(final RESTTopicV1 source) {
         return returnPressGangCCMSURL(source);
+    }
+
+    public RESTTranslatedTopicV1 returnPushedTranslatedTopic() {
+        return returnPushedTranslatedTopic(source);
+    }
+
+    public static RESTTranslatedTopicV1 returnPushedTranslatedTopic(final RESTTopicV1 source) {
+        /* Check that a translation exists that is the same locale as the base topic */
+        RESTTranslatedTopicV1 pushedTranslatedTopic = null;
+        if (source.getTranslatedTopics_OTM() != null && source.getTranslatedTopics_OTM().getItems() != null) {
+            final Integer topicRev = source.getRevision();
+            final List<RESTTranslatedTopicV1> topics = source.getTranslatedTopics_OTM().returnItems();
+            for (final RESTTranslatedTopicV1 translatedTopic : topics) {
+                if (translatedTopic.getLocale().equals(source.getLocale()) &&
+                        // Ensure that the topic revision is less than or equal to the source revision
+                        (topicRev == null || translatedTopic.getTopicRevision() <= topicRev) &&
+                        // Check if this translated topic is a higher revision then the current stored translation
+                        (pushedTranslatedTopic == null || pushedTranslatedTopic.getTopicRevision() < translatedTopic.getTopicRevision()))
+                    pushedTranslatedTopic = translatedTopic;
+            }
+        }
+
+        return pushedTranslatedTopic;
     }
 }
