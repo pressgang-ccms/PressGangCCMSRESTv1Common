@@ -18,7 +18,7 @@ public class APIVersionDecorator implements ClientExecutionInterceptor {
     }
 
     public APIVersionDecorator() {
-        this.version = "unknown";
+        version = "unknown";
     }
 
     @Override
