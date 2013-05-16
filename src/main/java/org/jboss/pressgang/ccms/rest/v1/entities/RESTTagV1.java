@@ -83,6 +83,11 @@ public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RES
         this.setParameterToConfigured(PROJECTS_NAME);
     }
 
+    public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties) {
+        this.properties = properties;
+        this.setParameterToConfigured(PROPERTIES_NAME);
+    }
+
     @Override
     public boolean equals(final Object other) {
         if (other == null) return false;
