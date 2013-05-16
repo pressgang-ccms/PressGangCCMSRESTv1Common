@@ -1,6 +1,8 @@
 package org.jboss.pressgang.ccms.rest.v1.client;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.codehaus.jackson.map.DeserializationConfig.Feature;
 import org.jboss.pressgang.ccms.rest.v1.converter.RESTBlobConstantV1JSONConverter;
@@ -79,12 +81,25 @@ public class PressGangCCMSProxyFactoryV1 {
     private final ClientRequestFactory requestFactory;
 
     private PressGangCCMSProxyFactoryV1(final String url) {
+        this(url, new ArrayList<Class<?>>());
+    }
+
+    private PressGangCCMSProxyFactoryV1(final String url, final List<Class<?>> providers) {
         final URI uri = ProxyFactory.createUri(fixUrl(url));
         requestFactory = new ClientRequestFactory(uri);
+        if (providers != null) {
+            for (final Class<?> clazz : providers) {
+                providerFactory.registerProvider(clazz);
+            }
+        }
     }
 
     public static PressGangCCMSProxyFactoryV1 create(final String url) {
         return new PressGangCCMSProxyFactoryV1(url);
+    }
+
+    public static PressGangCCMSProxyFactoryV1 create(final String url, List<Class<?>> providers) {
+        return new PressGangCCMSProxyFactoryV1(url, providers);
     }
 
     private String fixUrl(final String url) {
