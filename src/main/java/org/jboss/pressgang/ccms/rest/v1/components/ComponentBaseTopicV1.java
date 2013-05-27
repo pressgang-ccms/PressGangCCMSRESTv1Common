@@ -9,14 +9,14 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryInTagV1;
 import org.jboss.pressgang.ccms.rest.v1.sort.TagV1NameComparator;
-import org.jboss.pressgang.ccms.utils.common.ExceptionUtilities;
 import org.jboss.pressgang.ccms.utils.common.XMLUtilities;
 import org.jboss.pressgang.ccms.utils.structures.NameIDSortMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 /**
  * This component contains methods that can be applied against all topic entities
@@ -24,6 +24,7 @@ import org.xml.sax.SAXException;
  * @author Matthew Casperson
  */
 public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPropertiesV1 {
+    private final static Logger LOG = LoggerFactory.getLogger(ComponentBaseTopicV1.class);
     final RESTBaseTopicV1<?, ?, ?> source;
 
     public ComponentBaseTopicV1(final RESTBaseTopicV1<?, ?, ?> source) {
@@ -44,8 +45,8 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         Document document = null;
         try {
             document = XMLUtilities.convertStringToDocument(source.getXml());
-        } catch (SAXException ex) {
-            ExceptionUtilities.handleException(ex);
+        } catch (Exception ex) {
+            LOG.debug("Topic XML is not valid", ex);
         }
 
         if (document == null) return null;
@@ -69,8 +70,8 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         Document document = null;
         try {
             document = XMLUtilities.convertStringToDocument(source.getXml());
-        } catch (SAXException ex) {
-            ExceptionUtilities.handleException(ex);
+        } catch (Exception ex) {
+            LOG.debug("Topic XML is not valid", ex);
         }
 
         if (document == null) return null;
