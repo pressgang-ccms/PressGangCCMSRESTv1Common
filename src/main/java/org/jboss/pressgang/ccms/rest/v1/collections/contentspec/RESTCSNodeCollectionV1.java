@@ -8,8 +8,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTCSNode
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 
 public class RESTCSNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RESTCSNodeV1, RESTCSNodeCollectionV1, RESTCSNodeCollectionItemV1> {
-
-    private List<RESTCSNodeCollectionItemV1> items;
+    private List<RESTCSNodeCollectionItemV1> items = new ArrayList<RESTCSNodeCollectionItemV1>();
 
     @Override
     public List<RESTCSNodeCollectionItemV1> getItems() {

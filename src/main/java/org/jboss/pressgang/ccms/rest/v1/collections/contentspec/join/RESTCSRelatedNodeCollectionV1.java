@@ -13,8 +13,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.join.RESTCSRelatedN
 
 public class RESTCSRelatedNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RESTCSRelatedNodeV1, RESTCSRelatedNodeCollectionV1,
         RESTCSRelatedNodeCollectionItemV1> {
-
-    private List<RESTCSRelatedNodeCollectionItemV1> items;
+    private List<RESTCSRelatedNodeCollectionItemV1> items = new ArrayList<RESTCSRelatedNodeCollectionItemV1>();
 
     @Override
     public List<RESTCSRelatedNodeCollectionItemV1> getItems() {

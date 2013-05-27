@@ -9,8 +9,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
 
 public class RESTContentSpecCollectionV1 extends RESTBaseCollectionV1<RESTContentSpecV1, RESTContentSpecCollectionV1,
         RESTContentSpecCollectionItemV1> {
-
-    private List<RESTContentSpecCollectionItemV1> items;
+    private List<RESTContentSpecCollectionItemV1> items = new ArrayList<RESTContentSpecCollectionItemV1>();
 
     @Override
     public List<RESTContentSpecCollectionItemV1> getItems() {
