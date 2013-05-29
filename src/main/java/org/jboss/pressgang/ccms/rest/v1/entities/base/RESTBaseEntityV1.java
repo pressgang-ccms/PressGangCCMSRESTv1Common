@@ -52,11 +52,25 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U ex
         @SuppressWarnings("rawtypes")
         final RESTBaseEntityV1 otherCasted = (RESTBaseEntityV1) other;
 
-        if (this.id == null && otherCasted.id == null) return true;
+        if (this.id == null && otherCasted.id == null) {
+            if (this.revision == null && otherCasted.revision == null) return super.equals(other);
+
+            if (this.revision == null || otherCasted.revision == null) return false;
+
+            return this.revision.equals(otherCasted.revision);
+        }
 
         if (this.id == null || otherCasted.id == null) return false;
 
-        return (this.id.equals(otherCasted.id));
+        if (this.id.equals(otherCasted.id)) {
+            if (this.revision == null && otherCasted.revision == null) return true;
+
+            if (this.revision == null || otherCasted.revision == null) return false;
+
+            return this.revision.equals(otherCasted.revision);
+        } else {
+            return false;
+        }
     }
 
     @Override

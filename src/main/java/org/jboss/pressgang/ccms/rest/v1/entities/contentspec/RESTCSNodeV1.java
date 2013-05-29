@@ -16,7 +16,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
     protected RESTCSNodeV1 nextNode = null;
     protected RESTCSRelatedNodeCollectionV1 relatedToNodes = null;
     protected RESTCSRelatedNodeCollectionV1 relatedFromNodes = null;
-    protected RESTCSNodeCollectionV1 children = null;
+    protected RESTCSNodeCollectionV1 children_OTM = null;
     private RESTTranslatedCSNodeCollectionV1 translatedNodes_OTM = null;
     private RESTCSNodeCollectionV1 revisions = null;
 
@@ -63,9 +63,9 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
                 relatedToNodes.cloneInto(clone.relatedToNodes, deepCopy);
             }
 
-            if (this.children != null) {
-                clone.children = new RESTCSNodeCollectionV1();
-                children.cloneInto(clone.children, deepCopy);
+            if (this.children_OTM != null) {
+                clone.children_OTM = new RESTCSNodeCollectionV1();
+                children_OTM.cloneInto(clone.children_OTM, deepCopy);
             }
 
             if (translatedNodes_OTM != null) {
@@ -84,7 +84,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
         } else {
             clone.relatedFromNodes = this.relatedFromNodes;
             clone.relatedToNodes = this.relatedToNodes;
-            clone.children = this.children;
+            clone.children_OTM = this.children_OTM;
             clone.translatedNodes_OTM = this.translatedNodes_OTM;
             clone.revisions = this.revisions;
             clone.nextNode = this.nextNode;
@@ -189,15 +189,15 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
     }
 
     public RESTCSNodeCollectionV1 getChildren_OTM() {
-        return children;
+        return children_OTM;
     }
 
-    public void setChildren_OTM(final RESTCSNodeCollectionV1 children) {
-        this.children = children;
+    public void setChildren_OTM(final RESTCSNodeCollectionV1 children_OTM) {
+        this.children_OTM = children_OTM;
     }
 
-    public void explicitSetChildren_OTM(final RESTCSNodeCollectionV1 children) {
-        this.children = children;
+    public void explicitSetChildren_OTM(final RESTCSNodeCollectionV1 children_OTM) {
+        this.children_OTM = children_OTM;
         this.setParameterToConfigured(CHILDREN_NAME);
     }
 }

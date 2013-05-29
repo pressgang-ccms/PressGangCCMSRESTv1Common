@@ -17,7 +17,7 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
     public static final String PARENT_NAME = "parent";
     public static final String RELATED_TO_NAME = "relatedTo";
     public static final String RELATED_FROM_NAME = "relatedFrom";
-    public static final String CHILDREN_NAME = "children";
+    public static final String CHILDREN_NAME = "children_OTM";
     public static final String NODE_TYPE_NAME = "nodeType";
     public static final String CONTENT_SPEC_NAME = "contentSpec";
     public static final String ADDITIONAL_TEXT_NAME = "additionalText";

@@ -24,7 +24,7 @@
 
     <properties>
         <pressgang.ccms.version>1.1-SNAPSHOT</pressgang.ccms.version>
-        <jackson.version>1.9.8</jackson.version>
+        <jackson.version>1.9.9</jackson.version>
         <resteasy.version>2.3.4.Final</resteasy.version>
         <jodatime.version>2.1</jodatime.version>
         <mockito.version>1.9.0</mockito.version>

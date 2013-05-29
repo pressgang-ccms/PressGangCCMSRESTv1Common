@@ -20,7 +20,7 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
     private String originalString = null;
     private RESTCSNodeV1 node = null;
     private RESTTranslatedContentSpecV1 translatedContentSpec = null;
-    private RESTTranslatedCSNodeCollectionV1 children = null;
+    private RESTTranslatedCSNodeCollectionV1 children_OTM = null;
     private RESTTranslatedCSNodeStringCollectionV1 translatedNodeStrings_OTM = null;
     private RESTTranslatedTopicV1 translatedTopic = null;
     /**
@@ -55,9 +55,9 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
         clone.originalString = originalString;
 
         if (deepCopy) {
-            if (children != null) {
-                clone.children = new RESTTranslatedCSNodeCollectionV1();
-                children.cloneInto(clone.children, deepCopy);
+            if (children_OTM != null) {
+                clone.children_OTM = new RESTTranslatedCSNodeCollectionV1();
+                children_OTM.cloneInto(clone.children_OTM, deepCopy);
             }
 
             if (translatedNodeStrings_OTM != null) {
@@ -82,7 +82,7 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
                 revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.children = children;
+            clone.children_OTM = children_OTM;
             clone.translatedNodeStrings_OTM = translatedNodeStrings_OTM;
             clone.translatedContentSpec = translatedContentSpec;
             clone.node = node;
@@ -105,11 +105,11 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
     }
 
     public RESTTranslatedCSNodeCollectionV1 getChildren_OTM() {
-        return children;
+        return children_OTM;
     }
 
-    public void setChildren_OTM(final RESTTranslatedCSNodeCollectionV1 children) {
-        this.children = children;
+    public void setChildren_OTM(final RESTTranslatedCSNodeCollectionV1 children_OTM) {
+        this.children_OTM = children_OTM;
     }
 
     public Integer getNodeId() {
