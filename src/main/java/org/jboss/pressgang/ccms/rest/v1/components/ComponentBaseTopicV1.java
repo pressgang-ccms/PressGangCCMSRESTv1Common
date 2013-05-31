@@ -18,6 +18,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 /**
  * This component contains methods that can be applied against all topic entities
  *
@@ -40,7 +42,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
     }
 
     public static String returnXMLWithNewContainer(final RESTBaseTopicV1<?, ?, ?> source, final String containerName) {
-        assert containerName != null : "The containerName parameter can not be null";
+        checkArgument(containerName != null, "The containerName parameter can not be null");
 
         Document document = null;
         try {
@@ -67,6 +69,8 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
     }
 
     public static String returnXMLWithNoContainer(final RESTBaseTopicV1<?, ?, ?> source, final Boolean includeTitle) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         Document document = null;
         try {
             document = XMLUtilities.convertStringToDocument(source.getXml());
@@ -104,6 +108,8 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
     }
 
     public static String getCommaSeparatedTagList(final RESTBaseTopicV1<?, ?, ?> source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> tags = getCategoriesMappedToTags(source);
 
         String tagsList = "";
@@ -130,6 +136,8 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
     }
 
     public static TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> getCategoriesMappedToTags(final RESTBaseTopicV1<?, ?, ?> source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final TreeMap<NameIDSortMap, ArrayList<RESTTagV1>> tags = new TreeMap<NameIDSortMap, ArrayList<RESTTagV1>>();
 
         if (source.getTags() != null && source.getTags().getItems() != null) {
@@ -162,10 +170,15 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
     }
 
     public List<RESTTagV1> returnTagsInCategoriesByID(final List<Integer> categories) {
+        checkArgument(categories != null, "The categories parameter can not be null");
+
         return returnTagsInCategoriesByID(source, categories);
     }
 
     public static List<RESTTagV1> returnTagsInCategoriesByID(final RESTBaseTopicV1<?, ?, ?> source, final List<Integer> categories) {
+        checkArgument(source != null, "The source parameter can not be null");
+        checkArgument(categories != null, "The categories parameter can not be null");
+
         final List<RESTTagV1> retValue = new ArrayList<RESTTagV1>();
 
         if (source.getTags() != null && source.getTags().getItems() != null) {
@@ -199,6 +212,8 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
     }
 
     public static boolean hasTag(final RESTBaseTopicV1<?, ?, ?> source, final Integer tagID) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (source.getTags() != null && source.getTags().getItems() != null) {
             final List<RESTTagV1> tags = source.getTags().returnItems();
             for (final RESTTagV1 tag : tags) {
@@ -214,6 +229,8 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
     }
 
     public static boolean returnIsDummyTopic(final RESTBaseTopicV1<?, ?, ?> source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         return source.getId() == null || source.getId() < 0;
     }
 
@@ -221,8 +238,9 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         return returnIsEmpty(source, checkCollections, checkReadonlyValues);
     }
 
-    public static boolean returnIsEmpty(final RESTBaseTopicV1<?, ?, ?> source, final boolean checkCollections,
-            final boolean checkReadonlyValues) {
+    public static boolean returnIsEmpty(final RESTBaseTopicV1<?, ?, ?> source, final boolean checkCollections, final boolean checkReadonlyValues) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (source.getId() != null) return false;
 
         if (source.getLocale() != null) return false;

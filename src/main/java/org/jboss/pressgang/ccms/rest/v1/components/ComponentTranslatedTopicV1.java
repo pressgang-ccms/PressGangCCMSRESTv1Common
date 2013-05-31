@@ -8,6 +8,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
 import org.jboss.pressgang.ccms.zanata.ZanataDetails;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 /**
  * This component contains methods that can be applied against translated topics
  *
@@ -26,6 +28,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnZanataId(final RESTTranslatedTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         return source.getTopicId() + "-" + source.getTopicRevision();
     }
 
@@ -35,6 +39,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnBugzillaBuildId(final RESTTranslatedTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) {
             return "Translation " + returnZanataId(source) + " " + source.getLocale();
         } else {
@@ -48,6 +54,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnPressGangCCMSURL(final RESTTranslatedTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         /*
          * If the topic isn't a dummy then link to the translated counterpart. If the topic is a dummy URL and the locale doesn't match
          * the historical topic's locale then it means that the topic has been pushed to zanata so link to the original pushed
@@ -69,6 +77,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnInternalURL(final RESTTranslatedTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         /*
          * If the topic isn't a dummy then link to the translated counterpart. If the topic is a dummy URL and the locale doesn't match
          * the historical topic's
@@ -93,6 +103,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static RESTTranslatedTopicV1 returnRelatedTopicByID(final RESTTranslatedTopicV1 source, final Integer id) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         RESTTranslatedTopicV1 relatedTopic = null;
         if (source.getOutgoingRelationships() != null && source.getOutgoingRelationships().getItems() != null) {
             final List<RESTTranslatedTopicV1> topics = source.getOutgoingRelationships().returnItems();
@@ -115,6 +127,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnXRefID(final RESTTranslatedTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return "TranslatedTopicID" + source.getId();
         else if (hasBeenPushedForTranslation(source)) return "TranslatedTopicID" + returnPushedTranslationTopicId(source);
         else return ComponentTopicV1.returnErrorXRefID(source.getTopic());
@@ -134,6 +148,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static Integer returnPushedTranslationTopicId(final RESTTranslatedTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return source.getTranslatedTopicId();
 
         /* Check that a translation exists that is the same locale as the base topic */
@@ -159,6 +175,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static RESTTranslatedTopicV1 returnPushedTranslatedTopic(final RESTTranslatedTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return source;
 
         if (source.getTopic() != null) {
@@ -173,6 +191,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static boolean hasBeenPushedForTranslation(final RESTTranslatedTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return true;
 
         /* Check that a translation exists that is the same locale as the base topic */
@@ -220,6 +240,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnEditorURL(final RESTTranslatedTopicV1 source, final ZanataDetails zanataDetails) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final String zanataServerUrl = zanataDetails == null ? null : zanataDetails.getServer();
         final String zanataProject = zanataDetails == null ? null : zanataDetails.getProject();
         final String zanataVersion = zanataDetails == null ? null : zanataDetails.getVersion();
@@ -251,6 +273,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static boolean containsFuzzyTranslations(final RESTTranslatedTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (source.getTranslatedTopicStrings_OTM() != null && source.getTranslatedTopicStrings_OTM().getItems() != null) {
             final List<RESTTranslatedTopicStringV1> translatedTopicStrings = source.getTranslatedTopicStrings_OTM().returnItems();
             for (final RESTTranslatedTopicStringV1 translatedTopicString : translatedTopicStrings) {

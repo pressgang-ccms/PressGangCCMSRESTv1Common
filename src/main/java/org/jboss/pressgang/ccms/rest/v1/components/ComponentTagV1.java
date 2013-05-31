@@ -9,6 +9,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryInTagV1;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 /**
  * This component contains methods that can be applied against tags
  *
@@ -27,6 +29,8 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1 {
     }
 
     public static boolean containedInCategory(final RESTBaseTagV1<?, ?, ?> source, final Integer categoryId) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (source.getCategories() != null && source.getCategories().getItems() != null) {
             for (final RESTCategoryInTagCollectionItemV1 categoryItem : source.getCategories().getItems()) {
                 final RESTCategoryInTagV1 category = categoryItem.getItem();
@@ -58,6 +62,8 @@ public class ComponentTagV1 extends ComponentBaseRESTEntityWithPropertiesV1 {
     }
 
     public static boolean containedInProject(final RESTBaseTagV1<?, ?, ?> source, final Integer id) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (source.getProjects() != null && source.getProjects().getItems() != null) {
             for (final RESTProjectCollectionItemV1 projectItem : source.getProjects().getItems()) {
                 final RESTProjectV1 project = projectItem.getItem();

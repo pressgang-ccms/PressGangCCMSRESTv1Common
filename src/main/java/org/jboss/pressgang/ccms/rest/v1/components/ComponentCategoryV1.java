@@ -4,10 +4,13 @@ import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTTagInCategory
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTCategoryV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTTagInCategoryV1;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 public class ComponentCategoryV1 {
     final RESTCategoryV1 source;
 
     public ComponentCategoryV1(final RESTCategoryV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
         this.source = source;
     }
 
@@ -24,7 +27,7 @@ public class ComponentCategoryV1 {
     }
 
     public static RESTTagInCategoryV1 returnTag(final RESTCategoryV1 source, final Integer tagId) {
-        if (source == null) throw new IllegalArgumentException("source cannot be null");
+        checkArgument(source != null, "The source parameter can not be null");
         
         /* Strictly speaking a category can not be a parent to a tag with no id */
         if (tagId == null) return null;
