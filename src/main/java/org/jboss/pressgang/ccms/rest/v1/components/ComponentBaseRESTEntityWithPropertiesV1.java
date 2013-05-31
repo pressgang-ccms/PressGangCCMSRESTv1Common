@@ -25,7 +25,9 @@ public abstract class ComponentBaseRESTEntityWithPropertiesV1 {
     }
 
     public static RESTAssignedPropertyTagV1 returnProperty(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source, final Integer propertyTagId) {
-        if (source != null && source.getProperties() != null && source.getProperties().getItems() != null) {
+        checkArgument(source != null, "The source parameter can not be null");
+
+        if (source.getProperties() != null && source.getProperties().getItems() != null) {
             final List<RESTAssignedPropertyTagV1> properties = source.getProperties().returnItems();
             for (final RESTAssignedPropertyTagV1 property : properties) {
                 if (property.getId().equals(propertyTagId)) return property;
@@ -40,8 +42,10 @@ public abstract class ComponentBaseRESTEntityWithPropertiesV1 {
     }
 
     public static List<RESTAssignedPropertyTagV1> returnProperties(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source, final Integer propertyTagId) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final List<RESTAssignedPropertyTagV1> properties = new ArrayList<RESTAssignedPropertyTagV1>();
-        if (source != null && source.getProperties() != null && source.getProperties().getItems() != null) {
+        if (source.getProperties() != null && source.getProperties().getItems() != null) {
             final List<RESTAssignedPropertyTagV1> propertyItems = source.getProperties().returnItems();
             for (final RESTAssignedPropertyTagV1 property : propertyItems) {
                 if (property.getId().equals(propertyTagId)) properties.add(property);
@@ -55,10 +59,11 @@ public abstract class ComponentBaseRESTEntityWithPropertiesV1 {
         return returnPropertyItems(source, propertyTagId);
     }
 
-    public static List<RESTAssignedPropertyTagCollectionItemV1> returnPropertyItems(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source,
-            final Integer propertyTagId) {
+    public static List<RESTAssignedPropertyTagCollectionItemV1> returnPropertyItems(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source, final Integer propertyTagId) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final List<RESTAssignedPropertyTagCollectionItemV1> properties = new ArrayList<RESTAssignedPropertyTagCollectionItemV1>();
-        if (source != null && source.getProperties() != null && source.getProperties().getItems() != null) {
+        if (source.getProperties() != null && source.getProperties().getItems() != null) {
             for (final RESTAssignedPropertyTagCollectionItemV1 propertyItem : source.getProperties().getItems()) {
                 final RESTAssignedPropertyTagV1 property = propertyItem.getItem();
                 if (property != null && property.getId().equals(propertyTagId)) properties.add(propertyItem);
