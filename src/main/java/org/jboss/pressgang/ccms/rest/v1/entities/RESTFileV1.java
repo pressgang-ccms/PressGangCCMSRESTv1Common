@@ -9,11 +9,13 @@ public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileColl
     public static final String DESCRIPTION_NAME = "description";
     public static final String FILE_PATH_NAME = "filePath";
     public static final String FILE_NAME = "fileName";
-    public static final String LANGUAGE_FILES_NAME = "languageFiles";
+    public static final String EXPLODE_ARCHIVE_NAME = "explodeArchive";
+    public static final String LANGUAGE_FILES_NAME = "languageFiles_OTM";
 
     private String description = null;
     private String fileName = null;
     private String filePath = null;
+    private Boolean explodeArchive = null;
     private RESTLanguageFileCollectionV1 languageFiles_OTM = null;
     /**
      * A list of the Envers revision numbers
@@ -113,6 +115,19 @@ public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileColl
     public void explicitSetLanguageFiles_OTM(RESTLanguageFileCollectionV1 languageFiles_OTM) {
         this.languageFiles_OTM = languageFiles_OTM;
         this.setParameterToConfigured(LANGUAGE_FILES_NAME);
+    }
+
+    public Boolean getExplodeArchive() {
+        return explodeArchive;
+    }
+
+    public void setExplodeArchive(Boolean explodeArchive) {
+        this.explodeArchive = explodeArchive;
+    }
+
+    public void explicitSetExplodeArchive(Boolean explodeArchive) {
+        this.explodeArchive = explodeArchive;
+        setParameterToConfigured(EXPLODE_ARCHIVE_NAME);
     }
 
     @Override
