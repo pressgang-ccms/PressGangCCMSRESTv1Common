@@ -14,6 +14,7 @@ public class RESTv1Constants {
 
     public static final String TOPICS_EXPANSION_NAME = "topics";
     public static final String IMAGES_EXPANSION_NAME = "images";
+    public static final String FILES_EXPANSION_NAME = "files";
     public static final String TAGS_EXPANSION_NAME = "tags";
     public static final String PROJECTS_EXPANSION_NAME = "projects";
     public static final String USERS_EXPANSION_NAME = "users";
@@ -55,6 +56,8 @@ public class RESTv1Constants {
 
     public static final String IMAGE_URL_NAME = "image";
     public static final String LANGUAGEIMAGE_URL_NAME = "languageimage";
+    public static final String FILE_URL_NAME = "file";
+    public static final String LANGUAGE_FILE_URL_NAME = "languagefile";
     public static final String PROPERTYTAG_URL_NAME = "propertytag";
     public static final String PROPERTY_CATEGORY_URL_NAME = "propertycategory";
     public static final String ROLE_URL_NAME = "role";

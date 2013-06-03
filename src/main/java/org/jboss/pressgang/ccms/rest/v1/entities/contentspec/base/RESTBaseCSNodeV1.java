@@ -128,4 +128,13 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
     public void setCondition(final String condition) {
         this.condition = condition;
     }
+
+    @Override
+    public boolean equals(final Object other) {
+        if (other == null) return false;
+        if (this == other) return true;
+        if (!(other instanceof RESTBaseCSNodeV1)) return false;
+
+        return super.equals(other);
+    }
 }

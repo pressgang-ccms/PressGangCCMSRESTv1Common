@@ -193,6 +193,17 @@ abstract public class RESTBaseCollectionV1<T extends RESTBaseEntityV1<T, U, V>, 
     }
 
     /**
+     * @return A collection of updated items
+     */
+    public List<T> returnUpdatedItems() {
+        return returnItemsWithState(new ArrayList<Integer>() {
+            {
+                add(UPDATE_STATE);
+            }
+        });
+    }
+
+    /**
      * Get any items that were added or unchanged. This is commonly used when
      * getting items that should be displayed to the end user.
      *

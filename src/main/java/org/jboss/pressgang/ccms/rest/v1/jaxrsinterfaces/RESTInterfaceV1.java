@@ -13,6 +13,7 @@ import javax.ws.rs.core.PathSegment;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBlobConstantCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTCategoryCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTFileCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTImageCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTIntegerConstantCollectionV1;
@@ -30,6 +31,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCS
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTBlobConstantV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTCategoryV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTFileV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTIntegerConstantV1;
@@ -1653,5 +1655,92 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTTranslatedCSNodeCollectionV1 deleteJSONTranslatedContentSpecNodes(@PathParam("ids") final PathSegment ids,
+            @QueryParam("expand") final String expand);
+
+    /* FILE FUNCTIONS */
+    /* JSONP FUNCTIONS */
+    @GET
+    @Path("/file/update/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String updateJSONPFile(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileV1 dataObject,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/files/update/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String updateJSONPFiles(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileCollectionV1 dataObjects,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/file/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String createJSONPFile(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileV1 dataObject,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/files/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String createJSONPFiles(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileCollectionV1 dataObjects,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/file/delete/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String deleteJSONPFile(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/files/delete/jsonp/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String deleteJSONPFiles(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback);
+
+    /* JSON FUNCTIONS */
+    @POST
+    @Path("/file/update/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTFileV1 updateJSONFile(@QueryParam("expand") final String expand,
+            final RESTFileV1 dataObject);
+
+    @POST
+    @Path("/files/update/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTFileCollectionV1 updateJSONFiles(@QueryParam("expand") final String expand,
+            final RESTFileCollectionV1 dataObjects);
+
+    @POST
+    @Path("/file/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTFileV1 createJSONFile(@QueryParam("expand") final String expand,
+            final RESTFileV1 dataObject);
+
+    @POST
+    @Path("/files/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTFileCollectionV1 createJSONFiles(@QueryParam("expand") final String expand,
+            final RESTFileCollectionV1 dataObjects);
+
+    @DELETE
+    @Path("/file/delete/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTFileV1 deleteJSONFile(@PathParam("id") final Integer id,
+            @QueryParam("expand") final String expand);
+
+    @DELETE
+    @Path("/files/delete/json/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTFileCollectionV1 deleteJSONFiles(@PathParam("ids") final PathSegment ids,
             @QueryParam("expand") final String expand);
 }

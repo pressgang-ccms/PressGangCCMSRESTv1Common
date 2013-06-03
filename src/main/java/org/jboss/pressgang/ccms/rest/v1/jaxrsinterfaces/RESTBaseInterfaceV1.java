@@ -14,6 +14,7 @@ import javax.ws.rs.core.Response;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBlobConstantCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTCategoryCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTFileCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTImageCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTIntegerConstantCollectionV1;
@@ -33,6 +34,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCo
 import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTBlobConstantV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTCategoryV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTFileV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTIntegerConstantV1;
@@ -2941,4 +2943,150 @@ public interface RESTBaseInterfaceV1 {
     public RESTTranslatedCSNodeCollectionV1 deleteJSONTranslatedContentSpecNodes(@PathParam("ids") final PathSegment ids,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand);
+
+    /* FILE FUNCTIONS */
+    /* JSONP FUNCTIONS */
+    @GET
+    @Path("/file/get/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPFile(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/file/get/jsonp/{id}/r/{rev}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPFileRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+            @QueryParam("expand") final String expand, @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/files/get/jsonp/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPFiles(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/files/get/jsonp/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String getJSONPFilesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/file/update/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String updateJSONPFile(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileV1 dataObject,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/files/update/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String updateJSONPFiles(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileCollectionV1 dataObjects,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/file/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String createJSONPFile(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileV1 dataObject,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/files/create/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public String createJSONPFiles(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileCollectionV1 dataObjects,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/file/delete/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String deleteJSONPFile(@PathParam("id") final Integer id, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/files/delete/jsonp/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public String deleteJSONPFiles(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback);
+
+    /* JSON FUNCTIONS */
+    @GET
+    @Path("/file/get/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTFileV1 getJSONFile(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
+
+    @GET
+    @Path("/file/get/json/{id}/r/{rev}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTFileV1 getJSONFileRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+            @QueryParam("expand") final String expand);
+
+    @GET
+    @Path("/files/get/json/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTFileCollectionV1 getJSONFiles(@QueryParam("expand") final String expand);
+
+    @GET
+    @Path("/files/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTFileCollectionV1 getJSONFilesWithQuery(@PathParam("query") final PathSegment query,
+            @QueryParam("expand") final String expand);
+
+    @POST
+    @Path("/file/update/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTFileV1 updateJSONFile(@QueryParam("expand") final String expand, final RESTFileV1 dataObject,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/files/update/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTFileCollectionV1 updateJSONFiles(@QueryParam("expand") final String expand, final RESTFileCollectionV1 dataObjects,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/file/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTFileV1 createJSONFile(@QueryParam("expand") final String expand, final RESTFileV1 dataObject,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/files/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTFileCollectionV1 createJSONFiles(@QueryParam("expand") final String expand, final RESTFileCollectionV1 dataObjects,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @DELETE
+    @Path("/file/delete/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTFileV1 deleteJSONFile(@PathParam("id") final Integer id, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand);
+
+    @DELETE
+    @Path("/files/delete/json/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTFileCollectionV1 deleteJSONFiles(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand);
 }

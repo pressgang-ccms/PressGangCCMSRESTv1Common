@@ -108,4 +108,13 @@ public class RESTTranslatedContentSpecV1 extends RESTBasePrimaryEntityV1<RESTTra
         this.translatedNodes_OTM = translatedNodes;
         setParameterToConfigured(TRANSLATED_NODES_NAME);
     }
+
+    @Override
+    public boolean equals(final Object other) {
+        if (other == null) return false;
+        if (this == other) return true;
+        if (!(other instanceof RESTTranslatedContentSpecV1)) return false;
+
+        return super.equals(other);
+    }
 }

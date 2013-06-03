@@ -102,4 +102,21 @@ public class RESTCSRelatedNodeV1 extends RESTBaseCSNodeV1<RESTCSRelatedNodeV1, R
         this.relationshipSort = relationshipSort;
         setParameterToConfigured(RELATIONSHIP_SORT_NAME);
     }
+
+    @Override
+    public boolean equals(final Object other) {
+        if (other == null) return false;
+        if (this == other) return true;
+        if (!(other instanceof RESTCSRelatedNodeV1)) return false;
+
+        if (!super.equals(other)) return false;
+
+        final RESTCSRelatedNodeV1 otherCasted = (RESTCSRelatedNodeV1) other;
+
+        if (this.relationshipId == null && otherCasted.relationshipId == null) return true;
+
+        if ((this.relationshipId == null || otherCasted.relationshipId == null)) return false;
+
+        return this.relationshipId.equals(otherCasted.relationshipId);
+    }
 }

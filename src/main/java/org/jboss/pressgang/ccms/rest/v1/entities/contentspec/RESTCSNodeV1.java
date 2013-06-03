@@ -106,11 +106,6 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
         this.setParameterToConfigured(ADDITIONAL_TEXT_NAME);
     }
 
-    public void explicitSetContentSpec(final RESTContentSpecV1 contentSpec) {
-        this.contentSpec = contentSpec;
-        this.setParameterToConfigured(CONTENT_SPEC_NAME);
-    }
-
     public void explicitSetNodeType(final RESTCSNodeTypeV1 nodeType) {
         this.nodeType = nodeType;
         this.setParameterToConfigured(NODE_TYPE_NAME);
@@ -199,5 +194,14 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
     public void explicitSetChildren_OTM(final RESTCSNodeCollectionV1 children_OTM) {
         this.children_OTM = children_OTM;
         this.setParameterToConfigured(CHILDREN_NAME);
+    }
+
+    @Override
+    public boolean equals(final Object other) {
+        if (other == null) return false;
+        if (this == other) return true;
+        if (!(other instanceof RESTCSNodeV1)) return false;
+
+        return super.equals(other);
     }
 }

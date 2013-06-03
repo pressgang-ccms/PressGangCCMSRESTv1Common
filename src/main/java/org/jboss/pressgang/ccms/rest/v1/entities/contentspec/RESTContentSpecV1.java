@@ -220,4 +220,13 @@ public class RESTContentSpecV1 extends RESTBaseEntityWithPropertiesV1<RESTConten
         this.text = text;
         setParameterToConfigured(TEXT_NAME);
     }
+
+    @Override
+    public boolean equals(final Object other) {
+        if (other == null) return false;
+        if (this == other) return true;
+        if (!(other instanceof RESTContentSpecV1)) return false;
+
+        return super.equals(other);
+    }
 }
