@@ -1140,6 +1140,19 @@ public interface RESTBaseInterfaceV1 {
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
             @QueryParam("expand") final String expand);
 
+    /* RAW FUNCTIONS */
+    @GET
+    @Path("/blobconstant/get/raw/{id}")
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public byte[] getRAWBlobConstant(@PathParam("id") final Integer id);
+
+    @GET
+    @Path("/blobconstant/get/raw/{id}/r/{rev}")
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public byte[] getRAWBlobConstantRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision);
+
     /* PROJECT FUNCTIONS */
     /* JSONP FUNCTIONS */
     @GET
@@ -2512,7 +2525,8 @@ public interface RESTBaseInterfaceV1 {
 //    @Consumes({MediaType.APPLICATION_JSON})
 //    @Produces(MediaType.APPLICATION_JSON)
 //    public String updateJSONPContentSpecNode(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCSNodeV1 dataObject,
-//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+// @QueryParam("userId") final String userId,
 //            @QueryParam("callback") final String callback);
 //
 //    @GET
@@ -2529,7 +2543,8 @@ public interface RESTBaseInterfaceV1 {
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Consumes({MediaType.APPLICATION_JSON})
 //    public String createJSONPContentSpecNode(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCSNodeV1 dataObject,
-//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+// @QueryParam("userId") final String userId,
 //            @QueryParam("callback") final String callback);
 //
 //    @GET
@@ -2589,7 +2604,8 @@ public interface RESTBaseInterfaceV1 {
 //    @Consumes({MediaType.APPLICATION_JSON})
 //    @Produces(MediaType.APPLICATION_JSON)
 //    public RESTCSNodeV1 updateJSONContentSpecNode(@QueryParam("expand") final String expand, final RESTCSNodeV1 dataObject,
-//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+// @QueryParam("userId") final String userId);
 //
 //    @POST
 //    @Path("/contentspecnodes/update/json")
@@ -2604,7 +2620,8 @@ public interface RESTBaseInterfaceV1 {
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Consumes({MediaType.APPLICATION_JSON})
 //    public RESTCSNodeV1 createJSONContentSpecNode(@QueryParam("expand") final String expand, final RESTCSNodeV1 dataObject,
-//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+// @QueryParam("userId") final String userId);
 //
 //    @POST
 //    @Path("/contentspecnodes/create/json")
@@ -2626,7 +2643,8 @@ public interface RESTBaseInterfaceV1 {
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
 //    public RESTCSNodeCollectionV1 deleteJSONContentSpecNodes(@PathParam("ids") final PathSegment ids,
-//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
+//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+// @QueryParam("userId") final String userId,
 //            @QueryParam("expand") final String expand);
 
     /* TRANSLATED CONTENT SPEC FUNCTIONS */
@@ -3089,4 +3107,18 @@ public interface RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public RESTFileCollectionV1 deleteJSONFiles(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand);
+
+    /* RAW FUNCTIONS */
+    @GET
+    @Path("/file/get/raw/{id}")
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public byte[] getRAWFile(@PathParam("id") final Integer id, @QueryParam("lang") final String locale);
+
+    @GET
+    @Path("/file/get/raw/{id}/r/{rev}")
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public byte[] getRAWFileRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+            @QueryParam("lang") final String locale);
 }
