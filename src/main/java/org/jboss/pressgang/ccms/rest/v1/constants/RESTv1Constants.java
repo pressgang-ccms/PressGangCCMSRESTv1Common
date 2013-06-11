@@ -72,4 +72,9 @@ public class RESTv1Constants {
 
     public static final String JSON_URL = "json";
     public static final String XML_URL = "xml";
+    public static final String ACCESS_CONTROL_ALLOW_ORIGIN_HEADER = "Access-Control-Allow-Origin";
+    public static final String ACCESS_CONTROL_REQUEST_METHOD = "Access-Control-Request-Method";
+    public static final String ACCESS_CONTROL_ALLOW_METHODS = "Access-Control-Allow-Methods";
+    public static final String ACCESS_CONTROL_ALLOW_HEADERS = "Access-Control-Allow-Headers";
+    public static final String ACCESS_CONTROL_REQUEST_HEADERS = "Access-Control-Request-Headers";
 }
