@@ -5,14 +5,19 @@ import java.util.List;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTLanguageImageV1;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 public class ComponentImageV1 {
     private final RESTImageV1 source;
 
     public ComponentImageV1(final RESTImageV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
         this.source = source;
     }
 
     public static String getXMLTemplate(final RESTImageV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final String retValue = "<figure>\n" +
                 "\t<title>Title</title>\n" +
                 "\t<mediaobject>\n" +
@@ -29,6 +34,8 @@ public class ComponentImageV1 {
     }
 
     public static String getInlineXMLTemplate(final RESTImageV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final String retValue = "<inlinemediaobject>\n" +
                 "\t<imageobject>\n" +
                 "\t\t<imagedata align=\"center\" fileref=\"images/" + getDocbookFileName(source) + "\"/>\n" +
@@ -39,6 +46,8 @@ public class ComponentImageV1 {
     }
 
     public static String getBareXMLTemplate(final RESTImageV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final String retValue = "<mediaobject>\n" +
                 "\t<imageobject>\n" +
                 "\t\t<imagedata align=\"center\" fileref=\"images/" + getDocbookFileName(source) + "\"/>\n" +
@@ -61,7 +70,7 @@ public class ComponentImageV1 {
      * @return The docbook file name
      */
     public static String getDocbookFileName(final RESTImageV1 source) {
-        if (source == null) throw new IllegalArgumentException("source cannot be null");
+        checkArgument(source != null, "The source parameter can not be null");
 
         if (source.getLanguageImages_OTM() != null && source.getLanguageImages_OTM().getItems() != null) {
             final List<RESTLanguageImageV1> langImages = source.getLanguageImages_OTM().returnItems();

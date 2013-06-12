@@ -9,6 +9,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 /**
  * This component contains methods that can be applied against topics
  *
@@ -28,6 +30,8 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnPressGangCCMSURL(final RESTTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final String serverUrl = System.getProperty(CommonConstants.PRESS_GANG_UI_SYSTEM_PROPERTY);
         return (serverUrl.endsWith("/") ? serverUrl : (serverUrl + "/")) + "#SearchResultsAndTopicView;query;topicIds=" + source.getId();
     }
@@ -41,6 +45,8 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnBugzillaBuildId(final RESTTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final SimpleDateFormat formatter = new SimpleDateFormat(CommonConstants.FILTER_DISPLAY_DATE_FORMAT);
         return source.getId() + "-" + source.getRevision() + " " + (source.getLastModified() == null ? formatter.format(
                 source.getLastModified()) : formatter.format(new Date())) + " " + source.getLocale();
@@ -52,6 +58,8 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnInternalURL(final RESTTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         return "Topic.seam?topicTopicId=" + source.getId() + "&selectedTab=Rendered+View";
     }
 
@@ -61,6 +69,8 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static RESTTopicV1 returnRelatedTopicByID(final RESTTopicV1 source, final Integer id) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (source.getOutgoingRelationships() != null && source.getOutgoingRelationships().getItems() != null) {
             final List<RESTTopicV1> relatedTopics = source.getOutgoingRelationships().returnItems();
             for (final RESTTopicV1 topic : relatedTopics) {
@@ -94,6 +104,8 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static String returnXRefID(final RESTTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         return "TopicID" + source.getId();
     }
 
@@ -126,6 +138,8 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
     }
 
     public static RESTTranslatedTopicV1 returnPushedTranslatedTopic(final RESTTopicV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         /* Check that a translation exists that is the same locale as the base topic */
         RESTTranslatedTopicV1 pushedTranslatedTopic = null;
         if (source.getTranslatedTopics_OTM() != null && source.getTranslatedTopics_OTM().getItems() != null) {

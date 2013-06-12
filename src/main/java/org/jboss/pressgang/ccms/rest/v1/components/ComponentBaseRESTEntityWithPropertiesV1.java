@@ -7,6 +7,8 @@ import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTAssignedPrope
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityWithPropertiesV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 /**
  * This is the base class for all entities that have Property Tags
  */
@@ -14,6 +16,7 @@ public abstract class ComponentBaseRESTEntityWithPropertiesV1 {
     final RESTBaseEntityWithPropertiesV1<?, ?, ?> source;
 
     public ComponentBaseRESTEntityWithPropertiesV1(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source) {
+        checkArgument(source != null, "The source parameter can not be null");
         this.source = source;
     }
 
@@ -21,8 +24,9 @@ public abstract class ComponentBaseRESTEntityWithPropertiesV1 {
         return returnProperty(source, propertyTagId);
     }
 
-    public static RESTAssignedPropertyTagV1 returnProperty(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source,
-            final Integer propertyTagId) {
+    public static RESTAssignedPropertyTagV1 returnProperty(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source, final Integer propertyTagId) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (source.getProperties() != null && source.getProperties().getItems() != null) {
             final List<RESTAssignedPropertyTagV1> properties = source.getProperties().returnItems();
             for (final RESTAssignedPropertyTagV1 property : properties) {
@@ -37,8 +41,9 @@ public abstract class ComponentBaseRESTEntityWithPropertiesV1 {
         return returnProperties(source, propertyTagId);
     }
 
-    public static List<RESTAssignedPropertyTagV1> returnProperties(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source,
-            final Integer propertyTagId) {
+    public static List<RESTAssignedPropertyTagV1> returnProperties(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source, final Integer propertyTagId) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final List<RESTAssignedPropertyTagV1> properties = new ArrayList<RESTAssignedPropertyTagV1>();
         if (source.getProperties() != null && source.getProperties().getItems() != null) {
             final List<RESTAssignedPropertyTagV1> propertyItems = source.getProperties().returnItems();
@@ -54,8 +59,9 @@ public abstract class ComponentBaseRESTEntityWithPropertiesV1 {
         return returnPropertyItems(source, propertyTagId);
     }
 
-    public static List<RESTAssignedPropertyTagCollectionItemV1> returnPropertyItems(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source,
-            final Integer propertyTagId) {
+    public static List<RESTAssignedPropertyTagCollectionItemV1> returnPropertyItems(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source, final Integer propertyTagId) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         final List<RESTAssignedPropertyTagCollectionItemV1> properties = new ArrayList<RESTAssignedPropertyTagCollectionItemV1>();
         if (source.getProperties() != null && source.getProperties().getItems() != null) {
             for (final RESTAssignedPropertyTagCollectionItemV1 propertyItem : source.getProperties().getItems()) {
