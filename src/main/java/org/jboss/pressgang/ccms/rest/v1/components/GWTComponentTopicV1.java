@@ -18,6 +18,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 /**
  * This component contains methods that can be applied against the topic entity. It excludes any
  * methods that are not GWT compatible (unlike the ComponentTopicV1 class, which includes a bunch
@@ -38,6 +40,8 @@ public abstract class GWTComponentTopicV1 extends ComponentBaseRESTEntityWithPro
     }
 
     public static boolean hasTag(final RESTBaseTopicV1<?, ?, ?> source, final Integer tagID) {
+        checkArgument(source != null, "The source parameter can not be null");
+
         if (source.getTags() != null && source.getTags().getItems() != null) {
             final List<RESTTagV1> tags = source.getTags().returnItems();
             for (final RESTTagV1 tag : tags) {

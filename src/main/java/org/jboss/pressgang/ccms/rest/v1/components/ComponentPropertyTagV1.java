@@ -7,6 +7,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyCategoryInPropertyTagV1;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 /**
  * Contains useful functions that run against a RESTPropertyTagV1, but which are not included in the RESTPropertyTagV1
  * class to prevent possible contamination with non GWT compatible code.
@@ -15,6 +17,7 @@ public final class ComponentPropertyTagV1 {
     final RESTPropertyTagV1 source;
 
     public ComponentPropertyTagV1(final RESTPropertyTagV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
         this.source = source;
     }
 
@@ -23,7 +26,7 @@ public final class ComponentPropertyTagV1 {
     }
 
     public static boolean isInCategory(final RESTPropertyTagV1 source, final Integer childId) {
-        if (source == null) throw new IllegalArgumentException("source cannot be null");
+        checkArgument(source != null, "The source parameter can not be null");
 
         if (childId == null) return false;
 

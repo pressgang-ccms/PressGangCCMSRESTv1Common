@@ -4,10 +4,13 @@ import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTagCollectionItemV
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 public class ComponentProjectV1 {
     final RESTProjectV1 source;
 
     public ComponentProjectV1(final RESTProjectV1 source) {
+        checkArgument(source != null, "The source parameter can not be null");
         this.source = source;
     }
 
@@ -16,7 +19,7 @@ public class ComponentProjectV1 {
     }
 
     public static boolean containsTag(final RESTProjectV1 source, final Integer tagId) {
-        if (source == null) throw new IllegalArgumentException("source cannot be null");
+        checkArgument(source != null, "The source parameter can not be null");
 
         if (tagId == null) return false;
 
