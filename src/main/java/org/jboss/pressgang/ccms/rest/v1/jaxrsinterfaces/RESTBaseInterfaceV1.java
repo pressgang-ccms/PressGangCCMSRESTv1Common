@@ -1623,56 +1623,6 @@ public interface RESTBaseInterfaceV1 {
     public String getJSONPContentSpecsWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback);
 
-    @GET
-    @Path("/contentspec/update/jsonp")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPContentSpec(@QueryParam("expand") final String expand, @QueryParam("data") final RESTContentSpecV1 dataObject,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/contentspecs/update/jsonp")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPContentSpecs(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTContentSpecCollectionV1 dataObjects, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/contentspec/create/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPContentSpec(@QueryParam("expand") final String expand, @QueryParam("data") final RESTContentSpecV1 dataObject,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/contentspecs/create/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPContentSpecs(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTContentSpecCollectionV1 dataObjects, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/contentspec/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPContentSpec(@PathParam("id") final Integer id, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/contentspecs/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPContentSpecs(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
-            @QueryParam("callback") final String callback);
-
     /* JSON FUNCTIONS */
     @GET
     @Path("/contentspec/get/json/{id}")
@@ -1814,58 +1764,6 @@ public interface RESTBaseInterfaceV1 {
     public String getJSONPContentSpecNodesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback);
 
-//    @GET
-//    @Path("/contentspecnode/update/jsonp")
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String updateJSONPContentSpecNode(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCSNodeV1 dataObject,
-//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
-// @QueryParam("userId") final String userId,
-//            @QueryParam("callback") final String callback);
-//
-//    @GET
-//    @Path("/contentspecnodes/update/jsonp")
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String updateJSONPContentSpecNodes(@QueryParam("expand") final String expand,
-//            @QueryParam("data") final RESTCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
-//            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-//            @QueryParam("callback") final String callback);
-//
-//    @GET
-//    @Path("/contentspecnode/create/jsonp")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    public String createJSONPContentSpecNode(@QueryParam("expand") final String expand, @QueryParam("data") final RESTCSNodeV1 dataObject,
-//            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
-// @QueryParam("userId") final String userId,
-//            @QueryParam("callback") final String callback);
-//
-//    @GET
-//    @Path("/contentspecnodes/create/jsonp")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    public String createJSONPContentSpecNodes(@QueryParam("expand") final String expand,
-//            @QueryParam("data") final RESTCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
-//            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-//            @QueryParam("callback") final String callback);
-//
-//    @GET
-//    @Path("/contentspecnode/delete/jsonp/{id}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-//    public String deleteJSONPContentSpecNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
-//            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
-//            @QueryParam("callback") final String callback);
-//
-//    @GET
-//    @Path("/contentspecnodes/delete/jsonp/{ids}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-//    public String deleteJSONPContentSpecNodes(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
-//            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
-//            @QueryParam("callback") final String callback);
-
     /* JSON FUNCTIONS */
     @GET
     @Path("/contentspecnode/get/json/{id}")
@@ -1969,58 +1867,6 @@ public interface RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPTranslatedContentSpecsWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand, @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspec/update/jsonp")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTranslatedContentSpec(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTTranslatedContentSpecV1 dataObject, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspecs/update/jsonp")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTranslatedContentSpecs(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTTranslatedContentSpecCollectionV1 dataObjects, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspec/create/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPTranslatedContentSpec(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTTranslatedContentSpecV1 dataObject, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspecs/create/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPTranslatedContentSpecs(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTTranslatedContentSpecCollectionV1 dataObjects, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspec/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPTranslatedContentSpec(@PathParam("id") final Integer id, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspecs/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPTranslatedContentSpecs(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
-            @QueryParam("callback") final String callback);
 
     /* JSON FUNCTIONS */
     @GET
@@ -2128,58 +1974,6 @@ public interface RESTBaseInterfaceV1 {
     public String getJSONPTranslatedContentSpecNodesWithQuery(@PathParam("query") final PathSegment query,
             @QueryParam("expand") final String expand, @QueryParam("callback") final String callback);
 
-    @GET
-    @Path("/translatedcontentspecnode/update/jsonp")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTranslatedContentSpecNode(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTTranslatedCSNodeV1 dataObject, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspecnodes/update/jsonp")
-    @Consumes({MediaType.APPLICATION_JSON})
-    @Produces(MediaType.APPLICATION_JSON)
-    public String updateJSONPTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTTranslatedCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspecnode/create/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPTranslatedContentSpecNode(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTTranslatedCSNodeV1 dataObject, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspecnodes/create/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
-            @QueryParam("data") final RESTTranslatedCSNodeCollectionV1 dataObjects, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspecnode/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPTranslatedContentSpecNode(@PathParam("id") final Integer id, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/translatedcontentspecnodes/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPTranslatedContentSpecNodes(@PathParam("ids") final PathSegment ids,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("expand") final String expand, @QueryParam("callback") final String callback);
-
     /* JSON FUNCTIONS */
     @GET
     @Path("/translatedcontentspecnode/get/json/{id}")
@@ -2283,54 +2077,6 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getJSONPFilesWithQuery(@PathParam("query") final PathSegment query, @QueryParam("expand") final String expand,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/file/update/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String updateJSONPFile(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileV1 dataObject,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/files/update/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String updateJSONPFiles(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileCollectionV1 dataObjects,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/file/create/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPFile(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileV1 dataObject,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/files/create/jsonp")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes({MediaType.APPLICATION_JSON})
-    public String createJSONPFiles(@QueryParam("expand") final String expand, @QueryParam("data") final RESTFileCollectionV1 dataObjects,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/file/delete/jsonp/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPFile(@PathParam("id") final Integer id, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
-            @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/files/delete/jsonp/{ids}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String deleteJSONPFiles(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback);
 
     /* JSON FUNCTIONS */
