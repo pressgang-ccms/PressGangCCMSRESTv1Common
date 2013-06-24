@@ -65,6 +65,12 @@ public interface RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public ExpandDataTrunk getJSONExpandTrunkExample();
 
+    @POST
+    @Path("/echoxml")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_XML)
+    public String echoXML(String xml);
+
     /* USER FUNCTIONS */
     /* JSONP FUNCTIONS */
     @GET
