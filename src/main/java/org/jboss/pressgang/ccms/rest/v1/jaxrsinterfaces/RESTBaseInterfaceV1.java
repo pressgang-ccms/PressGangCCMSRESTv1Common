@@ -68,7 +68,7 @@ public interface RESTBaseInterfaceV1 {
     @POST
     @Path("/holdxml")
     @Produces(MediaType.WILDCARD)
-    @Consumes({MediaType.APPLICATION_XML, MediaType.TEXT_XML})
+    @Consumes(MediaType.APPLICATION_XML)
     public Integer holdXML(final String xml);
 
     @GET
