@@ -41,6 +41,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.wrapper.IntegerWrapper;
 import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
 
 @Path("/1")
@@ -67,9 +68,9 @@ public interface RESTBaseInterfaceV1 {
 
     @POST
     @Path("/holdxml")
-    @Produces(MediaType.WILDCARD)
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_XML)
-    public Integer holdXML(final String xml);
+    public IntegerWrapper holdXML(final String xml);
 
     @GET
     @Path("/echoxml")
