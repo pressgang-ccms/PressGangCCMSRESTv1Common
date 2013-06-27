@@ -51,6 +51,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedContentSpecV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.wrapper.IntegerWrapper;
 import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
 
 @Path("/1")
@@ -76,10 +77,16 @@ public interface RESTBaseInterfaceV1 {
     public ExpandDataTrunk getJSONExpandTrunkExample();
 
     @POST
+    @Path("/holdxml")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_XML)
+    public IntegerWrapper holdXML(final String xml);
+
+    @GET
     @Path("/echoxml")
     @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
-    public String echoXML(String xml);
+    @Consumes(MediaType.WILDCARD)
+    public String echoXML(@QueryParam("id") final Integer id, @QueryParam("xml") final String xml);
 
     /* USER FUNCTIONS */
     /* JSONP FUNCTIONS */

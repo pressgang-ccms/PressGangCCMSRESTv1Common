@@ -2,6 +2,7 @@ package org.jboss.pressgang.ccms.rest.v1.jaxrsinterfaces;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -49,6 +50,18 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedConte
 
 @Path("/1")
 public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
+
+    @GET
+    @Path("/echoxml")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.WILDCARD)
+    public String echoXML(@QueryParam("id") final Integer id);
+
+    @GET
+    @Path("/echoxml")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.WILDCARD)
+    public String echoXML(@QueryParam("xml") final String xml);
 
     /* USERS */
     /* JSON FUNCTIONS */
