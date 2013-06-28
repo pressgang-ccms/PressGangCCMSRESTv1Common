@@ -1726,14 +1726,15 @@ public interface RESTBaseInterfaceV1 {
     @Consumes({MediaType.TEXT_PLAIN})
     @Produces(MediaType.TEXT_PLAIN)
     public String updateTEXTContentSpec(@PathParam("id") final Integer id, final String contentSpec,
-            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+            @QueryParam("permissive") final Boolean permissive, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     @POST
     @Path("/contentspec/create/text")
     @Consumes({MediaType.TEXT_PLAIN})
     @Produces(MediaType.TEXT_PLAIN)
-    public String createTEXTContentSpec(final String contentSpec, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+    public String createTEXTContentSpec(final String contentSpec, @QueryParam("permissive") final Boolean permissive,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     /* ZIP FUNCTIONS */
     @GET
