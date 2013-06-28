@@ -1,5 +1,7 @@
 package org.jboss.pressgang.ccms.rest.v1.components;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -8,8 +10,6 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
-
-import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * This component contains methods that can be applied against topics
@@ -48,7 +48,7 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
         checkArgument(source != null, "The source parameter can not be null");
 
         final SimpleDateFormat formatter = new SimpleDateFormat(CommonConstants.FILTER_DISPLAY_DATE_FORMAT);
-        return source.getId() + "-" + source.getRevision() + " " + (source.getLastModified() == null ? formatter.format(
+        return source.getId() + "-" + source.getRevision() + " " + (source.getLastModified() != null ? formatter.format(
                 source.getLastModified()) : formatter.format(new Date())) + " " + source.getLocale();
     }
 
