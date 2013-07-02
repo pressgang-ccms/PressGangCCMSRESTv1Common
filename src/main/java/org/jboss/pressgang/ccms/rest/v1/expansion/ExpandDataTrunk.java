@@ -33,15 +33,23 @@ public class ExpandDataTrunk {
     }
 
     public ExpandDataTrunk get(final String name) {
-        if (branches != null) for (final ExpandDataTrunk branch : branches)
-            if (branch.getTrunk().getName() != null && branch.getTrunk().getName().equals(name)) return branch;
+        if (branches != null) {
+            for (final ExpandDataTrunk branch : branches) {
+                if (branch.getTrunk() != null && branch.getTrunk().getName() != null && branch.getTrunk().getName().equals(name))
+                    return branch;
+            }
+        }
 
         return null;
     }
 
     public boolean contains(final String name) {
-        if (branches != null) for (final ExpandDataTrunk branch : branches)
-            if (branch.getTrunk().getName() != null && branch.getTrunk().getName().equals(name)) return true;
+        if (branches != null) {
+            for (final ExpandDataTrunk branch : branches) {
+                if (branch.getTrunk() != null && branch.getTrunk().getName() != null && branch.getTrunk().getName().equals(name))
+                    return true;
+            }
+        }
 
         return false;
     }
