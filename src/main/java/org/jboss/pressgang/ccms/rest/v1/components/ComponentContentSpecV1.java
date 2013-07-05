@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTextContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums.RESTCSNodeTypeV1;
 
 public class ComponentContentSpecV1 {
@@ -41,7 +42,7 @@ public class ComponentContentSpecV1 {
 
      @param source The spec to fix
      */
-    public static void fixDisplayedText(final RESTContentSpecV1 source)
+    public static void fixDisplayedText(final RESTTextContentSpecV1 source)
     {
         if (source.getErrors() != null) {
             source.setText(source.getFailedContentSpec());

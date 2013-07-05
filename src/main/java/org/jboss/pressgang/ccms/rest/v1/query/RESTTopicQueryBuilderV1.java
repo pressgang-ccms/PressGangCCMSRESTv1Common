@@ -97,15 +97,15 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
 
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR,
                     CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR_DESC));
-            add(new Pair<String, String>(CommonFilterConstants.TOPIC_STARTDATE_FILTER_VAR,
-                    CommonFilterConstants.TOPIC_STARTDATE_FILTER_VAR_DESC));
-            add(new Pair<String, String>(CommonFilterConstants.TOPIC_ENDDATE_FILTER_VAR,
-                    CommonFilterConstants.TOPIC_ENDDATE_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.STARTDATE_FILTER_VAR,
+                    CommonFilterConstants.STARTDATE_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.ENDDATE_FILTER_VAR,
+                    CommonFilterConstants.ENDDATE_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.LOGIC_FILTER_VAR, CommonFilterConstants.LOGIC_FILTER_VAR_DESC));
-            add(new Pair<String, String>(CommonFilterConstants.TOPIC_STARTEDITDATE_FILTER_VAR,
-                    CommonFilterConstants.TOPIC_STARTEDITDATE_FILTER_VAR_DESC));
-            add(new Pair<String, String>(CommonFilterConstants.TOPIC_ENDEDITDATE_FILTER_VAR,
-                    CommonFilterConstants.TOPIC_ENDEDITDATE_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.STARTEDITDATE_FILTER_VAR,
+                    CommonFilterConstants.STARTEDITDATE_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.ENDEDITDATE_FILTER_VAR,
+                    CommonFilterConstants.ENDEDITDATE_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.PROPERTY_TAG, CommonFilterConstants.PROPERTY_TAG_DESC));
         }
 
@@ -221,29 +221,29 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
     }
 
     public DateTime getStartCreateDate() {
-        final String startCreateDate = get(CommonFilterConstants.TOPIC_STARTDATE_FILTER_VAR);
+        final String startCreateDate = get(CommonFilterConstants.STARTDATE_FILTER_VAR);
         return startCreateDate == null ? null : new DateTime(ISODateTimeFormat.dateTime().parseDateTime(startCreateDate));
     }
 
     public void setStartCreateDate(final DateTime startCreateDate) {
-        put(CommonFilterConstants.TOPIC_STARTDATE_FILTER_VAR, startCreateDate);
+        put(CommonFilterConstants.STARTDATE_FILTER_VAR, startCreateDate);
     }
 
     public void setStartCreateDate(final Date startCreateDate) {
-        put(CommonFilterConstants.TOPIC_STARTDATE_FILTER_VAR, startCreateDate);
+        put(CommonFilterConstants.STARTDATE_FILTER_VAR, startCreateDate);
     }
 
     public DateTime getEndCreateDate() {
-        final String startCreateDate = get(CommonFilterConstants.TOPIC_ENDDATE_FILTER_VAR);
+        final String startCreateDate = get(CommonFilterConstants.ENDDATE_FILTER_VAR);
         return startCreateDate == null ? null : new DateTime(ISODateTimeFormat.dateTime().parseDateTime(startCreateDate));
     }
 
     public void setEndCreateDate(final DateTime endCreateDate) {
-        put(CommonFilterConstants.TOPIC_ENDDATE_FILTER_VAR, endCreateDate);
+        put(CommonFilterConstants.ENDDATE_FILTER_VAR, endCreateDate);
     }
 
     public void setEndCreateDate(final Date endCreateDate) {
-        put(CommonFilterConstants.TOPIC_ENDDATE_FILTER_VAR, endCreateDate);
+        put(CommonFilterConstants.ENDDATE_FILTER_VAR, endCreateDate);
     }
 
     public String getTopicXML() {
@@ -306,29 +306,29 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
     }
 
     public DateTime getStartEditDate() {
-        final String startEditDate = get(CommonFilterConstants.TOPIC_STARTEDITDATE_FILTER_VAR);
+        final String startEditDate = get(CommonFilterConstants.STARTEDITDATE_FILTER_VAR);
         return startEditDate == null ? null : new DateTime(ISODateTimeFormat.dateTime().parseDateTime(startEditDate));
     }
 
     public void setStartEditDate(final Date startEditDate) {
-        put(CommonFilterConstants.TOPIC_STARTEDITDATE_FILTER_VAR, startEditDate);
+        put(CommonFilterConstants.STARTEDITDATE_FILTER_VAR, startEditDate);
     }
 
     public void setStartEditDate(final DateTime startEditDate) {
-        put(CommonFilterConstants.TOPIC_STARTEDITDATE_FILTER_VAR, startEditDate);
+        put(CommonFilterConstants.STARTEDITDATE_FILTER_VAR, startEditDate);
     }
 
     public DateTime getEndEditDate() {
-        final String endEditDate = get(CommonFilterConstants.TOPIC_ENDEDITDATE_FILTER_VAR);
+        final String endEditDate = get(CommonFilterConstants.ENDEDITDATE_FILTER_VAR);
         return endEditDate == null ? null : new DateTime(ISODateTimeFormat.dateTime().parseDateTime(endEditDate));
     }
 
     public void setEndEditDate(final Date endEditDate) {
-        put(CommonFilterConstants.TOPIC_ENDEDITDATE_FILTER_VAR, endEditDate);
+        put(CommonFilterConstants.ENDEDITDATE_FILTER_VAR, endEditDate);
     }
 
     public void setEndEditDate(final DateTime endEditDate) {
-        put(CommonFilterConstants.TOPIC_ENDEDITDATE_FILTER_VAR, endEditDate);
+        put(CommonFilterConstants.ENDEDITDATE_FILTER_VAR, endEditDate);
     }
 
     public Integer getEditedInLastDays() {

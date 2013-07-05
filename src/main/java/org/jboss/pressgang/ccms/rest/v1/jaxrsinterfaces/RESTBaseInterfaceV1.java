@@ -29,6 +29,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTUserCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTextContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
@@ -49,6 +50,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTextContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.wrapper.IntegerWrapper;
@@ -1735,6 +1737,50 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.TEXT_PLAIN)
     public String createTEXTContentSpec(final String contentSpec, @QueryParam("permissive") final Boolean permissive,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    /* CONTENT SPEC JSON TEXT FUNCTIONS */
+    @GET
+    @Path("/contentspec/get/json+text/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTTextContentSpecV1 getJSONTextContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
+
+    @GET
+    @Path("/contentspec/get/json+text/{id}/r/{rev}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTTextContentSpecV1 getJSONTextContentSpecRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+            @QueryParam("expand") final String expand);
+
+
+    @GET
+    @Path("/contentspecs/get/json+text/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTTextContentSpecCollectionV1 getJSONTextContentSpecs(@QueryParam("expand") final String expand);
+
+    @GET
+    @Path("/contentspecs/get/json+text/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTTextContentSpecCollectionV1 getJSONTextContentSpecsWithQuery(@PathParam("query") final PathSegment query,
+            @QueryParam("expand") final String expand);
+
+    @POST
+    @Path("/contentspec/update/json+text")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTTextContentSpecV1 updateJSONTextContentSpec(@QueryParam("expand") final String expand,
+            final RESTTextContentSpecV1 contentSpec, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+            @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/contentspec/create/json+text")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTTextContentSpecV1 createJSONTextContentSpec(@QueryParam("expand") final String expand,
+            final RESTTextContentSpecV1 contentSpec, @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+            @QueryParam("userId") final String userId);
 
     /* ZIP FUNCTIONS */
     @GET
