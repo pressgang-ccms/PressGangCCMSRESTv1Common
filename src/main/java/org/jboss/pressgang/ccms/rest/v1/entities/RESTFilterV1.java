@@ -7,10 +7,12 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterLocaleCollectionV1
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTFilterCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTFilterTypeV1;
 
 public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilterCollectionV1, RESTFilterCollectionItemV1> {
     public static final String NAME_NAME = "name";
     public static final String DESCRIPTION_NAME = "description";
+    public static final String TYPE_NAME = "type";
     public static final String FILTER_TAGS_NAME = "filterTags_OTM";
     public static final String FILTER_LOCALES_NAME = "filterLocales_OTM";
     public static final String FILTER_CATEGORIES_NAME = "filterCategories_OTM";
@@ -18,6 +20,7 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
 
     private String name = null;
     private String description = null;
+    private RESTFilterTypeV1 type = null;
     private RESTFilterTagCollectionV1 filterTags_OTM = null;
     private RESTFilterLocaleCollectionV1 filterLocales_OTM = null;
     private RESTFilterCategoryCollectionV1 filterCategories_OTM = null;
@@ -49,6 +52,7 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
 
         clone.name = this.name;
         clone.description = this.description;
+        clone.type = this.type;
 
         if (deepCopy) {
             if (this.revisions != null) {
@@ -108,6 +112,19 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
     public void explicitSetDescription(final String description) {
         this.description = description;
         this.setParameterToConfigured(DESCRIPTION_NAME);
+    }
+
+    public RESTFilterTypeV1 getType() {
+        return type;
+    }
+
+    public void setType(final RESTFilterTypeV1 type) {
+        this.type = type;
+    }
+
+    public void explicitSetType(final RESTFilterTypeV1 type) {
+        this.type = type;
+        this.setParameterToConfigured(TYPE_NAME);
     }
 
     public RESTFilterTagCollectionV1 getFilterTags_OTM() {
