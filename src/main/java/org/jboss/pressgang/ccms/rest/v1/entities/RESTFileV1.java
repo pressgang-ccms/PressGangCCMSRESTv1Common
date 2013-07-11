@@ -48,6 +48,7 @@ public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileColl
         clone.description = this.description;
         clone.fileName = this.fileName;
         clone.filePath = this.filePath;
+        clone.explodeArchive = this.explodeArchive;
 
         if (deepCopy) {
             if (this.languageFiles_OTM != null) {

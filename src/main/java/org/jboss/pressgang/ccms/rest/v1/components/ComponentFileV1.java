@@ -27,9 +27,11 @@ public class ComponentFileV1 {
     }
 
     public static String getExtension(final RESTFileV1 source) {
-        final int lastPeriodIndex = source.getFileName().lastIndexOf(".");
-        if (lastPeriodIndex != -1 && lastPeriodIndex < source.getFileName().length() - 1) {
-            return source.getFileName().substring(lastPeriodIndex + 1);
+        if (source.getFileName() != null) {
+            final int lastPeriodIndex = source.getFileName().lastIndexOf(".");
+            if (lastPeriodIndex != -1 && lastPeriodIndex < source.getFileName().length() - 1) {
+                return source.getFileName().substring(lastPeriodIndex + 1);
+            }
         }
 
         return null;
