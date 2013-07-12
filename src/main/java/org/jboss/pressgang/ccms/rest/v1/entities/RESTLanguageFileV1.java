@@ -9,10 +9,12 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
     public static final String FILE_DATA_NAME = "fileData";
     public static final String LOCALE_NAME = "locale";
     public static final String FILE_NAME = "file";
+    public static final String FILENAME_NAME = "filename";
 
     private RESTFileV1 file = null;
     private byte[] fileData = null;
     private String locale = null;
+    private String filename = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -42,6 +44,7 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
 
         clone.file = this.file;
         clone.locale = this.locale;
+        clone.filename = this.filename;
 
         if (deepCopy) {
             /* use arraycopy as a GWT compatible alternative to clone() */
@@ -95,6 +98,19 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
     public void explicitSetLocale(final String locale) {
         this.locale = locale;
         this.setParameterToConfigured(LOCALE_NAME);
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(final String filename) {
+        this.filename = filename;
+    }
+
+    public void explicitSetFilename(final String filename) {
+        this.filename = filename;
+        setParameterToConfigured(FILENAME_NAME);
     }
 
     @Override
