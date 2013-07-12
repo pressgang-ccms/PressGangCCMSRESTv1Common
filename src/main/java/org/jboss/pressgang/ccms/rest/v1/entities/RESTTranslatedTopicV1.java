@@ -1,7 +1,5 @@
 package org.jboss.pressgang.ccms.rest.v1.entities;
 
-import java.util.Date;
-
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicStringCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTranslatedTopicCollectionItemV1;
@@ -23,7 +21,6 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     public static final String TOPIC_NAME = "topic";
     public static final String TRANSLATEDTOPICSTRING_NAME = "translatedTopicString_OTM";
     public static final String TRANSLATIONPERCENTAGE_NAME = "translationPercentage";
-    public static final String HTML_UPDATED = "htmlUpdated";
     public static final String OUTGOING_NAME = "outgoingTranslatedRelationships";
     public static final String INCOMING_NAME = "incomingTranslatedRelationships";
     public static final String ALL_LATEST_OUTGOING_NAME = "allLatestOutgoingRelationships";
@@ -36,7 +33,6 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     protected Integer topicId = null;
     protected Integer topicRevision = null;
     protected Integer translationPercentage = null;
-    protected Date htmlUpdated = null;
     protected Boolean containsFuzzyTranslation = false;
     protected String translatedXMLCondition = null;
     protected RESTTranslatedTopicStringCollectionV1 translatedTopicStrings = null;
@@ -143,11 +139,6 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
         setParameterToConfigured(XML_ERRORS_NAME);
     }
 
-    public void explicitSetHtml(final String html) {
-        setHtml(html);
-        setParameterToConfigured(HTML_NAME);
-    }
-
     public Integer getTopicId() {
         return topicId;
     }
@@ -206,19 +197,6 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     public void explicitSetTranslatedTopicString_OTM(final RESTTranslatedTopicStringCollectionV1 translatedTopicStrings) {
         this.translatedTopicStrings = translatedTopicStrings;
         this.setParameterToConfigured(TRANSLATEDTOPICSTRING_NAME);
-    }
-
-    public Date getHtmlUpdated() {
-        return htmlUpdated;
-    }
-
-    public void setHtmlUpdated(final Date htmlUpdated) {
-        this.htmlUpdated = htmlUpdated;
-    }
-
-    public void explicitSetHtmlUpdated(final Date htmlUpdated) {
-        this.htmlUpdated = htmlUpdated;
-        this.setParameterToConfigured(HTML_UPDATED);
     }
 
     public void explicitSetLocale(final String locale) {

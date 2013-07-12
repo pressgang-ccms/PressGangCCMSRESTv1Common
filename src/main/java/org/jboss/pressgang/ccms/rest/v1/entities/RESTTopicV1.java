@@ -139,11 +139,6 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
         setParameterToConfigured(XML_NAME);
     }
 
-    public void explicitSetHtml(final String html) {
-        setHtml(html);
-        setParameterToConfigured(HTML_NAME);
-    }
-
     public void explicitSetLocale(final String locale) {
         setLocale(locale);
         setParameterToConfigured(LOCALE_NAME);

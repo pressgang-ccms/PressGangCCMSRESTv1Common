@@ -1,5 +1,7 @@
 package org.jboss.pressgang.ccms.rest.v1.components;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,8 +19,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * This component contains methods that can be applied against all topic entities
@@ -248,7 +248,6 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
         if (source.getXml() != null) return false;
 
         if (checkReadonlyValues) {
-            if (source.getHtml() != null) return false;
             if (source.getXmlErrors() != null) return false;
             if (source.getRevision() != null) return false;
         }

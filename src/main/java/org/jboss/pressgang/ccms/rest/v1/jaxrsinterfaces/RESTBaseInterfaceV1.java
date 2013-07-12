@@ -1369,19 +1369,6 @@ public interface RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     public String getXMLTopicXMLNoContainer(@PathParam("id") final Integer id, @QueryParam("includeTitle") final Boolean includeTitle);
 
-    /* HTML FUNCTIONS */
-    @GET
-    @Path("/topic/get/html/{id}/html")
-    @Produces(MediaType.APPLICATION_XHTML_XML)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String getHTMLTopicHTML(@PathParam("id") final Integer id);
-
-    @GET
-    @Path("/topic/get/html/{id}/r/{rev}/html")
-    @Produces(MediaType.APPLICATION_XHTML_XML)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public String getHTMLTopicRevisionHTML(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision);
-
     /* CSV FUNCTIONS */
     @GET
     @Path("/topics/get/csv/all")

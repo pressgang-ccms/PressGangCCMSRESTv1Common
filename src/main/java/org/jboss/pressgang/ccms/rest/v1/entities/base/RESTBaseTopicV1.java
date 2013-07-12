@@ -12,7 +12,6 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     public static final String TITLE_NAME = "title";
     public static final String XML_NAME = "xml";
     public static final String XML_ERRORS_NAME = "xmlErrors";
-    public static final String HTML_NAME = "html";
     public static final String TAGS_NAME = "tags";
     public static final String OUTGOING_NAME = "outgoingRelationships";
     public static final String INCOMING_NAME = "incomingRelationships";
@@ -23,7 +22,6 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     protected String title = null;
     protected String xml = null;
     protected String xmlErrors = null;
-    protected String html = null;
     protected String locale = null;
     protected RESTXMLDoctype xmlDoctype = null;
     protected RESTTagCollectionV1 tags = null;
@@ -43,7 +41,6 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
         clone.title = this.title;
         clone.xml = this.xml;
         clone.xmlErrors = this.xmlErrors;
-        clone.html = this.html;
         clone.locale = this.locale;
         clone.xmlDoctype = this.xmlDoctype;
 
@@ -77,14 +74,6 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
 
     public void setXml(final String xml) {
         this.xml = xml;
-    }
-
-    public String getHtml() {
-        return html;
-    }
-
-    public void setHtml(final String html) {
-        this.html = html;
     }
 
     public String getLocale() {
