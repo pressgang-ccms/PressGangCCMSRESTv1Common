@@ -82,4 +82,8 @@ public class RESTv1Constants {
     public static final String ACCESS_CONTROL_ALLOW_METHODS = "Access-Control-Allow-Methods";
     public static final String ACCESS_CONTROL_ALLOW_HEADERS = "Access-Control-Allow-Headers";
     public static final String ACCESS_CONTROL_REQUEST_HEADERS = "Access-Control-Request-Headers";
+    /**
+     * A header sent back with every request.
+     */
+    public static final String X_PRESSGANG_VERSION_HEADER = "X-PressGang-Version";
 }
