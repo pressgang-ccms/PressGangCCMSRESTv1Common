@@ -11,6 +11,8 @@ public class RESTTextContentSpecV1 extends RESTBaseContentSpecV1<RESTTextContent
     public static final String TEXT_NAME = "text";
 
     private String title = null;
+    private String product = null;
+    private String version = null;
     private String text = null;
     private RESTTextCSProcessingOptionsV1 processingOptions = null;
     private RESTTextContentSpecCollectionV1 revisions = null;
@@ -38,6 +40,8 @@ public class RESTTextContentSpecV1 extends RESTBaseContentSpecV1<RESTTextContent
         super.cloneInto(clone, deepCopy);
 
         clone.title = this.title;
+        clone.product = this.product;
+        clone.version = this.version;
         clone.text = this.text;
 
         if (deepCopy) {
@@ -89,6 +93,22 @@ public class RESTTextContentSpecV1 extends RESTBaseContentSpecV1<RESTTextContent
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     @Override
