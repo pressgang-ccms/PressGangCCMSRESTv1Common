@@ -14,8 +14,10 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
         RESTContentSpecCollectionItemV1> {
     public static final String CHILDREN_NAME = "children_OTM";
     public static final String CONDITION_NAME = "condition";
+    public static final String BOOK_TAGS_NAME = "bookTags";
 
     private String condition = null;
+    protected RESTTagCollectionV1 bookTags = null;
     private RESTContentSpecCollectionV1 revisions = null;
     private RESTCSNodeCollectionV1 children_OTM = null;
 
@@ -49,13 +51,19 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
                 this.revisions.cloneInto(clone.revisions, deepCopy);
             }
 
+            if (bookTags != null) {
+                clone.bookTags = new RESTTagCollectionV1();
+                bookTags.cloneInto(clone.bookTags, deepCopy);
+            }
+
             if (this.children_OTM != null) {
                 clone.children_OTM = new RESTCSNodeCollectionV1();
                 this.children_OTM.cloneInto(clone.children_OTM, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
-            clone.children_OTM = this.children_OTM;
+            clone.revisions = revisions;
+            clone.bookTags = bookTags;
+            clone.children_OTM = children_OTM;
         }
     }
 
@@ -109,6 +117,19 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
         this.tags = tags;
         setParameterToConfigured(TAGS_NAME);
     }
+
+    public RESTTagCollectionV1 getBookTags() {
+        return bookTags;
+    }
+
+    public void setBookTags(final RESTTagCollectionV1 bookTags) {
+        this.bookTags = bookTags;
+    }
+    public void explicitSetBookTags(final RESTTagCollectionV1 bookTags) {
+        this.bookTags = bookTags;
+        setParameterToConfigured(BOOK_TAGS_NAME);
+    }
+
 
     @Override
     public boolean equals(final Object other) {
