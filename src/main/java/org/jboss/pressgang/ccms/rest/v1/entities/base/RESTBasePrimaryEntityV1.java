@@ -13,17 +13,17 @@ public abstract class RESTBasePrimaryEntityV1<T extends RESTBasePrimaryEntityV1<
     public void cloneInto(final RESTBasePrimaryEntityV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.setSelfLink(this.selfLink);
-        clone.setEditLink(this.editLink);
-        clone.setDeleteLink(this.deleteLink);
-        clone.setAddLink(this.addLink);
+        clone.setSelfLink(selfLink);
+        clone.setEditLink(editLink);
+        clone.setDeleteLink(deleteLink);
+        clone.setAddLink(addLink);
     }
 
     public void setLinks(final String baseUrl, final String restBasePath, final String dataType, final Object id) {
-        this.setSelfLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/get/" + dataType + "/" + id);
-        this.setDeleteLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/delete/" + dataType + "/" + id);
-        this.setAddLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/create/" + dataType);
-        this.setEditLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/update/" + dataType);
+        setSelfLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/get/" + dataType + "/" + id);
+        setDeleteLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/delete/" + dataType + "/" + id);
+        setAddLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/create/" + dataType);
+        setEditLink(baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "1/" + restBasePath + "/update/" + dataType);
     }
 
     public String getSelfLink() {

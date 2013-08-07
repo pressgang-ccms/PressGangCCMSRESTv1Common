@@ -17,7 +17,7 @@ public class RESTImageCollectionV1 extends RESTBaseCollectionV1<RESTImageV1, RES
 
     @Override
     public List<RESTImageCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class RESTImageCollectionV1 extends RESTBaseCollectionV1<RESTImageV1, RES
     @Override
     protected void addItem(final RESTImageV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTImageCollectionItemV1>();
+            items = new ArrayList<RESTImageCollectionItemV1>();
         }
 
         items.add(new RESTImageCollectionItemV1(item, state));

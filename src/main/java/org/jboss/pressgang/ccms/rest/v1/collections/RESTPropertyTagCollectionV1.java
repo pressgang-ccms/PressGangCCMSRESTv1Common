@@ -18,7 +18,7 @@ public class RESTPropertyTagCollectionV1 extends RESTBaseCollectionV1<RESTProper
 
     @Override
     public List<RESTPropertyTagCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTPropertyTagCollectionV1 extends RESTBaseCollectionV1<RESTProper
     @Override
     protected void addItem(final RESTPropertyTagV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTPropertyTagCollectionItemV1>();
+            items = new ArrayList<RESTPropertyTagCollectionItemV1>();
         }
 
         items.add(new RESTPropertyTagCollectionItemV1(item, state));

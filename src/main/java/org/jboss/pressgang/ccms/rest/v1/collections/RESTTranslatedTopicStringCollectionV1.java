@@ -18,7 +18,7 @@ public class RESTTranslatedTopicStringCollectionV1 extends RESTBaseUpdateCollect
 
     @Override
     public List<RESTTranslatedTopicStringCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTTranslatedTopicStringCollectionV1 extends RESTBaseUpdateCollect
     @Override
     protected void addItem(final RESTTranslatedTopicStringV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTTranslatedTopicStringCollectionItemV1>();
+            items = new ArrayList<RESTTranslatedTopicStringCollectionItemV1>();
         }
 
         items.add(new RESTTranslatedTopicStringCollectionItemV1(item, state));

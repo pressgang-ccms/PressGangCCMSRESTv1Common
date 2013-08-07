@@ -14,6 +14,6 @@ public abstract class RESTBaseUpdateCollectionItemV1<T extends RESTBaseEntityV1<
     }
 
     public boolean returnIsUpdateItem() {
-        return getState() == UPDATE_STATE;
+        return getState().equals(UPDATE_STATE);
     }
 }

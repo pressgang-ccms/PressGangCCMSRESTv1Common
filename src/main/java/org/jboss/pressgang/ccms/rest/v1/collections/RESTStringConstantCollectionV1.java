@@ -18,7 +18,7 @@ public class RESTStringConstantCollectionV1 extends RESTBaseCollectionV1<RESTStr
 
     @Override
     public List<RESTStringConstantCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTStringConstantCollectionV1 extends RESTBaseCollectionV1<RESTStr
     @Override
     protected void addItem(final RESTStringConstantV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTStringConstantCollectionItemV1>();
+            items = new ArrayList<RESTStringConstantCollectionItemV1>();
         }
 
         items.add(new RESTStringConstantCollectionItemV1(item, state));

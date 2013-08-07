@@ -17,7 +17,7 @@ public class RESTRoleCollectionV1 extends RESTBaseCollectionV1<RESTRoleV1, RESTR
 
     @Override
     public List<RESTRoleCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class RESTRoleCollectionV1 extends RESTBaseCollectionV1<RESTRoleV1, RESTR
     @Override
     protected void addItem(final RESTRoleV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTRoleCollectionItemV1>();
+            items = new ArrayList<RESTRoleCollectionItemV1>();
         }
 
         items.add(new RESTRoleCollectionItemV1(item, state));

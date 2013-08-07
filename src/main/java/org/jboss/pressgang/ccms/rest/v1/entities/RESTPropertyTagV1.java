@@ -44,7 +44,7 @@ public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, 
     public RESTPropertyTagV1 clone(boolean deepCopy) {
         final RESTPropertyTagV1 retValue = new RESTPropertyTagV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -53,38 +53,38 @@ public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, 
         super.cloneInto(clone, deepCopy);
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTPropertyTagCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
     }
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public void explicitSetIsUnique(boolean isUnique) {
         this.isUnique = isUnique;
-        this.setParameterToConfigured(ISUNIQUE_NAME);
+        setParameterToConfigured(ISUNIQUE_NAME);
     }
 
     public void explicitSetCanBeNull(final boolean canBeNull) {
         this.canBeNull = canBeNull;
-        this.setParameterToConfigured(CANBENULL_NAME);
+        setParameterToConfigured(CANBENULL_NAME);
     }
 
     public void explicitSetRegex(final String regex) {
         this.regex = regex;
-        this.setParameterToConfigured(REGEX_NAME);
+        setParameterToConfigured(REGEX_NAME);
     }
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     @Override
@@ -97,7 +97,7 @@ public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, 
     }
 
     public void explicitSetPropertyCategories(final RESTPropertyCategoryInPropertyTagCollectionV1 propertyTagCategories) {
-        this.propertyCategories = propertyTagCategories;
-        this.setParameterToConfigured(PROPERTY_CATEGORIES_NAME);
+        propertyCategories = propertyTagCategories;
+        setParameterToConfigured(PROPERTY_CATEGORIES_NAME);
     }
 }

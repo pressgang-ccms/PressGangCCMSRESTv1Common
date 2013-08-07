@@ -33,7 +33,7 @@ public class RESTBlobConstantV1 extends RESTBasePrimaryEntityV1<RESTBlobConstant
     public RESTBlobConstantV1 clone(boolean deepCopy) {
         final RESTBlobConstantV1 retValue = new RESTBlobConstantV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -41,7 +41,7 @@ public class RESTBlobConstantV1 extends RESTBasePrimaryEntityV1<RESTBlobConstant
     public void cloneInto(final RESTBlobConstantV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = this.name;
+        clone.name = name;
 
         if (deepCopy) {
             if (value != null) {
@@ -51,13 +51,13 @@ public class RESTBlobConstantV1 extends RESTBasePrimaryEntityV1<RESTBlobConstant
                 clone.value = null;
             }
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTBlobConstantCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
             clone.value = value;
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
     }
 
@@ -71,7 +71,7 @@ public class RESTBlobConstantV1 extends RESTBasePrimaryEntityV1<RESTBlobConstant
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     public byte[] getValue() {
@@ -84,7 +84,7 @@ public class RESTBlobConstantV1 extends RESTBasePrimaryEntityV1<RESTBlobConstant
 
     public void explicitSetValue(final byte[] value) {
         this.value = value;
-        this.setParameterToConfigured(VALUE_NAME);
+        setParameterToConfigured(VALUE_NAME);
     }
 
     @Override

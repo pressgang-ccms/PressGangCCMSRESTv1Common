@@ -35,7 +35,7 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
     public RESTContentSpecV1 clone(final boolean deepCopy) {
         final RESTContentSpecV1 retValue = new RESTContentSpecV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -43,12 +43,12 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
     public void cloneInto(final RESTContentSpecV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.condition = this.condition;
+        clone.condition = condition;
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTContentSpecCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
 
             if (bookTags != null) {
@@ -56,9 +56,9 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
                 bookTags.cloneInto(clone.bookTags, deepCopy);
             }
 
-            if (this.children_OTM != null) {
+            if (children_OTM != null) {
                 clone.children_OTM = new RESTCSNodeCollectionV1();
-                this.children_OTM.cloneInto(clone.children_OTM, deepCopy);
+                children_OTM.cloneInto(clone.children_OTM, deepCopy);
             }
         } else {
             clone.revisions = revisions;

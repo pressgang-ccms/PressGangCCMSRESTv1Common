@@ -18,7 +18,7 @@ public abstract class RESTBaseQueryBuilderWithPropertiesV1 extends RESTBaseQuery
     }
 
     public void setPropertyTagIds(final Map<Integer, String> propertyTagIds) {
-        this.propertyTags = propertyTagIds;
+        propertyTags = propertyTagIds;
     }
 
     public void setPropertyTag(final Integer propertyTagId, final String value) {
@@ -42,7 +42,7 @@ public abstract class RESTBaseQueryBuilderWithPropertiesV1 extends RESTBaseQuery
                 try {
                     final String propTagId = fieldValue.replace(CommonFilterConstants.PROPERTY_TAG, "");
                     final Integer propTagIdInt = Integer.parseInt(propTagId);
-                    this.setPropertyTag(propTagIdInt, fieldValue);
+                    setPropertyTag(propTagIdInt, fieldValue);
                 } catch (final Exception ex) {
                     // Do Nothing
                 }

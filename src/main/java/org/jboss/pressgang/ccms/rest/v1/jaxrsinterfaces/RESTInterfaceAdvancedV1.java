@@ -21,6 +21,5 @@ public interface RESTInterfaceAdvancedV1 {
     @Path("/topics/get/atom/{query}")
     @Produces(MediaType.APPLICATION_ATOM_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public Feed getATOMTopicsWithQuery(@PathParam("query") PathSegment query,
-            @QueryParam("expand") final String expand);
+    Feed getATOMTopicsWithQuery(@PathParam("query") PathSegment query, @QueryParam("expand") final String expand);
 }

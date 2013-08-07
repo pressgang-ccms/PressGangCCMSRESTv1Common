@@ -18,7 +18,7 @@ public class RESTBugzillaBugCollectionV1 extends RESTBaseUpdateCollectionV1<REST
 
     @Override
     public List<RESTBugzillaBugCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTBugzillaBugCollectionV1 extends RESTBaseUpdateCollectionV1<REST
     @Override
     protected void addItem(final RESTBugzillaBugV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTBugzillaBugCollectionItemV1>();
+            items = new ArrayList<RESTBugzillaBugCollectionItemV1>();
         }
 
         items.add(new RESTBugzillaBugCollectionItemV1(item, state));

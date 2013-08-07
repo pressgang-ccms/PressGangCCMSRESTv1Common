@@ -41,7 +41,7 @@ public class RESTCSRelatedNodeV1 extends RESTBaseCSNodeV1<RESTCSRelatedNodeV1, R
     public RESTCSRelatedNodeV1 clone(boolean deepCopy) {
         final RESTCSRelatedNodeV1 retValue = new RESTCSRelatedNodeV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -49,17 +49,17 @@ public class RESTCSRelatedNodeV1 extends RESTBaseCSNodeV1<RESTCSRelatedNodeV1, R
     public void cloneInto(final RESTCSRelatedNodeV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.relationshipType = this.relationshipType;
-        clone.relationshipId = this.relationshipId;
-        clone.relationshipSort = this.relationshipSort;
+        clone.relationshipType = relationshipType;
+        clone.relationshipId = relationshipId;
+        clone.relationshipSort = relationshipSort;
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTCSRelatedNodeCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
     }
 
@@ -75,7 +75,7 @@ public class RESTCSRelatedNodeV1 extends RESTBaseCSNodeV1<RESTCSRelatedNodeV1, R
 
     public void explicitSetRelationshipType(final RESTCSNodeRelationshipTypeV1 relationshipType) {
         this.relationshipType = relationshipType;
-        this.setParameterToConfigured(RELATIONSHIP_TYPE_NAME);
+        setParameterToConfigured(RELATIONSHIP_TYPE_NAME);
     }
 
     @Override
@@ -113,10 +113,10 @@ public class RESTCSRelatedNodeV1 extends RESTBaseCSNodeV1<RESTCSRelatedNodeV1, R
 
         final RESTCSRelatedNodeV1 otherCasted = (RESTCSRelatedNodeV1) other;
 
-        if (this.relationshipId == null && otherCasted.relationshipId == null) return true;
+        if (relationshipId == null && otherCasted.relationshipId == null) return true;
 
-        if ((this.relationshipId == null || otherCasted.relationshipId == null)) return false;
+        if ((relationshipId == null || otherCasted.relationshipId == null)) return false;
 
-        return this.relationshipId.equals(otherCasted.relationshipId);
+        return relationshipId.equals(otherCasted.relationshipId);
     }
 }

@@ -31,7 +31,7 @@ public class RESTTranslatedContentSpecV1 extends RESTBasePrimaryEntityV1<RESTTra
     @Override
     public RESTTranslatedContentSpecV1 clone(boolean deepCopy) {
         final RESTTranslatedContentSpecV1 retValue = new RESTTranslatedContentSpecV1();
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
         return retValue;
     }
 
@@ -101,11 +101,11 @@ public class RESTTranslatedContentSpecV1 extends RESTBasePrimaryEntityV1<RESTTra
     }
 
     public void setTranslatedNodes_OTM(RESTTranslatedCSNodeCollectionV1 translatedNodes) {
-        this.translatedNodes_OTM = translatedNodes;
+        translatedNodes_OTM = translatedNodes;
     }
 
     public void explicitSetTranslatedNodes_OTM(RESTTranslatedCSNodeCollectionV1 translatedNodes) {
-        this.translatedNodes_OTM = translatedNodes;
+        translatedNodes_OTM = translatedNodes;
         setParameterToConfigured(TRANSLATED_NODES_NAME);
     }
 

@@ -50,7 +50,7 @@ public class RESTPropertyCategoryInPropertyTagV1 extends RESTBasePropertyCategor
 
     public void explicitSetRelationshipId(final Integer relationshipId) {
         this.relationshipId = relationshipId;
-        this.setParameterToConfigured(RELATIONSHIP_ID_NAME);
+        setParameterToConfigured(RELATIONSHIP_ID_NAME);
     }
 
     @Override
@@ -65,14 +65,14 @@ public class RESTPropertyCategoryInPropertyTagV1 extends RESTBasePropertyCategor
 
     public void explicitSetRelationshipSort(final Integer relationshipSort) {
         this.relationshipSort = relationshipSort;
-        this.setParameterToConfigured(RELATIONSHIP_SORT_NAME);
+        setParameterToConfigured(RELATIONSHIP_SORT_NAME);
     }
 
     @Override
     public RESTPropertyCategoryInPropertyTagV1 clone(final boolean deepCopy) {
         final RESTPropertyCategoryInPropertyTagV1 retValue = new RESTPropertyCategoryInPropertyTagV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -80,16 +80,16 @@ public class RESTPropertyCategoryInPropertyTagV1 extends RESTBasePropertyCategor
     public void cloneInto(final RESTPropertyCategoryInPropertyTagV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.relationshipId = this.relationshipId;
-        clone.relationshipSort = this.relationshipSort;
+        clone.relationshipId = relationshipId;
+        clone.relationshipSort = relationshipSort;
 
         if (deepCopy) {
-            if (this.getRevisions() != null) {
+            if (getRevisions() != null) {
                 clone.revisions = new RESTPropertyCategoryInPropertyTagCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
     }
 
@@ -103,11 +103,11 @@ public class RESTPropertyCategoryInPropertyTagV1 extends RESTBasePropertyCategor
 
         final RESTPropertyCategoryInPropertyTagV1 otherCasted = (RESTPropertyCategoryInPropertyTagV1) other;
 
-        if (this.relationshipId == null && otherCasted.relationshipId == null) return true;
+        if (relationshipId == null && otherCasted.relationshipId == null) return true;
 
-        if ((this.relationshipId == null || otherCasted.relationshipId == null)) return false;
+        if ((relationshipId == null || otherCasted.relationshipId == null)) return false;
 
-        return this.relationshipId.equals(otherCasted.relationshipId);
+        return relationshipId.equals(otherCasted.relationshipId);
     }
 
 }

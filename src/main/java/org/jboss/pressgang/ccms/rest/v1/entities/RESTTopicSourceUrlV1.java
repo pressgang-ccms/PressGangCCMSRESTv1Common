@@ -32,7 +32,7 @@ public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1,
     public RESTTopicSourceUrlV1 clone(boolean deepCopy) {
         final RESTTopicSourceUrlV1 retValue = new RESTTopicSourceUrlV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -40,17 +40,17 @@ public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1,
     public void cloneInto(final RESTTopicSourceUrlV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.url = this.url;
+        clone.url = url;
         clone.description = description;
-        clone.title = this.title;
+        clone.title = title;
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTTopicSourceUrlCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
     }
 
@@ -64,7 +64,7 @@ public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1,
 
     public void explicitSetUrl(final String url) {
         this.url = url;
-        this.setParameterToConfigured(URL_NAME);
+        setParameterToConfigured(URL_NAME);
     }
 
     public String getTitle() {
@@ -77,7 +77,7 @@ public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1,
 
     public void explicitSetTitle(final String title) {
         this.title = title;
-        this.setParameterToConfigured(TITLE_NAME);
+        setParameterToConfigured(TITLE_NAME);
     }
 
     public String getDescription() {
@@ -90,7 +90,7 @@ public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1,
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     @Override

@@ -44,7 +44,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
     public RESTCSNodeV1 clone(boolean deepCopy) {
         final RESTCSNodeV1 retValue = new RESTCSNodeV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -53,47 +53,47 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
         super.cloneInto(clone, deepCopy);
 
         if (deepCopy) {
-            if (this.relatedFromNodes != null) {
+            if (relatedFromNodes != null) {
                 clone.relatedFromNodes = new RESTCSRelatedNodeCollectionV1();
                 relatedFromNodes.cloneInto(clone.relatedFromNodes, deepCopy);
             }
 
-            if (this.relatedToNodes != null) {
+            if (relatedToNodes != null) {
                 clone.relatedToNodes = new RESTCSRelatedNodeCollectionV1();
                 relatedToNodes.cloneInto(clone.relatedToNodes, deepCopy);
             }
 
-            if (this.children_OTM != null) {
+            if (children_OTM != null) {
                 clone.children_OTM = new RESTCSNodeCollectionV1();
                 children_OTM.cloneInto(clone.children_OTM, deepCopy);
             }
 
             if (translatedNodes_OTM != null) {
                 clone.translatedNodes_OTM = new RESTTranslatedCSNodeCollectionV1();
-                this.translatedNodes_OTM.cloneInto(clone.translatedNodes_OTM, deepCopy);
+                translatedNodes_OTM.cloneInto(clone.translatedNodes_OTM, deepCopy);
             }
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTCSNodeCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
 
-            if (this.nextNode != null) {
-                clone.nextNode = this.nextNode.clone(deepCopy);
+            if (nextNode != null) {
+                clone.nextNode = nextNode.clone(deepCopy);
             }
         } else {
-            clone.relatedFromNodes = this.relatedFromNodes;
-            clone.relatedToNodes = this.relatedToNodes;
-            clone.children_OTM = this.children_OTM;
-            clone.translatedNodes_OTM = this.translatedNodes_OTM;
-            clone.revisions = this.revisions;
-            clone.nextNode = this.nextNode;
+            clone.relatedFromNodes = relatedFromNodes;
+            clone.relatedToNodes = relatedToNodes;
+            clone.children_OTM = children_OTM;
+            clone.translatedNodes_OTM = translatedNodes_OTM;
+            clone.revisions = revisions;
+            clone.nextNode = nextNode;
         }
     }
 
     public void explicitSetTitle(final String title) {
         this.title = title;
-        this.setParameterToConfigured(TITLE_NAME);
+        setParameterToConfigured(TITLE_NAME);
     }
 
     public void explicitSetTargetId(final String targetId) {
@@ -103,27 +103,27 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
 
     public void explicitSetAdditionalText(final String additionalText) {
         this.additionalText = additionalText;
-        this.setParameterToConfigured(ADDITIONAL_TEXT_NAME);
+        setParameterToConfigured(ADDITIONAL_TEXT_NAME);
     }
 
     public void explicitSetNodeType(final RESTCSNodeTypeV1 nodeType) {
         this.nodeType = nodeType;
-        this.setParameterToConfigured(NODE_TYPE_NAME);
+        setParameterToConfigured(NODE_TYPE_NAME);
     }
 
     public void explicitSetEntityId(final Integer entityId) {
         this.entityId = entityId;
-        this.setParameterToConfigured(ENTITY_ID_NAME);
+        setParameterToConfigured(ENTITY_ID_NAME);
     }
 
     public void explicitSetEntityRevision(final Integer entityRevision) {
         this.entityRevision = entityRevision;
-        this.setParameterToConfigured(ENTITY_REVISION_NAME);
+        setParameterToConfigured(ENTITY_REVISION_NAME);
     }
 
     public void explicitSetCondition(final String condition) {
         this.condition = condition;
-        this.setParameterToConfigured(CONDITION_NAME);
+        setParameterToConfigured(CONDITION_NAME);
     }
 
     public RESTCSNodeV1 getNextNode() {
@@ -136,12 +136,12 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
 
     public void explicitSetNextNode(final RESTCSNodeV1 nextNode) {
         this.nextNode = nextNode;
-        this.setParameterToConfigured(NEXT_NODE_NAME);
+        setParameterToConfigured(NEXT_NODE_NAME);
     }
 
     public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties) {
         this.properties = properties;
-        this.setParameterToConfigured(PROPERTIES_NAME);
+        setParameterToConfigured(PROPERTIES_NAME);
     }
 
     public RESTTranslatedCSNodeCollectionV1 getTranslatedNodes_OTM() {
@@ -149,12 +149,12 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
     }
 
     public void setTranslatedNodes_OTM(final RESTTranslatedCSNodeCollectionV1 translatedNodes) {
-        this.translatedNodes_OTM = translatedNodes;
+        translatedNodes_OTM = translatedNodes;
     }
 
     public void explicitSetTranslatedNodes_OTM(final RESTTranslatedCSNodeCollectionV1 translatedNodes) {
-        this.translatedNodes_OTM = translatedNodes;
-        this.setParameterToConfigured(TRANSLATED_NODES_NAME);
+        translatedNodes_OTM = translatedNodes;
+        setParameterToConfigured(TRANSLATED_NODES_NAME);
     }
 
     public RESTCSRelatedNodeCollectionV1 getRelatedToNodes() {
@@ -167,7 +167,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
 
     public void explicitSetRelatedToNodes(final RESTCSRelatedNodeCollectionV1 relatedToNodes) {
         this.relatedToNodes = relatedToNodes;
-        this.setParameterToConfigured(RELATED_TO_NAME);
+        setParameterToConfigured(RELATED_TO_NAME);
     }
 
     public RESTCSRelatedNodeCollectionV1 getRelatedFromNodes() {
@@ -180,7 +180,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
 
     public void explicitSetRelatedFromNodes(final RESTCSRelatedNodeCollectionV1 relatedFromNodes) {
         this.relatedFromNodes = relatedFromNodes;
-        this.setParameterToConfigured(RELATED_FROM_NAME);
+        setParameterToConfigured(RELATED_FROM_NAME);
     }
 
     public RESTCSNodeCollectionV1 getChildren_OTM() {
@@ -193,7 +193,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
 
     public void explicitSetChildren_OTM(final RESTCSNodeCollectionV1 children_OTM) {
         this.children_OTM = children_OTM;
-        this.setParameterToConfigured(CHILDREN_NAME);
+        setParameterToConfigured(CHILDREN_NAME);
     }
 
     @Override

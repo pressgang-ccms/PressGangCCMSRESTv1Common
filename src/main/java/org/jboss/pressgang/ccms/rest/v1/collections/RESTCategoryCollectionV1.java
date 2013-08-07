@@ -17,7 +17,7 @@ public class RESTCategoryCollectionV1 extends RESTBaseCollectionV1<RESTCategoryV
 
     @Override
     public List<RESTCategoryCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class RESTCategoryCollectionV1 extends RESTBaseCollectionV1<RESTCategoryV
     @Override
     protected void addItem(final RESTCategoryV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTCategoryCollectionItemV1>();
+            items = new ArrayList<RESTCategoryCollectionItemV1>();
         }
 
         items.add(new RESTCategoryCollectionItemV1(item, state));

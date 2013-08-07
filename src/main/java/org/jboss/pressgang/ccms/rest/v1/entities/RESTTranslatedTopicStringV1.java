@@ -30,7 +30,7 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseTranslatedStringV1<REST
     public RESTTranslatedTopicStringV1 clone(final boolean deepCopy) {
         final RESTTranslatedTopicStringV1 retValue = new RESTTranslatedTopicStringV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -38,18 +38,18 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseTranslatedStringV1<REST
     public void cloneInto(final RESTTranslatedTopicStringV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.originalString = this.originalString;
+        clone.originalString = originalString;
 
         if (deepCopy) {
-            clone.translatedTopic = this.translatedTopic != null ? this.translatedTopic.clone(deepCopy) : null;
+            clone.translatedTopic = translatedTopic != null ? translatedTopic.clone(deepCopy) : null;
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTTranslatedTopicStringCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.translatedTopic = this.translatedTopic;
-            clone.revisions = this.revisions;
+            clone.translatedTopic = translatedTopic;
+            clone.revisions = revisions;
         }
     }
 
@@ -71,17 +71,17 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseTranslatedStringV1<REST
 
     public void explicitSetOriginalString(final String originalString) {
         this.originalString = originalString;
-        this.setParameterToConfigured(ORIGINALSTRING_NAME);
+        setParameterToConfigured(ORIGINALSTRING_NAME);
     }
 
     public void explicitSetTranslatedString(final String translatedString) {
         this.translatedString = translatedString;
-        this.setParameterToConfigured(TRANSLATEDSTRING_NAME);
+        setParameterToConfigured(TRANSLATEDSTRING_NAME);
     }
 
     public void explicitSetFuzzyTranslation(final Boolean fuzzyTranslation) {
         this.fuzzyTranslation = fuzzyTranslation;
-        this.setParameterToConfigured(FUZZY_TRANSLATION_NAME);
+        setParameterToConfigured(FUZZY_TRANSLATION_NAME);
     }
 
     @Override

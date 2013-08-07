@@ -46,7 +46,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     public RESTTopicV1 clone(final boolean deepCopy) {
         final RESTTopicV1 retValue = new RESTTopicV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -54,47 +54,47 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     public void cloneInto(final RESTTopicV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.description = this.description;
-        clone.created = this.created == null ? null : (Date) this.created.clone();
-        clone.lastModified = this.lastModified == null ? null : (Date) lastModified.clone();
+        clone.description = description;
+        clone.created = created == null ? null : (Date) created.clone();
+        clone.lastModified = lastModified == null ? null : (Date) lastModified.clone();
 
         if (deepCopy) {
-            if (this.bugzillaBugs_OTM != null) {
+            if (bugzillaBugs_OTM != null) {
                 clone.bugzillaBugs_OTM = new RESTBugzillaBugCollectionV1();
-                this.bugzillaBugs_OTM.cloneInto(clone.bugzillaBugs_OTM, deepCopy);
+                bugzillaBugs_OTM.cloneInto(clone.bugzillaBugs_OTM, deepCopy);
             }
 
-            if (this.translatedTopics_OTM != null) {
+            if (translatedTopics_OTM != null) {
                 clone.translatedTopics_OTM = new RESTTranslatedTopicCollectionV1();
-                this.translatedTopics_OTM.cloneInto(clone.translatedTopics_OTM, deepCopy);
+                translatedTopics_OTM.cloneInto(clone.translatedTopics_OTM, deepCopy);
             }
 
-            if (this.outgoingRelationships != null) {
+            if (outgoingRelationships != null) {
                 clone.outgoingRelationships = new RESTTopicCollectionV1();
-                this.outgoingRelationships.cloneInto(clone.outgoingRelationships, deepCopy);
+                outgoingRelationships.cloneInto(clone.outgoingRelationships, deepCopy);
             }
 
-            if (this.incomingRelationships != null) {
+            if (incomingRelationships != null) {
                 clone.incomingRelationships = new RESTTopicCollectionV1();
-                this.incomingRelationships.cloneInto(clone.incomingRelationships, deepCopy);
+                incomingRelationships.cloneInto(clone.incomingRelationships, deepCopy);
             }
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTTopicCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
 
-            if (this.contentSpecs_OTM != null) {
+            if (contentSpecs_OTM != null) {
                 clone.contentSpecs_OTM = new RESTContentSpecCollectionV1();
-                this.contentSpecs_OTM.cloneInto(clone.contentSpecs_OTM, deepCopy);
+                contentSpecs_OTM.cloneInto(clone.contentSpecs_OTM, deepCopy);
             }
         } else {
-            clone.bugzillaBugs_OTM = this.bugzillaBugs_OTM;
-            clone.translatedTopics_OTM = this.translatedTopics_OTM;
-            clone.outgoingRelationships = this.outgoingRelationships;
-            clone.incomingRelationships = this.incomingRelationships;
-            clone.revisions = this.revisions;
-            clone.contentSpecs_OTM = this.contentSpecs_OTM;
+            clone.bugzillaBugs_OTM = bugzillaBugs_OTM;
+            clone.translatedTopics_OTM = translatedTopics_OTM;
+            clone.outgoingRelationships = outgoingRelationships;
+            clone.incomingRelationships = incomingRelationships;
+            clone.revisions = revisions;
+            clone.contentSpecs_OTM = contentSpecs_OTM;
         }
     }
 
@@ -157,7 +157,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     }
 
     public void setBugzillaBugs_OTM(final RESTBugzillaBugCollectionV1 bugzillaBugs) {
-        this.bugzillaBugs_OTM = bugzillaBugs;
+        bugzillaBugs_OTM = bugzillaBugs;
     }
 
     public void explicitSetBugzillaBugs_OTM(final RESTBugzillaBugCollectionV1 bugzillaBugs) {
@@ -180,11 +180,11 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     }
 
     public void setTranslatedTopics_OTM(final RESTTranslatedTopicCollectionV1 translatedTopics) {
-        this.translatedTopics_OTM = translatedTopics;
+        translatedTopics_OTM = translatedTopics;
     }
 
     public void explicitSetTranslatedTopics_OTM(final RESTTranslatedTopicCollectionV1 translatedTopics) {
-        this.translatedTopics_OTM = translatedTopics;
+        translatedTopics_OTM = translatedTopics;
         setParameterToConfigured(TRANSLATEDTOPICS_NAME);
     }
 
@@ -220,12 +220,12 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 
     public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties) {
         this.properties = properties;
-        this.setParameterToConfigured(PROPERTIES_NAME);
+        setParameterToConfigured(PROPERTIES_NAME);
     }
 
     public void explicitSetXmlDoctype(final RESTXMLDoctype doctype) {
-        this.xmlDoctype = doctype;
-        this.setParameterToConfigured(DOCTYPE_NAME);
+        xmlDoctype = doctype;
+        setParameterToConfigured(DOCTYPE_NAME);
     }
 
     public RESTContentSpecCollectionV1 getContentSpecs_OTM() {
@@ -238,7 +238,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 
     public void explicitSetContentSpecs_OTM(final RESTContentSpecCollectionV1 contentSpecs_OTM) {
         this.contentSpecs_OTM = contentSpecs_OTM;
-        this.setParameterToConfigured(CONTENTSPECS_NAME);
+        setParameterToConfigured(CONTENTSPECS_NAME);
     }
 
     @Override

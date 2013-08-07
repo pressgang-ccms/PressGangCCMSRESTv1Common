@@ -35,7 +35,7 @@ public class RESTPropertyCategoryV1 extends RESTBasePropertyCategoryV1<RESTPrope
     public RESTPropertyCategoryV1 clone(boolean deepCopy) {
         final RESTPropertyCategoryV1 retValue = new RESTPropertyCategoryV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -43,27 +43,27 @@ public class RESTPropertyCategoryV1 extends RESTBasePropertyCategoryV1<RESTPrope
     public void cloneInto(final RESTPropertyCategoryV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.description = this.description;
-        clone.name = this.name;
+        clone.description = description;
+        clone.name = name;
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTPropertyCategoryCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
     }
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     @Override
@@ -77,6 +77,6 @@ public class RESTPropertyCategoryV1 extends RESTBasePropertyCategoryV1<RESTPrope
 
     public void explicitSetPropertyTags(final RESTPropertyTagInPropertyCategoryCollectionV1 propertyTags) {
         this.propertyTags = propertyTags;
-        this.setParameterToConfigured(PROPERTY_TAGS_NAME);
+        setParameterToConfigured(PROPERTY_TAGS_NAME);
     }
 }

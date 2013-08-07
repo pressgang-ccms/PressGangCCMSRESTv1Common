@@ -25,34 +25,34 @@ public abstract class RESTBaseTagV1<T extends RESTBaseTagV1<T, U, V>, U extends 
     public void cloneInto(final RESTBaseTagV1<?, ?, ?> clone, boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = this.name;
+        clone.name = name;
         clone.description = description;
 
         if (deepCopy) {
-            if (this.categories != null) {
+            if (categories != null) {
                 clone.categories = new RESTCategoryInTagCollectionV1();
-                this.categories.cloneInto(clone.categories, deepCopy);
+                categories.cloneInto(clone.categories, deepCopy);
             }
 
-            if (this.parentTags != null) {
+            if (parentTags != null) {
                 clone.parentTags = new RESTTagCollectionV1();
-                this.parentTags.cloneInto(clone.parentTags, deepCopy);
+                parentTags.cloneInto(clone.parentTags, deepCopy);
             }
 
-            if (this.childTags != null) {
+            if (childTags != null) {
                 clone.childTags = new RESTTagCollectionV1();
-                this.childTags.cloneInto(clone.childTags, deepCopy);
+                childTags.cloneInto(clone.childTags, deepCopy);
             }
 
-            if (this.projects != null) {
+            if (projects != null) {
                 clone.projects = new RESTProjectCollectionV1();
-                this.projects.cloneInto(clone.projects, deepCopy);
+                projects.cloneInto(clone.projects, deepCopy);
             }
         } else {
-            clone.categories = this.categories;
-            clone.parentTags = this.parentTags;
-            clone.childTags = this.childTags;
-            clone.projects = this.projects;
+            clone.categories = categories;
+            clone.parentTags = parentTags;
+            clone.childTags = childTags;
+            clone.projects = projects;
         }
     }
 

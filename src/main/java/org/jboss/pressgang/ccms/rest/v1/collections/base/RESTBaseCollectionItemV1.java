@@ -40,32 +40,32 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
 
         final RESTBaseCollectionItemV1<?, ?, ?> item = (RESTBaseCollectionItemV1<?, ?, ?>) o;
 
-        if (this.getItem() == null && item.getItem() != null) return false;
-        if (this.getItem() != null && item.getItem() == null) return false;
-        if (this.getItem() != null && item.getItem() != null && !this.getItem().equals(item.getItem())) return false;
+        if (getItem() == null && item.getItem() != null) return false;
+        if (getItem() != null && item.getItem() == null) return false;
+        if (getItem() != null && item.getItem() != null && !getItem().equals(item.getItem())) return false;
 
-        if (this.state == null && item.getState() != null) return false;
-        if (this.state != null && item.getState() == null) return false;
-        if (this.state != null && item.getState() != null && !this.state.equals(item.getState())) return false;
+        if (state == null && item.getState() != null) return false;
+        if (state != null && item.getState() == null) return false;
+        if (state != null && item.getState() != null && !state.equals(item.getState())) return false;
 
         return true;
     }
 
     public void cloneInto(final RESTBaseCollectionItemV1<T, U, V> clone, boolean deepCopy) {
-        clone.state = this.state;
+        clone.state = state;
 
         if (deepCopy) {
-            clone.setItem(this.getItem() == null ? null : this.getItem().clone(deepCopy));
+            clone.setItem(getItem() == null ? null : getItem().clone(deepCopy));
         } else {
-            clone.setItem(this.getItem());
+            clone.setItem(getItem());
         }
     }
 
     public boolean returnIsRemoveItem() {
-        return state == REMOVE_STATE;
+        return state.equals(REMOVE_STATE);
     }
 
     public boolean returnIsAddItem() {
-        return state == ADD_STATE;
+        return state.equals(ADD_STATE);
     }
 }

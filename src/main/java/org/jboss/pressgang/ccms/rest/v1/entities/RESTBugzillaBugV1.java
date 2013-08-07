@@ -32,7 +32,7 @@ public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTB
     public RESTBugzillaBugV1 clone(boolean deepCopy) {
         final RESTBugzillaBugV1 retValue = new RESTBugzillaBugV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -40,18 +40,18 @@ public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTB
     public void cloneInto(final RESTBugzillaBugV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.bugId = this.bugId == null ? null : new Integer(this.bugId);
-        clone.isOpen = this.isOpen == null ? null : new Boolean(this.isOpen);
+        clone.bugId = bugId == null ? null : bugId;
+        clone.isOpen = isOpen == null ? null : isOpen;
         clone.summary = summary;
 
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTBugzillaBugCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
 
     }
@@ -66,7 +66,7 @@ public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTB
 
     public void setBugIdExplicit(final Integer bugId) {
         this.bugId = bugId;
-        this.setParameterToConfigured(BUG_ID);
+        setParameterToConfigured(BUG_ID);
     }
 
     public Boolean getIsOpen() {
@@ -79,7 +79,7 @@ public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTB
 
     public void setIsOpenExplicit(final Boolean isOpen) {
         this.isOpen = isOpen;
-        this.setParameterToConfigured(BUG_ISOPEN);
+        setParameterToConfigured(BUG_ISOPEN);
     }
 
     public String getSummary() {
@@ -92,7 +92,7 @@ public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTB
 
     public void setSummaryExplicit(final String summary) {
         this.summary = summary;
-        this.setParameterToConfigured(BUG_SUMMARY);
+        setParameterToConfigured(BUG_SUMMARY);
     }
 
     @Override

@@ -18,7 +18,7 @@ public class RESTFilterLocaleCollectionV1 extends RESTBaseUpdateCollectionV1<RES
 
     @Override
     public List<RESTFilterLocaleCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTFilterLocaleCollectionV1 extends RESTBaseUpdateCollectionV1<RES
     @Override
     protected void addItem(final RESTFilterLocaleV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTFilterLocaleCollectionItemV1>();
+            items = new ArrayList<RESTFilterLocaleCollectionItemV1>();
         }
 
         items.add(new RESTFilterLocaleCollectionItemV1(item, state));

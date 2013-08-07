@@ -42,7 +42,7 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
     public RESTFilterV1 clone(boolean deepCopy) {
         final RESTFilterV1 retValue = new RESTFilterV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -50,41 +50,41 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
     public void cloneInto(final RESTFilterV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = this.name;
-        clone.description = this.description;
-        clone.type = this.type;
+        clone.name = name;
+        clone.description = description;
+        clone.type = type;
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTFilterCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
             }
 
-            if (this.filterCategories_OTM != null) {
+            if (filterCategories_OTM != null) {
                 clone.filterCategories_OTM = new RESTFilterCategoryCollectionV1();
                 filterCategories_OTM.cloneInto(clone.filterCategories_OTM, deepCopy);
             }
 
-            if (this.filterLocales_OTM != null) {
+            if (filterLocales_OTM != null) {
                 clone.filterLocales_OTM = new RESTFilterLocaleCollectionV1();
                 filterLocales_OTM.cloneInto(clone.filterLocales_OTM, deepCopy);
             }
 
-            if (this.filterTags_OTM != null) {
+            if (filterTags_OTM != null) {
                 clone.filterTags_OTM = new RESTFilterTagCollectionV1();
                 filterTags_OTM.cloneInto(clone.filterTags_OTM, deepCopy);
             }
 
-            if (this.filterFields_OTM != null) {
+            if (filterFields_OTM != null) {
                 clone.filterFields_OTM = new RESTFilterFieldCollectionV1();
                 filterFields_OTM.cloneInto(clone.filterFields_OTM, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
-            clone.filterCategories_OTM = this.filterCategories_OTM;
-            clone.filterLocales_OTM = this.filterLocales_OTM;
-            clone.filterTags_OTM = this.filterTags_OTM;
-            clone.filterFields_OTM = this.filterFields_OTM;
+            clone.revisions = revisions;
+            clone.filterCategories_OTM = filterCategories_OTM;
+            clone.filterLocales_OTM = filterLocales_OTM;
+            clone.filterTags_OTM = filterTags_OTM;
+            clone.filterFields_OTM = filterFields_OTM;
         }
     }
 
@@ -98,7 +98,7 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     public String getDescription() {
@@ -111,7 +111,7 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public RESTFilterTypeV1 getType() {
@@ -124,7 +124,7 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
 
     public void explicitSetType(final RESTFilterTypeV1 type) {
         this.type = type;
-        this.setParameterToConfigured(TYPE_NAME);
+        setParameterToConfigured(TYPE_NAME);
     }
 
     public RESTFilterTagCollectionV1 getFilterTags_OTM() {
@@ -132,12 +132,12 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
     }
 
     public void setFilterTags_OTM(final RESTFilterTagCollectionV1 filterTags) {
-        this.filterTags_OTM = filterTags;
+        filterTags_OTM = filterTags;
     }
 
     public void explicitSetFilterTags_OTM(final RESTFilterTagCollectionV1 filterTags) {
-        this.filterTags_OTM = filterTags;
-        this.setParameterToConfigured(FILTER_TAGS_NAME);
+        filterTags_OTM = filterTags;
+        setParameterToConfigured(FILTER_TAGS_NAME);
     }
 
     public RESTFilterLocaleCollectionV1 getFilterLocales_OTM() {
@@ -145,12 +145,12 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
     }
 
     public void setFilterLocales_OTM(final RESTFilterLocaleCollectionV1 filterLocales) {
-        this.filterLocales_OTM = filterLocales;
+        filterLocales_OTM = filterLocales;
     }
 
     public void explicitSetFilterLocales_OTM(final RESTFilterLocaleCollectionV1 filterLocales) {
-        this.filterLocales_OTM = filterLocales;
-        this.setParameterToConfigured(FILTER_LOCALES_NAME);
+        filterLocales_OTM = filterLocales;
+        setParameterToConfigured(FILTER_LOCALES_NAME);
     }
 
     public RESTFilterCategoryCollectionV1 getFilterCategories_OTM() {
@@ -158,12 +158,12 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
     }
 
     public void setFilterCategories_OTM(final RESTFilterCategoryCollectionV1 filterCategories) {
-        this.filterCategories_OTM = filterCategories;
+        filterCategories_OTM = filterCategories;
     }
 
     public void explicitSetFilterCategories_OTM(final RESTFilterCategoryCollectionV1 filterCategories) {
-        this.filterCategories_OTM = filterCategories;
-        this.setParameterToConfigured(FILTER_CATEGORIES_NAME);
+        filterCategories_OTM = filterCategories;
+        setParameterToConfigured(FILTER_CATEGORIES_NAME);
     }
 
     public RESTFilterFieldCollectionV1 getFilterFields_OTM() {
@@ -171,12 +171,12 @@ public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilt
     }
 
     public void setFilterFields_OTM(final RESTFilterFieldCollectionV1 filterFields) {
-        this.filterFields_OTM = filterFields;
+        filterFields_OTM = filterFields;
     }
 
     public void explicitSetFilterFields_OTM(final RESTFilterFieldCollectionV1 filterFields) {
-        this.filterFields_OTM = filterFields;
-        this.setParameterToConfigured(FILTER_FIELDS_NAME);
+        filterFields_OTM = filterFields;
+        setParameterToConfigured(FILTER_FIELDS_NAME);
     }
 
     @Override

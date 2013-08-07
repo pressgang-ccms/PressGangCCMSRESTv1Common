@@ -24,19 +24,19 @@ public abstract class RESTBasePropertyTagV1<T extends RESTBasePropertyTagV1<T, U
     public void cloneInto(final RESTBasePropertyTagV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = this.name;
+        clone.name = name;
         clone.description = description;
-        clone.regex = this.regex;
-        clone.canBeNull = this.canBeNull;
-        clone.isUnique = this.isUnique;
+        clone.regex = regex;
+        clone.canBeNull = canBeNull;
+        clone.isUnique = isUnique;
 
         if (deepCopy) {
-            if (this.propertyCategories != null) {
+            if (propertyCategories != null) {
                 clone.propertyCategories = new RESTPropertyCategoryInPropertyTagCollectionV1();
-                this.propertyCategories.cloneInto(clone.propertyCategories, deepCopy);
+                propertyCategories.cloneInto(clone.propertyCategories, deepCopy);
             }
         } else {
-            clone.propertyCategories = this.propertyCategories;
+            clone.propertyCategories = propertyCategories;
         }
     }
 
@@ -85,7 +85,7 @@ public abstract class RESTBasePropertyTagV1<T extends RESTBasePropertyTagV1<T, U
     }
 
     public void setPropertyCategories(final RESTPropertyCategoryInPropertyTagCollectionV1 propertyTagCategories) {
-        this.propertyCategories = propertyTagCategories;
+        propertyCategories = propertyTagCategories;
     }
 
     @Override

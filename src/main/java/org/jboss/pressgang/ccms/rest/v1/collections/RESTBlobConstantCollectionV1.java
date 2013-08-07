@@ -18,7 +18,7 @@ public class RESTBlobConstantCollectionV1 extends RESTBaseCollectionV1<RESTBlobC
 
     @Override
     public List<RESTBlobConstantCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTBlobConstantCollectionV1 extends RESTBaseCollectionV1<RESTBlobC
     @Override
     protected void addItem(final RESTBlobConstantV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTBlobConstantCollectionItemV1>();
+            items = new ArrayList<RESTBlobConstantCollectionItemV1>();
         }
 
         items.add(new RESTBlobConstantCollectionItemV1(item, state));

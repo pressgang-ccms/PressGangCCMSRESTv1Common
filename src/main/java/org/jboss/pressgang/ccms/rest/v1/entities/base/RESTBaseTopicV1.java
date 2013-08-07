@@ -27,36 +27,36 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     protected RESTTagCollectionV1 tags = null;
     protected RESTTopicSourceUrlCollectionV1 sourceUrls_OTM = null;
 
-    abstract public U getIncomingRelationships();
+    public abstract U getIncomingRelationships();
 
-    abstract public void setIncomingRelationships(final U incomingRelationships);
+    public abstract void setIncomingRelationships(final U incomingRelationships);
 
-    abstract public U getOutgoingRelationships();
+    public abstract U getOutgoingRelationships();
 
-    abstract public void setOutgoingRelationships(final U outgoingRelationships);
+    public abstract void setOutgoingRelationships(final U outgoingRelationships);
 
     public void cloneInto(final RESTBaseTopicV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.title = this.title;
-        clone.xml = this.xml;
-        clone.xmlErrors = this.xmlErrors;
-        clone.locale = this.locale;
-        clone.xmlDoctype = this.xmlDoctype;
+        clone.title = title;
+        clone.xml = xml;
+        clone.xmlErrors = xmlErrors;
+        clone.locale = locale;
+        clone.xmlDoctype = xmlDoctype;
 
         if (deepCopy) {
-            if (this.tags != null) {
+            if (tags != null) {
                 clone.tags = new RESTTagCollectionV1();
-                this.tags.cloneInto(clone.tags, deepCopy);
+                tags.cloneInto(clone.tags, deepCopy);
             }
 
-            if (this.sourceUrls_OTM != null) {
+            if (sourceUrls_OTM != null) {
                 clone.sourceUrls_OTM = new RESTTopicSourceUrlCollectionV1();
-                this.sourceUrls_OTM.cloneInto(clone.sourceUrls_OTM, deepCopy);
+                sourceUrls_OTM.cloneInto(clone.sourceUrls_OTM, deepCopy);
             }
         } else {
-            clone.tags = this.tags;
-            clone.sourceUrls_OTM = this.sourceUrls_OTM;
+            clone.tags = tags;
+            clone.sourceUrls_OTM = sourceUrls_OTM;
         }
     }
 
@@ -101,9 +101,9 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     }
 
     public void addTag(final RESTTagV1 tag) {
-        if (this.tags == null) this.tags = new RESTTagCollectionV1();
+        if (tags == null) tags = new RESTTagCollectionV1();
 
-        this.tags.addItem(tag);
+        tags.addItem(tag);
     }
 
     public RESTTopicSourceUrlCollectionV1 getSourceUrls_OTM() {
@@ -111,7 +111,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     }
 
     public void setSourceUrls_OTM(final RESTTopicSourceUrlCollectionV1 sourceUrls) {
-        this.sourceUrls_OTM = sourceUrls;
+        sourceUrls_OTM = sourceUrls;
     }
 
     public RESTXMLDoctype getXmlDoctype() {
@@ -119,7 +119,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     }
 
     public void setXmlDoctype(final RESTXMLDoctype doctype) {
-        this.xmlDoctype = doctype;
+        xmlDoctype = doctype;
     }
 
     @Override

@@ -42,7 +42,7 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
     public RESTTranslatedCSNodeV1 clone(final boolean deepCopy) {
         final RESTTranslatedCSNodeV1 retValue = new RESTTranslatedCSNodeV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -96,12 +96,12 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
     }
 
     public void setTranslatedNodeStrings_OTM(final RESTTranslatedCSNodeStringCollectionV1 translatedNodeStrings) {
-        this.translatedNodeStrings_OTM = translatedNodeStrings;
+        translatedNodeStrings_OTM = translatedNodeStrings;
     }
 
     public void explicitSetTranslatedNodeString_OTM(final RESTTranslatedCSNodeStringCollectionV1 translatedNodeStrings) {
-        this.translatedNodeStrings_OTM = translatedNodeStrings;
-        this.setParameterToConfigured(TRANSLATED_STRING_NAME);
+        translatedNodeStrings_OTM = translatedNodeStrings;
+        setParameterToConfigured(TRANSLATED_STRING_NAME);
     }
 
     public RESTTranslatedCSNodeCollectionV1 getChildren_OTM() {
@@ -122,7 +122,7 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
 
     public void explicitSetNodeId(final Integer nodeId) {
         this.nodeId = nodeId;
-        this.setParameterToConfigured(NODE_ID_NAME);
+        setParameterToConfigured(NODE_ID_NAME);
     }
 
     public Integer getNodeRevision() {
@@ -135,7 +135,7 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
 
     public void explicitSetNodeRevision(final Integer nodeRevision) {
         this.nodeRevision = nodeRevision;
-        this.setParameterToConfigured(NODE_REVISION_NAME);
+        setParameterToConfigured(NODE_REVISION_NAME);
     }
 
     public String getOriginalString() {
@@ -148,7 +148,7 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
 
     public void explicitSetOriginalString(final String originalString) {
         this.originalString = originalString;
-        this.setParameterToConfigured(ORIGINALSTRING_NAME);
+        setParameterToConfigured(ORIGINALSTRING_NAME);
     }
 
     public RESTCSNodeV1 getNode() {

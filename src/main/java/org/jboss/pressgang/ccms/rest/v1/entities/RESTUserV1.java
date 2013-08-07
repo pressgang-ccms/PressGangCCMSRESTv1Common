@@ -32,7 +32,7 @@ public class RESTUserV1 extends RESTBasePrimaryEntityV1<RESTUserV1, RESTUserColl
     public RESTUserV1 clone(boolean deepCopy) {
         final RESTUserV1 retValue = new RESTUserV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -40,22 +40,22 @@ public class RESTUserV1 extends RESTBasePrimaryEntityV1<RESTUserV1, RESTUserColl
     public void cloneInto(final RESTUserV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = this.name;
+        clone.name = name;
         clone.description = description;
 
         if (deepCopy) {
-            if (this.roles != null) {
+            if (roles != null) {
                 clone.roles = new RESTRoleCollectionV1();
-                this.roles.cloneInto(clone.roles, deepCopy);
+                roles.cloneInto(clone.roles, deepCopy);
             }
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTUserCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.roles = this.roles;
-            clone.revisions = this.revisions;
+            clone.roles = roles;
+            clone.revisions = revisions;
         }
     }
 
@@ -69,7 +69,7 @@ public class RESTUserV1 extends RESTBasePrimaryEntityV1<RESTUserV1, RESTUserColl
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     public String getDescription() {
@@ -82,7 +82,7 @@ public class RESTUserV1 extends RESTBasePrimaryEntityV1<RESTUserV1, RESTUserColl
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public RESTRoleCollectionV1 getRoles() {
@@ -95,7 +95,7 @@ public class RESTUserV1 extends RESTBasePrimaryEntityV1<RESTUserV1, RESTUserColl
 
     public void explicitSetRoles(final RESTRoleCollectionV1 roles) {
         this.roles = roles;
-        this.setParameterToConfigured(ROLES_NAME);
+        setParameterToConfigured(ROLES_NAME);
     }
 
     @Override

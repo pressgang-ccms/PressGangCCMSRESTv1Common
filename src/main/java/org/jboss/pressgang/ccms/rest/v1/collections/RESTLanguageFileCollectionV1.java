@@ -16,7 +16,7 @@ public class RESTLanguageFileCollectionV1 extends RESTBaseUpdateCollectionV1<RES
 
     @Override
     public List<RESTLanguageFileCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class RESTLanguageFileCollectionV1 extends RESTBaseUpdateCollectionV1<RES
     @Override
     protected void addItem(final RESTLanguageFileV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTLanguageFileCollectionItemV1>();
+            items = new ArrayList<RESTLanguageFileCollectionItemV1>();
         }
 
         items.add(new RESTLanguageFileCollectionItemV1(item, state));

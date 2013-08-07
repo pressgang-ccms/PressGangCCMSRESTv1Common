@@ -30,7 +30,7 @@ public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RES
     public RESTTranslatedCSNodeStringV1 clone(final boolean deepCopy) {
         final RESTTranslatedCSNodeStringV1 retValue = new RESTTranslatedCSNodeStringV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -38,20 +38,20 @@ public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RES
     public void cloneInto(final RESTTranslatedCSNodeStringV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.locale = this.locale;
+        clone.locale = locale;
 
         if (deepCopy) {
-            if (this.translatedNode != null) {
+            if (translatedNode != null) {
                 clone.translatedNode = translatedNode.clone(deepCopy);
             }
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTTranslatedCSNodeStringCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
-            clone.translatedNode = this.translatedNode;
+            clone.revisions = revisions;
+            clone.translatedNode = translatedNode;
         }
     }
 
@@ -73,17 +73,17 @@ public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RES
 
     public void explicitSetLocale(final String locale) {
         this.locale = locale;
-        this.setParameterToConfigured(LOCALE_NAME);
+        setParameterToConfigured(LOCALE_NAME);
     }
 
     public void explicitSetTranslatedString(final String translatedString) {
         this.translatedString = translatedString;
-        this.setParameterToConfigured(TRANSLATEDSTRING_NAME);
+        setParameterToConfigured(TRANSLATEDSTRING_NAME);
     }
 
     public void explicitSetFuzzyTranslation(final Boolean fuzzyTranslation) {
         this.fuzzyTranslation = fuzzyTranslation;
-        this.setParameterToConfigured(FUZZY_TRANSLATION_NAME);
+        setParameterToConfigured(FUZZY_TRANSLATION_NAME);
     }
 
     @Override

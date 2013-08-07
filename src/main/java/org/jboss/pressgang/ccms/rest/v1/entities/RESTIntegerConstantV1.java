@@ -34,7 +34,7 @@ public class RESTIntegerConstantV1 extends RESTBasePrimaryEntityV1<RESTIntegerCo
     public RESTIntegerConstantV1 clone(boolean deepCopy) {
         final RESTIntegerConstantV1 retValue = new RESTIntegerConstantV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -42,16 +42,16 @@ public class RESTIntegerConstantV1 extends RESTBasePrimaryEntityV1<RESTIntegerCo
     public void cloneInto(final RESTIntegerConstantV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = this.name;
+        clone.name = name;
         clone.value = value;
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTIntegerConstantCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
     }
 
@@ -65,7 +65,7 @@ public class RESTIntegerConstantV1 extends RESTBasePrimaryEntityV1<RESTIntegerCo
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     public Integer getValue() {
@@ -78,7 +78,7 @@ public class RESTIntegerConstantV1 extends RESTBasePrimaryEntityV1<RESTIntegerCo
 
     public void explicitSetValue(final Integer value) {
         this.value = value;
-        this.setParameterToConfigured(VALUE_NAME);
+        setParameterToConfigured(VALUE_NAME);
     }
 
     @Override

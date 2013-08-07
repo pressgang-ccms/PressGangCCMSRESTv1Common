@@ -55,13 +55,13 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/echoxml")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.WILDCARD)
-    public String echoXML(@QueryParam("id") final Integer id);
+    String echoXML(@QueryParam("id") final Integer id);
 
     @GET
     @Path("/echoxml")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.WILDCARD)
-    public String echoXML(@QueryParam("xml") final String xml);
+    String echoXML(@QueryParam("xml") final String xml);
 
     /* USERS */
     /* JSON FUNCTIONS */
@@ -69,43 +69,37 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/user/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTUserV1 updateJSONUser(@QueryParam("expand") final String expand,
-            final RESTUserV1 dataObject);
+    RESTUserV1 updateJSONUser(@QueryParam("expand") final String expand, final RESTUserV1 dataObject);
 
     @POST
     @Path("/users/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTUserCollectionV1 updateJSONUsers(@QueryParam("expand") final String expand,
-            final RESTUserCollectionV1 dataObjects);
+    RESTUserCollectionV1 updateJSONUsers(@QueryParam("expand") final String expand, final RESTUserCollectionV1 dataObjects);
 
     @POST
     @Path("/user/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTUserV1 createJSONUser(@QueryParam("expand") final String expand,
-            final RESTUserV1 dataObject);
+    RESTUserV1 createJSONUser(@QueryParam("expand") final String expand, final RESTUserV1 dataObject);
 
     @POST
     @Path("/users/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTUserCollectionV1 createJSONUsers(@QueryParam("expand") final String expand,
-            final RESTUserCollectionV1 dataObjects);
+    RESTUserCollectionV1 createJSONUsers(@QueryParam("expand") final String expand, final RESTUserCollectionV1 dataObjects);
 
     @DELETE
     @Path("/user/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTUserV1 deleteJSONUser(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTUserV1 deleteJSONUser(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/users/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTUserCollectionV1 deleteJSONUsers(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTUserCollectionV1 deleteJSONUsers(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* STRINGCONSTANT FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -113,42 +107,39 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/stringconstant/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTStringConstantV1 updateJSONStringConstant(@QueryParam("expand") final String expand,
-            final RESTStringConstantV1 dataObject);
+    RESTStringConstantV1 updateJSONStringConstant(@QueryParam("expand") final String expand, final RESTStringConstantV1 dataObject);
 
     @POST
     @Path("/stringconstants/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTStringConstantCollectionV1 updateJSONStringConstants(@QueryParam("expand") final String expand,
+    RESTStringConstantCollectionV1 updateJSONStringConstants(@QueryParam("expand") final String expand,
             final RESTStringConstantCollectionV1 dataObjects);
 
     @POST
     @Path("/stringconstant/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTStringConstantV1 createJSONStringConstant(@QueryParam("expand") final String expand,
-            final RESTStringConstantV1 dataObject);
+    RESTStringConstantV1 createJSONStringConstant(@QueryParam("expand") final String expand, final RESTStringConstantV1 dataObject);
 
     @POST
     @Path("/stringconstants/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTStringConstantCollectionV1 createJSONStringConstants(@QueryParam("expand") final String expand,
+    RESTStringConstantCollectionV1 createJSONStringConstants(@QueryParam("expand") final String expand,
             final RESTStringConstantCollectionV1 dataObjects);
 
     @DELETE
     @Path("/stringconstant/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTStringConstantV1 deleteJSONStringConstant(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTStringConstantV1 deleteJSONStringConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/stringconstants/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTStringConstantCollectionV1 deleteJSONStringConstants(@PathParam("ids") final PathSegment ids,
+    RESTStringConstantCollectionV1 deleteJSONStringConstants(@PathParam("ids") final PathSegment ids,
             @QueryParam("expand") final String expand);
 
     /* TRANSLATEDTOPIC FUNCTIONS */
@@ -157,42 +148,39 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/translatedtopic/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedTopicV1 updateJSONTranslatedTopic(@QueryParam("expand") final String expand,
-            final RESTTranslatedTopicV1 dataObject);
+    RESTTranslatedTopicV1 updateJSONTranslatedTopic(@QueryParam("expand") final String expand, final RESTTranslatedTopicV1 dataObject);
 
     @POST
     @Path("/translatedtopics/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedTopicCollectionV1 updateJSONTranslatedTopics(@QueryParam("expand") final String expand,
+    RESTTranslatedTopicCollectionV1 updateJSONTranslatedTopics(@QueryParam("expand") final String expand,
             final RESTTranslatedTopicCollectionV1 dataObjects);
 
     @POST
     @Path("/translatedtopic/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTTranslatedTopicV1 createJSONTranslatedTopic(@QueryParam("expand") final String expand,
-            final RESTTranslatedTopicV1 dataObject);
+    RESTTranslatedTopicV1 createJSONTranslatedTopic(@QueryParam("expand") final String expand, final RESTTranslatedTopicV1 dataObject);
 
     @POST
     @Path("/translatedtopics/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTTranslatedTopicCollectionV1 createJSONTranslatedTopics(@QueryParam("expand") final String expand,
+    RESTTranslatedTopicCollectionV1 createJSONTranslatedTopics(@QueryParam("expand") final String expand,
             final RESTTranslatedTopicCollectionV1 dataObjects);
 
     @DELETE
     @Path("/translatedtopic/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTTranslatedTopicV1 deleteJSONTranslatedTopic(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTTranslatedTopicV1 deleteJSONTranslatedTopic(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/translatedtopics/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTTranslatedTopicCollectionV1 deleteJSONTranslatedTopics(@PathParam("ids") final PathSegment ids,
+    RESTTranslatedTopicCollectionV1 deleteJSONTranslatedTopics(@PathParam("ids") final PathSegment ids,
             @QueryParam("expand") final String expand);
 
     /* ROLE FUNCTIONS */
@@ -201,43 +189,37 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/role/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTRoleV1 updateJSONRole(@QueryParam("expand") final String expand,
-            final RESTRoleV1 dataObject);
+    RESTRoleV1 updateJSONRole(@QueryParam("expand") final String expand, final RESTRoleV1 dataObject);
 
     @POST
     @Path("/roles/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTRoleCollectionV1 updateJSONRoles(@QueryParam("expand") final String expand,
-            final RESTRoleCollectionV1 dataObjects);
+    RESTRoleCollectionV1 updateJSONRoles(@QueryParam("expand") final String expand, final RESTRoleCollectionV1 dataObjects);
 
     @POST
     @Path("/role/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTRoleV1 createJSONRole(@QueryParam("expand") final String expand,
-            final RESTRoleV1 dataObject);
+    RESTRoleV1 createJSONRole(@QueryParam("expand") final String expand, final RESTRoleV1 dataObject);
 
     @POST
     @Path("/roles/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTRoleCollectionV1 createJSONRoles(@QueryParam("expand") final String expand,
-            final RESTRoleCollectionV1 dataObjects);
+    RESTRoleCollectionV1 createJSONRoles(@QueryParam("expand") final String expand, final RESTRoleCollectionV1 dataObjects);
 
     @DELETE
     @Path("/role/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTRoleV1 deleteJSONRole(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTRoleV1 deleteJSONRole(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/roles/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTRoleCollectionV1 deleteJSONRoles(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTRoleCollectionV1 deleteJSONRoles(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* PROPERYTAG FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -245,43 +227,39 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/propertytag/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTPropertyTagV1 updateJSONPropertyTag(@QueryParam("expand") final String expand,
-            final RESTPropertyTagV1 dataObject);
+    RESTPropertyTagV1 updateJSONPropertyTag(@QueryParam("expand") final String expand, final RESTPropertyTagV1 dataObject);
 
     @POST
     @Path("/propertytags/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTPropertyTagCollectionV1 updateJSONPropertyTags(@QueryParam("expand") final String expand,
+    RESTPropertyTagCollectionV1 updateJSONPropertyTags(@QueryParam("expand") final String expand,
             final RESTPropertyTagCollectionV1 dataObjects);
 
     @POST
     @Path("/propertytag/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTPropertyTagV1 createJSONPropertyTag(@QueryParam("expand") final String expand,
-            final RESTPropertyTagV1 dataObject);
+    RESTPropertyTagV1 createJSONPropertyTag(@QueryParam("expand") final String expand, final RESTPropertyTagV1 dataObject);
 
     @POST
     @Path("/propertytags/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTPropertyTagCollectionV1 createJSONPropertyTags(@QueryParam("expand") final String expand,
+    RESTPropertyTagCollectionV1 createJSONPropertyTags(@QueryParam("expand") final String expand,
             final RESTPropertyTagCollectionV1 dataObjects);
 
     @DELETE
     @Path("/propertytag/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTPropertyTagV1 deleteJSONPropertyTag(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTPropertyTagV1 deleteJSONPropertyTag(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/propertytags/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTPropertyTagCollectionV1 deleteJSONPropertyTags(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTPropertyTagCollectionV1 deleteJSONPropertyTags(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* PROPERTYCATEGORY FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -289,42 +267,39 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/propertycategory/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTPropertyCategoryV1 updateJSONPropertyCategory(@QueryParam("expand") final String expand,
-            final RESTPropertyCategoryV1 dataObject);
+    RESTPropertyCategoryV1 updateJSONPropertyCategory(@QueryParam("expand") final String expand, final RESTPropertyCategoryV1 dataObject);
 
     @POST
     @Path("/propertycategories/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTPropertyCategoryCollectionV1 updateJSONPropertyCategories(@QueryParam("expand") final String expand,
+    RESTPropertyCategoryCollectionV1 updateJSONPropertyCategories(@QueryParam("expand") final String expand,
             final RESTPropertyCategoryCollectionV1 dataObjects);
 
     @POST
     @Path("/propertycategory/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTPropertyCategoryV1 createJSONPropertyCategory(@QueryParam("expand") final String expand,
-            final RESTPropertyCategoryV1 dataObject);
+    RESTPropertyCategoryV1 createJSONPropertyCategory(@QueryParam("expand") final String expand, final RESTPropertyCategoryV1 dataObject);
 
     @POST
     @Path("/propertycategories/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTPropertyCategoryCollectionV1 createJSONPropertyCategories(@QueryParam("expand") final String expand,
+    RESTPropertyCategoryCollectionV1 createJSONPropertyCategories(@QueryParam("expand") final String expand,
             final RESTPropertyCategoryCollectionV1 dataObjects);
 
     @DELETE
     @Path("/propertycategory/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTPropertyCategoryV1 deleteJSONPropertyCategory(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTPropertyCategoryV1 deleteJSONPropertyCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/propertycategories/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTPropertyCategoryCollectionV1 deleteJSONPropertyCategories(@PathParam("ids") final PathSegment ids,
+    RESTPropertyCategoryCollectionV1 deleteJSONPropertyCategories(@PathParam("ids") final PathSegment ids,
             @QueryParam("expand") final String expand);
 
     /* BLOBCONSTANTS FUNCTIONS */
@@ -333,43 +308,39 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/blobconstant/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTBlobConstantV1 updateJSONBlobConstant(@QueryParam("expand") final String expand,
-            final RESTBlobConstantV1 dataObject);
+    RESTBlobConstantV1 updateJSONBlobConstant(@QueryParam("expand") final String expand, final RESTBlobConstantV1 dataObject);
 
     @POST
     @Path("/blobconstants/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTBlobConstantCollectionV1 updateJSONBlobConstants(@QueryParam("expand") final String expand,
+    RESTBlobConstantCollectionV1 updateJSONBlobConstants(@QueryParam("expand") final String expand,
             final RESTBlobConstantCollectionV1 dataObjects);
 
     @POST
     @Path("/blobconstant/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTBlobConstantV1 createJSONBlobConstant(@QueryParam("expand") final String expand,
-            final RESTBlobConstantV1 dataObject);
+    RESTBlobConstantV1 createJSONBlobConstant(@QueryParam("expand") final String expand, final RESTBlobConstantV1 dataObject);
 
     @POST
     @Path("/blobconstants/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTBlobConstantCollectionV1 createJSONBlobConstants(@QueryParam("expand") final String expand,
+    RESTBlobConstantCollectionV1 createJSONBlobConstants(@QueryParam("expand") final String expand,
             final RESTBlobConstantCollectionV1 dataObjects);
 
     @DELETE
     @Path("/blobconstant/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTBlobConstantV1 deleteJSONBlobConstant(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTBlobConstantV1 deleteJSONBlobConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/blobconstants/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTBlobConstantCollectionV1 deleteJSONBlobConstants(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTBlobConstantCollectionV1 deleteJSONBlobConstants(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* PROJECT FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -377,43 +348,37 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/project/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTProjectV1 updateJSONProject(@QueryParam("expand") final String expand,
-            final RESTProjectV1 dataObject);
+    RESTProjectV1 updateJSONProject(@QueryParam("expand") final String expand, final RESTProjectV1 dataObject);
 
     @POST
     @Path("/projects/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTProjectCollectionV1 updateJSONProjects(@QueryParam("expand") final String expand,
-            final RESTProjectCollectionV1 dataObjects);
+    RESTProjectCollectionV1 updateJSONProjects(@QueryParam("expand") final String expand, final RESTProjectCollectionV1 dataObjects);
 
     @POST
     @Path("/project/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTProjectV1 createJSONProject(@QueryParam("expand") final String expand,
-            final RESTProjectV1 dataObject);
+    RESTProjectV1 createJSONProject(@QueryParam("expand") final String expand, final RESTProjectV1 dataObject);
 
     @POST
     @Path("/projects/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTProjectCollectionV1 createJSONProjects(@QueryParam("expand") final String expand,
-            final RESTProjectCollectionV1 dataObjects);
+    RESTProjectCollectionV1 createJSONProjects(@QueryParam("expand") final String expand, final RESTProjectCollectionV1 dataObjects);
 
     @DELETE
     @Path("/project/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTProjectV1 deleteJSONProject(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTProjectV1 deleteJSONProject(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/projects/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTProjectCollectionV1 deleteJSONProjects(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTProjectCollectionV1 deleteJSONProjects(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* TAG FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -421,43 +386,37 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/tag/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTTagV1 updateJSONTag(@QueryParam("expand") final String expand,
-            final RESTTagV1 dataObject);
+    RESTTagV1 updateJSONTag(@QueryParam("expand") final String expand, final RESTTagV1 dataObject);
 
     @POST
     @Path("/tags/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTTagCollectionV1 updateJSONTags(@QueryParam("expand") final String expand,
-            final RESTTagCollectionV1 dataObjects);
+    RESTTagCollectionV1 updateJSONTags(@QueryParam("expand") final String expand, final RESTTagCollectionV1 dataObjects);
 
     @POST
     @Path("/tag/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTTagV1 createJSONTag(@QueryParam("expand") final String expand,
-            final RESTTagV1 dataObject);
+    RESTTagV1 createJSONTag(@QueryParam("expand") final String expand, final RESTTagV1 dataObject);
 
     @POST
     @Path("/tags/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTTagCollectionV1 createJSONTags(@QueryParam("expand") final String expand,
-            final RESTTagCollectionV1 dataObjects);
+    RESTTagCollectionV1 createJSONTags(@QueryParam("expand") final String expand, final RESTTagCollectionV1 dataObjects);
 
     @DELETE
     @Path("/tag/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTTagV1 deleteJSONTag(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTTagV1 deleteJSONTag(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/tags/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTTagCollectionV1 deleteJSONTags(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTTagCollectionV1 deleteJSONTags(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* CATEGORY FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -465,43 +424,37 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/category/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTCategoryV1 updateJSONCategory(@QueryParam("expand") final String expand,
-            final RESTCategoryV1 dataObject);
+    RESTCategoryV1 updateJSONCategory(@QueryParam("expand") final String expand, final RESTCategoryV1 dataObject);
 
     @POST
     @Path("/categories/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTCategoryCollectionV1 updateJSONCategories(@QueryParam("expand") final String expand,
-            final RESTCategoryCollectionV1 dataObjects);
+    RESTCategoryCollectionV1 updateJSONCategories(@QueryParam("expand") final String expand, final RESTCategoryCollectionV1 dataObjects);
 
     @POST
     @Path("/category/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTCategoryV1 createJSONCategory(@QueryParam("expand") final String expand,
-            final RESTCategoryV1 dataObject);
+    RESTCategoryV1 createJSONCategory(@QueryParam("expand") final String expand, final RESTCategoryV1 dataObject);
 
     @POST
     @Path("/categories/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTCategoryCollectionV1 createJSONCategories(@QueryParam("expand") final String expand,
-            final RESTCategoryCollectionV1 dataObjects);
+    RESTCategoryCollectionV1 createJSONCategories(@QueryParam("expand") final String expand, final RESTCategoryCollectionV1 dataObjects);
 
     @DELETE
     @Path("/category/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTCategoryV1 deleteJSONCategory(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTCategoryV1 deleteJSONCategory(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/categories/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTCategoryCollectionV1 deleteJSONCategories(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTCategoryCollectionV1 deleteJSONCategories(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* IMAGE FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -509,43 +462,37 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/image/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTImageV1 updateJSONImage(@QueryParam("expand") final String expand,
-            final RESTImageV1 dataObject);
+    RESTImageV1 updateJSONImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject);
 
     @POST
     @Path("/images/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTImageCollectionV1 updateJSONImages(@QueryParam("expand") final String expand,
-            final RESTImageCollectionV1 dataObjects);
+    RESTImageCollectionV1 updateJSONImages(@QueryParam("expand") final String expand, final RESTImageCollectionV1 dataObjects);
 
     @POST
     @Path("/image/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTImageV1 createJSONImage(@QueryParam("expand") final String expand,
-            final RESTImageV1 dataObject);
+    RESTImageV1 createJSONImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject);
 
     @POST
     @Path("/images/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTImageCollectionV1 createJSONImages(@QueryParam("expand") final String expand,
-            final RESTImageCollectionV1 dataObjects);
+    RESTImageCollectionV1 createJSONImages(@QueryParam("expand") final String expand, final RESTImageCollectionV1 dataObjects);
 
     @DELETE
     @Path("/image/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTImageV1 deleteJSONImage(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTImageV1 deleteJSONImage(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/images/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTImageCollectionV1 deleteJSONImages(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTImageCollectionV1 deleteJSONImages(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* TOPIC FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -553,43 +500,37 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/topic/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTTopicV1 updateJSONTopic(@QueryParam("expand") final String expand,
-            final RESTTopicV1 dataObject);
+    RESTTopicV1 updateJSONTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject);
 
     @POST
     @Path("/topics/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTTopicCollectionV1 updateJSONTopics(@QueryParam("expand") final String expand,
-            final RESTTopicCollectionV1 dataObjects);
+    RESTTopicCollectionV1 updateJSONTopics(@QueryParam("expand") final String expand, final RESTTopicCollectionV1 dataObjects);
 
     @POST
     @Path("/topic/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTTopicV1 createJSONTopic(@QueryParam("expand") final String expand,
-            final RESTTopicV1 dataObject);
+    RESTTopicV1 createJSONTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject);
 
     @POST
     @Path("/topics/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTTopicCollectionV1 createJSONTopics(@QueryParam("expand") final String expand,
-            final RESTTopicCollectionV1 dataObjects);
+    RESTTopicCollectionV1 createJSONTopics(@QueryParam("expand") final String expand, final RESTTopicCollectionV1 dataObjects);
 
     @DELETE
     @Path("/topic/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTTopicV1 deleteJSONTopic(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTTopicV1 deleteJSONTopic(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/topics/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTTopicCollectionV1 deleteJSONTopics(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTTopicCollectionV1 deleteJSONTopics(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* FILTERS FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -597,43 +538,37 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/filter/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTFilterV1 updateJSONFilter(@QueryParam("expand") final String expand,
-            final RESTFilterV1 dataObject);
+    RESTFilterV1 updateJSONFilter(@QueryParam("expand") final String expand, final RESTFilterV1 dataObject);
 
     @POST
     @Path("/filters/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTFilterCollectionV1 updateJSONFilters(@QueryParam("expand") final String expand,
-            final RESTFilterCollectionV1 dataObjects);
+    RESTFilterCollectionV1 updateJSONFilters(@QueryParam("expand") final String expand, final RESTFilterCollectionV1 dataObjects);
 
     @POST
     @Path("/filter/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTFilterV1 createJSONFilter(@QueryParam("expand") final String expand,
-            final RESTFilterV1 dataObject);
+    RESTFilterV1 createJSONFilter(@QueryParam("expand") final String expand, final RESTFilterV1 dataObject);
 
     @POST
     @Path("/filters/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTFilterCollectionV1 createJSONFilters(@QueryParam("expand") final String expand,
-            final RESTFilterCollectionV1 dataObjects);
+    RESTFilterCollectionV1 createJSONFilters(@QueryParam("expand") final String expand, final RESTFilterCollectionV1 dataObjects);
 
     @DELETE
     @Path("/filter/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTFilterV1 deleteJSONFilter(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTFilterV1 deleteJSONFilter(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/filters/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTFilterCollectionV1 deleteJSONFilters(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTFilterCollectionV1 deleteJSONFilters(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* INTEGERCONSTANT FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -641,42 +576,39 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/integerconstant/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTIntegerConstantV1 updateJSONIntegerConstant(@QueryParam("expand") final String expand,
-            final RESTIntegerConstantV1 dataObject);
+    RESTIntegerConstantV1 updateJSONIntegerConstant(@QueryParam("expand") final String expand, final RESTIntegerConstantV1 dataObject);
 
     @POST
     @Path("/integerconstants/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTIntegerConstantCollectionV1 updateJSONIntegerConstants(@QueryParam("expand") final String expand,
+    RESTIntegerConstantCollectionV1 updateJSONIntegerConstants(@QueryParam("expand") final String expand,
             final RESTIntegerConstantCollectionV1 dataObjects);
 
     @POST
     @Path("/integerconstant/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTIntegerConstantV1 createJSONIntegerConstant(@QueryParam("expand") final String expand,
-            final RESTIntegerConstantV1 dataObject);
+    RESTIntegerConstantV1 createJSONIntegerConstant(@QueryParam("expand") final String expand, final RESTIntegerConstantV1 dataObject);
 
     @POST
     @Path("/integerconstants/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTIntegerConstantCollectionV1 createJSONIntegerConstants(@QueryParam("expand") final String expand,
+    RESTIntegerConstantCollectionV1 createJSONIntegerConstants(@QueryParam("expand") final String expand,
             final RESTIntegerConstantCollectionV1 dataObjects);
 
     @DELETE
     @Path("/integerconstant/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTIntegerConstantV1 deleteJSONIntegerConstant(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTIntegerConstantV1 deleteJSONIntegerConstant(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/integerconstants/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTIntegerConstantCollectionV1 deleteJSONIntegerConstants(@PathParam("ids") final PathSegment ids,
+    RESTIntegerConstantCollectionV1 deleteJSONIntegerConstants(@PathParam("ids") final PathSegment ids,
             @QueryParam("expand") final String expand);
 
     /* CONTENT SPEC FUNCTIONS */
@@ -685,43 +617,39 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/contentspec/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTContentSpecV1 updateJSONContentSpec(@QueryParam("expand") final String expand,
-            final RESTContentSpecV1 dataObject);
+    RESTContentSpecV1 updateJSONContentSpec(@QueryParam("expand") final String expand, final RESTContentSpecV1 dataObject);
 
     @POST
     @Path("/contentspecs/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTContentSpecCollectionV1 updateJSONContentSpecs(@QueryParam("expand") final String expand,
+    RESTContentSpecCollectionV1 updateJSONContentSpecs(@QueryParam("expand") final String expand,
             final RESTContentSpecCollectionV1 dataObjects);
 
     @POST
     @Path("/contentspec/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTContentSpecV1 createJSONContentSpec(@QueryParam("expand") final String expand,
-            final RESTContentSpecV1 dataObject);
+    RESTContentSpecV1 createJSONContentSpec(@QueryParam("expand") final String expand, final RESTContentSpecV1 dataObject);
 
     @POST
     @Path("/contentspecs/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTContentSpecCollectionV1 createJSONContentSpecs(@QueryParam("expand") final String expand,
+    RESTContentSpecCollectionV1 createJSONContentSpecs(@QueryParam("expand") final String expand,
             final RESTContentSpecCollectionV1 dataObjects);
 
     @DELETE
     @Path("/contentspec/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTContentSpecV1 deleteJSONContentSpec(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTContentSpecV1 deleteJSONContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/contentspecs/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTContentSpecCollectionV1 deleteJSONContentSpecs(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTContentSpecCollectionV1 deleteJSONContentSpecs(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 
     /* CONTENT SPEC NODE FUNCTIONS */
 //    /* JSON FUNCTIONS */
@@ -773,42 +701,42 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/translatedcontentspec/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedContentSpecV1 updateJSONTranslatedContentSpec(@QueryParam("expand") final String expand,
+    RESTTranslatedContentSpecV1 updateJSONTranslatedContentSpec(@QueryParam("expand") final String expand,
             final RESTTranslatedContentSpecV1 dataObject);
 
     @POST
     @Path("/translatedcontentspecs/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedContentSpecCollectionV1 updateJSONTranslatedContentSpecs(@QueryParam("expand") final String expand,
+    RESTTranslatedContentSpecCollectionV1 updateJSONTranslatedContentSpecs(@QueryParam("expand") final String expand,
             final RESTTranslatedContentSpecCollectionV1 dataObjects);
 
     @POST
     @Path("/translatedcontentspec/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTTranslatedContentSpecV1 createJSONTranslatedContentSpec(@QueryParam("expand") final String expand,
+    RESTTranslatedContentSpecV1 createJSONTranslatedContentSpec(@QueryParam("expand") final String expand,
             final RESTTranslatedContentSpecV1 dataObject);
 
     @POST
     @Path("/translatedcontentspecs/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTTranslatedContentSpecCollectionV1 createJSONTranslatedContentSpecs(@QueryParam("expand") final String expand,
+    RESTTranslatedContentSpecCollectionV1 createJSONTranslatedContentSpecs(@QueryParam("expand") final String expand,
             final RESTTranslatedContentSpecCollectionV1 dataObjects);
 
     @DELETE
     @Path("/translatedcontentspec/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTTranslatedContentSpecV1 deleteJSONTranslatedContentSpec(@PathParam("id") final Integer id,
+    RESTTranslatedContentSpecV1 deleteJSONTranslatedContentSpec(@PathParam("id") final Integer id,
             @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/translatedcontentspecs/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTTranslatedContentSpecCollectionV1 deleteJSONTranslatedContentSpecs(@PathParam("ids") final PathSegment ids,
+    RESTTranslatedContentSpecCollectionV1 deleteJSONTranslatedContentSpecs(@PathParam("ids") final PathSegment ids,
             @QueryParam("expand") final String expand);
 
     /* CONTENT SPEC TRANSLATED NODE FUNCTIONS */
@@ -817,42 +745,41 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/translatedcontentspecnode/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedCSNodeV1 updateJSONTranslatedContentSpecNode(@QueryParam("expand") final String expand,
+    RESTTranslatedCSNodeV1 updateJSONTranslatedContentSpecNode(@QueryParam("expand") final String expand,
             final RESTTranslatedCSNodeV1 dataObject);
 
     @POST
     @Path("/translatedcontentspecnodes/update/json")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public RESTTranslatedCSNodeCollectionV1 updateJSONTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
+    RESTTranslatedCSNodeCollectionV1 updateJSONTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
             final RESTTranslatedCSNodeCollectionV1 dataObjects);
 
     @POST
     @Path("/translatedcontentspecnode/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTTranslatedCSNodeV1 createJSONTranslatedContentSpecNode(@QueryParam("expand") final String expand,
+    RESTTranslatedCSNodeV1 createJSONTranslatedContentSpecNode(@QueryParam("expand") final String expand,
             final RESTTranslatedCSNodeV1 dataObject);
 
     @POST
     @Path("/translatedcontentspecnodes/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTTranslatedCSNodeCollectionV1 createJSONTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
+    RESTTranslatedCSNodeCollectionV1 createJSONTranslatedContentSpecNodes(@QueryParam("expand") final String expand,
             final RESTTranslatedCSNodeCollectionV1 dataObjects);
 
     @DELETE
     @Path("/translatedcontentspecnode/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTTranslatedCSNodeV1 deleteJSONTranslatedContentSpecNode(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTTranslatedCSNodeV1 deleteJSONTranslatedContentSpecNode(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/translatedcontentspecnodes/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTTranslatedCSNodeCollectionV1 deleteJSONTranslatedContentSpecNodes(@PathParam("ids") final PathSegment ids,
+    RESTTranslatedCSNodeCollectionV1 deleteJSONTranslatedContentSpecNodes(@PathParam("ids") final PathSegment ids,
             @QueryParam("expand") final String expand);
 
     /* FILE FUNCTIONS */
@@ -861,41 +788,35 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/file/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTFileV1 updateJSONFile(@QueryParam("expand") final String expand,
-            final RESTFileV1 dataObject);
+    RESTFileV1 updateJSONFile(@QueryParam("expand") final String expand, final RESTFileV1 dataObject);
 
     @POST
     @Path("/files/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTFileCollectionV1 updateJSONFiles(@QueryParam("expand") final String expand,
-            final RESTFileCollectionV1 dataObjects);
+    RESTFileCollectionV1 updateJSONFiles(@QueryParam("expand") final String expand, final RESTFileCollectionV1 dataObjects);
 
     @POST
     @Path("/file/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTFileV1 createJSONFile(@QueryParam("expand") final String expand,
-            final RESTFileV1 dataObject);
+    RESTFileV1 createJSONFile(@QueryParam("expand") final String expand, final RESTFileV1 dataObject);
 
     @POST
     @Path("/files/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    public RESTFileCollectionV1 createJSONFiles(@QueryParam("expand") final String expand,
-            final RESTFileCollectionV1 dataObjects);
+    RESTFileCollectionV1 createJSONFiles(@QueryParam("expand") final String expand, final RESTFileCollectionV1 dataObjects);
 
     @DELETE
     @Path("/file/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTFileV1 deleteJSONFile(@PathParam("id") final Integer id,
-            @QueryParam("expand") final String expand);
+    RESTFileV1 deleteJSONFile(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/files/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    public RESTFileCollectionV1 deleteJSONFiles(@PathParam("ids") final PathSegment ids,
-            @QueryParam("expand") final String expand);
+    RESTFileCollectionV1 deleteJSONFiles(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
 }

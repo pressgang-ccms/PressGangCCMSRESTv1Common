@@ -13,7 +13,6 @@ import org.mockito.Answers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-@SuppressWarnings("rawtypes")
 public class RESTBaseCollectionItemV1Test
 {
     @Mock(answer = Answers.CALLS_REAL_METHODS)

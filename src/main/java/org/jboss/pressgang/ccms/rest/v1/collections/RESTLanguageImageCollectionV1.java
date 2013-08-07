@@ -18,7 +18,7 @@ public class RESTLanguageImageCollectionV1 extends RESTBaseUpdateCollectionV1<RE
 
     @Override
     public List<RESTLanguageImageCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTLanguageImageCollectionV1 extends RESTBaseUpdateCollectionV1<RE
     @Override
     protected void addItem(final RESTLanguageImageV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTLanguageImageCollectionItemV1>();
+            items = new ArrayList<RESTLanguageImageCollectionItemV1>();
         }
 
         items.add(new RESTLanguageImageCollectionItemV1(item, state));

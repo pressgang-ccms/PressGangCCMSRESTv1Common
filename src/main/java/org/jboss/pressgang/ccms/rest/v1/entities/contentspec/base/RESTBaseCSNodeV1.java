@@ -35,25 +35,25 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
     public void cloneInto(final RESTBaseCSNodeV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.title = this.title;
-        clone.targetId = this.targetId;
-        clone.entityId = this.entityId;
-        clone.entityRevision = this.entityRevision;
-        clone.condition = this.condition;
-        clone.additionalText = this.additionalText;
-        clone.nodeType = this.nodeType;
+        clone.title = title;
+        clone.targetId = targetId;
+        clone.entityId = entityId;
+        clone.entityRevision = entityRevision;
+        clone.condition = condition;
+        clone.additionalText = additionalText;
+        clone.nodeType = nodeType;
 
         if (deepCopy) {
-            if (this.parent != null) {
-                clone.parent = this.parent.clone(deepCopy);
+            if (parent != null) {
+                clone.parent = parent.clone(deepCopy);
             }
 
-            if (this.contentSpec != null) {
-                clone.contentSpec = this.contentSpec.clone(deepCopy);
+            if (contentSpec != null) {
+                clone.contentSpec = contentSpec.clone(deepCopy);
             }
         } else {
-            clone.parent = this.parent;
-            clone.contentSpec = this.contentSpec;
+            clone.parent = parent;
+            clone.contentSpec = contentSpec;
         }
     }
 

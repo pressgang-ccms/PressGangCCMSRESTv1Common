@@ -23,7 +23,7 @@ public class RESTCSNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RESTCSNod
     @Override
     protected void addItem(final RESTCSNodeV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTCSNodeCollectionItemV1>();
+            items = new ArrayList<RESTCSNodeCollectionItemV1>();
         }
 
         items.add(new RESTCSNodeCollectionItemV1(item, state));

@@ -14,8 +14,8 @@ public abstract class RESTBaseTranslatedStringV1<T extends RESTBaseTranslatedStr
     public void cloneInto(final RESTBaseTranslatedStringV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.translatedString = this.translatedString;
-        clone.fuzzyTranslation = this.fuzzyTranslation;
+        clone.translatedString = translatedString;
+        clone.fuzzyTranslation = fuzzyTranslation;
     }
 
     public String getTranslatedString() {

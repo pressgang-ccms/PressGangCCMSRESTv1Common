@@ -1,11 +1,11 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.join.base;
 
 public interface IJoinPropertyTagV1 extends IBaseJoinEntityV1 {
-    public String getValue();
+    String getValue();
 
-    public void setValue(final String value);
+    void setValue(final String value);
 
-    public boolean getValid();
+    boolean getValid();
 
-    public void setValid(final boolean valid);
+    void setValid(final boolean valid);
 }

@@ -36,7 +36,7 @@ public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RES
     public RESTTagV1 clone(boolean deepCopy) {
         final RESTTagV1 retValue = new RESTTagV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -45,48 +45,48 @@ public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RES
         super.cloneInto(clone, deepCopy);
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTTagCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
     }
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public void explicitSetCategories(final RESTCategoryInTagCollectionV1 categories) {
         this.categories = categories;
-        this.setParameterToConfigured(CATEGORIES_NAME);
+        setParameterToConfigured(CATEGORIES_NAME);
     }
 
     public void explicitSetParentTags(final RESTTagCollectionV1 parentTags) {
         this.parentTags = parentTags;
-        this.setParameterToConfigured(PARENT_TAGS_NAME);
+        setParameterToConfigured(PARENT_TAGS_NAME);
     }
 
     public void explicitSetChildTags(final RESTTagCollectionV1 childTags) {
         this.childTags = childTags;
-        this.setParameterToConfigured(CHILD_TAGS_NAME);
+        setParameterToConfigured(CHILD_TAGS_NAME);
     }
 
     public void explicitSetProjects(final RESTProjectCollectionV1 projects) {
         this.projects = projects;
-        this.setParameterToConfigured(PROJECTS_NAME);
+        setParameterToConfigured(PROJECTS_NAME);
     }
 
     public void explicitSetProperties(final RESTAssignedPropertyTagCollectionV1 properties) {
         this.properties = properties;
-        this.setParameterToConfigured(PROPERTIES_NAME);
+        setParameterToConfigured(PROPERTIES_NAME);
     }
 
     @Override

@@ -14,12 +14,12 @@ public abstract class RESTBaseEntityWithPropertiesV1<T extends RESTBaseEntityWit
         super.cloneInto(clone, deepCopy);
 
         if (deepCopy) {
-            if (this.properties != null) {
+            if (properties != null) {
                 clone.properties = new RESTAssignedPropertyTagCollectionV1();
-                this.properties.cloneInto(clone.properties, deepCopy);
+                properties.cloneInto(clone.properties, deepCopy);
             }
         } else {
-            clone.properties = this.properties;
+            clone.properties = properties;
         }
     }
 

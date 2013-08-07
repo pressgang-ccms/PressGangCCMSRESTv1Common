@@ -24,7 +24,7 @@ public class RESTContentSpecCollectionV1 extends RESTBaseCollectionV1<RESTConten
     @Override
     protected void addItem(final RESTContentSpecV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTContentSpecCollectionItemV1>();
+            items = new ArrayList<RESTContentSpecCollectionItemV1>();
         }
 
         items.add(new RESTContentSpecCollectionItemV1(item, state));
