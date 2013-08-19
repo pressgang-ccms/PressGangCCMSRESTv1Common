@@ -54,11 +54,15 @@ public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileColl
             if (languageFiles_OTM != null) {
                 clone.languageFiles_OTM = new RESTLanguageFileCollectionV1();
                 languageFiles_OTM.cloneInto(clone.languageFiles_OTM, deepCopy);
+            } else {
+                clone.languageFiles_OTM = null;
             }
 
             if (getRevisions() != null) {
                 clone.revisions = new RESTFileCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            }  else {
+                clone.revisions = null;
             }
         } else {
             clone.languageFiles_OTM = languageFiles_OTM;

@@ -46,6 +46,8 @@ public class RESTCategoryV1 extends RESTBaseCategoryV1<RESTCategoryV1, RESTCateg
             if (getRevisions() != null) {
                 clone.revisions = new RESTCategoryCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.revisions = revisions;

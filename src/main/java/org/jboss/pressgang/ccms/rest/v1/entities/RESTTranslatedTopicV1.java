@@ -80,31 +80,43 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
             if (translatedTopicStrings != null) {
                 clone.translatedTopicStrings = new RESTTranslatedTopicStringCollectionV1();
                 translatedTopicStrings.cloneInto(clone.translatedTopicStrings, deepCopy);
+            }  else {
+                clone.translatedTopicStrings = null;
             }
 
             if (outgoingTranslatedRelationships != null) {
                 clone.outgoingTranslatedRelationships = new RESTTranslatedTopicCollectionV1();
                 outgoingTranslatedRelationships.cloneInto(clone.outgoingTranslatedRelationships, deepCopy);
+            }  else {
+                clone.outgoingTranslatedRelationships = null;
             }
 
             if (incomingTranslatedRelationships != null) {
                 clone.incomingTranslatedRelationships = new RESTTranslatedTopicCollectionV1();
                 incomingTranslatedRelationships.cloneInto(clone.incomingTranslatedRelationships, deepCopy);
+            }  else {
+                clone.incomingTranslatedRelationships = null;
             }
 
             if (incomingRelationships != null) {
                 clone.incomingRelationships = new RESTTranslatedTopicCollectionV1();
                 incomingRelationships.cloneInto(clone.incomingRelationships, deepCopy);
+            }  else {
+                clone.incomingRelationships = null;
             }
 
             if (outgoingRelationships != null) {
                 clone.outgoingRelationships = new RESTTranslatedTopicCollectionV1();
                 outgoingRelationships.cloneInto(clone.outgoingRelationships, deepCopy);
+            }  else {
+                clone.outgoingRelationships = null;
             }
 
             if (revisions != null) {
                 clone.revisions = new RESTTranslatedTopicCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            }  else {
+                clone.revisions = null;
             }
 
             clone.setTopic(topic != null ? topic.clone(deepCopy) : null);

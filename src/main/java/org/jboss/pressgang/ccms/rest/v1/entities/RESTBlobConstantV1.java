@@ -54,6 +54,8 @@ public class RESTBlobConstantV1 extends RESTBasePrimaryEntityV1<RESTBlobConstant
             if (revisions != null) {
                 clone.revisions = new RESTBlobConstantCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.value = value;

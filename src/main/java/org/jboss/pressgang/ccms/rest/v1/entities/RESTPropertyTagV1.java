@@ -56,6 +56,8 @@ public class RESTPropertyTagV1 extends RESTBasePropertyTagV1<RESTPropertyTagV1, 
             if (revisions != null) {
                 clone.revisions = new RESTPropertyTagCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            }  else {
+                clone.revisions = null;
             }
         } else {
             clone.revisions = revisions;

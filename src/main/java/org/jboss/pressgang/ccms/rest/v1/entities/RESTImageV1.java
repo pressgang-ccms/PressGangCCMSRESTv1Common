@@ -45,11 +45,15 @@ public class RESTImageV1 extends RESTBasePrimaryEntityV1<RESTImageV1, RESTImageC
             if (languageImages_OTM != null) {
                 clone.languageImages_OTM = new RESTLanguageImageCollectionV1();
                 languageImages_OTM.cloneInto(clone.languageImages_OTM, deepCopy);
+            } else {
+                clone.languageImages_OTM = null;
             }
 
             if (getRevisions() != null) {
                 clone.revisions = new RESTImageCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.languageImages_OTM = languageImages_OTM;

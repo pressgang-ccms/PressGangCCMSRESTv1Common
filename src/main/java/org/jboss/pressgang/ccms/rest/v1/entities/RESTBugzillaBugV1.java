@@ -49,6 +49,8 @@ public class RESTBugzillaBugV1 extends RESTBaseEntityV1<RESTBugzillaBugV1, RESTB
             if (revisions != null) {
                 clone.revisions = new RESTBugzillaBugCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.revisions = revisions;

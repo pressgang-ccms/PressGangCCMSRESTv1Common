@@ -46,18 +46,26 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
             if (revisions != null) {
                 clone.revisions = new RESTFilterCategoryCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
 
             if (project != null) {
                 clone.project = project.clone(deepCopy);
+            } else {
+                clone.project = null;
             }
 
             if (category != null) {
                 clone.category = category.clone(deepCopy);
+            } else {
+                clone.category = null;
             }
 
             if (filter != null) {
                 clone.filter = filter.clone(deepCopy);
+            } else {
+                clone.filter = null;
             }
         } else {
             clone.revisions = revisions;

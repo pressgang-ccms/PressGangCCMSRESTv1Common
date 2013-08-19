@@ -47,10 +47,14 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
             if (revisions != null) {
                 clone.revisions = new RESTFilterFieldCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            }else {
+                clone.revisions = null;
             }
 
             if (filter != null) {
                 clone.filter = filter.clone(deepCopy);
+            } else {
+                clone.filter = null;
             }
         } else {
             clone.revisions = revisions;

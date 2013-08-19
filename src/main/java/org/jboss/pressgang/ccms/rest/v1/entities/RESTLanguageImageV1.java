@@ -77,6 +77,8 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
             if (revisions != null) {
                 clone.revisions = new RESTLanguageImageCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.imageData = imageData;
