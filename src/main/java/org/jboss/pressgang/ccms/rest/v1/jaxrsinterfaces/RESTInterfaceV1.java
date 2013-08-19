@@ -45,6 +45,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTextContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedContentSpecV1;
 
@@ -650,6 +651,26 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     RESTContentSpecCollectionV1 deleteJSONContentSpecs(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
+
+    /* JSON+TEXT FUNCTIONS */
+    @POST
+    @Path("/contentspec/update/json+text")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    RESTTextContentSpecV1 updateJSONTextContentSpec(@QueryParam("expand") final String expand, final RESTTextContentSpecV1 dataObject);
+
+    @POST
+    @Path("/contentspec/create/json+text")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTTextContentSpecV1 createJSONTextContentSpec(@QueryParam("expand") final String expand, final RESTTextContentSpecV1 dataObject);
+
+    @DELETE
+    @Path("/contentspec/delete/json+text/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTTextContentSpecV1 deleteJSONTextContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
+
 
     /* CONTENT SPEC NODE FUNCTIONS */
 //    /* JSON FUNCTIONS */

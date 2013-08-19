@@ -1723,7 +1723,6 @@ public interface RESTBaseInterfaceV1 {
     RESTTextContentSpecV1 getJSONTextContentSpecRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("expand") final String expand);
 
-
     @GET
     @Path("/contentspecs/get/json+text/all")
     @Produces(MediaType.APPLICATION_JSON)
