@@ -17,6 +17,8 @@ public abstract class RESTBaseEntityWithPropertiesV1<T extends RESTBaseEntityWit
             if (this.properties != null) {
                 clone.properties = new RESTAssignedPropertyTagCollectionV1();
                 this.properties.cloneInto(clone.properties, deepCopy);
+            } else {
+                clone.properties = null;
             }
         } else {
             clone.properties = this.properties;

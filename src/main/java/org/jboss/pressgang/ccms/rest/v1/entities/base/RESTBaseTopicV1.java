@@ -48,11 +48,15 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
             if (this.tags != null) {
                 clone.tags = new RESTTagCollectionV1();
                 this.tags.cloneInto(clone.tags, deepCopy);
+            } else {
+                clone.tags = null;
             }
 
             if (this.sourceUrls_OTM != null) {
                 clone.sourceUrls_OTM = new RESTTopicSourceUrlCollectionV1();
                 this.sourceUrls_OTM.cloneInto(clone.sourceUrls_OTM, deepCopy);
+            } else {
+                clone.sourceUrls_OTM = null;
             }
         } else {
             clone.tags = this.tags;

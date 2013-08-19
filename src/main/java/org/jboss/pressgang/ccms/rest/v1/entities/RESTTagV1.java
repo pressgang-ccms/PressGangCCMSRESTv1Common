@@ -48,6 +48,8 @@ public class RESTTagV1 extends RESTBaseTagV1<RESTTagV1, RESTTagCollectionV1, RES
             if (this.revisions != null) {
                 clone.revisions = new RESTTagCollectionV1();
                 this.revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.revisions = this.revisions;

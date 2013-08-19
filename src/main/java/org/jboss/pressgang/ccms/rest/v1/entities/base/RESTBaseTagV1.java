@@ -32,21 +32,29 @@ public abstract class RESTBaseTagV1<T extends RESTBaseTagV1<T, U, V>, U extends 
             if (this.categories != null) {
                 clone.categories = new RESTCategoryInTagCollectionV1();
                 this.categories.cloneInto(clone.categories, deepCopy);
+            } else {
+                clone.categories = null;
             }
 
             if (this.parentTags != null) {
                 clone.parentTags = new RESTTagCollectionV1();
                 this.parentTags.cloneInto(clone.parentTags, deepCopy);
+            } else {
+                clone.parentTags = null;
             }
 
             if (this.childTags != null) {
                 clone.childTags = new RESTTagCollectionV1();
                 this.childTags.cloneInto(clone.childTags, deepCopy);
+            } else {
+                clone.childTags = null;
             }
 
             if (this.projects != null) {
                 clone.projects = new RESTProjectCollectionV1();
                 this.projects.cloneInto(clone.projects, deepCopy);
+            } else {
+                clone.projects = null;
             }
         } else {
             clone.categories = this.categories;
