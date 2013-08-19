@@ -34,7 +34,7 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
     public RESTLanguageFileV1 clone(boolean deepCopy) {
         final RESTLanguageFileV1 retValue = new RESTLanguageFileV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -42,27 +42,27 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
     public void cloneInto(final RESTLanguageFileV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.file = this.file;
-        clone.locale = this.locale;
-        clone.filename = this.filename;
+        clone.file = file;
+        clone.locale = locale;
+        clone.filename = filename;
 
         if (deepCopy) {
             /* use arraycopy as a GWT compatible alternative to clone() */
 
             if (fileData != null) {
-                clone.fileData = new byte[this.fileData.length];
-                System.arraycopy(this.fileData, 0, clone.fileData, 0, this.fileData.length);
+                clone.fileData = new byte[fileData.length];
+                System.arraycopy(fileData, 0, clone.fileData, 0, fileData.length);
             } else {
                 clone.fileData = null;
             }
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTLanguageFileCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.fileData = this.fileData;
-            clone.revisions = this.revisions;
+            clone.fileData = fileData;
+            clone.revisions = revisions;
         }
     }
 
@@ -84,7 +84,7 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
 
     public void explicitSetFileData(final byte[] fileData) {
         this.fileData = fileData;
-        this.setParameterToConfigured(FILE_DATA_NAME);
+        setParameterToConfigured(FILE_DATA_NAME);
     }
 
     public String getLocale() {
@@ -97,7 +97,7 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
 
     public void explicitSetLocale(final String locale) {
         this.locale = locale;
-        this.setParameterToConfigured(LOCALE_NAME);
+        setParameterToConfigured(LOCALE_NAME);
     }
 
     public String getFilename() {

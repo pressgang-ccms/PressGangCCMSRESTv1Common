@@ -26,10 +26,10 @@ import org.w3c.dom.NodeList;
  * @author Matthew Casperson
  */
 public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPropertiesV1 {
-    private final static Logger LOG = LoggerFactory.getLogger(ComponentBaseTopicV1.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ComponentBaseTopicV1.class);
     final RESTBaseTopicV1<?, ?, ?> source;
 
-    public ComponentBaseTopicV1(final RESTBaseTopicV1<?, ?, ?> source) {
+    protected ComponentBaseTopicV1(final RESTBaseTopicV1<?, ?, ?> source) {
         super(source);
         this.source = source;
     }

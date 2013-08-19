@@ -18,7 +18,7 @@ public class RESTFilterCollectionV1 extends RESTBaseCollectionV1<RESTFilterV1, R
 
     @Override
     public List<RESTFilterCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTFilterCollectionV1 extends RESTBaseCollectionV1<RESTFilterV1, R
     @Override
     protected void addItem(final RESTFilterV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTFilterCollectionItemV1>();
+            items = new ArrayList<RESTFilterCollectionItemV1>();
         }
 
         items.add(new RESTFilterCollectionItemV1(item, state));

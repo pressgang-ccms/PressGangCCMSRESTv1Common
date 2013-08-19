@@ -18,7 +18,7 @@ public class RESTTopicSourceUrlCollectionV1 extends RESTBaseUpdateCollectionV1<R
 
     @Override
     public List<RESTTopicSourceUrlCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTTopicSourceUrlCollectionV1 extends RESTBaseUpdateCollectionV1<R
     @Override
     protected void addItem(final RESTTopicSourceUrlV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTTopicSourceUrlCollectionItemV1>();
+            items = new ArrayList<RESTTopicSourceUrlCollectionItemV1>();
         }
 
         items.add(new RESTTopicSourceUrlCollectionItemV1(item, state));

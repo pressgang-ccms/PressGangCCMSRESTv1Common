@@ -17,16 +17,16 @@ public abstract class RESTBasePropertyCategoryV1<T extends RESTBasePropertyCateg
     public void cloneInto(final RESTBasePropertyCategoryV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = this.name;
+        clone.name = name;
         clone.description = description;
 
         if (deepCopy) {
-            if (this.propertyTags != null) {
+            if (propertyTags != null) {
                 clone.propertyTags = new RESTPropertyTagInPropertyCategoryCollectionV1();
-                this.propertyTags.cloneInto(clone.propertyTags, deepCopy);
+                propertyTags.cloneInto(clone.propertyTags, deepCopy);
             }
         } else {
-            clone.propertyTags = this.propertyTags;
+            clone.propertyTags = propertyTags;
         }
     }
 

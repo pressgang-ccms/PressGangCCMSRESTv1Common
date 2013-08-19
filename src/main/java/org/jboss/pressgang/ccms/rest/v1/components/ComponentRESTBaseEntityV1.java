@@ -1,13 +1,12 @@
 package org.jboss.pressgang.ccms.rest.v1.components;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 
-import static com.google.common.base.Preconditions.checkArgument;
-
-@SuppressWarnings({"rawtypes", "unused"})
 public class ComponentRESTBaseEntityV1 {
     private final RESTBaseEntityV1 source;
 

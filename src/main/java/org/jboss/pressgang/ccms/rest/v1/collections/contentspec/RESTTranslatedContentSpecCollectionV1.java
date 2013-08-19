@@ -16,7 +16,7 @@ public class RESTTranslatedContentSpecCollectionV1 extends RESTBaseUpdateCollect
 
     @Override
     public List<RESTTranslatedContentSpecCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class RESTTranslatedContentSpecCollectionV1 extends RESTBaseUpdateCollect
     @Override
     protected void addItem(final RESTTranslatedContentSpecV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTTranslatedContentSpecCollectionItemV1>();
+            items = new ArrayList<RESTTranslatedContentSpecCollectionItemV1>();
         }
 
         items.add(new RESTTranslatedContentSpecCollectionItemV1(item, state));

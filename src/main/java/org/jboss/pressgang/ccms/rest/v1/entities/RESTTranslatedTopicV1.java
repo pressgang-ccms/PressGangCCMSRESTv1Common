@@ -61,7 +61,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     public RESTTranslatedTopicV1 clone(final boolean deepCopy) {
         final RESTTranslatedTopicV1 retValue = new RESTTranslatedTopicV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -69,54 +69,54 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     public void cloneInto(final RESTTranslatedTopicV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.topicId = this.topicId;
-        clone.topicRevision = this.topicRevision;
-        clone.translatedTopicId = this.translatedTopicId;
-        clone.translationPercentage = this.translationPercentage;
-        clone.containsFuzzyTranslation = this.containsFuzzyTranslation;
-        clone.translatedXMLCondition = this.translatedXMLCondition;
+        clone.topicId = topicId;
+        clone.topicRevision = topicRevision;
+        clone.translatedTopicId = translatedTopicId;
+        clone.translationPercentage = translationPercentage;
+        clone.containsFuzzyTranslation = containsFuzzyTranslation;
+        clone.translatedXMLCondition = translatedXMLCondition;
 
         if (deepCopy) {
-            if (this.translatedTopicStrings != null) {
+            if (translatedTopicStrings != null) {
                 clone.translatedTopicStrings = new RESTTranslatedTopicStringCollectionV1();
-                this.translatedTopicStrings.cloneInto(clone.translatedTopicStrings, deepCopy);
+                translatedTopicStrings.cloneInto(clone.translatedTopicStrings, deepCopy);
             }
 
-            if (this.outgoingTranslatedRelationships != null) {
+            if (outgoingTranslatedRelationships != null) {
                 clone.outgoingTranslatedRelationships = new RESTTranslatedTopicCollectionV1();
-                this.outgoingTranslatedRelationships.cloneInto(clone.outgoingTranslatedRelationships, deepCopy);
+                outgoingTranslatedRelationships.cloneInto(clone.outgoingTranslatedRelationships, deepCopy);
             }
 
-            if (this.incomingTranslatedRelationships != null) {
+            if (incomingTranslatedRelationships != null) {
                 clone.incomingTranslatedRelationships = new RESTTranslatedTopicCollectionV1();
-                this.incomingTranslatedRelationships.cloneInto(clone.incomingTranslatedRelationships, deepCopy);
+                incomingTranslatedRelationships.cloneInto(clone.incomingTranslatedRelationships, deepCopy);
             }
 
-            if (this.incomingRelationships != null) {
+            if (incomingRelationships != null) {
                 clone.incomingRelationships = new RESTTranslatedTopicCollectionV1();
-                this.incomingRelationships.cloneInto(clone.incomingRelationships, deepCopy);
+                incomingRelationships.cloneInto(clone.incomingRelationships, deepCopy);
             }
 
-            if (this.outgoingRelationships != null) {
+            if (outgoingRelationships != null) {
                 clone.outgoingRelationships = new RESTTranslatedTopicCollectionV1();
-                this.outgoingRelationships.cloneInto(clone.outgoingRelationships, deepCopy);
+                outgoingRelationships.cloneInto(clone.outgoingRelationships, deepCopy);
             }
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTTranslatedTopicCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
 
-            clone.setTopic(this.topic != null ? this.topic.clone(deepCopy) : null);
-            clone.translatedCSNode = this.translatedCSNode != null ? translatedCSNode.clone(deepCopy) : null;
+            clone.setTopic(topic != null ? topic.clone(deepCopy) : null);
+            clone.translatedCSNode = translatedCSNode != null ? translatedCSNode.clone(deepCopy) : null;
         } else {
-            clone.translatedTopicStrings = this.translatedTopicStrings;
-            clone.topic = this.topic;
-            clone.outgoingTranslatedRelationships = this.outgoingTranslatedRelationships;
-            clone.incomingTranslatedRelationships = this.incomingTranslatedRelationships;
-            clone.outgoingRelationships = this.outgoingRelationships;
-            clone.incomingRelationships = this.incomingRelationships;
-            clone.revisions = this.revisions;
+            clone.translatedTopicStrings = translatedTopicStrings;
+            clone.topic = topic;
+            clone.outgoingTranslatedRelationships = outgoingTranslatedRelationships;
+            clone.incomingTranslatedRelationships = incomingTranslatedRelationships;
+            clone.outgoingRelationships = outgoingRelationships;
+            clone.incomingRelationships = incomingRelationships;
+            clone.revisions = revisions;
             clone.translatedCSNode = translatedCSNode;
         }
     }
@@ -149,7 +149,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 
     public void explicitSetTopicId(final Integer topicId) {
         this.topicId = topicId;
-        this.setParameterToConfigured(TOPICID_NAME);
+        setParameterToConfigured(TOPICID_NAME);
     }
 
     public Integer getTopicRevision() {
@@ -170,7 +170,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 
     public void explicitSetTopicRevision(final Integer topicRevision) {
         this.topicRevision = topicRevision;
-        this.setParameterToConfigured(TOPICREVISION_NAME);
+        setParameterToConfigured(TOPICREVISION_NAME);
     }
 
     public Integer getTranslationPercentage() {
@@ -183,7 +183,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 
     public void explicitSetTranslationPercentage(Integer translationPercentage) {
         this.translationPercentage = translationPercentage;
-        this.setParameterToConfigured(TRANSLATIONPERCENTAGE_NAME);
+        setParameterToConfigured(TRANSLATIONPERCENTAGE_NAME);
     }
 
     public RESTTranslatedTopicStringCollectionV1 getTranslatedTopicStrings_OTM() {
@@ -196,7 +196,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
 
     public void explicitSetTranslatedTopicString_OTM(final RESTTranslatedTopicStringCollectionV1 translatedTopicStrings) {
         this.translatedTopicStrings = translatedTopicStrings;
-        this.setParameterToConfigured(TRANSLATEDTOPICSTRING_NAME);
+        setParameterToConfigured(TRANSLATEDTOPICSTRING_NAME);
     }
 
     public void explicitSetLocale(final String locale) {
@@ -270,7 +270,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     }
 
     public void explicitSetTranslationCondition(final String translationCondition) {
-        this.translatedXMLCondition = translationCondition;
+        translatedXMLCondition = translationCondition;
         setParameterToConfigured(TRANSLATED_XML_CONDITION);
     }
 

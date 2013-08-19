@@ -32,7 +32,7 @@ public class RESTProjectV1 extends RESTBasePrimaryEntityV1<RESTProjectV1, RESTPr
     public RESTProjectV1 clone(boolean deepCopy) {
         final RESTProjectV1 retValue = new RESTProjectV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -40,22 +40,22 @@ public class RESTProjectV1 extends RESTBasePrimaryEntityV1<RESTProjectV1, RESTPr
     public void cloneInto(final RESTProjectV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = this.name;
+        clone.name = name;
         clone.description = description;
 
         if (deepCopy) {
-            if (this.tags != null) {
+            if (tags != null) {
                 clone.tags = new RESTTagCollectionV1();
-                this.tags.cloneInto(clone.tags, deepCopy);
+                tags.cloneInto(clone.tags, deepCopy);
             }
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTProjectCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.tags = this.tags;
-            clone.revisions = this.revisions;
+            clone.tags = tags;
+            clone.revisions = revisions;
         }
     }
 
@@ -69,7 +69,7 @@ public class RESTProjectV1 extends RESTBasePrimaryEntityV1<RESTProjectV1, RESTPr
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     public String getDescription() {
@@ -82,7 +82,7 @@ public class RESTProjectV1 extends RESTBasePrimaryEntityV1<RESTProjectV1, RESTPr
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public RESTTagCollectionV1 getTags() {
@@ -95,7 +95,7 @@ public class RESTProjectV1 extends RESTBasePrimaryEntityV1<RESTProjectV1, RESTPr
 
     public void explicitSetTags(final RESTTagCollectionV1 tags) {
         this.tags = tags;
-        this.setParameterToConfigured(TAGS_NAME);
+        setParameterToConfigured(TAGS_NAME);
     }
 
     @Override

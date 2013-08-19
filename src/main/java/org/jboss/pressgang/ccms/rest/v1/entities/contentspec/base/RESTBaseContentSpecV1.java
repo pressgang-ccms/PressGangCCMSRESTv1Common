@@ -30,11 +30,11 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
     public void cloneInto(final RESTBaseContentSpecV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.locale = this.locale;
-        clone.lastPublished = this.lastPublished == null ? null : (Date) lastPublished.clone();
-        clone.lastModified = this.lastModified == null ? null : (Date) lastModified.clone();
-        clone.errors = this.errors;
-        clone.failedContentSpec = this.failedContentSpec;
+        clone.locale = locale;
+        clone.lastPublished = lastPublished == null ? null : (Date) lastPublished.clone();
+        clone.lastModified = lastModified == null ? null : (Date) lastModified.clone();
+        clone.errors = errors;
+        clone.failedContentSpec = failedContentSpec;
 
         if (deepCopy) {
             if (tags != null) {

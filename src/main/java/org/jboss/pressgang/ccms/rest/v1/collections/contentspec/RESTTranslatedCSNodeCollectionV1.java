@@ -15,7 +15,7 @@ public class RESTTranslatedCSNodeCollectionV1 extends RESTBaseUpdateCollectionV1
 
     @Override
     public List<RESTTranslatedCSNodeCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class RESTTranslatedCSNodeCollectionV1 extends RESTBaseUpdateCollectionV1
     @Override
     protected void addItem(final RESTTranslatedCSNodeV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTTranslatedCSNodeCollectionItemV1>();
+            items = new ArrayList<RESTTranslatedCSNodeCollectionItemV1>();
         }
 
         items.add(new RESTTranslatedCSNodeCollectionItemV1(item, state));

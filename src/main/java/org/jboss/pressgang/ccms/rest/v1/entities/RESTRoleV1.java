@@ -36,7 +36,7 @@ public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleColl
     public RESTRoleV1 clone(boolean deepCopy) {
         final RESTRoleV1 retValue = new RESTRoleV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -44,34 +44,34 @@ public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleColl
     public void cloneInto(final RESTRoleV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = this.name;
+        clone.name = name;
         clone.description = description;
 
         if (deepCopy) {
-            if (this.users != null) {
+            if (users != null) {
                 clone.users = new RESTUserCollectionV1();
-                this.users.cloneInto(clone.users, deepCopy);
+                users.cloneInto(clone.users, deepCopy);
             }
 
-            if (this.childRoles != null) {
+            if (childRoles != null) {
                 clone.childRoles = new RESTRoleCollectionV1();
-                this.childRoles.cloneInto(clone.childRoles, deepCopy);
+                childRoles.cloneInto(clone.childRoles, deepCopy);
             }
 
-            if (this.parentRoles != null) {
+            if (parentRoles != null) {
                 clone.parentRoles = new RESTRoleCollectionV1();
-                this.parentRoles.cloneInto(clone.parentRoles, deepCopy);
+                parentRoles.cloneInto(clone.parentRoles, deepCopy);
             }
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTRoleCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.users = this.users;
-            clone.childRoles = this.childRoles;
-            clone.parentRoles = this.parentRoles;
-            clone.revisions = this.revisions;
+            clone.users = users;
+            clone.childRoles = childRoles;
+            clone.parentRoles = parentRoles;
+            clone.revisions = revisions;
         }
     }
 
@@ -85,7 +85,7 @@ public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleColl
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     public String getDescription() {
@@ -98,7 +98,7 @@ public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleColl
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public RESTUserCollectionV1 getUsers() {
@@ -111,7 +111,7 @@ public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleColl
 
     public void explicitSetUsers(final RESTUserCollectionV1 users) {
         this.users = users;
-        this.setParameterToConfigured(USERS_NAME);
+        setParameterToConfigured(USERS_NAME);
     }
 
     public RESTRoleCollectionV1 getChildRoles() {
@@ -124,7 +124,7 @@ public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleColl
 
     public void explicitSetChildRoles(final RESTRoleCollectionV1 childRoles) {
         this.childRoles = childRoles;
-        this.setParameterToConfigured(CHILDROLES_NAME);
+        setParameterToConfigured(CHILDROLES_NAME);
     }
 
     public RESTRoleCollectionV1 getParentRoles() {
@@ -137,7 +137,7 @@ public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleColl
 
     public void explicitSetParentRoles(final RESTRoleCollectionV1 parentRoles) {
         this.parentRoles = parentRoles;
-        this.setParameterToConfigured(PARENTROLES_NAME);
+        setParameterToConfigured(PARENTROLES_NAME);
     }
 
     @Override

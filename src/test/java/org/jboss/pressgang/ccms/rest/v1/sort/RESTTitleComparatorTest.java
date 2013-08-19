@@ -96,7 +96,7 @@ abstract class RESTBaseTitleComparatorTest<T extends RESTBaseEntityV1<?, ?, ?>>
     private T entity5;
     private T entity6;
 
-    public RESTBaseTitleComparatorTest()
+    protected RESTBaseTitleComparatorTest()
     {
         entity1 = createEntity("Cat");
         entity2 = createEntity("Dog");

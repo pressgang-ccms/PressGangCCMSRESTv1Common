@@ -1,5 +1,6 @@
 package org.jboss.pressgang.ccms.rest.v1.sort;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTTagInCategoryCollectionItemV1;
@@ -9,7 +10,8 @@ import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTTagInCategory
  *
  * @author Matthew Casperson
  */
-public class RESTTagCategoryCollectionItemV1SortComparator implements Comparator<RESTTagInCategoryCollectionItemV1> {
+public class RESTTagCategoryCollectionItemV1SortComparator implements Comparator<RESTTagInCategoryCollectionItemV1>, Serializable {
+    private static final long serialVersionUID = -1747410895327434628L;
 
     @Override
     public int compare(final RESTTagInCategoryCollectionItemV1 arg0, final RESTTagInCategoryCollectionItemV1 arg1) {

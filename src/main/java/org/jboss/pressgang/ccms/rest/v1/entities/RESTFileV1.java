@@ -37,7 +37,7 @@ public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileColl
     public RESTFileV1 clone(boolean deepCopy) {
         final RESTFileV1 retValue = new RESTFileV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -45,24 +45,24 @@ public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileColl
     public void cloneInto(final RESTFileV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.description = this.description;
-        clone.fileName = this.fileName;
-        clone.filePath = this.filePath;
-        clone.explodeArchive = this.explodeArchive;
+        clone.description = description;
+        clone.fileName = fileName;
+        clone.filePath = filePath;
+        clone.explodeArchive = explodeArchive;
 
         if (deepCopy) {
-            if (this.languageFiles_OTM != null) {
+            if (languageFiles_OTM != null) {
                 clone.languageFiles_OTM = new RESTLanguageFileCollectionV1();
-                this.languageFiles_OTM.cloneInto(clone.languageFiles_OTM, deepCopy);
+                languageFiles_OTM.cloneInto(clone.languageFiles_OTM, deepCopy);
             }
 
-            if (this.getRevisions() != null) {
+            if (getRevisions() != null) {
                 clone.revisions = new RESTFileCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.languageFiles_OTM = this.languageFiles_OTM;
-            clone.revisions = this.revisions;
+            clone.languageFiles_OTM = languageFiles_OTM;
+            clone.revisions = revisions;
         }
     }
 
@@ -76,7 +76,7 @@ public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileColl
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public String getFileName() {
@@ -89,7 +89,7 @@ public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileColl
 
     public void explicitSetFileName(final String fileName) {
         this.fileName = fileName;
-        this.setParameterToConfigured(FILE_NAME);
+        setParameterToConfigured(FILE_NAME);
     }
 
     public String getFilePath() {
@@ -102,7 +102,7 @@ public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileColl
 
     public void explicitSetFilePath(final String filePath) {
         this.filePath = filePath;
-        this.setParameterToConfigured(FILE_PATH_NAME);
+        setParameterToConfigured(FILE_PATH_NAME);
     }
 
     public RESTLanguageFileCollectionV1 getLanguageFiles_OTM() {
@@ -115,7 +115,7 @@ public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileColl
 
     public void explicitSetLanguageFiles_OTM(RESTLanguageFileCollectionV1 languageFiles_OTM) {
         this.languageFiles_OTM = languageFiles_OTM;
-        this.setParameterToConfigured(LANGUAGE_FILES_NAME);
+        setParameterToConfigured(LANGUAGE_FILES_NAME);
     }
 
     public Boolean getExplodeArchive() {

@@ -21,18 +21,18 @@ public abstract class RESTBaseCategoryV1<T extends RESTBaseCategoryV1<T, U, V>, 
     public void cloneInto(final RESTBaseCategoryV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = this.name;
+        clone.name = name;
         clone.description = description;
-        clone.mutuallyExclusive = this.mutuallyExclusive;
-        clone.sort = this.sort == null ? null : new Integer(this.sort);
+        clone.mutuallyExclusive = mutuallyExclusive;
+        clone.sort = sort == null ? null : sort;
 
         if (deepCopy) {
-            if (this.tags != null) {
+            if (tags != null) {
                 clone.tags = new RESTTagInCategoryCollectionV1();
-                this.tags.cloneInto(clone.tags, deepCopy);
+                tags.cloneInto(clone.tags, deepCopy);
             }
         } else {
-            clone.tags = this.tags;
+            clone.tags = tags;
         }
     }
 

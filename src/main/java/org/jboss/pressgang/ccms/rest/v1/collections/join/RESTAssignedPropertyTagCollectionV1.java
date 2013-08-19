@@ -22,7 +22,7 @@ public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectio
 
     @Override
     public List<RESTAssignedPropertyTagCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -47,9 +47,8 @@ public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectio
      */
     @Override
     protected void ignoreDuplicatedChangeItemRequests() {
-        if (this.getItems() != null) {
-            final List<RESTAssignedPropertyTagCollectionItemV1> items = new ArrayList<RESTAssignedPropertyTagCollectionItemV1>(
-                    this.getItems());
+        if (getItems() != null) {
+            final List<RESTAssignedPropertyTagCollectionItemV1> items = new ArrayList<RESTAssignedPropertyTagCollectionItemV1>(getItems());
 
 			/* on the second loop, remove any items that are marked for both add and remove is separate items */
             for (int i = 0; i < items.size(); ++i) {
@@ -60,9 +59,9 @@ public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectio
                 if (childItem1.getId() == null) continue;
 
 				/* at this point we know that either add1 or remove1 will be true, but not both */
-                final boolean add1 = child1.getState() == ADD_STATE;
-                final boolean remove1 = child1.getState() == REMOVE_STATE;
-                final boolean update1 = child1.getState() == UPDATE_STATE;
+                final boolean add1 = child1.getState().equals(ADD_STATE);
+                final boolean remove1 = child1.getState().equals(REMOVE_STATE);
+                final boolean update1 = child1.getState().equals(UPDATE_STATE);
 				
 				/* Loop a second time, looking for duplicates */
                 for (int j = i + 1; j < items.size(); ++j) {
@@ -84,18 +83,18 @@ public class RESTAssignedPropertyTagCollectionV1 extends RESTBaseUpdateCollectio
                     if (childItem1.getId().equals(
                             childItem2.getId()) && relationshipIdEqual && valueEqual && (((childItem1.getIsUnique() && childItem2
                             .getIsUnique())) || ((!childItem1.getIsUnique() || !childItem2.getIsUnique())))) {
-                        final boolean add2 = child2.getState() == ADD_STATE;
-                        final boolean remove2 = child2.getState() == REMOVE_STATE;
-                        final boolean update2 = child2.getState() == UPDATE_STATE;
+                        final boolean add2 = child2.getState().equals(ADD_STATE);
+                        final boolean remove2 = child2.getState().equals(REMOVE_STATE);
+                        final boolean update2 = child2.getState().equals(UPDATE_STATE);
 						
 						/* check for double add, double remove, double update, and remove one instance */
-                        if ((add1 && add2) || (remove1 && remove2) || (update1 && update2)) this.getItems().remove(child1);
+                        if ((add1 && add2) || (remove1 && remove2) || (update1 && update2)) getItems().remove(child1);
 						
 						/* check for double add, double remove, add and remove, remove and add */
                         if ((add1 && remove2) || (remove1 && add2) || (update1 && remove2) || (update2 && remove1) || (update1 && add2)
                                 || (update2 && add1)) {
-                            this.getItems().remove(child1);
-                            this.getItems().remove(child2);
+                            getItems().remove(child1);
+                            getItems().remove(child2);
                         }
                     }
                 }

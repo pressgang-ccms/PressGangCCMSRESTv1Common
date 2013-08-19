@@ -52,7 +52,7 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
 
     public void explicitSetRelationshipId(final Integer relationshipId) {
         this.relationshipId = relationshipId;
-        this.setParameterToConfigured(RELATIONSHIP_ID_NAME);
+        setParameterToConfigured(RELATIONSHIP_ID_NAME);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
 
     public void explicitSetValue(final String value) {
         this.value = value;
-        this.setParameterToConfigured(VALUE_NAME);
+        setParameterToConfigured(VALUE_NAME);
     }
 
     @Override
@@ -84,7 +84,7 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
     public RESTAssignedPropertyTagV1 clone(final boolean deepCopy) {
         final RESTAssignedPropertyTagV1 retValue = new RESTAssignedPropertyTagV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -92,17 +92,17 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
     public void cloneInto(final RESTAssignedPropertyTagV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.relationshipId = this.relationshipId;
-        clone.value = this.value;
-        clone.valid = this.valid;
+        clone.relationshipId = relationshipId;
+        clone.value = value;
+        clone.valid = valid;
 
         if (deepCopy) {
-            if (this.getRevisions() != null) {
+            if (getRevisions() != null) {
                 clone.revisions = new RESTAssignedPropertyTagCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
     }
 
@@ -116,10 +116,10 @@ public class RESTAssignedPropertyTagV1 extends RESTBasePropertyTagV1<RESTAssigne
 
         final RESTAssignedPropertyTagV1 otherCasted = (RESTAssignedPropertyTagV1) other;
 
-        if (this.relationshipId == null && otherCasted.relationshipId == null) return true;
+        if (relationshipId == null && otherCasted.relationshipId == null) return true;
 
-        if ((this.relationshipId == null || otherCasted.relationshipId == null)) return false;
+        if ((relationshipId == null || otherCasted.relationshipId == null)) return false;
 
-        return this.relationshipId.equals(otherCasted.relationshipId);
+        return relationshipId.equals(otherCasted.relationshipId);
     }
 }

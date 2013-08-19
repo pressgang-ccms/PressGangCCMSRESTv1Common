@@ -17,7 +17,7 @@ public class RESTTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTTagV1, R
 
     @Override
     public List<RESTTagCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class RESTTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTTagV1, R
     @Override
     protected void addItem(final RESTTagV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTTagCollectionItemV1>();
+            items = new ArrayList<RESTTagCollectionItemV1>();
         }
 
         items.add(new RESTTagCollectionItemV1(item, state));

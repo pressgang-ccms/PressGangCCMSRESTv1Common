@@ -31,7 +31,7 @@ public class RESTImageV1 extends RESTBasePrimaryEntityV1<RESTImageV1, RESTImageC
     public RESTImageV1 clone(boolean deepCopy) {
         final RESTImageV1 retValue = new RESTImageV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -39,21 +39,21 @@ public class RESTImageV1 extends RESTBasePrimaryEntityV1<RESTImageV1, RESTImageC
     public void cloneInto(final RESTImageV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.description = this.description;
+        clone.description = description;
 
         if (deepCopy) {
-            if (this.languageImages_OTM != null) {
+            if (languageImages_OTM != null) {
                 clone.languageImages_OTM = new RESTLanguageImageCollectionV1();
-                this.languageImages_OTM.cloneInto(clone.languageImages_OTM, deepCopy);
+                languageImages_OTM.cloneInto(clone.languageImages_OTM, deepCopy);
             }
 
-            if (this.getRevisions() != null) {
+            if (getRevisions() != null) {
                 clone.revisions = new RESTImageCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.languageImages_OTM = this.languageImages_OTM;
-            clone.revisions = this.revisions;
+            clone.languageImages_OTM = languageImages_OTM;
+            clone.revisions = revisions;
         }
     }
 
@@ -67,7 +67,7 @@ public class RESTImageV1 extends RESTBasePrimaryEntityV1<RESTImageV1, RESTImageC
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public RESTLanguageImageCollectionV1 getLanguageImages_OTM() {
@@ -80,7 +80,7 @@ public class RESTImageV1 extends RESTBasePrimaryEntityV1<RESTImageV1, RESTImageC
 
     public void explicitSetLanguageImages_OTM(RESTLanguageImageCollectionV1 languageImages_OTM) {
         this.languageImages_OTM = languageImages_OTM;
-        this.setParameterToConfigured(LANGUAGEIMAGES_NAME);
+        setParameterToConfigured(LANGUAGEIMAGES_NAME);
     }
 
     @Override

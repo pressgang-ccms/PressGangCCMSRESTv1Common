@@ -28,7 +28,7 @@ public class RESTCSRelatedNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RE
     @Override
     protected void addItem(final RESTCSRelatedNodeV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTCSRelatedNodeCollectionItemV1>();
+            items = new ArrayList<RESTCSRelatedNodeCollectionItemV1>();
         }
 
         items.add(new RESTCSRelatedNodeCollectionItemV1(item, state));
@@ -40,8 +40,8 @@ public class RESTCSRelatedNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RE
      */
     @Override
     protected void ignoreDuplicatedChangeItemRequests() {
-        if (this.getItems() != null) {
-            final List<RESTCSRelatedNodeCollectionItemV1> items = new ArrayList<RESTCSRelatedNodeCollectionItemV1>(this.getItems());
+        if (getItems() != null) {
+            final List<RESTCSRelatedNodeCollectionItemV1> items = new ArrayList<RESTCSRelatedNodeCollectionItemV1>(getItems());
         
             /* on the second loop, remove any items that are marked for both add and remove is separate items */
             for (int i = 0; i < items.size(); ++i) {
@@ -52,9 +52,9 @@ public class RESTCSRelatedNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RE
                 if (childItem1.getId() == null) continue;
                 
                 /* at this point we know that either add1 or remove1 will be true, but not both */
-                final boolean add1 = child1.getState() == ADD_STATE;
-                final boolean remove1 = child1.getState() == REMOVE_STATE;
-                final boolean update1 = child1.getState() == UPDATE_STATE;
+                final boolean add1 = child1.getState().equals(ADD_STATE);
+                final boolean remove1 = child1.getState().equals(REMOVE_STATE);
+                final boolean update1 = child1.getState().equals(UPDATE_STATE);
                 
                 /* Loop a second time, looking for duplicates */
                 for (int j = i + 1; j < items.size(); ++j) {
@@ -70,9 +70,9 @@ public class RESTCSRelatedNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RE
                     
                     /* Check the RelatedNode objects for their value as well as their IDs to ensure duplicates are removed*/
                     if (childItem1.getId().equals(childItem2.getId()) && relationshipIdEqual) {
-                        final boolean add2 = child2.getState() == ADD_STATE;
-                        final boolean remove2 = child2.getState() == REMOVE_STATE;
-                        final boolean update2 = child2.getState() == UPDATE_STATE;
+                        final boolean add2 = child2.getState().equals(ADD_STATE);
+                        final boolean remove2 = child2.getState().equals(REMOVE_STATE);
+                        final boolean update2 = child2.getState().equals(UPDATE_STATE);
                         
                         /* Do some checks on values that could be null */
                         final boolean typeEqual = childItem1.getRelationshipType() == null && childItem2.getRelationshipType() == null ||
@@ -86,18 +86,18 @@ public class RESTCSRelatedNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RE
                              * the are different then both should be removed. 
                              */
                             if (typeEqual) {
-                                this.getItems().remove(child1);
+                                getItems().remove(child1);
                             } else {
-                                this.getItems().remove(child1);
-                                this.getItems().remove(child2);
+                                getItems().remove(child1);
+                                getItems().remove(child2);
                             }
                         }
                         
                         /* check for double add, double remove, add and remove, remove and add */
                         if ((add1 && remove2) || (remove1 && add2) || (update1 && remove2) || (update2 && remove1) || (update1 && add2)
                                 || (update2 && add1)) {
-                            this.getItems().remove(child1);
-                            this.getItems().remove(child2);
+                            getItems().remove(child1);
+                            getItems().remove(child2);
                         }
                     }
                 }

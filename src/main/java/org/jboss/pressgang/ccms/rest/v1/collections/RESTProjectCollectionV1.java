@@ -17,7 +17,7 @@ public class RESTProjectCollectionV1 extends RESTBaseCollectionV1<RESTProjectV1,
 
     @Override
     public List<RESTProjectCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class RESTProjectCollectionV1 extends RESTBaseCollectionV1<RESTProjectV1,
     @Override
     protected void addItem(final RESTProjectV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTProjectCollectionItemV1>();
+            items = new ArrayList<RESTProjectCollectionItemV1>();
         }
 
         items.add(new RESTProjectCollectionItemV1(item, state));

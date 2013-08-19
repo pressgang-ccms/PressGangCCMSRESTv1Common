@@ -30,7 +30,7 @@ public class RESTFilterLocaleV1 extends RESTBaseEntityV1<RESTFilterLocaleV1, RES
     public RESTFilterLocaleV1 clone(boolean deepCopy) {
         final RESTFilterLocaleV1 retValue = new RESTFilterLocaleV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -38,21 +38,21 @@ public class RESTFilterLocaleV1 extends RESTBaseEntityV1<RESTFilterLocaleV1, RES
     public void cloneInto(final RESTFilterLocaleV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.locale = this.locale;
-        clone.state = this.state;
+        clone.locale = locale;
+        clone.state = state;
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTFilterLocaleCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
             }
 
-            if (this.filter != null) {
-                clone.filter = this.filter.clone(deepCopy);
+            if (filter != null) {
+                clone.filter = filter.clone(deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
-            clone.filter = this.filter;
+            clone.revisions = revisions;
+            clone.filter = filter;
         }
     }
 
@@ -66,7 +66,7 @@ public class RESTFilterLocaleV1 extends RESTBaseEntityV1<RESTFilterLocaleV1, RES
 
     public void explicitSetLocale(final String locale) {
         this.locale = locale;
-        this.setParameterToConfigured(LOCALE_NAME);
+        setParameterToConfigured(LOCALE_NAME);
     }
 
     public Integer getState() {
@@ -79,7 +79,7 @@ public class RESTFilterLocaleV1 extends RESTBaseEntityV1<RESTFilterLocaleV1, RES
 
     public void explicitSetState(final Integer state) {
         this.state = state;
-        this.setParameterToConfigured(STATE_NAME);
+        setParameterToConfigured(STATE_NAME);
     }
 
     public RESTFilterV1 getFilter() {

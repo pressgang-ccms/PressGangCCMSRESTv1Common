@@ -17,7 +17,7 @@ public class RESTUserCollectionV1 extends RESTBaseCollectionV1<RESTUserV1, RESTU
 
     @Override
     public List<RESTUserCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class RESTUserCollectionV1 extends RESTBaseCollectionV1<RESTUserV1, RESTU
     @Override
     protected void addItem(final RESTUserV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTUserCollectionItemV1>();
+            items = new ArrayList<RESTUserCollectionItemV1>();
         }
 
         items.add(new RESTUserCollectionItemV1(item, state));

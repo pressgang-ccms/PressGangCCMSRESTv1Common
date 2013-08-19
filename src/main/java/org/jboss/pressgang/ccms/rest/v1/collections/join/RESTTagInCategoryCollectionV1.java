@@ -22,7 +22,7 @@ public class RESTTagInCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RE
 
     @Override
     public List<RESTTagInCategoryCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -44,8 +44,8 @@ public class RESTTagInCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RE
      */
     @Override
     protected void ignoreDuplicatedChangeItemRequests() {
-        if (this.getItems() != null) {
-            final List<RESTTagInCategoryCollectionItemV1> items = new ArrayList<RESTTagInCategoryCollectionItemV1>(this.getItems());
+        if (getItems() != null) {
+            final List<RESTTagInCategoryCollectionItemV1> items = new ArrayList<RESTTagInCategoryCollectionItemV1>(getItems());
             
             /* on the second loop, remove any items that are marked for both add and remove is separate items */
             for (int i = 0; i < items.size(); ++i) {
@@ -56,9 +56,9 @@ public class RESTTagInCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RE
                 if (childItem1.getId() == null) continue;
                 
                 /* at this point we know that either add1 or remove1 will be true, but not both */
-                final boolean add1 = child1.getState() == ADD_STATE;
-                final boolean remove1 = child1.getState() == REMOVE_STATE;
-                final boolean update1 = child1.getState() == UPDATE_STATE;
+                final boolean add1 = child1.getState().equals(ADD_STATE);
+                final boolean remove1 = child1.getState().equals(REMOVE_STATE);
+                final boolean update1 = child1.getState().equals(UPDATE_STATE);
                 
                 /* Loop a second time, looking for duplicates */
                 for (int j = i + 1; j < items.size(); ++j) {
@@ -75,9 +75,9 @@ public class RESTTagInCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RE
                     
                     /* Check the PropertyTags for uniqueness and their value as well as their IDs */
                     if (childItem1.getId().equals(childItem2.getId()) && relationshipIdEqual) {
-                        final boolean add2 = child2.getState() == ADD_STATE;
-                        final boolean remove2 = child2.getState() == REMOVE_STATE;
-                        final boolean update2 = child2.getState() == UPDATE_STATE;
+                        final boolean add2 = child2.getState().equals(ADD_STATE);
+                        final boolean remove2 = child2.getState().equals(REMOVE_STATE);
+                        final boolean update2 = child2.getState().equals(UPDATE_STATE);
 
                         final boolean relationshipSortEqual = childItem1.getRelationshipSort() == null && childItem2.getRelationshipSort
                                 () == null || childItem1.getRelationshipSort() != null && childItem1.getRelationshipSort().equals(
@@ -90,18 +90,18 @@ public class RESTTagInCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<RE
                              * the are different then both should be removed. 
                              */
                             if (relationshipSortEqual) {
-                                this.getItems().remove(child1);
+                                getItems().remove(child1);
                             } else {
-                                this.getItems().remove(child1);
-                                this.getItems().remove(child2);
+                                getItems().remove(child1);
+                                getItems().remove(child2);
                             }
                         }
                         
                         /* check for double add, double remove, add and remove, remove and add */
                         if ((add1 && remove2) || (remove1 && add2) || (update1 && remove2) || (update2 && remove1) || (update1 && add2)
                                 || (update2 && add1)) {
-                            this.getItems().remove(child1);
-                            this.getItems().remove(child2);
+                            getItems().remove(child1);
+                            getItems().remove(child2);
                         }
                     }
                 }

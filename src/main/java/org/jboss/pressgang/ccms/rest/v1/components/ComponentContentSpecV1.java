@@ -44,7 +44,7 @@ public class ComponentContentSpecV1 {
      */
     public static void fixDisplayedText(final RESTTextContentSpecV1 source)
     {
-        if (source.getErrors() != null) {
+        if (source.getFailedContentSpec() != null) {
             source.setText(source.getFailedContentSpec());
         }
     }

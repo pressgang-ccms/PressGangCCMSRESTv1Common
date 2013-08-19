@@ -2,21 +2,8 @@ package org.jboss.pressgang.ccms.rest.v1.components;
 
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryInTagV1;
-import org.jboss.pressgang.ccms.rest.v1.sort.TagV1NameComparator;
-import org.jboss.pressgang.ccms.utils.common.ExceptionUtilities;
-import org.jboss.pressgang.ccms.utils.common.XMLUtilities;
-import org.jboss.pressgang.ccms.utils.structures.NameIDSortMap;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.TreeMap;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
@@ -30,7 +17,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 public abstract class GWTComponentTopicV1 extends ComponentBaseRESTEntityWithPropertiesV1 {
     final RESTBaseTopicV1<?, ?, ?> source;
 
-    public GWTComponentTopicV1(final RESTBaseTopicV1<?, ?, ?> source) {
+    protected GWTComponentTopicV1(final RESTBaseTopicV1<?, ?, ?> source) {
         super(source);
         this.source = source;
     }

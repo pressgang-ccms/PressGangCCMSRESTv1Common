@@ -18,7 +18,7 @@ public class RESTFilterCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<R
 
     @Override
     public List<RESTFilterCategoryCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTFilterCategoryCollectionV1 extends RESTBaseUpdateCollectionV1<R
     @Override
     protected void addItem(final RESTFilterCategoryV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTFilterCategoryCollectionItemV1>();
+            items = new ArrayList<RESTFilterCategoryCollectionItemV1>();
         }
 
         items.add(new RESTFilterCategoryCollectionItemV1(item, state));

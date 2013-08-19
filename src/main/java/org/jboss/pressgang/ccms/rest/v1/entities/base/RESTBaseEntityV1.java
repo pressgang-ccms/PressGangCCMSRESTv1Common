@@ -32,15 +32,15 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U ex
     private List<String> expand = null;
     private RESTLogDetailsV1 logDetails = null;
 
-    abstract public U getRevisions();
+    public abstract U getRevisions();
 
-    abstract public void setRevisions(U revisions);
+    public abstract void setRevisions(U revisions);
 
     /**
      * @return true if this entity's state would trigger a change in the database, and false otherwise
      */
     public boolean returnDirtyState() {
-        return this.configuredParameters != null && !this.configuredParameters.isEmpty();
+        return configuredParameters != null && !configuredParameters.isEmpty();
     }
 
     @Override
@@ -52,22 +52,22 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U ex
         @SuppressWarnings("rawtypes")
         final RESTBaseEntityV1 otherCasted = (RESTBaseEntityV1) other;
 
-        if (this.id == null && otherCasted.id == null) {
-            if (this.revision == null && otherCasted.revision == null) return super.equals(other);
+        if (id == null && otherCasted.id == null) {
+            if (revision == null && otherCasted.revision == null) return super.equals(other);
 
-            if (this.revision == null || otherCasted.revision == null) return false;
+            if (revision == null || otherCasted.revision == null) return false;
 
-            return this.revision.equals(otherCasted.revision);
+            return revision.equals(otherCasted.revision);
         }
 
-        if (this.id == null || otherCasted.id == null) return false;
+        if (id == null || otherCasted.id == null) return false;
 
-        if (this.id.equals(otherCasted.id)) {
-            if (this.revision == null && otherCasted.revision == null) return true;
+        if (id.equals(otherCasted.id)) {
+            if (revision == null && otherCasted.revision == null) return true;
 
-            if (this.revision == null || otherCasted.revision == null) return false;
+            if (revision == null || otherCasted.revision == null) return false;
 
-            return this.revision.equals(otherCasted.revision);
+            return revision.equals(otherCasted.revision);
         } else {
             return false;
         }
@@ -75,22 +75,22 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U ex
 
     @Override
     public int hashCode() {
-        if (this.id == null) return 0;
+        if (id == null) return 0;
         return id.hashCode();
     }
 
     public void cloneInto(final RESTBaseEntityV1<?, ?, ?> clone, final boolean deepCopy) {
-        clone.setId(id == null ? null : new Integer(id));
+        clone.setId(id == null ? null : id);
         clone.setRevision(revision);
         clone.setExpand(expand);
         clone.setConfiguredParameters(configuredParameters == null ? null : new ArrayList<String>(configuredParameters));
 
         if (deepCopy) {
-            if (this.logDetails != null) {
-                clone.setLogDetails(this.logDetails.clone(deepCopy));
+            if (logDetails != null) {
+                clone.setLogDetails(logDetails.clone(deepCopy));
             }
         } else {
-            clone.setLogDetails(this.logDetails);
+            clone.setLogDetails(logDetails);
         }
     }
 

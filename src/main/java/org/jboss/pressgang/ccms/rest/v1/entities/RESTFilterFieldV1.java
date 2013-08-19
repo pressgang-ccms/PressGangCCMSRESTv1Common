@@ -31,7 +31,7 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
     public RESTFilterFieldV1 clone(boolean deepCopy) {
         final RESTFilterFieldV1 retValue = new RESTFilterFieldV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -39,22 +39,22 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
     public void cloneInto(final RESTFilterFieldV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.description = this.description;
-        clone.name = this.name;
-        clone.value = this.value;
+        clone.description = description;
+        clone.name = name;
+        clone.value = value;
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTFilterFieldCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
             }
 
-            if (this.filter != null) {
-                clone.filter = this.filter.clone(deepCopy);
+            if (filter != null) {
+                clone.filter = filter.clone(deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
-            clone.filter = this.filter;
+            clone.revisions = revisions;
+            clone.filter = filter;
         }
     }
 
@@ -68,7 +68,7 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     public String getDescription() {
@@ -81,7 +81,7 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public String getValue() {
@@ -94,7 +94,7 @@ public class RESTFilterFieldV1 extends RESTBaseEntityV1<RESTFilterFieldV1, RESTF
 
     public void explicitSetValue(final String value) {
         this.value = value;
-        this.setParameterToConfigured(VALUE_NAME);
+        setParameterToConfigured(VALUE_NAME);
     }
 
     public RESTFilterV1 getFilter() {

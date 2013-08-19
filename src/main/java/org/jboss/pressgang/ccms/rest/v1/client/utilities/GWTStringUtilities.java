@@ -10,7 +10,7 @@ package org.jboss.pressgang.ccms.rest.v1.client.utilities;
  *
  * @author Matthew Casperson
  */
-final public class GWTStringUtilities {
+public final class GWTStringUtilities {
     public static byte[] getBytes(final String string, final int bytesPerChar) {
         char[] chars = string.toCharArray();
         byte[] toReturn = new byte[chars.length * bytesPerChar];

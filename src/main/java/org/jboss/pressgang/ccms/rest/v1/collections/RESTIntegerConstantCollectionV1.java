@@ -18,7 +18,7 @@ public class RESTIntegerConstantCollectionV1 extends RESTBaseCollectionV1<RESTIn
 
     @Override
     public List<RESTIntegerConstantCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTIntegerConstantCollectionV1 extends RESTBaseCollectionV1<RESTIn
     @Override
     protected void addItem(final RESTIntegerConstantV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTIntegerConstantCollectionItemV1>();
+            items = new ArrayList<RESTIntegerConstantCollectionItemV1>();
         }
 
         items.add(new RESTIntegerConstantCollectionItemV1(item, state));

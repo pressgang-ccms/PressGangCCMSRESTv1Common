@@ -7,8 +7,6 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollecti
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 import org.junit.Before;
 import org.junit.Test;
@@ -111,8 +109,8 @@ class RESTBaseTestEntityV1 extends RESTBaseEntityV1<RESTBaseTestEntityV1, RESTBa
     @Override
     public RESTBaseTestEntityV1 clone(boolean deepCopy) {
         final RESTBaseTestEntityV1 retValue = new RESTBaseTestEntityV1();
-        
-        this.cloneInto(retValue, deepCopy);
+
+        cloneInto(retValue, deepCopy);
         
         return retValue;
     }
@@ -147,17 +145,17 @@ class RESTBaseTestCollectionItemV1 extends RESTBaseCollectionItemV1<RESTBaseTest
 {
     private RESTBaseTestEntityV1 item;
     
-    public RESTBaseTestCollectionItemV1()
+    RESTBaseTestCollectionItemV1()
     {
     }
     
-    public RESTBaseTestCollectionItemV1(final RESTBaseTestEntityV1 item)
+    RESTBaseTestCollectionItemV1(final RESTBaseTestEntityV1 item)
     {
         setItem(item);
         setState(UNCHANGED_STATE);
     }
     
-    public RESTBaseTestCollectionItemV1(final RESTBaseTestEntityV1 item, final Integer state)
+    RESTBaseTestCollectionItemV1(final RESTBaseTestEntityV1 item, final Integer state)
     {
         setItem(item);
         setState(state);
@@ -167,8 +165,8 @@ class RESTBaseTestCollectionItemV1 extends RESTBaseCollectionItemV1<RESTBaseTest
     public RESTBaseTestCollectionItemV1 clone(boolean deepCopy)
     {
         final RESTBaseTestCollectionItemV1 retValue = new RESTBaseTestCollectionItemV1();
-        
-        this.cloneInto(retValue, deepCopy);
+
+        cloneInto(retValue, deepCopy);
         
         return retValue;
     }

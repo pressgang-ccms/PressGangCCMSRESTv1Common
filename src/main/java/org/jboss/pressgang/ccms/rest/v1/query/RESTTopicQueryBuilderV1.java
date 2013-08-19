@@ -741,13 +741,13 @@ class CategoryState {
     private final Integer projectId;
     private Integer state;
 
-    public CategoryState(final Integer projectId) {
+    CategoryState(final Integer projectId) {
         this.projectId = projectId;
     }
 
-    public CategoryState(final Integer projectId, final Integer state) {
+    CategoryState(final Integer projectId, final Integer state) {
         this.projectId = projectId;
-        this.setState(state);
+        setState(state);
     }
 
     public Integer getProjectId() {

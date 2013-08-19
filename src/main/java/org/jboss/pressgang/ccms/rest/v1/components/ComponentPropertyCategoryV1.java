@@ -1,13 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.components;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyCategoryInPropertyTagCollectionItemV1;
+import static com.google.common.base.Preconditions.checkArgument;
+
 import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyTagInPropertyCategoryCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyCategoryV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyCategoryInPropertyTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyTagInPropertyCategoryV1;
-
-import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * Contains useful functions that run against a RESTPropertyCategoryV1, but which are not included in the RESTPropertyCategoryV1

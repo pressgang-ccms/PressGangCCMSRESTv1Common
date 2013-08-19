@@ -36,7 +36,7 @@ public class RESTLogDetailsV1 {
 
     public void explicitSetMessage(final String message) {
         this.message = message;
-        this.setParameterToConfigured(MESSAGE_NAME);
+        setParameterToConfigured(MESSAGE_NAME);
     }
 
     public Integer getFlag() {
@@ -49,7 +49,7 @@ public class RESTLogDetailsV1 {
 
     public void explicitSetFlag(final Integer flag) {
         this.flag = flag;
-        this.setParameterToConfigured(FLAG_NAME);
+        setParameterToConfigured(FLAG_NAME);
     }
 
     public RESTUserV1 getUser() {
@@ -62,7 +62,7 @@ public class RESTLogDetailsV1 {
 
     public void explicitSetUser(final RESTUserV1 user) {
         this.user = user;
-        this.setParameterToConfigured(USERNAME_NAME);
+        setParameterToConfigured(USERNAME_NAME);
     }
 
     public Date getDate() {
@@ -76,7 +76,7 @@ public class RESTLogDetailsV1 {
     public RESTLogDetailsV1 clone(final boolean deepCopy) {
         final RESTLogDetailsV1 retValue = new RESTLogDetailsV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }

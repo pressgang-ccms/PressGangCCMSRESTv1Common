@@ -32,7 +32,7 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
     public RESTFilterCategoryV1 clone(boolean deepCopy) {
         final RESTFilterCategoryV1 retValue = new RESTFilterCategoryV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -40,30 +40,30 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
     public void cloneInto(final RESTFilterCategoryV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.state = this.state;
+        clone.state = state;
 
         if (deepCopy) {
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTFilterCategoryCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
             }
 
-            if (this.project != null) {
-                clone.project = this.project.clone(deepCopy);
+            if (project != null) {
+                clone.project = project.clone(deepCopy);
             }
 
-            if (this.category != null) {
-                clone.category = this.category.clone(deepCopy);
+            if (category != null) {
+                clone.category = category.clone(deepCopy);
             }
 
-            if (this.filter != null) {
-                clone.filter = this.filter.clone(deepCopy);
+            if (filter != null) {
+                clone.filter = filter.clone(deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
-            clone.category = this.category;
-            clone.project = this.project;
-            clone.filter = this.filter;
+            clone.revisions = revisions;
+            clone.category = category;
+            clone.project = project;
+            clone.filter = filter;
         }
     }
 
@@ -77,7 +77,7 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
 
     public void explicitSetCategory(final RESTCategoryV1 category) {
         this.category = category;
-        this.setParameterToConfigured(CATEGORY_NAME);
+        setParameterToConfigured(CATEGORY_NAME);
     }
 
     public RESTProjectV1 getProject() {
@@ -90,7 +90,7 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
 
     public void explicitSetProject(final RESTProjectV1 project) {
         this.project = project;
-        this.setParameterToConfigured(PROJECT_NAME);
+        setParameterToConfigured(PROJECT_NAME);
     }
 
     public Integer getState() {
@@ -103,7 +103,7 @@ public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1,
 
     public void explicitSetState(final Integer state) {
         this.state = state;
-        this.setParameterToConfigured(STATE_NAME);
+        setParameterToConfigured(STATE_NAME);
     }
 
     public RESTFilterV1 getFilter() {

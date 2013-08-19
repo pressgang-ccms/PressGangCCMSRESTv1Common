@@ -38,7 +38,7 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
     public RESTLanguageImageV1 clone(boolean deepCopy) {
         final RESTLanguageImageV1 retValue = new RESTLanguageImageV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -46,43 +46,43 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
     public void cloneInto(final RESTLanguageImageV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.image = this.image;
-        clone.filename = this.filename;
-        clone.locale = this.locale;
+        clone.image = image;
+        clone.filename = filename;
+        clone.locale = locale;
 
         if (deepCopy) {
             /* use arraycopy as a GWT compatible alternative to clone() */
 
             if (imageData != null) {
-                clone.imageData = new byte[this.imageData.length];
-                System.arraycopy(this.imageData, 0, clone.imageData, 0, this.imageData.length);
+                clone.imageData = new byte[imageData.length];
+                System.arraycopy(imageData, 0, clone.imageData, 0, imageData.length);
             } else {
                 clone.imageData = null;
             }
 
             if (thumbnail != null) {
-                clone.thumbnail = new byte[this.thumbnail.length];
-                System.arraycopy(this.thumbnail, 0, clone.thumbnail, 0, this.thumbnail.length);
+                clone.thumbnail = new byte[thumbnail.length];
+                System.arraycopy(thumbnail, 0, clone.thumbnail, 0, thumbnail.length);
             } else {
                 clone.thumbnail = null;
             }
 
             if (imageDataBase64 != null) {
-                clone.imageDataBase64 = new byte[this.imageDataBase64.length];
-                System.arraycopy(this.imageDataBase64, 0, clone.imageDataBase64, 0, this.imageDataBase64.length);
+                clone.imageDataBase64 = new byte[imageDataBase64.length];
+                System.arraycopy(imageDataBase64, 0, clone.imageDataBase64, 0, imageDataBase64.length);
             } else {
                 clone.imageDataBase64 = null;
             }
 
-            if (this.revisions != null) {
+            if (revisions != null) {
                 clone.revisions = new RESTLanguageImageCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.imageData = this.imageData;
-            clone.thumbnail = this.thumbnail;
-            clone.imageDataBase64 = this.imageDataBase64;
-            clone.revisions = this.revisions;
+            clone.imageData = imageData;
+            clone.thumbnail = thumbnail;
+            clone.imageDataBase64 = imageDataBase64;
+            clone.revisions = revisions;
         }
     }
 
@@ -104,7 +104,7 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
 
     public void explicitSetImageData(final byte[] imageData) {
         this.imageData = imageData;
-        this.setParameterToConfigured(IMAGEDATA_NAME);
+        setParameterToConfigured(IMAGEDATA_NAME);
     }
 
     public byte[] getThumbnail() {
@@ -133,7 +133,7 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
 
     public void explicitSetLocale(final String locale) {
         this.locale = locale;
-        this.setParameterToConfigured(LOCALE_NAME);
+        setParameterToConfigured(LOCALE_NAME);
     }
 
     public String getFilename() {
@@ -146,7 +146,7 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
 
     public void explicitSetFilename(final String filename) {
         this.filename = filename;
-        this.setParameterToConfigured(FILENAME_NAME);
+        setParameterToConfigured(FILENAME_NAME);
     }
 
     @Override

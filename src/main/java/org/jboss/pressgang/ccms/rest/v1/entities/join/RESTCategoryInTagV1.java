@@ -49,7 +49,7 @@ public class RESTCategoryInTagV1 extends RESTBaseCategoryV1<RESTCategoryInTagV1,
 
     public void explicitSetRelationshipId(final Integer relationshipId) {
         this.relationshipId = relationshipId;
-        this.setParameterToConfigured(RELATIONSHIP_ID_NAME);
+        setParameterToConfigured(RELATIONSHIP_ID_NAME);
     }
 
     @Override
@@ -64,14 +64,14 @@ public class RESTCategoryInTagV1 extends RESTBaseCategoryV1<RESTCategoryInTagV1,
 
     public void explicitSetRelationshipSort(final Integer relationshipSort) {
         this.relationshipSort = relationshipSort;
-        this.setParameterToConfigured(RELATIONSHIP_SORT_NAME);
+        setParameterToConfigured(RELATIONSHIP_SORT_NAME);
     }
 
     @Override
     public RESTCategoryInTagV1 clone(final boolean deepCopy) {
         final RESTCategoryInTagV1 retValue = new RESTCategoryInTagV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -79,16 +79,16 @@ public class RESTCategoryInTagV1 extends RESTBaseCategoryV1<RESTCategoryInTagV1,
     public void cloneInto(final RESTCategoryInTagV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.relationshipId = this.relationshipId;
-        clone.relationshipSort = this.relationshipSort;
+        clone.relationshipId = relationshipId;
+        clone.relationshipSort = relationshipSort;
 
         if (deepCopy) {
-            if (this.getRevisions() != null) {
+            if (getRevisions() != null) {
                 clone.revisions = new RESTCategoryInTagCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
     }
 
@@ -102,11 +102,11 @@ public class RESTCategoryInTagV1 extends RESTBaseCategoryV1<RESTCategoryInTagV1,
 
         final RESTCategoryInTagV1 otherCasted = (RESTCategoryInTagV1) other;
 
-        if (this.relationshipId == null && otherCasted.relationshipId == null) return true;
+        if (relationshipId == null && otherCasted.relationshipId == null) return true;
 
-        if ((this.relationshipId == null || otherCasted.relationshipId == null)) return false;
+        if ((relationshipId == null || otherCasted.relationshipId == null)) return false;
 
-        return this.relationshipId.equals(otherCasted.relationshipId);
+        return relationshipId.equals(otherCasted.relationshipId);
     }
 
 }

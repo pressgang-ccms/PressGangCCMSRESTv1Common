@@ -7,13 +7,13 @@ import org.jboss.resteasy.spi.StringConverter;
 public abstract class RESTBaseV1JSONConverter<T> implements StringConverter<T> {
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    {
+    static {
         mapper.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     private final Class<T> clazz;
 
-    public RESTBaseV1JSONConverter(final Class<T> clazz) {
+    protected RESTBaseV1JSONConverter(final Class<T> clazz) {
         this.clazz = clazz;
     }
 

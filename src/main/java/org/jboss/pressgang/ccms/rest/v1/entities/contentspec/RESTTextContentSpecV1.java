@@ -11,6 +11,8 @@ public class RESTTextContentSpecV1 extends RESTBaseContentSpecV1<RESTTextContent
     public static final String TEXT_NAME = "text";
 
     private String title = null;
+    private String product = null;
+    private String version = null;
     private String text = null;
     private RESTTextCSProcessingOptionsV1 processingOptions = null;
     private RESTTextContentSpecCollectionV1 revisions = null;
@@ -29,7 +31,7 @@ public class RESTTextContentSpecV1 extends RESTBaseContentSpecV1<RESTTextContent
     public RESTTextContentSpecV1 clone(final boolean deepCopy) {
         final RESTTextContentSpecV1 retValue = new RESTTextContentSpecV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -37,8 +39,10 @@ public class RESTTextContentSpecV1 extends RESTBaseContentSpecV1<RESTTextContent
     public void cloneInto(final RESTTextContentSpecV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.title = this.title;
-        clone.text = this.text;
+        clone.title = title;
+        clone.product = product;
+        clone.version = version;
+        clone.text = text;
 
         if (deepCopy) {
             if (revisions != null) {
@@ -89,6 +93,22 @@ public class RESTTextContentSpecV1 extends RESTBaseContentSpecV1<RESTTextContent
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
     }
 
     @Override

@@ -18,7 +18,7 @@ public class RESTPropertyCategoryCollectionV1 extends RESTBaseCollectionV1<RESTP
 
     @Override
     public List<RESTPropertyCategoryCollectionItemV1> getItems() {
-        return this.items;
+        return items;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class RESTPropertyCategoryCollectionV1 extends RESTBaseCollectionV1<RESTP
     @Override
     protected void addItem(final RESTPropertyCategoryV1 item, final Integer state) {
         if (items == null) {
-            this.items = new ArrayList<RESTPropertyCategoryCollectionItemV1>();
+            items = new ArrayList<RESTPropertyCategoryCollectionItemV1>();
         }
 
         items.add(new RESTPropertyCategoryCollectionItemV1(item, state));

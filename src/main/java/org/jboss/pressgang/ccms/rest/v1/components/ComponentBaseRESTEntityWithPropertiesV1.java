@@ -15,7 +15,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 public abstract class ComponentBaseRESTEntityWithPropertiesV1 {
     final RESTBaseEntityWithPropertiesV1<?, ?, ?> source;
 
-    public ComponentBaseRESTEntityWithPropertiesV1(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source) {
+    protected ComponentBaseRESTEntityWithPropertiesV1(final RESTBaseEntityWithPropertiesV1<?, ?, ?> source) {
         checkArgument(source != null, "The source parameter can not be null");
         this.source = source;
     }

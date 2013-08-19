@@ -12,7 +12,7 @@ public class RESTTextCSProcessingOptionsV1 {
     }
 
     public void cloneInto(final RESTTextCSProcessingOptionsV1 clone, final boolean deepCopy) {
-        clone.permissive = permissive == null ? null : new Boolean(permissive);
+        clone.permissive = permissive == null ? null : permissive;
     }
 
     public Boolean getPermissive() {

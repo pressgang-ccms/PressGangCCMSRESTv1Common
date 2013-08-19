@@ -34,7 +34,7 @@ public class RESTCategoryV1 extends RESTBaseCategoryV1<RESTCategoryV1, RESTCateg
     public RESTCategoryV1 clone(boolean deepCopy) {
         final RESTCategoryV1 retValue = new RESTCategoryV1();
 
-        this.cloneInto(retValue, deepCopy);
+        cloneInto(retValue, deepCopy);
 
         return retValue;
     }
@@ -43,39 +43,39 @@ public class RESTCategoryV1 extends RESTBaseCategoryV1<RESTCategoryV1, RESTCateg
         super.cloneInto(clone, deepCopy);
 
         if (deepCopy) {
-            if (this.getRevisions() != null) {
+            if (getRevisions() != null) {
                 clone.revisions = new RESTCategoryCollectionV1();
-                this.revisions.cloneInto(clone.revisions, deepCopy);
+                revisions.cloneInto(clone.revisions, deepCopy);
             }
         } else {
-            clone.revisions = this.revisions;
+            clone.revisions = revisions;
         }
 
     }
 
     public void explicitSetName(final String name) {
         this.name = name;
-        this.setParameterToConfigured(NAME_NAME);
+        setParameterToConfigured(NAME_NAME);
     }
 
     public void setSortExplicit(final Integer sort) {
         this.sort = sort;
-        this.setParameterToConfigured(SORT_NAME);
+        setParameterToConfigured(SORT_NAME);
     }
 
     public void explicitSetMutuallyExclusive(final boolean mutuallyExclusive) {
         this.mutuallyExclusive = mutuallyExclusive;
-        this.setParameterToConfigured(MUTUALLYEXCLUSIVE_NAME);
+        setParameterToConfigured(MUTUALLYEXCLUSIVE_NAME);
     }
 
     public void explicitSetDescription(final String description) {
         this.description = description;
-        this.setParameterToConfigured(DESCRIPTION_NAME);
+        setParameterToConfigured(DESCRIPTION_NAME);
     }
 
     public void explicitSetTags(final RESTTagInCategoryCollectionV1 tags) {
         this.tags = tags;
-        this.setParameterToConfigured(TAGS_NAME);
+        setParameterToConfigured(TAGS_NAME);
     }
 
     @Override
