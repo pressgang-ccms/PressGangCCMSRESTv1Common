@@ -49,6 +49,8 @@ public class RESTStringConstantV1 extends RESTBasePrimaryEntityV1<RESTStringCons
             if (revisions != null) {
                 clone.revisions = new RESTStringConstantCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.revisions = revisions;

@@ -50,6 +50,8 @@ public class RESTPropertyCategoryV1 extends RESTBasePropertyCategoryV1<RESTPrope
             if (revisions != null) {
                 clone.revisions = new RESTPropertyCategoryCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            }  else {
+                clone.revisions = null;
             }
         } else {
             clone.revisions = revisions;

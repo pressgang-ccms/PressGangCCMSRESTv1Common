@@ -49,6 +49,8 @@ public class RESTIntegerConstantV1 extends RESTBasePrimaryEntityV1<RESTIntegerCo
             if (revisions != null) {
                 clone.revisions = new RESTIntegerConstantCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.revisions = revisions;

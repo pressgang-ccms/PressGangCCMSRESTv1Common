@@ -47,11 +47,15 @@ public class RESTUserV1 extends RESTBasePrimaryEntityV1<RESTUserV1, RESTUserColl
             if (roles != null) {
                 clone.roles = new RESTRoleCollectionV1();
                 roles.cloneInto(clone.roles, deepCopy);
+            }  else {
+                clone.roles = null;
             }
 
             if (revisions != null) {
                 clone.revisions = new RESTUserCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            }  else {
+                clone.revisions = null;
             }
         } else {
             clone.roles = roles;

@@ -46,6 +46,8 @@ public class RESTTranslatedTopicStringV1 extends RESTBaseTranslatedStringV1<REST
             if (revisions != null) {
                 clone.revisions = new RESTTranslatedTopicStringCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            }  else {
+                clone.revisions = null;
             }
         } else {
             clone.translatedTopic = translatedTopic;

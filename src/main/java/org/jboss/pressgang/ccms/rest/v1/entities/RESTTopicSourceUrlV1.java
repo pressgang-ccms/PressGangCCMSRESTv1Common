@@ -48,6 +48,8 @@ public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1,
             if (revisions != null) {
                 clone.revisions = new RESTTopicSourceUrlCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            }  else {
+                clone.revisions = null;
             }
         } else {
             clone.revisions = revisions;

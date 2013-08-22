@@ -12,7 +12,6 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     public static final String TITLE_NAME = "title";
     public static final String XML_NAME = "xml";
     public static final String XML_ERRORS_NAME = "xmlErrors";
-    public static final String HTML_NAME = "html";
     public static final String TAGS_NAME = "tags";
     public static final String OUTGOING_NAME = "outgoingRelationships";
     public static final String INCOMING_NAME = "incomingRelationships";
@@ -23,43 +22,45 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     protected String title = null;
     protected String xml = null;
     protected String xmlErrors = null;
-    protected String html = null;
     protected String locale = null;
     protected RESTXMLDoctype xmlDoctype = null;
     protected RESTTagCollectionV1 tags = null;
     protected RESTTopicSourceUrlCollectionV1 sourceUrls_OTM = null;
 
-    public abstract U getIncomingRelationships();
+    abstract public U getIncomingRelationships();
 
-    public abstract void setIncomingRelationships(final U incomingRelationships);
+    abstract public void setIncomingRelationships(final U incomingRelationships);
 
-    public abstract U getOutgoingRelationships();
+    abstract public U getOutgoingRelationships();
 
-    public abstract void setOutgoingRelationships(final U outgoingRelationships);
+    abstract public void setOutgoingRelationships(final U outgoingRelationships);
 
     public void cloneInto(final RESTBaseTopicV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.title = title;
-        clone.xml = xml;
-        clone.xmlErrors = xmlErrors;
-        clone.html = html;
-        clone.locale = locale;
-        clone.xmlDoctype = xmlDoctype;
+        clone.title = this.title;
+        clone.xml = this.xml;
+        clone.xmlErrors = this.xmlErrors;
+        clone.locale = this.locale;
+        clone.xmlDoctype = this.xmlDoctype;
 
         if (deepCopy) {
-            if (tags != null) {
+            if (this.tags != null) {
                 clone.tags = new RESTTagCollectionV1();
-                tags.cloneInto(clone.tags, deepCopy);
+                this.tags.cloneInto(clone.tags, deepCopy);
+            } else {
+                clone.tags = null;
             }
 
-            if (sourceUrls_OTM != null) {
+            if (this.sourceUrls_OTM != null) {
                 clone.sourceUrls_OTM = new RESTTopicSourceUrlCollectionV1();
-                sourceUrls_OTM.cloneInto(clone.sourceUrls_OTM, deepCopy);
+                this.sourceUrls_OTM.cloneInto(clone.sourceUrls_OTM, deepCopy);
+            } else {
+                clone.sourceUrls_OTM = null;
             }
         } else {
-            clone.tags = tags;
-            clone.sourceUrls_OTM = sourceUrls_OTM;
+            clone.tags = this.tags;
+            clone.sourceUrls_OTM = this.sourceUrls_OTM;
         }
     }
 
@@ -77,14 +78,6 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
 
     public void setXml(final String xml) {
         this.xml = xml;
-    }
-
-    public String getHtml() {
-        return html;
-    }
-
-    public void setHtml(final String html) {
-        this.html = html;
     }
 
     public String getLocale() {
@@ -112,9 +105,9 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     }
 
     public void addTag(final RESTTagV1 tag) {
-        if (tags == null) tags = new RESTTagCollectionV1();
+        if (this.tags == null) this.tags = new RESTTagCollectionV1();
 
-        tags.addItem(tag);
+        this.tags.addItem(tag);
     }
 
     public RESTTopicSourceUrlCollectionV1 getSourceUrls_OTM() {
@@ -122,7 +115,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     }
 
     public void setSourceUrls_OTM(final RESTTopicSourceUrlCollectionV1 sourceUrls) {
-        sourceUrls_OTM = sourceUrls;
+        this.sourceUrls_OTM = sourceUrls;
     }
 
     public RESTXMLDoctype getXmlDoctype() {
@@ -130,7 +123,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     }
 
     public void setXmlDoctype(final RESTXMLDoctype doctype) {
-        xmlDoctype = doctype;
+        this.xmlDoctype = doctype;
     }
 
     @Override

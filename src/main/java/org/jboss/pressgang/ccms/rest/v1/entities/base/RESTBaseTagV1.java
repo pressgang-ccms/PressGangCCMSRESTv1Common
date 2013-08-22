@@ -25,34 +25,42 @@ public abstract class RESTBaseTagV1<T extends RESTBaseTagV1<T, U, V>, U extends 
     public void cloneInto(final RESTBaseTagV1<?, ?, ?> clone, boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.name = name;
+        clone.name = this.name;
         clone.description = description;
 
         if (deepCopy) {
-            if (categories != null) {
+            if (this.categories != null) {
                 clone.categories = new RESTCategoryInTagCollectionV1();
-                categories.cloneInto(clone.categories, deepCopy);
+                this.categories.cloneInto(clone.categories, deepCopy);
+            } else {
+                clone.categories = null;
             }
 
-            if (parentTags != null) {
+            if (this.parentTags != null) {
                 clone.parentTags = new RESTTagCollectionV1();
-                parentTags.cloneInto(clone.parentTags, deepCopy);
+                this.parentTags.cloneInto(clone.parentTags, deepCopy);
+            } else {
+                clone.parentTags = null;
             }
 
-            if (childTags != null) {
+            if (this.childTags != null) {
                 clone.childTags = new RESTTagCollectionV1();
-                childTags.cloneInto(clone.childTags, deepCopy);
+                this.childTags.cloneInto(clone.childTags, deepCopy);
+            } else {
+                clone.childTags = null;
             }
 
-            if (projects != null) {
+            if (this.projects != null) {
                 clone.projects = new RESTProjectCollectionV1();
-                projects.cloneInto(clone.projects, deepCopy);
+                this.projects.cloneInto(clone.projects, deepCopy);
+            } else {
+                clone.projects = null;
             }
         } else {
-            clone.categories = categories;
-            clone.parentTags = parentTags;
-            clone.childTags = childTags;
-            clone.projects = projects;
+            clone.categories = this.categories;
+            clone.parentTags = this.parentTags;
+            clone.childTags = this.childTags;
+            clone.projects = this.projects;
         }
     }
 

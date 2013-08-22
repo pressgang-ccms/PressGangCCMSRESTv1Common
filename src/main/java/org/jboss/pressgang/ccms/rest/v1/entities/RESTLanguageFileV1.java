@@ -59,6 +59,8 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
             if (revisions != null) {
                 clone.revisions = new RESTLanguageFileCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            }  else {
+                clone.revisions = null;
             }
         } else {
             clone.fileData = fileData;

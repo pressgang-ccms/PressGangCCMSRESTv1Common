@@ -51,21 +51,29 @@ public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleColl
             if (users != null) {
                 clone.users = new RESTUserCollectionV1();
                 users.cloneInto(clone.users, deepCopy);
+            }  else {
+                clone.users = null;
             }
 
             if (childRoles != null) {
                 clone.childRoles = new RESTRoleCollectionV1();
                 childRoles.cloneInto(clone.childRoles, deepCopy);
+            }  else {
+                clone.childRoles = null;
             }
 
             if (parentRoles != null) {
                 clone.parentRoles = new RESTRoleCollectionV1();
                 parentRoles.cloneInto(clone.parentRoles, deepCopy);
+            }   else {
+                clone.parentRoles = null;
             }
 
             if (revisions != null) {
                 clone.revisions = new RESTRoleCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            }   else {
+                clone.revisions = null;
             }
         } else {
             clone.users = users;
