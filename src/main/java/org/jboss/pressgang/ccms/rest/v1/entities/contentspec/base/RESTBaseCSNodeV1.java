@@ -14,6 +14,7 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
     public static final String ENTITY_ID_NAME = "entityId";
     public static final String ENTITY_REVISION_NAME = "entityRevision";
     public static final String CONDITION_NAME = "condition";
+    public static final String INHERITED_CONDITION_NAME = "inheritedCondition";
     public static final String PARENT_NAME = "parent";
     public static final String RELATED_TO_NAME = "relatedTo";
     public static final String RELATED_FROM_NAME = "relatedFrom";
@@ -27,6 +28,7 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
     protected Integer entityId = null;
     protected Integer entityRevision = null;
     protected String condition = null;
+    protected String inheritedCondition = null;
     protected String additionalText = null;
     protected RESTContentSpecV1 contentSpec = null;
     protected RESTCSNodeV1 parent = null;
@@ -40,6 +42,7 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
         clone.entityId = entityId;
         clone.entityRevision = entityRevision;
         clone.condition = condition;
+        clone.inheritedCondition = inheritedCondition;
         clone.additionalText = additionalText;
         clone.nodeType = nodeType;
 
@@ -127,6 +130,14 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
 
     public void setCondition(final String condition) {
         this.condition = condition;
+    }
+
+    public String getInheritedCondition() {
+        return inheritedCondition;
+    }
+
+    public void setInheritedCondition(String inheritedCondition) {
+        this.inheritedCondition = inheritedCondition;
     }
 
     @Override
