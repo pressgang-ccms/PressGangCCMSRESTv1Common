@@ -1,7 +1,7 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.contentspec;
 
 public class RESTTextCSProcessingOptionsV1 {
-    private Boolean permissive = null;
+    private Boolean strictTitles = null;
 
     public RESTTextCSProcessingOptionsV1 clone(final boolean deepCopy) {
         final RESTTextCSProcessingOptionsV1 retValue = new RESTTextCSProcessingOptionsV1();
@@ -12,14 +12,14 @@ public class RESTTextCSProcessingOptionsV1 {
     }
 
     public void cloneInto(final RESTTextCSProcessingOptionsV1 clone, final boolean deepCopy) {
-        clone.permissive = permissive == null ? null : permissive;
+        clone.strictTitles = strictTitles == null ? null : strictTitles;
     }
 
-    public Boolean getPermissive() {
-        return permissive;
+    public Boolean getStrictTitles() {
+        return strictTitles;
     }
 
-    public void setPermissive(Boolean permissive) {
-        this.permissive = permissive;
+    public void setStrictTitles(Boolean permissive) {
+        this.strictTitles = permissive;
     }
 }
