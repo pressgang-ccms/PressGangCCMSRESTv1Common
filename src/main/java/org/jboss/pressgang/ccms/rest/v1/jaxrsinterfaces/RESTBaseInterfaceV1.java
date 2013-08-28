@@ -1699,14 +1699,14 @@ public interface RESTBaseInterfaceV1 {
     @Consumes({MediaType.TEXT_PLAIN})
     @Produces(MediaType.TEXT_PLAIN)
     String updateTEXTContentSpec(@PathParam("id") final Integer id, final String contentSpec,
-            @QueryParam("permissive") final Boolean permissive, @QueryParam("message") final String message,
+            @QueryParam("strictTitles") final Boolean strictTitles, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     @POST
     @Path("/contentspec/create/text")
     @Consumes({MediaType.TEXT_PLAIN})
     @Produces(MediaType.TEXT_PLAIN)
-    String createTEXTContentSpec(final String contentSpec, @QueryParam("permissive") final Boolean permissive,
+    String createTEXTContentSpec(final String contentSpec, @QueryParam("strictTitles") final Boolean strictTitles,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     /* CONTENT SPEC JSON TEXT FUNCTIONS */
