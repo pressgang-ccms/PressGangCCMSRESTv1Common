@@ -13,6 +13,7 @@ COLLECTIONS_CONTENTSPEC_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collec
 COLLECTIONS_CONTENTSPEC_ITEMS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/contentspec/items/*
 ENTITIES=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/*
 ENTITIES_CONTENTSPEC=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/contentspec/*
+ENTITIES_CONTENTSPEC_ENUMS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/contentspec/enums/*
 ENTITIES_CONTENTSPEC_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/contentspec/join/*
 ENTITIES_ENUMS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/enums/*
 ENTITIES_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/join/*
@@ -20,7 +21,7 @@ WRAPPERS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/entities/wrapper/*
 
 PORTABLE_CLASSES=""
 
-for package in ${WRAPPERS} ${COLLECTIONS} ${COLLECTIONS_ITEMS} ${COLLECTIONS_JOIN} ${ENTITIES} ${ENTITIES_ENUMS} ${ENTITIES_JOIN} ${COLLECTIONS_ITEMS_JOIN} ${COLLECTIONS_CONTENTSPEC} ${ENTITIES_CONTENTSPEC} ${ENTITIES_CONTENTSPEC_JOIN} ${COLLECTIONS_CONTENTSPEC_JOIN} ${COLLECTIONS_CONTENTSPEC_ITEMS}
+for package in ${WRAPPERS} ${COLLECTIONS} ${COLLECTIONS_ITEMS} ${COLLECTIONS_JOIN} ${ENTITIES} ${ENTITIES_ENUMS} ${ENTITIES_JOIN} ${COLLECTIONS_ITEMS_JOIN} ${COLLECTIONS_CONTENTSPEC} ${ENTITIES_CONTENTSPEC} ${ENTITIES_CONTENTSPEC_ENUMS} ${ENTITIES_CONTENTSPEC_JOIN} ${COLLECTIONS_CONTENTSPEC_JOIN} ${COLLECTIONS_CONTENTSPEC_ITEMS}
 do
 	for file in $package
 	do		
