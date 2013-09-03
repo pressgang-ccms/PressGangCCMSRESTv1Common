@@ -1,5 +1,7 @@
 package org.jboss.pressgang.ccms.rest.v1.components;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicStringV1;
@@ -7,8 +9,6 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
 import org.jboss.pressgang.ccms.zanata.ZanataDetails;
-
-import static com.google.common.base.Preconditions.checkArgument;
 
 /**
  * This component contains methods that can be applied against translated topics
@@ -30,7 +30,11 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
     public static String returnZanataId(final RESTTranslatedTopicV1 source) {
         checkArgument(source != null, "The source parameter can not be null");
 
-        return source.getTopicId() + "-" + source.getTopicRevision();
+        if (source.getTranslatedCSNode() == null) {
+            return source.getTopicId() + "-" + source.getTopicRevision();
+        } else {
+            return source.getTopicId() + "-" + source.getTopicRevision() + "-" + source.getTranslatedCSNode().getId();
+        }
     }
 
     @Override
