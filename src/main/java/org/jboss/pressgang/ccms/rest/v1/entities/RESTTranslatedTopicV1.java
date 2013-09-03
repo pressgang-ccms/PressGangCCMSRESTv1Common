@@ -281,8 +281,8 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
         this.translatedXMLCondition = translatedXMLCondition;
     }
 
-    public void explicitSetTranslationCondition(final String translationCondition) {
-        translatedXMLCondition = translationCondition;
+    public void explicitSetTranslatedXMLCondition(final String translatedXMLCondition) {
+        this.translatedXMLCondition = translatedXMLCondition;
         setParameterToConfigured(TRANSLATED_XML_CONDITION);
     }
 
