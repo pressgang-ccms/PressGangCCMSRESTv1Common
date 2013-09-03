@@ -4,6 +4,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.join.RESTC
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.join.RESTCSRelatedNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.base.RESTBaseCSNodeV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums.RESTCSNodeRelationshipModeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums.RESTCSNodeRelationshipTypeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.join.base.ICSNodeToCSNodeV1;
 
@@ -11,10 +12,12 @@ public class RESTCSRelatedNodeV1 extends RESTBaseCSNodeV1<RESTCSRelatedNodeV1, R
         RESTCSRelatedNodeCollectionItemV1> implements ICSNodeToCSNodeV1 {
     public static final String RELATIONSHIP_TYPE_NAME = "relationshipType";
     public static final String RELATIONSHIP_SORT_NAME = "relationshipSort";
+    public static final String RELATIONSHIP_MODE_NAME = "relationshipMode";
 
     private Integer relationshipId = null;
     private RESTCSNodeRelationshipTypeV1 relationshipType = null;
     private Integer relationshipSort = null;
+    private RESTCSNodeRelationshipModeV1 relationshipMode = null;
     private RESTCSRelatedNodeCollectionV1 revisions = null;
 
     public RESTCSRelatedNodeV1() {
@@ -52,6 +55,7 @@ public class RESTCSRelatedNodeV1 extends RESTBaseCSNodeV1<RESTCSRelatedNodeV1, R
         clone.relationshipType = relationshipType;
         clone.relationshipId = relationshipId;
         clone.relationshipSort = relationshipSort;
+        clone.relationshipMode = relationshipMode;
 
         if (deepCopy) {
             if (revisions != null) {
@@ -101,6 +105,20 @@ public class RESTCSRelatedNodeV1 extends RESTBaseCSNodeV1<RESTCSRelatedNodeV1, R
     public void explicitSetRelationshipSort(final Integer relationshipSort) {
         this.relationshipSort = relationshipSort;
         setParameterToConfigured(RELATIONSHIP_SORT_NAME);
+    }
+
+
+    public RESTCSNodeRelationshipModeV1 getRelationshipMode() {
+        return relationshipMode;
+    }
+
+    public void setRelationshipMode(RESTCSNodeRelationshipModeV1 relationshipMode) {
+        this.relationshipMode = relationshipMode;
+    }
+
+    public void explicitSetRelationshipMode(RESTCSNodeRelationshipModeV1 relationshipMode) {
+        this.relationshipMode = relationshipMode;
+        setParameterToConfigured(RELATIONSHIP_MODE_NAME);
     }
 
     @Override
