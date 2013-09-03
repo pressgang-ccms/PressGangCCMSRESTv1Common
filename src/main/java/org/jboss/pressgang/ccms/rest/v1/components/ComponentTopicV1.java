@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTAssignedPropertyTagV1;
 import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
 
@@ -137,7 +138,16 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
         return returnPushedTranslatedTopic(source);
     }
 
+    public RESTTranslatedTopicV1 returnPushedTranslatedTopic(final RESTTranslatedCSNodeV1 translatedCSNode) {
+        return returnPushedTranslatedTopic(source, translatedCSNode);
+    }
+
     public static RESTTranslatedTopicV1 returnPushedTranslatedTopic(final RESTTopicV1 source) {
+        return returnPushedTranslatedTopic(source, null);
+    }
+
+    public static RESTTranslatedTopicV1 returnPushedTranslatedTopic(final RESTTopicV1 source,
+            final RESTTranslatedCSNodeV1 translatedCSNode) {
         checkArgument(source != null, "The source parameter can not be null");
 
         /* Check that a translation exists that is the same locale as the base topic */
@@ -150,8 +160,13 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
                         // Ensure that the topic revision is less than or equal to the source revision
                         (topicRev == null || translatedTopic.getTopicRevision() <= topicRev) &&
                         // Check if this translated topic is a higher revision then the current stored translation
-                        (pushedTranslatedTopic == null || pushedTranslatedTopic.getTopicRevision() < translatedTopic.getTopicRevision()))
+                        (pushedTranslatedTopic == null || pushedTranslatedTopic.getTopicRevision() < translatedTopic.getTopicRevision()) &&
+                        // And the TranslatedCSNode matches
+                        (translatedCSNode == null && translatedTopic.getTranslatedCSNode() == null || translatedTopic
+                                .getTranslatedCSNode() != null && translatedCSNode != null && translatedCSNode.getId().equals(
+                                translatedTopic.getTranslatedCSNode().getId()))) {
                     pushedTranslatedTopic = translatedTopic;
+                }
             }
         }
 

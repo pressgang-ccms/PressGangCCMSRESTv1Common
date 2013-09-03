@@ -184,7 +184,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return source;
 
         if (source.getTopic() != null) {
-            return ComponentTopicV1.returnPushedTranslatedTopic(source.getTopic());
+            return ComponentTopicV1.returnPushedTranslatedTopic(source.getTopic(), source.getTranslatedCSNode());
         } else  {
             return null;
         }
