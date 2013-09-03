@@ -3,7 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums;
 import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
 
 public enum RESTCSNodeTypeV1 {
-    TOPIC, SECTION, CHAPTER, APPENDIX, PART, PROCESS, COMMENT, META_DATA, INNER_TOPIC, META_DATA_TOPIC, FILE;
+    TOPIC, SECTION, CHAPTER, APPENDIX, PART, PROCESS, COMMENT, META_DATA, PREFACE, INNER_TOPIC, META_DATA_TOPIC, FILE;
 
     public static RESTCSNodeTypeV1 getNodeType(final int id) {
         switch (id) {
@@ -23,6 +23,8 @@ public enum RESTCSNodeTypeV1 {
                 return COMMENT;
             case CommonConstants.CS_NODE_META_DATA:
                 return META_DATA;
+            case CommonConstants.CS_NODE_PREFACE:
+                return PREFACE;
             case CommonConstants.CS_NODE_INNER_TOPIC:
                 return INNER_TOPIC;
             case CommonConstants.CS_NODE_META_DATA_TOPIC:
@@ -54,6 +56,8 @@ public enum RESTCSNodeTypeV1 {
                 return CommonConstants.CS_NODE_COMMENT;
             case META_DATA:
                 return CommonConstants.CS_NODE_META_DATA;
+            case PREFACE:
+                return CommonConstants.CS_NODE_PREFACE;
             case INNER_TOPIC:
                 return CommonConstants.CS_NODE_INNER_TOPIC;
             case META_DATA_TOPIC:
