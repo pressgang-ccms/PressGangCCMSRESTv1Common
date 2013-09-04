@@ -181,11 +181,6 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
         this.translatedTopics_OTM = translatedTopics_OTM;
     }
 
-    public void explicitSetTranslatedTopics_OTM(final RESTTranslatedTopicCollectionV1 translatedTopic) {
-        this.translatedTopics_OTM = translatedTopic;
-        setParameterToConfigured(TRANSLATED_TOPICS_NAME);
-    }
-
     @Override
     public boolean equals(final Object other) {
         if (other == null) return false;
