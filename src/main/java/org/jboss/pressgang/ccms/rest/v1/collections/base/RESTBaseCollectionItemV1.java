@@ -51,6 +51,18 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
         return true;
     }
 
+    @Override
+    public int hashCode() {
+        int hashCode = 0;
+        if (getItem() != null) {
+            hashCode = getItem().hashCode();
+        }
+        if (getState() != null) {
+            hashCode = hashCode * 37 + getState();
+        }
+        return hashCode;
+    }
+
     public void cloneInto(final RESTBaseCollectionItemV1<T, U, V> clone, boolean deepCopy) {
         clone.state = state;
 
