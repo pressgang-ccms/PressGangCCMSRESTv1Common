@@ -3,6 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.entities.contentspec;
 import java.util.Date;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTContentSpecCollectionItemV1;
@@ -15,11 +16,13 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
     public static final String CHILDREN_NAME = "children_OTM";
     public static final String CONDITION_NAME = "condition";
     public static final String BOOK_TAGS_NAME = "bookTags";
+    public static final String TOPICS_NAME = "topics";
 
     private String condition = null;
     protected RESTTagCollectionV1 bookTags = null;
     private RESTContentSpecCollectionV1 revisions = null;
     private RESTCSNodeCollectionV1 children_OTM = null;
+    private RESTTopicCollectionV1 topics = null;
 
     @Override
     public RESTContentSpecCollectionV1 getRevisions() {
@@ -60,10 +63,16 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
                 clone.children_OTM = new RESTCSNodeCollectionV1();
                 children_OTM.cloneInto(clone.children_OTM, deepCopy);
             }
+
+            if (topics != null) {
+                clone.topics = new RESTTopicCollectionV1();
+                topics.cloneInto(clone.topics, deepCopy);
+            }
         } else {
             clone.revisions = revisions;
             clone.bookTags = bookTags;
             clone.children_OTM = children_OTM;
+            clone.topics = topics;
         }
     }
 
@@ -125,11 +134,19 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
     public void setBookTags(final RESTTagCollectionV1 bookTags) {
         this.bookTags = bookTags;
     }
+
     public void explicitSetBookTags(final RESTTagCollectionV1 bookTags) {
         this.bookTags = bookTags;
         setParameterToConfigured(BOOK_TAGS_NAME);
     }
 
+    public RESTTopicCollectionV1 getTopics() {
+        return topics;
+    }
+
+    public void setTopics(RESTTopicCollectionV1 topics) {
+        this.topics = topics;
+    }
 
     @Override
     public boolean equals(final Object other) {
