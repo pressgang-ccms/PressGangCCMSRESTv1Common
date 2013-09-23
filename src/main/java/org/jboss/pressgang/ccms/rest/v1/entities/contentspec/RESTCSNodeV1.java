@@ -56,30 +56,42 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
             if (relatedFromNodes != null) {
                 clone.relatedFromNodes = new RESTCSRelatedNodeCollectionV1();
                 relatedFromNodes.cloneInto(clone.relatedFromNodes, deepCopy);
+            } else {
+                clone.relatedFromNodes = null;
             }
 
             if (relatedToNodes != null) {
                 clone.relatedToNodes = new RESTCSRelatedNodeCollectionV1();
                 relatedToNodes.cloneInto(clone.relatedToNodes, deepCopy);
+            } else {
+                clone.relatedToNodes = null;
             }
 
             if (children_OTM != null) {
                 clone.children_OTM = new RESTCSNodeCollectionV1();
                 children_OTM.cloneInto(clone.children_OTM, deepCopy);
+            } else {
+                clone.children_OTM = null;
             }
 
             if (translatedNodes_OTM != null) {
                 clone.translatedNodes_OTM = new RESTTranslatedCSNodeCollectionV1();
                 translatedNodes_OTM.cloneInto(clone.translatedNodes_OTM, deepCopy);
+            } else {
+                clone.translatedNodes_OTM = null;
             }
 
             if (revisions != null) {
                 clone.revisions = new RESTCSNodeCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
 
             if (nextNode != null) {
                 clone.nextNode = nextNode.clone(deepCopy);
+            } else {
+                nextNode = null;
             }
         } else {
             clone.relatedFromNodes = relatedFromNodes;

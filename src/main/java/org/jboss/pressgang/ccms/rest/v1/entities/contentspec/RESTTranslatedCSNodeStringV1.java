@@ -43,11 +43,15 @@ public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RES
         if (deepCopy) {
             if (translatedNode != null) {
                 clone.translatedNode = translatedNode.clone(deepCopy);
+            } else {
+                clone.translatedNode = null;
             }
 
             if (revisions != null) {
                 clone.revisions = new RESTTranslatedCSNodeStringCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.revisions = revisions;

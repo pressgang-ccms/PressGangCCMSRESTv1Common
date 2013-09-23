@@ -40,11 +40,15 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
             if (tags != null) {
                 clone.tags = new RESTTagCollectionV1();
                 tags.cloneInto(clone.tags, deepCopy);
+            } else {
+                clone.tags = null;
             }
 
             if (translatedContentSpecs != null) {
                 clone.translatedContentSpecs = new RESTTranslatedContentSpecCollectionV1();
                 translatedContentSpecs.cloneInto(clone.translatedContentSpecs, deepCopy);
+            } else {
+                clone.translatedContentSpecs = null;
             }
         } else {
             clone.tags = tags;
