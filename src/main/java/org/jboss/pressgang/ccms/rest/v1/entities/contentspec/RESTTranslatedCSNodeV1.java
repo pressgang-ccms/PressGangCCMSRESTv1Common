@@ -58,29 +58,41 @@ public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslat
             if (children_OTM != null) {
                 clone.children_OTM = new RESTTranslatedCSNodeCollectionV1();
                 children_OTM.cloneInto(clone.children_OTM, deepCopy);
+            } else {
+                clone.children_OTM = null;
             }
 
             if (translatedNodeStrings_OTM != null) {
                 clone.translatedNodeStrings_OTM = new RESTTranslatedCSNodeStringCollectionV1();
                 translatedNodeStrings_OTM.cloneInto(clone.translatedNodeStrings_OTM, deepCopy);
+            } else {
+                clone.translatedNodeStrings_OTM = null;
             }
 
             if (node != null) {
                 clone.node = node.clone(deepCopy);
+            } else {
+                clone.node = null;
             }
 
             if (translatedContentSpec != null) {
                 clone.translatedContentSpec = translatedContentSpec.clone(deepCopy);
+            } else {
+                clone.translatedContentSpec = null;
             }
 
             if (translatedTopics_OTM != null) {
                 clone.translatedTopics_OTM = new RESTTranslatedTopicCollectionV1();
                 translatedTopics_OTM.cloneInto(clone.translatedTopics_OTM, deepCopy);
+            } else {
+                clone.translatedTopics_OTM = null;
             }
 
             if (revisions != null) {
                 clone.revisions = new RESTTranslatedCSNodeCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.children_OTM = children_OTM;

@@ -14,6 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums.RESTContentSp
 public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, RESTContentSpecCollectionV1,
         RESTContentSpecCollectionItemV1> {
     public static final String CHILDREN_NAME = "children_OTM";
+    public static final String ALL_CHILDREN_NAME = "allChildren";
     public static final String CONDITION_NAME = "condition";
     public static final String BOOK_TAGS_NAME = "bookTags";
     public static final String TOPICS_NAME = "topics";
@@ -22,6 +23,7 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
     protected RESTTagCollectionV1 bookTags = null;
     private RESTContentSpecCollectionV1 revisions = null;
     private RESTCSNodeCollectionV1 children_OTM = null;
+    private RESTCSNodeCollectionV1 allChildren = null;
     private RESTTopicCollectionV1 topics = null;
 
     @Override
@@ -52,26 +54,42 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
             if (revisions != null) {
                 clone.revisions = new RESTContentSpecCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
 
             if (bookTags != null) {
                 clone.bookTags = new RESTTagCollectionV1();
                 bookTags.cloneInto(clone.bookTags, deepCopy);
+            } else {
+                clone.bookTags = null;
             }
 
             if (children_OTM != null) {
                 clone.children_OTM = new RESTCSNodeCollectionV1();
                 children_OTM.cloneInto(clone.children_OTM, deepCopy);
+            } else {
+                clone.children_OTM = null;
+            }
+
+            if (allChildren != null) {
+                clone.allChildren = new RESTCSNodeCollectionV1();
+                allChildren.cloneInto(clone.allChildren, deepCopy);
+            } else {
+                clone.allChildren = null;
             }
 
             if (topics != null) {
                 clone.topics = new RESTTopicCollectionV1();
                 topics.cloneInto(clone.topics, deepCopy);
+            } else {
+                clone.topics = null;
             }
         } else {
             clone.revisions = revisions;
             clone.bookTags = bookTags;
             clone.children_OTM = children_OTM;
+            clone.allChildren = allChildren;
             clone.topics = topics;
         }
     }
@@ -138,6 +156,14 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
     public void explicitSetBookTags(final RESTTagCollectionV1 bookTags) {
         this.bookTags = bookTags;
         setParameterToConfigured(BOOK_TAGS_NAME);
+    }
+
+    public RESTCSNodeCollectionV1 getAllChildren() {
+        return allChildren;
+    }
+
+    public void setAllChildren(RESTCSNodeCollectionV1 allChildren) {
+        this.allChildren = allChildren;
     }
 
     public RESTTopicCollectionV1 getTopics() {

@@ -49,10 +49,14 @@ public abstract class RESTBaseCSNodeV1<T extends RESTBaseEntityWithPropertiesV1<
         if (deepCopy) {
             if (parent != null) {
                 clone.parent = parent.clone(deepCopy);
+            } else {
+                clone.parent = null;
             }
 
             if (contentSpec != null) {
                 clone.contentSpec = contentSpec.clone(deepCopy);
+            } else {
+                clone.contentSpec = null;
             }
         } else {
             clone.parent = parent;

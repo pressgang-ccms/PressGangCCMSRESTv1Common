@@ -44,16 +44,22 @@ public class RESTTranslatedContentSpecV1 extends RESTBasePrimaryEntityV1<RESTTra
         if (deepCopy) {
             if (contentSpec != null) {
                 clone.contentSpec = contentSpec.clone(deepCopy);
+            } else {
+                clone.contentSpec = null;
             }
 
             if (translatedNodes_OTM != null) {
                 clone.translatedNodes_OTM = new RESTTranslatedCSNodeCollectionV1();
                 translatedNodes_OTM.cloneInto(clone.translatedNodes_OTM, deepCopy);
+            } else {
+                clone.translatedNodes_OTM = null;
             }
 
             if (revisions != null) {
                 clone.revisions = new RESTTranslatedContentSpecCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
         } else {
             clone.contentSpec = contentSpec;

@@ -48,10 +48,14 @@ public class RESTTextContentSpecV1 extends RESTBaseContentSpecV1<RESTTextContent
             if (revisions != null) {
                 clone.revisions = new RESTTextContentSpecCollectionV1();
                 revisions.cloneInto(clone.revisions, deepCopy);
+            } else {
+                clone.revisions = null;
             }
 
             if (processingOptions != null) {
                 clone.processingOptions = processingOptions.clone(deepCopy);
+            } else {
+                clone.processingOptions = null;
             }
         } else {
             clone.revisions = revisions;
