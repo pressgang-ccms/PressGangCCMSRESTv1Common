@@ -1,6 +1,5 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.base;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
@@ -8,7 +7,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
 
 
 public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>,
-        V extends RESTBaseCollectionItemV1<T, U, V>> {
+        V extends RESTBaseCollectionItemV1<T, U, V>> extends RESTBaseObjectWithConfiguredParametersV1 {
     public static final String REVISIONS_NAME = "revisions";
     public static final String LOG_DETAILS_NAME = "logDetails";
 
@@ -21,12 +20,6 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U ex
      */
     private Integer revision = null;
     /**
-     * Maintains a list of the database fields that have been specifically set
-     * on this object. This allows us to distinguish them from those that are
-     * just null by default
-     */
-    private List<String> configuredParameters = null;
-    /**
      * The names of collections that can be expanded
      */
     private List<String> expand = null;
@@ -35,13 +28,6 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U ex
     public abstract U getRevisions();
 
     public abstract void setRevisions(U revisions);
-
-    /**
-     * @return true if this entity's state would trigger a change in the database, and false otherwise
-     */
-    public boolean returnDirtyState() {
-        return configuredParameters != null && !configuredParameters.isEmpty();
-    }
 
     @Override
     public boolean equals(final Object other) {
@@ -80,10 +66,10 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U ex
     }
 
     public void cloneInto(final RESTBaseEntityV1<?, ?, ?> clone, final boolean deepCopy) {
+        super.cloneInto(clone);
         clone.setId(id == null ? null : id);
         clone.setRevision(revision);
         clone.setExpand(expand);
-        clone.setConfiguredParameters(configuredParameters == null ? null : new ArrayList<String>(configuredParameters));
 
         if (deepCopy) {
             if (logDetails != null) {
@@ -100,34 +86,12 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U ex
      */
     public abstract T clone(final boolean deepCopy);
 
-    /**
-     * This is a convenience method that adds a value to the configuredParameters collection
-     *
-     * @param parameter The parameter to specify as configured
-     */
-    protected void setParameterToConfigured(final String parameter) {
-        if (configuredParameters == null) configuredParameters = new ArrayList<String>();
-        if (!configuredParameters.contains(parameter)) configuredParameters.add(parameter);
-    }
-
-    public boolean hasParameterSet(final String parameter) {
-        return getConfiguredParameters() != null && getConfiguredParameters().contains(parameter);
-    }
-
     public List<String> getExpand() {
         return expand;
     }
 
     public void setExpand(final List<String> expand) {
         this.expand = expand;
-    }
-
-    public List<String> getConfiguredParameters() {
-        return configuredParameters;
-    }
-
-    public void setConfiguredParameters(List<String> configuredParameters) {
-        this.configuredParameters = configuredParameters;
     }
 
     public Integer getId() {

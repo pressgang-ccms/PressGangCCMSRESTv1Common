@@ -1,19 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.entities;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTApplicationUndefinedEntityCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectWithConfiguredParametersV1;
 
-public class RESTApplicationEntitiesV1 {
+public class RESTApplicationEntitiesV1 extends RESTBaseObjectWithConfiguredParametersV1 {
     public static String UNDEFINED_ENTITIES_NAME = "undefinedEntities";
-
-    /**
-     * Maintains a list of the database fields that have been specifically set
-     * on this object. This allows us to distinguish them from those that are
-     * just null by default
-     */
-    private List<String> configuredParameters = null;
 
     private Integer contentSpecTagId;
     private Integer reviewTagId;
@@ -25,29 +16,7 @@ public class RESTApplicationEntitiesV1 {
     private Integer topicTemplateStringConstantId;
     private Integer contentSpecTemplateStringConstantId;
     private Integer unknownUserId;
-    private Map<String, Integer> undefinedEntities = new HashMap<String, Integer>();
-
-    /**
-     * This is a convenience method that adds a value to the configuredParameters collection
-     *
-     * @param parameter The parameter to specify as configured
-     */
-    protected void setParameterToConfigured(final String parameter) {
-        if (configuredParameters == null) configuredParameters = new ArrayList<String>();
-        if (!configuredParameters.contains(parameter)) configuredParameters.add(parameter);
-    }
-
-    public boolean hasParameterSet(final String parameter) {
-        return getConfiguredParameters() != null && getConfiguredParameters().contains(parameter);
-    }
-
-    public List<String> getConfiguredParameters() {
-        return configuredParameters;
-    }
-
-    public void setConfiguredParameters(List<String> configuredParameters) {
-        this.configuredParameters = configuredParameters;
-    }
+    private RESTApplicationUndefinedEntityCollectionV1 undefinedEntities;
 
     public Integer getContentSpecTagId() {
         return contentSpecTagId;
@@ -129,21 +98,16 @@ public class RESTApplicationEntitiesV1 {
         this.unknownUserId = unknownUserId;
     }
 
-    public Map<String, Integer> getUndefinedEntities() {
+    public RESTApplicationUndefinedEntityCollectionV1 getUndefinedEntities() {
         return undefinedEntities;
     }
 
-    public void setUndefinedEntities(Map<String, Integer> undefinedEntities) {
+    public void setUndefinedEntities(RESTApplicationUndefinedEntityCollectionV1 undefinedEntities) {
         this.undefinedEntities = undefinedEntities;
     }
 
-    public void explicitSetUndefinedEntities(Map<String, Integer> undefinedEntities) {
+    public void explicitSetUndefinedEntities(RESTApplicationUndefinedEntityCollectionV1 undefinedEntities) {
         this.undefinedEntities = undefinedEntities;
-        setParameterToConfigured(UNDEFINED_ENTITIES_NAME);
-    }
-
-    public void addUndefinedEntity(final String key, final Integer id) {
-        undefinedEntities.put(key, id);
         setParameterToConfigured(UNDEFINED_ENTITIES_NAME);
     }
 }

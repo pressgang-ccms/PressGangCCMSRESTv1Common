@@ -1,11 +1,11 @@
 package org.jboss.pressgang.ccms.rest.v1.entities;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class RESTApplicationSettingsV1 {
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTApplicationUndefinedSettingCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectWithConfiguredParametersV1;
+
+public class RESTApplicationSettingsV1 extends RESTBaseObjectWithConfiguredParametersV1 {
     public static String UI_URL_NAME = "uiUrl";
     public static String DOCBUILDER_URL_NAME = "docBuilderUrl";
     public static String DOCBOOK_ELEMENTS_NAME = "docBookElements";
@@ -13,42 +13,13 @@ public class RESTApplicationSettingsV1 {
     public static String DEFAULT_LOCALE_NAME = "defaultLocale";
     public static String UNDEFINED_SETTINGS_NAME = "undefinedSettings";
 
-    /**
-     * Maintains a list of the database fields that have been specifically set
-     * on this object. This allows us to distinguish them from those that are
-     * just null by default
-     */
-    private List<String> configuredParameters = null;
-
     private String uiUrl;
     private List<Integer> docBookTemplateIds;
     private List<String> locales;
     private String defaultLocale;
     private String docBuilderUrl;
     private RESTApplicationEntitiesV1 entities = new RESTApplicationEntitiesV1();
-    private Map<String, String> undefinedSettings = new HashMap<String, String>();
-
-    /**
-     * This is a convenience method that adds a value to the configuredParameters collection
-     *
-     * @param parameter The parameter to specify as configured
-     */
-    protected void setParameterToConfigured(final String parameter) {
-        if (configuredParameters == null) configuredParameters = new ArrayList<String>();
-        if (!configuredParameters.contains(parameter)) configuredParameters.add(parameter);
-    }
-
-    public boolean hasParameterSet(final String parameter) {
-        return getConfiguredParameters() != null && getConfiguredParameters().contains(parameter);
-    }
-
-    public List<String> getConfiguredParameters() {
-        return configuredParameters;
-    }
-
-    public void setConfiguredParameters(List<String> configuredParameters) {
-        this.configuredParameters = configuredParameters;
-    }
+    private RESTApplicationUndefinedSettingCollectionV1 undefinedSettings;
 
     public String getUiUrl() {
         return uiUrl;
@@ -115,21 +86,16 @@ public class RESTApplicationSettingsV1 {
         setParameterToConfigured(DOCBUILDER_URL_NAME);
     }
 
-    public Map<String, String> getUndefinedSettings() {
+    public RESTApplicationUndefinedSettingCollectionV1 getUndefinedSettings() {
         return undefinedSettings;
     }
 
-    public void setUndefinedSettings(Map<String, String> undefinedSettings) {
+    public void setUndefinedSettings(RESTApplicationUndefinedSettingCollectionV1 undefinedSettings) {
         this.undefinedSettings = undefinedSettings;
     }
 
-    public void explicitSetUndefinedSettings(Map<String, String> undefinedSettings) {
+    public void explicitSetUndefinedSettings(RESTApplicationUndefinedSettingCollectionV1 undefinedSettings) {
         this.undefinedSettings = undefinedSettings;
-        setParameterToConfigured(UNDEFINED_SETTINGS_NAME);
-    }
-
-    public void addUndefinedSetting(final String key, final String value) {
-        undefinedSettings.put(key, value);
         setParameterToConfigured(UNDEFINED_SETTINGS_NAME);
     }
 
