@@ -33,6 +33,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTextContentS
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTApplicationSettingsV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTBlobConstantV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTCategoryV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFileV1;
@@ -89,6 +90,27 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.WILDCARD)
     String echoXML(@QueryParam("id") final Integer id, @QueryParam("xml") final String xml);
+
+    /* APPLICATION SETTING FUNCTIONS */
+    /* JSONP FUNCTIONS */
+    @GET
+    @Path("/settings/get/jsonp")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String getJSONPApplicationSettings(@QueryParam("callback") final String callback);
+
+    /* JSON FUNCTIONS */
+    @GET
+    @Path("/settings/get/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTApplicationSettingsV1 getJSONApplicationSettings();
+
+    @POST
+    @Path("/settings/update/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTApplicationSettingsV1 updateJSONApplicationSettings(final RESTApplicationSettingsV1 settings);
 
     /* USER FUNCTIONS */
     /* JSONP FUNCTIONS */
