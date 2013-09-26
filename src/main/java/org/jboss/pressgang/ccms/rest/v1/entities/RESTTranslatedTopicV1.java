@@ -27,6 +27,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     public static final String ALL_LATEST_INCOMING_NAME = "allLatestIncomingRelationships";
     public static final String TRANSLATED_CSNODE_NAME = "translatedCSNode";
     public static final String TRANSLATED_XML_CONDITION = "translatedXMLCondition";
+    public static final String TRANSLATED_ADDITIONAL_XML = "translatedAdditionXML";
 
     protected RESTTopicV1 topic = null;
     protected Integer translatedTopicId = null;
@@ -35,6 +36,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     protected Integer translationPercentage = null;
     protected Boolean containsFuzzyTranslation = false;
     protected String translatedXMLCondition = null;
+    protected String translatedAdditionalXML = null;
     protected RESTTranslatedTopicStringCollectionV1 translatedTopicStrings = null;
     protected RESTTranslatedTopicCollectionV1 outgoingTranslatedRelationships = null;
     protected RESTTranslatedTopicCollectionV1 incomingTranslatedRelationships = null;
@@ -75,6 +77,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
         clone.translationPercentage = translationPercentage;
         clone.containsFuzzyTranslation = containsFuzzyTranslation;
         clone.translatedXMLCondition = translatedXMLCondition;
+        clone.translatedAdditionalXML = translatedAdditionalXML;
 
         if (deepCopy) {
             if (translatedTopicStrings != null) {
@@ -284,6 +287,19 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
     public void explicitSetTranslatedXMLCondition(final String translatedXMLCondition) {
         this.translatedXMLCondition = translatedXMLCondition;
         setParameterToConfigured(TRANSLATED_XML_CONDITION);
+    }
+
+    public String getTranslatedAdditionalXML() {
+        return translatedAdditionalXML;
+    }
+
+    public void setTranslatedAdditionalXML(final String translatedAdditionalXML) {
+        this.translatedAdditionalXML = translatedAdditionalXML;
+    }
+
+    public void explicitSetTranslatedAdditionalXML(final String translatedAdditionalXML) {
+        this.translatedAdditionalXML = translatedAdditionalXML;
+        setParameterToConfigured(TRANSLATED_ADDITIONAL_XML);
     }
 
     @Override
