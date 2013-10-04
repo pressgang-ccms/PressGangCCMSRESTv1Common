@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.jboss.pressgang.ccms.rest.v1.constants.CommonFilterConstants;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums.RESTContentSpecTypeV1;
 import org.jboss.pressgang.ccms.rest.v1.query.base.RESTBaseQueryBuilderWithPropertiesV1;
 import org.jboss.pressgang.ccms.utils.structures.Pair;
 
@@ -23,6 +24,26 @@ public class RESTContentSpecQueryBuilderV1 extends RESTBaseQueryBuilderWithPrope
                     CommonFilterConstants.CONTENT_SPEC_IDS_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_TITLE_FILTER_VAR,
                     CommonFilterConstants.CONTENT_SPEC_TITLE_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_SUBTITLE_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_SUBTITLE_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_EDITION_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_EDITION_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_PUBSNUMBER_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_PUBSNUMBER_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_BOOK_VERSION_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_BOOK_VERSION_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_ABSTRACT_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_ABSTRACT_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_BRAND_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_BRAND_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_COPYRIGHT_HOLDER_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_COPYRIGHT_HOLDER_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_COPYRIGHT_YEAR_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_COPYRIGHT_YEAR_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_PUBLICAN_CFG_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_PUBLICAN_CFG_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_TYPE_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_TYPE_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.EDITED_IN_LAST_DAYS, CommonFilterConstants.EDITED_IN_LAST_DAYS_DESC));
             add(new Pair<String, String>(CommonFilterConstants.NOT_EDITED_IN_LAST_DAYS,
                     CommonFilterConstants.NOT_EDITED_IN_LAST_DAYS_DESC));
@@ -61,12 +82,29 @@ public class RESTContentSpecQueryBuilderV1 extends RESTBaseQueryBuilderWithPrope
         put(CommonFilterConstants.CONTENT_SPEC_IDS_FILTER_VAR, contentSpecIds);
     }
 
+    public RESTContentSpecTypeV1 getContentSpecType() {
+        final String type = get(CommonFilterConstants.CONTENT_SPEC_TYPE_FILTER_VAR);
+        return type == null ? null : RESTContentSpecTypeV1.getContentSpecType(Integer.parseInt(type));
+    }
+
+    public void setContentSpecType(final RESTContentSpecTypeV1 contentSpecType) {
+        put(CommonFilterConstants.CONTENT_SPEC_TYPE_FILTER_VAR, RESTContentSpecTypeV1.getContentSpecTypeId(contentSpecType));
+    }
+
     public String getContentSpecTitle() {
         return get(CommonFilterConstants.CONTENT_SPEC_TITLE_FILTER_VAR);
     }
 
     public void setContentSpecTitle(final String contentSpecTitle) {
         put(CommonFilterConstants.CONTENT_SPEC_TITLE_FILTER_VAR, contentSpecTitle);
+    }
+
+    public String getContentSpecSubtitle() {
+        return get(CommonFilterConstants.CONTENT_SPEC_SUBTITLE_FILTER_VAR);
+    }
+
+    public void setContentSpecSubtitle(final String contentSpecSubtitle) {
+        put(CommonFilterConstants.CONTENT_SPEC_SUBTITLE_FILTER_VAR, contentSpecSubtitle);
     }
 
     public String getContentSpecProduct() {
@@ -83,6 +121,55 @@ public class RESTContentSpecQueryBuilderV1 extends RESTBaseQueryBuilderWithPrope
 
     public void setContentSpecVersion(final String contentSpecVersion) {
         put(CommonFilterConstants.CONTENT_SPEC_VERSION_FILTER_VAR, contentSpecVersion);
+    }
+
+    public String getContentSpecEdition() {
+        return get(CommonFilterConstants.CONTENT_SPEC_EDITION_FILTER_VAR);
+    }
+
+    public void setContentSpecEdition(final String contentSpecEdition) {
+        put(CommonFilterConstants.CONTENT_SPEC_EDITION_FILTER_VAR, contentSpecEdition);
+    }
+
+    public Integer getContentSpecPubsnumber() {
+        final String pubsnumber = get(CommonFilterConstants.CONTENT_SPEC_PUBSNUMBER_FILTER_VAR);
+        return pubsnumber == null ? null : Integer.parseInt(pubsnumber);
+    }
+
+    public void setContentSpecPubsnumber(final Integer contentSpecPubsnumber) {
+        put(CommonFilterConstants.CONTENT_SPEC_PUBSNUMBER_FILTER_VAR, contentSpecPubsnumber);
+    }
+
+    public String getContentSpecBookVersion() {
+        return get(CommonFilterConstants.CONTENT_SPEC_BOOK_VERSION_FILTER_VAR);
+    }
+
+    public void setContentSpecBookVersion(final String contentSpecBookVersion) {
+        put(CommonFilterConstants.CONTENT_SPEC_BOOK_VERSION_FILTER_VAR, contentSpecBookVersion);
+    }
+
+    public String getContentSpecCopyrightHolder() {
+        return get(CommonFilterConstants.CONTENT_SPEC_COPYRIGHT_HOLDER_FILTER_VAR);
+    }
+
+    public void setContentSpecCopyrightHolder(final String contentSpecCopyrightHolder) {
+        put(CommonFilterConstants.CONTENT_SPEC_COPYRIGHT_HOLDER_FILTER_VAR, contentSpecCopyrightHolder);
+    }
+
+    public String getContentSpecCopyrightYear() {
+        return get(CommonFilterConstants.CONTENT_SPEC_COPYRIGHT_YEAR_FILTER_VAR);
+    }
+
+    public void setContentSpecCopyrightYear(final String contentSpecCopyrightYear) {
+        put(CommonFilterConstants.CONTENT_SPEC_COPYRIGHT_YEAR_FILTER_VAR, contentSpecCopyrightYear);
+    }
+
+    public String getContentSpecPublicanCfg() {
+        return get(CommonFilterConstants.CONTENT_SPEC_PUBLICAN_CFG_FILTER_VAR);
+    }
+
+    public void setContentSpecPublicanCfg(final String contentSpecPublicanCfg) {
+        put(CommonFilterConstants.CONTENT_SPEC_PUBLICAN_CFG_FILTER_VAR, contentSpecPublicanCfg);
     }
 
     public Integer getEditedInLastDays() {
