@@ -54,17 +54,6 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
     }
 
     @Override
-    public String returnInternalURL() {
-        return returnInternalURL(source);
-    }
-
-    public static String returnInternalURL(final RESTTopicV1 source) {
-        checkArgument(source != null, "The source parameter can not be null");
-
-        return "Topic.seam?topicTopicId=" + source.getId() + "&selectedTab=Rendered+View";
-    }
-
-    @Override
     public RESTTopicV1 returnRelatedTopicByID(final Integer id) {
         return returnRelatedTopicByID(source, id);
     }
