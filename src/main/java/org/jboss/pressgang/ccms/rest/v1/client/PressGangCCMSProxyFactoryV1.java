@@ -86,7 +86,7 @@ public class PressGangCCMSProxyFactoryV1 {
 
     private PressGangCCMSProxyFactoryV1(final String url, final List<Class<?>> providers) {
         final URI uri = ProxyFactory.createUri(fixUrl(url));
-        requestFactory = new ClientRequestFactory(uri);
+        requestFactory = new ClientRequestFactory(null, providerFactory, uri);
         if (providers != null) {
             for (final Class<?> clazz : providers) {
                 providerFactory.registerProvider(clazz);
