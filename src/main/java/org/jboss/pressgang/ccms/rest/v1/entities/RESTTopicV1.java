@@ -1,6 +1,7 @@
 package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBugzillaBugCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
@@ -18,6 +19,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     public static final String BUGZILLABUGS_NAME = "bugzillaBugs_OTM";
     public static final String TRANSLATEDTOPICS_NAME = "translatedTopics_OTM";
     public static final String CONTENTSPECS_NAME = "contentSpecs_OTM";
+    public static final String KEYWORDS_NAME = "keywords";
 
     protected String description = null;
     protected Date created = null;
@@ -27,6 +29,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     protected RESTTopicCollectionV1 outgoingRelationships = null;
     protected RESTTopicCollectionV1 incomingRelationships = null;
     protected RESTContentSpecCollectionV1 contentSpecs_OTM = null;
+    protected List<String> keywords = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -260,5 +263,13 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
         if (!(other instanceof RESTTopicV1)) return false;
 
         return super.equals(other);
+    }
+
+    public List<String> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(final List<String> keywords) {
+        this.keywords = keywords;
     }
 }
