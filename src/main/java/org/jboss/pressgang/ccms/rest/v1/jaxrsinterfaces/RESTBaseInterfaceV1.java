@@ -58,6 +58,8 @@ import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
 
 @Path("/1")
 public interface RESTBaseInterfaceV1 {
+    /* CONSTANTS */
+
     /* SYSTEM FUNCTIONS */
 
     /**
@@ -1251,6 +1253,12 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     RESTTopicCollectionV1 getJSONTopicsWithQuery(@PathParam("query") PathSegment query, @QueryParam("expand") final String expand);
+
+    @GET
+    @Path("/topics/get/svg/{query}/{chart}")
+    @Produces("image/svg+xml")
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String getSVGTopicsWithQuery(final @PathParam("query") PathSegment query, final @PathParam("chart") PathSegment chart);
 
     @GET
     @Path("/topic/get/json/{id}")

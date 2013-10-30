@@ -90,4 +90,13 @@ public class RESTv1Constants {
      * A header sent back with every request.
      */
     public static final String X_PRESSGANG_VERSION_HEADER = "X-PressGang-Version";
+
+    /**
+     * The key used to indicate a tag grouping option
+     */
+    public static final String CHART_TAG_GROUP = "chartTagGroup";
+    /**
+     * The key used to indicate a chart title
+     */
+    public static final String CHART_TITLE = "chartTitle";
 }
