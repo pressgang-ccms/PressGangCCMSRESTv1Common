@@ -284,11 +284,11 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
         this.keywords = keywords;
     }
 
-    public List<Integer> getMinHash() {
+    public List<Integer> getMinHashes() {
         return minHashes;
     }
 
-    public void setMinHash(final List<Integer> minHashes) {
+    public void setMinHashes(final List<Integer> minHashes) {
         this.minHashes = minHashes;
     }
 }
