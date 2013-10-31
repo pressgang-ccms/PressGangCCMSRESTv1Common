@@ -20,6 +20,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     public static final String TRANSLATEDTOPICS_NAME = "translatedTopics_OTM";
     public static final String CONTENTSPECS_NAME = "contentSpecs_OTM";
     public static final String KEYWORDS_NAME = "keywords";
+    public static final String MINHASHES_NAME = "minhashes";
 
     protected String description = null;
     protected Date created = null;
@@ -30,7 +31,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     protected RESTTopicCollectionV1 incomingRelationships = null;
     protected RESTContentSpecCollectionV1 contentSpecs_OTM = null;
     protected List<String> keywords = null;
-    protected Integer minHash = null;
+    protected List<Integer> minHashes = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -283,11 +284,11 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
         this.keywords = keywords;
     }
 
-    public Integer getMinHash() {
-        return minHash;
+    public List<Integer> getMinHash() {
+        return minHashes;
     }
 
-    public void setMinHash(final Integer minHash) {
-        this.minHash = minHash;
+    public void setMinHash(final List<Integer> minHashes) {
+        this.minHashes = minHashes;
     }
 }
