@@ -60,6 +60,19 @@ import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
 public interface RESTBaseInterfaceV1 {
     /* CONSTANTS */
 
+    /* UTILITY FUNCTIONS */
+    @POST
+    @Path("/minhash/get/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_XML)
+    IntegerWrapper getMinHash(final String xml);
+
+    @POST
+    @Path("/minhash/get/json")
+    @Produces(MediaType.MEDIA_TYPE_WILDCARD)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    void recalculateMinHash();
+
     /* SYSTEM FUNCTIONS */
 
     /**
