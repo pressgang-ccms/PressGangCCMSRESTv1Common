@@ -30,6 +30,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     protected RESTTopicCollectionV1 incomingRelationships = null;
     protected RESTContentSpecCollectionV1 contentSpecs_OTM = null;
     protected List<String> keywords = null;
+    protected Integer minHash = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -280,5 +281,13 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
      */
     public void setKeywords(final List<String> keywords) {
         this.keywords = keywords;
+    }
+
+    public Integer getMinHash() {
+        return minHash;
+    }
+
+    public void setMinHash(final Integer minHash) {
+        this.minHash = minHash;
     }
 }
