@@ -92,6 +92,22 @@ public class RESTv1Constants {
     public static final String X_PRESSGANG_VERSION_HEADER = "X-PressGang-Version";
 
     /**
+     * The key used to indicate the type of chart
+     */
+    public static final String CHART_TYPE = "chartType";
+    /**
+     * The value assigned to the chartType option to indicate a pie chart
+     */
+    public static final String CHART_PIE_TYPE = "chartPieType";
+    /**
+     * The value assigned to the chartType option to indicate a 3d pie chart
+     */
+    public static final String CHART_PIE3D_TYPE = "chartPie3DType";
+    /**
+     * The value assigned to the chartType option to indicate a bar chart
+     */
+    public static final String CHART_BAR_TYPE = "chartBarType";
+    /**
      * The key used to indicate a tag grouping option
      */
     public static final String CHART_TAG_GROUP = "chartTagGroup";
@@ -99,4 +115,8 @@ public class RESTv1Constants {
      * The key used to indicate a chart title
      */
     public static final String CHART_TITLE = "chartTitle";
+    /**
+     * The key used to indicate the presence of a chart legend
+     */
+    public static final String CHART_SHOW_LEGEND = "chartShowLegend";
 }
