@@ -50,6 +50,7 @@ public class RESTv1Constants {
     public static final String TRANSLATEDTOPICDATA_URL_NAME = "translatedtopicdata";
     public static final String TRANSLATEDTOPICSTRING_URL_NAME = "translatedtopicstring";
     public static final String PROJECT_URL_NAME = "project";
+    public static final String MINHASH_URL_NAME = "minhash";
     public static final String TAG_URL_NAME = "tag";
     public static final String CATEGORY_URL_NAME = "category";
     public static final String USER_URL_NAME = "user";
