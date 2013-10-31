@@ -68,6 +68,12 @@ public interface RESTBaseInterfaceV1 {
     IntegerWrapper getMinHash(final String xml);
 
     @POST
+    @Path("/minhash/recalculatexors")
+    @Produces(MediaType.MEDIA_TYPE_WILDCARD)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    void recalculateMinHashXORs();
+
+    @POST
     @Path("/minhash/recalculate")
     @Produces(MediaType.MEDIA_TYPE_WILDCARD)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
