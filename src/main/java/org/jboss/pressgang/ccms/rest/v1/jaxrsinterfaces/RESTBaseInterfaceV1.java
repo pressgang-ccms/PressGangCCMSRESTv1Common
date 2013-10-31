@@ -56,6 +56,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedConte
 import org.jboss.pressgang.ccms.rest.v1.entities.wrapper.IntegerWrapper;
 import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
 
+import java.util.List;
+
 @Path("/1")
 public interface RESTBaseInterfaceV1 {
     /* CONSTANTS */
@@ -65,7 +67,7 @@ public interface RESTBaseInterfaceV1 {
     @Path("/minhash/get/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_XML)
-    IntegerWrapper getMinHash(final String xml);
+    List<Integer> getMinHashes(final String xml);
 
     @POST
     @Path("/minhash/recalculatexors")
