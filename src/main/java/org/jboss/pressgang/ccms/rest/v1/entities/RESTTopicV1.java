@@ -1,9 +1,11 @@
 package org.jboss.pressgang.ccms.rest.v1.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBugzillaBugCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTMinHashCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
@@ -31,7 +33,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     protected RESTTopicCollectionV1 incomingRelationships = null;
     protected RESTContentSpecCollectionV1 contentSpecs_OTM = null;
     protected List<String> keywords = null;
-    protected List<Integer> minHashes = null;
+    protected RESTMinHashCollectionV1 minHashes = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -105,6 +107,20 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
             } else {
                 clone.contentSpecs_OTM = null;
             }
+
+            if (this.keywords != null) {
+                clone.keywords = new ArrayList<String>();
+                clone.keywords.addAll(this.keywords);
+            } else {
+                clone.keywords = null;
+            }
+
+            if (this.minHashes != null) {
+                clone.minHashes = new RESTMinHashCollectionV1();
+                this.minHashes.cloneInto(clone.minHashes, deepCopy);
+            } else {
+                clone.minHashes = null;
+            }
         } else {
             clone.bugzillaBugs_OTM = this.bugzillaBugs_OTM;
             clone.translatedTopics_OTM = this.translatedTopics_OTM;
@@ -112,6 +128,8 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
             clone.incomingRelationships = this.incomingRelationships;
             clone.revisions = this.revisions;
             clone.contentSpecs_OTM = this.contentSpecs_OTM;
+            clone.keywords = this.keywords;
+            clone.minHashes = this.minHashes;
         }
     }
 
@@ -284,11 +302,11 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
         this.keywords = keywords;
     }
 
-    public List<Integer> getMinHashes() {
+    public RESTMinHashCollectionV1 getMinHashes() {
         return minHashes;
     }
 
-    public void setMinHashes(final List<Integer> minHashes) {
+    public void setMinHashes(final RESTMinHashCollectionV1 minHashes) {
         this.minHashes = minHashes;
     }
 }
