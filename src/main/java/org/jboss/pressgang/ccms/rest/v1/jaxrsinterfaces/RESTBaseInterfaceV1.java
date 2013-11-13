@@ -73,7 +73,7 @@ public interface RESTBaseInterfaceV1 {
     @Path("/minhash/recalculatexors")
     @Produces(MediaType.MEDIA_TYPE_WILDCARD)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    void recalculateMinHashXORs();
+    void recalculateMinHashXORs(final String confirmation);
 
     @POST
     @Path("/minhash/recalculate")
