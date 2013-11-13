@@ -57,8 +57,31 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedConte
 import org.jboss.pressgang.ccms.rest.v1.entities.wrapper.IntegerWrapper;
 import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
 
+import java.util.List;
+
 @Path("/1")
 public interface RESTBaseInterfaceV1 {
+    /* CONSTANTS */
+
+    /* UTILITY FUNCTIONS */
+    @POST
+    @Path("/minhash/get/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_XML)
+    List<Integer> getMinHashes(final String xml);
+
+    @POST
+    @Path("/minhash/recalculatexors")
+    @Produces(MediaType.MEDIA_TYPE_WILDCARD)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    void recalculateMinHashXORs();
+
+    @POST
+    @Path("/minhash/recalculate")
+    @Produces(MediaType.MEDIA_TYPE_WILDCARD)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    void recalculateMinHash();
+
     /* SYSTEM FUNCTIONS */
 
     /**
@@ -1273,6 +1296,12 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     RESTTopicCollectionV1 getJSONTopicsWithQuery(@PathParam("query") PathSegment query, @QueryParam("expand") final String expand);
+
+    @GET
+    @Path("/topics/get/svg/{query}/{chart}")
+    @Produces("image/svg+xml")
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String getSVGTopicsWithQuery(final @PathParam("query") PathSegment query, final @PathParam("chart") PathSegment chart);
 
     @GET
     @Path("/topic/get/json/{id}")

@@ -63,41 +63,20 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         /*
          * If the topic isn't a dummy then link to the translated counterpart. If the topic is a dummy URL and the locale doesn't match
          * the historical topic's locale then it means that the topic has been pushed to zanata so link to the original pushed
-         * translation. If neither of these rules apply then link to the standard topic.
+         * translation. If neither of these rules apply then return null
          */
-        if (!ComponentBaseTopicV1.returnIsDummyTopic(source) || hasBeenPushedForTranslation(source)) {
+        if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) {
+            final String serverUrl = System.getProperty(CommonConstants.PRESS_GANG_UI_SYSTEM_PROPERTY);
+            return (serverUrl.endsWith(
+                    "/") ? serverUrl : (serverUrl + "/")) + "#TranslatedTopicResultsAndTranslatedTopicView;query;zanataIds=" +
+                    returnZanataId(source) + ";locale1=" + source.getLocale() + "1;";
+        } else if (hasBeenPushedForTranslation(source)) {
             final String serverUrl = System.getProperty(CommonConstants.PRESS_GANG_UI_SYSTEM_PROPERTY);
             return (serverUrl.endsWith(
                     "/") ? serverUrl : (serverUrl + "/")) + "#TranslatedTopicResultsAndTranslatedTopicView;query;zanataIds=" +
                     returnZanataId(source);
         } else {
-            return ComponentTopicV1.returnPressGangCCMSURL(source.getTopic());
-        }
-    }
-
-    @Override
-    public String returnInternalURL() {
-        return returnInternalURL(source);
-    }
-
-    public static String returnInternalURL(final RESTTranslatedTopicV1 source) {
-        checkArgument(source != null, "The source parameter can not be null");
-
-        /*
-         * If the topic isn't a dummy then link to the translated counterpart. If the topic is a dummy URL and the locale doesn't match
-         * the historical topic's
-         * locale then it means that the topic has been pushed to zanata so link to the original pushed translation. If neither of these
-         * rules apply then link
-         * to the standard topic.
-         */
-        if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) {
-            return "TranslatedTopic.seam?translatedTopicId=" + source.getTranslatedTopicId() + "&locale=" + source.getLocale() +
-                    "&selectedTab=Rendered+View";
-        } else if (hasBeenPushedForTranslation(source)) {
-            return "TranslatedTopic.seam?translatedTopicId=" + returnPushedTranslationTopicId(
-                    source) + "&locale=" + source.getTopic().getLocale() + "&selectedTab=Rendered+View";
-        } else {
-            return ComponentTopicV1.returnInternalURL(source.getTopic());
+            return null;
         }
     }
 

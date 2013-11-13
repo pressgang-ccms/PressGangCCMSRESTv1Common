@@ -164,11 +164,6 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
         translatedNodes_OTM = translatedNodes;
     }
 
-    public void explicitSetTranslatedNodes_OTM(final RESTTranslatedCSNodeCollectionV1 translatedNodes) {
-        translatedNodes_OTM = translatedNodes;
-        setParameterToConfigured(TRANSLATED_NODES_NAME);
-    }
-
     public RESTCSRelatedNodeCollectionV1 getRelatedToNodes() {
         return relatedToNodes;
     }

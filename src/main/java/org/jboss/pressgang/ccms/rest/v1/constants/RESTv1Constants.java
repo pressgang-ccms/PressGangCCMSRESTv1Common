@@ -50,6 +50,7 @@ public class RESTv1Constants {
     public static final String TRANSLATEDTOPICDATA_URL_NAME = "translatedtopicdata";
     public static final String TRANSLATEDTOPICSTRING_URL_NAME = "translatedtopicstring";
     public static final String PROJECT_URL_NAME = "project";
+    public static final String MINHASH_URL_NAME = "minhash";
     public static final String TAG_URL_NAME = "tag";
     public static final String CATEGORY_URL_NAME = "category";
     public static final String USER_URL_NAME = "user";
@@ -90,4 +91,33 @@ public class RESTv1Constants {
      * A header sent back with every request.
      */
     public static final String X_PRESSGANG_VERSION_HEADER = "X-PressGang-Version";
+
+    /**
+     * The key used to indicate the type of chart
+     */
+    public static final String CHART_TYPE = "chartType";
+    /**
+     * The value assigned to the chartType option to indicate a pie chart
+     */
+    public static final String CHART_PIE_TYPE = "chartPieType";
+    /**
+     * The value assigned to the chartType option to indicate a 3d pie chart
+     */
+    public static final String CHART_PIE3D_TYPE = "chartPie3DType";
+    /**
+     * The value assigned to the chartType option to indicate a bar chart
+     */
+    public static final String CHART_BAR_TYPE = "chartBarType";
+    /**
+     * The key used to indicate a tag grouping option
+     */
+    public static final String CHART_TAG_GROUP = "chartTagGroup";
+    /**
+     * The key used to indicate a chart title
+     */
+    public static final String CHART_TITLE = "chartTitle";
+    /**
+     * The key used to indicate the presence of a chart legend
+     */
+    public static final String CHART_SHOW_LEGEND = "chartShowLegend";
 }

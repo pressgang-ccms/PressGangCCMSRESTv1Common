@@ -275,8 +275,6 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
 
     public abstract String returnPressGangCCMSURL();
 
-    public abstract String returnInternalURL();
-
     public abstract RESTBaseTopicV1<?, ?, ?> returnRelatedTopicByID(final Integer id);
 
     public abstract String returnErrorXRefID();

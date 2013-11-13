@@ -1,8 +1,11 @@
 package org.jboss.pressgang.ccms.rest.v1.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBugzillaBugCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTMinHashCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
@@ -18,6 +21,8 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     public static final String BUGZILLABUGS_NAME = "bugzillaBugs_OTM";
     public static final String TRANSLATEDTOPICS_NAME = "translatedTopics_OTM";
     public static final String CONTENTSPECS_NAME = "contentSpecs_OTM";
+    public static final String KEYWORDS_NAME = "keywords";
+    public static final String MINHASHES_NAME = "minhashes";
 
     protected String description = null;
     protected Date created = null;
@@ -27,6 +32,8 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     protected RESTTopicCollectionV1 outgoingRelationships = null;
     protected RESTTopicCollectionV1 incomingRelationships = null;
     protected RESTContentSpecCollectionV1 contentSpecs_OTM = null;
+    protected List<String> keywords = null;
+    protected RESTMinHashCollectionV1 minHashes = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -100,6 +107,20 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
             } else {
                 clone.contentSpecs_OTM = null;
             }
+
+            if (this.keywords != null) {
+                clone.keywords = new ArrayList<String>();
+                clone.keywords.addAll(this.keywords);
+            } else {
+                clone.keywords = null;
+            }
+
+            if (this.minHashes != null) {
+                clone.minHashes = new RESTMinHashCollectionV1();
+                this.minHashes.cloneInto(clone.minHashes, deepCopy);
+            } else {
+                clone.minHashes = null;
+            }
         } else {
             clone.bugzillaBugs_OTM = this.bugzillaBugs_OTM;
             clone.translatedTopics_OTM = this.translatedTopics_OTM;
@@ -107,6 +128,8 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
             clone.incomingRelationships = this.incomingRelationships;
             clone.revisions = this.revisions;
             clone.contentSpecs_OTM = this.contentSpecs_OTM;
+            clone.keywords = this.keywords;
+            clone.minHashes = this.minHashes;
         }
     }
 
@@ -260,5 +283,30 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
         if (!(other instanceof RESTTopicV1)) return false;
 
         return super.equals(other);
+    }
+
+    /**
+     * Keywords are provided by the server. They can not be saved by a client.
+     * @return A list of important keywords for this topic
+     */
+    public List<String> getKeywords() {
+        return keywords;
+    }
+
+    /**
+     * This is used by the server to populate the list of keywords sent to the client. It can not be
+     * used by the client to persist keywords to the server.
+     * @param keywords A list of important keywords for this topic
+     */
+    public void setKeywords(final List<String> keywords) {
+        this.keywords = keywords;
+    }
+
+    public RESTMinHashCollectionV1 getMinHashes() {
+        return minHashes;
+    }
+
+    public void setMinHashes(final RESTMinHashCollectionV1 minHashes) {
+        this.minHashes = minHashes;
     }
 }
