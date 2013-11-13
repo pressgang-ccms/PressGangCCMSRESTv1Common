@@ -3,7 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTFilterCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTFilterTypeV1;
@@ -13,7 +13,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTFilterTypeV1;
  *
  * @author Matthew Casperson
  */
-public class RESTFilterCollectionV1 extends RESTBaseCollectionV1<RESTFilterV1, RESTFilterCollectionV1, RESTFilterCollectionItemV1> {
+public class RESTFilterCollectionV1 extends RESTBaseEntityCollectionV1<RESTFilterV1, RESTFilterCollectionV1, RESTFilterCollectionItemV1> {
     private List<RESTFilterCollectionItemV1> items = new ArrayList<RESTFilterCollectionItemV1>();
 
     @Override

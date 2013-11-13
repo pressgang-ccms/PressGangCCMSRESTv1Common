@@ -1,10 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.base;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
 
-public abstract class RESTBasePrimaryEntityV1<T extends RESTBasePrimaryEntityV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>,
-        V extends RESTBaseCollectionItemV1<T, U, V>> extends RESTBaseEntityV1<T, U, V> {
+public abstract class RESTBasePrimaryEntityV1<T extends RESTBasePrimaryEntityV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
+        V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseEntityV1<T, U, V> {
     private String selfLink = null;
     private String editLink = null;
     private String deleteLink = null;

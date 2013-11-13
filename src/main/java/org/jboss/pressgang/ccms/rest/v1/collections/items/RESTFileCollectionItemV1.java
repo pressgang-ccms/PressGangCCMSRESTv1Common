@@ -1,10 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.items;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFileCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFileV1;
 
-public class RESTFileCollectionItemV1 extends RESTBaseCollectionItemV1<RESTFileV1, RESTFileCollectionV1, RESTFileCollectionItemV1> {
+public class RESTFileCollectionItemV1 extends RESTBaseEntityCollectionItemV1<RESTFileV1, RESTFileCollectionV1, RESTFileCollectionItemV1> {
     private RESTFileV1 item;
 
     public RESTFileCollectionItemV1() {

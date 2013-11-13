@@ -1,8 +1,8 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.base;
 
 import static org.junit.Assert.*;
-import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1.ADD_STATE;
-import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1.REMOVE_STATE;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1.ADD_STATE;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1.REMOVE_STATE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,11 +12,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * A class to test the functionality provided by the RESTBaseCollectionV1 class.
+ * A class to test the functionality provided by the RESTBaseEntityCollectionV1 class.
  * 
  * @author lnewson
  */
-public class RESTBaseCollectionV1Test
+public class RESTBaseEntityCollectionV1Test
 {
     private RESTBaseTestCollectionV1 collection;
     
@@ -117,7 +117,7 @@ class RESTBaseTestEntityV1 extends RESTBaseEntityV1<RESTBaseTestEntityV1, RESTBa
     
 }
 
-class RESTBaseTestCollectionV1 extends RESTBaseCollectionV1<RESTBaseTestEntityV1, RESTBaseTestCollectionV1, RESTBaseTestCollectionItemV1>
+class RESTBaseTestCollectionV1 extends RESTBaseEntityCollectionV1<RESTBaseTestEntityV1, RESTBaseTestCollectionV1, RESTBaseTestCollectionItemV1>
 {
     private List<RESTBaseTestCollectionItemV1> items;
     
@@ -141,7 +141,7 @@ class RESTBaseTestCollectionV1 extends RESTBaseCollectionV1<RESTBaseTestEntityV1
     
 }
 
-class RESTBaseTestCollectionItemV1 extends RESTBaseCollectionItemV1<RESTBaseTestEntityV1, RESTBaseTestCollectionV1, RESTBaseTestCollectionItemV1>
+class RESTBaseTestCollectionItemV1 extends RESTBaseEntityCollectionItemV1<RESTBaseTestEntityV1, RESTBaseTestCollectionV1, RESTBaseTestCollectionItemV1>
 {
     private RESTBaseTestEntityV1 item;
     

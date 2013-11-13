@@ -3,7 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTLanguageImageCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTLanguageImageV1;
 
@@ -12,7 +12,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTLanguageImageV1;
  *
  * @author Matthew Casperson
  */
-public class RESTLanguageImageCollectionV1 extends RESTBaseUpdateCollectionV1<RESTLanguageImageV1, RESTLanguageImageCollectionV1,
+public class RESTLanguageImageCollectionV1 extends RESTBaseEntityUpdateCollectionV1<RESTLanguageImageV1, RESTLanguageImageCollectionV1,
         RESTLanguageImageCollectionItemV1> {
     private List<RESTLanguageImageCollectionItemV1> items = new ArrayList<RESTLanguageImageCollectionItemV1>();
 

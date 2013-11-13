@@ -3,7 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTFilterLocaleCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterLocaleV1;
 
@@ -12,7 +12,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterLocaleV1;
  *
  * @author Matthew Casperson
  */
-public class RESTFilterLocaleCollectionV1 extends RESTBaseUpdateCollectionV1<RESTFilterLocaleV1, RESTFilterLocaleCollectionV1,
+public class RESTFilterLocaleCollectionV1 extends RESTBaseEntityUpdateCollectionV1<RESTFilterLocaleV1, RESTFilterLocaleCollectionV1,
         RESTFilterLocaleCollectionItemV1> {
     private List<RESTFilterLocaleCollectionItemV1> items = new ArrayList<RESTFilterLocaleCollectionItemV1>();
 

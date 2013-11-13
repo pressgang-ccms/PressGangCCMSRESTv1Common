@@ -1,16 +1,14 @@
 package org.jboss.pressgang.ccms.rest.v1.collections;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTMinHashCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTProjectCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTMinHashV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class RESTMinHashCollectionV1  extends RESTBaseCollectionV1<RESTMinHashV1, RESTMinHashCollectionV1, RESTMinHashCollectionItemV1> {
+public class RESTMinHashCollectionV1  extends RESTBaseEntityCollectionV1<RESTMinHashV1, RESTMinHashCollectionV1, RESTMinHashCollectionItemV1> {
     private List<RESTMinHashCollectionItemV1> items = new ArrayList<RESTMinHashCollectionItemV1>();
 
     @Override

@@ -1,32 +1,28 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.base;
 
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectV1;
 
-public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>,
-        V extends RESTBaseCollectionItemV1<T, U, V>> {
+public abstract class RESTBaseCollectionItemV1<T extends RESTBaseObjectV1<T>, V extends RESTBaseCollectionItemV1<T,
+        V>> implements RESTCollectionItemV1<T, V> {
     public static final Integer UNCHANGED_STATE = 0;
     public static final Integer ADD_STATE = 1;
     public static final Integer REMOVE_STATE = 2;
 
-    protected static final Integer MIN_STATE = 0;
-    private static final Integer MAX_STATE = 2;
+    protected static Integer MIN_STATE = 0;
+    protected static Integer MAX_STATE = 2;
 
     private Integer state = 0;
-
-    public abstract T getItem();
-
-    public abstract void setItem(final T item);
-
-    public abstract V clone(boolean deepCopy);
 
     protected boolean validState(final Integer state) {
         return state != null && state >= MIN_STATE && state <= MAX_STATE;
     }
 
+    @Override
     public Integer getState() {
         return state;
     }
 
+    @Override
     public void setState(final Integer state) {
         if (!validState(state)) this.state = UNCHANGED_STATE;
         else this.state = state;
@@ -36,9 +32,9 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
     public boolean equals(final Object o) {
         if (o == null) return false;
         if (this == o) return true;
-        if (!(o instanceof RESTBaseCollectionItemV1<?, ?, ?>)) return false;
+        if (!(o instanceof RESTBaseCollectionItemV1<?, ?>)) return false;
 
-        final RESTBaseCollectionItemV1<?, ?, ?> item = (RESTBaseCollectionItemV1<?, ?, ?>) o;
+        final RESTBaseCollectionItemV1<?, ?> item = (RESTBaseCollectionItemV1<?, ?>) o;
 
         if (getItem() == null && item.getItem() != null) return false;
         if (getItem() != null && item.getItem() == null) return false;
@@ -52,19 +48,8 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
     }
 
     @Override
-    public int hashCode() {
-        int hashCode = 0;
-        if (getItem() != null) {
-            hashCode = getItem().hashCode();
-        }
-        if (getState() != null) {
-            hashCode = hashCode * 37 + getState();
-        }
-        return hashCode;
-    }
-
-    public void cloneInto(final RESTBaseCollectionItemV1<T, U, V> clone, boolean deepCopy) {
-        clone.state = state;
+    public void cloneInto(final RESTCollectionItemV1<T, V> clone, boolean deepCopy) {
+        clone.setState(state);
 
         if (deepCopy) {
             clone.setItem(getItem() == null ? null : getItem().clone(deepCopy));
@@ -73,11 +58,13 @@ public abstract class RESTBaseCollectionItemV1<T extends RESTBaseEntityV1<T, U, 
         }
     }
 
+    @Override
     public boolean returnIsRemoveItem() {
-        return state.equals(REMOVE_STATE);
+        return state.equals(RESTBaseEntityCollectionItemV1.REMOVE_STATE);
     }
 
+    @Override
     public boolean returnIsAddItem() {
-        return state.equals(ADD_STATE);
+        return state.equals(RESTBaseEntityCollectionItemV1.ADD_STATE);
     }
 }

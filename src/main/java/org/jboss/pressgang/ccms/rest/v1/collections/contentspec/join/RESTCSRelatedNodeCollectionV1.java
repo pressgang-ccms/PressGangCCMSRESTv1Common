@@ -1,17 +1,17 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.contentspec.join;
 
-import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1.ADD_STATE;
-import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1.REMOVE_STATE;
-import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1.UPDATE_STATE;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1.ADD_STATE;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1.REMOVE_STATE;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1.UPDATE_STATE;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.join.RESTCSRelatedNodeCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.join.RESTCSRelatedNodeV1;
 
-public class RESTCSRelatedNodeCollectionV1 extends RESTBaseUpdateCollectionV1<RESTCSRelatedNodeV1, RESTCSRelatedNodeCollectionV1,
+public class RESTCSRelatedNodeCollectionV1 extends RESTBaseEntityUpdateCollectionV1<RESTCSRelatedNodeV1, RESTCSRelatedNodeCollectionV1,
         RESTCSRelatedNodeCollectionItemV1> {
     private List<RESTCSRelatedNodeCollectionItemV1> items = new ArrayList<RESTCSRelatedNodeCollectionItemV1>();
 

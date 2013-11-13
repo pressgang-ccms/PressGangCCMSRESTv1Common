@@ -1,10 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.items;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicSourceUrlV1;
 
-public class RESTTopicSourceUrlCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTTopicSourceUrlV1,
+public class RESTTopicSourceUrlCollectionItemV1 extends RESTBaseEntityUpdateCollectionItemV1<RESTTopicSourceUrlV1,
         RESTTopicSourceUrlCollectionV1, RESTTopicSourceUrlCollectionItemV1> {
     private RESTTopicSourceUrlV1 item;
 

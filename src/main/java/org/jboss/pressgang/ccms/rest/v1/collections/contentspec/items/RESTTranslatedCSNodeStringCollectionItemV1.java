@@ -1,10 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeStringCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedCSNodeStringV1;
 
-public class RESTTranslatedCSNodeStringCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTTranslatedCSNodeStringV1, RESTTranslatedCSNodeStringCollectionV1, RESTTranslatedCSNodeStringCollectionItemV1> {
+public class RESTTranslatedCSNodeStringCollectionItemV1 extends RESTBaseEntityUpdateCollectionItemV1<RESTTranslatedCSNodeStringV1, RESTTranslatedCSNodeStringCollectionV1, RESTTranslatedCSNodeStringCollectionItemV1> {
     private RESTTranslatedCSNodeStringV1 item;
 
     public RESTTranslatedCSNodeStringCollectionItemV1() {

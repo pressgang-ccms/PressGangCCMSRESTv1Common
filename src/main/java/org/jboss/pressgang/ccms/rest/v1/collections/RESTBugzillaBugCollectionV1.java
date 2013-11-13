@@ -3,7 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTBugzillaBugCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTBugzillaBugV1;
 
@@ -12,7 +12,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTBugzillaBugV1;
  *
  * @author Matthew Casperson
  */
-public class RESTBugzillaBugCollectionV1 extends RESTBaseUpdateCollectionV1<RESTBugzillaBugV1, RESTBugzillaBugCollectionV1,
+public class RESTBugzillaBugCollectionV1 extends RESTBaseEntityUpdateCollectionV1<RESTBugzillaBugV1, RESTBugzillaBugCollectionV1,
         RESTBugzillaBugCollectionItemV1> {
     private List<RESTBugzillaBugCollectionItemV1> items = new ArrayList<RESTBugzillaBugCollectionItemV1>();
 

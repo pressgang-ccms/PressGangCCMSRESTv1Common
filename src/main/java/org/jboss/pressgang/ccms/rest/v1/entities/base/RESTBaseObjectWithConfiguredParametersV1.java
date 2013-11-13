@@ -3,7 +3,8 @@ package org.jboss.pressgang.ccms.rest.v1.entities.base;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class RESTBaseObjectWithConfiguredParametersV1 {
+public abstract class RESTBaseObjectWithConfiguredParametersV1<T extends RESTBaseObjectWithConfiguredParametersV1<T>> extends
+        RESTBaseObjectV1<T> {
     /**
      * Maintains a list of the database fields that have been specifically set
      * on this object. This allows us to distinguish them from those that are

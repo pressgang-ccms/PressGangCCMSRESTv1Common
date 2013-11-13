@@ -3,6 +3,8 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseUndefinedSettingV1;
 
 public class RESTApplicationUndefinedSettingV1 extends RESTBaseUndefinedSettingV1<RESTApplicationUndefinedSettingV1, String> {
+    public static final String VALUE_NAME = "value";
+
     private String value;
 
     @Override
@@ -13,6 +15,11 @@ public class RESTApplicationUndefinedSettingV1 extends RESTBaseUndefinedSettingV
     @Override
     public void setValue(final String value) {
         this.value = value;
+    }
+
+    public void explicitSetValue(final String value) {
+        this.value = value;
+        setParameterToConfigured(VALUE_NAME);
     }
 
     @Override

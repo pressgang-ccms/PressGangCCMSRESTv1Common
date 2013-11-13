@@ -1,11 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.items.join;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTPropertyTagInPropertyCategoryCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyTagInPropertyCategoryV1;
 
-public class RESTPropertyTagInPropertyCategoryCollectionItemV1 extends
-        RESTBaseUpdateCollectionItemV1<RESTPropertyTagInPropertyCategoryV1, RESTPropertyTagInPropertyCategoryCollectionV1,
+public class RESTPropertyTagInPropertyCategoryCollectionItemV1 extends RESTBaseEntityUpdateCollectionItemV1<RESTPropertyTagInPropertyCategoryV1, RESTPropertyTagInPropertyCategoryCollectionV1,
                 RESTPropertyTagInPropertyCategoryCollectionItemV1> {
     private RESTPropertyTagInPropertyCategoryV1 item;
 

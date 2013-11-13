@@ -4,7 +4,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 
 public class ComponentRESTBaseEntityV1 {
@@ -25,10 +25,10 @@ public class ComponentRESTBaseEntityV1 {
         return false;
     }
 
-    public static boolean returnDirtyStateForCollectionItems(final List<? extends RESTBaseCollectionItemV1> list) {
+    public static boolean returnDirtyStateForCollectionItems(final List<? extends RESTBaseEntityCollectionItemV1> list) {
         checkArgument(list != null, "The list parameter can not be null");
 
-        for (final RESTBaseCollectionItemV1 entity : list) {
+        for (final RESTBaseEntityCollectionItemV1 entity : list) {
             if (entity.getItem().returnDirtyState()) return true;
         }
 

@@ -8,68 +8,19 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUp
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseUndefinedSettingV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 
-public abstract class RESTBaseUndefinedSettingCollectionV1<T extends RESTBaseUndefinedSettingV1<T, U>, U,
-        V extends RESTBaseUndefinedSettingCollectionItemV1<T, U, V>>
-    extends RESTBaseCollectionV1<T, V>
-    implements RESTUpdateCollectionV1<T, V> {
-
-    /**
-     * @return A collection of updated items
-     */
-    @Override
-    public List<V> returnUpdatedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UPDATE_STATE);
-            }
-        });
-    }
-
-    /**
-     * @return A collection of existing, added and updated items
-     */
-    @Override
-    public List<V> returnExistingAddedAndUpdatedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UNCHANGED_STATE);
-                add(ADD_STATE);
-                add(UPDATE_STATE);
-            }
-        });
-    }
-
-    /**
-     * @return A collection of added, deleted and updated items (i.e. all those that would trigger a change in the db)
-     */
-    @Override
-    public List<V> returnDeletedAddedAndUpdatedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(REMOVE_STATE);
-                add(ADD_STATE);
-                add(UPDATE_STATE);
-            }
-        });
-    }
-
-    /**
-     * @return A collection of updated items
-     */
-    @Override
-    public List<T> returnUpdatedItems() {
-        return returnItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UPDATE_STATE);
-            }
-        });
-    }
-
-    public void addUpdateItem(final T item) {
-        addItem(item, UPDATE_STATE);
-    }
+/**
+ * @param <T> The REST entity type
+ * @param <U> The REST Collection type
+ * @author Matthew Casperson
+ */
+@SuppressWarnings("serial")
+public abstract class RESTBaseEntityCollectionV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
+        V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseCollectionV1<T, V> {
+    private String expand = null;
+    private Integer startExpandIndex = null;
+    private Integer endExpandIndex = null;
 
     /**
      * It is possible that a client has sent up a collection that asks to add and remove the same child item in a collection.
@@ -86,7 +37,7 @@ public abstract class RESTBaseUndefinedSettingCollectionV1<T extends RESTBaseUnd
                     getItems().remove(item);
                 } else if (item.getState() != null && item.getState().equals(UNCHANGED_STATE)) {
                     getItems().remove(item);
-                } else if (item.getItem().getKey() == null) {
+                } else if (item.getItem().getId() == null && !item.getState().equals(ADD_STATE)) {
                     getItems().remove(item);
                 } else if (item.getState() != null && !item.validState(item.getState())) {
                     getItems().remove(item);
@@ -113,6 +64,9 @@ public abstract class RESTBaseUndefinedSettingCollectionV1<T extends RESTBaseUnd
                 final V child1 = items.get(i);
                 final T childItem1 = child1.getItem();
 
+                // New Entity so ignore it
+                if (childItem1.getId() == null) continue;
+
                 /* at this point we know that either add1 or remove1 will be true, but not both */
                 final boolean add1 = child1.getState().equals(ADD_STATE);
                 final boolean remove1 = child1.getState().equals(REMOVE_STATE);
@@ -123,8 +77,11 @@ public abstract class RESTBaseUndefinedSettingCollectionV1<T extends RESTBaseUnd
                     final V child2 = items.get(j);
                     final T childItem2 = child2.getItem();
 
+                    // New Entity so ignore it
+                    if (childItem2.getId() == null) continue;
+                    
                     /* Check the PropertyTags for uniqueness and their value as well as their IDs */
-                    if (childItem1.getKey().equals(childItem2.getKey())) {
+                    if (childItem1.getId().equals(childItem2.getId())) {
                         final boolean add2 = child2.getState().equals(ADD_STATE);
                         final boolean remove2 = child2.getState().equals(REMOVE_STATE);
                         final boolean update2 = child2.getState().equals(UPDATE_STATE);
@@ -142,5 +99,45 @@ public abstract class RESTBaseUndefinedSettingCollectionV1<T extends RESTBaseUnd
                 }
             }
         }
+    }
+
+    public void cloneInto(final RESTBaseEntityCollectionV1<T, U, V> dest, final boolean deepCopy) {
+        dest.expand = expand;
+        dest.startExpandIndex = startExpandIndex;
+        dest.endExpandIndex = endExpandIndex;
+
+        if (getItems() != null) {
+            dest.setItems(new ArrayList<V>());
+            if (deepCopy) {
+                for (final V item : getItems())
+                    dest.getItems().add(item.clone(deepCopy));
+            } else {
+                dest.getItems().addAll(getItems());
+            }
+        }
+    }
+
+    public String getExpand() {
+        return expand;
+    }
+
+    public void setExpand(final String expand) {
+        this.expand = expand;
+    }
+
+    public Integer getStartExpandIndex() {
+        return startExpandIndex;
+    }
+
+    public void setStartExpandIndex(final Integer startExpandIndex) {
+        this.startExpandIndex = startExpandIndex;
+    }
+
+    public Integer getEndExpandIndex() {
+        return endExpandIndex;
+    }
+
+    public void setEndExpandIndex(final Integer endExpandIndex) {
+        this.endExpandIndex = endExpandIndex;
     }
 }

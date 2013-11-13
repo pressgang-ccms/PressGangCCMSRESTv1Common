@@ -1,13 +1,13 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.join;
 
-import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1.ADD_STATE;
-import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1.REMOVE_STATE;
-import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1.UPDATE_STATE;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1.ADD_STATE;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1.REMOVE_STATE;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1.UPDATE_STATE;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.join.RESTPropertyCategoryInPropertyTagCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyCategoryInPropertyTagV1;
 
@@ -16,7 +16,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTPropertyCategoryInProp
  *
  * @author Matthew Casperson
  */
-public class RESTPropertyCategoryInPropertyTagCollectionV1 extends RESTBaseUpdateCollectionV1<RESTPropertyCategoryInPropertyTagV1,
+public class RESTPropertyCategoryInPropertyTagCollectionV1 extends RESTBaseEntityUpdateCollectionV1<RESTPropertyCategoryInPropertyTagV1,
         RESTPropertyCategoryInPropertyTagCollectionV1, RESTPropertyCategoryInPropertyTagCollectionItemV1> {
     private List<RESTPropertyCategoryInPropertyTagCollectionItemV1> items = new
             ArrayList<RESTPropertyCategoryInPropertyTagCollectionItemV1>();

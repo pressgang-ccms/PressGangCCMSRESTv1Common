@@ -3,7 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTIntegerConstantCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTIntegerConstantV1;
 
@@ -12,7 +12,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTIntegerConstantV1;
  *
  * @author Matthew Casperson
  */
-public class RESTIntegerConstantCollectionV1 extends RESTBaseCollectionV1<RESTIntegerConstantV1, RESTIntegerConstantCollectionV1,
+public class RESTIntegerConstantCollectionV1 extends RESTBaseEntityCollectionV1<RESTIntegerConstantV1, RESTIntegerConstantCollectionV1,
         RESTIntegerConstantCollectionItemV1> {
     private List<RESTIntegerConstantCollectionItemV1> items = new ArrayList<RESTIntegerConstantCollectionItemV1>();
 

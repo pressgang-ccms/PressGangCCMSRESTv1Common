@@ -1,10 +1,12 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.items;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUndefinedSettingCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTApplicationUndefinedSettingV1;
 
-public class RESTApplicationUndefinedSettingCollectionItemV1 extends RESTBaseUndefinedSettingCollectionItemV1<RESTApplicationUndefinedSettingV1, RESTApplicationUndefinedSettingCollectionItemV1> {
+public class RESTApplicationUndefinedSettingCollectionItemV1 extends
+        RESTBaseUndefinedSettingCollectionItemV1<RESTApplicationUndefinedSettingV1, String,
+                RESTApplicationUndefinedSettingCollectionItemV1> {
     private RESTApplicationUndefinedSettingV1 item;
 
     public RESTApplicationUndefinedSettingCollectionItemV1() {
@@ -13,7 +15,7 @@ public class RESTApplicationUndefinedSettingCollectionItemV1 extends RESTBaseUnd
 
     public RESTApplicationUndefinedSettingCollectionItemV1(final RESTApplicationUndefinedSettingV1 item) {
         setItem(item);
-        setState(RESTBaseCollectionItemV1.UNCHANGED_STATE);
+        setState(RESTBaseEntityCollectionItemV1.UNCHANGED_STATE);
     }
 
     public RESTApplicationUndefinedSettingCollectionItemV1(final RESTApplicationUndefinedSettingV1 item, final Integer state) {

@@ -8,7 +8,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTApplicationUndefin
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTApplicationUndefinedEntityV1;
 
 public class RESTApplicationUndefinedEntityCollectionV1 extends RESTBaseUndefinedSettingCollectionV1<RESTApplicationUndefinedEntityV1,
-        RESTApplicationUndefinedEntityCollectionItemV1> {
+        Integer, RESTApplicationUndefinedEntityCollectionItemV1> {
     private List<RESTApplicationUndefinedEntityCollectionItemV1> items = new ArrayList<RESTApplicationUndefinedEntityCollectionItemV1>();
 
     @Override

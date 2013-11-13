@@ -1,10 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.join;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.join.RESTCSRelatedNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.join.RESTCSRelatedNodeV1;
 
-public class RESTCSRelatedNodeCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTCSRelatedNodeV1, RESTCSRelatedNodeCollectionV1,
+public class RESTCSRelatedNodeCollectionItemV1 extends RESTBaseEntityUpdateCollectionItemV1<RESTCSRelatedNodeV1, RESTCSRelatedNodeCollectionV1,
         RESTCSRelatedNodeCollectionItemV1> {
     private RESTCSRelatedNodeV1 item;
 

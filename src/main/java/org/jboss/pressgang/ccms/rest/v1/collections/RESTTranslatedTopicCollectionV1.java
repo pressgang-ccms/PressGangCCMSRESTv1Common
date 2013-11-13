@@ -3,7 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTranslatedTopicCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 
@@ -12,7 +12,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
  *
  * @author Matthew Casperson
  */
-public class RESTTranslatedTopicCollectionV1 extends RESTBaseCollectionV1<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1,
+public class RESTTranslatedTopicCollectionV1 extends RESTBaseEntityCollectionV1<RESTTranslatedTopicV1, RESTTranslatedTopicCollectionV1,
         RESTTranslatedTopicCollectionItemV1> {
     private List<RESTTranslatedTopicCollectionItemV1> items = new ArrayList<RESTTranslatedTopicCollectionItemV1>();
 

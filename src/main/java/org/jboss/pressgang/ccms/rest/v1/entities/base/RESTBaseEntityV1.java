@@ -2,12 +2,12 @@ package org.jboss.pressgang.ccms.rest.v1.entities.base;
 
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
 
 
-public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseCollectionV1<T, U, V>,
-        V extends RESTBaseCollectionItemV1<T, U, V>> extends RESTBaseObjectWithConfiguredParametersV1 {
+public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
+        V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseObjectWithConfiguredParametersV1<T> {
     public static final String REVISIONS_NAME = "revisions";
     public static final String LOG_DETAILS_NAME = "logDetails";
 
@@ -79,12 +79,6 @@ public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U ex
             clone.setLogDetails(logDetails);
         }
     }
-
-    /**
-     * @param deepCopy true if referenced objects should be copied, false if the referenced themselves should be copied
-     * @return A clone of this object
-     */
-    public abstract T clone(final boolean deepCopy);
 
     public List<String> getExpand() {
         return expand;

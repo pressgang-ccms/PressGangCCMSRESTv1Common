@@ -1,10 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.items;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTLanguageImageCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTLanguageImageV1;
 
-public class RESTLanguageImageCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTLanguageImageV1, RESTLanguageImageCollectionV1,
+public class RESTLanguageImageCollectionItemV1 extends RESTBaseEntityUpdateCollectionItemV1<RESTLanguageImageV1, RESTLanguageImageCollectionV1,
         RESTLanguageImageCollectionItemV1> {
     private RESTLanguageImageV1 item;
 

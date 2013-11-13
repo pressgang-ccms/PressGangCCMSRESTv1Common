@@ -1,10 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.items;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicStringCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicStringV1;
 
-public class RESTTranslatedTopicStringCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTTranslatedTopicStringV1,
+public class RESTTranslatedTopicStringCollectionItemV1 extends RESTBaseEntityUpdateCollectionItemV1<RESTTranslatedTopicStringV1,
         RESTTranslatedTopicStringCollectionV1, RESTTranslatedTopicStringCollectionItemV1> {
     private RESTTranslatedTopicStringV1 item;
 

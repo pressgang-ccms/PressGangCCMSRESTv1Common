@@ -1,10 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.items;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBugzillaBugCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTBugzillaBugV1;
 
-public class RESTBugzillaBugCollectionItemV1 extends RESTBaseUpdateCollectionItemV1<RESTBugzillaBugV1, RESTBugzillaBugCollectionV1,
+public class RESTBugzillaBugCollectionItemV1 extends RESTBaseEntityUpdateCollectionItemV1<RESTBugzillaBugV1, RESTBugzillaBugCollectionV1,
         RESTBugzillaBugCollectionItemV1> {
     private RESTBugzillaBugV1 item;
 

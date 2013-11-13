@@ -5,7 +5,7 @@ import java.util.List;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTApplicationUndefinedSettingCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectWithConfiguredParametersV1;
 
-public class RESTApplicationSettingsV1 extends RESTBaseObjectWithConfiguredParametersV1 {
+public class RESTApplicationSettingsV1 extends RESTBaseObjectWithConfiguredParametersV1<RESTApplicationSettingsV1> {
     public static String UI_URL_NAME = "uiUrl";
     public static String DOCBUILDER_URL_NAME = "docBuilderUrl";
     public static String DOCBOOK_ELEMENTS_NAME = "docBookElements";
@@ -105,5 +105,12 @@ public class RESTApplicationSettingsV1 extends RESTBaseObjectWithConfiguredParam
 
     public void setEntities(RESTApplicationEntitiesV1 entities) {
         this.entities = entities;
+    }
+
+    @Override
+    public RESTApplicationSettingsV1 clone(boolean deepCopy) {
+        final RESTApplicationSettingsV1 clone = new RESTApplicationSettingsV1();
+        cloneInto(clone);
+        return clone;
     }
 }

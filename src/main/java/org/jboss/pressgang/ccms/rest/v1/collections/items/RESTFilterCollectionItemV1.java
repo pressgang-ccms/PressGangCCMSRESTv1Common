@@ -1,10 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.items;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 
-public class RESTFilterCollectionItemV1 extends RESTBaseCollectionItemV1<RESTFilterV1, RESTFilterCollectionV1, RESTFilterCollectionItemV1> {
+public class RESTFilterCollectionItemV1 extends RESTBaseEntityCollectionItemV1<RESTFilterV1, RESTFilterCollectionV1, RESTFilterCollectionItemV1> {
     private RESTFilterV1 item;
 
     public RESTFilterCollectionItemV1() {

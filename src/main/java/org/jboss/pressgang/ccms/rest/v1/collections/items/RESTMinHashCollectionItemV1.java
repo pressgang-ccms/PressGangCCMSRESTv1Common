@@ -1,12 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.items;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTMinHashCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTProjectCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTMinHashV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 
-public class RESTMinHashCollectionItemV1 extends RESTBaseCollectionItemV1<RESTMinHashV1, RESTMinHashCollectionV1, RESTMinHashCollectionItemV1> {
+public class RESTMinHashCollectionItemV1 extends RESTBaseEntityCollectionItemV1<RESTMinHashV1, RESTMinHashCollectionV1, RESTMinHashCollectionItemV1> {
     private RESTMinHashV1 item;
 
     public RESTMinHashCollectionItemV1() {

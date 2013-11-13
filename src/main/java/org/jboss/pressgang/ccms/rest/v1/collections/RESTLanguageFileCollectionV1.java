@@ -3,14 +3,14 @@ package org.jboss.pressgang.ccms.rest.v1.collections;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUpdateCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTLanguageFileCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTLanguageFileV1;
 
 /**
  * This is a wrapper class to work around an Errai limitation - https://issues.jboss.org/browse/ERRAI-319
  */
-public class RESTLanguageFileCollectionV1 extends RESTBaseUpdateCollectionV1<RESTLanguageFileV1, RESTLanguageFileCollectionV1,
+public class RESTLanguageFileCollectionV1 extends RESTBaseEntityUpdateCollectionV1<RESTLanguageFileV1, RESTLanguageFileCollectionV1,
         RESTLanguageFileCollectionItemV1> {
     private List<RESTLanguageFileCollectionItemV1> items = new ArrayList<RESTLanguageFileCollectionItemV1>();
 
