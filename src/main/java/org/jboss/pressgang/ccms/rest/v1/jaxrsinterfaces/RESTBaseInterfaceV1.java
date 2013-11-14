@@ -70,6 +70,12 @@ public interface RESTBaseInterfaceV1 {
     List<Integer> getMinHashes(final String xml);
 
     @POST
+    @Path("/minhashsimilar/get/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_XML)
+    List<Integer> getSimilarTopics(final String xml);
+
+    @POST
     @Path("/minhash/recalculatexors")
     @Produces(MediaType.MEDIA_TYPE_WILDCARD)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
@@ -80,6 +86,12 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.MEDIA_TYPE_WILDCARD)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     void recalculateMinHash();
+
+    @POST
+    @Path("/minhash/recalculatemissing")
+    @Produces(MediaType.MEDIA_TYPE_WILDCARD)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    void recalculateMissingMinHash();
 
     /* SYSTEM FUNCTIONS */
 
