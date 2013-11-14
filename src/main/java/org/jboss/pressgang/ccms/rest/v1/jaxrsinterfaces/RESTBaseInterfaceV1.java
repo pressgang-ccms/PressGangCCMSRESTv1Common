@@ -57,6 +57,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.wrapper.IntegerWrapper;
 import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
 
 import java.util.List;
+import java.util.Map;
 
 @Path("/1")
 public interface RESTBaseInterfaceV1 {
@@ -67,7 +68,7 @@ public interface RESTBaseInterfaceV1 {
     @Path("/minhash/get/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_XML)
-    List<Integer> getMinHashes(final String xml);
+    Map<Integer, Integer> getMinHashes(final String xml);
 
     @POST
     @Path("/minhashsimilar/get/json")
