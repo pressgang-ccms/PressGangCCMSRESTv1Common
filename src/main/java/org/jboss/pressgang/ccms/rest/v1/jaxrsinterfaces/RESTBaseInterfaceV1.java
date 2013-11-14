@@ -74,7 +74,7 @@ public interface RESTBaseInterfaceV1 {
     @Path("/minhashsimilar/get/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_XML)
-    RESTTopicCollectionV1 getSimilarTopics(final String xml, @QueryParam("expand") final String expand);
+    RESTTopicCollectionV1 getSimilarTopics(final String xml, @QueryParam("expand") final String expand, @QueryParam("threshold") final Float threshold);
 
     @POST
     @Path("/minhash/recalculatexors")
