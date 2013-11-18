@@ -11,6 +11,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.PathSegment;
 import javax.ws.rs.core.Response;
+import java.util.Map;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBlobConstantCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTCategoryCollectionV1;
@@ -33,7 +34,6 @@ import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTextContentS
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTApplicationSettingsV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTBlobConstantV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTCategoryV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFileV1;
@@ -44,6 +44,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyCategoryV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTRoleV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTServerSettingsV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTStringConstantV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
@@ -57,8 +58,6 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedConte
 import org.jboss.pressgang.ccms.rest.v1.entities.wrapper.IntegerWrapper;
 import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
 
-import java.util.List;
-
 @Path("/1")
 public interface RESTBaseInterfaceV1 {
     /* CONSTANTS */
@@ -68,19 +67,31 @@ public interface RESTBaseInterfaceV1 {
     @Path("/minhash/get/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_XML)
-    List<Integer> getMinHashes(final String xml);
+    Map<Integer, Integer> getMinHashes(final String xml);
+
+    @POST
+    @Path("/minhashsimilar/get/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_XML)
+    RESTTopicCollectionV1 getSimilarTopics(final String xml, @QueryParam("expand") final String expand, @QueryParam("threshold") final Float threshold);
 
     @POST
     @Path("/minhash/recalculatexors")
     @Produces(MediaType.MEDIA_TYPE_WILDCARD)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    void recalculateMinHashXORs();
+    void recalculateMinHashXORs(final String confirmation);
 
     @POST
     @Path("/minhash/recalculate")
     @Produces(MediaType.MEDIA_TYPE_WILDCARD)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     void recalculateMinHash();
+
+    @POST
+    @Path("/minhash/recalculatemissing")
+    @Produces(MediaType.MEDIA_TYPE_WILDCARD)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    void recalculateMissingMinHash();
 
     /* SYSTEM FUNCTIONS */
 
@@ -127,13 +138,13 @@ public interface RESTBaseInterfaceV1 {
     @Path("/settings/get/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTApplicationSettingsV1 getJSONApplicationSettings();
+    RESTServerSettingsV1 getJSONServerSettings();
 
     @POST
     @Path("/settings/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTApplicationSettingsV1 updateJSONApplicationSettings(final RESTApplicationSettingsV1 settings);
+    RESTServerSettingsV1 updateJSONServerSettings(final RESTServerSettingsV1 settings);
 
     /* USER FUNCTIONS */
     /* JSONP FUNCTIONS */

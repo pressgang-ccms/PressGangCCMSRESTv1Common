@@ -2,7 +2,7 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseUndefinedSettingV1;
 
-public class RESTApplicationUndefinedEntityV1 extends RESTBaseUndefinedSettingV1<RESTApplicationUndefinedEntityV1, Integer> {
+public class RESTServerUndefinedEntityV1 extends RESTBaseUndefinedSettingV1<RESTServerUndefinedEntityV1, Integer> {
     public static final String VALUE_NAME = "value";
 
     private Integer value;
@@ -23,15 +23,15 @@ public class RESTApplicationUndefinedEntityV1 extends RESTBaseUndefinedSettingV1
     }
 
     @Override
-    public RESTApplicationUndefinedEntityV1 clone(boolean deepCopy) {
-        final RESTApplicationUndefinedEntityV1 clone = new RESTApplicationUndefinedEntityV1();
+    public RESTServerUndefinedEntityV1 clone(boolean deepCopy) {
+        final RESTServerUndefinedEntityV1 clone = new RESTServerUndefinedEntityV1();
 
         cloneInto(clone, deepCopy);
 
         return clone;
     }
 
-    public void cloneInto(final RESTApplicationUndefinedEntityV1 clone, final boolean deepCopy) {
+    public void cloneInto(final RESTServerUndefinedEntityV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
         clone.value = value;

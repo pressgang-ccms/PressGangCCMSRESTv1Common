@@ -1,9 +1,9 @@
 package org.jboss.pressgang.ccms.rest.v1.entities;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTApplicationUndefinedEntityCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTServerUndefinedEntityCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectWithConfiguredParametersV1;
 
-public class RESTApplicationEntitiesV1 extends RESTBaseObjectWithConfiguredParametersV1<RESTApplicationEntitiesV1> {
+public class RESTServerEntitiesV1 extends RESTBaseObjectWithConfiguredParametersV1<RESTServerEntitiesV1> {
     public static String UNDEFINED_ENTITIES_NAME = "undefinedEntities";
 
     private Integer abstractTagId;
@@ -23,7 +23,7 @@ public class RESTApplicationEntitiesV1 extends RESTBaseObjectWithConfiguredParam
     private Integer topicTemplateStringConstantId;
     private Integer contentSpecTemplateStringConstantId;
     private Integer unknownUserId;
-    private RESTApplicationUndefinedEntityCollectionV1 undefinedEntities;
+    private RESTServerUndefinedEntityCollectionV1 undefinedEntities;
 
     public Integer getAbstractTagId() {
         return abstractTagId;
@@ -161,22 +161,22 @@ public class RESTApplicationEntitiesV1 extends RESTBaseObjectWithConfiguredParam
         this.unknownUserId = unknownUserId;
     }
 
-    public RESTApplicationUndefinedEntityCollectionV1 getUndefinedEntities() {
+    public RESTServerUndefinedEntityCollectionV1 getUndefinedEntities() {
         return undefinedEntities;
     }
 
-    public void setUndefinedEntities(RESTApplicationUndefinedEntityCollectionV1 undefinedEntities) {
+    public void setUndefinedEntities(RESTServerUndefinedEntityCollectionV1 undefinedEntities) {
         this.undefinedEntities = undefinedEntities;
     }
 
-    public void explicitSetUndefinedEntities(RESTApplicationUndefinedEntityCollectionV1 undefinedEntities) {
+    public void explicitSetUndefinedEntities(RESTServerUndefinedEntityCollectionV1 undefinedEntities) {
         this.undefinedEntities = undefinedEntities;
         setParameterToConfigured(UNDEFINED_ENTITIES_NAME);
     }
 
     @Override
-    public RESTApplicationEntitiesV1 clone(boolean deepCopy) {
-        final RESTApplicationEntitiesV1 clone = new RESTApplicationEntitiesV1();
+    public RESTServerEntitiesV1 clone(boolean deepCopy) {
+        final RESTServerEntitiesV1 clone = new RESTServerEntitiesV1();
         cloneInto(clone);
         return clone;
     }

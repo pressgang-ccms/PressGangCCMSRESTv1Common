@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUndefinedSettingCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTApplicationUndefinedSettingCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTApplicationUndefinedSettingV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTServerUndefinedSettingV1;
 
-public class RESTApplicationUndefinedSettingCollectionV1 extends RESTBaseUndefinedSettingCollectionV1<RESTApplicationUndefinedSettingV1,
+public class RESTServerUndefinedSettingCollectionV1 extends RESTBaseUndefinedSettingCollectionV1<RESTServerUndefinedSettingV1,
         String, RESTApplicationUndefinedSettingCollectionItemV1> {
     private List<RESTApplicationUndefinedSettingCollectionItemV1> items = new ArrayList<RESTApplicationUndefinedSettingCollectionItemV1>();
 
@@ -22,7 +22,7 @@ public class RESTApplicationUndefinedSettingCollectionV1 extends RESTBaseUndefin
     }
 
     @Override
-    protected void addItem(RESTApplicationUndefinedSettingV1 item, Integer state) {
+    protected void addItem(RESTServerUndefinedSettingV1 item, Integer state) {
         if (items == null) {
             items = new ArrayList<RESTApplicationUndefinedSettingCollectionItemV1>();
         }

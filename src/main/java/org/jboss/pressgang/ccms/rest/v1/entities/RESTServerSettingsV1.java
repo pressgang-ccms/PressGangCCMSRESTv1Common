@@ -2,10 +2,10 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTApplicationUndefinedSettingCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTServerUndefinedSettingCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectWithConfiguredParametersV1;
 
-public class RESTApplicationSettingsV1 extends RESTBaseObjectWithConfiguredParametersV1<RESTApplicationSettingsV1> {
+public class RESTServerSettingsV1 extends RESTBaseObjectWithConfiguredParametersV1<RESTServerSettingsV1> {
     public static String UI_URL_NAME = "uiUrl";
     public static String DOCBUILDER_URL_NAME = "docBuilderUrl";
     public static String DOCBOOK_ELEMENTS_NAME = "docBookElements";
@@ -18,8 +18,8 @@ public class RESTApplicationSettingsV1 extends RESTBaseObjectWithConfiguredParam
     private List<String> locales;
     private String defaultLocale;
     private String docBuilderUrl;
-    private RESTApplicationEntitiesV1 entities = new RESTApplicationEntitiesV1();
-    private RESTApplicationUndefinedSettingCollectionV1 undefinedSettings;
+    private RESTServerEntitiesV1 entities = new RESTServerEntitiesV1();
+    private RESTServerUndefinedSettingCollectionV1 undefinedSettings;
 
     public String getUiUrl() {
         return uiUrl;
@@ -86,30 +86,30 @@ public class RESTApplicationSettingsV1 extends RESTBaseObjectWithConfiguredParam
         setParameterToConfigured(DOCBUILDER_URL_NAME);
     }
 
-    public RESTApplicationUndefinedSettingCollectionV1 getUndefinedSettings() {
+    public RESTServerUndefinedSettingCollectionV1 getUndefinedSettings() {
         return undefinedSettings;
     }
 
-    public void setUndefinedSettings(RESTApplicationUndefinedSettingCollectionV1 undefinedSettings) {
+    public void setUndefinedSettings(RESTServerUndefinedSettingCollectionV1 undefinedSettings) {
         this.undefinedSettings = undefinedSettings;
     }
 
-    public void explicitSetUndefinedSettings(RESTApplicationUndefinedSettingCollectionV1 undefinedSettings) {
+    public void explicitSetUndefinedSettings(RESTServerUndefinedSettingCollectionV1 undefinedSettings) {
         this.undefinedSettings = undefinedSettings;
         setParameterToConfigured(UNDEFINED_SETTINGS_NAME);
     }
 
-    public RESTApplicationEntitiesV1 getEntities() {
+    public RESTServerEntitiesV1 getEntities() {
         return entities;
     }
 
-    public void setEntities(RESTApplicationEntitiesV1 entities) {
+    public void setEntities(RESTServerEntitiesV1 entities) {
         this.entities = entities;
     }
 
     @Override
-    public RESTApplicationSettingsV1 clone(boolean deepCopy) {
-        final RESTApplicationSettingsV1 clone = new RESTApplicationSettingsV1();
+    public RESTServerSettingsV1 clone(boolean deepCopy) {
+        final RESTServerSettingsV1 clone = new RESTServerSettingsV1();
         cloneInto(clone);
         return clone;
     }
