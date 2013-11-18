@@ -9,12 +9,14 @@ public class RESTServerSettingsV1 extends RESTBaseObjectWithConfiguredParameters
     public static String UI_URL_NAME = "uiUrl";
     public static String DOCBUILDER_URL_NAME = "docBuilderUrl";
     public static String DOCBOOK_ELEMENTS_NAME = "docBookElements";
+    public static String SEO_CATEGORIES_NAME = "seoCategories";
     public static String LOCALES_NAME = "locales";
     public static String DEFAULT_LOCALE_NAME = "defaultLocale";
     public static String UNDEFINED_SETTINGS_NAME = "undefinedSettings";
 
     private String uiUrl;
     private List<Integer> docBookTemplateIds;
+    private List<Integer> seoCategoryIds;
     private List<String> locales;
     private String defaultLocale;
     private String docBuilderUrl;
@@ -45,6 +47,19 @@ public class RESTServerSettingsV1 extends RESTBaseObjectWithConfiguredParameters
     public void explicitSetDocBookTemplateIds(List<Integer> docBookTemplateIds) {
         this.docBookTemplateIds = docBookTemplateIds;
         setParameterToConfigured(DOCBOOK_ELEMENTS_NAME);
+    }
+
+    public List<Integer> getSeoCategoryIds() {
+        return seoCategoryIds;
+    }
+
+    public void setSeoCategoryIds(List<Integer> seoCategoryIds) {
+        this.seoCategoryIds = seoCategoryIds;
+    }
+
+    public void explicitSetSeoCategoryIds(List<Integer> seoCategoryIds) {
+        this.seoCategoryIds = seoCategoryIds;
+        setParameterToConfigured(SEO_CATEGORIES_NAME);
     }
 
     public List<String> getLocales() {

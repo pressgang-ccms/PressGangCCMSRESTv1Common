@@ -14,6 +14,6 @@ public abstract class RESTBaseEntityCollectionItemV1<T extends RESTBaseEntityV1<
         if (this == o) return true;
         if (!(o instanceof RESTBaseEntityCollectionItemV1<?, ?, ?>)) return false;
 
-        return true;
+        return super.equals(o);
     }
 }
