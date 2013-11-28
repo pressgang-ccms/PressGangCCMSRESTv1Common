@@ -8,8 +8,8 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectWithConfigur
 public class RESTServerSettingsV1 extends RESTBaseObjectWithConfiguredParametersV1<RESTServerSettingsV1> {
     public static String UI_URL_NAME = "uiUrl";
     public static String DOCBUILDER_URL_NAME = "docBuilderUrl";
-    public static String DOCBOOK_ELEMENTS_NAME = "docBookElements";
-    public static String SEO_CATEGORIES_NAME = "seoCategories";
+    public static String DOCBOOK_TEMPLATES_NAME = "docBookTemplateIds";
+    public static String SEO_CATEGORIES_NAME = "seoCategoryIds";
     public static String LOCALES_NAME = "locales";
     public static String DEFAULT_LOCALE_NAME = "defaultLocale";
     public static String UNDEFINED_SETTINGS_NAME = "undefinedSettings";
@@ -46,7 +46,7 @@ public class RESTServerSettingsV1 extends RESTBaseObjectWithConfiguredParameters
 
     public void explicitSetDocBookTemplateIds(List<Integer> docBookTemplateIds) {
         this.docBookTemplateIds = docBookTemplateIds;
-        setParameterToConfigured(DOCBOOK_ELEMENTS_NAME);
+        setParameterToConfigured(DOCBOOK_TEMPLATES_NAME);
     }
 
     public List<Integer> getSeoCategoryIds() {
