@@ -9,8 +9,10 @@ public class RESTServerEntitiesV1 extends RESTBaseObjectWithConfiguredParameters
     private Integer abstractTagId;
     private Integer authorGroupTagId;
     private Integer contentSpecTagId;
+    private Integer frozenTagId;
     private Integer internalOnlyTagId;
     private Integer legalNoticeTagId;
+    private Integer obsoleteTagId;
     private Integer reviewTagId;
     private Integer revisionHistoryTagId;
     private Integer taskTagId;
@@ -84,6 +86,14 @@ public class RESTServerEntitiesV1 extends RESTBaseObjectWithConfiguredParameters
         this.contentSpecTagId = contentSpecTagId;
     }
 
+    public Integer getFrozenTagId() {
+        return frozenTagId;
+    }
+
+    public void setFrozenTagId(Integer frozenTagId) {
+        this.frozenTagId = frozenTagId;
+    }
+
     public Integer getInternalOnlyTagId() {
         return internalOnlyTagId;
     }
@@ -98,6 +108,14 @@ public class RESTServerEntitiesV1 extends RESTBaseObjectWithConfiguredParameters
 
     public void setLegalNoticeTagId(Integer legalNoticeTagId) {
         this.legalNoticeTagId = legalNoticeTagId;
+    }
+
+    public Integer getObsoleteTagId() {
+        return obsoleteTagId;
+    }
+
+    public void setObsoleteTagId(Integer obsoleteTagId) {
+        this.obsoleteTagId = obsoleteTagId;
     }
 
     public Integer getReviewTagId() {
