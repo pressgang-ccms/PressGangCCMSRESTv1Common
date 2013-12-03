@@ -18,8 +18,8 @@
 
     <scm>
         <url>https://github.com/pressgang-ccms/PressGangCCMSRESTv1Common</url>
-        <connection>scm:git@github.com:pressgang-ccms/PressGangCCMSRESTv1Common.git</connection>
-        <developerConnection>scm:git@github.com:pressgang-ccms/PressGangCCMSRESTv1Common.git</developerConnection>
+        <connection>scm:git:git@github.com:pressgang-ccms/PressGangCCMSRESTv1Common.git</connection>
+        <developerConnection>scm:git:git@github.com:pressgang-ccms/PressGangCCMSRESTv1Common.git</developerConnection>
     </scm>
 
     <properties>
