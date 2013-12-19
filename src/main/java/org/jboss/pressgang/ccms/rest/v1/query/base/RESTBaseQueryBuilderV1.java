@@ -4,6 +4,7 @@ import javax.ws.rs.core.PathSegment;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -62,7 +63,7 @@ public abstract class RESTBaseQueryBuilderV1 {
         }
     }
 
-    protected void put(final String constant, final List<Integer> list) {
+    protected <T> void put(final String constant, final Collection<T> list) {
         if (list == null || list.isEmpty()) {
             put(constant, (Object) null);
         } else {
@@ -120,8 +121,20 @@ public abstract class RESTBaseQueryBuilderV1 {
 
         final List<Integer> idsList = new ArrayList<Integer>();
         final String[] ids = list.split("\\s*,\\s*");
-        for (final String topicId : ids) {
-            idsList.add(Integer.parseInt(topicId));
+        for (final String id : ids) {
+            idsList.add(Integer.parseInt(id));
+        }
+
+        return idsList;
+    }
+
+    protected List<String> getStringList(final String list) {
+        if (list == null) return null;
+
+        final List<String> idsList = new ArrayList<String>();
+        final String[] ids = list.split("\\s*,\\s*");
+        for (final String id : ids) {
+            idsList.add(id);
         }
 
         return idsList;
