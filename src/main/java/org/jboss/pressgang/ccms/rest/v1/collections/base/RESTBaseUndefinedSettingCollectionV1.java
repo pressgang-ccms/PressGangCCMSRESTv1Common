@@ -6,6 +6,7 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCo
 import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1.UPDATE_STATE;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseUndefinedSettingV1;
@@ -20,11 +21,7 @@ public abstract class RESTBaseUndefinedSettingCollectionV1<T extends RESTBaseUnd
      */
     @Override
     public List<V> returnUpdatedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UPDATE_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(UPDATE_STATE));
     }
 
     /**
@@ -32,13 +29,7 @@ public abstract class RESTBaseUndefinedSettingCollectionV1<T extends RESTBaseUnd
      */
     @Override
     public List<V> returnExistingAddedAndUpdatedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UNCHANGED_STATE);
-                add(ADD_STATE);
-                add(UPDATE_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(UNCHANGED_STATE, ADD_STATE, UPDATE_STATE));
     }
 
     /**
@@ -46,13 +37,7 @@ public abstract class RESTBaseUndefinedSettingCollectionV1<T extends RESTBaseUnd
      */
     @Override
     public List<V> returnDeletedAddedAndUpdatedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(REMOVE_STATE);
-                add(ADD_STATE);
-                add(UPDATE_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(REMOVE_STATE, ADD_STATE, UPDATE_STATE));
     }
 
     /**
@@ -60,13 +45,10 @@ public abstract class RESTBaseUndefinedSettingCollectionV1<T extends RESTBaseUnd
      */
     @Override
     public List<T> returnUpdatedItems() {
-        return returnItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UPDATE_STATE);
-            }
-        });
+        return returnItemsWithState(Arrays.asList(UPDATE_STATE));
     }
 
+    @Override
     public void addUpdateItem(final T item) {
         addItem(item, UPDATE_STATE);
     }

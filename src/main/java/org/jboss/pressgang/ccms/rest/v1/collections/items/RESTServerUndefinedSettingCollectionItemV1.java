@@ -4,21 +4,20 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUndefinedSettingCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.elements.RESTServerUndefinedSettingV1;
 
-public class RESTApplicationUndefinedSettingCollectionItemV1 extends
-        RESTBaseUndefinedSettingCollectionItemV1<RESTServerUndefinedSettingV1, String,
-                RESTApplicationUndefinedSettingCollectionItemV1> {
+public class RESTServerUndefinedSettingCollectionItemV1 extends
+        RESTBaseUndefinedSettingCollectionItemV1<RESTServerUndefinedSettingV1, String, RESTServerUndefinedSettingCollectionItemV1> {
     private RESTServerUndefinedSettingV1 item;
 
-    public RESTApplicationUndefinedSettingCollectionItemV1() {
+    public RESTServerUndefinedSettingCollectionItemV1() {
 
     }
 
-    public RESTApplicationUndefinedSettingCollectionItemV1(final RESTServerUndefinedSettingV1 item) {
+    public RESTServerUndefinedSettingCollectionItemV1(final RESTServerUndefinedSettingV1 item) {
         setItem(item);
         setState(RESTBaseEntityCollectionItemV1.UNCHANGED_STATE);
     }
 
-    public RESTApplicationUndefinedSettingCollectionItemV1(final RESTServerUndefinedSettingV1 item, final Integer state) {
+    public RESTServerUndefinedSettingCollectionItemV1(final RESTServerUndefinedSettingV1 item, final Integer state) {
         setItem(item);
         setState(state);
     }
@@ -34,8 +33,8 @@ public class RESTApplicationUndefinedSettingCollectionItemV1 extends
     }
 
     @Override
-    public RESTApplicationUndefinedSettingCollectionItemV1 clone(boolean deepCopy) {
-        final RESTApplicationUndefinedSettingCollectionItemV1 retValue = new RESTApplicationUndefinedSettingCollectionItemV1();
+    public RESTServerUndefinedSettingCollectionItemV1 clone(boolean deepCopy) {
+        final RESTServerUndefinedSettingCollectionItemV1 retValue = new RESTServerUndefinedSettingCollectionItemV1();
 
         super.cloneInto(retValue, deepCopy);
 

@@ -5,7 +5,7 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollecti
 import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseCollectionItemV1.UNCHANGED_STATE;
 import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1.UPDATE_STATE;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
@@ -23,11 +23,7 @@ public abstract class RESTBaseEntityUpdateCollectionV1<T extends RESTBaseEntityV
      */
     @Override
     public List<V> returnUpdatedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UPDATE_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(UPDATE_STATE));
     }
 
     /**
@@ -35,13 +31,7 @@ public abstract class RESTBaseEntityUpdateCollectionV1<T extends RESTBaseEntityV
      */
     @Override
     public List<V> returnExistingAddedAndUpdatedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UNCHANGED_STATE);
-                add(ADD_STATE);
-                add(UPDATE_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(UNCHANGED_STATE, ADD_STATE, UPDATE_STATE));
     }
 
     /**
@@ -49,13 +39,7 @@ public abstract class RESTBaseEntityUpdateCollectionV1<T extends RESTBaseEntityV
      */
     @Override
     public List<V> returnDeletedAddedAndUpdatedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(REMOVE_STATE);
-                add(ADD_STATE);
-                add(UPDATE_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(REMOVE_STATE, ADD_STATE, UPDATE_STATE));
     }
 
     /**
@@ -63,11 +47,7 @@ public abstract class RESTBaseEntityUpdateCollectionV1<T extends RESTBaseEntityV
      */
     @Override
     public List<T> returnUpdatedItems() {
-        return returnItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UPDATE_STATE);
-            }
-        });
+        return returnItemsWithState(Arrays.asList(UPDATE_STATE));
     }
 
     @Override

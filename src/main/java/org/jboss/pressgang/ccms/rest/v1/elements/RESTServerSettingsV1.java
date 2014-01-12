@@ -1,8 +1,10 @@
 package org.jboss.pressgang.ccms.rest.v1.elements;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTServerUndefinedSettingCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTZanataServerSettingsCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementWithConfiguredParametersV1;
 
 public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParametersV1<RESTServerSettingsV1> {
@@ -13,6 +15,7 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
     public static String LOCALES_NAME = "locales";
     public static String DEFAULT_LOCALE_NAME = "defaultLocale";
     public static String UNDEFINED_SETTINGS_NAME = "undefinedSettings";
+    public static String ZANATA_SETTINGS_NAME = "zanataSettings";
 
     private String uiUrl;
     private List<Integer> docBookTemplateIds;
@@ -22,6 +25,7 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
     private String docBuilderUrl;
     private RESTServerEntitiesV1 entities = new RESTServerEntitiesV1();
     private RESTServerUndefinedSettingCollectionV1 undefinedSettings;
+    private RESTZanataServerSettingsCollectionV1 zanataSettings;
 
     public String getUiUrl() {
         return uiUrl;
@@ -122,10 +126,58 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
         this.entities = entities;
     }
 
+    public RESTZanataServerSettingsCollectionV1 getZanataSettings() {
+        return zanataSettings;
+    }
+
+    public void setZanataSettings(final RESTZanataServerSettingsCollectionV1 zanataSettings) {
+        this.zanataSettings = zanataSettings;
+    }
+
+    public void explicitSetZanataSettings(final RESTZanataServerSettingsCollectionV1 zanataSettings) {
+        this.zanataSettings = zanataSettings;
+        setParameterToConfigured(ZANATA_SETTINGS_NAME);
+    }
+
     @Override
     public RESTServerSettingsV1 clone(boolean deepCopy) {
         final RESTServerSettingsV1 clone = new RESTServerSettingsV1();
-        cloneInto(clone);
+        cloneInto(clone, deepCopy);
         return clone;
+    }
+
+    public void cloneInto(final RESTServerSettingsV1 clone, boolean deepCopy) {
+        clone.uiUrl = uiUrl;
+        clone.defaultLocale = defaultLocale;
+        clone.docBuilderUrl = docBuilderUrl;
+        clone.docBookTemplateIds = docBookTemplateIds == null ? null : new ArrayList<Integer>(docBookTemplateIds);
+        clone.seoCategoryIds = seoCategoryIds == null ? null : new ArrayList<Integer>(seoCategoryIds);
+        clone.locales = locales == null ? null : new ArrayList<String>(locales);
+
+        if (deepCopy) {
+            if (entities != null) {
+                clone.entities = entities.clone(deepCopy);
+            } else {
+                clone.entities = null;
+            }
+
+            if (undefinedSettings != null) {
+                clone.undefinedSettings = new RESTServerUndefinedSettingCollectionV1();
+                undefinedSettings.cloneInto(clone.undefinedSettings, deepCopy);
+            } else {
+                clone.undefinedSettings = null;
+            }
+
+            if (zanataSettings != null) {
+                clone.zanataSettings = new RESTZanataServerSettingsCollectionV1();
+                zanataSettings.cloneInto(clone.zanataSettings, deepCopy);
+            } else {
+                clone.zanataSettings = null;
+            }
+        } else {
+            clone.entities = entities;
+            clone.undefinedSettings = undefinedSettings;
+            clone.zanataSettings = zanataSettings;
+        }
     }
 }

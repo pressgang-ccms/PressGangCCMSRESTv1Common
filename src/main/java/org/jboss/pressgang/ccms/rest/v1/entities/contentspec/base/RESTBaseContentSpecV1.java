@@ -2,6 +2,7 @@ package org.jboss.pressgang.ccms.rest.v1.entities.contentspec.base;
 
 import java.util.Date;
 
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTProcessInformationCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
@@ -17,6 +18,7 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
     public static final String TYPE_NAME = "type";
     public static final String TAGS_NAME = "tags";
     public static final String TRANSLATED_CONTENT_SPECS_NAME = "translatedContentSpecs";
+    public static final String PROCESSES_NAME = "processes";
 
     protected String locale = null;
     protected Date lastPublished = null;
@@ -26,6 +28,7 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
     protected RESTContentSpecTypeV1 type = null;
     protected RESTTagCollectionV1 tags = null;
     protected RESTTranslatedContentSpecCollectionV1 translatedContentSpecs = null;
+    protected RESTProcessInformationCollectionV1 processes = null;
 
     public void cloneInto(final RESTBaseContentSpecV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
@@ -44,15 +47,23 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
                 clone.tags = null;
             }
 
+            if (processes != null) {
+                clone.processes = new RESTProcessInformationCollectionV1();
+                processes.cloneInto(clone.processes, deepCopy);
+            } else {
+                clone.translatedContentSpecs = null;
+            }
+
             if (translatedContentSpecs != null) {
                 clone.translatedContentSpecs = new RESTTranslatedContentSpecCollectionV1();
                 translatedContentSpecs.cloneInto(clone.translatedContentSpecs, deepCopy);
             } else {
-                clone.translatedContentSpecs = null;
+                clone.processes = null;
             }
         } else {
             clone.tags = tags;
             clone.translatedContentSpecs = translatedContentSpecs;
+            clone.processes = processes;
         }
     }
 
@@ -118,6 +129,14 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
 
     public void setFailedContentSpec(final String failedContentSpec) {
         this.failedContentSpec = failedContentSpec;
+    }
+
+    public RESTProcessInformationCollectionV1 getProcesses() {
+        return processes;
+    }
+
+    public void setProcesses(final RESTProcessInformationCollectionV1 processes) {
+        this.processes = processes;
     }
 
     @Override

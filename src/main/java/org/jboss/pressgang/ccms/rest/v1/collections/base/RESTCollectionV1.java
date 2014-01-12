@@ -90,6 +90,15 @@ public interface RESTCollectionV1<T extends RESTBaseElementV1<T>, V extends REST
 
     void cloneInto(final RESTCollectionV1<T, V> dest, final boolean deepCopy);
 
+    String getExpand();
+    void setExpand(final String expand);
+
+    Integer getStartExpandIndex();
+    void setStartExpandIndex(final Integer startExpandIndex);
+
+    Integer getEndExpandIndex();
+    void setEndExpandIndex(final Integer endExpandIndex);
+
     Integer getSize();
     void setSize(final Integer size);
 

@@ -6,8 +6,6 @@ public abstract class RESTBaseUndefinedSettingCollectionItemV1<T extends RESTBas
         V extends RESTBaseUndefinedSettingCollectionItemV1<T, U, V>>
     extends RESTBaseCollectionItemV1<T,
                 V> implements RESTUpdateCollectionItemV1<T, V> {
-    public static final Integer UPDATE_STATE = 3;
-
     private static final Integer MAX_UPDATE_STATE = 3;
 
     @Override

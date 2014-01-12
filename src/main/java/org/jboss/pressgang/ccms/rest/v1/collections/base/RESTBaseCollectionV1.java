@@ -3,14 +3,19 @@ package org.jboss.pressgang.ccms.rest.v1.collections.base;
 import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1.ADD_STATE;
 import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1.REMOVE_STATE;
 import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1.UNCHANGED_STATE;
+import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTUpdateCollectionItemV1.UPDATE_STATE;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementV1;
 
 public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V extends RESTBaseCollectionItemV1<T,
         V>> implements RESTCollectionV1<T, V> {
+    private String expand = null;
+    private Integer startExpandIndex = null;
+    private Integer endExpandIndex = null;
     private Integer size = null;
 
     protected abstract void addItem(final T item, final Integer state);
@@ -39,11 +44,7 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      */
     @Override
     public List<V> returnDeletedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(REMOVE_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(REMOVE_STATE));
     }
 
     /**
@@ -51,11 +52,7 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      */
     @Override
     public List<V> returnAddedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(ADD_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(ADD_STATE));
     }
 
     /**
@@ -63,11 +60,7 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      */
     @Override
     public List<V> returnExistingCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UNCHANGED_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(UNCHANGED_STATE));
     }
 
     /**
@@ -75,12 +68,7 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      */
     @Override
     public List<V> returnExistingAndAddedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UNCHANGED_STATE);
-                add(ADD_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(UNCHANGED_STATE, ADD_STATE));
     }
 
     /**
@@ -88,12 +76,7 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      */
     @Override
     public List<V> returnDeletedAndAddedCollectionItems() {
-        return returnCollectionItemsWithState(new ArrayList<Integer>() {
-            {
-                add(REMOVE_STATE);
-                add(ADD_STATE);
-            }
-        });
+        return returnCollectionItemsWithState(Arrays.asList(REMOVE_STATE, ADD_STATE));
     }
 
     /**
@@ -120,11 +103,7 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      */
     @Override
     public List<T> returnDeletedItems() {
-        return returnItemsWithState(new ArrayList<Integer>() {
-            {
-                add(REMOVE_STATE);
-            }
-        });
+        return returnItemsWithState(Arrays.asList(REMOVE_STATE));
     }
 
     /**
@@ -132,11 +111,7 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      */
     @Override
     public List<T> returnAddedItems() {
-        return returnItemsWithState(new ArrayList<Integer>() {
-            {
-                add(ADD_STATE);
-            }
-        });
+        return returnItemsWithState(Arrays.asList(ADD_STATE));
     }
 
     /**
@@ -144,11 +119,7 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      */
     @Override
     public List<T> returnExistingItems() {
-        return returnItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UNCHANGED_STATE);
-            }
-        });
+        return returnItemsWithState(Arrays.asList(UNCHANGED_STATE));
     }
 
     /**
@@ -159,12 +130,7 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      */
     @Override
     public List<T> returnExistingAndAddedItems() {
-        return returnItemsWithState(new ArrayList<Integer>() {
-            {
-                add(UNCHANGED_STATE);
-                add(ADD_STATE);
-            }
-        });
+        return returnItemsWithState(Arrays.asList(UNCHANGED_STATE, ADD_STATE));
     }
 
     /**
@@ -175,12 +141,7 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      */
     @Override
     public List<T> returnDeletedAndAddedItems() {
-        return returnItemsWithState(new ArrayList<Integer>() {
-            {
-                add(REMOVE_STATE);
-                add(ADD_STATE);
-            }
-        });
+        return returnItemsWithState(Arrays.asList(REMOVE_STATE, ADD_STATE));
     }
 
     @Override
@@ -230,10 +191,57 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
      * <p/>
      * This shouldn't occur when using the REST API through Java but may occur if a request is sent through a generic browser.
      */
-    protected abstract void ignoreDuplicatedChangeItemRequests();
+    /**
+     * This method will clear out any child items that are marked for both add and remove, or duplicated add and remove
+     * requests. Override this method to deal with collections where the children are not uniquely identified by only their id.
+     * <p/>
+     * This shouldn't occur when using the REST API through Java but may occur if a request is sent through a generic browser.
+     */
+    protected void ignoreDuplicatedChangeItemRequests() {
+        if (getItems() != null) {
+            final List<V> items = new ArrayList<V>(getItems());
+
+            // on the second loop, remove any items that are marked for both add and remove is separate items
+            for (int i = 0; i < items.size(); ++i) {
+                final V child1 = items.get(i);
+                final T childItem1 = child1.getItem();
+
+                // at this point we know that either add1 or remove1 will be true, but not both
+                final boolean add1 = child1.getState().equals(ADD_STATE);
+                final boolean remove1 = child1.getState().equals(REMOVE_STATE);
+                final boolean update1 = child1.getState().equals(UPDATE_STATE);
+
+                // Loop a second time, looking for duplicates
+                for (int j = i + 1; j < items.size(); ++j) {
+                    final V child2 = items.get(j);
+                    final T childItem2 = child2.getItem();
+
+                    // Check the PropertyTags for uniqueness and their value as well as their IDs
+                    if (childItem1.equals(childItem2)) {
+                        final boolean add2 = child2.getState().equals(ADD_STATE);
+                        final boolean remove2 = child2.getState().equals(REMOVE_STATE);
+                        final boolean update2 = child2.getState().equals(UPDATE_STATE);
+
+                        // check for double add, double remove, double update, and remove one instance
+                        if ((add1 && add2) || (remove1 && remove2) || (update1 && update2)) getItems().remove(child1);
+
+                        // check for double add, double remove, add and remove, remove and add
+                        if ((add1 && remove2) || (remove1 && add2) || (update1 && remove2) || (update2 && remove1) || (update1 && add2)
+                                || (update2 && add1)) {
+                            getItems().remove(child1);
+                            getItems().remove(child2);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     @Override
     public void cloneInto(final RESTCollectionV1<T, V> dest, final boolean deepCopy) {
+        dest.setExpand(expand);
+        dest.setStartExpandIndex(startExpandIndex);
+        dest.setEndExpandIndex(endExpandIndex);
         dest.setSize(size);
 
         if (getItems() != null) {
@@ -245,6 +253,30 @@ public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V ext
                 dest.getItems().addAll(getItems());
             }
         }
+    }
+
+    public String getExpand() {
+        return expand;
+    }
+
+    public void setExpand(final String expand) {
+        this.expand = expand;
+    }
+
+    public Integer getStartExpandIndex() {
+        return startExpandIndex;
+    }
+
+    public void setStartExpandIndex(final Integer startExpandIndex) {
+        this.startExpandIndex = startExpandIndex;
+    }
+
+    public Integer getEndExpandIndex() {
+        return endExpandIndex;
+    }
+
+    public void setEndExpandIndex(final Integer endExpandIndex) {
+        this.endExpandIndex = endExpandIndex;
     }
 
     @Override

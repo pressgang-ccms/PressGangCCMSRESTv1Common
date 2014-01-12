@@ -5,8 +5,6 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 public abstract class RESTBaseEntityUpdateCollectionItemV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T,
         U, V>, V extends RESTBaseEntityUpdateCollectionItemV1<T, U, V>> extends RESTBaseEntityCollectionItemV1<T, U,
         V> implements RESTUpdateCollectionItemV1<T, V> {
-    public static final Integer UPDATE_STATE = 3;
-
     private static final Integer MAX_UPDATE_STATE = 3;
 
     @Override

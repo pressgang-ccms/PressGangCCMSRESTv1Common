@@ -341,7 +341,8 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/blobconstants/delete/json/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTBlobConstantCollectionV1 deleteJSONBlobConstants(@PathParam("ids") final PathSegment ids, @QueryParam("expand") final String expand);
+    RESTBlobConstantCollectionV1 deleteJSONBlobConstants(@PathParam("ids") final PathSegment ids,
+            @QueryParam("expand") final String expand);
 
     /* PROJECT FUNCTIONS */
     /* JSON FUNCTIONS */
@@ -671,6 +672,20 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     RESTTextContentSpecV1 deleteJSONTextContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
+    /* CONTENT SPEC SNAPSHOT FUNCTIONS */
+    @POST
+    @Path("/contentspec/snapshot/create/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTContentSpecV1 createJSONContentSpecSnapshot(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("latestRevisions") boolean useLatestRevisions);
+
+    @POST
+    @Path("/contentspec/snapshot/create/json+text/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTTextContentSpecV1 createJSONTextContentSpecSnapshot(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("latestRevisions") boolean useLatestRevisions);
 
     /* CONTENT SPEC NODE FUNCTIONS */
 //    /* JSON FUNCTIONS */
@@ -794,7 +809,8 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Path("/translatedcontentspecnode/delete/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTTranslatedCSNodeV1 deleteJSONTranslatedContentSpecNode(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
+    RESTTranslatedCSNodeV1 deleteJSONTranslatedContentSpecNode(@PathParam("id") final Integer id,
+            @QueryParam("expand") final String expand);
 
     @DELETE
     @Path("/translatedcontentspecnodes/delete/json/{ids}")

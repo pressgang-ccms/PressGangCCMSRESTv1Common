@@ -3,6 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.jaxrsinterfaces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -19,6 +20,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTFileCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTImageCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTIntegerConstantCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTProcessInformationCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTProjectCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTPropertyCategoryCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTPropertyTagCollectionV1;
@@ -34,9 +36,26 @@ import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTextContentS
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
-import org.jboss.pressgang.ccms.rest.v1.elements.RESTSystemStatsV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.*;
+import org.jboss.pressgang.ccms.rest.v1.elements.RESTProcessInformationV1;
 import org.jboss.pressgang.ccms.rest.v1.elements.RESTServerSettingsV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.RESTSystemStatsV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTBlobConstantV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTCategoryV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTFileV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTIntegerConstantV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTMatchedImageV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTMatchedTopicV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyCategoryV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTRoleV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTStringConstantV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTextContentSpecV1;
@@ -44,6 +63,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedCSNod
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.wrapper.IntegerWrapper;
 import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
+import org.zanata.rest.RestConstant;
 
 @Path("/1")
 public interface RESTBaseInterfaceV1 {
@@ -66,7 +86,8 @@ public interface RESTBaseInterfaceV1 {
     @Path("/minhashsimilar/get/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_XML)
-    RESTTopicCollectionV1 getSimilarTopics(final String xml, @QueryParam("expand") final String expand, @QueryParam("threshold") final Float threshold);
+    RESTTopicCollectionV1 getSimilarTopics(final String xml, @QueryParam("expand") final String expand,
+            @QueryParam("threshold") final Float threshold);
 
     @POST
     @Path("/minhash/recalculatexors")
@@ -1229,7 +1250,7 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
     RESTMatchedImageV1 createOrMatchJSONImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject,
-                                              @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     @POST
     @Path("/images/create/json")
@@ -1380,7 +1401,7 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
     RESTMatchedTopicV1 createOrMatchJSONTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject,
-                                @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     /* XML FUNCTIONS */
     @GET
@@ -1838,6 +1859,29 @@ public interface RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     byte[] getZIPContentSpecsWithQuery(@PathParam("query") PathSegment query);
 
+    /* CONTENT SPEC SNAPSHOT FUNCTIONS */
+    @POST
+    @Path("/contentspec/snapshot/create/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTContentSpecV1 createJSONContentSpecSnapshot(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @GET
+    @Path("/contentspec/snapshot/preview/text/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String previewTEXTContentSpecSnapshot(@PathParam("id") final Integer id, @QueryParam("latestRevisions") boolean useLatestRevisions);
+
+    @POST
+    @Path("/contentspec/snapshot/create/json+text/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTTextContentSpecV1 createJSONTextContentSpecSnapshot(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
     /* CONTENT SPEC NODE FUNCTIONS */
     /* JSONP FUNCTIONS */
     @GET
@@ -2260,4 +2304,47 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     byte[] getRAWFileRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
             @QueryParam("lang") final String locale);
+
+    /* PROCESS FUNCTIONS */
+    @GET
+    @Path("/process/get/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTProcessInformationV1 getJSONProcess(@PathParam("id") String id, @QueryParam("expand") String expand);
+
+    @GET
+    @Path("/processes/get/json/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTProcessInformationCollectionV1 getJSONProcesses(@QueryParam("expand") String expand);
+
+    @GET
+    @Path("/processes/get/json/{query}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTProcessInformationCollectionV1 getJSONProcessesWithQuery(@PathParam("query") PathSegment query,
+            @QueryParam("expand") String expand);
+
+    @POST
+    @Path("/process/stop/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTProcessInformationV1 stopJSONProcess(@PathParam("id") String id, @QueryParam("expand") String expand);
+
+    /* CONTENT SPEC TRANSLATION FUNCTIONS */
+    @POST
+    @Path("/contentspec/translation/push/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTProcessInformationV1 pushContentSpecForTranslation(@PathParam("id") Integer id, @QueryParam("server") String serverId,
+            @QueryParam("expand") String expand, @QueryParam("name") String name, @QueryParam("contentSpecOnly") boolean contentSpecOnly,
+            @HeaderParam(RestConstant.HEADER_USERNAME) String username, @HeaderParam(RestConstant.HEADER_API_KEY) String apikey);
+
+    @POST
+    @Path("/contentspec/translation/sync/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTProcessInformationV1 syncContentSpecTranslations(@PathParam("id") Integer id, @QueryParam("server") String serverId,
+            @QueryParam("expand") String expand, @QueryParam("name") String name, @QueryParam("locales") String locales,
+            @HeaderParam(RestConstant.HEADER_USERNAME) String username, @HeaderParam(RestConstant.HEADER_API_KEY) String apikey);
 }

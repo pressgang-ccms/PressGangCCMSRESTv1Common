@@ -4,20 +4,20 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUndefinedSettingCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.elements.RESTServerUndefinedEntityV1;
 
-public class RESTApplicationUndefinedEntityCollectionItemV1 extends RESTBaseUndefinedSettingCollectionItemV1<RESTServerUndefinedEntityV1,
-        Integer, RESTApplicationUndefinedEntityCollectionItemV1> {
+public class RESTServerUndefinedEntityCollectionItemV1 extends RESTBaseUndefinedSettingCollectionItemV1<RESTServerUndefinedEntityV1,
+        Integer, RESTServerUndefinedEntityCollectionItemV1> {
     private RESTServerUndefinedEntityV1 item;
 
-    public RESTApplicationUndefinedEntityCollectionItemV1() {
+    public RESTServerUndefinedEntityCollectionItemV1() {
 
     }
 
-    public RESTApplicationUndefinedEntityCollectionItemV1(final RESTServerUndefinedEntityV1 item) {
+    public RESTServerUndefinedEntityCollectionItemV1(final RESTServerUndefinedEntityV1 item) {
         setItem(item);
         setState(RESTBaseEntityCollectionItemV1.UNCHANGED_STATE);
     }
 
-    public RESTApplicationUndefinedEntityCollectionItemV1(final RESTServerUndefinedEntityV1 item, final Integer state) {
+    public RESTServerUndefinedEntityCollectionItemV1(final RESTServerUndefinedEntityV1 item, final Integer state) {
         setItem(item);
         setState(state);
     }
@@ -33,8 +33,8 @@ public class RESTApplicationUndefinedEntityCollectionItemV1 extends RESTBaseUnde
     }
 
     @Override
-    public RESTApplicationUndefinedEntityCollectionItemV1 clone(boolean deepCopy) {
-        final RESTApplicationUndefinedEntityCollectionItemV1 retValue = new RESTApplicationUndefinedEntityCollectionItemV1();
+    public RESTServerUndefinedEntityCollectionItemV1 clone(boolean deepCopy) {
+        final RESTServerUndefinedEntityCollectionItemV1 retValue = new RESTServerUndefinedEntityCollectionItemV1();
 
         super.cloneInto(retValue, deepCopy);
 

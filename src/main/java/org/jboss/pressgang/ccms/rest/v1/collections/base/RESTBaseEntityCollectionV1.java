@@ -18,9 +18,6 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 @SuppressWarnings("serial")
 public abstract class RESTBaseEntityCollectionV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
         V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseCollectionV1<T, V> {
-    private String expand = null;
-    private Integer startExpandIndex = null;
-    private Integer endExpandIndex = null;
 
     /**
      * It is possible that a client has sent up a collection that asks to add and remove the same child item in a collection.
@@ -102,10 +99,6 @@ public abstract class RESTBaseEntityCollectionV1<T extends RESTBaseEntityV1<T, U
     }
 
     public void cloneInto(final RESTBaseEntityCollectionV1<T, U, V> dest, final boolean deepCopy) {
-        dest.expand = expand;
-        dest.startExpandIndex = startExpandIndex;
-        dest.endExpandIndex = endExpandIndex;
-
         if (getItems() != null) {
             dest.setItems(new ArrayList<V>());
             if (deepCopy) {
@@ -115,29 +108,5 @@ public abstract class RESTBaseEntityCollectionV1<T extends RESTBaseEntityV1<T, U
                 dest.getItems().addAll(getItems());
             }
         }
-    }
-
-    public String getExpand() {
-        return expand;
-    }
-
-    public void setExpand(final String expand) {
-        this.expand = expand;
-    }
-
-    public Integer getStartExpandIndex() {
-        return startExpandIndex;
-    }
-
-    public void setStartExpandIndex(final Integer startExpandIndex) {
-        this.startExpandIndex = startExpandIndex;
-    }
-
-    public Integer getEndExpandIndex() {
-        return endExpandIndex;
-    }
-
-    public void setEndExpandIndex(final Integer endExpandIndex) {
-        this.endExpandIndex = endExpandIndex;
     }
 }
