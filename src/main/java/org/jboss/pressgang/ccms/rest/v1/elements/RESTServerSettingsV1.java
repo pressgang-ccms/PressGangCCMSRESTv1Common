@@ -1,11 +1,11 @@
-package org.jboss.pressgang.ccms.rest.v1.entities;
+package org.jboss.pressgang.ccms.rest.v1.elements;
 
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTServerUndefinedSettingCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectWithConfiguredParametersV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementWithConfiguredParametersV1;
 
-public class RESTServerSettingsV1 extends RESTBaseObjectWithConfiguredParametersV1<RESTServerSettingsV1> {
+public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParametersV1<RESTServerSettingsV1> {
     public static String UI_URL_NAME = "uiUrl";
     public static String DOCBUILDER_URL_NAME = "docBuilderUrl";
     public static String DOCBOOK_TEMPLATES_NAME = "docBookTemplateIds";

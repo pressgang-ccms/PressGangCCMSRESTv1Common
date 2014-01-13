@@ -1,8 +1,8 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.base;
 
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementV1;
 
-public interface RESTCollectionItemV1<T extends RESTBaseObjectV1<T>, V extends RESTCollectionItemV1<T, V>> {
+public interface RESTCollectionItemV1<T extends RESTBaseElementV1<T>, V extends RESTCollectionItemV1<T, V>> {
     T getItem();
     void setItem(final T item);
 

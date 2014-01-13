@@ -1,7 +1,7 @@
-package org.jboss.pressgang.ccms.rest.v1.entities.base;
+package org.jboss.pressgang.ccms.rest.v1.elements.base;
 
 public abstract class RESTBaseUndefinedSettingV1<T extends RESTBaseUndefinedSettingV1<T, U>,
-        U> extends RESTBaseObjectWithConfiguredParametersV1<T> {
+        U> extends RESTBaseElementWithConfiguredParametersV1<T> {
     public static final String KEY_NAME = "key";
 
     protected String key;

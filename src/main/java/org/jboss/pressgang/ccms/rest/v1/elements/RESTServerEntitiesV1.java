@@ -1,9 +1,9 @@
-package org.jboss.pressgang.ccms.rest.v1.entities;
+package org.jboss.pressgang.ccms.rest.v1.elements;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTServerUndefinedEntityCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectWithConfiguredParametersV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementWithConfiguredParametersV1;
 
-public class RESTServerEntitiesV1 extends RESTBaseObjectWithConfiguredParametersV1<RESTServerEntitiesV1> {
+public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParametersV1<RESTServerEntitiesV1> {
     public static String UNDEFINED_ENTITIES_NAME = "undefinedEntities";
 
     private Integer abstractTagId;

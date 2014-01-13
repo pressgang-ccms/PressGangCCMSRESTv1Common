@@ -1,6 +1,6 @@
-package org.jboss.pressgang.ccms.rest.v1.entities.base;
+package org.jboss.pressgang.ccms.rest.v1.elements.base;
 
-public abstract class RESTBaseObjectV1<T extends RESTBaseObjectV1<T>> {
+public abstract class RESTBaseElementV1<T extends RESTBaseElementV1<T>> {
     /**
      * @param deepCopy true if referenced objects should be copied, false if the referenced themselves should be copied
      * @return A clone of this object

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUndefinedSettingCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTApplicationUndefinedSettingCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTServerUndefinedSettingV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.RESTServerUndefinedSettingV1;
 
 public class RESTServerUndefinedSettingCollectionV1 extends RESTBaseUndefinedSettingCollectionV1<RESTServerUndefinedSettingV1,
         String, RESTApplicationUndefinedSettingCollectionItemV1> {

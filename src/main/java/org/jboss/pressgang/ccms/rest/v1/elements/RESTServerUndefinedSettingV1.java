@@ -1,6 +1,6 @@
-package org.jboss.pressgang.ccms.rest.v1.entities;
+package org.jboss.pressgang.ccms.rest.v1.elements;
 
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseUndefinedSettingV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseUndefinedSettingV1;
 
 public class RESTServerUndefinedSettingV1 extends RESTBaseUndefinedSettingV1<RESTServerUndefinedSettingV1, String> {
     public static final String VALUE_NAME = "value";

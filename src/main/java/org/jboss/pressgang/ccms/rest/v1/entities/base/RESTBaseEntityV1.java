@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementWithConfiguredParametersV1;
 
 
 public abstract class RESTBaseEntityV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
-        V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseObjectWithConfiguredParametersV1<T> {
+        V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseElementWithConfiguredParametersV1<T> {
     public static final String REVISIONS_NAME = "revisions";
     public static final String LOG_DETAILS_NAME = "logDetails";
 

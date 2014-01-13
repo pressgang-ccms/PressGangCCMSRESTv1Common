@@ -7,9 +7,9 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCo
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementV1;
 
-public abstract class RESTBaseCollectionV1<T extends RESTBaseObjectV1<T>, V extends RESTBaseCollectionItemV1<T,
+public abstract class RESTBaseCollectionV1<T extends RESTBaseElementV1<T>, V extends RESTBaseCollectionItemV1<T,
         V>> implements RESTCollectionV1<T, V> {
     private Integer size = null;
 

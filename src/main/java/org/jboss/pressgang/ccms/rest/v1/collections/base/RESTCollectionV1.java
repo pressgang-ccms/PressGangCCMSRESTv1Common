@@ -2,9 +2,9 @@ package org.jboss.pressgang.ccms.rest.v1.collections.base;
 
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementV1;
 
-public interface RESTCollectionV1<T extends RESTBaseObjectV1<T>, V extends RESTCollectionItemV1> {
+public interface RESTCollectionV1<T extends RESTBaseElementV1<T>, V extends RESTCollectionItemV1> {
     List<V> getItems();
     void setItems(final List<V> items);
 

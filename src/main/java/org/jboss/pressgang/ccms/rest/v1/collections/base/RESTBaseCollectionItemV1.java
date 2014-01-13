@@ -1,8 +1,8 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.base;
 
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseObjectV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementV1;
 
-public abstract class RESTBaseCollectionItemV1<T extends RESTBaseObjectV1<T>, V extends RESTBaseCollectionItemV1<T,
+public abstract class RESTBaseCollectionItemV1<T extends RESTBaseElementV1<T>, V extends RESTBaseCollectionItemV1<T,
         V>> implements RESTCollectionItemV1<T, V> {
     public static final Integer UNCHANGED_STATE = 0;
     public static final Integer ADD_STATE = 1;

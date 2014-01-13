@@ -1,6 +1,6 @@
 package org.jboss.pressgang.ccms.rest.v1.collections.base;
 
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseUndefinedSettingV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseUndefinedSettingV1;
 
 public abstract class RESTBaseUndefinedSettingCollectionItemV1<T extends RESTBaseUndefinedSettingV1<T, U>, U,
         V extends RESTBaseUndefinedSettingCollectionItemV1<T, U, V>>

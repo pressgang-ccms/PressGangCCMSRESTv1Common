@@ -1,10 +1,9 @@
-package org.jboss.pressgang.ccms.rest.v1.entities.base;
+package org.jboss.pressgang.ccms.rest.v1.elements.base;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class RESTBaseObjectWithConfiguredParametersV1<T extends RESTBaseObjectWithConfiguredParametersV1<T>> extends
-        RESTBaseObjectV1<T> {
+public abstract class RESTBaseElementWithConfiguredParametersV1<T extends RESTBaseElementWithConfiguredParametersV1<T>> extends RESTBaseElementV1<T> {
     /**
      * Maintains a list of the database fields that have been specifically set
      * on this object. This allows us to distinguish them from those that are
@@ -41,7 +40,7 @@ public abstract class RESTBaseObjectWithConfiguredParametersV1<T extends RESTBas
         return configuredParameters != null && !configuredParameters.isEmpty();
     }
 
-    protected void cloneInto(final RESTBaseObjectWithConfiguredParametersV1 clone) {
+    protected void cloneInto(final RESTBaseElementWithConfiguredParametersV1 clone) {
         clone.setConfiguredParameters(getConfiguredParameters() == null ? null : new ArrayList<String>(getConfiguredParameters()));
     }
 }

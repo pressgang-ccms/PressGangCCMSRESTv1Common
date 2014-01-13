@@ -2,7 +2,7 @@ package org.jboss.pressgang.ccms.rest.v1.collections.items;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseUndefinedSettingCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTServerUndefinedEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.elements.RESTServerUndefinedEntityV1;
 
 public class RESTApplicationUndefinedEntityCollectionItemV1 extends RESTBaseUndefinedSettingCollectionItemV1<RESTServerUndefinedEntityV1,
         Integer, RESTApplicationUndefinedEntityCollectionItemV1> {
