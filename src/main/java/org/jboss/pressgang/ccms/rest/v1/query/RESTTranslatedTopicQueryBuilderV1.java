@@ -1,6 +1,7 @@
 package org.jboss.pressgang.ccms.rest.v1.query;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,23 +74,23 @@ public class RESTTranslatedTopicQueryBuilderV1 extends RESTTopicQueryBuilderV1 {
         put(CommonFilterConstants.TOPIC_LATEST_COMPLETED_TRANSLATIONS_FILTER_VAR, latestCompletedTranslations);
     }
 
-    public List<Integer> getZanataIds() {
+    public List<String> getZanataIds() {
         final String topicIdsString = get(CommonFilterConstants.ZANATA_IDS_FILTER_VAR);
 
-        return getIntegerList(topicIdsString);
+        return getStringList(topicIdsString);
     }
 
-    public void setZanataIds(final List<Integer> zanataIds) {
+    public void setZanataIds(final Collection<String> zanataIds) {
         put(CommonFilterConstants.ZANATA_IDS_FILTER_VAR, zanataIds);
     }
 
-    public List<Integer> getNotZanataIds() {
+    public List<String> getNotZanataIds() {
         final String topicIdsString = get(CommonFilterConstants.ZANATA_IDS_NOT_FILTER_VAR);
 
-        return getIntegerList(topicIdsString);
+        return getStringList(topicIdsString);
     }
 
-    public void setNotZanataIds(final List<Integer> notZanataIds) {
+    public void setNotZanataIds(final List<String> notZanataIds) {
         put(CommonFilterConstants.ZANATA_IDS_NOT_FILTER_VAR, notZanataIds);
     }
 
