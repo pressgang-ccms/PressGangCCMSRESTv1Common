@@ -1,7 +1,21 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.enums;
 
 public enum RESTXMLDoctype {
-    DOCBOOK_45, DOCBOOK_50;
+    DOCBOOK_45("Docbook 4.5"),
+    DOCBOOK_50("Docbook 5.0");
+
+    String commonName;
+
+    /**
+     * @param commonName The common name for the format
+     */
+    RESTXMLDoctype(final String commonName) {
+        this.commonName = commonName;
+    }
+
+    public String getCommonName() {
+        return commonName;
+    }
 
     public static RESTXMLDoctype getXMLDoctype(final int id) {
         switch (id) {
@@ -26,4 +40,6 @@ public enum RESTXMLDoctype {
                 return null;
         }
     }
+
+
 }
