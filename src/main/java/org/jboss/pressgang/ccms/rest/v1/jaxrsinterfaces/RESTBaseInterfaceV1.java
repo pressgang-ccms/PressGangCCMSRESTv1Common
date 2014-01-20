@@ -93,6 +93,12 @@ public interface RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     void recalculateMissingMinHash();
 
+    @POST
+    @Path("/contenthash/recalculatemissing")
+    @Produces(MediaType.MEDIA_TYPE_WILDCARD)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    void recalculateMissingContentHash();
+
     /* SYSTEM FUNCTIONS */
 
     /**
@@ -1368,6 +1374,13 @@ public interface RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     RESTTopicCollectionV1 deleteJSONTopics(@PathParam("ids") final PathSegment ids, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId, @QueryParam("expand") final String expand);
+
+    @POST
+    @Path("/topic/createormatch/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTTopicV1 createOrMatchJSONTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject,
+                                @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     /* XML FUNCTIONS */
     @GET
