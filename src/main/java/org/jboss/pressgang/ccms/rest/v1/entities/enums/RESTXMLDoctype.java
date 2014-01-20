@@ -1,8 +1,8 @@
 package org.jboss.pressgang.ccms.rest.v1.entities.enums;
 
 public enum RESTXMLDoctype {
-    DOCBOOK_45("Docbook 4.5"),
-    DOCBOOK_50("Docbook 5.0");
+    DOCBOOK_45("DocBook 4.5"),
+    DOCBOOK_50("DocBook 5.0");
 
     String commonName;
 
