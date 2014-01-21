@@ -34,6 +34,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     protected RESTContentSpecCollectionV1 contentSpecs_OTM = null;
     protected List<String> keywords = null;
     protected RESTMinHashCollectionV1 minHashes = null;
+    protected char[] contentHash = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -308,5 +309,13 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
 
     public void setMinHashes(final RESTMinHashCollectionV1 minHashes) {
         this.minHashes = minHashes;
+    }
+
+    public char[] getContentHash() {
+        return contentHash;
+    }
+
+    public void setContentHash(char[] contentHash) {
+        this.contentHash = contentHash;
     }
 }
