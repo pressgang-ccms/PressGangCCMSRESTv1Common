@@ -35,22 +35,8 @@ import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTextContentS
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTBlobConstantV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTCategoryV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTFileV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTIntegerConstantV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyCategoryV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTRoleV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.*;
 import org.jboss.pressgang.ccms.rest.v1.elements.RESTServerSettingsV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTStringConstantV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTextContentSpecV1;
@@ -64,6 +50,12 @@ public interface RESTBaseInterfaceV1 {
     /* CONSTANTS */
 
     /* UTILITY FUNCTIONS */
+    @POST
+    @Path("/sysinfo/get/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTSystemStatsV1 getSysStats();
+
     @POST
     @Path("/minhash/get/json")
     @Produces(MediaType.APPLICATION_JSON)
