@@ -50,11 +50,11 @@ public interface RESTBaseInterfaceV1 {
     /* CONSTANTS */
 
     /* UTILITY FUNCTIONS */
-    @POST
+    @GET
     @Path("/sysinfo/get/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTSystemStatsV1 getSysStats();
+    RESTSystemStatsV1 getJSONSysInfo();
 
     @POST
     @Path("/minhash/get/json")
