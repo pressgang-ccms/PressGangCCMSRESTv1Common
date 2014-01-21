@@ -13,6 +13,7 @@ import javax.ws.rs.core.PathSegment;
 import javax.ws.rs.core.Response;
 import java.util.Map;
 
+import org.jboss.pressgang.ccms.rest.v1.RESTMatchedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBlobConstantCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTCategoryCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFileCollectionV1;
@@ -49,6 +50,12 @@ public interface RESTBaseInterfaceV1 {
     /* CONSTANTS */
 
     /* UTILITY FUNCTIONS */
+    @GET
+    @Path("/sysinfo/get/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTSystemStatsV1 getJSONSysInfo();
+
     @POST
     @Path("/minhash/get/json")
     @Produces(MediaType.APPLICATION_JSON)
