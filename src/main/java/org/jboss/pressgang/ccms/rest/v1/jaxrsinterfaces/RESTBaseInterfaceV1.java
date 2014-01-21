@@ -13,6 +13,7 @@ import javax.ws.rs.core.PathSegment;
 import javax.ws.rs.core.Response;
 import java.util.Map;
 
+import org.jboss.pressgang.ccms.rest.v1.RESTMatchedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBlobConstantCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTCategoryCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFileCollectionV1;
@@ -1379,7 +1380,7 @@ public interface RESTBaseInterfaceV1 {
     @Path("/topic/createormatch/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    RESTTopicV1 createOrMatchJSONTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject,
+    RESTMatchedTopicV1 createOrMatchJSONTopic(@QueryParam("expand") final String expand, final RESTTopicV1 dataObject,
                                 @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     /* XML FUNCTIONS */
