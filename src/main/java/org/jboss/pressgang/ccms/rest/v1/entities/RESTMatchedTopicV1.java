@@ -1,7 +1,5 @@
 package org.jboss.pressgang.ccms.rest.v1.entities;
 
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
-
 /**
  * Wraps up a RESTTopicV1 and includes a flag to indicate whether or not the topic was
  * created or matched from an existing one.

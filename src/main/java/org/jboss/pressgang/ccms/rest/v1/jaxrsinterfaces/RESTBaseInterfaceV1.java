@@ -1,49 +1,19 @@
 package org.jboss.pressgang.ccms.rest.v1.jaxrsinterfaces;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import org.jboss.pressgang.ccms.rest.v1.collections.*;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.*;
+import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
+import org.jboss.pressgang.ccms.rest.v1.elements.RESTServerSettingsV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.*;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.*;
+import org.jboss.pressgang.ccms.rest.v1.entities.wrapper.IntegerWrapper;
+import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.PathSegment;
 import javax.ws.rs.core.Response;
 import java.util.Map;
-
-import org.jboss.pressgang.ccms.rest.v1.RESTMatchedTopicV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTBlobConstantCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTCategoryCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTFileCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTImageCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTIntegerConstantCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTProjectCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTPropertyCategoryCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTPropertyTagCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTRoleCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTStringConstantCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTUserCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSNodeCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTextContentSpecCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
-import org.jboss.pressgang.ccms.rest.v1.constants.RESTv1Constants;
-import org.jboss.pressgang.ccms.rest.v1.entities.*;
-import org.jboss.pressgang.ccms.rest.v1.elements.RESTServerSettingsV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTextContentSpecV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedCSNodeV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedContentSpecV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.wrapper.IntegerWrapper;
-import org.jboss.pressgang.ccms.rest.v1.expansion.ExpandDataTrunk;
 
 @Path("/1")
 public interface RESTBaseInterfaceV1 {
