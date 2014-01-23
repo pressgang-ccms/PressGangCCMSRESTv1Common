@@ -19,6 +19,7 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
     private byte[] imageDataBase64 = null;
     private String locale = null;
     private String filename = null;
+    private char[] contentHash = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -158,5 +159,13 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
         if (!(other instanceof RESTLanguageImageV1)) return false;
 
         return super.equals(other);
+    }
+
+    public char[] getContentHash() {
+        return contentHash;
+    }
+
+    public void setContentHash(char[] contentHash) {
+        this.contentHash = contentHash;
     }
 }

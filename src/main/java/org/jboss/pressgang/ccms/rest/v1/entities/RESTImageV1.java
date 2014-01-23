@@ -11,7 +11,7 @@ public class RESTImageV1 extends RESTBasePrimaryEntityV1<RESTImageV1, RESTImageC
 
     private String description = null;
     private RESTLanguageImageCollectionV1 languageImages_OTM = null;
-    private char[] contentHash = null;
+
     /**
      * A list of the Envers revision numbers
      */
@@ -97,11 +97,5 @@ public class RESTImageV1 extends RESTBasePrimaryEntityV1<RESTImageV1, RESTImageC
         return super.equals(other);
     }
 
-    public char[] getContentHash() {
-        return contentHash;
-    }
 
-    public void setContentHash(char[] contentHash) {
-        this.contentHash = contentHash;
-    }
 }
