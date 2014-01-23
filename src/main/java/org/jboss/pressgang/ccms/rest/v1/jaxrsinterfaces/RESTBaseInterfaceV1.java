@@ -1228,7 +1228,7 @@ public interface RESTBaseInterfaceV1 {
     @Path("/image/createormatch/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
-    RESTMatchedTopicV1 createOrMatchJSONImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject,
+    RESTMatchedImageV1 createOrMatchJSONImage(@QueryParam("expand") final String expand, final RESTImageV1 dataObject,
                                               @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     @POST
