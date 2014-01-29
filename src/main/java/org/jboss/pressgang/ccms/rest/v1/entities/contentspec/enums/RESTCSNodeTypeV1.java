@@ -3,7 +3,7 @@ package org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums;
 import org.jboss.pressgang.ccms.utils.constants.CommonConstants;
 
 public enum RESTCSNodeTypeV1 {
-    TOPIC, SECTION, CHAPTER, APPENDIX, PART, PROCESS, COMMENT, META_DATA, PREFACE, INNER_TOPIC, META_DATA_TOPIC, FILE;
+    TOPIC, SECTION, CHAPTER, APPENDIX, PART, PROCESS, COMMENT, META_DATA, PREFACE, INITIAL_CONTENT_TOPIC, META_DATA_TOPIC, FILE, INITIAL_CONTENT;
 
     public static RESTCSNodeTypeV1 getNodeType(final int id) {
         switch (id) {
@@ -25,12 +25,14 @@ public enum RESTCSNodeTypeV1 {
                 return META_DATA;
             case CommonConstants.CS_NODE_PREFACE:
                 return PREFACE;
-            case CommonConstants.CS_NODE_INNER_TOPIC:
-                return INNER_TOPIC;
+            case CommonConstants.CS_NODE_INITIAL_CONTENT_TOPIC:
+                return INITIAL_CONTENT_TOPIC;
             case CommonConstants.CS_NODE_META_DATA_TOPIC:
                 return META_DATA_TOPIC;
             case CommonConstants.CS_NODE_FILE:
                 return FILE;
+            case CommonConstants.CS_NODE_INITIAL_CONTENT:
+                return INITIAL_CONTENT;
             default:
                 return null;
         }
@@ -58,12 +60,14 @@ public enum RESTCSNodeTypeV1 {
                 return CommonConstants.CS_NODE_META_DATA;
             case PREFACE:
                 return CommonConstants.CS_NODE_PREFACE;
-            case INNER_TOPIC:
-                return CommonConstants.CS_NODE_INNER_TOPIC;
+            case INITIAL_CONTENT_TOPIC:
+                return CommonConstants.CS_NODE_INITIAL_CONTENT_TOPIC;
             case META_DATA_TOPIC:
                 return CommonConstants.CS_NODE_META_DATA_TOPIC;
             case FILE:
                 return CommonConstants.CS_NODE_FILE;
+            case INITIAL_CONTENT:
+                return CommonConstants.CS_NODE_INITIAL_CONTENT;
             default:
                 return null;
         }
