@@ -5,7 +5,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicSourceUrlCollection
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTXMLDoctype;
+import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTXMLFormat;
 
 public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
         V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseEntityWithPropertiesV1<T, U, V> {
@@ -17,13 +17,13 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     public static final String INCOMING_NAME = "incomingRelationships";
     public static final String LOCALE_NAME = "locale";
     public static final String SOURCE_URLS_NAME = "sourceUrls_OTM";
-    public static final String DOCTYPE_NAME = "doctype";
+    public static final String FORMAT_NAME = "format";
 
     protected String title = null;
     protected String xml = null;
     protected String xmlErrors = null;
     protected String locale = null;
-    protected RESTXMLDoctype xmlDoctype = null;
+    protected RESTXMLFormat xmlFormat = null;
     protected RESTTagCollectionV1 tags = null;
     protected RESTTopicSourceUrlCollectionV1 sourceUrls_OTM = null;
 
@@ -42,7 +42,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
         clone.xml = this.xml;
         clone.xmlErrors = this.xmlErrors;
         clone.locale = this.locale;
-        clone.xmlDoctype = this.xmlDoctype;
+        clone.xmlFormat = this.xmlFormat;
 
         if (deepCopy) {
             if (this.tags != null) {
@@ -118,12 +118,12 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
         this.sourceUrls_OTM = sourceUrls;
     }
 
-    public RESTXMLDoctype getXmlDoctype() {
-        return xmlDoctype;
+    public RESTXMLFormat getXmlFormat() {
+        return xmlFormat;
     }
 
-    public void setXmlDoctype(final RESTXMLDoctype doctype) {
-        this.xmlDoctype = doctype;
+    public void setXmlFormat(final RESTXMLFormat doctype) {
+        this.xmlFormat = doctype;
     }
 
     @Override

@@ -14,7 +14,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecC
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTopicCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTXMLDoctype;
+import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTXMLFormat;
 
 public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectionV1, RESTTopicCollectionItemV1> {
     public static final String DESCRIPTION_NAME = "description";
@@ -259,9 +259,9 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
         this.setParameterToConfigured(PROPERTIES_NAME);
     }
 
-    public void explicitSetXmlDoctype(final RESTXMLDoctype doctype) {
-        this.xmlDoctype = doctype;
-        this.setParameterToConfigured(DOCTYPE_NAME);
+    public void explicitSetXmlDoctype(final RESTXMLFormat doctype) {
+        this.xmlFormat = doctype;
+        this.setParameterToConfigured(FORMAT_NAME);
     }
 
     public RESTContentSpecCollectionV1 getContentSpecs_OTM() {
