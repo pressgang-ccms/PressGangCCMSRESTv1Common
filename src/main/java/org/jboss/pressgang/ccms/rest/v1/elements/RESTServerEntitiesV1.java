@@ -35,7 +35,8 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
     private Integer writerCategoryId;
 
     private Integer failPenguinBlobConstantId;
-    private Integer rocBookDTDBlobConstantId;
+    private Integer rocBook45DTDBlobConstantId;
+    private Integer docBook50RNGBlobConstantId;
 
     private Integer xmlFormattingStringConstantId;
     private Integer docBookElementsStringConstantId;
@@ -282,12 +283,20 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
         this.failPenguinBlobConstantId = failPenguinBlobConstantId;
     }
 
-    public Integer getRocBookDTDBlobConstantId() {
-        return rocBookDTDBlobConstantId;
+    public Integer getRocBook45DTDBlobConstantId() {
+        return rocBook45DTDBlobConstantId;
     }
 
-    public void setRocBookDTDBlobConstantId(Integer rocBookDTDBlobConstantId) {
-        this.rocBookDTDBlobConstantId = rocBookDTDBlobConstantId;
+    public void setRocBook45DTDBlobConstantId(Integer rocBook45DTDBlobConstantId) {
+        this.rocBook45DTDBlobConstantId = rocBook45DTDBlobConstantId;
+    }
+
+    public Integer getDocBook50RNGBlobConstantId() {
+        return docBook50RNGBlobConstantId;
+    }
+
+    public void setDocBook50RNGBlobConstantId(Integer docBook50RNGBlobConstantId) {
+        this.docBook50RNGBlobConstantId = docBook50RNGBlobConstantId;
     }
 
     /*
