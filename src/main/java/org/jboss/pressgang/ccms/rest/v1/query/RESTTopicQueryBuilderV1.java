@@ -16,6 +16,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTXMLFormat;
 import org.jboss.pressgang.ccms.rest.v1.query.base.RESTBaseQueryBuilderWithPropertiesV1;
 import org.jboss.pressgang.ccms.utils.structures.Pair;
 import org.joda.time.DateTime;
@@ -58,7 +59,8 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
 
             /* Topic XML */
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_XML_FILTER_VAR, CommonFilterConstants.TOPIC_XML_FILTER_VAR_DESC));
-            add(new Pair<String, String>(CommonFilterConstants.TOPIC_XML_FILTER_VAR, CommonFilterConstants.TOPIC_XML_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.TOPIC_XML_NOT_FILTER_VAR,
+                    CommonFilterConstants.TOPIC_XML_NOT_FILTER_VAR_DESC));
 
             /* Topic Edited in last days */
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_EDITED_IN_LAST_DAYS,
@@ -94,6 +96,9 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
                     CommonFilterConstants.TOPIC_HAS_BUGZILLA_BUGS_DESC));
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_HAS_NOT_BUGZILLA_BUGS,
                     CommonFilterConstants.TOPIC_HAS_NOT_BUGZILLA_BUGS_DESC));
+
+            /* Topic Format */
+            add(new Pair<String, String>(CommonFilterConstants.TOPIC_FORMAT_VAR, CommonFilterConstants.TOPIC_FORMAT_VAR_DESC));
 
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR,
                     CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR_DESC));
@@ -202,6 +207,15 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
 
     public void setNotTopicTitle(String notTopicTitle) {
         put(CommonFilterConstants.TOPIC_TITLE_NOT_FILTER_VAR, notTopicTitle);
+    }
+
+    public Integer getTopicFormat() {
+        final String topicFormat = get(CommonFilterConstants.TOPIC_FORMAT_VAR);
+        return topicFormat == null ? null : Integer.parseInt(topicFormat);
+    }
+
+    public void setTopicFormat(final RESTXMLFormat topicFormat) {
+        put(CommonFilterConstants.TOPIC_FORMAT_VAR, RESTXMLFormat.getXMLFormatId(topicFormat));
     }
 
     public String getTopicDescription() {
