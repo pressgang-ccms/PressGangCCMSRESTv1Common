@@ -65,18 +65,17 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
          * the historical topic's locale then it means that the topic has been pushed to zanata so link to the original pushed
          * translation. If neither of these rules apply then return null
          */
+        final String serverUrl = System.getProperty(CommonConstants.PRESS_GANG_UI_SYSTEM_PROPERTY);
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) {
-            final String serverUrl = System.getProperty(CommonConstants.PRESS_GANG_UI_SYSTEM_PROPERTY);
             return (serverUrl.endsWith(
                     "/") ? serverUrl : (serverUrl + "/")) + "#TranslatedTopicResultsAndTranslatedTopicView;query;zanataIds=" +
                     returnZanataId(source) + ";locale1=" + source.getLocale() + "1;";
         } else if (hasBeenPushedForTranslation(source)) {
-            final String serverUrl = System.getProperty(CommonConstants.PRESS_GANG_UI_SYSTEM_PROPERTY);
             return (serverUrl.endsWith(
                     "/") ? serverUrl : (serverUrl + "/")) + "#TranslatedTopicResultsAndTranslatedTopicView;query;zanataIds=" +
                     returnZanataId(source);
         } else {
-            return null;
+            return (serverUrl.endsWith("/") ? serverUrl : (serverUrl + "/")) + "#SearchResultsAndTopicView;query;topicIds=" + source.getTopicId();
         }
     }
 
