@@ -2271,6 +2271,13 @@ public interface RESTBaseInterfaceV1 {
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     @POST
+    @Path("/file/createormatch/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTMatchedFileV1 createOrMatchJSONFile(@QueryParam("expand") final String expand, final RESTFileV1 dataObject,
+                                              @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
     @Path("/files/create/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
