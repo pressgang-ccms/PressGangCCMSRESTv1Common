@@ -15,6 +15,7 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
     private byte[] fileData = null;
     private String locale = null;
     private String filename = null;
+    private char[] contentHash = null;
     /**
      * A list of the Envers revision numbers
      */
@@ -122,5 +123,13 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
         if (!(other instanceof RESTLanguageFileV1)) return false;
 
         return super.equals(other);
+    }
+
+    public char[] getContentHash() {
+        return contentHash;
+    }
+
+    public void setContentHash(char[] contentHash) {
+        this.contentHash = contentHash;
     }
 }
