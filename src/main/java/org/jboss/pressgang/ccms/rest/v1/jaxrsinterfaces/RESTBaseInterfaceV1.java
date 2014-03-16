@@ -45,6 +45,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFileV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTIntegerConstantV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTMatchedFileV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTMatchedImageV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTMatchedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
