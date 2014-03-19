@@ -60,6 +60,28 @@
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <version>1.5.1</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <file>src/main/java/org/jboss/pressgang/ccms/rest/v1/client/PressGangCCMSProxyFactoryV1.java</file>
+                    <replacements>
+                        <replacement>
+                            <token>APIVersionDecorator\("\d+[\.\d]+(-SNAPSHOT)?"\);</token>
+                            <value>APIVersionDecorator("${project.version}");</value>
+                        </replacement>
+                    </replacements>
+                </configuration>
+            </plugin>
         </plugins>
 
         <pluginManagement>

@@ -21,7 +21,7 @@ public class PressGangCCMSProxyFactoryV1 {
         jacksonProvider.configure(Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         providerFactory.registerProviderInstance(jacksonProvider);
 
-        final APIVersionDecorator versionDecorator = new APIVersionDecorator("1.4-SNAPSHOT");
+        final APIVersionDecorator versionDecorator = new APIVersionDecorator("1.5-SNAPSHOT");
         providerFactory.registerProviderInstance(versionDecorator);
 
         RegisterBuiltin.register(providerFactory);
