@@ -41,6 +41,10 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
     private Integer xmlFormattingStringConstantId;
     private Integer docBookElementsStringConstantId;
     private Integer topicTemplateStringConstantId;
+    private Integer abstractTopicTemplateStringConstantId;
+    private Integer authorGroupTopicTemplateStringConstantId;
+    private Integer legalNoticeTopicTemplateStringConstantId;
+    private Integer revisionHistoryTopicTemplateStringConstantId;
     private Integer contentSpecTemplateStringConstantId;
     private Integer articleStringConstantId;
     private Integer articleInfoStringConstantId;
@@ -325,6 +329,38 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
 
     public void setTopicTemplateStringConstantId(Integer topicTemplateStringConstantId) {
         this.topicTemplateStringConstantId = topicTemplateStringConstantId;
+    }
+
+    public Integer getAbstractTopicTemplateStringConstantId() {
+        return abstractTopicTemplateStringConstantId;
+    }
+
+    public void setAbstractTopicTemplateStringConstantId(Integer abstractTopicTemplateStringConstantId) {
+        this.abstractTopicTemplateStringConstantId = abstractTopicTemplateStringConstantId;
+    }
+
+    public Integer getAuthorGroupTopicTemplateStringConstantId() {
+        return authorGroupTopicTemplateStringConstantId;
+    }
+
+    public void setAuthorGroupTopicTemplateStringConstantId(Integer authorGroupTopicTemplateStringConstantId) {
+        this.authorGroupTopicTemplateStringConstantId = authorGroupTopicTemplateStringConstantId;
+    }
+
+    public Integer getLegalNoticeTopicTemplateStringConstantId() {
+        return legalNoticeTopicTemplateStringConstantId;
+    }
+
+    public void setLegalNoticeTopicTemplateStringConstantId(Integer legalNoticeTopicTemplateStringConstantId) {
+        this.legalNoticeTopicTemplateStringConstantId = legalNoticeTopicTemplateStringConstantId;
+    }
+
+    public Integer getRevisionHistoryTopicTemplateStringConstantId() {
+        return revisionHistoryTopicTemplateStringConstantId;
+    }
+
+    public void setRevisionHistoryTopicTemplateStringConstantId(Integer revisionHistoryTopicTemplateStringConstantId) {
+        this.revisionHistoryTopicTemplateStringConstantId = revisionHistoryTopicTemplateStringConstantId;
     }
 
     public Integer getContentSpecTemplateStringConstantId() {
