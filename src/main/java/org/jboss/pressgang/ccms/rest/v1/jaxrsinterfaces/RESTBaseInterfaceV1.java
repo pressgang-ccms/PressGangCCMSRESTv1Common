@@ -1352,13 +1352,13 @@ public interface RESTBaseInterfaceV1 {
     @Path("/topic/get/xml+xsl/{id}")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    String getJSONTopicXMLWithXSL(@PathParam("id") final Integer id, @QueryParam("includeTitle") final Boolean includeTitle);
+    String getJSONTopicXMLWithXSL(@PathParam("id") final Integer id, @QueryParam("includeTitle") final Boolean includeTitle, @QueryParam("condition") final String condition);
 
     @GET
     @Path("/topic/get/xml+xsl/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    String getJSONTopicRevisionXMLWithXSL(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision, @QueryParam("includeTitle") final Boolean includeTitle);
+    String getJSONTopicRevisionXMLWithXSL(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision, @QueryParam("includeTitle") final Boolean includeTitle, @QueryParam("condition") final String condition);
 
     @GET
     @Path("/topic/get/json/{id}/r/{rev}")
