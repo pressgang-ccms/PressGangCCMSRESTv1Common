@@ -1349,6 +1349,18 @@ public interface RESTBaseInterfaceV1 {
     RESTTopicV1 getJSONTopic(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @GET
+    @Path("/topic/get/xml+xsl/{id}")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String getJSONTopicXMLWithXSL(@PathParam("id") final Integer id, @QueryParam("includeTitle") final Boolean includeTitle);
+
+    @GET
+    @Path("/topic/get/xml+xsl/{id}/r/{rev}")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String getJSONTopicRevisionXMLWithXSL(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision, @QueryParam("includeTitle") final Boolean includeTitle);
+
+    @GET
     @Path("/topic/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
