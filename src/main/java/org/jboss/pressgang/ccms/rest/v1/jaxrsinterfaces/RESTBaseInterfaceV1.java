@@ -9,9 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.PathSegment;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
 import java.util.Map;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBlobConstantCollectionV1;
@@ -1352,13 +1350,13 @@ public interface RESTBaseInterfaceV1 {
     @Path("/topic/get/xml+xsl/{id}")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    String getJSONTopicXMLWithXSL(@PathParam("id") final Integer id, @QueryParam("includeTitle") final Boolean includeTitle, @QueryParam("condition") final String condition);
+    Response getJSONTopicXMLWithXSL(@Context final Request req, @PathParam("id") final Integer id, @QueryParam("includeTitle") final Boolean includeTitle, @QueryParam("condition") final String condition);
 
     @GET
     @Path("/topic/get/xml+xsl/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    String getJSONTopicRevisionXMLWithXSL(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision, @QueryParam("includeTitle") final Boolean includeTitle, @QueryParam("condition") final String condition);
+    Response getJSONTopicRevisionXMLWithXSL(@Context final Request req, @PathParam("id") final Integer id, @PathParam("rev") final Integer revision, @QueryParam("includeTitle") final Boolean includeTitle, @QueryParam("condition") final String condition);
 
     @GET
     @Path("/topic/get/json/{id}/r/{rev}")
