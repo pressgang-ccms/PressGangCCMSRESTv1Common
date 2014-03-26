@@ -1347,16 +1347,25 @@ public interface RESTBaseInterfaceV1 {
     RESTTopicV1 getJSONTopic(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @GET
-    @Path("/topic/get/xml+xsl/{id}")
+    @Path("/topic/get/xslt+xml/{id}")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    Response getJSONTopicXMLWithXSL(@Context final Request req, @PathParam("id") final Integer id, @QueryParam("includeTitle") final Boolean includeTitle, @QueryParam("condition") final String condition);
+    Response getJSONTopicXMLWithXSL(
+            @Context final Request req,
+            @PathParam("id") final Integer id,
+            @QueryParam("includeTitle") final Boolean includeTitle,
+            @QueryParam("csNodeId") final Integer contentSpecContext);
 
     @GET
-    @Path("/topic/get/xml+xsl/{id}/r/{rev}")
+    @Path("/topic/get/xslt+xml/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    Response getJSONTopicRevisionXMLWithXSL(@Context final Request req, @PathParam("id") final Integer id, @PathParam("rev") final Integer revision, @QueryParam("includeTitle") final Boolean includeTitle, @QueryParam("condition") final String condition);
+    Response getJSONTopicRevisionXMLWithXSL(
+            @Context final Request req,
+            @PathParam("id") final Integer id,
+            @PathParam("rev") final Integer revision,
+            @QueryParam("includeTitle") final Boolean includeTitle,
+            @QueryParam("csNodeId") final Integer contentSpecContext);
 
     @GET
     @Path("/topic/get/json/{id}/r/{rev}")
