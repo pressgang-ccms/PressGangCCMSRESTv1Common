@@ -1951,13 +1951,13 @@ public interface RESTBaseInterfaceV1 {
     @Path("/contentspecnode/get/xslt+xml/{id}")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    Response getXMLWithXSLContentSpecNode(@PathParam("id") final Integer id);
+    Response getXMLWithXSLContentSpecNode(@Context final Request req, @PathParam("id") final Integer id);
 
     @GET
     @Path("/contentspecnode/get/xslt+xml/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    Response getXMLWithXSLContentSpecNodeRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision);
+    Response getXMLWithXSLContentSpecNodeRevision(@Context final Request req, @PathParam("id") final Integer id, @PathParam("rev") final Integer revision);
 
     @GET
     @Path("/contentspecnodes/get/json/all")
