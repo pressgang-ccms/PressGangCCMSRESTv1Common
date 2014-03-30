@@ -10,6 +10,7 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
     private Integer authorGroupTagId;
     private Integer contentSpecTagId;
     private Integer frozenTagId;
+    private Integer infoTagId;
     private Integer internalOnlyTagId;
     private Integer legalNoticeTagId;
     private Integer obsoleteTagId;
@@ -43,8 +44,10 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
     private Integer topicTemplateStringConstantId;
     private Integer abstractTopicTemplateStringConstantId;
     private Integer authorGroupTopicTemplateStringConstantId;
+    private Integer infoTopicTemplateStringConstantId;
     private Integer legalNoticeTopicTemplateStringConstantId;
     private Integer revisionHistoryTopicTemplateStringConstantId;
+    private Integer sectionInfoTopicTemplateStringConstantId;
     private Integer contentSpecTemplateStringConstantId;
     private Integer articleStringConstantId;
     private Integer articleInfoStringConstantId;
@@ -97,6 +100,14 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
 
     public void setFrozenTagId(Integer frozenTagId) {
         this.frozenTagId = frozenTagId;
+    }
+
+    public Integer getInfoTagId() {
+        return infoTagId;
+    }
+
+    public void setInfoTagId(Integer infoTagId) {
+        this.infoTagId = infoTagId;
     }
 
     public Integer getInternalOnlyTagId() {
@@ -347,6 +358,14 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
         this.authorGroupTopicTemplateStringConstantId = authorGroupTopicTemplateStringConstantId;
     }
 
+    public Integer getInfoTopicTemplateStringConstantId() {
+        return infoTopicTemplateStringConstantId;
+    }
+
+    public void setInfoTopicTemplateStringConstantId(Integer infoTopicTemplateStringConstantId) {
+        this.infoTopicTemplateStringConstantId = infoTopicTemplateStringConstantId;
+    }
+
     public Integer getLegalNoticeTopicTemplateStringConstantId() {
         return legalNoticeTopicTemplateStringConstantId;
     }
@@ -361,6 +380,14 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
 
     public void setRevisionHistoryTopicTemplateStringConstantId(Integer revisionHistoryTopicTemplateStringConstantId) {
         this.revisionHistoryTopicTemplateStringConstantId = revisionHistoryTopicTemplateStringConstantId;
+    }
+
+    public Integer getSectionInfoTopicTemplateStringConstantId() {
+        return sectionInfoTopicTemplateStringConstantId;
+    }
+
+    public void setSectionInfoTopicTemplateStringConstantId(Integer sectionInfoTopicTemplateStringConstantId) {
+        this.sectionInfoTopicTemplateStringConstantId = sectionInfoTopicTemplateStringConstantId;
     }
 
     public Integer getContentSpecTemplateStringConstantId() {

@@ -12,8 +12,10 @@ import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.join.RESTCSRelatedN
 public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeCollectionV1, RESTCSNodeCollectionItemV1> {
     public static final String TRANSLATED_NODES_NAME = "translatedNodes_OTM";
     public static final String NEXT_NODE_NAME = "nextNode";
+    public static final String INFO_TOPIC_NODE_NAME = "infoTopicNode";
 
     protected RESTCSNodeV1 nextNode = null;
+    protected RESTCSInfoNodeV1 infoTopicNode = null;
     protected RESTCSRelatedNodeCollectionV1 relatedToNodes = null;
     protected RESTCSRelatedNodeCollectionV1 relatedFromNodes = null;
     protected RESTCSNodeCollectionV1 children_OTM = null;
@@ -93,6 +95,12 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
             } else {
                 nextNode = null;
             }
+
+            if (infoTopicNode != null) {
+                clone.infoTopicNode = infoTopicNode.clone(deepCopy);
+            } else {
+                infoTopicNode = null;
+            }
         } else {
             clone.relatedFromNodes = relatedFromNodes;
             clone.relatedToNodes = relatedToNodes;
@@ -100,6 +108,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
             clone.translatedNodes_OTM = translatedNodes_OTM;
             clone.revisions = revisions;
             clone.nextNode = nextNode;
+            clone.infoTopicNode = infoTopicNode;
         }
     }
 
@@ -201,6 +210,19 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
     public void explicitSetChildren_OTM(final RESTCSNodeCollectionV1 children_OTM) {
         this.children_OTM = children_OTM;
         setParameterToConfigured(CHILDREN_NAME);
+    }
+
+    public RESTCSInfoNodeV1 getInfoTopicNode() {
+        return infoTopicNode;
+    }
+
+    public void setInfoTopicNode(final RESTCSInfoNodeV1 infoTopicNode) {
+        this.infoTopicNode = infoTopicNode;
+    }
+
+    public void explicitSetInfoTopicNode(final RESTCSInfoNodeV1 infoTopicNode) {
+        this.infoTopicNode = infoTopicNode;
+        setParameterToConfigured(INFO_TOPIC_NODE_NAME);
     }
 
     @Override
