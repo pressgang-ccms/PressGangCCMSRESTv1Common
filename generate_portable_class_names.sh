@@ -3,7 +3,7 @@
 # A script to output the classes that need to be listed in ErraiApp.properties
 
 JAVA_EXTENSION=".java"
-BASE_PATH=/home/matthew/git/PressGangCCMSRESTv1Common/src/main/java/
+BASE_PATH=/home/lnewson/git/PressGangCCMSRESTv1Common/src/main/java/
 COLLECTIONS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/*
 COLLECTIONS_ITEMS=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/items/*
 COLLECTIONS_ITEMS_JOIN=${BASE_PATH}org/jboss/pressgang/ccms/rest/v1/collections/items/join/*

@@ -1347,31 +1347,6 @@ public interface RESTBaseInterfaceV1 {
     RESTTopicV1 getJSONTopic(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
 
     @GET
-    @Path("/topic/get/xml/{id}/xslt+xml")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    Response getJSONTopicXMLWithXSL(
-            @Context final Request req,
-            @PathParam("id") final Integer id,
-            @QueryParam("includeTitle") final Boolean includeTitle,
-            @QueryParam("condition") final String condition,
-            @QueryParam("entities") final String entities,
-            @QueryParam("baseUrl") final String baseUrl);
-
-    @GET
-    @Path("/topic/get/xml/{id}/r/{rev}/xslt+xml")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    Response getJSONTopicRevisionXMLWithXSL(
-            @Context final Request req,
-            @PathParam("id") final Integer id,
-            @PathParam("rev") final Integer revision,
-            @QueryParam("includeTitle") final Boolean includeTitle,
-            @QueryParam("condition") final String condition,
-            @QueryParam("entities") final String entities,
-            @QueryParam("baseUrl") final String baseUrl);
-
-    @GET
     @Path("/topic/get/json/{id}/r/{rev}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
@@ -1476,6 +1451,22 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     String getXMLTopicXMLNoContainer(@PathParam("id") final Integer id, @QueryParam("includeTitle") final Boolean includeTitle);
+
+    @GET
+    @Path("/topic/get/xml/{id}/xslt+xml")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    Response getXMLTopicXMLWithXSL(@PathParam("id") final Integer id, @QueryParam("includeTitle") final Boolean includeTitle,
+            @QueryParam("condition") final String condition, @QueryParam("entities") final String entities,
+            @QueryParam("baseUrl") final String baseUrl);
+
+    @GET
+    @Path("/topic/get/xml/{id}/r/{rev}/xslt+xml")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    Response getXMLTopicRevisionXMLWithXSL(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+            @QueryParam("includeTitle") final Boolean includeTitle, @QueryParam("condition") final String condition,
+            @QueryParam("entities") final String entities, @QueryParam("baseUrl") final String baseUrl);
 
     /* CSV FUNCTIONS */
     @GET
@@ -1953,13 +1944,13 @@ public interface RESTBaseInterfaceV1 {
     @Path("/contentspecnode/get/xml/{id}/xslt+xml")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    Response getXMLWithXSLContentSpecNode(@Context final Request req, @PathParam("id") final Integer id, @QueryParam("baseUrl") final String baseUrl);
+    Response getXMLWithXSLContentSpecNode(@PathParam("id") final Integer id, @QueryParam("baseUrl") final String baseUrl);
 
     @GET
     @Path("/contentspecnode/get/{id}/r/{rev}/xslt+xml")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    Response getXMLWithXSLContentSpecNodeRevision(@Context final Request req, @PathParam("id") final Integer id, @PathParam("rev") final Integer revision, @QueryParam("baseUrl") final String baseUrl);
+    Response getXMLWithXSLContentSpecNodeRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision, @QueryParam("baseUrl") final String baseUrl);
 
     @GET
     @Path("/contentspecnodes/get/json/all")
