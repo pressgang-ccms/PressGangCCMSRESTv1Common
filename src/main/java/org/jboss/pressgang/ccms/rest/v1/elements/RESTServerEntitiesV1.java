@@ -41,14 +41,18 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
 
     private Integer xmlFormattingStringConstantId;
     private Integer docBookElementsStringConstantId;
-    private Integer topicTemplateStringConstantId;
-    private Integer abstractTopicTemplateStringConstantId;
-    private Integer authorGroupTopicTemplateStringConstantId;
-    private Integer infoTopicTemplateStringConstantId;
-    private Integer legalNoticeTopicTemplateStringConstantId;
-    private Integer revisionHistoryTopicTemplateStringConstantId;
-    private Integer sectionInfoTopicTemplateStringConstantId;
-    private Integer contentSpecTemplateStringConstantId;
+    private Integer topicTemplateId;
+    private Integer docBook45AbstractTopicTemplateId;
+    private Integer docBook45AuthorGroupTopicTemplateId;
+    private Integer docBook45InfoTopicTemplateId;
+    private Integer docBook45LegalNoticeTopicTemplateId;
+    private Integer docBook45RevisionHistoryTopicTemplateId;
+    private Integer docBook50AbstractTopicTemplateId;
+    private Integer docBook50AuthorGroupTopicTemplateId;
+    private Integer docBook50InfoTopicTemplateId;
+    private Integer docBook50LegalNoticeTopicTemplateId;
+    private Integer docBook50RevisionHistoryTopicTemplateId;
+    private Integer contentSpecTemplateId;
     private Integer articleStringConstantId;
     private Integer articleInfoStringConstantId;
     private Integer authorGroupStringConstantId;
@@ -334,68 +338,100 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
         this.docBookElementsStringConstantId = docBookElementsStringConstantId;
     }
 
-    public Integer getTopicTemplateStringConstantId() {
-        return topicTemplateStringConstantId;
+    public Integer getTopicTemplateId() {
+        return topicTemplateId;
     }
 
-    public void setTopicTemplateStringConstantId(Integer topicTemplateStringConstantId) {
-        this.topicTemplateStringConstantId = topicTemplateStringConstantId;
+    public void setTopicTemplateId(Integer topicTemplateId) {
+        this.topicTemplateId = topicTemplateId;
     }
 
-    public Integer getAbstractTopicTemplateStringConstantId() {
-        return abstractTopicTemplateStringConstantId;
+    public Integer getDocBook45AbstractTopicTemplateId() {
+        return docBook45AbstractTopicTemplateId;
     }
 
-    public void setAbstractTopicTemplateStringConstantId(Integer abstractTopicTemplateStringConstantId) {
-        this.abstractTopicTemplateStringConstantId = abstractTopicTemplateStringConstantId;
+    public void setDocBook45AbstractTopicTemplateId(Integer docBook45AbstractTopicTemplateId) {
+        this.docBook45AbstractTopicTemplateId = docBook45AbstractTopicTemplateId;
     }
 
-    public Integer getAuthorGroupTopicTemplateStringConstantId() {
-        return authorGroupTopicTemplateStringConstantId;
+    public Integer getDocBook45AuthorGroupTopicTemplateId() {
+        return docBook45AuthorGroupTopicTemplateId;
     }
 
-    public void setAuthorGroupTopicTemplateStringConstantId(Integer authorGroupTopicTemplateStringConstantId) {
-        this.authorGroupTopicTemplateStringConstantId = authorGroupTopicTemplateStringConstantId;
+    public void setDocBook45AuthorGroupTopicTemplateId(Integer docBook45AuthorGroupTopicTemplateId) {
+        this.docBook45AuthorGroupTopicTemplateId = docBook45AuthorGroupTopicTemplateId;
     }
 
-    public Integer getInfoTopicTemplateStringConstantId() {
-        return infoTopicTemplateStringConstantId;
+    public Integer getDocBook45InfoTopicTemplateId() {
+        return docBook45InfoTopicTemplateId;
     }
 
-    public void setInfoTopicTemplateStringConstantId(Integer infoTopicTemplateStringConstantId) {
-        this.infoTopicTemplateStringConstantId = infoTopicTemplateStringConstantId;
+    public void setDocBook45InfoTopicTemplateId(Integer docBook45InfoTopicTemplateId) {
+        this.docBook45InfoTopicTemplateId = docBook45InfoTopicTemplateId;
     }
 
-    public Integer getLegalNoticeTopicTemplateStringConstantId() {
-        return legalNoticeTopicTemplateStringConstantId;
+    public Integer getDocBook45LegalNoticeTopicTemplateId() {
+        return docBook45LegalNoticeTopicTemplateId;
     }
 
-    public void setLegalNoticeTopicTemplateStringConstantId(Integer legalNoticeTopicTemplateStringConstantId) {
-        this.legalNoticeTopicTemplateStringConstantId = legalNoticeTopicTemplateStringConstantId;
+    public void setDocBook45LegalNoticeTopicTemplateId(Integer docBook45LegalNoticeTopicTemplateId) {
+        this.docBook45LegalNoticeTopicTemplateId = docBook45LegalNoticeTopicTemplateId;
     }
 
-    public Integer getRevisionHistoryTopicTemplateStringConstantId() {
-        return revisionHistoryTopicTemplateStringConstantId;
+    public Integer getDocBook45RevisionHistoryTopicTemplateId() {
+        return docBook45RevisionHistoryTopicTemplateId;
     }
 
-    public void setRevisionHistoryTopicTemplateStringConstantId(Integer revisionHistoryTopicTemplateStringConstantId) {
-        this.revisionHistoryTopicTemplateStringConstantId = revisionHistoryTopicTemplateStringConstantId;
+    public void setDocBook45RevisionHistoryTopicTemplateId(Integer docBook45RevisionHistoryTopicTemplateId) {
+        this.docBook45RevisionHistoryTopicTemplateId = docBook45RevisionHistoryTopicTemplateId;
     }
 
-    public Integer getSectionInfoTopicTemplateStringConstantId() {
-        return sectionInfoTopicTemplateStringConstantId;
+    public Integer getDocBook50AbstractTopicTemplateId() {
+        return docBook50AbstractTopicTemplateId;
     }
 
-    public void setSectionInfoTopicTemplateStringConstantId(Integer sectionInfoTopicTemplateStringConstantId) {
-        this.sectionInfoTopicTemplateStringConstantId = sectionInfoTopicTemplateStringConstantId;
+    public void setDocBook50AbstractTopicTemplateId(Integer docBook50AbstractTopicTemplateId) {
+        this.docBook50AbstractTopicTemplateId = docBook50AbstractTopicTemplateId;
     }
 
-    public Integer getContentSpecTemplateStringConstantId() {
-        return contentSpecTemplateStringConstantId;
+    public Integer getDocBook50AuthorGroupTopicTemplateId() {
+        return docBook50AuthorGroupTopicTemplateId;
     }
 
-    public void setContentSpecTemplateStringConstantId(Integer contentSpecTemplateStringConstantId) {
-        this.contentSpecTemplateStringConstantId = contentSpecTemplateStringConstantId;
+    public void setDocBook50AuthorGroupTopicTemplateId(Integer docBook50AuthorGroupTopicTemplateId) {
+        this.docBook50AuthorGroupTopicTemplateId = docBook50AuthorGroupTopicTemplateId;
+    }
+
+    public Integer getDocBook50InfoTopicTemplateId() {
+        return docBook50InfoTopicTemplateId;
+    }
+
+    public void setDocBook50InfoTopicTemplateId(Integer docBook50InfoTopicTemplateId) {
+        this.docBook50InfoTopicTemplateId = docBook50InfoTopicTemplateId;
+    }
+
+    public Integer getDocBook50LegalNoticeTopicTemplateId() {
+        return docBook50LegalNoticeTopicTemplateId;
+    }
+
+    public void setDocBook50LegalNoticeTopicTemplateId(Integer docBook50LegalNoticeTopicTemplateId) {
+        this.docBook50LegalNoticeTopicTemplateId = docBook50LegalNoticeTopicTemplateId;
+    }
+
+    public Integer getDocBook50RevisionHistoryTopicTemplateId() {
+        return docBook50RevisionHistoryTopicTemplateId;
+    }
+
+    public void setDocBook50RevisionHistoryTopicTemplateId(Integer docBook50RevisionHistoryTopicTemplateId) {
+        this.docBook50RevisionHistoryTopicTemplateId = docBook50RevisionHistoryTopicTemplateId;
+    }
+
+    public Integer getContentSpecTemplateId() {
+        return contentSpecTemplateId;
+    }
+
+    public void setContentSpecTemplateId(Integer contentSpecTemplateId) {
+        this.contentSpecTemplateId = contentSpecTemplateId;
     }
 
     public Integer getArticleStringConstantId() {
