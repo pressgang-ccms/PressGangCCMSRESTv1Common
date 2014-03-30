@@ -2367,7 +2367,7 @@ public interface RESTBaseInterfaceV1 {
 
     /* CONTENT SPEC TRANSLATION FUNCTIONS */
     @POST
-    @Path("/contentspec/translation/push/{id}")
+    @Path("/contentspec/translation/push/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     RESTProcessInformationV1 pushContentSpecForTranslation(@PathParam("id") Integer id, @QueryParam("server") String serverId,
@@ -2375,7 +2375,7 @@ public interface RESTBaseInterfaceV1 {
             @HeaderParam(RestConstant.HEADER_USERNAME) String username, @HeaderParam(RestConstant.HEADER_API_KEY) String apikey);
 
     @POST
-    @Path("/contentspec/translation/sync/{id}")
+    @Path("/contentspec/translation/sync/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     RESTProcessInformationV1 syncContentSpecTranslations(@PathParam("id") Integer id, @QueryParam("server") String serverId,
