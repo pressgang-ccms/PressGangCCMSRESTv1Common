@@ -1941,7 +1941,7 @@ public interface RESTBaseInterfaceV1 {
             @QueryParam("expand") final String expand);
 
     @GET
-    @Path("/contentspecnode/get/xml/{id}/xslt+xml")
+    @Path("/contentspecnode/get/{id}/xslt+xml")
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     Response getXMLWithXSLContentSpecNode(@PathParam("id") final Integer id, @QueryParam("baseUrl") final String baseUrl);
