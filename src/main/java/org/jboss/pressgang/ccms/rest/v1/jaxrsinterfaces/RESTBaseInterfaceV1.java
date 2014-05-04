@@ -117,10 +117,10 @@ public interface RESTBaseInterfaceV1 {
     /**
      * Initiates a ReIndex of the lucene database.
      */
-    @POST
-    @Path("/database/reindex")
+    @GET
+    @Path("/system/readonly")
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    void reIndexLuceneDatabase();
+    boolean isReadonly();
 
     /**
      * @return An example of a ExpandDataTrunk object serialized to JSON. This is for convenience, and has no impact on the
