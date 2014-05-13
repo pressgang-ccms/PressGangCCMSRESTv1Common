@@ -2372,7 +2372,8 @@ public interface RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     RESTProcessInformationV1 pushContentSpecForTranslation(@PathParam("id") Integer id, @QueryParam("server") String serverId,
             @QueryParam("expand") String expand, @QueryParam("name") String name, @QueryParam("contentSpecOnly") boolean contentSpecOnly,
-            @HeaderParam(RestConstant.HEADER_USERNAME) String username, @HeaderParam(RestConstant.HEADER_API_KEY) String apikey);
+            @QueryParam("disableCopyTrans") boolean disableCopyTrans, @HeaderParam(RestConstant.HEADER_USERNAME) String username,
+            @HeaderParam(RestConstant.HEADER_API_KEY) String apikey);
 
     @POST
     @Path("/contentspec/translation/sync/json/{id}")
