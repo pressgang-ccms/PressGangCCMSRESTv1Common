@@ -1876,26 +1876,46 @@ public interface RESTBaseInterfaceV1 {
 
     /* CONTENT SPEC SNAPSHOT FUNCTIONS */
     @POST
-    @Path("/contentspec/snapshot/create/json/{id}")
+    @Path("/contentspec/freeze/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTContentSpecV1 createJSONContentSpecSnapshot(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
-            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("message") final String message,
+    RESTContentSpecV1 freezeJSONContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("maxRevision") final Integer maxRevision,
+            @QueryParam("createNewSpec") boolean createNewSpec, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/contentspec/freeze/json+text/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTTextContentSpecV1 freezeJSONTextContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("maxRevision") final Integer maxRevision,
+            @QueryParam("createNewSpec") boolean createNewSpec, @QueryParam("message") final String message,
+            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/contentspec/freeze/text/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String freezeTEXTContentSpec(@PathParam("id") final Integer id,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("maxRevision") final Integer maxRevision,
+            @QueryParam("createNewSpec") boolean createNewSpec, @QueryParam("message") final String message,
             @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     @GET
-    @Path("/contentspec/snapshot/preview/text/{id}")
+    @Path("/contentspec/freeze/preview/text/{id}")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    String previewTEXTContentSpecSnapshot(@PathParam("id") final Integer id, @QueryParam("latestRevisions") boolean useLatestRevisions);
+    String previewTEXTContentSpecFreeze(@PathParam("id") final Integer id, @QueryParam("latestRevisions") boolean useLatestRevisions,
+            @QueryParam("maxRevision") final Integer maxRevision, @QueryParam("createNew") boolean createNewSpec);
 
-    @POST
-    @Path("/contentspec/snapshot/create/json+text/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    @Path("/contentspec/freeze/preview/text/{id}/r/{rev}")
+    @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTTextContentSpecV1 createJSONTextContentSpecSnapshot(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
-            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("message") final String message,
-            @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+    String previewTEXTContentSpecRevisionFreeze(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("maxRevision") final Integer maxRevision,
+            @QueryParam("createNew") boolean createNewSpec);
 
     /* CONTENT SPEC NODE FUNCTIONS */
     /* JSONP FUNCTIONS */
@@ -2372,7 +2392,8 @@ public interface RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     RESTProcessInformationV1 pushContentSpecForTranslation(@PathParam("id") Integer id, @QueryParam("server") String serverId,
             @QueryParam("expand") String expand, @QueryParam("name") String name, @QueryParam("contentSpecOnly") boolean contentSpecOnly,
-            @HeaderParam(RestConstant.HEADER_USERNAME) String username, @HeaderParam(RestConstant.HEADER_API_KEY) String apikey);
+            @QueryParam("disableCopyTrans") boolean disableCopyTrans, @HeaderParam(RestConstant.HEADER_USERNAME) String username,
+            @HeaderParam(RestConstant.HEADER_API_KEY) String apikey);
 
     @POST
     @Path("/contentspec/translation/sync/json/{id}")
