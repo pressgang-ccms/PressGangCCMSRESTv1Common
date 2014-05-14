@@ -674,18 +674,69 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
 
     /* CONTENT SPEC SNAPSHOT FUNCTIONS */
     @POST
-    @Path("/contentspec/snapshot/create/json/{id}")
+    @Path("/contentspec/freeze/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTContentSpecV1 createJSONContentSpecSnapshot(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
-            @QueryParam("latestRevisions") boolean useLatestRevisions);
+    RESTContentSpecV1 freezeJSONContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("maxRevision") final Integer maxRevision,
+            @QueryParam("createNew") boolean createNewSpec);
 
     @POST
-    @Path("/contentspec/snapshot/create/json+text/{id}")
+    @Path("/contentspec/freeze/json+text/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTTextContentSpecV1 createJSONTextContentSpecSnapshot(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
-            @QueryParam("latestRevisions") boolean useLatestRevisions);
+    RESTTextContentSpecV1 freezeJSONTextContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("maxRevision") final Integer maxRevision,
+            @QueryParam("createNew") boolean createNewSpec);
+
+    @POST
+    @Path("/contentspec/freeze/text/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String freezeTEXTContentSpec(@PathParam("id") final Integer id,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("maxRevision") final Integer maxRevision,
+            @QueryParam("createNew") boolean createNewSpec);
+
+    @POST
+    @Path("/contentspec/freeze/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTContentSpecV1 freezeJSONContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("createNewSpec") boolean createNewSpec,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+            @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/contentspec/freeze/json+text/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTTextContentSpecV1 freezeJSONTextContentSpec(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("createNewSpec") boolean createNewSpec,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+            @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/contentspec/freeze/text/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String freezeTEXTContentSpec(@PathParam("id") final Integer id,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("createNewSpec") boolean createNewSpec,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag,
+            @QueryParam("userId") final String userId);
+
+    @GET
+    @Path("/contentspec/freeze/preview/text/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String previewTEXTContentSpecFreeze(@PathParam("id") final Integer id, @QueryParam("latestRevisions") boolean useLatestRevisions,
+            @QueryParam("createNew") boolean createNewSpec);
+
+    @GET
+    @Path("/contentspec/freeze/preview/text/{id}/r/{rev}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String previewTEXTContentSpecRevisionFreeze(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+            @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("createNew") boolean createNewSpec);
 
     /* CONTENT SPEC NODE FUNCTIONS */
 //    /* JSON FUNCTIONS */
