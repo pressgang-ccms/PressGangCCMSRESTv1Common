@@ -16,6 +16,7 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
     public static String DEFAULT_LOCALE_NAME = "defaultLocale";
     public static String UNDEFINED_SETTINGS_NAME = "undefinedSettings";
     public static String ZANATA_SETTINGS_NAME = "zanataSettings";
+    public static String READONLY_NAME = "readOnly";
 
     private String uiUrl;
     private List<Integer> docBookTemplateIds;
@@ -23,6 +24,7 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
     private List<String> locales;
     private String defaultLocale;
     private String docBuilderUrl;
+    private boolean readOnly;
     private RESTServerEntitiesV1 entities = new RESTServerEntitiesV1();
     private RESTServerUndefinedSettingCollectionV1 undefinedSettings;
     private RESTZanataServerSettingsCollectionV1 zanataSettings;
@@ -153,6 +155,7 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
         clone.docBookTemplateIds = docBookTemplateIds == null ? null : new ArrayList<Integer>(docBookTemplateIds);
         clone.seoCategoryIds = seoCategoryIds == null ? null : new ArrayList<Integer>(seoCategoryIds);
         clone.locales = locales == null ? null : new ArrayList<String>(locales);
+        clone.readOnly = readOnly;
 
         if (deepCopy) {
             if (entities != null) {
@@ -179,5 +182,18 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
             clone.undefinedSettings = undefinedSettings;
             clone.zanataSettings = zanataSettings;
         }
+    }
+
+    public boolean isReadOnly() {
+        return readOnly;
+    }
+
+    public void setReadOnly(final boolean readOnly) {
+        this.readOnly = readOnly;
+    }
+
+    public void explicitSetReadOnly(final boolean readOnly) {
+        this.readOnly = readOnly;
+        setParameterToConfigured(READONLY_NAME);
     }
 }
