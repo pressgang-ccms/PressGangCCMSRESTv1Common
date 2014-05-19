@@ -100,8 +100,6 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
             /* Topic Format */
             add(new Pair<String, String>(CommonFilterConstants.TOPIC_FORMAT_VAR, CommonFilterConstants.TOPIC_FORMAT_VAR_DESC));
 
-           /* add(new Pair<String, String>(CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR,
-                    CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR_DESC));*/
             add(new Pair<String, String>(CommonFilterConstants.STARTDATE_FILTER_VAR,
                     CommonFilterConstants.STARTDATE_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.ENDDATE_FILTER_VAR,
@@ -301,14 +299,6 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
     public void setHasIncomingRelationships(final Boolean hasIncomingRelationships) {
         put(CommonFilterConstants.TOPIC_HAS_INCOMING_RELATIONSHIPS, hasIncomingRelationships);
     }
-
-    /*public String getTopicTextSearch() {
-        return get(CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR);
-    }
-
-    public void setTopicTextSearch(final String topicTextSearch) {
-        put(CommonFilterConstants.TOPIC_TEXT_SEARCH_FILTER_VAR, topicTextSearch);
-    }*/
 
     public Boolean getHasXMLErrors() {
         final String hasXMLErrors = get(CommonFilterConstants.TOPIC_HAS_XML_ERRORS);
