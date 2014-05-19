@@ -17,6 +17,7 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
     public static String UNDEFINED_SETTINGS_NAME = "undefinedSettings";
     public static String ZANATA_SETTINGS_NAME = "zanataSettings";
     public static String READONLY_NAME = "readOnly";
+    public static String JMS_UPDATE_FREQUENCY  = "jmsUpdateFrequency";
 
     private String uiUrl;
     private List<Integer> docBookTemplateIds;
@@ -25,6 +26,7 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
     private String defaultLocale;
     private String docBuilderUrl;
     private boolean readOnly;
+    private int jmsUpdateFrequency;
     private RESTServerEntitiesV1 entities = new RESTServerEntitiesV1();
     private RESTServerUndefinedSettingCollectionV1 undefinedSettings;
     private RESTZanataServerSettingsCollectionV1 zanataSettings;
@@ -195,5 +197,18 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
     public void explicitSetReadOnly(final boolean readOnly) {
         this.readOnly = readOnly;
         setParameterToConfigured(READONLY_NAME);
+    }
+
+    public int getJmsUpdateFrequency() {
+        return jmsUpdateFrequency;
+    }
+
+    public void setJmsUpdateFrequency(final int jmsUpdateFrequency) {
+        this.jmsUpdateFrequency = jmsUpdateFrequency;
+    }
+
+    public void explicitSetJmsUpdateFrequency(final int jmsUpdateFrequency) {
+        this.jmsUpdateFrequency = jmsUpdateFrequency;
+        setParameterToConfigured(JMS_UPDATE_FREQUENCY);
     }
 }
