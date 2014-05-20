@@ -158,6 +158,7 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
         clone.seoCategoryIds = seoCategoryIds == null ? null : new ArrayList<Integer>(seoCategoryIds);
         clone.locales = locales == null ? null : new ArrayList<String>(locales);
         clone.readOnly = readOnly;
+        clone.jmsUpdateFrequency = jmsUpdateFrequency;
 
         if (deepCopy) {
             if (entities != null) {
