@@ -154,7 +154,7 @@ public interface RESTBaseInterfaceV1 {
     @POST
     @Path("/settings/update/json")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    @Consumes(MediaType.APPLICATION_JSON)
     RESTServerSettingsV1 updateJSONServerSettings(final RESTServerSettingsV1 settings);
 
     /* USER FUNCTIONS */
