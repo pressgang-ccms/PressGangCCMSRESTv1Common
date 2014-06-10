@@ -26,6 +26,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTUserCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
@@ -44,6 +45,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTextContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTranslatedCSNodeV1;
@@ -739,48 +741,48 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
             @QueryParam("latestRevisions") boolean useLatestRevisions, @QueryParam("createNew") boolean createNewSpec);
 
     /* CONTENT SPEC NODE FUNCTIONS */
-//    /* JSON FUNCTIONS */
-//    @POST
-//    @Path("/contentspecnode/update/json")
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public RESTCSNodeV1 updateJSONContentSpecNode(@QueryParam("expand") final String expand,
-//            final RESTCSNodeV1 dataObject);
-//
-//    @POST
-//    @Path("/contentspecnodes/update/json")
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public RESTCSNodeCollectionV1 updateJSONContentSpecNodes(@QueryParam("expand") final String expand,
-//            final RESTCSNodeCollectionV1 dataObjects);
-//
-//    @POST
-//    @Path("/contentspecnode/create/json")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    public RESTCSNodeV1 createJSONContentSpecNode(@QueryParam("expand") final String expand,
-//            final RESTCSNodeV1 dataObject);
-//
-//    @POST
-//    @Path("/contentspecnodes/create/json")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    public RESTCSNodeCollectionV1 createJSONContentSpecNodes(@QueryParam("expand") final String expand,
-//            final RESTCSNodeCollectionV1 dataObjects);
-//
-//    @DELETE
-//    @Path("/contentspecnode/delete/json/{id}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-//    public RESTCSNodeV1 deleteJSONContentSpecNode(@PathParam("id") final Integer id,
-//            @QueryParam("expand") final String expand);
-//
-//    @DELETE
-//    @Path("/contentspecnodes/delete/json/{ids}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-//    public RESTCSNodeCollectionV1 deleteJSONContentSpecNodes(@PathParam("ids") final PathSegment ids,
-//            @QueryParam("expand") final String expand);
+    /* JSON FUNCTIONS */
+    @POST
+    @Path("/contentspecnode/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTCSNodeV1 updateJSONContentSpecNode(@QueryParam("expand") final String expand,
+            final RESTCSNodeV1 dataObject);
+
+    @POST
+    @Path("/contentspecnodes/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    public RESTCSNodeCollectionV1 updateJSONContentSpecNodes(@QueryParam("expand") final String expand,
+            final RESTCSNodeCollectionV1 dataObjects);
+
+    @POST
+    @Path("/contentspecnode/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTCSNodeV1 createJSONContentSpecNode(@QueryParam("expand") final String expand,
+            final RESTCSNodeV1 dataObject);
+
+    @POST
+    @Path("/contentspecnodes/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    public RESTCSNodeCollectionV1 createJSONContentSpecNodes(@QueryParam("expand") final String expand,
+            final RESTCSNodeCollectionV1 dataObjects);
+
+    @DELETE
+    @Path("/contentspecnode/delete/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTCSNodeV1 deleteJSONContentSpecNode(@PathParam("id") final Integer id,
+            @QueryParam("expand") final String expand);
+
+    @DELETE
+    @Path("/contentspecnodes/delete/json/{ids}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    public RESTCSNodeCollectionV1 deleteJSONContentSpecNodes(@PathParam("ids") final PathSegment ids,
+            @QueryParam("expand") final String expand);
 
     /* CONTENT SPEC TRANSLATED NODE FUNCTIONS */
     /* JSON FUNCTIONS */
