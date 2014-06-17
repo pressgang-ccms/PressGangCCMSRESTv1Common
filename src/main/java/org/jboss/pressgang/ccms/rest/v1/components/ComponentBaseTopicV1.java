@@ -9,8 +9,10 @@ import java.util.TreeMap;
 
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTopicV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTXMLFormat;
 import org.jboss.pressgang.ccms.rest.v1.entities.join.RESTCategoryInTagV1;
 import org.jboss.pressgang.ccms.rest.v1.sort.TagV1NameComparator;
+import org.jboss.pressgang.ccms.utils.common.TopicUtilities;
 import org.jboss.pressgang.ccms.utils.common.XMLUtilities;
 import org.jboss.pressgang.ccms.utils.structures.NameIDSortMap;
 import org.slf4j.Logger;
@@ -46,7 +48,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
 
         Document document = null;
         try {
-            document = XMLUtilities.convertStringToDocument(source.getXml());
+            document = TopicUtilities.convertXMLStringToDocument(source.getXml(), RESTXMLFormat.getXMLFormatId(source.getXmlFormat()));
         } catch (Exception ex) {
             LOG.debug("Topic XML is not valid", ex);
         }
@@ -73,7 +75,7 @@ public abstract class ComponentBaseTopicV1 extends ComponentBaseRESTEntityWithPr
 
         Document document = null;
         try {
-            document = XMLUtilities.convertStringToDocument(source.getXml());
+            document = TopicUtilities.convertXMLStringToDocument(source.getXml(), RESTXMLFormat.getXMLFormatId(source.getXmlFormat()));
         } catch (Exception ex) {
             LOG.debug("Topic XML is not valid", ex);
         }
