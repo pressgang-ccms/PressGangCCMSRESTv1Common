@@ -37,6 +37,14 @@ public class RESTCSNodeQueryBuilderV1 extends RESTBaseQueryBuilderWithProperties
                     CommonFilterConstants.CONTENT_SPEC_NODE_ENTITY_ID_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_NODE_ENTITY_REVISION_FILTER_VAR,
                     CommonFilterConstants.CONTENT_SPEC_NODE_ENTITY_REVISION_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_ID_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_ID_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_REVISION_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_REVISION_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_NODE_ENTITY_IDS_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_NODE_ENTITY_IDS_FILTER_VAR_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_IDS_FILTER_VAR,
+                    CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_IDS_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_NODE_IDS_FILTER_VAR,
                     CommonFilterConstants.CONTENT_SPEC_NODE_IDS_FILTER_VAR_DESC));
             add(new Pair<String, String>(CommonFilterConstants.CONTENT_SPEC_NODE_TITLE_FILTER_VAR,
@@ -111,6 +119,44 @@ public class RESTCSNodeQueryBuilderV1 extends RESTBaseQueryBuilderWithProperties
 
     public void setCSNodeEntityRevision(final Integer csNodeEntityRevision) {
         put(CommonFilterConstants.CONTENT_SPEC_NODE_ENTITY_REVISION_FILTER_VAR, csNodeEntityRevision);
+    }
+
+    public Integer getCSNodeInfoTopicId() {
+        final String entityId = get(CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_ID_FILTER_VAR);
+        return entityId == null ? null : Integer.parseInt(entityId);
+    }
+
+    public void setCSNodeInfoTopicId(final Integer csNodeInfoTopicId) {
+        put(CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_ID_FILTER_VAR, csNodeInfoTopicId);
+    }
+
+    public Integer getCSNodeInfoTopicRevision() {
+        final String entityRevision = get(CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_REVISION_FILTER_VAR);
+        return entityRevision == null ? null : Integer.parseInt(entityRevision);
+    }
+
+    public void setCSNodeInfoTopicRevision(final Integer csNodeInfoTopicRevision) {
+        put(CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_REVISION_FILTER_VAR, csNodeInfoTopicRevision);
+    }
+
+    public List<Integer> getCSNodeEntityIds() {
+        final String csNodeEntityIdsString = get(CommonFilterConstants.CONTENT_SPEC_NODE_ENTITY_IDS_FILTER_VAR);
+
+        return getIntegerList(csNodeEntityIdsString);
+    }
+
+    public void setCSNodeEntityIds(final List<Integer> csNodeEntityIds) {
+        put(CommonFilterConstants.CONTENT_SPEC_NODE_ENTITY_IDS_FILTER_VAR, csNodeEntityIds);
+    }
+
+    public List<Integer> getCSNodeInfoTopicIds() {
+        final String csNodeInfoTopicIdsString = get(CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_IDS_FILTER_VAR);
+
+        return getIntegerList(csNodeInfoTopicIdsString);
+    }
+
+    public void setCSNodeInfoTopicIds(final List<Integer> csNodeEntityIds) {
+        put(CommonFilterConstants.CONTENT_SPEC_NODE_INFO_TOPIC_IDS_FILTER_VAR, csNodeEntityIds);
     }
 
     public List<Integer> getContentSpecIds() {

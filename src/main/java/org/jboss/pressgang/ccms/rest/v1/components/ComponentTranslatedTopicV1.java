@@ -154,20 +154,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return source.getTranslatedTopicId();
 
         /* Check that a translation exists that is the same locale as the base topic */
-        RESTTranslatedTopicV1 pushedTranslatedTopic = null;
-        if (source.getTopic().getTranslatedTopics_OTM() != null && source.getTopic().getTranslatedTopics_OTM().getItems() != null) {
-            final Integer topicRev = source.getTopicRevision();
-            final List<RESTTranslatedTopicV1> topics = source.getTopic().getTranslatedTopics_OTM().returnItems();
-            for (final RESTTranslatedTopicV1 translatedTopic : topics) {
-                if (translatedTopic.getLocale().equals(source.getTopic().getLocale()) &&
-                        // Ensure that the topic revision is less than or equal to the source revision
-                        (topicRev == null || translatedTopic.getTopicRevision() <= topicRev) &&
-                        // Check if this translated topic is a higher revision then the current stored translation
-                        (pushedTranslatedTopic == null || pushedTranslatedTopic.getTopicRevision() < translatedTopic.getTopicRevision()))
-                    pushedTranslatedTopic = translatedTopic;
-            }
-        }
-
+        final RESTTranslatedTopicV1 pushedTranslatedTopic = returnPushedTranslatedTopic(source);
         return pushedTranslatedTopic == null ? null : pushedTranslatedTopic.getTranslatedTopicId();
     }
 
@@ -197,15 +184,8 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) return true;
 
         /* Check that a translation exists that is the same locale as the base topic */
-        boolean baseTranslationExists = false;
-        if (source.getTopic().getTranslatedTopics_OTM() != null && source.getTopic().getTranslatedTopics_OTM().getItems() != null) {
-            final List<RESTTranslatedTopicV1> topics = source.getTopic().getTranslatedTopics_OTM().returnItems();
-            for (final RESTTranslatedTopicV1 translatedTopic : topics) {
-                if (translatedTopic.getLocale().equals(source.getTopic().getLocale())) baseTranslationExists = true;
-            }
-        }
-
-        return baseTranslationExists;
+        final RESTTranslatedTopicV1 pushedTranslatedTopic = returnPushedTranslatedTopic(source);
+        return pushedTranslatedTopic != null;
     }
 
     @Override

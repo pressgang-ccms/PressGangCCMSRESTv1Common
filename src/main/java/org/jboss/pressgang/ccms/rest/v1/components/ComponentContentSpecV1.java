@@ -19,11 +19,15 @@
 
 package org.jboss.pressgang.ccms.rest.v1.components;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.util.List;
 
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTTextContentSpecV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.base.RESTBaseContentSpecV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums.RESTCSNodeTypeV1;
 
 public class ComponentContentSpecV1 {
@@ -61,10 +65,26 @@ public class ComponentContentSpecV1 {
 
      @param source The spec to fix
      */
-    public static void fixDisplayedText(final RESTTextContentSpecV1 source)
-    {
+    public static void fixDisplayedText(final RESTTextContentSpecV1 source) {
         if (source.getFailedContentSpec() != null) {
             source.setText(source.getFailedContentSpec());
         }
+    }
+
+    public boolean hasTag(final Integer tagID) {
+        return hasTag(source, tagID);
+    }
+
+    public static boolean hasTag(final RESTBaseContentSpecV1<?, ?, ?> source, final Integer tagID) {
+        checkArgument(source != null, "The source parameter can not be null");
+
+        if (source.getTags() != null && source.getTags().getItems() != null) {
+            final List<RESTTagV1> tags = source.getTags().returnItems();
+            for (final RESTTagV1 tag : tags) {
+                if (tag.getId().equals(tagID)) return true;
+            }
+        }
+
+        return false;
     }
 }

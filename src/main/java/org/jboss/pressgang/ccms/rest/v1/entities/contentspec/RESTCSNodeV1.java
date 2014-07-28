@@ -32,6 +32,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
     public static final String TRANSLATED_NODES_NAME = "translatedNodes_OTM";
     public static final String NEXT_NODE_NAME = "nextNode";
     public static final String INFO_TOPIC_NODE_NAME = "infoTopicNode";
+    public static final String FIXED_URL_NAME = "fixedUrl";
 
     protected RESTCSNodeV1 nextNode = null;
     protected RESTCSInfoNodeV1 infoTopicNode = null;
@@ -40,6 +41,7 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
     protected RESTCSNodeCollectionV1 children_OTM = null;
     private RESTTranslatedCSNodeCollectionV1 translatedNodes_OTM = null;
     private RESTCSNodeCollectionV1 revisions = null;
+    private String fixedUrl = null;
 
     public RESTCSNodeV1() {
 
@@ -72,6 +74,8 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
 
     public void cloneInto(final RESTCSNodeV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
+
+        clone.fixedUrl = fixedUrl;
 
         if (deepCopy) {
             if (relatedFromNodes != null) {
@@ -242,6 +246,19 @@ public class RESTCSNodeV1 extends RESTBaseCSNodeV1<RESTCSNodeV1, RESTCSNodeColle
     public void explicitSetInfoTopicNode(final RESTCSInfoNodeV1 infoTopicNode) {
         this.infoTopicNode = infoTopicNode;
         setParameterToConfigured(INFO_TOPIC_NODE_NAME);
+    }
+
+    public String getFixedUrl() {
+        return fixedUrl;
+    }
+
+    public void setFixedUrl(String fixedUrl) {
+        this.fixedUrl = fixedUrl;
+    }
+
+    public void explicitSetFixedUrl(final String fixedUrl) {
+        this.fixedUrl = fixedUrl;
+        setParameterToConfigured(FIXED_URL_NAME);
     }
 
     @Override

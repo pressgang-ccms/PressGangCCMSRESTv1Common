@@ -577,7 +577,80 @@ public class RESTServerEntitiesV1 extends RESTBaseElementWithConfiguredParameter
     @Override
     public RESTServerEntitiesV1 clone(boolean deepCopy) {
         final RESTServerEntitiesV1 clone = new RESTServerEntitiesV1();
-        cloneInto(clone);
+        cloneInto(clone, deepCopy);
         return clone;
+    }
+
+    public void cloneInto(final RESTServerEntitiesV1 clone, final boolean deepCopy) {
+        clone.abstractTagId = abstractTagId;
+        clone.authorGroupTagId = authorGroupTagId;
+        clone.contentSpecTagId = contentSpecTagId;
+        clone.frozenTagId = frozenTagId;
+        clone.infoTagId = infoTagId;
+        clone.internalOnlyTagId = internalOnlyTagId;
+        clone.legalNoticeTagId = legalNoticeTagId;
+        clone.obsoleteTagId = obsoleteTagId;
+        clone.reviewTagId = reviewTagId;
+        clone.revisionHistoryTagId = revisionHistoryTagId;
+        clone.taskTagId = taskTagId;
+
+        clone.addedByPropertyTagId = addedByPropertyTagId;
+        clone.bugLinksLastValidatedPropertyTagId = bugLinksLastValidatedPropertyTagId;
+        clone.cspIdPropertyTagId = cspIdPropertyTagId;
+        clone.emailPropertyTagId = emailPropertyTagId;
+        clone.firstNamePropertyTagId = firstNamePropertyTagId;
+        clone.fixedUrlPropertyTagId = fixedUrlPropertyTagId;
+        clone.orgPropertyTagId = orgPropertyTagId;
+        clone.orgDivisionPropertyTagId = orgDivisionPropertyTagId;
+        clone.originalFileNamePropertyTagId = originalFileNamePropertyTagId;
+        clone.pressGangWebsitePropertyTagId = pressGangWebsitePropertyTagId;
+        clone.readOnlyPropertyTagId = readOnlyPropertyTagId;
+        clone.surnamePropertyTagId = surnamePropertyTagId;
+        clone.tagStylePropertyTagId = tagStylePropertyTagId;
+
+        clone.typeCategoryId = typeCategoryId;
+        clone.writerCategoryId = writerCategoryId;
+
+        clone.failPenguinBlobConstantId = failPenguinBlobConstantId;
+        clone.rocBook45DTDBlobConstantId = rocBook45DTDBlobConstantId;
+        clone.docBook50RNGBlobConstantId = docBook50RNGBlobConstantId;
+
+        clone.xmlFormattingStringConstantId = xmlFormattingStringConstantId;
+        clone.docBookElementsStringConstantId = docBookElementsStringConstantId;
+        clone.topicTemplateId = topicTemplateId;
+        clone.docBook45AbstractTopicTemplateId = docBook45AbstractTopicTemplateId;
+        clone.docBook45AuthorGroupTopicTemplateId = docBook45AuthorGroupTopicTemplateId;
+        clone.docBook45InfoTopicTemplateId = docBook45InfoTopicTemplateId;
+        clone.docBook45LegalNoticeTopicTemplateId = docBook45LegalNoticeTopicTemplateId;
+        clone.docBook45RevisionHistoryTopicTemplateId = docBook45RevisionHistoryTopicTemplateId;
+        clone.docBook50AbstractTopicTemplateId = docBook50AbstractTopicTemplateId;
+        clone.docBook50AuthorGroupTopicTemplateId = docBook50AuthorGroupTopicTemplateId;
+        clone.docBook50InfoTopicTemplateId = docBook50InfoTopicTemplateId;
+        clone.docBook50LegalNoticeTopicTemplateId = docBook50LegalNoticeTopicTemplateId;
+        clone.docBook50RevisionHistoryTopicTemplateId = docBook50RevisionHistoryTopicTemplateId;
+        clone.contentSpecTemplateId = contentSpecTemplateId;
+        clone.articleStringConstantId = articleStringConstantId;
+        clone.articleInfoStringConstantId = articleInfoStringConstantId;
+        clone.authorGroupStringConstantId = authorGroupStringConstantId;
+        clone.bookStringConstantId = bookStringConstantId;
+        clone.bookInfoStringConstantId = bookInfoStringConstantId;
+        clone.pomStringConstantId = pomStringConstantId;
+        clone.prefaceStringConstantId = prefaceStringConstantId;
+        clone.publicanCfgStringConstantId = publicanCfgStringConstantId;
+        clone.revisionHistoryStringConstantId = revisionHistoryStringConstantId;
+        clone.emptyTopicStringConstantId = emptyTopicStringConstantId;
+        clone.invalidInjectionStringConstantId = invalidInjectionStringConstantId;
+        clone.invalidTopicStringConstantId = invalidTopicStringConstantId;
+        
+        if (deepCopy) {
+            if (undefinedEntities != null) {
+                clone.undefinedEntities = new RESTServerUndefinedEntityCollectionV1();
+                undefinedEntities.cloneInto(clone.undefinedEntities, deepCopy);
+            } else {
+                clone.undefinedEntities = null;
+            }
+        } else {
+            clone.undefinedEntities = undefinedEntities;
+        }
     }
 }
