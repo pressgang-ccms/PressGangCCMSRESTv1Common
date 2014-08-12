@@ -25,13 +25,13 @@ import java.util.List;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTServerUndefinedSettingCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTZanataServerSettingsCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementWithConfiguredParametersV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTLocaleV1;
 
 public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParametersV1<RESTServerSettingsV1> {
     public static String UI_URL_NAME = "uiUrl";
     public static String DOCBUILDER_URL_NAME = "docBuilderUrl";
     public static String DOCBOOK_TEMPLATES_NAME = "docBookTemplateIds";
     public static String SEO_CATEGORIES_NAME = "seoCategoryIds";
-    public static String LOCALES_NAME = "locales";
     public static String DEFAULT_LOCALE_NAME = "defaultLocale";
     public static String UNDEFINED_SETTINGS_NAME = "undefinedSettings";
     public static String ZANATA_SETTINGS_NAME = "zanataSettings";
@@ -41,8 +41,7 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
     private String uiUrl;
     private List<Integer> docBookTemplateIds;
     private List<Integer> seoCategoryIds;
-    private List<String> locales;
-    private String defaultLocale;
+    private RESTLocaleV1 defaultLocale;
     private String docBuilderUrl;
     private boolean readOnly;
     private int jmsUpdateFrequency;
@@ -89,28 +88,15 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
         setParameterToConfigured(SEO_CATEGORIES_NAME);
     }
 
-    public List<String> getLocales() {
-        return locales;
-    }
-
-    public void setLocales(List<String> locales) {
-        this.locales = locales;
-    }
-
-    public void explicitSetLocales(List<String> locales) {
-        this.locales = locales;
-        setParameterToConfigured(LOCALES_NAME);
-    }
-
-    public String getDefaultLocale() {
+    public RESTLocaleV1 getDefaultLocale() {
         return defaultLocale;
     }
 
-    public void setDefaultLocale(String defaultLocale) {
+    public void setDefaultLocale(RESTLocaleV1 defaultLocale) {
         this.defaultLocale = defaultLocale;
     }
 
-    public void explicitSetDefaultLocale(String defaultLocale) {
+    public void explicitSetDefaultLocale(RESTLocaleV1 defaultLocale) {
         this.defaultLocale = defaultLocale;
         setParameterToConfigured(DEFAULT_LOCALE_NAME);
     }
@@ -171,11 +157,9 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
 
     public void cloneInto(final RESTServerSettingsV1 clone, boolean deepCopy) {
         clone.uiUrl = uiUrl;
-        clone.defaultLocale = defaultLocale;
         clone.docBuilderUrl = docBuilderUrl;
         clone.docBookTemplateIds = docBookTemplateIds == null ? null : new ArrayList<Integer>(docBookTemplateIds);
         clone.seoCategoryIds = seoCategoryIds == null ? null : new ArrayList<Integer>(seoCategoryIds);
-        clone.locales = locales == null ? null : new ArrayList<String>(locales);
         clone.readOnly = readOnly;
         clone.jmsUpdateFrequency = jmsUpdateFrequency;
 
@@ -184,6 +168,12 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
                 clone.entities = entities.clone(deepCopy);
             } else {
                 clone.entities = null;
+            }
+
+            if (defaultLocale != null) {
+                clone.defaultLocale = defaultLocale.clone(deepCopy);
+            } else {
+                clone.defaultLocale = null;
             }
 
             if (undefinedSettings != null) {
@@ -201,6 +191,7 @@ public class RESTServerSettingsV1 extends RESTBaseElementWithConfiguredParameter
             }
         } else {
             clone.entities = entities;
+            clone.defaultLocale = defaultLocale;
             clone.undefinedSettings = undefinedSettings;
             clone.zanataSettings = zanataSettings;
         }

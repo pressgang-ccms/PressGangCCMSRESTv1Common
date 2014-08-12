@@ -28,7 +28,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.PathSegment;
+import javax.ws.rs.core.Response;
 import java.util.Map;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTBlobConstantCollectionV1;
@@ -37,6 +39,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTFileCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTImageCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTIntegerConstantCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTLocaleCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTProcessInformationCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTProjectCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTPropertyCategoryCollectionV1;
@@ -62,6 +65,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFileV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTIntegerConstantV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTLocaleV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTMatchedFileV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTMatchedImageV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTMatchedTopicV1;
@@ -175,6 +179,76 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     RESTServerSettingsV1 updateJSONServerSettings(final RESTServerSettingsV1 settings);
+
+    /* LOCALE FUNCTIONS */
+    /* JSONP FUNCTIONS */
+    @GET
+    @Path("/" + RESTv1Constants.LOCALE_URL_NAME + "/get/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String getJSONPLocale(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/locale/get/jsonp/{id}/r/{rev}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String getJSONPLocaleRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+            @QueryParam("expand") final String expand, @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/locales/get/jsonp/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String getJSONPLocales(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback);
+
+    /* JSON FUNCTIONS */
+    @GET
+    @Path("/locale/get/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTLocaleV1 getJSONLocale(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
+
+    @GET
+    @Path("/user/get/json/{id}/r/{rev}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTLocaleV1 getJSONLocaleRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
+            @QueryParam("expand") final String expand);
+
+    @GET
+    @Path("/locales/get/json/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTLocaleCollectionV1 getJSONLocales(@QueryParam("expand") final String expand);
+
+    @POST
+    @Path("/locale/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    RESTLocaleV1 updateJSONLocale(@QueryParam("expand") final String expand, final RESTLocaleV1 dataObject,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/locales/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    RESTLocaleCollectionV1 updateJSONLocales(@QueryParam("expand") final String expand, final RESTLocaleCollectionV1 dataObjects,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/locale/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTLocaleV1 createJSONLocale(@QueryParam("expand") final String expand, final RESTLocaleV1 dataObject,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/locales/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTLocaleCollectionV1 createJSONLocales(@QueryParam("expand") final String expand, final RESTLocaleCollectionV1 dataObjects,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     /* USER FUNCTIONS */
     /* JSONP FUNCTIONS */

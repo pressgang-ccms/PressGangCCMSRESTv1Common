@@ -65,7 +65,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         checkArgument(source != null, "The source parameter can not be null");
 
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) {
-            return "Translation " + returnZanataId(source) + " " + source.getLocale();
+            return "Translation " + returnZanataId(source) + " " + source.getLocale().getValue();
         } else {
             return ComponentTopicV1.returnBugzillaBuildId(source.getTopic());
         }
@@ -88,7 +88,7 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
         if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) {
             return (serverUrl.endsWith(
                     "/") ? serverUrl : (serverUrl + "/")) + "#TranslatedTopicResultsAndTranslatedTopicView;query;zanataIds=" +
-                    returnZanataId(source) + ";locale1=" + source.getLocale() + "1;";
+                    returnZanataId(source) + ";locale1=" + source.getLocale().getValue() + "1;";
         } else if (hasBeenPushedForTranslation(source)) {
             return (serverUrl.endsWith(
                     "/") ? serverUrl : (serverUrl + "/")) + "#TranslatedTopicResultsAndTranslatedTopicView;query;zanataIds=" +
@@ -239,12 +239,12 @@ public class ComponentTranslatedTopicV1 extends ComponentBaseTopicV1 {
             if (!ComponentBaseTopicV1.returnIsDummyTopic(source)) {
                 final String zanataId = returnZanataId(source);
                 return zanataServerUrl + "webtrans/Application.html?project=" + zanataProject + "&amp;iteration=" + zanataVersion +
-                        "&amp;doc=" + zanataId + "&amp;localeId=" + source.getLocale() + "#view:doc;doc:" + zanataId;
+                        "&amp;doc=" + zanataId + "&amp;localeId=" + source.getLocale().getTranslationValue() + "#view:doc;doc:" + zanataId;
             } else if (hasBeenPushedForTranslation(source)) {
                 final RESTTranslatedTopicV1 pushedTranslatedTopic = returnPushedTranslatedTopic(source);
                 final String zanataId = returnZanataId(pushedTranslatedTopic);
                 return zanataServerUrl + "webtrans/Application.html?project=" + zanataProject + "&amp;iteration=" + zanataVersion +
-                        "&amp;doc=" + zanataId + "&amp;localeId=" + source.getLocale() + "#view:doc;doc:" + zanataId;
+                        "&amp;doc=" + zanataId + "&amp;localeId=" + source.getLocale().getTranslationValue() + "#view:doc;doc:" + zanataId;
             } else {
                 return null;
             }

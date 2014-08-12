@@ -236,7 +236,7 @@ public class RESTTranslatedTopicV1 extends RESTBaseTopicV1<RESTTranslatedTopicV1
         setParameterToConfigured(TRANSLATEDTOPICSTRING_NAME);
     }
 
-    public void explicitSetLocale(final String locale) {
+    public void explicitSetLocale(final RESTLocaleV1 locale) {
         setLocale(locale);
         setParameterToConfigured(LOCALE_NAME);
     }

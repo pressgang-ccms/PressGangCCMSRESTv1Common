@@ -36,6 +36,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTFileCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTImageCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTIntegerConstantCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTLocaleCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTProjectCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTPropertyCategoryCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTPropertyTagCollectionV1;
@@ -55,6 +56,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTFileV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTFilterV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTImageV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTIntegerConstantV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTLocaleV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyCategoryV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTPropertyTagV1;
@@ -84,6 +86,32 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_XML)
     @Consumes(MediaType.WILDCARD)
     String echoXML(@QueryParam("xml") final String xml);
+
+    /* LOCALES */
+    /* JSON FUNCTIONS */
+    @POST
+    @Path("/locale/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    RESTLocaleV1 updateJSONLocale(@QueryParam("expand") final String expand, final RESTLocaleV1 dataObject);
+
+    @POST
+    @Path("/locales/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    RESTLocaleCollectionV1 updateJSONLocales(@QueryParam("expand") final String expand, final RESTLocaleCollectionV1 dataObjects);
+
+    @POST
+    @Path("/locale/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTLocaleV1 createJSONLocale(@QueryParam("expand") final String expand, final RESTLocaleV1 dataObject);
+
+    @POST
+    @Path("/locales/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTLocaleCollectionV1 createJSONLocales(@QueryParam("expand") final String expand, final RESTLocaleCollectionV1 dataObjects);
 
     /* USERS */
     /* JSON FUNCTIONS */

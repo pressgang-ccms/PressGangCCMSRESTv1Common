@@ -36,7 +36,7 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
     private byte[] imageData = null;
     private byte[] thumbnail = null;
     private byte[] imageDataBase64 = null;
-    private String locale = null;
+    private RESTLocaleV1 locale = null;
     private String filename = null;
     private char[] contentHash = null;
     /**
@@ -71,8 +71,13 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
         clone.locale = locale;
 
         if (deepCopy) {
-            /* use arraycopy as a GWT compatible alternative to clone() */
+            if (locale != null) {
+                clone.locale = locale.clone(deepCopy);
+            } else {
+                clone.locale = null;
+            }
 
+            /* use arraycopy as a GWT compatible alternative to clone() */
             if (imageData != null) {
                 clone.imageData = new byte[imageData.length];
                 System.arraycopy(imageData, 0, clone.imageData, 0, imageData.length);
@@ -145,15 +150,15 @@ public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, R
         this.imageDataBase64 = imageDataBase64;
     }
 
-    public String getLocale() {
+    public RESTLocaleV1 getLocale() {
         return locale;
     }
 
-    public void setLocale(final String locale) {
+    public void setLocale(final RESTLocaleV1 locale) {
         this.locale = locale;
     }
 
-    public void explicitSetLocale(final String locale) {
+    public void explicitSetLocale(final RESTLocaleV1 locale) {
         this.locale = locale;
         setParameterToConfigured(LOCALE_NAME);
     }

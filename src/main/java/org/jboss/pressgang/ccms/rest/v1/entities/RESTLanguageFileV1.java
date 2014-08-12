@@ -32,7 +32,7 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
 
     private RESTFileV1 file = null;
     private byte[] fileData = null;
-    private String locale = null;
+    private RESTLocaleV1 locale = null;
     private String filename = null;
     private char[] contentHash = null;
     /**
@@ -63,12 +63,16 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
         super.cloneInto(clone, deepCopy);
 
         clone.file = file;
-        clone.locale = locale;
         clone.filename = filename;
 
         if (deepCopy) {
-            /* use arraycopy as a GWT compatible alternative to clone() */
+            if (locale != null) {
+                clone.locale = locale.clone(deepCopy);
+            } else {
+                clone.locale = null;
+            }
 
+            /* use arraycopy as a GWT compatible alternative to clone() */
             if (fileData != null) {
                 clone.fileData = new byte[fileData.length];
                 System.arraycopy(fileData, 0, clone.fileData, 0, fileData.length);
@@ -83,6 +87,7 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
                 clone.revisions = null;
             }
         } else {
+            clone.locale = locale;
             clone.fileData = fileData;
             clone.revisions = revisions;
         }
@@ -109,15 +114,15 @@ public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RES
         setParameterToConfigured(FILE_DATA_NAME);
     }
 
-    public String getLocale() {
+    public RESTLocaleV1 getLocale() {
         return locale;
     }
 
-    public void setLocale(final String locale) {
+    public void setLocale(final RESTLocaleV1 locale) {
         this.locale = locale;
     }
 
-    public void explicitSetLocale(final String locale) {
+    public void explicitSetLocale(final RESTLocaleV1 locale) {
         this.locale = locale;
         setParameterToConfigured(LOCALE_NAME);
     }

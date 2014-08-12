@@ -69,7 +69,7 @@ public class ComponentTopicV1 extends ComponentBaseTopicV1 {
 
         final SimpleDateFormat formatter = new SimpleDateFormat(CommonConstants.FILTER_DISPLAY_DATE_FORMAT);
         return source.getId() + "-" + source.getRevision() + " " + (source.getLastModified() != null ? formatter.format(
-                source.getLastModified()) : formatter.format(new Date())) + " " + source.getLocale();
+                source.getLastModified()) : formatter.format(new Date())) + " " + source.getLocale().getValue();
     }
 
     @Override

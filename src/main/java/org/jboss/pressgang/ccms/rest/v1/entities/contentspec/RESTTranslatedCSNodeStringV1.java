@@ -21,6 +21,7 @@ package org.jboss.pressgang.ccms.rest.v1.entities.contentspec;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeStringCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTTranslatedCSNodeStringCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTLocaleV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseTranslatedStringV1;
 
 public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RESTTranslatedCSNodeStringV1, RESTTranslatedCSNodeStringCollectionV1,
@@ -32,8 +33,8 @@ public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RES
     /**
      * A list of the Envers revision numbers
      */
-    private RESTTranslatedCSNodeStringCollectionV1 revisions = null;
-    private String locale = null;
+    private RESTTranslatedCSNodeStringCollectionV1 revisions;
+    private RESTLocaleV1 locale;
 
     @Override
     public RESTTranslatedCSNodeStringCollectionV1 getRevisions() {
@@ -57,9 +58,13 @@ public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RES
     public void cloneInto(final RESTTranslatedCSNodeStringV1 clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.locale = locale;
-
         if (deepCopy) {
+            if (locale != null) {
+                clone.locale = locale.clone(deepCopy);
+            } else {
+                clone.locale = null;
+            }
+
             if (translatedNode != null) {
                 clone.translatedNode = translatedNode.clone(deepCopy);
             } else {
@@ -73,6 +78,7 @@ public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RES
                 clone.revisions = null;
             }
         } else {
+            clone.locale = locale;
             clone.revisions = revisions;
             clone.translatedNode = translatedNode;
         }
@@ -86,15 +92,15 @@ public class RESTTranslatedCSNodeStringV1 extends RESTBaseTranslatedStringV1<RES
         this.translatedNode = translatedNode;
     }
 
-    public String getLocale() {
+    public RESTLocaleV1 getLocale() {
         return locale;
     }
 
-    public void setLocale(final String locale) {
+    public void setLocale(final RESTLocaleV1 locale) {
         this.locale = locale;
     }
 
-    public void explicitSetLocale(final String locale) {
+    public void explicitSetLocale(final RESTLocaleV1 locale) {
         this.locale = locale;
         setParameterToConfigured(LOCALE_NAME);
     }

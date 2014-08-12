@@ -194,7 +194,7 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
         setParameterToConfigured(XML_NAME);
     }
 
-    public void explicitSetLocale(final String locale) {
+    public void explicitSetLocale(final RESTLocaleV1 locale) {
         setLocale(locale);
         setParameterToConfigured(LOCALE_NAME);
     }
@@ -218,11 +218,6 @@ public class RESTTopicV1 extends RESTBaseTopicV1<RESTTopicV1, RESTTopicCollectio
     public void explicitSetBugzillaBugs_OTM(final RESTBugzillaBugCollectionV1 bugzillaBugs) {
         setBugzillaBugs_OTM(bugzillaBugs);
         setParameterToConfigured(BUGZILLABUGS_NAME);
-    }
-
-    public void setLocaleExplicit(final String locale) {
-        setLocale(locale);
-        setParameterToConfigured(LOCALE_NAME);
     }
 
     public void explicitSetXmlErrors(final String xmlErrors) {

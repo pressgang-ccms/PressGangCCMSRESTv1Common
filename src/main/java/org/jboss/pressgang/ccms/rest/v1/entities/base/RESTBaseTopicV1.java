@@ -23,6 +23,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTLocaleV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTXMLFormat;
 
@@ -41,7 +42,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
     protected String title = null;
     protected String xml = null;
     protected String xmlErrors = null;
-    protected String locale = null;
+    protected RESTLocaleV1 locale = null;
     protected RESTXMLFormat xmlFormat = null;
     protected RESTTagCollectionV1 tags = null;
     protected RESTTopicSourceUrlCollectionV1 sourceUrls_OTM = null;
@@ -60,10 +61,15 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
         clone.title = this.title;
         clone.xml = this.xml;
         clone.xmlErrors = this.xmlErrors;
-        clone.locale = this.locale;
         clone.xmlFormat = this.xmlFormat;
 
         if (deepCopy) {
+            if (locale != null) {
+                clone.locale = locale.clone(deepCopy);
+            } else {
+                clone.locale = null;
+            }
+
             if (this.tags != null) {
                 clone.tags = new RESTTagCollectionV1();
                 this.tags.cloneInto(clone.tags, deepCopy);
@@ -78,6 +84,7 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
                 clone.sourceUrls_OTM = null;
             }
         } else {
+            clone.locale = this.locale;
             clone.tags = this.tags;
             clone.sourceUrls_OTM = this.sourceUrls_OTM;
         }
@@ -99,11 +106,11 @@ public abstract class RESTBaseTopicV1<T extends RESTBaseTopicV1<T, U, V>, U exte
         this.xml = xml;
     }
 
-    public String getLocale() {
+    public RESTLocaleV1 getLocale() {
         return locale;
     }
 
-    public void setLocale(final String locale) {
+    public void setLocale(final RESTLocaleV1 locale) {
         this.locale = locale;
     }
 

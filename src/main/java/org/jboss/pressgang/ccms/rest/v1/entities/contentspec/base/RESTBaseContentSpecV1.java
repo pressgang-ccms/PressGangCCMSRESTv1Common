@@ -26,6 +26,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTLocaleV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityWithPropertiesV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums.RESTContentSpecTypeV1;
 
@@ -39,7 +40,7 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
     public static final String TRANSLATED_CONTENT_SPECS_NAME = "translatedContentSpecs";
     public static final String PROCESSES_NAME = "processes";
 
-    protected String locale = null;
+    protected RESTLocaleV1 locale = null;
     protected Date lastPublished = null;
     protected Date lastModified = null;
     protected String errors = null;
@@ -52,13 +53,18 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
     public void cloneInto(final RESTBaseContentSpecV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
-        clone.locale = locale;
         clone.lastPublished = lastPublished == null ? null : (Date) lastPublished.clone();
         clone.lastModified = lastModified == null ? null : (Date) lastModified.clone();
         clone.errors = errors;
         clone.failedContentSpec = failedContentSpec;
 
         if (deepCopy) {
+            if (locale != null) {
+                clone.locale = locale.clone(deepCopy);
+            } else {
+                clone.locale = null;
+            }
+
             if (tags != null) {
                 clone.tags = new RESTTagCollectionV1();
                 tags.cloneInto(clone.tags, deepCopy);
@@ -80,17 +86,18 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
                 clone.processes = null;
             }
         } else {
+            clone.locale = locale;
             clone.tags = tags;
             clone.translatedContentSpecs = translatedContentSpecs;
             clone.processes = processes;
         }
     }
 
-    public String getLocale() {
+    public RESTLocaleV1 getLocale() {
         return locale;
     }
 
-    public void setLocale(final String locale) {
+    public void setLocale(final RESTLocaleV1 locale) {
         this.locale = locale;
     }
 
