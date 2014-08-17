@@ -29,7 +29,7 @@ import java.util.List;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTProjectV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 import org.junit.Test;
 
 public class RESTTitleComparatorTest
@@ -106,7 +106,7 @@ class RESTTagNameComparatorTest extends RESTBaseTitleComparatorTest<RESTTagV1>
  *
  * @param <RESTBaseEntityV1> The REST Entity to be sorted into alphabetical order by title.
  */
-abstract class RESTBaseTitleComparatorTest<T extends RESTBaseEntityV1<?, ?, ?>>
+abstract class RESTBaseTitleComparatorTest<T extends RESTBaseAuditedEntityV1<?, ?, ?>>
 {
     private T entity1;
     private T entity2;

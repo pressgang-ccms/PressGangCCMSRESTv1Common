@@ -24,7 +24,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTTagInCategoryCollectionV1;
 
 public abstract class RESTBaseCategoryV1<T extends RESTBaseCategoryV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
-        V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBasePrimaryEntityV1<T, U, V> {
+        V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBasePrimaryAuditedEntityV1<T, U, V> {
     public static final String NAME_NAME = "name";
     public static final String DESCRIPTION_NAME = "description";
     public static final String MUTUALLYEXCLUSIVE_NAME = "mutuallyExclusive";

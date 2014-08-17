@@ -34,7 +34,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
  * @param <U> The REST Collection type
  * @author Matthew Casperson
  */
-public abstract class RESTBaseEntityUpdateCollectionV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseEntityUpdateCollectionV1<T, U, V>,
+public abstract class RESTBaseEntityUpdateCollectionV1<T extends RESTBaseEntityV1<T>, U extends RESTBaseEntityUpdateCollectionV1<T, U, V>,
         V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseEntityCollectionV1<T, U,
         V> implements RESTUpdateCollectionV1<T, V> {
     /**

@@ -194,6 +194,11 @@ public class RESTContentSpecV1 extends RESTBaseContentSpecV1<RESTContentSpecV1, 
         this.topics = topics;
     }
 
+    public void explicitSetTranslationDetails(RESTCSTranslationDetailV1 translationDetails) {
+        this.translationDetails = translationDetails;
+        setParameterToConfigured(TRANSLATION_DETAILS_NAME);
+    }
+
     @Override
     public boolean equals(final Object other) {
         if (other == null) return false;

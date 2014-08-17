@@ -23,7 +23,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
 
 public abstract class RESTBaseTranslatedStringV1<T extends RESTBaseTranslatedStringV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
-        V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseEntityV1<T, U, V> {
+        V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseAuditedEntityV1<T, U, V> {
     public static final String TRANSLATEDSTRING_NAME = "translatedString";
     public static final String FUZZY_TRANSLATION_NAME = "fuzzyTranslation";
 

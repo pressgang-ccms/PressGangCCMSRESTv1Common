@@ -19,13 +19,17 @@
 
 package org.jboss.pressgang.ccms.rest.v1.entities.base;
 
-public abstract class RESTBasePrimaryEntityV1<T extends RESTBasePrimaryEntityV1<T>> extends RESTBaseEntityV1<T> implements RESTPrimaryEntityV1 {
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionV1;
+
+public abstract class RESTBasePrimaryAuditedEntityV1<T extends RESTBasePrimaryAuditedEntityV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
+        V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseAuditedEntityV1<T, U, V> implements RESTPrimaryEntityV1 {
     private String selfLink = null;
     private String editLink = null;
     private String deleteLink = null;
     private String addLink = null;
 
-    public void cloneInto(final RESTBasePrimaryEntityV1<?> clone, final boolean deepCopy) {
+    public void cloneInto(final RESTBasePrimaryAuditedEntityV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
 
         clone.setSelfLink(selfLink);
@@ -77,7 +81,7 @@ public abstract class RESTBasePrimaryEntityV1<T extends RESTBasePrimaryEntityV1<
     public boolean equals(final Object other) {
         if (other == null) return false;
         if (this == other) return true;
-        if (!(other instanceof RESTBasePrimaryEntityV1)) return false;
+        if (!(other instanceof RESTBasePrimaryAuditedEntityV1)) return false;
 
         return super.equals(other);
     }

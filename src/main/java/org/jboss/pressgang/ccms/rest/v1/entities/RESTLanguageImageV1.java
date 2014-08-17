@@ -21,9 +21,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTLanguageImageCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTLanguageImageCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 
-public class RESTLanguageImageV1 extends RESTBaseEntityV1<RESTLanguageImageV1, RESTLanguageImageCollectionV1,
+public class RESTLanguageImageV1 extends RESTBaseAuditedEntityV1<RESTLanguageImageV1, RESTLanguageImageCollectionV1,
         RESTLanguageImageCollectionItemV1> {
     public static final String IMAGEDATA_NAME = "imageData";
     public static final String IMAGEDATABASE64_NAME = "imageDataBase64";

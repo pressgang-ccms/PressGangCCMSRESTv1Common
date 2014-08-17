@@ -24,20 +24,20 @@ import static com.google.common.base.Preconditions.checkArgument;
 import java.util.List;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 
 public class ComponentRESTBaseEntityV1 {
-    private final RESTBaseEntityV1 source;
+    private final RESTBaseAuditedEntityV1 source;
 
-    public ComponentRESTBaseEntityV1(final RESTBaseEntityV1 source) {
+    public ComponentRESTBaseEntityV1(final RESTBaseAuditedEntityV1 source) {
         checkArgument(source != null, "The source parameter can not be null");
         this.source = source;
     }
 
-    public static boolean returnDirtyState(final List<? extends RESTBaseEntityV1> list) {
+    public static boolean returnDirtyState(final List<? extends RESTBaseAuditedEntityV1> list) {
         checkArgument(list != null, "The list parameter can not be null");
 
-        for (final RESTBaseEntityV1 entity : list) {
+        for (final RESTBaseAuditedEntityV1 entity : list) {
             if (entity.returnDirtyState()) return true;
         }
 

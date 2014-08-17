@@ -35,7 +35,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
  * @author Matthew Casperson
  */
 @SuppressWarnings("serial")
-public abstract class RESTBaseEntityCollectionV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
+public abstract class RESTBaseEntityCollectionV1<T extends RESTBaseEntityV1<T>, U extends RESTBaseEntityCollectionV1<T, U, V>,
         V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseCollectionV1<T, V> {
 
     /**

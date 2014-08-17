@@ -22,9 +22,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTProjectCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTProjectCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryAuditedEntityV1;
 
-public class RESTProjectV1 extends RESTBasePrimaryEntityV1<RESTProjectV1, RESTProjectCollectionV1, RESTProjectCollectionItemV1> {
+public class RESTProjectV1 extends RESTBasePrimaryAuditedEntityV1<RESTProjectV1, RESTProjectCollectionV1, RESTProjectCollectionItemV1> {
     public static final String NAME_NAME = "name";
     public static final String DESCRIPTION_NAME = "description";
     public static final String TAGS_NAME = "tags";

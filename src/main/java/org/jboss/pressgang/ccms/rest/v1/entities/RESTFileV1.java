@@ -22,9 +22,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFileCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTLanguageFileCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTFileCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryAuditedEntityV1;
 
-public class RESTFileV1 extends RESTBasePrimaryEntityV1<RESTFileV1, RESTFileCollectionV1, RESTFileCollectionItemV1> {
+public class RESTFileV1 extends RESTBasePrimaryAuditedEntityV1<RESTFileV1, RESTFileCollectionV1, RESTFileCollectionItemV1> {
     public static final String DESCRIPTION_NAME = "description";
     public static final String FILE_PATH_NAME = "filePath";
     public static final String FILE_NAME = "fileName";

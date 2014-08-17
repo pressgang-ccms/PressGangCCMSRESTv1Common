@@ -23,9 +23,9 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeStringCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTTranslatedCSNodeCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryAuditedEntityV1;
 
-public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryEntityV1<RESTTranslatedCSNodeV1, RESTTranslatedCSNodeCollectionV1, RESTTranslatedCSNodeCollectionItemV1> {
+public class RESTTranslatedCSNodeV1 extends RESTBasePrimaryAuditedEntityV1<RESTTranslatedCSNodeV1, RESTTranslatedCSNodeCollectionV1, RESTTranslatedCSNodeCollectionItemV1> {
     public static final String NODE_ID_NAME = "nodeId";
     public static final String NODE_REVISION_NAME = "nodeRevision";
     public static final String NODE_NAME = "node";

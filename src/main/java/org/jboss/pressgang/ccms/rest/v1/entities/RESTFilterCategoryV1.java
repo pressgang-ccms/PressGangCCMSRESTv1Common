@@ -21,9 +21,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterCategoryCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTFilterCategoryCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 
-public class RESTFilterCategoryV1 extends RESTBaseEntityV1<RESTFilterCategoryV1, RESTFilterCategoryCollectionV1,
+public class RESTFilterCategoryV1 extends RESTBaseAuditedEntityV1<RESTFilterCategoryV1, RESTFilterCategoryCollectionV1,
         RESTFilterCategoryCollectionItemV1> {
     public static final String CATEGORY_NAME = "category";
     public static final String PROJECT_NAME = "project";

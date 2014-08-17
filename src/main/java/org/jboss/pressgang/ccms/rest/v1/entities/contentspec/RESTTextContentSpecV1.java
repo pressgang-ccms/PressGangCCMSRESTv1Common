@@ -135,6 +135,11 @@ public class RESTTextContentSpecV1 extends RESTBaseContentSpecV1<RESTTextContent
         this.version = version;
     }
 
+    public void explicitSetTranslationDetails(RESTCSTranslationDetailV1 translationDetails) {
+        this.translationDetails = translationDetails;
+        setParameterToConfigured(TRANSLATION_DETAILS_NAME);
+    }
+
     @Override
     public boolean equals(final Object other) {
         if (other == null) return false;

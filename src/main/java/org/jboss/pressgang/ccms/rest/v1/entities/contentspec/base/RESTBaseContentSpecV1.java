@@ -28,6 +28,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTLocaleV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityWithPropertiesV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSTranslationDetailV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.enums.RESTContentSpecTypeV1;
 
 public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithPropertiesV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
@@ -39,16 +40,18 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
     public static final String TAGS_NAME = "tags";
     public static final String TRANSLATED_CONTENT_SPECS_NAME = "translatedContentSpecs";
     public static final String PROCESSES_NAME = "processes";
+    public static final String TRANSLATION_DETAILS_NAME = "translationDetails";
 
-    protected RESTLocaleV1 locale = null;
-    protected Date lastPublished = null;
-    protected Date lastModified = null;
-    protected String errors = null;
-    protected String failedContentSpec = null;
-    protected RESTContentSpecTypeV1 type = null;
-    protected RESTTagCollectionV1 tags = null;
-    protected RESTTranslatedContentSpecCollectionV1 translatedContentSpecs = null;
-    protected RESTProcessInformationCollectionV1 processes = null;
+    protected RESTLocaleV1 locale;
+    protected Date lastPublished;
+    protected Date lastModified;
+    protected String errors;
+    protected String failedContentSpec;
+    protected RESTContentSpecTypeV1 type;
+    protected RESTTagCollectionV1 tags;
+    protected RESTTranslatedContentSpecCollectionV1 translatedContentSpecs;
+    protected RESTProcessInformationCollectionV1 processes;
+    protected RESTCSTranslationDetailV1 translationDetails;
 
     public void cloneInto(final RESTBaseContentSpecV1<?, ?, ?> clone, final boolean deepCopy) {
         super.cloneInto(clone, deepCopy);
@@ -63,6 +66,12 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
                 clone.locale = locale.clone(deepCopy);
             } else {
                 clone.locale = null;
+            }
+
+            if (translationDetails != null) {
+                clone.translationDetails = translationDetails.clone(deepCopy);
+            } else {
+                clone.translationDetails = null;
             }
 
             if (tags != null) {
@@ -90,6 +99,7 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
             clone.tags = tags;
             clone.translatedContentSpecs = translatedContentSpecs;
             clone.processes = processes;
+            clone.translationDetails = translationDetails;
         }
     }
 
@@ -163,6 +173,14 @@ public abstract class RESTBaseContentSpecV1<T extends RESTBaseEntityWithProperti
 
     public void setProcesses(final RESTProcessInformationCollectionV1 processes) {
         this.processes = processes;
+    }
+
+    public RESTCSTranslationDetailV1 getTranslationDetails() {
+        return translationDetails;
+    }
+
+    public void setTranslationDetails(RESTCSTranslationDetailV1 translationDetails) {
+        this.translationDetails = translationDetails;
     }
 
     @Override

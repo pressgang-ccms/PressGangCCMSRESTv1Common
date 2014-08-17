@@ -69,6 +69,8 @@ public class RESTContentSpecQueryBuilderV1 extends RESTBaseQueryBuilderWithPrope
             add(new Pair<String, String>(CommonFilterConstants.EDITED_IN_LAST_MINUTES, CommonFilterConstants.EDITED_IN_LAST_MINUTES_DESC));
             add(new Pair<String, String>(CommonFilterConstants.NOT_EDITED_IN_LAST_MINUTES,
                     CommonFilterConstants.NOT_EDITED_IN_LAST_MINUTES_DESC));
+            add(new Pair<String, String>(CommonFilterConstants.TRANSLATION_ENABLED_FILTER_VAR,
+                    CommonFilterConstants.TRANSLATION_ENABLED_FILTER_VAR_DESC));
         }
     };
 
@@ -225,6 +227,15 @@ public class RESTContentSpecQueryBuilderV1 extends RESTBaseQueryBuilderWithPrope
 
     public void setNotEditedInLastMinutes(final Integer notEditedInLastMinutes) {
         put(CommonFilterConstants.NOT_EDITED_IN_LAST_MINUTES, notEditedInLastMinutes);
+    }
+
+    public Boolean getContentSpecTranslationEnabled() {
+        final String translationEnabled = get(CommonFilterConstants.TRANSLATION_ENABLED_FILTER_VAR);
+        return translationEnabled == null ? null : Boolean.parseBoolean(translationEnabled);
+    }
+
+    public void setContentSpecTranslationEnabled(final Boolean translationEnabled) {
+        put(CommonFilterConstants.TRANSLATION_ENABLED_FILTER_VAR, translationEnabled);
     }
 
     public void setTag(final Integer tagId, final Integer state) {

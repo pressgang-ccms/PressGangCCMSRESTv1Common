@@ -21,9 +21,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTFilterTagCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 
-public class RESTFilterTagV1 extends RESTBaseEntityV1<RESTFilterTagV1, RESTFilterTagCollectionV1, RESTFilterTagCollectionItemV1> {
+public class RESTFilterTagV1 extends RESTBaseAuditedEntityV1<RESTFilterTagV1, RESTFilterTagCollectionV1, RESTFilterTagCollectionItemV1> {
     public static final String TAG_NAME = "tag";
     public static final String STATE_NAME = "state";
     public static final String FILTER_NAME = "filter";

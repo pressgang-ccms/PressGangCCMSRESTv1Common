@@ -22,9 +22,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities.contentspec;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSInfoNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTCSInfoNodeCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 
-public class RESTCSInfoNodeV1 extends RESTBaseEntityV1<RESTCSInfoNodeV1, RESTCSInfoNodeCollectionV1, RESTCSInfoNodeCollectionItemV1> {
+public class RESTCSInfoNodeV1 extends RESTBaseAuditedEntityV1<RESTCSInfoNodeV1, RESTCSInfoNodeCollectionV1, RESTCSInfoNodeCollectionItemV1> {
     public static final String TOPIC_ID_NAME = "topicId";
     public static final String TOPIC_REVISION_NAME = "topicRevision";
     public static final String CONDITION_NAME = "condition";

@@ -24,7 +24,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.join.RESTAssignedPropertyTagCollectionV1;
 
 public abstract class RESTBaseEntityWithPropertiesV1<T extends RESTBaseEntityWithPropertiesV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T,
-        U, V>, V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBasePrimaryEntityV1<T, U, V> {
+        U, V>, V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBasePrimaryAuditedEntityV1<T, U, V> {
     public static String PROPERTIES_NAME = "properties";
 
     protected RESTAssignedPropertyTagCollectionV1 properties = null;

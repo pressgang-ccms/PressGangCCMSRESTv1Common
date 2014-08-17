@@ -64,6 +64,7 @@ public class RESTv1Constants {
 
     public static final String PROCESSES_EXPANSION_NAME = "processes";
     public static final String LOCALES_EXPANSION_NAME = "locales";
+    public static final String TRANSLATION_SERVERS_EXPANSION_NAME = "translationServers";
 
     public static final String TOPIC_URL_NAME = "topic";
     public static final String TOPICSOURCEURL_URL_NAME = "topicsourceurl";
@@ -81,6 +82,7 @@ public class RESTv1Constants {
     public static final String INTEGERCONSTANT_URL_NAME = "integerconstant";
     public static final String PROCESS_URL_NAME = "process";
     public static final String LOCALE_URL_NAME = "locale";
+    public static final String TRANSLATION_SERVER_URL_NAME = "translationserver";
 
     public static final String IMAGE_URL_NAME = "image";
     public static final String LANGUAGEIMAGE_URL_NAME = "languageimage";

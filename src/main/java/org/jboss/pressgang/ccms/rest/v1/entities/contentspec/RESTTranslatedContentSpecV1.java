@@ -22,9 +22,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities.contentspec;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTTranslatedContentSpecCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.items.RESTTranslatedContentSpecCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryAuditedEntityV1;
 
-public class RESTTranslatedContentSpecV1 extends RESTBasePrimaryEntityV1<RESTTranslatedContentSpecV1,
+public class RESTTranslatedContentSpecV1 extends RESTBasePrimaryAuditedEntityV1<RESTTranslatedContentSpecV1,
         RESTTranslatedContentSpecCollectionV1, RESTTranslatedContentSpecCollectionItemV1> {
     public static final String CONTENT_SPEC_ID_NAME = "contentSpecId";
     public static final String CONTENT_SPEC_REV_NAME = "contentSpecRevision";

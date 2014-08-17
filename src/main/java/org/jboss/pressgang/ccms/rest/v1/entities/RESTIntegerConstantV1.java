@@ -21,12 +21,12 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTIntegerConstantCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTIntegerConstantCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryAuditedEntityV1;
 
 /**
  * A REST representation of the StringConstants database entity
  */
-public class RESTIntegerConstantV1 extends RESTBasePrimaryEntityV1<RESTIntegerConstantV1, RESTIntegerConstantCollectionV1,
+public class RESTIntegerConstantV1 extends RESTBasePrimaryAuditedEntityV1<RESTIntegerConstantV1, RESTIntegerConstantCollectionV1,
         RESTIntegerConstantCollectionItemV1> {
     public static final String ID_NAME = "id";
     public static final String NAME_NAME = "name";

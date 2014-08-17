@@ -21,10 +21,10 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTMinHashCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTMinHashCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 
 
-public class RESTMinHashV1 extends RESTBaseEntityV1<RESTMinHashV1, RESTMinHashCollectionV1, RESTMinHashCollectionItemV1> {
+public class RESTMinHashV1 extends RESTBaseAuditedEntityV1<RESTMinHashV1, RESTMinHashCollectionV1, RESTMinHashCollectionItemV1> {
 
     private Integer minHash;
     private Integer minHashFuncId;

@@ -21,9 +21,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterLocaleCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTFilterLocaleCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 
-public class RESTFilterLocaleV1 extends RESTBaseEntityV1<RESTFilterLocaleV1, RESTFilterLocaleCollectionV1,
+public class RESTFilterLocaleV1 extends RESTBaseAuditedEntityV1<RESTFilterLocaleV1, RESTFilterLocaleCollectionV1,
         RESTFilterLocaleCollectionItemV1> {
     public static final String LOCALE_NAME = "locale";
     public static final String STATE_NAME = "state";

@@ -21,9 +21,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicSourceUrlCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTTopicSourceUrlCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 
-public class RESTTopicSourceUrlV1 extends RESTBaseEntityV1<RESTTopicSourceUrlV1, RESTTopicSourceUrlCollectionV1,
+public class RESTTopicSourceUrlV1 extends RESTBaseAuditedEntityV1<RESTTopicSourceUrlV1, RESTTopicSourceUrlCollectionV1,
         RESTTopicSourceUrlCollectionItemV1> {
     public static final String URL_NAME = "url";
     public static final String DESCRIPTION_NAME = "description";

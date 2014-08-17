@@ -21,6 +21,7 @@ package org.jboss.pressgang.ccms.rest.v1.elements;
 
 import org.jboss.pressgang.ccms.rest.v1.elements.base.RESTBaseElementWithConfiguredParametersV1;
 
+@Deprecated
 public class RESTZanataServerSettingsV1 extends RESTBaseElementWithConfiguredParametersV1<RESTZanataServerSettingsV1> {
     public static final String NAME_NAME = "name";
     public static final String URL_NAME = "url";

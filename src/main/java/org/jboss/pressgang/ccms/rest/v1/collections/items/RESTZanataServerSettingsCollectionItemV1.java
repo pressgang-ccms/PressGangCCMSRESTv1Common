@@ -24,6 +24,8 @@ import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCollectio
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTUpdateCollectionItemV1;
 import org.jboss.pressgang.ccms.rest.v1.elements.RESTZanataServerSettingsV1;
 
+@Deprecated
+@SuppressWarnings("deprecation")
 public class RESTZanataServerSettingsCollectionItemV1 extends RESTBaseCollectionItemV1<RESTZanataServerSettingsV1,
         RESTZanataServerSettingsCollectionItemV1> implements RESTUpdateCollectionItemV1<RESTZanataServerSettingsV1,
         RESTZanataServerSettingsCollectionItemV1> {

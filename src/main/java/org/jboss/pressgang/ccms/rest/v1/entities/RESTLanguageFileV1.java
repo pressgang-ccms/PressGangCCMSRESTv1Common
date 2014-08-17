@@ -21,9 +21,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTLanguageFileCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTLanguageFileCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 
-public class RESTLanguageFileV1 extends RESTBaseEntityV1<RESTLanguageFileV1, RESTLanguageFileCollectionV1,
+public class RESTLanguageFileV1 extends RESTBaseAuditedEntityV1<RESTLanguageFileV1, RESTLanguageFileCollectionV1,
         RESTLanguageFileCollectionItemV1> {
     public static final String FILE_DATA_NAME = "fileData";
     public static final String LOCALE_NAME = "locale";

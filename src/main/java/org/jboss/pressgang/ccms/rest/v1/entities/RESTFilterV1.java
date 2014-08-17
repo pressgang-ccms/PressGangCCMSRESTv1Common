@@ -25,10 +25,10 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterFieldCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterLocaleCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTFilterTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTFilterCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryAuditedEntityV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.enums.RESTFilterTypeV1;
 
-public class RESTFilterV1 extends RESTBasePrimaryEntityV1<RESTFilterV1, RESTFilterCollectionV1, RESTFilterCollectionItemV1> {
+public class RESTFilterV1 extends RESTBasePrimaryAuditedEntityV1<RESTFilterV1, RESTFilterCollectionV1, RESTFilterCollectionItemV1> {
     public static final String NAME_NAME = "name";
     public static final String DESCRIPTION_NAME = "description";
     public static final String TYPE_NAME = "type";

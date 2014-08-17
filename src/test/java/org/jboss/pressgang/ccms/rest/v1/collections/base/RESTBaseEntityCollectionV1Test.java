@@ -26,7 +26,7 @@ import static org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityCo
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseAuditedEntityV1;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -111,7 +111,7 @@ public class RESTBaseEntityCollectionV1Test
     }
 }
 
-class RESTBaseTestEntityV1 extends RESTBaseEntityV1<RESTBaseTestEntityV1, RESTBaseTestCollectionV1, RESTBaseTestCollectionItemV1>
+class RESTBaseTestEntityV1 extends RESTBaseAuditedEntityV1<RESTBaseTestEntityV1, RESTBaseTestCollectionV1, RESTBaseTestCollectionItemV1>
 {
     private RESTBaseTestCollectionV1 revisions = null;
     

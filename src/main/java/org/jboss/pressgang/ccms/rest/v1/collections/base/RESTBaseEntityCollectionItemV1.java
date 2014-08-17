@@ -21,7 +21,7 @@ package org.jboss.pressgang.ccms.rest.v1.collections.base;
 
 import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBaseEntityV1;
 
-public abstract class RESTBaseEntityCollectionItemV1<T extends RESTBaseEntityV1<T, U, V>, U extends RESTBaseEntityCollectionV1<T, U, V>,
+public abstract class RESTBaseEntityCollectionItemV1<T extends RESTBaseEntityV1<T>, U extends RESTBaseEntityCollectionV1<T, U, V>,
         V extends RESTBaseEntityCollectionItemV1<T, U, V>> extends RESTBaseCollectionItemV1<T, V> {
 
     @Override

@@ -45,6 +45,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTStringConstantCollection
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslationServerCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTUserCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecCollectionV1;
@@ -65,6 +66,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTStringConstantV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslationServerV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
@@ -112,6 +114,32 @@ public interface RESTInterfaceV1 extends RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
     RESTLocaleCollectionV1 createJSONLocales(@QueryParam("expand") final String expand, final RESTLocaleCollectionV1 dataObjects);
+
+    /* TRANSLATION SERVERS */
+    /* JSON FUNCTIONS */
+    @POST
+    @Path("/translationserver/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    RESTTranslationServerV1 updateJSONTranslationServer(@QueryParam("expand") final String expand, final RESTTranslationServerV1 dataObject);
+
+    @POST
+    @Path("/translationservers/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    RESTTranslationServerCollectionV1 updateJSONTranslationServers(@QueryParam("expand") final String expand, final RESTTranslationServerCollectionV1 dataObjects);
+
+    @POST
+    @Path("/translationserver/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTTranslationServerV1 createJSONTranslationServer(@QueryParam("expand") final String expand, final RESTTranslationServerV1 dataObject);
+
+    @POST
+    @Path("/translationservers/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTTranslationServerCollectionV1 createJSONTranslationServers(@QueryParam("expand") final String expand, final RESTTranslationServerCollectionV1 dataObjects);
 
     /* USERS */
     /* JSON FUNCTIONS */

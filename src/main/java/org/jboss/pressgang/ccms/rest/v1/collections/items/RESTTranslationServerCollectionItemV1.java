@@ -19,31 +19,31 @@
 
 package org.jboss.pressgang.ccms.rest.v1.collections.items;
 
-import org.jboss.pressgang.ccms.rest.v1.collections.RESTLocaleCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslationServerCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.base.RESTBaseEntityUpdateCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.RESTLocaleV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslationServerV1;
 
-public class RESTLocaleCollectionItemV1 extends RESTBaseEntityUpdateCollectionItemV1<RESTLocaleV1, RESTLocaleCollectionV1,
-        RESTLocaleCollectionItemV1> {
-    private RESTLocaleV1 item;
+public class RESTTranslationServerCollectionItemV1 extends RESTBaseEntityUpdateCollectionItemV1<RESTTranslationServerV1,
+        RESTTranslationServerCollectionV1, RESTTranslationServerCollectionItemV1> {
+    private RESTTranslationServerV1 item;
 
-    public RESTLocaleCollectionItemV1() {
+    public RESTTranslationServerCollectionItemV1() {
 
     }
 
-    public RESTLocaleCollectionItemV1(final RESTLocaleV1 item) {
+    public RESTTranslationServerCollectionItemV1(final RESTTranslationServerV1 item) {
         setItem(item);
         setState(UNCHANGED_STATE);
     }
 
-    public RESTLocaleCollectionItemV1(final RESTLocaleV1 item, final Integer state) {
+    public RESTTranslationServerCollectionItemV1(final RESTTranslationServerV1 item, final Integer state) {
         setItem(item);
         setState(state);
     }
 
     @Override
-    public RESTLocaleCollectionItemV1 clone(boolean deepCopy) {
-        final RESTLocaleCollectionItemV1 retValue = new RESTLocaleCollectionItemV1();
+    public RESTTranslationServerCollectionItemV1 clone(boolean deepCopy) {
+        final RESTTranslationServerCollectionItemV1 retValue = new RESTTranslationServerCollectionItemV1();
 
         super.cloneInto(retValue, deepCopy);
 
@@ -51,12 +51,12 @@ public class RESTLocaleCollectionItemV1 extends RESTBaseEntityUpdateCollectionIt
     }
 
     @Override
-    public RESTLocaleV1 getItem() {
+    public RESTTranslationServerV1 getItem() {
         return item;
     }
 
     @Override
-    public void setItem(final RESTLocaleV1 item) {
+    public void setItem(final RESTTranslationServerV1 item) {
         this.item = item;
     }
 }

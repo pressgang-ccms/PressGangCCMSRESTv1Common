@@ -49,6 +49,7 @@ import org.jboss.pressgang.ccms.rest.v1.collections.RESTStringConstantCollection
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTagCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTopicCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslatedTopicCollectionV1;
+import org.jboss.pressgang.ccms.rest.v1.collections.RESTTranslationServerCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTUserCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTCSNodeCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.contentspec.RESTContentSpecCollectionV1;
@@ -77,6 +78,7 @@ import org.jboss.pressgang.ccms.rest.v1.entities.RESTStringConstantV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTagV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTopicV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslatedTopicV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.RESTTranslationServerV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.RESTUserV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTCSNodeV1;
 import org.jboss.pressgang.ccms.rest.v1.entities.contentspec.RESTContentSpecV1;
@@ -172,13 +174,13 @@ public interface RESTBaseInterfaceV1 {
     @Path("/settings/get/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTServerSettingsV1 getJSONServerSettings();
+    RESTServerSettingsV1 getJSONServerSettings(@QueryParam("expand") String expand);
 
     @POST
     @Path("/settings/update/json")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    RESTServerSettingsV1 updateJSONServerSettings(final RESTServerSettingsV1 settings);
+    RESTServerSettingsV1 updateJSONServerSettings(@QueryParam("expand") String expand, final RESTServerSettingsV1 settings);
 
     /* LOCALE FUNCTIONS */
     /* JSONP FUNCTIONS */
@@ -188,13 +190,6 @@ public interface RESTBaseInterfaceV1 {
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     String getJSONPLocale(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
             @QueryParam("callback") final String callback);
-
-    @GET
-    @Path("/locale/get/jsonp/{id}/r/{rev}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    String getJSONPLocaleRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
-            @QueryParam("expand") final String expand, @QueryParam("callback") final String callback);
 
     @GET
     @Path("/locales/get/jsonp/all")
@@ -208,13 +203,6 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
     RESTLocaleV1 getJSONLocale(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
-
-    @GET
-    @Path("/user/get/json/{id}/r/{rev}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTLocaleV1 getJSONLocaleRevision(@PathParam("id") final Integer id, @PathParam("rev") final Integer revision,
-            @QueryParam("expand") final String expand);
 
     @GET
     @Path("/locales/get/json/all")
@@ -248,6 +236,62 @@ public interface RESTBaseInterfaceV1 {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes({MediaType.APPLICATION_JSON})
     RESTLocaleCollectionV1 createJSONLocales(@QueryParam("expand") final String expand, final RESTLocaleCollectionV1 dataObjects,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    /* TRANSLATION SERVER FUNCTIONS */
+    /* JSONP FUNCTIONS */
+    @GET
+    @Path("/" + RESTv1Constants.TRANSLATION_SERVER_URL_NAME + "/get/jsonp/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String getJSONPTranslationServer(@PathParam("id") final Integer id, @QueryParam("expand") final String expand,
+            @QueryParam("callback") final String callback);
+
+    @GET
+    @Path("/translationservers/get/jsonp/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    String getJSONPTranslationServers(@QueryParam("expand") final String expand, @QueryParam("callback") final String callback);
+
+    /* JSON FUNCTIONS */
+    @GET
+    @Path("/translationserver/get/json/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTTranslationServerV1 getJSONTranslationServer(@PathParam("id") final Integer id, @QueryParam("expand") final String expand);
+
+    @GET
+    @Path("/translationservers/get/json/all")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
+    RESTTranslationServerCollectionV1 getJSONTranslationServers(@QueryParam("expand") final String expand);
+
+    @POST
+    @Path("/translationserver/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    RESTTranslationServerV1 updateJSONTranslationServer(@QueryParam("expand") final String expand, final RESTTranslationServerV1 dataObject,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/translationservers/update/json")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
+    RESTTranslationServerCollectionV1 updateJSONTranslationServers(@QueryParam("expand") final String expand, final RESTTranslationServerCollectionV1 dataObjects,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/translationserver/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTTranslationServerV1 createJSONTranslationServer(@QueryParam("expand") final String expand, final RESTTranslationServerV1 dataObject,
+            @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
+
+    @POST
+    @Path("/translationservers/create/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON})
+    RESTTranslationServerCollectionV1 createJSONTranslationServers(@QueryParam("expand") final String expand, final RESTTranslationServerCollectionV1 dataObjects,
             @QueryParam("message") final String message, @QueryParam("flag") final Integer flag, @QueryParam("userId") final String userId);
 
     /* USER FUNCTIONS */
@@ -2474,8 +2518,7 @@ public interface RESTBaseInterfaceV1 {
     @Path("/contentspec/translation/push/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTProcessInformationV1 pushContentSpecForTranslation(@PathParam("id") Integer id, @QueryParam("server") String serverId,
-            @QueryParam("expand") String expand, @QueryParam("name") String name, @QueryParam("contentSpecOnly") boolean contentSpecOnly,
+    RESTProcessInformationV1 pushContentSpecForTranslation(@PathParam("id") Integer id, @QueryParam("expand") String expand, @QueryParam("name") String name, @QueryParam("contentSpecOnly") boolean contentSpecOnly,
             @QueryParam("disableCopyTrans") boolean disableCopyTrans, @QueryParam("allowUnfrozenPush") boolean allowUnfrozenPush,
             @HeaderParam(RestConstant.HEADER_USERNAME) String username, @HeaderParam(RestConstant.HEADER_API_KEY) String apikey);
 
@@ -2483,7 +2526,6 @@ public interface RESTBaseInterfaceV1 {
     @Path("/contentspec/translation/sync/json/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.MEDIA_TYPE_WILDCARD)
-    RESTProcessInformationV1 syncContentSpecTranslations(@PathParam("id") Integer id, @QueryParam("server") String serverId,
-            @QueryParam("expand") String expand, @QueryParam("name") String name, @QueryParam("locales") String locales,
+    RESTProcessInformationV1 syncContentSpecTranslations(@PathParam("id") Integer id, @QueryParam("expand") String expand, @QueryParam("name") String name, @QueryParam("locales") String locales,
             @HeaderParam(RestConstant.HEADER_USERNAME) String username, @HeaderParam(RestConstant.HEADER_API_KEY) String apikey);
 }

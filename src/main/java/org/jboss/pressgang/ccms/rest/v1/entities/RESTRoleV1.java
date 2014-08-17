@@ -22,9 +22,9 @@ package org.jboss.pressgang.ccms.rest.v1.entities;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTRoleCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.RESTUserCollectionV1;
 import org.jboss.pressgang.ccms.rest.v1.collections.items.RESTRoleCollectionItemV1;
-import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryEntityV1;
+import org.jboss.pressgang.ccms.rest.v1.entities.base.RESTBasePrimaryAuditedEntityV1;
 
-public class RESTRoleV1 extends RESTBasePrimaryEntityV1<RESTRoleV1, RESTRoleCollectionV1, RESTRoleCollectionItemV1> {
+public class RESTRoleV1 extends RESTBasePrimaryAuditedEntityV1<RESTRoleV1, RESTRoleCollectionV1, RESTRoleCollectionItemV1> {
     public static final String NAME_NAME = "name";
     public static final String DESCRIPTION_NAME = "description";
     public static final String CHILDROLES_NAME = "childRoles";
