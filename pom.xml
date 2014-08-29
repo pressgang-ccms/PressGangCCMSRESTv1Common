@@ -5,12 +5,12 @@
     <parent>
         <groupId>org.jboss.pressgang</groupId>
         <artifactId>pressgang-parent</artifactId>
-        <version>1.6</version>
+        <version>1.7</version>
     </parent>
 
     <groupId>org.jboss.pressgang.ccms</groupId>
     <artifactId>pressgang-ccms-restv1</artifactId>
-    <version>1.9-SNAPSHOT</version>
+    <version>1.9</version>
     <packaging>jar</packaging>
 
     <name>PressGang CCMS REST v1 Common</name>
@@ -23,7 +23,7 @@
     </scm>
 
     <properties>
-        <pressgang.ccms.version>1.9-SNAPSHOT</pressgang.ccms.version>
+        <pressgang.ccms.version>1.9</pressgang.ccms.version>
         <jackson.version>1.9.9</jackson.version>
         <resteasy.version>2.3.5.Final</resteasy.version>
         <jodatime.version>2.1</jodatime.version>
