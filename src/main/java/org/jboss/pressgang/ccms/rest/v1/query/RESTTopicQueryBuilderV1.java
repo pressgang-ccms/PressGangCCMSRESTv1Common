@@ -415,7 +415,7 @@ public class RESTTopicQueryBuilderV1 extends RESTBaseQueryBuilderWithPropertiesV
     }
 
     public void setTopicIncludedInSpec(final List<Integer> topicIncludedInSpec) {
-        put(CommonFilterConstants.TOPIC_IS_NOT_INCLUDED_IN_SPEC, topicIncludedInSpec);
+        put(CommonFilterConstants.TOPIC_IS_INCLUDED_IN_SPEC, topicIncludedInSpec);
     }
 
     public List<Integer> getNotTopicIncludedInSpec() {
